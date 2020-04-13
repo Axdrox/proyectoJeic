@@ -15,6 +15,7 @@ namespace Refracciones
         public BusquedaPedidos()
         {
             InitializeComponent();
+            btnAgain.Visible = false;
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
@@ -50,6 +51,7 @@ namespace Refracciones
             rdCalendario.Enabled = false;
             rdFactura.Enabled = false;
             RdCve.Enabled = false;
+            btnAgain.Visible = true;
         }
 
         private void btnBuscarCve_Click(object sender, EventArgs e)
@@ -60,6 +62,7 @@ namespace Refracciones
             rdCalendario.Enabled = false;
             rdFactura.Enabled = false;
             RdCve.Enabled = false;
+            btnAgain.Visible = true;
         }
 
         private void btnAgain_Click(object sender, EventArgs e)
