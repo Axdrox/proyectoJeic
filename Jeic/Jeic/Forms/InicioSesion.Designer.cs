@@ -40,19 +40,17 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Refracciones.Properties.Resources.usuarioF;
-            this.pictureBox1.Location = new System.Drawing.Point(128, 15);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Location = new System.Drawing.Point(96, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(173, 149);
+            this.pictureBox1.Size = new System.Drawing.Size(130, 121);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
             // btnEntrar
             // 
-            this.btnEntrar.Location = new System.Drawing.Point(156, 314);
-            this.btnEntrar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnEntrar.Location = new System.Drawing.Point(117, 255);
             this.btnEntrar.Name = "btnEntrar";
-            this.btnEntrar.Size = new System.Drawing.Size(100, 28);
+            this.btnEntrar.Size = new System.Drawing.Size(75, 23);
             this.btnEntrar.TabIndex = 1;
             this.btnEntrar.Text = "Entrar";
             this.btnEntrar.UseVisualStyleBackColor = true;
@@ -62,10 +60,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(43, 192);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(32, 156);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 23);
+            this.label1.Size = new System.Drawing.Size(62, 18);
             this.label1.TabIndex = 2;
             this.label1.Text = "Usuario";
             // 
@@ -73,41 +70,38 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(43, 250);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(32, 203);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(122, 23);
+            this.label2.Size = new System.Drawing.Size(97, 18);
             this.label2.TabIndex = 3;
             this.label2.Text = "Constraseña";
             // 
             // txtUsuario
             // 
-            this.txtUsuario.Location = new System.Drawing.Point(180, 190);
-            this.txtUsuario.Margin = new System.Windows.Forms.Padding(4);
+            this.txtUsuario.Location = new System.Drawing.Point(135, 154);
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(155, 22);
+            this.txtUsuario.Size = new System.Drawing.Size(117, 20);
             this.txtUsuario.TabIndex = 4;
             // 
             // txtContra
             // 
-            this.txtContra.Location = new System.Drawing.Point(180, 247);
-            this.txtContra.Margin = new System.Windows.Forms.Padding(4);
+            this.txtContra.Location = new System.Drawing.Point(135, 201);
             this.txtContra.Name = "txtContra";
-            this.txtContra.Size = new System.Drawing.Size(155, 22);
+            this.txtContra.Size = new System.Drawing.Size(117, 20);
             this.txtContra.TabIndex = 5;
+            this.txtContra.UseSystemPasswordChar = true;
             // 
             // InicioSesion
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(400, 357);
+            this.ClientSize = new System.Drawing.Size(300, 290);
             this.Controls.Add(this.txtContra);
             this.Controls.Add(this.txtUsuario);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnEntrar);
             this.Controls.Add(this.pictureBox1);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "InicioSesion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
