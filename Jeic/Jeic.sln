@@ -1,9 +1,8 @@
-﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30002.166
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jeic", "Refracciones\Jeic.csproj", "{B67C3104-50DA-4D29-A490-80181AED493C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jeic", "Jeic\Jeic.csproj", "{B67C3104-50DA-4D29-A490-80181AED493C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,6 +19,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {36CFF861-BCE3-46E8-9596-1161283CFC0F}
+		SolutionGuid = {B432D489-9194-4E91-834A-FCDD4750B88A}
 	EndGlobalSection
 EndGlobal
