@@ -1,2 +1,2 @@
 # proyectoJeic
-Sin descripción por el momento.
+Proyecto creado por Bryan Ramírez, Alejandro Arellano, Javier Martínez
