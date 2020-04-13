@@ -69,7 +69,7 @@ namespace Refracciones
             RdCve.Enabled = true;
             dataGridView1.Visible = false;
             lblPruebas.Text = "";
-
+            btnAgain.Visible = false;
         }
     }
 }

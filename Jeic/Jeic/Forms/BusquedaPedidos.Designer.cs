@@ -35,12 +35,12 @@
             this.lblCambio = new System.Windows.Forms.Label();
             this.txtCambio = new System.Windows.Forms.TextBox();
             this.PanelBusqueda = new System.Windows.Forms.Panel();
+            this.btnBuscarCve = new System.Windows.Forms.Button();
             this.Calendario = new System.Windows.Forms.MonthCalendar();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.PanelCal = new System.Windows.Forms.Panel();
             this.btnBuscaFecha = new System.Windows.Forms.Button();
-            this.btnBuscarCve = new System.Windows.Forms.Button();
             this.lblPruebas = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnAgain = new System.Windows.Forms.Button();
@@ -52,9 +52,10 @@
             // RdCve
             // 
             this.RdCve.AutoSize = true;
-            this.RdCve.Location = new System.Drawing.Point(29, 51);
+            this.RdCve.Location = new System.Drawing.Point(39, 63);
+            this.RdCve.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.RdCve.Name = "RdCve";
-            this.RdCve.Size = new System.Drawing.Size(95, 17);
+            this.RdCve.Size = new System.Drawing.Size(123, 21);
             this.RdCve.TabIndex = 0;
             this.RdCve.TabStop = true;
             this.RdCve.Text = "Clave Siniestro";
@@ -64,9 +65,10 @@
             // rdFactura
             // 
             this.rdFactura.AutoSize = true;
-            this.rdFactura.Location = new System.Drawing.Point(227, 51);
+            this.rdFactura.Location = new System.Drawing.Point(303, 63);
+            this.rdFactura.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rdFactura.Name = "rdFactura";
-            this.rdFactura.Size = new System.Drawing.Size(71, 17);
+            this.rdFactura.Size = new System.Drawing.Size(89, 21);
             this.rdFactura.TabIndex = 1;
             this.rdFactura.TabStop = true;
             this.rdFactura.Text = "# Factura";
@@ -76,9 +78,10 @@
             // rdCalendario
             // 
             this.rdCalendario.AutoSize = true;
-            this.rdCalendario.Location = new System.Drawing.Point(430, 51);
+            this.rdCalendario.Location = new System.Drawing.Point(573, 63);
+            this.rdCalendario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rdCalendario.Name = "rdCalendario";
-            this.rdCalendario.Size = new System.Drawing.Size(55, 17);
+            this.rdCalendario.Size = new System.Drawing.Size(68, 21);
             this.rdCalendario.TabIndex = 2;
             this.rdCalendario.TabStop = true;
             this.rdCalendario.Text = "Fecha";
@@ -91,26 +94,29 @@
             this.label1.BackColor = System.Drawing.Color.Lime;
             this.label1.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Location = new System.Drawing.Point(114, 9);
+            this.label1.Location = new System.Drawing.Point(152, 11);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(320, 24);
+            this.label1.Size = new System.Drawing.Size(418, 32);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Seleccione la forma de busqueda";
+            this.label1.Text = "Seleccione la forma de búsqueda";
             // 
             // lblCambio
             // 
             this.lblCambio.AutoSize = true;
-            this.lblCambio.Location = new System.Drawing.Point(17, 19);
+            this.lblCambio.Location = new System.Drawing.Point(23, 23);
+            this.lblCambio.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCambio.Name = "lblCambio";
-            this.lblCambio.Size = new System.Drawing.Size(35, 13);
+            this.lblCambio.Size = new System.Drawing.Size(46, 17);
             this.lblCambio.TabIndex = 4;
             this.lblCambio.Text = "label2";
             // 
             // txtCambio
             // 
-            this.txtCambio.Location = new System.Drawing.Point(119, 16);
+            this.txtCambio.Location = new System.Drawing.Point(159, 20);
+            this.txtCambio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtCambio.Name = "txtCambio";
-            this.txtCambio.Size = new System.Drawing.Size(100, 20);
+            this.txtCambio.Size = new System.Drawing.Size(132, 22);
             this.txtCambio.TabIndex = 5;
             // 
             // PanelBusqueda
@@ -119,14 +125,27 @@
             this.PanelBusqueda.Controls.Add(this.btnBuscarCve);
             this.PanelBusqueda.Controls.Add(this.lblCambio);
             this.PanelBusqueda.Controls.Add(this.txtCambio);
-            this.PanelBusqueda.Location = new System.Drawing.Point(29, 89);
+            this.PanelBusqueda.Location = new System.Drawing.Point(39, 110);
+            this.PanelBusqueda.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PanelBusqueda.Name = "PanelBusqueda";
-            this.PanelBusqueda.Size = new System.Drawing.Size(241, 76);
+            this.PanelBusqueda.Size = new System.Drawing.Size(321, 94);
             this.PanelBusqueda.TabIndex = 6;
+            // 
+            // btnBuscarCve
+            // 
+            this.btnBuscarCve.Location = new System.Drawing.Point(100, 58);
+            this.btnBuscarCve.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBuscarCve.Name = "btnBuscarCve";
+            this.btnBuscarCve.Size = new System.Drawing.Size(100, 28);
+            this.btnBuscarCve.TabIndex = 6;
+            this.btnBuscarCve.Text = "Buscar";
+            this.btnBuscarCve.UseVisualStyleBackColor = true;
+            this.btnBuscarCve.Click += new System.EventHandler(this.btnBuscarCve_Click);
             // 
             // Calendario
             // 
-            this.Calendario.Location = new System.Drawing.Point(28, 60);
+            this.Calendario.Location = new System.Drawing.Point(37, 74);
+            this.Calendario.Margin = new System.Windows.Forms.Padding(12, 11, 12, 11);
             this.Calendario.MaxDate = new System.DateTime(2709, 11, 30, 0, 0, 0, 0);
             this.Calendario.MaxSelectionCount = 30;
             this.Calendario.MinDate = new System.DateTime(2020, 1, 1, 0, 0, 0, 0);
@@ -137,19 +156,21 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(25, 17);
+            this.label2.Location = new System.Drawing.Point(33, 21);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(227, 17);
+            this.label2.Size = new System.Drawing.Size(299, 22);
             this.label2.TabIndex = 8;
-            this.label2.Text = "Seleccione un dia o en su defecto";
+            this.label2.Text = "Seleccione un día o en su defecto";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(31, 34);
+            this.label3.Location = new System.Drawing.Point(41, 42);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(221, 17);
+            this.label3.Size = new System.Drawing.Size(284, 22);
             this.label3.TabIndex = 9;
             this.label3.Text = "arrastre para un rango de tiempo";
             // 
@@ -159,38 +180,31 @@
             this.PanelCal.Controls.Add(this.label2);
             this.PanelCal.Controls.Add(this.Calendario);
             this.PanelCal.Controls.Add(this.label3);
-            this.PanelCal.Location = new System.Drawing.Point(19, 108);
+            this.PanelCal.Location = new System.Drawing.Point(25, 133);
+            this.PanelCal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PanelCal.Name = "PanelCal";
-            this.PanelCal.Size = new System.Drawing.Size(279, 275);
+            this.PanelCal.Size = new System.Drawing.Size(372, 338);
             this.PanelCal.TabIndex = 10;
             this.PanelCal.Visible = false;
             // 
             // btnBuscaFecha
             // 
-            this.btnBuscaFecha.Location = new System.Drawing.Point(106, 234);
+            this.btnBuscaFecha.Location = new System.Drawing.Point(141, 288);
+            this.btnBuscaFecha.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnBuscaFecha.Name = "btnBuscaFecha";
-            this.btnBuscaFecha.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscaFecha.Size = new System.Drawing.Size(100, 28);
             this.btnBuscaFecha.TabIndex = 10;
             this.btnBuscaFecha.Text = "Buscar";
             this.btnBuscaFecha.UseVisualStyleBackColor = true;
             this.btnBuscaFecha.Click += new System.EventHandler(this.btnBuscaFecha_Click);
             // 
-            // btnBuscarCve
-            // 
-            this.btnBuscarCve.Location = new System.Drawing.Point(75, 47);
-            this.btnBuscarCve.Name = "btnBuscarCve";
-            this.btnBuscarCve.Size = new System.Drawing.Size(75, 23);
-            this.btnBuscarCve.TabIndex = 6;
-            this.btnBuscarCve.Text = "Buscar";
-            this.btnBuscarCve.UseVisualStyleBackColor = true;
-            this.btnBuscarCve.Click += new System.EventHandler(this.btnBuscarCve_Click);
-            // 
             // lblPruebas
             // 
             this.lblPruebas.AutoSize = true;
-            this.lblPruebas.Location = new System.Drawing.Point(362, 89);
+            this.lblPruebas.Location = new System.Drawing.Point(483, 110);
+            this.lblPruebas.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPruebas.Name = "lblPruebas";
-            this.lblPruebas.Size = new System.Drawing.Size(46, 13);
+            this.lblPruebas.Size = new System.Drawing.Size(61, 17);
             this.lblPruebas.TabIndex = 11;
             this.lblPruebas.Text = "Pruebas";
             // 
@@ -199,18 +213,21 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(334, 125);
+            this.dataGridView1.Location = new System.Drawing.Point(445, 154);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(372, 240);
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.Size = new System.Drawing.Size(496, 295);
             this.dataGridView1.TabIndex = 12;
             this.dataGridView1.Visible = false;
             // 
             // btnAgain
             // 
-            this.btnAgain.Location = new System.Drawing.Point(589, 376);
+            this.btnAgain.Location = new System.Drawing.Point(785, 463);
+            this.btnAgain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAgain.Name = "btnAgain";
-            this.btnAgain.Size = new System.Drawing.Size(117, 23);
+            this.btnAgain.Size = new System.Drawing.Size(156, 28);
             this.btnAgain.TabIndex = 13;
             this.btnAgain.Text = "Volver a consultar";
             this.btnAgain.UseVisualStyleBackColor = true;
@@ -218,9 +235,9 @@
             // 
             // BusquedaPedidos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(741, 411);
+            this.ClientSize = new System.Drawing.Size(988, 506);
             this.Controls.Add(this.btnAgain);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.lblPruebas);
@@ -230,8 +247,10 @@
             this.Controls.Add(this.rdCalendario);
             this.Controls.Add(this.rdFactura);
             this.Controls.Add(this.RdCve);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "BusquedaPedidos";
-            this.Text = "BusquedaPedidos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Búsqueda de pedidos";
             this.PanelBusqueda.ResumeLayout(false);
             this.PanelBusqueda.PerformLayout();
             this.PanelCal.ResumeLayout(false);
