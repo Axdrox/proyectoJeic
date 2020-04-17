@@ -34,3 +34,4 @@ C:\Users\BuGsBunNy\Desktop\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.C
 C:\Users\BuGsBunNy\Desktop\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.CopyComplete
 C:\Users\BuGsBunNy\Desktop\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.exe
 C:\Users\BuGsBunNy\Desktop\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.pdb
+C:\Users\BuGsBunNy\Desktop\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.registroFactura.resources
