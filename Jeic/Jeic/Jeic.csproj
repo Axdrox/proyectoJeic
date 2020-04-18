@@ -69,6 +69,18 @@
     <Compile Include="Forms\InicioSesion.Designer.cs">
       <DependentUpon>InicioSesion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Pedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Pedido.Designer.cs">
+      <DependentUpon>Pedido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Siniestro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Siniestro.Designer.cs">
+      <DependentUpon>Siniestro.cs</DependentUpon>
+    </Compile>
     <Compile Include="OperBD.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -77,6 +89,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\InicioSesion.resx">
       <DependentUpon>InicioSesion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Pedido.resx">
+      <DependentUpon>Pedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Siniestro.resx">
+      <DependentUpon>Siniestro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -63,8 +63,51 @@ namespace Refracciones
             return contador;
         }
 
-        //-------------------------------------------------------
+        //---------------- VEHICULOS-REGISTRADOS
+        public DataSet VehiculosRegistrados()
+        {
+            DataSet dataSet = new DataSet();
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT modelo FROM VEHICULO", nuevaConexion);
+                    dataAdapter.Fill(dataSet, "VEHICULO");
+                    nuevaConexion.Close();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return dataSet;
+        }
 
+        //-------------OBTENER  AÑO A PARTIR DEL VEHÍCULO
+        public string anioVehiculo(string modelo){
+            string anio = "";
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion()){
+                    nuevaConexion.Open();
+                    //cambiar por anio
+                    Comando = new SqlCommand("SELECT año FROM VEHICULO WHERE modelo = @modelo", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@modelo", modelo.Trim());
+                    Lector = Comando.ExecuteReader();
+                    if (Lector.Read())
+                    {
+                        anio = Lector["año"].ToString().Trim();
+                    }
+                    Lector.Close();
+                    nuevaConexion.Close();
+                }
+            }
+            catch (Exception EX){
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return anio;
+        }
 
 
 
