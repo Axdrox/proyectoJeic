@@ -18,11 +18,6 @@ namespace Refracciones.Forms
         public Siniestro()
         {
             InitializeComponent();
-            //dtpYear.Format = DateTimePickerFormat.Custom;
-            //dtpYear.CustomFormat = "yyyy";
-            dtpYear.ShowUpDown = true;
-            lblIngreseNombre.Hide();
-            txtNombreVehiculoNuevo.Hide();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -33,15 +28,28 @@ namespace Refracciones.Forms
 
         private void cbVehiculo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            lblAnio.Text = operacion.anioVehiculo(cbVehiculo.Text.Trim());;
+            lblAnio.Text = operacion.anioVehiculo(cbVehiculo.Text.Trim());
         }
 
         private void Siniestro_Load(object sender, EventArgs e)
         {
+            //Carga los datos de los modelos de vehículos en el combobox
             cbVehiculo.DataSource = operacion.VehiculosRegistrados().Tables[0].DefaultView;
             cbVehiculo.ValueMember = "modelo";
+
+            //Hace que no sea posible escribir en el combobox
+            this.cbVehiculo.DropDownStyle = ComboBoxStyle.DropDownList;
+
             dtpYear.Hide();
             lblAnioRegistro.Hide();
+            lblIngreseNombre.Hide();
+            txtNombreVehiculoNuevo.Hide();
+            
+            //Hace que el DateTimePicker sea un tipo de selección en forma de lista
+            //dtpYear.Format = DateTimePickerFormat.Custom;
+            //dtpYear.CustomFormat = "yyyy";
+            dtpYear.ShowUpDown = true;
+            
         }
 
         private void chbOtroVehiculo_CheckedChanged(object sender, EventArgs e)
@@ -75,12 +83,27 @@ namespace Refracciones.Forms
         {
             try{
                 if(txtClaveSiniestro.Text.Trim() == "" || (chbOtroVehiculo.Checked && txtNombreVehiculoNuevo.Text.Trim() == "")){
-                    MessageBox.Show("Favor de llenar todos los campos.", "Cuidado");
+                    MessageBox.Show("Favor de llenar todos los campos.", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else{
-                    if(MessageBox.Show("¿Los datos son correctos?", "Confirmar", MessageBoxButtons.YesNo) == DialogResult.Yes){
-                        pedido.Show();
-                        this.Hide();
+                    int i = 0;
+                    if(MessageBox.Show("¿Los datos son correctos?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes){
+                        if (chbOtroVehiculo.Checked){
+                            operacion.registroVehiculo(txtNombreVehiculoNuevo.Text.Trim().ToUpper(), dtpYear.Text.Trim());
+                            i = operacion.registrarSiniestro(txtNombreVehiculoNuevo.Text.Trim().ToUpper(), txtClaveSiniestro.Text.Trim().ToUpper(), txtComentario.Text.Trim());
+                            if (i == 1)
+                            {
+                                pedido.Show();
+                                this.Hide();
+                            }
+                        }
+                        else{
+                            i = operacion.registrarSiniestro(cbVehiculo.Text.Trim(), txtClaveSiniestro.Text.Trim().ToUpper(), txtComentario.Text.Trim());
+                            if (i == 1){
+                                pedido.Show();
+                                this.Hide();
+                            }
+                        }
                     }
                 }
             }

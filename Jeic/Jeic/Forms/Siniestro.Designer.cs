@@ -35,7 +35,7 @@
             this.dtpYear = new System.Windows.Forms.DateTimePicker();
             this.txtClaveSiniestro = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtComentario = new System.Windows.Forms.TextBox();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.lblIngreseNombre = new System.Windows.Forms.Label();
@@ -106,13 +106,13 @@
             this.label4.TabIndex = 7;
             this.label4.Text = "Comentario:";
             // 
-            // textBox1
+            // txtComentario
             // 
-            this.textBox1.Location = new System.Drawing.Point(15, 130);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(360, 148);
-            this.textBox1.TabIndex = 8;
+            this.txtComentario.Location = new System.Drawing.Point(15, 130);
+            this.txtComentario.Multiline = true;
+            this.txtComentario.Name = "txtComentario";
+            this.txtComentario.Size = new System.Drawing.Size(360, 148);
+            this.txtComentario.TabIndex = 8;
             // 
             // btnAceptar
             // 
@@ -191,7 +191,7 @@
             this.Controls.Add(this.lblIngreseNombre);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtComentario);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtClaveSiniestro);
             this.Controls.Add(this.dtpYear);
@@ -217,7 +217,7 @@
         private System.Windows.Forms.DateTimePicker dtpYear;
         private System.Windows.Forms.TextBox txtClaveSiniestro;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtComentario;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Label lblIngreseNombre;

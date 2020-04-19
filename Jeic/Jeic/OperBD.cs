@@ -91,13 +91,12 @@ namespace Refracciones
             {
                 using (SqlConnection nuevaConexion = Conexion.conexion()){
                     nuevaConexion.Open();
-                    //cambiar por anio
-                    Comando = new SqlCommand("SELECT año FROM VEHICULO WHERE modelo = @modelo", nuevaConexion);
+                    Comando = new SqlCommand("SELECT anio FROM VEHICULO WHERE modelo = @modelo", nuevaConexion);
                     Comando.Parameters.AddWithValue("@modelo", modelo.Trim());
                     Lector = Comando.ExecuteReader();
                     if (Lector.Read())
                     {
-                        anio = Lector["año"].ToString().Trim();
+                        anio = Lector["anio"].ToString().Trim();
                     }
                     Lector.Close();
                     nuevaConexion.Close();
@@ -109,7 +108,69 @@ namespace Refracciones
             return anio;
         }
 
+        //-------------INSERTAR DATOS EN VEHICULO
+        public void registroVehiculo(string modelo, string anio){
+            int i = 0;
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("INSERT INTO VEHICULO " + "(modelo, anio) " + "VALUES (@modelo, @anio) ", nuevaConexion);
+                    Comando.Parameters.AddWithValue("modelo", modelo);
+                    Comando.Parameters.AddWithValue("anio", anio);
 
+                    //Para saber si la inserción se hizo correctamente
+                    i = Comando.ExecuteNonQuery();
+                    if (i == 1)
+                        MessageBox.Show("Se registró vehículo correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    else
+                        MessageBox.Show("Problemas al registar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception EX) {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+        }
+
+        //-------------INSERTAR DATOS EN SINIESTRO
+        public int registrarSiniestro(string modelo, string claveSiniestro, string comentario){
+            int i = 0;
+            try {
+                using (SqlConnection nuevaConexion = Conexion.conexion()) {
+                    int claveVehiculo = 0;
+
+                    nuevaConexion.Open();
+                    //Obteniendo la clave del vehículo
+                    Comando = new SqlCommand("SELECT cve_vehiculo FROM VEHICULO WHERE modelo = @modelo", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@modelo", modelo.Trim());
+                    Lector = Comando.ExecuteReader();
+                    if (Lector.Read())
+                    {
+                        claveVehiculo = (int)Lector["cve_vehiculo"];
+                    }
+                    Lector.Close();
+
+                    //Insertando los datos en la tabla SINIESTRO
+                    Comando = new SqlCommand("INSERT INTO SINIESTRO " + "(cve_siniestro, cve_vehiculo, comentario) " + "VALUES (@cve_siniestro, @cve_vehiculo, @comentario) ", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@cve_siniestro", claveSiniestro.Trim());
+                    Comando.Parameters.AddWithValue("@cve_vehiculo", claveVehiculo);
+                    Comando.Parameters.AddWithValue("comentario", comentario.Trim());
+                    
+                    //Para saber si la inserción se hizo correctamente
+                    i = Comando.ExecuteNonQuery();
+                    if (i == 1)
+                        MessageBox.Show("Se registró siniestro correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    else
+                        MessageBox.Show("Problemas al registar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return i;
+        }
 
     }
 }
