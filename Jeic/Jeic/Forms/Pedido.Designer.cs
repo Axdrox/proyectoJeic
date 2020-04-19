@@ -50,8 +50,9 @@
             this.dgvPedido = new System.Windows.Forms.DataGridView();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.rdbNo = new System.Windows.Forms.RadioButton();
+            this.rdbSi = new System.Windows.Forms.RadioButton();
+            this.chbSi = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedido)).BeginInit();
             this.SuspendLayout();
             // 
@@ -242,37 +243,46 @@
             this.button3.Text = "Cancelar";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // rdbNo
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(150, 7);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(41, 21);
-            this.radioButton1.TabIndex = 21;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Sí";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this.rdbNo.AutoSize = true;
+            this.rdbNo.Location = new System.Drawing.Point(207, 7);
+            this.rdbNo.Name = "rdbNo";
+            this.rdbNo.Size = new System.Drawing.Size(47, 21);
+            this.rdbNo.TabIndex = 22;
+            this.rdbNo.Text = "No";
+            this.rdbNo.UseVisualStyleBackColor = true;
+            this.rdbNo.CheckedChanged += new System.EventHandler(this.rdbNo_CheckedChanged);
             // 
-            // radioButton2
+            // rdbSi
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Checked = true;
-            this.radioButton2.Location = new System.Drawing.Point(197, 7);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(47, 21);
-            this.radioButton2.TabIndex = 22;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "No";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.rdbSi.AutoSize = true;
+            this.rdbSi.Location = new System.Drawing.Point(150, 7);
+            this.rdbSi.Name = "rdbSi";
+            this.rdbSi.Size = new System.Drawing.Size(41, 21);
+            this.rdbSi.TabIndex = 23;
+            this.rdbSi.Text = "Sí";
+            this.rdbSi.UseVisualStyleBackColor = true;
+            this.rdbSi.CheckedChanged += new System.EventHandler(this.rdbSi_CheckedChanged);
+            // 
+            // chbSi
+            // 
+            this.chbSi.AutoSize = true;
+            this.chbSi.Location = new System.Drawing.Point(149, 8);
+            this.chbSi.Name = "chbSi";
+            this.chbSi.Size = new System.Drawing.Size(42, 21);
+            this.chbSi.TabIndex = 24;
+            this.chbSi.Text = "Sí";
+            this.chbSi.UseVisualStyleBackColor = true;
             // 
             // Pedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(543, 624);
-            this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.radioButton1);
+            this.Controls.Add(this.chbSi);
+            this.Controls.Add(this.rdbSi);
+            this.Controls.Add(this.rdbNo);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.dgvPedido);
@@ -298,6 +308,7 @@
             this.Name = "Pedido";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pedido";
+            this.Load += new System.EventHandler(this.Pedido_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedido)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -328,7 +339,8 @@
         private System.Windows.Forms.DataGridView dgvPedido;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton rdbNo;
+        public System.Windows.Forms.RadioButton rdbSi;
+        public System.Windows.Forms.CheckBox chbSi;
     }
 }

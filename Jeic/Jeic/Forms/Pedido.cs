@@ -15,10 +15,15 @@ namespace Refracciones.Forms
         public Pedido()
         {
             InitializeComponent();
+        }
+
+        private void Pedido_Load(object sender, EventArgs e)
+        {
             lblVehiculoPedido.Hide();
             lblVehiculo.Hide();
             lblAnioPedido.Hide();
             lblAnio.Hide();
+            chbSi.Hide();
         }
 
         private void btnSiniestro_Click(object sender, EventArgs e)
@@ -28,11 +33,19 @@ namespace Refracciones.Forms
             this.Hide();
         }
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        private void rdbSi_CheckedChanged(object sender, EventArgs e)
         {
             Siniestro siniestro = new Siniestro();
             siniestro.Show();
             this.Hide();
+        }
+
+        private void rdbNo_CheckedChanged(object sender, EventArgs e)
+        {
+            rdbSi.Show();
+            rdbSi.Enabled = true;
+            chbSi.Hide();
+            chbSi.Checked = false;
         }
     }
 }

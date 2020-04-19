@@ -104,6 +104,10 @@ namespace Refracciones.Forms
                                 this.Hide();
                             }
                         }
+                        pedido.chbSi.Checked = true;
+                        pedido.chbSi.Show();
+                        pedido.chbSi.Enabled = false;
+                        pedido.rdbSi.Hide();
                     }
                 }
             }
