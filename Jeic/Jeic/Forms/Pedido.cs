@@ -24,13 +24,10 @@ namespace Refracciones.Forms
             lblAnioPedido.Hide();
             lblAnio.Hide();
             chbSi.Hide();
-        }
-
-        private void btnSiniestro_Click(object sender, EventArgs e)
-        {
-            Siniestro siniestro = new Siniestro();
-            siniestro.Show();
-            this.Hide();
+            lblClaveSiniestro.Hide();
+            lblClaveSiniestroPedido.Hide();
+            txtAseguradora.Hide();
+            txtValuador.Hide();
         }
 
         private void rdbSi_CheckedChanged(object sender, EventArgs e)
@@ -46,6 +43,84 @@ namespace Refracciones.Forms
             rdbSi.Enabled = true;
             chbSi.Hide();
             chbSi.Checked = false;
+            lblVehiculo.Text = "";
+            lblAnio.Text = "";
+            lblVehiculoPedido.Hide();
+            lblVehiculo.Hide();
+            lblAnioPedido.Hide();
+            lblAnio.Hide();
+            lblClaveSiniestro.Text = "";
+            lblClaveSiniestro.Hide();
+            lblClaveSiniestroPedido.Hide();
+        }
+
+        private void chbOtraAseguradora_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chbOtraAseguradora.Checked == true)
+            {
+                txtAseguradora.Show();
+                cbAseguradora.Hide();
+            }
+            else
+            {
+                txtAseguradora.Hide();
+                cbAseguradora.Show();
+            }
+                
+        }
+
+        private void chbOtroValuador_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chbOtroValuador.Checked == true)
+            {
+                txtValuador.Show();
+                cbValuador.Hide();
+            }
+            else
+            {
+                txtValuador.Hide();
+                cbValuador.Show();
+            }
+                
+        }
+
+        private void txtClavePedido_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+            txtClavePedido.ForeColor = Color.Black;
+        }
+
+        private void txtClavePedido_Click(object sender, EventArgs e)
+        {
+            txtClavePedido.Text = "";
+        }
+
+        private void txtAseguradora_Click(object sender, EventArgs e)
+        {
+            txtAseguradora.Text = "";
+        }
+
+        private void txtValuador_Click(object sender, EventArgs e)
+        {
+            txtValuador.Text = "";
+        }
+
+        private void chbOtroTaller_CheckedChanged(object sender, EventArgs e)
+        {
+            //CHECAR
+            if (chbOtroValuador.Checked == true)
+            {
+                txtValuador.Show();
+                cbValuador.Hide();
+            }
+            else
+            {
+                txtValuador.Hide();
+                cbValuador.Show();
+            }
         }
     }
 }

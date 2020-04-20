@@ -93,6 +93,8 @@ namespace Refracciones.Forms
                             i = operacion.registrarSiniestro(txtNombreVehiculoNuevo.Text.Trim().ToUpper(), txtClaveSiniestro.Text.Trim().ToUpper(), txtComentario.Text.Trim());
                             if (i == 1)
                             {
+                                pedido.lblVehiculo.Text = txtNombreVehiculoNuevo.Text.Trim().ToUpper();
+                                pedido.lblAnio.Text = dtpYear.Text.Trim();
                                 pedido.Show();
                                 this.Hide();
                             }
@@ -100,6 +102,8 @@ namespace Refracciones.Forms
                         else{
                             i = operacion.registrarSiniestro(cbVehiculo.Text.Trim(), txtClaveSiniestro.Text.Trim().ToUpper(), txtComentario.Text.Trim());
                             if (i == 1){
+                                pedido.lblVehiculo.Text = cbVehiculo.Text.Trim();
+                                pedido.lblAnio.Text = lblAnio.Text.Trim();
                                 pedido.Show();
                                 this.Hide();
                             }
@@ -108,6 +112,13 @@ namespace Refracciones.Forms
                         pedido.chbSi.Show();
                         pedido.chbSi.Enabled = false;
                         pedido.rdbSi.Hide();
+                        pedido.lblVehiculo.Show();
+                        pedido.lblAnio.Show();
+                        pedido.lblVehiculoPedido.Show();
+                        pedido.lblAnioPedido.Show();
+                        pedido.lblClaveSiniestroPedido.Show();
+                        pedido.lblClaveSiniestro.Text = txtClaveSiniestro.Text.Trim().ToUpper();
+                        pedido.lblClaveSiniestro.Show();
                     }
                 }
             }
