@@ -37,7 +37,7 @@ namespace Refracciones.Forms
             cbVehiculo.DataSource = operacion.VehiculosRegistrados().Tables[0].DefaultView;
             cbVehiculo.ValueMember = "modelo";
 
-            //Hace que no sea posible escribir en el combobox
+            //Hace que no sea posible escribir en el combobox, también se puede configurar seleccionando el elemento
             this.cbVehiculo.DropDownStyle = ComboBoxStyle.DropDownList;
 
             dtpYear.Hide();

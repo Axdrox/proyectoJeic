@@ -39,16 +39,16 @@
             this.label6 = new System.Windows.Forms.Label();
             this.cbVendedor = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpFechaAsignacion = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dtpFechaPromesa = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.cbTaller = new System.Windows.Forms.ComboBox();
             this.cbDestino = new System.Windows.Forms.ComboBox();
             this.dgvPedido = new System.Windows.Forms.DataGridView();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnFinalizarPedido = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.rdbNo = new System.Windows.Forms.RadioButton();
             this.rdbSi = new System.Windows.Forms.RadioButton();
             this.chbSi = new System.Windows.Forms.CheckBox();
@@ -121,6 +121,7 @@
             // cbAseguradora
             // 
             this.cbAseguradora.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbAseguradora.Enabled = false;
             this.cbAseguradora.FormattingEnabled = true;
             this.cbAseguradora.Location = new System.Drawing.Point(166, 169);
             this.cbAseguradora.Name = "cbAseguradora";
@@ -148,6 +149,7 @@
             // cbVendedor
             // 
             this.cbVendedor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbVendedor.Enabled = false;
             this.cbVendedor.FormattingEnabled = true;
             this.cbVendedor.Location = new System.Drawing.Point(165, 37);
             this.cbVendedor.Name = "cbVendedor";
@@ -163,12 +165,13 @@
             this.label7.TabIndex = 10;
             this.label7.Text = "Fecha de asignación";
             // 
-            // dateTimePicker1
+            // dtpFechaAsignacion
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(179, 317);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(255, 22);
-            this.dateTimePicker1.TabIndex = 11;
+            this.dtpFechaAsignacion.Enabled = false;
+            this.dtpFechaAsignacion.Location = new System.Drawing.Point(179, 317);
+            this.dtpFechaAsignacion.Name = "dtpFechaAsignacion";
+            this.dtpFechaAsignacion.Size = new System.Drawing.Size(255, 22);
+            this.dtpFechaAsignacion.TabIndex = 11;
             // 
             // label8
             // 
@@ -179,12 +182,14 @@
             this.label8.TabIndex = 12;
             this.label8.Text = "Fecha promesa";
             // 
-            // dateTimePicker2
+            // dtpFechaPromesa
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(179, 351);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(255, 22);
-            this.dateTimePicker2.TabIndex = 13;
+            this.dtpFechaPromesa.Enabled = false;
+            this.dtpFechaPromesa.Location = new System.Drawing.Point(179, 351);
+            this.dtpFechaPromesa.Name = "dtpFechaPromesa";
+            this.dtpFechaPromesa.Size = new System.Drawing.Size(255, 22);
+            this.dtpFechaPromesa.TabIndex = 13;
+            this.dtpFechaPromesa.ValueChanged += new System.EventHandler(this.dtpFechaPromesa_ValueChanged);
             // 
             // label9
             // 
@@ -207,6 +212,7 @@
             // cbTaller
             // 
             this.cbTaller.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbTaller.Enabled = false;
             this.cbTaller.FormattingEnabled = true;
             this.cbTaller.Location = new System.Drawing.Point(165, 239);
             this.cbTaller.Name = "cbTaller";
@@ -216,6 +222,7 @@
             // cbDestino
             // 
             this.cbDestino.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbDestino.Enabled = false;
             this.cbDestino.FormattingEnabled = true;
             this.cbDestino.Location = new System.Drawing.Point(165, 273);
             this.cbDestino.Name = "cbDestino";
@@ -232,27 +239,30 @@
             this.dgvPedido.Size = new System.Drawing.Size(410, 150);
             this.dgvPedido.TabIndex = 18;
             // 
-            // button2
+            // btnFinalizarPedido
             // 
-            this.button2.Location = new System.Drawing.Point(290, 593);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(143, 31);
-            this.button2.TabIndex = 19;
-            this.button2.Text = "Finalizar pedido";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnFinalizarPedido.Enabled = false;
+            this.btnFinalizarPedido.Location = new System.Drawing.Point(290, 593);
+            this.btnFinalizarPedido.Name = "btnFinalizarPedido";
+            this.btnFinalizarPedido.Size = new System.Drawing.Size(143, 31);
+            this.btnFinalizarPedido.TabIndex = 19;
+            this.btnFinalizarPedido.Text = "Finalizar pedido";
+            this.btnFinalizarPedido.UseVisualStyleBackColor = true;
+            this.btnFinalizarPedido.Click += new System.EventHandler(this.btnFinalizarPedido_Click);
             // 
-            // button3
+            // btnCancelar
             // 
-            this.button3.Location = new System.Drawing.Point(188, 593);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(83, 31);
-            this.button3.TabIndex = 20;
-            this.button3.Text = "Cancelar";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnCancelar.Location = new System.Drawing.Point(188, 593);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(83, 31);
+            this.btnCancelar.TabIndex = 20;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
             // 
             // rdbNo
             // 
             this.rdbNo.AutoSize = true;
+            this.rdbNo.Enabled = false;
             this.rdbNo.Location = new System.Drawing.Point(264, 80);
             this.rdbNo.Name = "rdbNo";
             this.rdbNo.Size = new System.Drawing.Size(47, 21);
@@ -264,6 +274,7 @@
             // rdbSi
             // 
             this.rdbSi.AutoSize = true;
+            this.rdbSi.Enabled = false;
             this.rdbSi.Location = new System.Drawing.Point(179, 81);
             this.rdbSi.Name = "rdbSi";
             this.rdbSi.Size = new System.Drawing.Size(41, 21);
@@ -275,7 +286,7 @@
             // chbSi
             // 
             this.chbSi.AutoSize = true;
-            this.chbSi.Location = new System.Drawing.Point(179, 82);
+            this.chbSi.Location = new System.Drawing.Point(178, 82);
             this.chbSi.Name = "chbSi";
             this.chbSi.Size = new System.Drawing.Size(42, 21);
             this.chbSi.TabIndex = 24;
@@ -285,6 +296,7 @@
             // chbOtroValuador
             // 
             this.chbOtroValuador.AutoSize = true;
+            this.chbOtroValuador.Enabled = false;
             this.chbOtroValuador.Location = new System.Drawing.Point(375, 206);
             this.chbOtroValuador.Name = "chbOtroValuador";
             this.chbOtroValuador.Size = new System.Drawing.Size(58, 21);
@@ -300,14 +312,15 @@
             this.txtValuador.Name = "txtValuador";
             this.txtValuador.Size = new System.Drawing.Size(186, 22);
             this.txtValuador.TabIndex = 26;
-            this.txtValuador.Text = "Escribe nombre valuador";
+            this.txtValuador.Text = "Escribe nombre del valuador";
             this.txtValuador.Click += new System.EventHandler(this.txtValuador_Click);
             // 
             // cbValuador
             // 
             this.cbValuador.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbValuador.Enabled = false;
             this.cbValuador.FormattingEnabled = true;
-            this.cbValuador.Location = new System.Drawing.Point(165, 202);
+            this.cbValuador.Location = new System.Drawing.Point(166, 202);
             this.cbValuador.Name = "cbValuador";
             this.cbValuador.Size = new System.Drawing.Size(186, 24);
             this.cbValuador.TabIndex = 27;
@@ -325,6 +338,7 @@
             // chbOtraAseguradora
             // 
             this.chbOtraAseguradora.AutoSize = true;
+            this.chbOtraAseguradora.Enabled = false;
             this.chbOtraAseguradora.Location = new System.Drawing.Point(375, 172);
             this.chbOtraAseguradora.Name = "chbOtraAseguradora";
             this.chbOtraAseguradora.Size = new System.Drawing.Size(58, 21);
@@ -373,6 +387,7 @@
             // chbOtroTaller
             // 
             this.chbOtroTaller.AutoSize = true;
+            this.chbOtroTaller.Enabled = false;
             this.chbOtroTaller.Location = new System.Drawing.Point(376, 243);
             this.chbOtroTaller.Name = "chbOtroTaller";
             this.chbOtroTaller.Size = new System.Drawing.Size(58, 21);
@@ -384,21 +399,24 @@
             // chbOtroDestino
             // 
             this.chbOtroDestino.AutoSize = true;
+            this.chbOtroDestino.Enabled = false;
             this.chbOtroDestino.Location = new System.Drawing.Point(375, 276);
             this.chbOtroDestino.Name = "chbOtroDestino";
             this.chbOtroDestino.Size = new System.Drawing.Size(58, 21);
             this.chbOtroDestino.TabIndex = 35;
             this.chbOtroDestino.Text = "Otro";
             this.chbOtroDestino.UseVisualStyleBackColor = true;
+            this.chbOtroDestino.CheckedChanged += new System.EventHandler(this.chbOtroDestino_CheckedChanged);
             // 
             // txtTaller
             // 
             this.txtTaller.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.txtTaller.Location = new System.Drawing.Point(166, 239);
+            this.txtTaller.Location = new System.Drawing.Point(165, 239);
             this.txtTaller.Name = "txtTaller";
             this.txtTaller.Size = new System.Drawing.Size(186, 22);
             this.txtTaller.TabIndex = 36;
             this.txtTaller.Text = "Escriba nombre de taller";
+            this.txtTaller.Click += new System.EventHandler(this.txtTaller_Click);
             // 
             // txtDestino
             // 
@@ -408,6 +426,7 @@
             this.txtDestino.Size = new System.Drawing.Size(186, 22);
             this.txtDestino.TabIndex = 37;
             this.txtDestino.Text = "Escriba el destino";
+            this.txtDestino.Click += new System.EventHandler(this.txtDestino_Click);
             // 
             // Pedido
             // 
@@ -430,16 +449,16 @@
             this.Controls.Add(this.chbSi);
             this.Controls.Add(this.rdbSi);
             this.Controls.Add(this.rdbNo);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.btnFinalizarPedido);
             this.Controls.Add(this.dgvPedido);
             this.Controls.Add(this.cbDestino);
             this.Controls.Add(this.cbTaller);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.dateTimePicker2);
+            this.Controls.Add(this.dtpFechaPromesa);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dtpFechaAsignacion);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.cbVendedor);
             this.Controls.Add(this.label6);
@@ -470,16 +489,16 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cbVendedor;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpFechaAsignacion;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dtpFechaPromesa;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox cbTaller;
         private System.Windows.Forms.ComboBox cbDestino;
         private System.Windows.Forms.DataGridView dgvPedido;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnFinalizarPedido;
+        private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.RadioButton rdbNo;
         public System.Windows.Forms.RadioButton rdbSi;
         public System.Windows.Forms.CheckBox chbSi;

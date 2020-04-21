@@ -84,6 +84,79 @@ namespace Refracciones
             return dataSet;
         }
 
+        //---------------- VENDEDORES REGISTRADOS
+        public DataSet VendedoresRegistrados()
+        {
+            DataSet dataSet = new DataSet();
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT cve_vendedor FROM VENDEDOR", nuevaConexion);
+                    dataAdapter.Fill(dataSet, "VENDEDOR");
+                    nuevaConexion.Close();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return dataSet;
+        }
+
+        //---------------- ASEGURADORAS REGISTRADAS
+        public DataSet AseguradorasRegistradas()
+        {
+            DataSet dataSet = new DataSet();
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT cve_nombre FROM CLIENTE", nuevaConexion);
+                    dataAdapter.Fill(dataSet, "CLIENTE");
+                    nuevaConexion.Close();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return dataSet;
+        }
+
+        //-------------VALUADORES REGISTRADOS
+        public DataSet ValuadoresRegistrados(string nombreCliente)
+        {
+            DataSet dataSet = new DataSet();
+            int cveValuador = 0;
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("SELECT cve_valuador FROM CLIENTE WHERE cve_nombre = @cve_nombre", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@cve_nombre", nombreCliente.Trim());
+                    Lector = Comando.ExecuteReader();
+                    if (Lector.Read())
+                    {
+                        cveValuador = (int)Lector["cve_valuador"];
+                    }
+                    Lector.Close();
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT cve_nombre FROM VALUADOR WHERE cve_valuador = @cve_valuador", nuevaConexion);
+                    dataAdapter.InsertCommand.Parameters.AddWithValue("@cve_valuador", cveValuador);
+                    dataAdapter.Fill(dataSet, "VALUADOR");
+                    nuevaConexion.Close();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return dataSet;
+        }
+
         //-------------OBTENER  AÑO A PARTIR DEL VEHÍCULO
         public string anioVehiculo(string modelo){
             string anio = "";

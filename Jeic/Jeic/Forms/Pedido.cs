@@ -12,6 +12,7 @@ namespace Refracciones.Forms
 {
     public partial class Pedido : Form
     {
+        OperBD operacion = new OperBD();
         public Pedido()
         {
             InitializeComponent();
@@ -28,6 +29,18 @@ namespace Refracciones.Forms
             lblClaveSiniestroPedido.Hide();
             txtAseguradora.Hide();
             txtValuador.Hide();
+            txtTaller.Hide();
+            txtDestino.Hide();
+
+            //Carga los datos registros de vendedores en el combobox
+            cbAseguradora.DataSource = operacion.VendedoresRegistrados().Tables[0].DefaultView;
+            cbAseguradora.ValueMember = "cve_vendedor";
+
+            //Carga los datos registros de aseguradoras en el combobox
+            cbAseguradora.DataSource = operacion.AseguradorasRegistradas().Tables[0].DefaultView;
+            cbAseguradora.ValueMember = "cve_nombre";
+
+
         }
 
         private void rdbSi_CheckedChanged(object sender, EventArgs e)
@@ -93,34 +106,104 @@ namespace Refracciones.Forms
             txtClavePedido.ForeColor = Color.Black;
         }
 
+        private void chbOtroTaller_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chbOtroTaller.Checked == true)
+            {
+                txtTaller.Show();
+                cbTaller.Hide();
+            }
+            else
+            {
+                txtTaller.Hide();
+                cbTaller.Show();
+            }
+        }
+
+        private void chbOtroDestino_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chbOtroDestino.Checked == true)
+            {
+                txtDestino.Show();
+                cbDestino.Hide();
+            }
+            else
+            {
+                txtDestino.Hide();
+                cbDestino.Show();
+            }
+        }
+
         private void txtClavePedido_Click(object sender, EventArgs e)
         {
-            txtClavePedido.Text = "";
+            if (txtClavePedido.Text == "Escribe una clave")
+                txtClavePedido.Text = "";
+            // MEJOR CAMBIARLO AL MOMENTO EN QUE QUIERA FINALIZAR EL PEDIDO
+            if (txtClavePedido.Text != string.Empty || txtClavePedido.Text != "Escribe una clave")
+            {
+                cbVendedor.Enabled = true;
+                rdbSi.Enabled = true;
+                rdbNo.Enabled = true;
+                cbAseguradora.Enabled = true;
+                chbOtraAseguradora.Enabled = true;
+                cbValuador.Enabled = true;
+                chbOtroValuador.Enabled = true;
+                cbTaller.Enabled = true;
+                chbOtroTaller.Enabled = true;
+                cbDestino.Enabled = true;
+                chbOtroDestino.Enabled = true;
+                dtpFechaAsignacion.Enabled = true;
+                dtpFechaPromesa.Enabled = true;
+                btnFinalizarPedido.Enabled = true;
+            }
+            
         }
 
         private void txtAseguradora_Click(object sender, EventArgs e)
         {
-            txtAseguradora.Text = "";
+            if (txtAseguradora.Text == "Escriba una aseguradora")
+                txtAseguradora.Text = "";
         }
 
         private void txtValuador_Click(object sender, EventArgs e)
         {
-            txtValuador.Text = "";
+            if (txtValuador.Text == "Escribe nombre del valuador")
+                txtValuador.Text = "";
         }
 
-        private void chbOtroTaller_CheckedChanged(object sender, EventArgs e)
+        private void txtTaller_Click(object sender, EventArgs e)
         {
-            //CHECAR
-            if (chbOtroValuador.Checked == true)
+            if (txtTaller.Text == "Escriba nombre de taller")
+                txtTaller.Text = "";
+        }
+
+        private void txtDestino_Click(object sender, EventArgs e)
+        {
+            if (txtDestino.Text == "Escriba el destino")
+                txtDestino.Text = "";
+        }
+
+        private void dtpFechaPromesa_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime dt1 = dtpFechaAsignacion.Value.Date;
+            DateTime dt2 = dtpFechaPromesa.Value.Date;
+            int resta = DateTime.Compare(dt1, dt2);
+            if(resta > 0)
             {
-                txtValuador.Show();
-                cbValuador.Hide();
+                MessageBox.Show("No es posible elegir esa fecha.", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                dtpFechaPromesa.Text = "";
             }
-            else
+
+        }
+
+        private void btnFinalizarPedido_Click(object sender, EventArgs e)
+        {
+            if(txtClavePedido.Text == string.Empty)
             {
-                txtValuador.Hide();
-                cbValuador.Show();
+                MessageBox.Show("Favor de añadir la clave del pedido.", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        
     }
 }
