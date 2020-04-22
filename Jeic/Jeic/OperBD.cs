@@ -127,9 +127,10 @@ namespace Refracciones
         }
 
         //-------------VALUADORES REGISTRADOS
-        public DataSet ValuadoresRegistrados(string nombreCliente)
+        public DataSet ValuadoresRegistrados(string nombreAseguradora)
         {
             DataSet dataSet = new DataSet();
+            SqlDataAdapter dataAdapter = new SqlDataAdapter();
             int cveValuador = 0;
             try
             {
@@ -137,16 +138,144 @@ namespace Refracciones
                 {
                     nuevaConexion.Open();
                     Comando = new SqlCommand("SELECT cve_valuador FROM CLIENTE WHERE cve_nombre = @cve_nombre", nuevaConexion);
-                    Comando.Parameters.AddWithValue("@cve_nombre", nombreCliente.Trim());
+                    Comando.Parameters.AddWithValue("@cve_nombre", nombreAseguradora.Trim());
                     Lector = Comando.ExecuteReader();
                     if (Lector.Read())
                     {
                         cveValuador = (int)Lector["cve_valuador"];
                     }
                     Lector.Close();
-                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT cve_nombre FROM VALUADOR WHERE cve_valuador = @cve_valuador", nuevaConexion);
-                    dataAdapter.InsertCommand.Parameters.AddWithValue("@cve_valuador", cveValuador);
+
+                    Comando = new SqlCommand("SELECT cve_nombre FROM VALUADOR WHERE cve_valuador = @cve_valuador", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@cve_valuador", cveValuador);
+                    dataAdapter.SelectCommand = Comando;
                     dataAdapter.Fill(dataSet, "VALUADOR");
+                    nuevaConexion.Close();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return dataSet;
+        }
+
+        //---------------- TALLERES REGISTRADOS
+        public DataSet TalleresRegistrados()
+        {
+            DataSet dataSet = new DataSet();
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT nombre FROM TALLER", nuevaConexion);
+                    dataAdapter.Fill(dataSet, "TALLER");
+                    nuevaConexion.Close();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return dataSet;
+        }
+
+        //---------------- DESTINOS REGISTRADOS
+        public DataSet DestinosRegistrados()
+        {
+            DataSet dataSet = new DataSet();
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT destino FROM DESTINO", nuevaConexion);
+                    dataAdapter.Fill(dataSet, "DESTINO");
+                    nuevaConexion.Close();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return dataSet;
+        }
+
+        //---------------- NOMBRES DE PIEZAS REGISTRADOS
+        public DataSet NombrePiezasRegistrados()
+        {
+            DataSet dataSet = new DataSet();
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT cve_nombre FROM PIEZA", nuevaConexion);
+                    dataAdapter.Fill(dataSet, "PIEZA");
+                    nuevaConexion.Close();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return dataSet;
+        }
+
+        //---------------- PORTALES REGISTRADOS
+        public DataSet PortalesRegistrados()
+        {
+            DataSet dataSet = new DataSet();
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT nombre FROM PORTAL", nuevaConexion);
+                    dataAdapter.Fill(dataSet, "PORTAL");
+                    nuevaConexion.Close();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return dataSet;
+        }
+
+        //---------------- ORIGEN DE PIEZAS REGISTRADAS
+        public DataSet OrigenPiezasRegistradas()
+        {
+            DataSet dataSet = new DataSet();
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT origen FROM ORIGEN_PIEZA", nuevaConexion);
+                    dataAdapter.Fill(dataSet, "ORIGEN_PIEZA");
+                    nuevaConexion.Close();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return dataSet;
+        }
+
+        //---------------- PROVEEDORES REGISTRADOS
+        public DataSet ProveedoresRegistrados()
+        {
+            DataSet dataSet = new DataSet();
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT cve_nombre FROM PROVEEDOR", nuevaConexion);
+                    dataAdapter.Fill(dataSet, "PROVEEDOR");
                     nuevaConexion.Close();
                 }
             }

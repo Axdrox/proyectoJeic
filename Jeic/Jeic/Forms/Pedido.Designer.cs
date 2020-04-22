@@ -65,6 +65,9 @@
             this.chbOtroDestino = new System.Windows.Forms.CheckBox();
             this.txtTaller = new System.Windows.Forms.TextBox();
             this.txtDestino = new System.Windows.Forms.TextBox();
+            this.btnAgregarPieza = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedido)).BeginInit();
             this.SuspendLayout();
             // 
@@ -127,15 +130,17 @@
             this.cbAseguradora.Name = "cbAseguradora";
             this.cbAseguradora.Size = new System.Drawing.Size(185, 24);
             this.cbAseguradora.TabIndex = 5;
+            this.cbAseguradora.SelectedIndexChanged += new System.EventHandler(this.cbAseguradora_SelectedIndexChanged);
+            this.cbAseguradora.Click += new System.EventHandler(this.cbAseguradora_Click);
             // 
             // lblClientePedido
             // 
             this.lblClientePedido.AutoSize = true;
             this.lblClientePedido.Location = new System.Drawing.Point(25, 172);
             this.lblClientePedido.Name = "lblClientePedido";
-            this.lblClientePedido.Size = new System.Drawing.Size(94, 17);
+            this.lblClientePedido.Size = new System.Drawing.Size(55, 17);
             this.lblClientePedido.TabIndex = 6;
-            this.lblClientePedido.Text = "Aseguradora:";
+            this.lblClientePedido.Text = "Cliente:";
             // 
             // label6
             // 
@@ -155,6 +160,7 @@
             this.cbVendedor.Name = "cbVendedor";
             this.cbVendedor.Size = new System.Drawing.Size(155, 24);
             this.cbVendedor.TabIndex = 9;
+            this.cbVendedor.Click += new System.EventHandler(this.cbVendedor_Click);
             // 
             // label7
             // 
@@ -178,9 +184,9 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(21, 356);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(106, 17);
+            this.label8.Size = new System.Drawing.Size(110, 17);
             this.label8.TabIndex = 12;
-            this.label8.Text = "Fecha promesa";
+            this.label8.Text = "Fecha promesa:";
             // 
             // dtpFechaPromesa
             // 
@@ -218,6 +224,7 @@
             this.cbTaller.Name = "cbTaller";
             this.cbTaller.Size = new System.Drawing.Size(186, 24);
             this.cbTaller.TabIndex = 16;
+            this.cbTaller.Click += new System.EventHandler(this.cbTaller_Click);
             // 
             // cbDestino
             // 
@@ -228,11 +235,12 @@
             this.cbDestino.Name = "cbDestino";
             this.cbDestino.Size = new System.Drawing.Size(186, 24);
             this.cbDestino.TabIndex = 17;
+            this.cbDestino.Click += new System.EventHandler(this.cbDestino_Click);
             // 
             // dgvPedido
             // 
             this.dgvPedido.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPedido.Location = new System.Drawing.Point(24, 418);
+            this.dgvPedido.Location = new System.Drawing.Point(25, 493);
             this.dgvPedido.Name = "dgvPedido";
             this.dgvPedido.RowHeadersWidth = 51;
             this.dgvPedido.RowTemplate.Height = 24;
@@ -242,7 +250,7 @@
             // btnFinalizarPedido
             // 
             this.btnFinalizarPedido.Enabled = false;
-            this.btnFinalizarPedido.Location = new System.Drawing.Point(290, 593);
+            this.btnFinalizarPedido.Location = new System.Drawing.Point(291, 668);
             this.btnFinalizarPedido.Name = "btnFinalizarPedido";
             this.btnFinalizarPedido.Size = new System.Drawing.Size(143, 31);
             this.btnFinalizarPedido.TabIndex = 19;
@@ -252,7 +260,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(188, 593);
+            this.btnCancelar.Location = new System.Drawing.Point(189, 668);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(83, 31);
             this.btnCancelar.TabIndex = 20;
@@ -324,15 +332,16 @@
             this.cbValuador.Name = "cbValuador";
             this.cbValuador.Size = new System.Drawing.Size(186, 24);
             this.cbValuador.TabIndex = 27;
+            this.cbValuador.SelectedIndexChanged += new System.EventHandler(this.cbValuador_SelectedIndexChanged);
             // 
             // txtAseguradora
             // 
             this.txtAseguradora.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.txtAseguradora.Location = new System.Drawing.Point(166, 170);
+            this.txtAseguradora.Location = new System.Drawing.Point(165, 169);
             this.txtAseguradora.Name = "txtAseguradora";
             this.txtAseguradora.Size = new System.Drawing.Size(186, 22);
             this.txtAseguradora.TabIndex = 28;
-            this.txtAseguradora.Text = "Escriba una aseguradora";
+            this.txtAseguradora.Text = "Escriba el nombre del cliente";
             this.txtAseguradora.Click += new System.EventHandler(this.txtAseguradora_Click);
             // 
             // chbOtraAseguradora
@@ -421,18 +430,47 @@
             // txtDestino
             // 
             this.txtDestino.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.txtDestino.Location = new System.Drawing.Point(165, 274);
+            this.txtDestino.Location = new System.Drawing.Point(165, 273);
             this.txtDestino.Name = "txtDestino";
             this.txtDestino.Size = new System.Drawing.Size(186, 22);
             this.txtDestino.TabIndex = 37;
             this.txtDestino.Text = "Escriba el destino";
             this.txtDestino.Click += new System.EventHandler(this.txtDestino_Click);
             // 
+            // btnAgregarPieza
+            // 
+            this.btnAgregarPieza.Location = new System.Drawing.Point(24, 456);
+            this.btnAgregarPieza.Name = "btnAgregarPieza";
+            this.btnAgregarPieza.Size = new System.Drawing.Size(133, 31);
+            this.btnAgregarPieza.TabIndex = 38;
+            this.btnAgregarPieza.Text = "Agregar pieza";
+            this.btnAgregarPieza.UseVisualStyleBackColor = true;
+            this.btnAgregarPieza.Click += new System.EventHandler(this.btnAgregarPieza_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(24, 393);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(102, 17);
+            this.label3.TabIndex = 39;
+            this.label3.Text = "Fecha de baja:";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(179, 388);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(255, 22);
+            this.dateTimePicker1.TabIndex = 40;
+            // 
             // Pedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(458, 646);
+            this.ClientSize = new System.Drawing.Size(458, 711);
+            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.btnAgregarPieza);
             this.Controls.Add(this.txtDestino);
             this.Controls.Add(this.txtTaller);
             this.Controls.Add(this.chbOtroDestino);
@@ -519,5 +557,8 @@
         private System.Windows.Forms.CheckBox chbOtroDestino;
         private System.Windows.Forms.TextBox txtTaller;
         private System.Windows.Forms.TextBox txtDestino;
+        private System.Windows.Forms.Button btnAgregarPieza;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }

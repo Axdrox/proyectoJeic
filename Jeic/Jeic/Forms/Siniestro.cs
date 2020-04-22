@@ -12,7 +12,6 @@ namespace Refracciones.Forms
 {
     public partial class Siniestro : Form
     {
-        Pedido pedido = new Pedido();
         OperBD operacion = new OperBD();
 
         public Siniestro()
@@ -22,6 +21,7 @@ namespace Refracciones.Forms
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
+            Pedido pedido = new Pedido();
             pedido.Show();
             this.Hide();
         }
@@ -81,7 +81,9 @@ namespace Refracciones.Forms
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            try{
+            Pedido pedido = new Pedido();
+            try
+            {
                 if(txtClaveSiniestro.Text.Trim() == "" || (chbOtroVehiculo.Checked && txtNombreVehiculoNuevo.Text.Trim() == "")){
                     MessageBox.Show("Favor de llenar todos los campos.", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }

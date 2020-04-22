@@ -31,16 +31,6 @@ namespace Refracciones.Forms
             txtValuador.Hide();
             txtTaller.Hide();
             txtDestino.Hide();
-
-            //Carga los datos registros de vendedores en el combobox
-            cbAseguradora.DataSource = operacion.VendedoresRegistrados().Tables[0].DefaultView;
-            cbAseguradora.ValueMember = "cve_vendedor";
-
-            //Carga los datos registros de aseguradoras en el combobox
-            cbAseguradora.DataSource = operacion.AseguradorasRegistradas().Tables[0].DefaultView;
-            cbAseguradora.ValueMember = "cve_nombre";
-
-
         }
 
         private void rdbSi_CheckedChanged(object sender, EventArgs e)
@@ -161,7 +151,7 @@ namespace Refracciones.Forms
 
         private void txtAseguradora_Click(object sender, EventArgs e)
         {
-            if (txtAseguradora.Text == "Escriba una aseguradora")
+            if (txtAseguradora.Text == "Escriba el nombre del cliente")
                 txtAseguradora.Text = "";
         }
 
@@ -204,6 +194,52 @@ namespace Refracciones.Forms
             }
         }
 
-        
+        private void cbAseguradora_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Carga los datos registros de valuadores en el combobox
+            cbValuador.DataSource = operacion.ValuadoresRegistrados(cbAseguradora.Text.Trim()).Tables[0].DefaultView;
+            cbValuador.ValueMember = "cve_nombre";
+        }
+
+        private void btnAgregarPieza_Click(object sender, EventArgs e)
+        {
+            Pieza pieza = new Pieza();
+            pieza.Show();
+        }
+
+        private void cbVendedor_Click(object sender, EventArgs e)
+        {
+            //Carga los datos registros de vendedores en el combobox
+            cbVendedor.DataSource = operacion.VendedoresRegistrados().Tables[0].DefaultView;
+            cbVendedor.ValueMember = "cve_vendedor";
+        }
+
+        private void cbAseguradora_Click(object sender, EventArgs e)
+        {
+            //Carga los datos registros de clientes/aseguradoras en el combobox
+            cbAseguradora.DataSource = operacion.AseguradorasRegistradas().Tables[0].DefaultView;
+            cbAseguradora.ValueMember = "cve_nombre";
+        }
+
+        private void cbValuador_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Carga los datos registros de valuadores en el combobox
+            cbValuador.DataSource = operacion.ValuadoresRegistrados(cbAseguradora.Text.Trim()).Tables[0].DefaultView;
+            cbValuador.ValueMember = "cve_nombre";
+        }
+
+        private void cbTaller_Click(object sender, EventArgs e)
+        {
+            //Carga los datos registros de talleres en el combobox
+            cbTaller.DataSource = operacion.TalleresRegistrados().Tables[0].DefaultView;
+            cbTaller.ValueMember = "nombre";
+        }
+
+        private void cbDestino_Click(object sender, EventArgs e)
+        {
+            //Carga los datos registros de destinos en el combobox
+            cbDestino.DataSource = operacion.DestinosRegistrados().Tables[0].DefaultView;
+            cbDestino.ValueMember = "destino";
+        }
     }
 }
