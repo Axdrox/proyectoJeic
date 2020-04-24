@@ -21,9 +21,7 @@ namespace Refracciones.Forms
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            Pedido pedido = new Pedido();
-            pedido.Show();
-            this.Hide();
+            this.DialogResult = DialogResult.Cancel;
         }
 
         private void cbVehiculo_SelectedIndexChanged(object sender, EventArgs e)
@@ -79,6 +77,8 @@ namespace Refracciones.Forms
             }
         }
 
+        private string nombreVehiculo = "";
+        private string anioVehiculo = "";
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             Pedido pedido = new Pedido();
@@ -95,37 +95,54 @@ namespace Refracciones.Forms
                             i = operacion.registrarSiniestro(txtNombreVehiculoNuevo.Text.Trim().ToUpper(), txtClaveSiniestro.Text.Trim().ToUpper(), txtComentario.Text.Trim());
                             if (i == 1)
                             {
-                                pedido.lblVehiculo.Text = txtNombreVehiculoNuevo.Text.Trim().ToUpper();
-                                pedido.lblAnio.Text = dtpYear.Text.Trim();
-                                pedido.Show();
-                                this.Hide();
+                                nombreVehiculo = txtNombreVehiculoNuevo.Text.Trim().ToUpper();
+                                anioVehiculo = dtpYear.Text.Trim();
+                                //this.DialogResult = DialogResult.Cancel;
                             }
                         }
                         else{
                             i = operacion.registrarSiniestro(cbVehiculo.Text.Trim(), txtClaveSiniestro.Text.Trim().ToUpper(), txtComentario.Text.Trim());
                             if (i == 1){
-                                pedido.lblVehiculo.Text = cbVehiculo.Text.Trim();
-                                pedido.lblAnio.Text = lblAnio.Text.Trim();
-                                pedido.Show();
-                                this.Hide();
+                                nombreVehiculo = cbVehiculo.Text.Trim();
+                                anioVehiculo = lblAnio.Text.Trim();
+                                //this.DialogResult = DialogResult.Cancel;
                             }
                         }
-                        pedido.chbSi.Checked = true;
-                        pedido.chbSi.Show();
-                        pedido.chbSi.Enabled = false;
-                        pedido.rdbSi.Hide();
-                        pedido.lblVehiculo.Show();
-                        pedido.lblAnio.Show();
-                        pedido.lblVehiculoPedido.Show();
-                        pedido.lblAnioPedido.Show();
-                        pedido.lblClaveSiniestroPedido.Show();
-                        pedido.lblClaveSiniestro.Text = txtClaveSiniestro.Text.Trim().ToUpper();
-                        pedido.lblClaveSiniestro.Show();
+                        this.Close();
                     }
                 }
             }
             catch (Exception EX){
                 MessageBox.Show("Error: " + EX.Message);
+            }
+        }
+
+        public string claveSiniestro{
+            get { return txtClaveSiniestro.Text.Trim().ToUpper(); }
+        }
+
+        public string vehiculoSiniestro{
+            get{ return nombreVehiculo; }
+        }
+
+        public string anioSiniestro{
+            get { return anioVehiculo; }
+        }
+
+        private void Siniestro_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                dynamic result = MessageBox.Show("¿Regresar a Pedido?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (result == DialogResult.Yes)
+                {
+                    this.DialogResult = DialogResult.OK;
+                }
+
+                if (result == DialogResult.No)
+                {
+                    e.Cancel = true;
+                }
             }
         }
     }

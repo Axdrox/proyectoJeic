@@ -36,3 +36,4 @@ C:\Users\deada\OneDrive\Escritorio\gitRepos\proyectoJeic\Jeic\Jeic\obj\Debug\Jei
 C:\Users\deada\OneDrive\Escritorio\gitRepos\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.CopyComplete
 C:\Users\deada\OneDrive\Escritorio\gitRepos\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.exe
 C:\Users\deada\OneDrive\Escritorio\gitRepos\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.pdb
+C:\Users\deada\OneDrive\Escritorio\gitRepos\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csprojAssemblyReference.cache

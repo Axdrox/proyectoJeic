@@ -67,7 +67,12 @@
             this.txtDestino = new System.Windows.Forms.TextBox();
             this.btnAgregarPieza = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpFechaBaja = new System.Windows.Forms.DateTimePicker();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.lblCantidadTotal = new System.Windows.Forms.Label();
+            this.lblPrecioTotal = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedido)).BeginInit();
             this.SuspendLayout();
             // 
@@ -82,15 +87,15 @@
             // 
             // lblVehiculoPedido
             // 
-            this.lblVehiculoPedido.Location = new System.Drawing.Point(25, 116);
+            this.lblVehiculoPedido.Location = new System.Drawing.Point(62, 120);
             this.lblVehiculoPedido.Name = "lblVehiculoPedido";
-            this.lblVehiculoPedido.Size = new System.Drawing.Size(77, 22);
+            this.lblVehiculoPedido.Size = new System.Drawing.Size(74, 17);
             this.lblVehiculoPedido.TabIndex = 0;
             this.lblVehiculoPedido.Text = "Vehículo:";
             // 
             // lblAnioPedido
             // 
-            this.lblAnioPedido.Location = new System.Drawing.Point(25, 137);
+            this.lblAnioPedido.Location = new System.Drawing.Point(62, 137);
             this.lblAnioPedido.Name = "lblAnioPedido";
             this.lblAnioPedido.Size = new System.Drawing.Size(46, 17);
             this.lblAnioPedido.TabIndex = 0;
@@ -99,7 +104,7 @@
             // lblVehiculo
             // 
             this.lblVehiculo.AutoSize = true;
-            this.lblVehiculo.Location = new System.Drawing.Point(131, 116);
+            this.lblVehiculo.Location = new System.Drawing.Point(163, 120);
             this.lblVehiculo.Name = "lblVehiculo";
             this.lblVehiculo.Size = new System.Drawing.Size(0, 17);
             this.lblVehiculo.TabIndex = 2;
@@ -107,7 +112,7 @@
             // lblAnio
             // 
             this.lblAnio.AutoSize = true;
-            this.lblAnio.Location = new System.Drawing.Point(131, 137);
+            this.lblAnio.Location = new System.Drawing.Point(163, 141);
             this.lblAnio.Name = "lblAnio";
             this.lblAnio.Size = new System.Drawing.Size(0, 17);
             this.lblAnio.TabIndex = 3;
@@ -115,7 +120,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(28, 205);
+            this.label4.Location = new System.Drawing.Point(25, 205);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(69, 17);
             this.label4.TabIndex = 4;
@@ -160,6 +165,7 @@
             this.cbVendedor.Name = "cbVendedor";
             this.cbVendedor.Size = new System.Drawing.Size(155, 24);
             this.cbVendedor.TabIndex = 9;
+            this.cbVendedor.SelectedIndexChanged += new System.EventHandler(this.cbVendedor_SelectedIndexChanged);
             this.cbVendedor.Click += new System.EventHandler(this.cbVendedor_Click);
             // 
             // label7
@@ -239,6 +245,7 @@
             // 
             // dgvPedido
             // 
+            this.dgvPedido.AllowUserToAddRows = false;
             this.dgvPedido.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPedido.Location = new System.Drawing.Point(25, 493);
             this.dgvPedido.Name = "dgvPedido";
@@ -246,11 +253,12 @@
             this.dgvPedido.RowTemplate.Height = 24;
             this.dgvPedido.Size = new System.Drawing.Size(410, 150);
             this.dgvPedido.TabIndex = 18;
+            this.dgvPedido.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPedido_CellClick);
             // 
             // btnFinalizarPedido
             // 
             this.btnFinalizarPedido.Enabled = false;
-            this.btnFinalizarPedido.Location = new System.Drawing.Point(291, 668);
+            this.btnFinalizarPedido.Location = new System.Drawing.Point(303, 702);
             this.btnFinalizarPedido.Name = "btnFinalizarPedido";
             this.btnFinalizarPedido.Size = new System.Drawing.Size(143, 31);
             this.btnFinalizarPedido.TabIndex = 19;
@@ -260,7 +268,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(189, 668);
+            this.btnCancelar.Location = new System.Drawing.Point(201, 702);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(83, 31);
             this.btnCancelar.TabIndex = 20;
@@ -271,7 +279,7 @@
             // 
             this.rdbNo.AutoSize = true;
             this.rdbNo.Enabled = false;
-            this.rdbNo.Location = new System.Drawing.Point(264, 80);
+            this.rdbNo.Location = new System.Drawing.Point(250, 80);
             this.rdbNo.Name = "rdbNo";
             this.rdbNo.Size = new System.Drawing.Size(47, 21);
             this.rdbNo.TabIndex = 22;
@@ -283,7 +291,7 @@
             // 
             this.rdbSi.AutoSize = true;
             this.rdbSi.Enabled = false;
-            this.rdbSi.Location = new System.Drawing.Point(179, 81);
+            this.rdbSi.Location = new System.Drawing.Point(189, 80);
             this.rdbSi.Name = "rdbSi";
             this.rdbSi.Size = new System.Drawing.Size(41, 21);
             this.rdbSi.TabIndex = 23;
@@ -294,7 +302,7 @@
             // chbSi
             // 
             this.chbSi.AutoSize = true;
-            this.chbSi.Location = new System.Drawing.Point(178, 82);
+            this.chbSi.Location = new System.Drawing.Point(189, 81);
             this.chbSi.Name = "chbSi";
             this.chbSi.Size = new System.Drawing.Size(42, 21);
             this.chbSi.TabIndex = 24;
@@ -359,7 +367,7 @@
             // lblClaveSiniestroPedido
             // 
             this.lblClaveSiniestroPedido.AutoSize = true;
-            this.lblClaveSiniestroPedido.Location = new System.Drawing.Point(25, 99);
+            this.lblClaveSiniestroPedido.Location = new System.Drawing.Point(59, 103);
             this.lblClaveSiniestroPedido.Name = "lblClaveSiniestroPedido";
             this.lblClaveSiniestroPedido.Size = new System.Drawing.Size(104, 17);
             this.lblClaveSiniestroPedido.TabIndex = 30;
@@ -368,7 +376,7 @@
             // lblClaveSiniestro
             // 
             this.lblClaveSiniestro.AutoSize = true;
-            this.lblClaveSiniestro.Location = new System.Drawing.Point(131, 99);
+            this.lblClaveSiniestro.Location = new System.Drawing.Point(165, 103);
             this.lblClaveSiniestro.Name = "lblClaveSiniestro";
             this.lblClaveSiniestro.Size = new System.Drawing.Size(0, 17);
             this.lblClaveSiniestro.TabIndex = 31;
@@ -456,19 +464,68 @@
             this.label3.TabIndex = 39;
             this.label3.Text = "Fecha de baja:";
             // 
-            // dateTimePicker1
+            // dtpFechaBaja
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(179, 388);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(255, 22);
-            this.dateTimePicker1.TabIndex = 40;
+            this.dtpFechaBaja.Enabled = false;
+            this.dtpFechaBaja.Location = new System.Drawing.Point(179, 388);
+            this.dtpFechaBaja.Name = "dtpFechaBaja";
+            this.dtpFechaBaja.Size = new System.Drawing.Size(255, 22);
+            this.dtpFechaBaja.TabIndex = 40;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(269, 661);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(54, 17);
+            this.label5.TabIndex = 41;
+            this.label5.Text = "TOTAL";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(329, 646);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(50, 17);
+            this.label11.TabIndex = 42;
+            this.label11.Text = "Piezas";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(385, 646);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(48, 17);
+            this.label12.TabIndex = 43;
+            this.label12.Text = "Precio";
+            // 
+            // lblCantidadTotal
+            // 
+            this.lblCantidadTotal.AutoSize = true;
+            this.lblCantidadTotal.Location = new System.Drawing.Point(329, 661);
+            this.lblCantidadTotal.Name = "lblCantidadTotal";
+            this.lblCantidadTotal.Size = new System.Drawing.Size(0, 17);
+            this.lblCantidadTotal.TabIndex = 44;
+            // 
+            // lblPrecioTotal
+            // 
+            this.lblPrecioTotal.AutoSize = true;
+            this.lblPrecioTotal.Location = new System.Drawing.Point(385, 661);
+            this.lblPrecioTotal.Name = "lblPrecioTotal";
+            this.lblPrecioTotal.Size = new System.Drawing.Size(0, 17);
+            this.lblPrecioTotal.TabIndex = 45;
             // 
             // Pedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(458, 711);
-            this.Controls.Add(this.dateTimePicker1);
+            this.ClientSize = new System.Drawing.Size(458, 745);
+            this.Controls.Add(this.lblPrecioTotal);
+            this.Controls.Add(this.lblCantidadTotal);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.dtpFechaBaja);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnAgregarPieza);
             this.Controls.Add(this.txtDestino);
@@ -559,6 +616,11 @@
         private System.Windows.Forms.TextBox txtDestino;
         private System.Windows.Forms.Button btnAgregarPieza;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpFechaBaja;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lblCantidadTotal;
+        private System.Windows.Forms.Label lblPrecioTotal;
     }
 }

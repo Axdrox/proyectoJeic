@@ -47,23 +47,21 @@
             this.cbPortal = new System.Windows.Forms.ComboBox();
             this.cbOrigen = new System.Windows.Forms.ComboBox();
             this.cbProveedores = new System.Windows.Forms.ComboBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.dtpFechaCosto = new System.Windows.Forms.DateTimePicker();
+            this.txtCostoSinIVA = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtCostoNeto = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtPrecioVenta = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txtPrecioReparacion = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.txtCantidad = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.txtClaveProducto = new System.Windows.Forms.TextBox();
+            this.txtNumeroGuia = new System.Windows.Forms.TextBox();
             this.txtDiasEntrega = new System.Windows.Forms.TextBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.rdbSi = new System.Windows.Forms.RadioButton();
+            this.rdbNo = new System.Windows.Forms.RadioButton();
             this.btnAniadirPieza = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.chbOtroPieza = new System.Windows.Forms.CheckBox();
@@ -74,6 +72,7 @@
             this.txtPortal = new System.Windows.Forms.TextBox();
             this.txtOrigen = new System.Windows.Forms.TextBox();
             this.txtProveedor = new System.Windows.Forms.TextBox();
+            this.cbCostoEnvio = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -91,7 +90,7 @@
             this.cbPiezaNombre.FormattingEnabled = true;
             this.cbPiezaNombre.Location = new System.Drawing.Point(145, 6);
             this.cbPiezaNombre.Name = "cbPiezaNombre";
-            this.cbPiezaNombre.Size = new System.Drawing.Size(175, 24);
+            this.cbPiezaNombre.Size = new System.Drawing.Size(196, 24);
             this.cbPiezaNombre.TabIndex = 1;
             this.cbPiezaNombre.Click += new System.EventHandler(this.cbPiezaNombre_Click);
             // 
@@ -179,7 +178,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(33, 466);
+            this.label11.Location = new System.Drawing.Point(69, 468);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(68, 17);
             this.label11.TabIndex = 11;
@@ -206,7 +205,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(176, 466);
+            this.label14.Location = new System.Drawing.Point(212, 468);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(89, 17);
             this.label14.TabIndex = 14;
@@ -215,7 +214,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(14, 516);
+            this.label15.Location = new System.Drawing.Point(12, 510);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(128, 17);
             this.label15.TabIndex = 15;
@@ -227,7 +226,7 @@
             this.cbPortal.FormattingEnabled = true;
             this.cbPortal.Location = new System.Drawing.Point(145, 47);
             this.cbPortal.Name = "cbPortal";
-            this.cbPortal.Size = new System.Drawing.Size(175, 24);
+            this.cbPortal.Size = new System.Drawing.Size(196, 24);
             this.cbPortal.TabIndex = 16;
             this.cbPortal.Click += new System.EventHandler(this.cbPortal_Click);
             // 
@@ -237,7 +236,7 @@
             this.cbOrigen.FormattingEnabled = true;
             this.cbOrigen.Location = new System.Drawing.Point(145, 86);
             this.cbOrigen.Name = "cbOrigen";
-            this.cbOrigen.Size = new System.Drawing.Size(175, 24);
+            this.cbOrigen.Size = new System.Drawing.Size(196, 24);
             this.cbOrigen.TabIndex = 17;
             this.cbOrigen.Click += new System.EventHandler(this.cbOrigen_Click);
             // 
@@ -247,24 +246,25 @@
             this.cbProveedores.FormattingEnabled = true;
             this.cbProveedores.Location = new System.Drawing.Point(145, 125);
             this.cbProveedores.Name = "cbProveedores";
-            this.cbProveedores.Size = new System.Drawing.Size(175, 24);
+            this.cbProveedores.Size = new System.Drawing.Size(196, 24);
             this.cbProveedores.TabIndex = 18;
             this.cbProveedores.Click += new System.EventHandler(this.cbProveedores_Click);
             // 
-            // dateTimePicker1
+            // dtpFechaCosto
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(145, 173);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(244, 22);
-            this.dateTimePicker1.TabIndex = 19;
+            this.dtpFechaCosto.Location = new System.Drawing.Point(145, 173);
+            this.dtpFechaCosto.Name = "dtpFechaCosto";
+            this.dtpFechaCosto.Size = new System.Drawing.Size(260, 22);
+            this.dtpFechaCosto.TabIndex = 19;
             // 
-            // textBox1
+            // txtCostoSinIVA
             // 
-            this.textBox1.Location = new System.Drawing.Point(199, 204);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(121, 22);
-            this.textBox1.TabIndex = 20;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtCostoSinIVA.Location = new System.Drawing.Point(199, 204);
+            this.txtCostoSinIVA.Name = "txtCostoSinIVA";
+            this.txtCostoSinIVA.Size = new System.Drawing.Size(121, 22);
+            this.txtCostoSinIVA.TabIndex = 20;
+            this.txtCostoSinIVA.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtCostoSinIVA.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCostoSinIVA_KeyPress);
             // 
             // label16
             // 
@@ -276,13 +276,14 @@
             this.label16.TabIndex = 21;
             this.label16.Text = "$";
             // 
-            // textBox2
+            // txtCostoNeto
             // 
-            this.textBox2.Location = new System.Drawing.Point(199, 229);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(121, 22);
-            this.textBox2.TabIndex = 22;
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtCostoNeto.Location = new System.Drawing.Point(199, 229);
+            this.txtCostoNeto.Name = "txtCostoNeto";
+            this.txtCostoNeto.Size = new System.Drawing.Size(121, 22);
+            this.txtCostoNeto.TabIndex = 22;
+            this.txtCostoNeto.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtCostoNeto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCostoNeto_KeyPress);
             // 
             // label17
             // 
@@ -294,31 +295,14 @@
             this.label17.TabIndex = 23;
             this.label17.Text = "$";
             // 
-            // textBox3
+            // txtPrecioVenta
             // 
-            this.textBox3.Location = new System.Drawing.Point(199, 254);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(121, 22);
-            this.textBox3.TabIndex = 24;
-            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label18.Location = new System.Drawing.Point(205, 257);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(16, 17);
-            this.label18.TabIndex = 25;
-            this.label18.Text = "$";
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(199, 305);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(121, 22);
-            this.textBox4.TabIndex = 26;
-            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtPrecioVenta.Location = new System.Drawing.Point(199, 305);
+            this.txtPrecioVenta.Name = "txtPrecioVenta";
+            this.txtPrecioVenta.Size = new System.Drawing.Size(121, 22);
+            this.txtPrecioVenta.TabIndex = 26;
+            this.txtPrecioVenta.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtPrecioVenta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecioVenta_KeyPress);
             // 
             // label19
             // 
@@ -330,13 +314,14 @@
             this.label19.TabIndex = 27;
             this.label19.Text = "$";
             // 
-            // textBox5
+            // txtPrecioReparacion
             // 
-            this.textBox5.Location = new System.Drawing.Point(199, 326);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(121, 22);
-            this.textBox5.TabIndex = 28;
-            this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtPrecioReparacion.Location = new System.Drawing.Point(199, 326);
+            this.txtPrecioReparacion.Name = "txtPrecioReparacion";
+            this.txtPrecioReparacion.Size = new System.Drawing.Size(121, 22);
+            this.txtPrecioReparacion.TabIndex = 28;
+            this.txtPrecioReparacion.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtPrecioReparacion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecioReparacion_KeyPress);
             // 
             // label20
             // 
@@ -350,68 +335,69 @@
             // 
             // txtCantidad
             // 
-            this.txtCantidad.Location = new System.Drawing.Point(107, 463);
+            this.txtCantidad.Location = new System.Drawing.Point(143, 465);
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(49, 22);
             this.txtCantidad.TabIndex = 30;
             this.txtCantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCantidad_KeyPress);
             // 
-            // textBox7
+            // txtClaveProducto
             // 
-            this.textBox7.Location = new System.Drawing.Point(145, 373);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(244, 22);
-            this.textBox7.TabIndex = 31;
+            this.txtClaveProducto.Location = new System.Drawing.Point(145, 373);
+            this.txtClaveProducto.Name = "txtClaveProducto";
+            this.txtClaveProducto.Size = new System.Drawing.Size(244, 22);
+            this.txtClaveProducto.TabIndex = 31;
             // 
-            // textBox8
+            // txtNumeroGuia
             // 
-            this.textBox8.Location = new System.Drawing.Point(145, 414);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(244, 22);
-            this.textBox8.TabIndex = 32;
+            this.txtNumeroGuia.Location = new System.Drawing.Point(145, 414);
+            this.txtNumeroGuia.Name = "txtNumeroGuia";
+            this.txtNumeroGuia.Size = new System.Drawing.Size(244, 22);
+            this.txtNumeroGuia.TabIndex = 32;
             // 
             // txtDiasEntrega
             // 
-            this.txtDiasEntrega.Location = new System.Drawing.Point(271, 463);
+            this.txtDiasEntrega.Location = new System.Drawing.Point(307, 465);
             this.txtDiasEntrega.Name = "txtDiasEntrega";
             this.txtDiasEntrega.Size = new System.Drawing.Size(49, 22);
             this.txtDiasEntrega.TabIndex = 33;
             this.txtDiasEntrega.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDiasEntrega_KeyPress);
             // 
-            // radioButton1
+            // rdbSi
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(162, 514);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(41, 21);
-            this.radioButton1.TabIndex = 34;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Sí";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rdbSi.AutoSize = true;
+            this.rdbSi.Location = new System.Drawing.Point(151, 508);
+            this.rdbSi.Name = "rdbSi";
+            this.rdbSi.Size = new System.Drawing.Size(41, 21);
+            this.rdbSi.TabIndex = 34;
+            this.rdbSi.TabStop = true;
+            this.rdbSi.Text = "Sí";
+            this.rdbSi.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // rdbNo
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(209, 514);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(47, 21);
-            this.radioButton2.TabIndex = 35;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "No";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.rdbNo.AutoSize = true;
+            this.rdbNo.Location = new System.Drawing.Point(228, 508);
+            this.rdbNo.Name = "rdbNo";
+            this.rdbNo.Size = new System.Drawing.Size(47, 21);
+            this.rdbNo.TabIndex = 35;
+            this.rdbNo.TabStop = true;
+            this.rdbNo.Text = "No";
+            this.rdbNo.UseVisualStyleBackColor = true;
             // 
             // btnAniadirPieza
             // 
-            this.btnAniadirPieza.Location = new System.Drawing.Point(291, 549);
+            this.btnAniadirPieza.Location = new System.Drawing.Point(307, 549);
             this.btnAniadirPieza.Name = "btnAniadirPieza";
             this.btnAniadirPieza.Size = new System.Drawing.Size(98, 28);
             this.btnAniadirPieza.TabIndex = 36;
             this.btnAniadirPieza.Text = "Añadir pieza";
             this.btnAniadirPieza.UseVisualStyleBackColor = true;
+            this.btnAniadirPieza.Click += new System.EventHandler(this.btnAniadirPieza_Click);
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(199, 549);
+            this.btnCancelar.Location = new System.Drawing.Point(215, 549);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(86, 28);
             this.btnCancelar.TabIndex = 37;
@@ -422,7 +408,7 @@
             // chbOtroPieza
             // 
             this.chbOtroPieza.AutoSize = true;
-            this.chbOtroPieza.Location = new System.Drawing.Point(331, 9);
+            this.chbOtroPieza.Location = new System.Drawing.Point(347, 8);
             this.chbOtroPieza.Name = "chbOtroPieza";
             this.chbOtroPieza.Size = new System.Drawing.Size(58, 21);
             this.chbOtroPieza.TabIndex = 38;
@@ -433,7 +419,7 @@
             // chbOtroPortal
             // 
             this.chbOtroPortal.AutoSize = true;
-            this.chbOtroPortal.Location = new System.Drawing.Point(331, 49);
+            this.chbOtroPortal.Location = new System.Drawing.Point(347, 48);
             this.chbOtroPortal.Name = "chbOtroPortal";
             this.chbOtroPortal.Size = new System.Drawing.Size(58, 21);
             this.chbOtroPortal.TabIndex = 39;
@@ -444,7 +430,7 @@
             // chbOtroOrigen
             // 
             this.chbOtroOrigen.AutoSize = true;
-            this.chbOtroOrigen.Location = new System.Drawing.Point(331, 88);
+            this.chbOtroOrigen.Location = new System.Drawing.Point(347, 87);
             this.chbOtroOrigen.Name = "chbOtroOrigen";
             this.chbOtroOrigen.Size = new System.Drawing.Size(58, 21);
             this.chbOtroOrigen.TabIndex = 40;
@@ -455,7 +441,7 @@
             // chbOtroProveedor
             // 
             this.chbOtroProveedor.AutoSize = true;
-            this.chbOtroProveedor.Location = new System.Drawing.Point(331, 127);
+            this.chbOtroProveedor.Location = new System.Drawing.Point(347, 126);
             this.chbOtroProveedor.Name = "chbOtroProveedor";
             this.chbOtroProveedor.Size = new System.Drawing.Size(58, 21);
             this.chbOtroProveedor.TabIndex = 41;
@@ -468,47 +454,63 @@
             this.txtPiezaNombre.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.txtPiezaNombre.Location = new System.Drawing.Point(145, 6);
             this.txtPiezaNombre.Name = "txtPiezaNombre";
-            this.txtPiezaNombre.Size = new System.Drawing.Size(175, 22);
+            this.txtPiezaNombre.Size = new System.Drawing.Size(196, 22);
             this.txtPiezaNombre.TabIndex = 42;
             this.txtPiezaNombre.Text = "Escribe nombre de pieza";
             this.txtPiezaNombre.Visible = false;
+            this.txtPiezaNombre.Click += new System.EventHandler(this.txtPiezaNombre_Click);
             // 
             // txtPortal
             // 
             this.txtPortal.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.txtPortal.Location = new System.Drawing.Point(145, 47);
             this.txtPortal.Name = "txtPortal";
-            this.txtPortal.Size = new System.Drawing.Size(175, 22);
+            this.txtPortal.Size = new System.Drawing.Size(196, 22);
             this.txtPortal.TabIndex = 43;
             this.txtPortal.Text = "Escribe nuevo portal";
             this.txtPortal.Visible = false;
+            this.txtPortal.Click += new System.EventHandler(this.txtPortal_Click);
             // 
             // txtOrigen
             // 
             this.txtOrigen.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.txtOrigen.Location = new System.Drawing.Point(145, 86);
             this.txtOrigen.Name = "txtOrigen";
-            this.txtOrigen.Size = new System.Drawing.Size(175, 22);
+            this.txtOrigen.Size = new System.Drawing.Size(196, 22);
             this.txtOrigen.TabIndex = 44;
             this.txtOrigen.Text = "Escribe un nuevo origen";
             this.txtOrigen.Visible = false;
+            this.txtOrigen.Click += new System.EventHandler(this.txtOrigen_Click);
             // 
             // txtProveedor
             // 
             this.txtProveedor.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.txtProveedor.Location = new System.Drawing.Point(145, 125);
             this.txtProveedor.Name = "txtProveedor";
-            this.txtProveedor.Size = new System.Drawing.Size(175, 22);
+            this.txtProveedor.Size = new System.Drawing.Size(196, 22);
             this.txtProveedor.TabIndex = 45;
             this.txtProveedor.Text = "Escribe un nuevo proveedor";
             this.txtProveedor.Visible = false;
+            this.txtProveedor.Click += new System.EventHandler(this.txtProveedor_Click);
+            // 
+            // cbCostoEnvio
+            // 
+            this.cbCostoEnvio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCostoEnvio.FormattingEnabled = true;
+            this.cbCostoEnvio.Location = new System.Drawing.Point(199, 252);
+            this.cbCostoEnvio.Name = "cbCostoEnvio";
+            this.cbCostoEnvio.Size = new System.Drawing.Size(121, 24);
+            this.cbCostoEnvio.TabIndex = 46;
+            this.cbCostoEnvio.SelectedIndexChanged += new System.EventHandler(this.cbCostoEnvio_SelectedIndexChanged);
+            this.cbCostoEnvio.Click += new System.EventHandler(this.cbCostoEnvio_Click);
             // 
             // Pieza
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(401, 589);
+            this.ClientSize = new System.Drawing.Size(417, 589);
             this.ControlBox = false;
+            this.Controls.Add(this.cbCostoEnvio);
             this.Controls.Add(this.txtProveedor);
             this.Controls.Add(this.txtOrigen);
             this.Controls.Add(this.txtPortal);
@@ -519,23 +521,21 @@
             this.Controls.Add(this.chbOtroPieza);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAniadirPieza);
-            this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.radioButton1);
+            this.Controls.Add(this.rdbNo);
+            this.Controls.Add(this.rdbSi);
             this.Controls.Add(this.txtDiasEntrega);
-            this.Controls.Add(this.textBox8);
-            this.Controls.Add(this.textBox7);
+            this.Controls.Add(this.txtNumeroGuia);
+            this.Controls.Add(this.txtClaveProducto);
             this.Controls.Add(this.txtCantidad);
             this.Controls.Add(this.label20);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.txtPrecioReparacion);
             this.Controls.Add(this.label19);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.label18);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.txtPrecioVenta);
             this.Controls.Add(this.label17);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtCostoNeto);
             this.Controls.Add(this.label16);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.txtCostoSinIVA);
+            this.Controls.Add(this.dtpFechaCosto);
             this.Controls.Add(this.cbProveedores);
             this.Controls.Add(this.cbOrigen);
             this.Controls.Add(this.cbPortal);
@@ -558,6 +558,7 @@
             this.Name = "Pieza";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pieza";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Pieza_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -584,23 +585,21 @@
         private System.Windows.Forms.ComboBox cbPortal;
         private System.Windows.Forms.ComboBox cbOrigen;
         private System.Windows.Forms.ComboBox cbProveedores;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.DateTimePicker dtpFechaCosto;
+        private System.Windows.Forms.TextBox txtCostoSinIVA;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtCostoNeto;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtPrecioVenta;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtPrecioReparacion;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox txtCantidad;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox txtClaveProducto;
+        private System.Windows.Forms.TextBox txtNumeroGuia;
         private System.Windows.Forms.TextBox txtDiasEntrega;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton rdbSi;
+        private System.Windows.Forms.RadioButton rdbNo;
         private System.Windows.Forms.Button btnAniadirPieza;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.CheckBox chbOtroPieza;
@@ -611,5 +610,6 @@
         private System.Windows.Forms.TextBox txtPortal;
         private System.Windows.Forms.TextBox txtOrigen;
         private System.Windows.Forms.TextBox txtProveedor;
+        private System.Windows.Forms.ComboBox cbCostoEnvio;
     }
 }

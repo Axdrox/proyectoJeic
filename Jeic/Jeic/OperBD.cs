@@ -286,6 +286,27 @@ namespace Refracciones
             return dataSet;
         }
 
+        //---------------- COSTO DE ENVIO REGISTRADOS
+        public DataSet CostoEnvioRegistrados()
+        {
+            DataSet dataSet = new DataSet();
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT costo FROM COSTO_ENVIO", nuevaConexion);
+                    dataAdapter.Fill(dataSet, "COSTO_ENVIO");
+                    nuevaConexion.Close();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return dataSet;
+        }
+
         //-------------OBTENER  AÑO A PARTIR DEL VEHÍCULO
         public string anioVehiculo(string modelo){
             string anio = "";
@@ -324,6 +345,7 @@ namespace Refracciones
 
                     //Para saber si la inserción se hizo correctamente
                     i = Comando.ExecuteNonQuery();
+                    nuevaConexion.Close();
                     if (i == 1)
                         MessageBox.Show("Se registró vehículo correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     else
@@ -361,6 +383,7 @@ namespace Refracciones
                     
                     //Para saber si la inserción se hizo correctamente
                     i = Comando.ExecuteNonQuery();
+                    nuevaConexion.Close();
                     if (i == 1)
                         MessageBox.Show("Se registró siniestro correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     else
@@ -374,5 +397,239 @@ namespace Refracciones
             return i;
         }
 
+        public int clavePieza(string pieza)
+        {
+            using (SqlConnection nuevaConexion = Conexion.conexion())
+            {
+                nuevaConexion.Open();
+                int clavePieza = 0;
+                //Obteniendo la clave de nombre pieza
+                Comando = new SqlCommand("SELECT cve_pieza FROM PIEZA WHERE cve_nombre = @cve_nombre", nuevaConexion);
+                Comando.Parameters.AddWithValue("@cve_nombre", pieza);
+                Lector = Comando.ExecuteReader();
+                if (Lector.Read())
+                {
+                    clavePieza = (int)Lector["cve_pieza"];
+                }
+                Lector.Close();
+                nuevaConexion.Close();
+                return clavePieza;
+            }
+        }
+
+        public int claveOrigen(string origen)
+        {
+            using (SqlConnection nuevaConexion = Conexion.conexion())
+            {
+                nuevaConexion.Open();
+                //Obteniendo la clave del origen
+                int claveOrigen = 0;
+                Comando = new SqlCommand("SELECT cve_origen FROM ORIGEN_PIEZA WHERE origen = @origen", nuevaConexion);
+                Comando.Parameters.AddWithValue("@origen", origen);
+                Lector = Comando.ExecuteReader();
+                if (Lector.Read())
+                {
+                    claveOrigen = (int)Lector["cve_origen"];
+                }
+                Lector.Close();
+                nuevaConexion.Close();
+                return claveOrigen;
+            }
+        }
+
+        public int claveProveedor(string proveedor)
+        {
+            using (SqlConnection nuevaConexion = Conexion.conexion())
+            {
+                nuevaConexion.Open();
+                int claveProveedor = 0;
+                //Obteniendo la clave del proveedor
+                Comando = new SqlCommand("SELECT cve_proveedor FROM PROVEEDOR WHERE cve_nombre = @cve_nombre", nuevaConexion);
+                Comando.Parameters.AddWithValue("@cve_nombre", proveedor);
+                Lector = Comando.ExecuteReader();
+                if (Lector.Read())
+                {
+                    claveProveedor = (int)Lector["cve_proveedor"];
+                }
+                Lector.Close();
+                nuevaConexion.Close();
+                return claveProveedor;
+            }
+
+        }
+
+        public int clavePortal(string portal)
+        {
+            using (SqlConnection nuevaConexion = Conexion.conexion())
+            {
+                nuevaConexion.Open();
+                int clavePortal = 0;
+                //Obteniendo la clave del portal
+                Comando = new SqlCommand("SELECT cve_portal FROM PORTAL WHERE nombre = @nombre", nuevaConexion);
+                Comando.Parameters.AddWithValue("@nombre", portal);
+                Lector = Comando.ExecuteReader();
+                if (Lector.Read())
+                {
+                    clavePortal = (int)Lector["cve_portal"];
+                }
+                Lector.Close();
+                nuevaConexion.Close();
+                return clavePortal;
+            }
+        }
+
+        public int claveTaller(string taller)
+        {
+            using (SqlConnection nuevaConexion = Conexion.conexion())
+            {
+                nuevaConexion.Open();
+                int claveTaller = 0;
+                //Obteniendo la clave del taller
+                //Combobox de pedido
+                Comando = new SqlCommand("SELECT cve_taller FROM TALLER WHERE nombre = @nombre", nuevaConexion);
+                Comando.Parameters.AddWithValue("@nombre", taller);
+                Lector = Comando.ExecuteReader();
+                if (Lector.Read())
+                {
+                    claveTaller = (int)Lector["cve_taller"];
+                }
+                Lector.Close();
+                nuevaConexion.Close();
+                return claveTaller;
+            }
+        }
+
+        public int claveValuador(string valuador)
+        {
+            using (SqlConnection nuevaConexion = Conexion.conexion())
+            {
+                nuevaConexion.Open();
+                int claveValuador = 0;
+                //Obteniendo la clave del valuador
+                //Combobox de pedido
+                Comando = new SqlCommand("SELECT cve_valuador FROM VALUADOR WHERE cve_nombre = @cve_nombre", nuevaConexion);
+                Comando.Parameters.AddWithValue("@cve_nombre", valuador);
+                Lector = Comando.ExecuteReader();
+                if (Lector.Read())
+                {
+                    claveValuador = (int)Lector["cve_valuador"];
+                }
+                Lector.Close();
+                nuevaConexion.Close();
+                return claveValuador;
+            }
+        }
+
+        public int claveCostoEnvio(string costoEnvio)
+        {
+            using (SqlConnection nuevaConexion = Conexion.conexion())
+            {
+                nuevaConexion.Open();
+                int claveCostoEnvio = 0;
+                //Obteniendo la clave del valuador
+                //Combobox de pedido
+                Comando = new SqlCommand("SELECT cve_costoEnvio FROM COSTO_ENVIO WHERE costo = @costo", nuevaConexion);
+                Comando.Parameters.AddWithValue("@costo", costoEnvio);
+                Lector = Comando.ExecuteReader();
+                if (Lector.Read())
+                {
+                    claveCostoEnvio = (int)Lector["cve_costoEnvio"];
+                }
+                Lector.Close();
+                nuevaConexion.Close();
+                return claveCostoEnvio;
+            }
+        }
+
+        public int claveDestino(string destino)
+        {
+            using (SqlConnection nuevaConexion = Conexion.conexion())
+            {
+                nuevaConexion.Open();
+                int claveDestino = 0;
+                //Obteniendo la clave del valuador
+                //Combobox de pedido
+                Comando = new SqlCommand("SELECT cve_destino FROM DESTINO WHERE destino = @destino", nuevaConexion);
+                Comando.Parameters.AddWithValue("@destino", destino);
+                Lector = Comando.ExecuteReader();
+                if (Lector.Read())
+                {
+                    claveDestino = (int)Lector["cve_destino"];
+                }
+                Lector.Close();
+                nuevaConexion.Close();
+                return claveDestino;
+            }
+        }
+
+
+        //-------------INSERTAR DATOS DE PEDIDO
+        public int registrarPedido(int clavePedido, string claveSiniestro, string nombrePieza, string portal, string taller, string origen, string proveedor, int claveVendedor, DateTime fechaCosto, string costoSinIVA, string costoNeto, string costoEnvio, string precioVenta, string precioReparacion, string claveProducto, string numeroGuia, int cantidad, int diasEntrega, string entregaTiempo, DateTime fechaBaja, string valuador, string destino)
+        {
+            //Variables
+            int i = 0;
+
+            //try
+            //{
+            int cve_pieza = clavePieza(nombrePieza);
+            int cve_origen = claveOrigen(origen);
+            int cve_proveedor = claveProveedor(proveedor);
+            int cve_portal = clavePortal(portal);
+            int cve_taller = claveTaller(taller);
+            int cve_valuador = claveValuador(valuador);
+            int cve_destino = claveDestino(destino);
+            int cve_costoEnvio = claveCostoEnvio(costoEnvio);
+
+            using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                //Obteniendo la clave del vendedor
+                //Obtener del combobox
+
+                //cve_guia & cve_producto:  obtener del DGV
+                
+
+                    nuevaConexion.Open();
+                    //Insertando los datos en la tabla PEDIDO
+                    Comando = new SqlCommand("INSERT INTO PEDIDO " + "(cve_pedido, cve_siniestro, cve_pieza, cantidad, cve_origen, cve_proveedor, cve_vendedor, cve_portal, cve_taller, cve_valuador, cve_guia, cve_producto, fecha_baja, fecha_costo, costo_conprasinIVA, costo_envio, costo_neto, precio_venta, precio_reparacion, destino, dias_entrega, entrega_enTiempo) " +
+                        "VALUES (@cve_pedido, @cve_siniestro, @cve_pieza, @cantidad, @cve_origen, @cve_proveedor, @cve_vendedor, @cve_portal, @cve_taller, @cve_valuador, @cve_guia, @cve_producto, @fecha_baja, @fecha_costo, @costo_conprasinIVA, @costo_envio, @costo_neto, @precio_venta, @precio_reparacion, @destino, @dias_entrega, @entrega_enTiempo) ", nuevaConexion);
+                    //Añadiendo los parámetros al query
+                    Comando.Parameters.AddWithValue("@cve_pedido", clavePedido);
+                    Comando.Parameters.AddWithValue("@cve_siniestro", claveSiniestro);
+                    Comando.Parameters.AddWithValue("@cve_pieza", cve_pieza);
+                    Comando.Parameters.AddWithValue("@cantidad", cantidad);
+                    Comando.Parameters.AddWithValue("@cve_origen", cve_origen);
+                    Comando.Parameters.AddWithValue("@cve_proveedor", cve_proveedor);
+                    Comando.Parameters.AddWithValue("@cve_vendedor", claveVendedor);
+                    Comando.Parameters.AddWithValue("@cve_portal", cve_portal);
+                    Comando.Parameters.AddWithValue("@cve_taller", cve_taller);
+                    Comando.Parameters.AddWithValue("@cve_valuador", cve_valuador);
+                    Comando.Parameters.AddWithValue("@cve_guia", numeroGuia);
+                    Comando.Parameters.AddWithValue("@cve_producto", claveProducto);
+                    Comando.Parameters.AddWithValue("@fecha_baja", fechaBaja);
+                    Comando.Parameters.AddWithValue("@fecha_costo", fechaCosto);
+                    Comando.Parameters.AddWithValue("@costo_conprasinIVA", Convert.ToDecimal(costoSinIVA));
+                    Comando.Parameters.AddWithValue("@costo_envio", cve_costoEnvio);//cambiar nombre de columna
+                    Comando.Parameters.AddWithValue("@costo_neto", Convert.ToDecimal(costoNeto));
+                    Comando.Parameters.AddWithValue("@precio_venta", Convert.ToDecimal(precioVenta));
+                    Comando.Parameters.AddWithValue("@precio_reparacion", Convert.ToDecimal(precioReparacion));
+                    Comando.Parameters.AddWithValue("@destino", cve_destino);
+                    Comando.Parameters.AddWithValue("@dias_entrega", diasEntrega);
+                    Comando.Parameters.AddWithValue("@entrega_enTiempo", Convert.ToBoolean(entregaTiempo));
+                    
+                    //Para saber si la inserción se hizo correctamente
+                    i = Comando.ExecuteNonQuery();
+                    nuevaConexion.Close();
+                    if (i == 1)
+                        MessageBox.Show("Se registró siniestro correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    else
+                        MessageBox.Show("Problemas al registar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            /*}
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }*/
+            return i;
+        }
     }
 }
