@@ -281,8 +281,12 @@ namespace Refracciones.Forms
                 OperBD operacion = new OperBD();
                 int cantidadTotal = 0;
                 DateTime dtFechaBaja = dtpFechaBaja.Value.Date;
-                
-                foreach (DataGridViewRow row in dgvPedido.Rows)
+                DateTime dtFechaAsignacion = dtpFechaAsignacion.Value.Date;
+                DateTime dtFechaPromesa = dtpFechaPromesa.Value.Date;
+
+                operacion.registrarEntrega(dtFechaAsignacion, dtFechaPromesa);
+
+                    foreach (DataGridViewRow row in dgvPedido.Rows)
                 {
                     cantidadTotal += Convert.ToInt32(row.Cells["Cantidad"].Value);
                 }

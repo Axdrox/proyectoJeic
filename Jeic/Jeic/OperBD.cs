@@ -357,6 +357,29 @@ namespace Refracciones
             }
         }
 
+        //-------------INSERTAR DATOS EN ENTREGA (FECHAS)
+        public void registrarEntrega(DateTime fechaAsignacion, DateTime fechaPromesa)
+        {
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    //Agregando los datos a la tabla ENTREGA
+                    Comando = new SqlCommand("INSERT INTO ENTREGA " + "(fecha_asignacion, fecha_promesa) " + "VALUES (@fecha_asignacion, @fecha_promesa) ", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@fecha_asignacion", fechaAsignacion);
+                    Comando.Parameters.AddWithValue("@fecha_promesa", fechaPromesa);
+                    Comando.ExecuteNonQuery();
+                    nuevaConexion.Close();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+        }
+
+
         //-------------INSERTAR DATOS EN SINIESTRO
         public int registrarSiniestro(string modelo, string claveSiniestro, string comentario){
             int i = 0;
@@ -579,6 +602,7 @@ namespace Refracciones
             int cve_valuador = claveValuador(valuador);
             int cve_destino = claveDestino(destino);
             int cve_costoEnvio = claveCostoEnvio(costoEnvio);
+            //int cve_entrega = Total_Registros2(); //codigo Bryan
 
             using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
