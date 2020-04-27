@@ -137,7 +137,7 @@ namespace Refracciones
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     nuevaConexion.Open();
-                    Comando = new SqlCommand("SELECT cve_valuador FROM CLIENTE WHERE nombre = @nombre", nuevaConexion);
+                    Comando = new SqlCommand("SELECT cve_valuador FROM CLIENTE WHERE cve_nombre = @cve_nombre", nuevaConexion);
                     Comando.Parameters.AddWithValue("@cve_nombre", nombreAseguradora.Trim());
                     Lector = Comando.ExecuteReader();
                     if (Lector.Read())

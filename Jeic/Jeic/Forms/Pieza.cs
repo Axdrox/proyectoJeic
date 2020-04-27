@@ -36,7 +36,7 @@ namespace Refracciones.Forms
         {
             OperBD operacion = new OperBD();
             cbPiezaNombre.DataSource = operacion.NombrePiezasRegistrados().Tables[0].DefaultView;
-            cbPiezaNombre.ValueMember = "cve_nombre";
+            cbPiezaNombre.ValueMember = "nombre";
         }
 
         private void chbOtroPieza_CheckedChanged(object sender, EventArgs e)
@@ -93,7 +93,7 @@ namespace Refracciones.Forms
         {
             OperBD operacion = new OperBD();
             cbProveedores.DataSource = operacion.ProveedoresRegistrados().Tables[0].DefaultView;
-            cbProveedores.ValueMember = "cve_nombre";
+            cbProveedores.ValueMember = "nombre";
         }
 
         private void chbOtroProveedor_CheckedChanged(object sender, EventArgs e)

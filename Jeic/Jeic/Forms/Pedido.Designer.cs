@@ -274,6 +274,7 @@
             this.btnCancelar.TabIndex = 20;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // rdbNo
             // 
@@ -340,7 +341,7 @@
             this.cbValuador.Name = "cbValuador";
             this.cbValuador.Size = new System.Drawing.Size(186, 24);
             this.cbValuador.TabIndex = 27;
-            this.cbValuador.SelectedIndexChanged += new System.EventHandler(this.cbValuador_SelectedIndexChanged);
+            this.cbValuador.Click += new System.EventHandler(this.cbValuador_Click);
             // 
             // txtAseguradora
             // 

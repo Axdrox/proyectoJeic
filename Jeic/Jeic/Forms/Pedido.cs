@@ -344,13 +344,6 @@ namespace Refracciones.Forms
             }
         }
 
-        private void cbAseguradora_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //Carga los datos registros de valuadores en el combobox
-            cbValuador.DataSource = operacion.ValuadoresRegistrados(cbAseguradora.Text.Trim()).Tables[0].DefaultView;
-            cbValuador.ValueMember = "cve_nombre";
-        }
-
         private void btnAgregarPieza_Click(object sender, EventArgs e)
         {
             Pieza pieza = new Pieza();
@@ -383,6 +376,7 @@ namespace Refracciones.Forms
                 MessageBox.Show("Favor de añadir la clave del pedido.", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
+        //Cargar los datos de la aseguradora/cliente en el combobox
         private void cbAseguradora_Click(object sender, EventArgs e)
         {
             //Carga los datos registros de clientes/aseguradoras en el combobox
@@ -390,11 +384,19 @@ namespace Refracciones.Forms
             cbAseguradora.ValueMember = "cve_nombre";
         }
 
-        private void cbValuador_SelectedIndexChanged(object sender, EventArgs e)
+        //Hace que el combobox de los valuadores cambie de acuerdo al cliente/aseguradora que se elija
+        private void cbAseguradora_SelectedIndexChanged(object sender, EventArgs e)
         {
             //Carga los datos registros de valuadores en el combobox
             cbValuador.DataSource = operacion.ValuadoresRegistrados(cbAseguradora.Text.Trim()).Tables[0].DefaultView;
-            cbValuador.ValueMember = "cve_nombre";
+            cbValuador.ValueMember = "nombre";
+        }
+
+        private void cbValuador_Click(object sender, EventArgs e)
+        {
+            //Carga los datos registros de valuadores en el combobox
+            cbValuador.DataSource = operacion.ValuadoresRegistrados(cbAseguradora.Text.Trim()).Tables[0].DefaultView;
+            cbValuador.ValueMember = "nombre";
         }
 
         private void cbTaller_Click(object sender, EventArgs e)
@@ -421,6 +423,11 @@ namespace Refracciones.Forms
         private void dgvPedido_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             //dgvPedido.Rows.RemoveAt(dgvPedido.CurrentRow.Index);
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
         }
     }
 }
