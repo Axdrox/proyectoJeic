@@ -137,7 +137,7 @@ namespace Refracciones
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     nuevaConexion.Open();
-                    Comando = new SqlCommand("SELECT cve_valuador FROM CLIENTE WHERE cve_nombre = @cve_nombre", nuevaConexion);
+                    Comando = new SqlCommand("SELECT cve_valuador FROM CLIENTE WHERE nombre = @nombre", nuevaConexion);
                     Comando.Parameters.AddWithValue("@cve_nombre", nombreAseguradora.Trim());
                     Lector = Comando.ExecuteReader();
                     if (Lector.Read())
@@ -146,7 +146,7 @@ namespace Refracciones
                     }
                     Lector.Close();
 
-                    Comando = new SqlCommand("SELECT cve_nombre FROM VALUADOR WHERE cve_valuador = @cve_valuador", nuevaConexion);
+                    Comando = new SqlCommand("SELECT nombre FROM VALUADOR WHERE cve_valuador = @cve_valuador", nuevaConexion);
                     Comando.Parameters.AddWithValue("@cve_valuador", cveValuador);
                     dataAdapter.SelectCommand = Comando;
                     dataAdapter.Fill(dataSet, "VALUADOR");
@@ -211,7 +211,7 @@ namespace Refracciones
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     nuevaConexion.Open();
-                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT cve_nombre FROM PIEZA", nuevaConexion);
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT nombre FROM PIEZA", nuevaConexion);
                     dataAdapter.Fill(dataSet, "PIEZA");
                     nuevaConexion.Close();
                 }
@@ -274,7 +274,7 @@ namespace Refracciones
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     nuevaConexion.Open();
-                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT cve_nombre FROM PROVEEDOR", nuevaConexion);
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT nombre FROM PROVEEDOR", nuevaConexion);
                     dataAdapter.Fill(dataSet, "PROVEEDOR");
                     nuevaConexion.Close();
                 }
@@ -427,8 +427,8 @@ namespace Refracciones
                 nuevaConexion.Open();
                 int clavePieza = 0;
                 //Obteniendo la clave de nombre pieza
-                Comando = new SqlCommand("SELECT cve_pieza FROM PIEZA WHERE cve_nombre = @cve_nombre", nuevaConexion);
-                Comando.Parameters.AddWithValue("@cve_nombre", pieza);
+                Comando = new SqlCommand("SELECT cve_pieza FROM PIEZA WHERE nombre = @nombre", nuevaConexion);
+                Comando.Parameters.AddWithValue("@nombre", pieza);
                 Lector = Comando.ExecuteReader();
                 if (Lector.Read())
                 {
@@ -467,8 +467,8 @@ namespace Refracciones
                 nuevaConexion.Open();
                 int claveProveedor = 0;
                 //Obteniendo la clave del proveedor
-                Comando = new SqlCommand("SELECT cve_proveedor FROM PROVEEDOR WHERE cve_nombre = @cve_nombre", nuevaConexion);
-                Comando.Parameters.AddWithValue("@cve_nombre", proveedor);
+                Comando = new SqlCommand("SELECT cve_proveedor FROM PROVEEDOR WHERE nombre = @nombre", nuevaConexion);
+                Comando.Parameters.AddWithValue("@nombre", proveedor);
                 Lector = Comando.ExecuteReader();
                 if (Lector.Read())
                 {
@@ -530,8 +530,8 @@ namespace Refracciones
                 int claveValuador = 0;
                 //Obteniendo la clave del valuador
                 //Combobox de pedido
-                Comando = new SqlCommand("SELECT cve_valuador FROM VALUADOR WHERE cve_nombre = @cve_nombre", nuevaConexion);
-                Comando.Parameters.AddWithValue("@cve_nombre", valuador);
+                Comando = new SqlCommand("SELECT cve_valuador FROM VALUADOR WHERE nombre = @nombre", nuevaConexion);
+                Comando.Parameters.AddWithValue("@nombre", valuador);
                 Lector = Comando.ExecuteReader();
                 if (Lector.Read())
                 {
@@ -549,7 +549,7 @@ namespace Refracciones
             {
                 nuevaConexion.Open();
                 int claveCostoEnvio = 0;
-                //Obteniendo la clave del valuador
+                //Obteniendo la clave del costo de envío
                 //Combobox de pedido
                 Comando = new SqlCommand("SELECT cve_costoEnvio FROM COSTO_ENVIO WHERE costo = @costo", nuevaConexion);
                 Comando.Parameters.AddWithValue("@costo", costoEnvio);
@@ -570,7 +570,7 @@ namespace Refracciones
             {
                 nuevaConexion.Open();
                 int claveDestino = 0;
-                //Obteniendo la clave del valuador
+                //Obteniendo la clave del destino
                 //Combobox de pedido
                 Comando = new SqlCommand("SELECT cve_destino FROM DESTINO WHERE destino = @destino", nuevaConexion);
                 Comando.Parameters.AddWithValue("@destino", destino);
@@ -614,8 +614,8 @@ namespace Refracciones
 
                     nuevaConexion.Open();
                     //Insertando los datos en la tabla PEDIDO
-                    Comando = new SqlCommand("INSERT INTO PEDIDO " + "(cve_pedido, cve_siniestro, cve_pieza, cantidad, cve_origen, cve_proveedor, cve_vendedor, cve_portal, cve_taller, cve_valuador, cve_guia, cve_producto, fecha_baja, fecha_costo, costo_conprasinIVA, costo_envio, costo_neto, precio_venta, precio_reparacion, destino, dias_entrega, entrega_enTiempo) " +
-                        "VALUES (@cve_pedido, @cve_siniestro, @cve_pieza, @cantidad, @cve_origen, @cve_proveedor, @cve_vendedor, @cve_portal, @cve_taller, @cve_valuador, @cve_guia, @cve_producto, @fecha_baja, @fecha_costo, @costo_conprasinIVA, @costo_envio, @costo_neto, @precio_venta, @precio_reparacion, @destino, @dias_entrega, @entrega_enTiempo) ", nuevaConexion);
+                    Comando = new SqlCommand("INSERT INTO PEDIDO " + "(cve_pedido, cve_siniestro, cve_pieza, cantidad, cve_origen, cve_proveedor, cve_vendedor, cve_portal, cve_taller, cve_valuador, cve_guia, cve_producto, fecha_baja, fecha_costo, costo_comprasinIVA, costo_envio, costo_neto, precio_venta, precio_reparacion, destino, dias_entrega, entrega_enTiempo) " +
+                        "VALUES (@cve_pedido, @cve_siniestro, @cve_pieza, @cantidad, @cve_origen, @cve_proveedor, @cve_vendedor, @cve_portal, @cve_taller, @cve_valuador, @cve_guia, @cve_producto, @fecha_baja, @fecha_costo, @costo_comprasinIVA, @costo_envio, @costo_neto, @precio_venta, @precio_reparacion, @destino, @dias_entrega, @entrega_enTiempo) ", nuevaConexion);
                     //Añadiendo los parámetros al query
                     Comando.Parameters.AddWithValue("@cve_pedido", clavePedido);
                     Comando.Parameters.AddWithValue("@cve_siniestro", claveSiniestro);
