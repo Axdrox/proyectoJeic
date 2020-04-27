@@ -631,7 +631,7 @@ namespace Refracciones
                     Comando.Parameters.AddWithValue("@cve_producto", claveProducto);
                     Comando.Parameters.AddWithValue("@fecha_baja", fechaBaja);
                     Comando.Parameters.AddWithValue("@fecha_costo", fechaCosto);
-                    Comando.Parameters.AddWithValue("@costo_conprasinIVA", Convert.ToDecimal(costoSinIVA));
+                    Comando.Parameters.AddWithValue("@costo_comprasinIVA", Convert.ToDecimal(costoSinIVA));
                     Comando.Parameters.AddWithValue("@costo_envio", cve_costoEnvio);//cambiar nombre de columna
                     Comando.Parameters.AddWithValue("@costo_neto", Convert.ToDecimal(costoNeto));
                     Comando.Parameters.AddWithValue("@precio_venta", Convert.ToDecimal(precioVenta));
