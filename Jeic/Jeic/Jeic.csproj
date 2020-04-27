@@ -78,18 +78,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\BusquedaPedidos.cs">
+    <Compile Include="Forms\BusquedaEntrega-Devolucion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\BusquedaPedidos.Designer.cs">
-      <DependentUpon>BusquedaPedidos.cs</DependentUpon>
+    <Compile Include="Forms\BusquedaEntrega-Devolucion.Designer.cs">
+      <DependentUpon>BusquedaEntrega-Devolucion.cs</DependentUpon>
     </Compile>
     <Compile Include="Conexion.cs" />
+    <Compile Include="Forms\Devolucion-Entrega.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Devolucion-Entrega.Designer.cs">
+      <DependentUpon>Devolucion-Entrega.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\InicioSesion.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\InicioSesion.Designer.cs">
       <DependentUpon>InicioSesion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\registrarRefactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\registrarRefactura.Designer.cs">
+      <DependentUpon>registrarRefactura.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\registroFactura.cs">
       <SubType>Form</SubType>
@@ -100,11 +112,17 @@
     <Compile Include="OperBD.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\BusquedaPedidos.resx">
-      <DependentUpon>BusquedaPedidos.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\BusquedaEntrega-Devolucion.resx">
+      <DependentUpon>BusquedaEntrega-Devolucion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Devolucion-Entrega.resx">
+      <DependentUpon>Devolucion-Entrega.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\InicioSesion.resx">
       <DependentUpon>InicioSesion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\registrarRefactura.resx">
+      <DependentUpon>registrarRefactura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\registroFactura.resx">
       <DependentUpon>registroFactura.cs</DependentUpon>
