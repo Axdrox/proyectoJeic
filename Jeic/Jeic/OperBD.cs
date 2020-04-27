@@ -719,5 +719,3 @@ namespace Refracciones
         }
     }
 }
-//TEST
-//BUNNY
