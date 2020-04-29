@@ -110,11 +110,13 @@
             // chkFechaPago
             // 
             this.chkFechaPago.AutoSize = true;
+            this.chkFechaPago.Enabled = false;
             this.chkFechaPago.Location = new System.Drawing.Point(554, 157);
             this.chkFechaPago.Name = "chkFechaPago";
             this.chkFechaPago.Size = new System.Drawing.Size(15, 14);
             this.chkFechaPago.TabIndex = 48;
             this.chkFechaPago.UseVisualStyleBackColor = true;
+            this.chkFechaPago.Visible = false;
             // 
             // chkFechaRevision
             // 
@@ -133,6 +135,7 @@
             this.chkFechaIngreso.Size = new System.Drawing.Size(15, 14);
             this.chkFechaIngreso.TabIndex = 46;
             this.chkFechaIngreso.UseVisualStyleBackColor = true;
+            this.chkFechaIngreso.CheckedChanged += new System.EventHandler(this.chkFechaIngreso_CheckedChanged);
             // 
             // btnBuscarXml
             // 
@@ -181,6 +184,7 @@
             // 
             // dtpFechaPago
             // 
+            this.dtpFechaPago.Enabled = false;
             this.dtpFechaPago.Location = new System.Drawing.Point(348, 154);
             this.dtpFechaPago.Name = "dtpFechaPago";
             this.dtpFechaPago.Size = new System.Drawing.Size(200, 20);
@@ -208,6 +212,7 @@
             this.dtpFechaIngreso.Name = "dtpFechaIngreso";
             this.dtpFechaIngreso.Size = new System.Drawing.Size(200, 20);
             this.dtpFechaIngreso.TabIndex = 37;
+            this.dtpFechaIngreso.ValueChanged += new System.EventHandler(this.dtpFechaIngreso_ValueChanged);
             // 
             // lblFacturaConIVA
             // 
@@ -224,6 +229,7 @@
             this.txtFacturasinIVA.Name = "txtFacturasinIVA";
             this.txtFacturasinIVA.Size = new System.Drawing.Size(100, 20);
             this.txtFacturasinIVA.TabIndex = 35;
+            this.txtFacturasinIVA.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFacturasinIVA_KeyPress);
             // 
             // txtRefactura
             // 
@@ -231,6 +237,7 @@
             this.txtRefactura.Name = "txtRefactura";
             this.txtRefactura.Size = new System.Drawing.Size(100, 20);
             this.txtRefactura.TabIndex = 34;
+            this.txtRefactura.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRefactura_KeyPress);
             // 
             // lblClave_FacturaAnterior
             // 
@@ -275,6 +282,7 @@
             this.txtCve_Factura.Name = "txtCve_Factura";
             this.txtCve_Factura.Size = new System.Drawing.Size(100, 20);
             this.txtCve_Factura.TabIndex = 29;
+            this.txtCve_Factura.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCve_Factura_KeyPress);
             // 
             // lblFacturaSinIVA
             // 
@@ -307,6 +315,7 @@
             // 
             this.txtFacturaconIVA.Location = new System.Drawing.Point(109, 161);
             this.txtFacturaconIVA.Name = "txtFacturaconIVA";
+            this.txtFacturaconIVA.ReadOnly = true;
             this.txtFacturaconIVA.Size = new System.Drawing.Size(100, 20);
             this.txtFacturaconIVA.TabIndex = 54;
             // 
@@ -325,6 +334,7 @@
             this.txtCostoRefactura.Name = "txtCostoRefactura";
             this.txtCostoRefactura.Size = new System.Drawing.Size(100, 20);
             this.txtCostoRefactura.TabIndex = 56;
+            this.txtCostoRefactura.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCostoRefactura_KeyPress);
             // 
             // lblFechaRefacturacion
             // 
@@ -350,6 +360,7 @@
             this.chkFechaRefacturacion.Size = new System.Drawing.Size(15, 14);
             this.chkFechaRefacturacion.TabIndex = 59;
             this.chkFechaRefacturacion.UseVisualStyleBackColor = true;
+            this.chkFechaRefacturacion.CheckedChanged += new System.EventHandler(this.chkFechaRefacturacion_CheckedChanged);
             // 
             // openFileDialog1
             // 

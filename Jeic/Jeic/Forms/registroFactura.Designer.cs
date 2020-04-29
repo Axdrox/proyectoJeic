@@ -87,6 +87,7 @@
             this.txtCve_Factura.Name = "txtCve_Factura";
             this.txtCve_Factura.Size = new System.Drawing.Size(100, 20);
             this.txtCve_Factura.TabIndex = 2;
+            this.txtCve_Factura.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCve_Factura_KeyPress);
             // 
             // txtRutaFactura
             // 
@@ -132,6 +133,7 @@
             this.txtFacturasinIVA.Name = "txtFacturasinIVA";
             this.txtFacturasinIVA.Size = new System.Drawing.Size(100, 20);
             this.txtFacturasinIVA.TabIndex = 7;
+            this.txtFacturasinIVA.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFacturasinIVA_KeyPress);
             // 
             // btnAbrir
             // 
@@ -145,8 +147,10 @@
             // 
             // txtFacturaconIVA
             // 
+            this.txtFacturaconIVA.Enabled = false;
             this.txtFacturaconIVA.Location = new System.Drawing.Point(106, 132);
             this.txtFacturaconIVA.Name = "txtFacturaconIVA";
+            this.txtFacturaconIVA.ReadOnly = true;
             this.txtFacturaconIVA.Size = new System.Drawing.Size(100, 20);
             this.txtFacturaconIVA.TabIndex = 9;
             // 
@@ -165,6 +169,7 @@
             this.dtpFechaIngreso.Name = "dtpFechaIngreso";
             this.dtpFechaIngreso.Size = new System.Drawing.Size(200, 20);
             this.dtpFechaIngreso.TabIndex = 11;
+            this.dtpFechaIngreso.ValueChanged += new System.EventHandler(this.dtpFechaIngreso_ValueChanged);
             // 
             // lblFechaIngreso
             // 
@@ -184,6 +189,7 @@
             // 
             // dtpFechaPago
             // 
+            this.dtpFechaPago.Enabled = false;
             this.dtpFechaPago.Location = new System.Drawing.Point(358, 132);
             this.dtpFechaPago.Name = "dtpFechaPago";
             this.dtpFechaPago.Size = new System.Drawing.Size(200, 20);
@@ -247,6 +253,7 @@
             this.chkFechaIngreso.TabIndex = 20;
             this.chkFechaIngreso.Text = "checkBox1";
             this.chkFechaIngreso.UseVisualStyleBackColor = true;
+            this.chkFechaIngreso.CheckedChanged += new System.EventHandler(this.chkFechaIngreso_CheckedChanged);
             // 
             // chkFechaRevision
             // 
@@ -261,12 +268,14 @@
             // chkFechaPago
             // 
             this.chkFechaPago.AutoSize = true;
+            this.chkFechaPago.Enabled = false;
             this.chkFechaPago.Location = new System.Drawing.Point(565, 134);
             this.chkFechaPago.Name = "chkFechaPago";
             this.chkFechaPago.Size = new System.Drawing.Size(80, 17);
             this.chkFechaPago.TabIndex = 22;
             this.chkFechaPago.Text = "checkBox3";
             this.chkFechaPago.UseVisualStyleBackColor = true;
+            this.chkFechaPago.Visible = false;
             // 
             // txtComentario
             // 

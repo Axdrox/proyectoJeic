@@ -18,6 +18,10 @@ namespace Refracciones.Forms
         OperBD oper = new OperBD();
         //string estado;
         int x = 0;
+        CultureInfo culture = new CultureInfo("en-US");
+
+        string cve_siniestro;
+        int cve_pedido;
         public registroFactura()
         {
             InitializeComponent();
@@ -36,6 +40,7 @@ namespace Refracciones.Forms
                 txtRutaFactura.Text = openFileDialog1.FileName;
             }
         }
+        
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
@@ -43,9 +48,9 @@ namespace Refracciones.Forms
             //Eleccion elec = new Eleccion();
             //Busqueda_Devolver elec = new Busqueda_Devolver();
             //MessageBox.Show(elec.cve_siniestro);
-            string cve_siniestro = dato1.Text;
-            int cve_pedido = Int32.Parse(dato2.Text);
-            CultureInfo culture = new CultureInfo("en-US");
+            /*string cve_siniestro = "1F";//dato1.Text;
+            int cve_pedido = 1;//Int32.Parse(dato2.Text);*/
+            
             //Variables
             int cve_factura = Int32.Parse(txtCve_Factura.Text);
             int cve_estado = 1;
@@ -68,11 +73,14 @@ namespace Refracciones.Forms
                 cve_estado = 3;
 
             if (chkFechaIngreso.Checked)
+            {
                 fecha_ingreso = DateTime.Parse(dtpFechaIngreso.Value.ToShortDateString());
+                
+            }
             if (chkFechaRevision.Checked)
                 fecha_revision = DateTime.Parse(dtpFechaRevision.Value.ToShortDateString());
-            if (chkFechaPago.Checked)
-                fecha_pago = DateTime.Parse(dtpFechaPago.Value.ToShortDateString());
+            //if (chkFechaPago.Checked)
+            fecha_pago = DateTime.Parse(dtpFechaPago.Value.ToShortDateString());
             //obtenemos el arreglo de bytes de factura
             if (txtRutaFactura.Text == string.Empty && txtRutaXml.Text == string.Empty)
             { }
@@ -130,8 +138,9 @@ namespace Refracciones.Forms
 
         private void registroFactura_Load(object sender, EventArgs e)
         {
-
-
+            cve_siniestro = "1G";//dato1.Text
+            cve_pedido = 2;//Int32.Parse(dato2.Text)
+            cmbEstadoFactura.SelectedIndex = 0;
             if (x == 1)
             {
                 dataGridView1.DataSource = oper.Actualizar_Factura(1);
@@ -169,6 +178,47 @@ namespace Refracciones.Forms
             {
                 txtRutaXml.Text = openFileDialog2.FileName;
             }
+        }
+
+        private void txtFacturasinIVA_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // solo 1 punto decimal
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                double calculo = double.Parse(txtFacturasinIVA.Text,culture);
+                calculo = calculo * 1.16;
+                txtFacturaconIVA.Text = calculo.ToString();
+            }
+        }
+
+        private void txtCve_Factura_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void chkFechaIngreso_CheckedChanged(object sender, EventArgs e)
+        {
+            if(chkFechaIngreso.Checked == true)
+                dtpFechaPago.Value = dtpFechaIngreso.Value.AddDays(oper.Dias_Espera(cve_siniestro,cve_pedido));
+
+        }
+
+        private void dtpFechaIngreso_ValueChanged(object sender, EventArgs e)
+        {
+            chkFechaIngreso.Checked = false;
         }
     }
 }

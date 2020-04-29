@@ -16,6 +16,9 @@ namespace Refracciones.Forms
     {
         int x = 0;
         OperBD factura = new OperBD();
+        CultureInfo culture = new CultureInfo("en-US");
+        string cve_siniestro;
+        int cve_pedido;
         public registrarRefactura()
         {
             InitializeComponent();
@@ -51,8 +54,8 @@ namespace Refracciones.Forms
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            string cve_siniestro = dato1.Text;
-            int cve_pedido = Int32.Parse(dato2.Text);
+            /*string cve_siniestro = dato1.Text;
+            int cve_pedido = Int32.Parse(dato2.Text);*/
             CultureInfo culture = new CultureInfo("en-US");
             //Variables
             int cve_factura = Int32.Parse(txtCve_Factura.Text);
@@ -81,8 +84,8 @@ namespace Refracciones.Forms
                 fecha_ingreso = DateTime.Parse(dtpFechaIngreso.Value.ToShortDateString());
             if (chkFechaRevision.Checked)
                 fecha_revision = DateTime.Parse(dtpFechaRevision.Value.ToShortDateString());
-            if (chkFechaPago.Checked)
-                fecha_pago = DateTime.Parse(dtpFechaPago.Value.ToShortDateString());
+            //if (chkFechaPago.Checked)
+            fecha_pago = DateTime.Parse(dtpFechaPago.Value.ToShortDateString());
             if (chkFechaRefacturacion.Checked)
                 fecha_refactura = DateTime.Parse(dtpFechaRefacturacion.Value.ToShortDateString());
             if (txtRutaFactura.Text == string.Empty && txtRutaXml.Text == string.Empty)
@@ -119,6 +122,9 @@ namespace Refracciones.Forms
 
         private void registrarRefactura_Load(object sender, EventArgs e)
         {
+            cve_siniestro = "1H";
+            cve_pedido = 3;
+            cmbEstadoFactura.SelectedIndex = 0;
             if (x == 1)
             {
                 try
@@ -147,6 +153,73 @@ namespace Refracciones.Forms
             }
             else
             { }
+        }
+
+        private void txtCve_Factura_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtRefactura_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtFacturasinIVA_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // solo 1 punto decimal
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                double calculo = double.Parse(txtFacturasinIVA.Text, culture);
+                calculo = calculo * 1.16;
+                txtFacturaconIVA.Text = calculo.ToString();
+            }
+        }
+
+        private void txtCostoRefactura_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // solo 1 punto decimal
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void chkFechaRefacturacion_CheckedChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void chkFechaIngreso_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkFechaIngreso.Checked == true)
+                dtpFechaPago.Value = dtpFechaIngreso.Value.AddDays(factura.Dias_Espera(cve_siniestro, cve_pedido));
+        }
+
+        private void dtpFechaIngreso_ValueChanged(object sender, EventArgs e)
+        {
+            chkFechaIngreso.Checked = false;
         }
     }
 }
