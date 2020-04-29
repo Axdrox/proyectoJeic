@@ -60,6 +60,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dato1 = new System.Windows.Forms.Label();
             this.dato2 = new System.Windows.Forms.Label();
+            this.dato3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -344,11 +345,21 @@
             this.dato2.TabIndex = 29;
             this.dato2.Text = "cve_pedido";
             // 
+            // dato3
+            // 
+            this.dato3.AutoSize = true;
+            this.dato3.Location = new System.Drawing.Point(106, 4);
+            this.dato3.Name = "dato3";
+            this.dato3.Size = new System.Drawing.Size(64, 13);
+            this.dato3.TabIndex = 30;
+            this.dato3.Text = "cve_factura";
+            // 
             // registroFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(579, 450);
+            this.Controls.Add(this.dato3);
             this.Controls.Add(this.dato2);
             this.Controls.Add(this.dato1);
             this.Controls.Add(this.dataGridView1);
@@ -422,5 +433,6 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label dato1;
         private System.Windows.Forms.Label dato2;
+        public System.Windows.Forms.Label dato3;
     }
 }

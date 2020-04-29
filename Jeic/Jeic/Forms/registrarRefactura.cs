@@ -122,10 +122,10 @@ namespace Refracciones.Forms
 
         private void registrarRefactura_Load(object sender, EventArgs e)
         {
-            cve_siniestro = "1H";
-            cve_pedido = 3;
+            cve_siniestro = "1H";//dato1.Text
+            cve_pedido = 3;//Int32.Parse(dato2.Text)
             cmbEstadoFactura.SelectedIndex = 0;
-            if (x == 1)
+            if (dato3.Text == "0")
             {
                 try
                 {

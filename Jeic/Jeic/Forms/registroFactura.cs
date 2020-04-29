@@ -17,9 +17,8 @@ namespace Refracciones.Forms
     {
         OperBD oper = new OperBD();
         //string estado;
-        int x = 0;
+        //int x = 0;
         CultureInfo culture = new CultureInfo("en-US");
-
         string cve_siniestro;
         int cve_pedido;
         public registroFactura()
@@ -141,7 +140,7 @@ namespace Refracciones.Forms
             cve_siniestro = "1G";//dato1.Text
             cve_pedido = 2;//Int32.Parse(dato2.Text)
             cmbEstadoFactura.SelectedIndex = 0;
-            if (x == 1)
+            if (dato3.Text == "0" )
             {
                 dataGridView1.DataSource = oper.Actualizar_Factura(1);
                 if (dataGridView1.Rows[0].Cells[1].Value.ToString() == "1") { cmbEstadoFactura.SelectedIndex = 0; }
