@@ -708,7 +708,15 @@ namespace Refracciones
                 {
                     nuevaConexion.Open();
                     Comando = new SqlCommand(string.Format("SELECT cve_factura FROM PEDIDO WHERE cve_siniestro = '{0}' AND cve_pedido = {1}", siniestro, cve_pedido), nuevaConexion);
-                    cve_factura = (Int32)Comando.ExecuteScalar();
+                    if (Comando.ExecuteScalar().ToString() == string.Empty)
+                    {
+                        cve_factura = 0;
+                    }
+                    else
+                    {
+                        //MessageBox.Show("ENTRO :V");
+                        cve_factura = (Int32)Comando.ExecuteScalar();
+                    }
                     nuevaConexion.Close();
                 }
             }
@@ -717,6 +725,33 @@ namespace Refracciones
                 MessageBox.Show(ex.ToString());
             }
             return cve_factura;
+        }
+        //---------------------------OBTENER CLAVE DE REFACTURA-------------------
+        public int Clave_Refact(int cve_factura)
+        {
+            int cve_refactura = 0;
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand(string.Format("SELECT cve_refactura FROM FACTURA WHERE cve_factura = {0}", cve_factura), nuevaConexion);
+                    if (Comando.ExecuteScalar().ToString() == string.Empty)
+                    {
+                        cve_factura = 0;
+                    }
+                    else
+                    {
+                        cve_refactura = (Int32)Comando.ExecuteScalar();
+                    }
+                    nuevaConexion.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return cve_refactura;
         }
         //---------------------------OBTENER DIAS ESPERA POR CLIENTE-------------------
         public int Dias_Espera(string siniestro, int cve_pedido)

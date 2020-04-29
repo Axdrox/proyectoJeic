@@ -137,10 +137,10 @@ namespace Refracciones.Forms
 
         private void registroFactura_Load(object sender, EventArgs e)
         {
-            cve_siniestro = "1G";//dato1.Text
-            cve_pedido = 2;//Int32.Parse(dato2.Text)
+            cve_siniestro = /*"1G";*/dato1.Text;
+            cve_pedido = /*2;*/Int32.Parse(dato2.Text);
             cmbEstadoFactura.SelectedIndex = 0;
-            if (dato3.Text == "0" )
+            if (dato3.Text == "0")
             {
                 dataGridView1.DataSource = oper.Actualizar_Factura(1);
                 if (dataGridView1.Rows[0].Cells[1].Value.ToString() == "1") { cmbEstadoFactura.SelectedIndex = 0; }
