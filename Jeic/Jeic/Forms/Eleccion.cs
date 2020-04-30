@@ -21,10 +21,6 @@ namespace Refracciones
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //ABRIR FORMULARIO DE PEDIDO
-        }
 
         private void btnFactura_Click(object sender, EventArgs e)
         {
@@ -144,6 +140,24 @@ namespace Refracciones
                 btnRefactura.Enabled = false;
                 
             }
+        }
+
+        public string clavePedido
+        {
+            get { return dato_2.Text.Trim(); }
+        }
+
+        public string claveSiniestro
+        {
+            get { return dato_1.Text.Trim(); }
+        }
+
+        private void btnModificarDatosPedido_Click(object sender, EventArgs e)
+        {
+            Pedido pedido = new Pedido(1);
+            pedido.textBoxPedido = clavePedido;
+            pedido.labelSiniestro = claveSiniestro;
+            pedido.ShowDialog();
         }
     }
 }

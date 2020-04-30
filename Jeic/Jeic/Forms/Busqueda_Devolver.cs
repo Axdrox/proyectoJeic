@@ -165,7 +165,7 @@ namespace Refracciones.Forms
 
         private void btnAgregarPedido_Click(object sender, EventArgs e)
         {
-            Pedido pedido = new Pedido();
+            Pedido pedido = new Pedido(0);
             DialogResult result = pedido.ShowDialog();
             if (result == DialogResult.OK)
             {

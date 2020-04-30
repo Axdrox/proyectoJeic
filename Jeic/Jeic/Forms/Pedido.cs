@@ -15,7 +15,9 @@ namespace Refracciones.Forms
         OperBD operacion = new OperBD();
         DataTable dt;
         //int totalCantidadPiezas = 0;
-        public Pedido()
+        
+        private int actualizar = 0;
+        public Pedido(int i)
         {
             InitializeComponent();
             dt = new DataTable();
@@ -37,22 +39,49 @@ namespace Refracciones.Forms
 
             dgvPedido.DataSource = dt;
 
+            actualizar = i;
+        }
 
+        public string textBoxPedido
+        {
+            set { txtClavePedido.Text = value; }
+        }
+
+        public string labelSiniestro
+        {
+            set { lblClaveSiniestro.Text = value; }
         }
 
         private void Pedido_Load(object sender, EventArgs e)
         {
-            lblVehiculoPedido.Hide();
-            lblVehiculo.Hide();
-            lblAnioPedido.Hide();
-            lblAnio.Hide();
-            chbSi.Hide();
-            lblClaveSiniestro.Hide();
-            lblClaveSiniestroPedido.Hide();
-            txtAseguradora.Hide();
-            txtValuador.Hide();
-            txtTaller.Hide();
-            txtDestino.Hide();
+            Eleccion eleccion = new Eleccion();
+            if (actualizar == 1)
+            {
+                txtClavePedido.Enabled = false;
+                btnFinalizarPedido.Text = "Actualizar pedido";
+                cbAseguradora.Hide();
+                txtAseguradora.Text = operacion.Cliente(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
+                cbValuador.Hide();
+                txtValuador.Text = operacion.Valuador(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
+                cbTaller.Hide();
+                txtTaller.Text = operacion.Taller(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
+                cbDestino.Hide();
+                txtDestino.Text = operacion.Destino(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
+            }
+            else
+            {
+                lblVehiculoPedido.Hide();
+                lblVehiculo.Hide();
+                lblAnioPedido.Hide();
+                lblAnio.Hide();
+                chbSi.Hide();
+                lblClaveSiniestro.Hide();
+                lblClaveSiniestroPedido.Hide();
+                txtAseguradora.Hide();
+                txtValuador.Hide();
+                txtTaller.Hide();
+                txtDestino.Hide();
+            }
         }
 
         private void rdbSi_CheckedChanged(object sender, EventArgs e)

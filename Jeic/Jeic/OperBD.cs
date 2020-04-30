@@ -1120,6 +1120,120 @@ namespace Refracciones
             return anio;
         }
 
+        //------------- OBTENER ASEGURADORA/CLIENTE EN PARTICULAR DE ACUERDO A CLAVES PEDIDO & SINIESTRO
+        public string Cliente(string clavePedido, string claveSiniestro)
+        {
+            string cliente = "";
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("SELECT cli.cve_nombre FROM PEDIDO ped INNER JOIN VALUADOR val ON ped.cve_valuador = val.cve_valuador INNER JOIN CLIENTE cli ON val.cve_valuador = cli.cve_valuador WHERE ped.cve_pedido = @cve_pedido AND ped.cve_siniestro = @cve_siniestro", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@cve_pedido", Convert.ToInt32(clavePedido));
+                    Comando.Parameters.AddWithValue("@cve_siniestro", claveSiniestro);
+                    Lector = Comando.ExecuteReader();
+                    if (Lector.Read())
+                    {
+                        cliente = Lector["cve_nombre"].ToString().Trim();
+                    }
+                    Lector.Close();
+                    nuevaConexion.Close();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return cliente;
+        }
+
+        //------------- OBTENER UN VALUADOR EN PARTICULAR DE ACUERDO A CLAVES PEDIDO & SINIESTRO
+        public string Valuador(string clavePedido, string claveSiniestro)
+        {
+            string valuador = "";
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("SELECT val.nombre FROM PEDIDO ped INNER JOIN VALUADOR val ON ped.cve_valuador = val.cve_valuador WHERE ped.cve_siniestro = @cve_siniestro AND ped.cve_pedido = @cve_pedido", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@cve_pedido", Convert.ToInt32(clavePedido));
+                    Comando.Parameters.AddWithValue("@cve_siniestro", claveSiniestro);
+                    Lector = Comando.ExecuteReader();
+                    if (Lector.Read())
+                    {
+                        valuador = Lector["nombre"].ToString().Trim();
+                    }
+                    Lector.Close();
+                    nuevaConexion.Close();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return valuador;
+        }
+
+        //------------- OBTENER UN TALLER EN PARTICULAR DE ACUERDO A CLAVES PEDIDO & SINIESTRO
+        public string Taller(string clavePedido, string claveSiniestro)
+        {
+            string taller = "";
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("SELECT tal.nombre FROM PEDIDO ped INNER JOIN TALLER tal ON ped.cve_taller = tal.cve_taller WHERE ped.cve_pedido = @cve_pedido AND ped.cve_siniestro = @cve_siniestro", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@cve_pedido", Convert.ToInt32(clavePedido));
+                    Comando.Parameters.AddWithValue("@cve_siniestro", claveSiniestro);
+                    Lector = Comando.ExecuteReader();
+                    if (Lector.Read())
+                    {
+                        taller = Lector["nombre"].ToString().Trim();
+                    }
+                    Lector.Close();
+                    nuevaConexion.Close();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return taller;
+        }
+
+        //------------- OBTENER UN DESTINO EN PARTICULAR DE ACUERDO A CLAVES PEDIDO & SINIESTRO
+        public string Destino(string clavePedido, string claveSiniestro)
+        {
+            string destino = "";
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    //cambiar a cve_destino
+                    Comando = new SqlCommand("SELECT dest.destino FROM PEDIDO ped INNER JOIN DESTINO dest ON ped.destino = dest.cve_destino WHERE ped.cve_pedido = @cve_pedido AND ped.cve_siniestro = @cve_siniestro", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@cve_pedido", Convert.ToInt32(clavePedido));
+                    Comando.Parameters.AddWithValue("@cve_siniestro", claveSiniestro);
+                    Lector = Comando.ExecuteReader();
+                    if (Lector.Read())
+                    {
+                        //cambiar a cve_destino
+                        destino = Lector["destino"].ToString().Trim();
+                    }
+                    Lector.Close();
+                    nuevaConexion.Close();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return destino;
+        }
+
         //-------------INSERTAR DATOS EN VEHICULO
         public void registroVehiculo(string modelo, string anio)
         {
