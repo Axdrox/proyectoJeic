@@ -81,7 +81,7 @@ namespace Refracciones.Forms
         private string anioVehiculo = "";
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            Pedido pedido = new Pedido();
+            Pedido pedido = new Pedido(0);
             try
             {
                 if(txtClaveSiniestro.Text.Trim() == "" || (chbOtroVehiculo.Checked && txtNombreVehiculoNuevo.Text.Trim() == "")){

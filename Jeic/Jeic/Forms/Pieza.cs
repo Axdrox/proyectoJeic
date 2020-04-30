@@ -246,7 +246,6 @@ namespace Refracciones.Forms
         }
 
         string[] datosPieza = new string[15];
-
         private void btnAniadirPieza_Click(object sender, EventArgs e)
         {
             
