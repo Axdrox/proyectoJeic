@@ -12,7 +12,7 @@ namespace Refracciones.Forms
 {
     public partial class Pieza : Form
     {
-        
+
         public Pieza()
         {
             InitializeComponent();
@@ -24,7 +24,7 @@ namespace Refracciones.Forms
             this.Close();
         }
 
-        
+
         /*
         private void obteniendoClaves()
         {
@@ -41,7 +41,7 @@ namespace Refracciones.Forms
 
         private void chbOtroPieza_CheckedChanged(object sender, EventArgs e)
         {
-            if(chbOtroPieza.Checked == true)
+            if (chbOtroPieza.Checked == true)
             {
                 txtPiezaNombre.Visible = true;
             }
@@ -124,7 +124,7 @@ namespace Refracciones.Forms
                 e.Handled = true;
             }
         }
-        
+
         private void Pieza_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (e.CloseReason == CloseReason.UserClosing)
@@ -144,16 +144,18 @@ namespace Refracciones.Forms
 
         private void txtPiezaNombre_Click(object sender, EventArgs e)
         {
-            if (txtPiezaNombre.Text == "Escribe nombre de pieza"){
+            if (txtPiezaNombre.Text == "Escribe nombre de pieza")
+            {
                 txtPiezaNombre.Text = "";
                 txtPiezaNombre.ForeColor = Color.Black;
             }
-                
+
         }
 
         private void txtPortal_Click(object sender, EventArgs e)
         {
-            if (txtPortal.Text == "Escribe nuevo portal"){
+            if (txtPortal.Text == "Escribe nuevo portal")
+            {
                 txtPortal.Text = "";
                 txtPortal.ForeColor = Color.Black;
             }
@@ -161,7 +163,8 @@ namespace Refracciones.Forms
 
         private void txtOrigen_Click(object sender, EventArgs e)
         {
-            if (txtOrigen.Text == "Escribe un nuevo origen"){
+            if (txtOrigen.Text == "Escribe un nuevo origen")
+            {
                 txtOrigen.Text = "";
                 txtOrigen.ForeColor = Color.Black;
             }
@@ -169,7 +172,8 @@ namespace Refracciones.Forms
 
         private void txtProveedor_Click(object sender, EventArgs e)
         {
-            if (txtProveedor.Text == "Escribe un nuevo proveedor"){
+            if (txtProveedor.Text == "Escribe un nuevo proveedor")
+            {
                 txtProveedor.Text = "";
                 txtProveedor.ForeColor = Color.Black;
             }
@@ -246,10 +250,11 @@ namespace Refracciones.Forms
         }
 
         string[] datosPieza = new string[15];
+
         private void btnAniadirPieza_Click(object sender, EventArgs e)
         {
-            
-            if(chbOtroPieza.Checked != true && chbOtroPortal.Checked != true && chbOtroOrigen.Checked != true && chbOtroProveedor.Checked != true)
+
+            if (chbOtroPieza.Checked != true && chbOtroPortal.Checked != true && chbOtroOrigen.Checked != true && chbOtroProveedor.Checked != true)
             {
                 datosPieza[0] = cbPiezaNombre.Text.Trim().ToUpper();
                 datosPieza[1] = cbPortal.Text.Trim().ToUpper();
@@ -301,7 +306,7 @@ namespace Refracciones.Forms
 
         private void cbCostoEnvio_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void cbCostoEnvio_Click(object sender, EventArgs e)

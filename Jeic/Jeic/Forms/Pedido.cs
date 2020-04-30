@@ -15,12 +15,7 @@ namespace Refracciones.Forms
         OperBD operacion = new OperBD();
         DataTable dt;
         //int totalCantidadPiezas = 0;
-
-        //PARA SABER QUÉ COSAS HACER CUANDO SE QUIERA ACTUALIZAR INFORMACIÓN DE UN PEDIDO
-        //int actualizar = 0;
-
-        private int actualizar = 0;
-        public Pedido(int i)
+        public Pedido()
         {
             InitializeComponent();
             dt = new DataTable();
@@ -41,53 +36,28 @@ namespace Refracciones.Forms
             dt.Columns.Add("Entrega en tiempo");
 
             dgvPedido.DataSource = dt;
-        }
 
-        public string textBoxPedido
-        {
-            set { txtClavePedido.Text = value; }
-        }
 
-        public string labelSiniestro
-        {
-            set { lblClaveSiniestro.Text = value; }
         }
 
         private void Pedido_Load(object sender, EventArgs e)
         {
-            //Eleccion eleccion = new Eleccion();
-            if (actualizar == 1)
-            {
-                txtClavePedido.Enabled = false;
-                btnFinalizarPedido.Text = "Actualizar pedido";
-                cbAseguradora.Hide();
-                txtAseguradora.Text = operacion.Cliente(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
-                cbValuador.Hide();
-                txtValuador.Text = operacion.Valuador(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
-                cbTaller.Hide();
-                txtTaller.Text = operacion.Taller(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
-                cbDestino.Hide();
-                txtDestino.Text = operacion.Destino(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
-            }
-            else
-            {
-                lblVehiculoPedido.Hide();
-                lblVehiculo.Hide();
-                lblAnioPedido.Hide();
-                lblAnio.Hide();
-                chbSi.Hide();
-                lblClaveSiniestro.Hide();
-                lblClaveSiniestroPedido.Hide();
-                txtAseguradora.Hide();
-                txtValuador.Hide();
-                txtTaller.Hide();
-                txtDestino.Hide();
-            }
+            lblVehiculoPedido.Hide();
+            lblVehiculo.Hide();
+            lblAnioPedido.Hide();
+            lblAnio.Hide();
+            chbSi.Hide();
+            lblClaveSiniestro.Hide();
+            lblClaveSiniestroPedido.Hide();
+            txtAseguradora.Hide();
+            txtValuador.Hide();
+            txtTaller.Hide();
+            txtDestino.Hide();
         }
 
         private void rdbSi_CheckedChanged(object sender, EventArgs e)
         {
-            if(rdbSi.Checked == true)
+            if (rdbSi.Checked == true)
             {
                 Siniestro siniestro = new Siniestro();
                 DialogResult respuesta = siniestro.ShowDialog();
@@ -151,7 +121,7 @@ namespace Refracciones.Forms
                 txtAseguradora.Hide();
                 cbAseguradora.Show();
             }
-                
+
         }
 
         private void chbOtroValuador_CheckedChanged(object sender, EventArgs e)
@@ -166,7 +136,7 @@ namespace Refracciones.Forms
                 txtValuador.Hide();
                 cbValuador.Show();
             }
-                
+
         }
 
         private void txtClavePedido_KeyPress(object sender, KeyPressEventArgs e)
@@ -253,16 +223,18 @@ namespace Refracciones.Forms
 
         private void txtAseguradora_Click(object sender, EventArgs e)
         {
-            if (txtAseguradora.Text == "Escriba el nombre del cliente"){
+            if (txtAseguradora.Text == "Escriba el nombre del cliente")
+            {
                 txtAseguradora.Text = "";
                 txtAseguradora.ForeColor = Color.Black;
             }
-                
+
         }
 
         private void txtValuador_Click(object sender, EventArgs e)
         {
-            if (txtValuador.Text == "Escribe nombre del valuador"){
+            if (txtValuador.Text == "Escribe nombre del valuador")
+            {
                 txtValuador.Text = "";
                 txtValuador.ForeColor = Color.Black;
             }
@@ -270,11 +242,12 @@ namespace Refracciones.Forms
 
         private void txtTaller_Click(object sender, EventArgs e)
         {
-            if (txtTaller.Text == "Escriba nombre de taller"){
+            if (txtTaller.Text == "Escriba nombre de taller")
+            {
                 txtTaller.Text = "";
                 txtTaller.ForeColor = Color.Black;
             }
-                
+
         }
 
         private void txtDestino_Click(object sender, EventArgs e)
@@ -291,7 +264,7 @@ namespace Refracciones.Forms
             DateTime dt1 = dtpFechaAsignacion.Value.Date;
             DateTime dt2 = dtpFechaPromesa.Value.Date;
             int resta = DateTime.Compare(dt1, dt2);
-            if(resta > 0)
+            if (resta > 0)
             {
                 MessageBox.Show("No es posible elegir esa fecha.", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 dtpFechaPromesa.Text = "";
@@ -301,69 +274,49 @@ namespace Refracciones.Forms
 
         private void btnFinalizarPedido_Click(object sender, EventArgs e)
         {
-            try {
-                    if (txtClavePedido.Text.Trim() == string.Empty)
+            try
             {
-                MessageBox.Show("Favor de añadir la clave del pedido.", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {
-                OperBD operacion = new OperBD();
-                int cantidadTotal = 0;
-                DateTime dtFechaBaja = dtpFechaBaja.Value.Date;
-                DateTime dtFechaAsignacion = dtpFechaAsignacion.Value.Date;
-                DateTime dtFechaPromesa = dtpFechaPromesa.Value.Date;
-
-                operacion.registrarEntrega(dtFechaAsignacion, dtFechaPromesa);
-
-                    foreach (DataGridViewRow row in dgvPedido.Rows)
+                if (txtClavePedido.Text.Trim() == string.Empty)
                 {
-                    cantidadTotal += Convert.ToInt32(row.Cells["Cantidad"].Value);
+                    MessageBox.Show("Favor de añadir la clave del pedido.", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                //MessageBox.Show(Convert.ToInt32(dgvPedido.Rows).ToString());
-                    foreach (DataGridViewRow row in dgvPedido.Rows)
+                else
                 {
-                    
-                            DateTime dtFechaCosto = new DateTime();
-                    //if(row.Cells["Fecha costo"].Value != null || row.Cells["Fecha costo"].Value != DBNull.Value || row.Cells["Fecha costo"].Value.ToString() != string.Empty)
-                            dtFechaCosto = DateTime.Parse(row.Cells["Fecha costo"].Value.ToString());
+                    OperBD operacion = new OperBD();
+                    int cantidadTotal = 0;
+                    DateTime dtFechaBaja = dtpFechaBaja.Value.Date;
+                    DateTime dtFechaAsignacion = dtpFechaAsignacion.Value.Date;
+                    DateTime dtFechaPromesa = dtpFechaPromesa.Value.Date;
 
-                            operacion = new OperBD();
-                            operacion.registrarPedido(
-                                Int32.Parse(txtClavePedido.Text.Trim()), lblClaveSiniestro.Text.Trim(),
-                                Convert.ToString(row.Cells["Pieza"].Value), Convert.ToString(row.Cells["Portal"].Value),
-                                cbTaller.Text.Trim().ToUpper(), Convert.ToString(row.Cells["Origen"].Value).Trim(),
-                                Convert.ToString(row.Cells["Proveedor"].Value), Convert.ToInt32(cbVendedor.Text), dtFechaCosto,
-                                Convert.ToString(row.Cells["Costo sin IVA"].Value), Convert.ToString(row.Cells["Costo neto"].Value),
-                                Convert.ToString(row.Cells["Costo de envío"].Value), Convert.ToString(row.Cells["Precio de venta"].Value),
-                                Convert.ToString(row.Cells["Precio de reparación"].Value), Convert.ToString(row.Cells["Clave de producto"].Value),
-                                Convert.ToString(row.Cells["Número de guía"].Value), cantidadTotal/*Convert.ToInt32(lblCantidadTotal.Text.Trim())*/,
-                                Convert.ToInt32(row.Cells["Días entrega"].Value), Convert.ToString(row.Cells["Entrega en tiempo"].Value),
-                                dtFechaBaja, cbValuador.Text.Trim(), cbDestino.Text.Trim().ToUpper());
+                    operacion.registrarEntrega(dtFechaAsignacion, dtFechaPromesa);
 
 
-                        /*for (int i = 0; i < row.Cells.Count; i++)
-                                {
-                                    if (row.Cells[i].Value == null || row.Cells[i].Value == DBNull.Value || String.IsNullOrWhiteSpace(row.Cells[i].Value.ToString()))
-                                    {
-                                        // here is your message box...
-                                    }
-                                    else
-                                    {
-                                    }
-                                }*/
+                    foreach (DataGridViewRow row in dgvPedido.Rows)
+                    {
+                        //Corregir, es cantidad por pieza
+                        cantidadTotal += Convert.ToInt32(row.Cells["Cantidad"].Value);
+                    }
+                    //MessageBox.Show(Convert.ToInt32(dgvPedido.Rows).ToString());
+                    foreach (DataGridViewRow row in dgvPedido.Rows)
+                    {
 
-                        /*
-                        foreach(DataGridViewCell cell in row.Cells)
-                        {
-                            if (cell.Value == null || cell.Value.Equals(""))
-                            {
-                            }
-                            else
-                            {*/
+                        DateTime dtFechaCosto = new DateTime();
+                        //if(row.Cells["Fecha costo"].Value != null || row.Cells["Fecha costo"].Value != DBNull.Value || row.Cells["Fecha costo"].Value.ToString() != string.Empty)
+                        dtFechaCosto = DateTime.Parse(row.Cells["Fecha costo"].Value.ToString());
 
-                        //}
-                        //}
+                        operacion = new OperBD();
+                        operacion.registrarPedido(
+                            Int32.Parse(txtClavePedido.Text.Trim()), lblClaveSiniestro.Text.Trim(),
+                            Convert.ToString(row.Cells["Pieza"].Value), Convert.ToString(row.Cells["Portal"].Value),
+                            cbTaller.Text.Trim().ToUpper(), Convert.ToString(row.Cells["Origen"].Value).Trim(),
+                            Convert.ToString(row.Cells["Proveedor"].Value), Convert.ToInt32(cbVendedor.Text), dtFechaCosto,
+                            Convert.ToString(row.Cells["Costo sin IVA"].Value), Convert.ToString(row.Cells["Costo neto"].Value),
+                            Convert.ToString(row.Cells["Costo de envío"].Value), Convert.ToString(row.Cells["Precio de venta"].Value),
+                            Convert.ToString(row.Cells["Precio de reparación"].Value), Convert.ToString(row.Cells["Clave de producto"].Value),
+                            Convert.ToString(row.Cells["Número de guía"].Value), cantidadTotal/*Convert.ToInt32(lblCantidadTotal.Text.Trim())*/,
+                            Convert.ToInt32(row.Cells["Días entrega"].Value), Convert.ToString(row.Cells["Entrega en tiempo"].Value),
+                            dtFechaBaja, cbValuador.Text.Trim(), cbDestino.Text.Trim().ToUpper());
+                        this.DialogResult = DialogResult.OK;
                     }
 
                 }
@@ -382,7 +335,7 @@ namespace Refracciones.Forms
             if (respuesta == DialogResult.OK)
             {
                 DataRow row = dt.NewRow();
-                for(int i = 0; i<pieza.datosMandar.Length; i++)
+                for (int i = 0; i < pieza.datosMandar.Length; i++)
                 {
                     row[i] = pieza.datosMandar[i];
                 }
@@ -396,7 +349,7 @@ namespace Refracciones.Forms
 
         private void cbVendedor_Click(object sender, EventArgs e)
         {
-            if(txtClavePedido.Text.Trim() != string.Empty)
+            if (txtClavePedido.Text.Trim() != string.Empty)
             {
                 //Carga los datos registros de vendedores en el combobox
                 cbVendedor.DataSource = operacion.VendedoresRegistrados().Tables[0].DefaultView;
@@ -413,7 +366,7 @@ namespace Refracciones.Forms
             cbAseguradora.DataSource = operacion.AseguradorasRegistradas().Tables[0].DefaultView;
             cbAseguradora.ValueMember = "cve_nombre";
         }
-
+        
         //Hace que el combobox de los valuadores cambie de acuerdo al cliente/aseguradora que se elija
         private void cbAseguradora_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -459,5 +412,7 @@ namespace Refracciones.Forms
         {
             this.DialogResult = DialogResult.Cancel;
         }
+
+        
     }
 }

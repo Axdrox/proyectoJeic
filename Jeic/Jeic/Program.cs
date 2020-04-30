@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Refracciones.Forms;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,8 +17,7 @@ namespace Refracciones
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new InicioSesion());
-            Application.Run(new Forms.Pedido(1));
+            Application.Run(new Busqueda_Devolver());
         }
     }
 }

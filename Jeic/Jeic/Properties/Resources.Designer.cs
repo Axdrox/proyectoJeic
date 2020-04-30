@@ -63,6 +63,16 @@ namespace Refracciones.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap boton_abrir_archivo {
+            get {
+                object obj = ResourceManager.GetObject("boton-abrir-archivo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap usuarioF {
             get {
                 object obj = ResourceManager.GetObject("usuarioF", resourceCulture);

@@ -25,33 +25,18 @@ namespace Refracciones
         //CODIGO
         private void btnEntrar_Click(object sender, EventArgs e)
         {
-            /*OperBD Operacion = new OperBD();
-            if (Operacion.logeo("hec", "12") == 0) {
-                MessageBox.Show("El Bryan y el Alex me la pelan");
-                BusquedaPedidos ped = new BusquedaPedidos();
-                ped.Show();
-                this.Hide();
-            }*/
-            int contador = 0;
-            OperBD master = new OperBD();
-            contador = master.Master_registrado(txtUsuario.Text.Trim(), txtContra.Text.Trim());
-            if (contador != 0)
+            OperBD Operacion = new OperBD();
+            if (Operacion.logeo(txtUsuario.Text.ToUpper(), txtContra.Text) == 1)
             {
-                txtUsuario.Clear();
-                txtContra.Clear();
-                BusquedaPedidos form = new BusquedaPedidos();
-                form.ShowDialog();
-               
+                MessageBox.Show("Bienvenido");
+                Forms.Busqueda_Devolver bus = new Forms.Busqueda_Devolver();
+                bus.ShowDialog();
+                bus.lblUsuario.Text = "Usuario : " + txtUsuario.Text;
             }
             else
             {
-                MessageBox.Show("Contraseña o Usuario incorrectos");
-                txtUsuario.Clear();
-                txtContra.Clear();
+                MessageBox.Show("Usuario y/o contraseña incorrectos");
             }
-
-
-
 
         }
 

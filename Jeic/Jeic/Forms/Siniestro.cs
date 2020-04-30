@@ -42,12 +42,12 @@ namespace Refracciones.Forms
             lblAnioRegistro.Hide();
             lblIngreseNombre.Hide();
             txtNombreVehiculoNuevo.Hide();
-            
+
             //Hace que el DateTimePicker sea un tipo de selección en forma de lista
             //dtpYear.Format = DateTimePickerFormat.Custom;
             //dtpYear.CustomFormat = "yyyy";
             dtpYear.ShowUpDown = true;
-            
+
         }
 
         private void chbOtroVehiculo_CheckedChanged(object sender, EventArgs e)
@@ -81,16 +81,20 @@ namespace Refracciones.Forms
         private string anioVehiculo = "";
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            Pedido pedido = new Pedido(0);
+            Pedido pedido = new Pedido();
             try
             {
-                if(txtClaveSiniestro.Text.Trim() == "" || (chbOtroVehiculo.Checked && txtNombreVehiculoNuevo.Text.Trim() == "")){
+                if (txtClaveSiniestro.Text.Trim() == "" || (chbOtroVehiculo.Checked && txtNombreVehiculoNuevo.Text.Trim() == ""))
+                {
                     MessageBox.Show("Favor de llenar todos los campos.", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                else{
+                else
+                {
                     int i = 0;
-                    if(MessageBox.Show("¿Los datos son correctos?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes){
-                        if (chbOtroVehiculo.Checked){
+                    if (MessageBox.Show("¿Los datos son correctos?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                    {
+                        if (chbOtroVehiculo.Checked)
+                        {
                             operacion.registroVehiculo(txtNombreVehiculoNuevo.Text.Trim().ToUpper(), dtpYear.Text.Trim());
                             i = operacion.registrarSiniestro(txtNombreVehiculoNuevo.Text.Trim().ToUpper(), txtClaveSiniestro.Text.Trim().ToUpper(), txtComentario.Text.Trim());
                             if (i == 1)
@@ -100,9 +104,11 @@ namespace Refracciones.Forms
                                 //this.DialogResult = DialogResult.Cancel;
                             }
                         }
-                        else{
+                        else
+                        {
                             i = operacion.registrarSiniestro(cbVehiculo.Text.Trim(), txtClaveSiniestro.Text.Trim().ToUpper(), txtComentario.Text.Trim());
-                            if (i == 1){
+                            if (i == 1)
+                            {
                                 nombreVehiculo = cbVehiculo.Text.Trim();
                                 anioVehiculo = lblAnio.Text.Trim();
                                 //this.DialogResult = DialogResult.Cancel;
@@ -112,20 +118,24 @@ namespace Refracciones.Forms
                     }
                 }
             }
-            catch (Exception EX){
+            catch (Exception EX)
+            {
                 MessageBox.Show("Error: " + EX.Message);
             }
         }
 
-        public string claveSiniestro{
+        public string claveSiniestro
+        {
             get { return txtClaveSiniestro.Text.Trim().ToUpper(); }
         }
 
-        public string vehiculoSiniestro{
-            get{ return nombreVehiculo; }
+        public string vehiculoSiniestro
+        {
+            get { return nombreVehiculo; }
         }
 
-        public string anioSiniestro{
+        public string anioSiniestro
+        {
             get { return anioVehiculo; }
         }
 

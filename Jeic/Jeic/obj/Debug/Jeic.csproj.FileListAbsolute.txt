@@ -1,3 +1,21 @@
+C:\Users\deada\OneDrive\Escritorio\gitRepos\proyectoJeic\Jeic\Jeic\bin\Debug\Refracciones.exe.config
+C:\Users\deada\OneDrive\Escritorio\gitRepos\proyectoJeic\Jeic\Jeic\bin\Debug\Refracciones.exe
+C:\Users\deada\OneDrive\Escritorio\gitRepos\proyectoJeic\Jeic\Jeic\bin\Debug\Refracciones.pdb
+C:\Users\deada\OneDrive\Escritorio\gitRepos\proyectoJeic\Jeic\Jeic\bin\Debug\Microsoft.IdentityModel.Logging.dll
+C:\Users\deada\OneDrive\Escritorio\gitRepos\proyectoJeic\Jeic\Jeic\bin\Debug\Microsoft.IdentityModel.Protocols.dll
+C:\Users\deada\OneDrive\Escritorio\gitRepos\proyectoJeic\Jeic\Jeic\bin\Debug\Microsoft.IdentityModel.Tokens.dll
+C:\Users\deada\OneDrive\Escritorio\gitRepos\proyectoJeic\Jeic\Jeic\bin\Debug\Microsoft.IdentityModel.Logging.xml
+C:\Users\deada\OneDrive\Escritorio\gitRepos\proyectoJeic\Jeic\Jeic\bin\Debug\Microsoft.IdentityModel.Protocols.xml
+C:\Users\deada\OneDrive\Escritorio\gitRepos\proyectoJeic\Jeic\Jeic\bin\Debug\Microsoft.IdentityModel.Tokens.xml
+C:\Users\deada\OneDrive\Escritorio\gitRepos\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csprojAssemblyReference.cache
+C:\Users\deada\OneDrive\Escritorio\gitRepos\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.BusquedaPedidos.resources
+C:\Users\deada\OneDrive\Escritorio\gitRepos\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.InicioSesion.resources
+C:\Users\deada\OneDrive\Escritorio\gitRepos\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Properties.Resources.resources
+C:\Users\deada\OneDrive\Escritorio\gitRepos\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.GenerateResource.cache
+C:\Users\deada\OneDrive\Escritorio\gitRepos\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.CoreCompileInputs.cache
+C:\Users\deada\OneDrive\Escritorio\gitRepos\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.CopyComplete
+C:\Users\deada\OneDrive\Escritorio\gitRepos\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.exe
+C:\Users\deada\OneDrive\Escritorio\gitRepos\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.pdb
 C:\Users\BuGsBunNy\Desktop\GitHub\proyectoJeic\Jeic\Jeic\bin\Debug\Refracciones.exe.config
 C:\Users\BuGsBunNy\Desktop\GitHub\proyectoJeic\Jeic\Jeic\bin\Debug\Refracciones.exe
 C:\Users\BuGsBunNy\Desktop\GitHub\proyectoJeic\Jeic\Jeic\bin\Debug\Refracciones.pdb
@@ -16,24 +34,136 @@ C:\Users\BuGsBunNy\Desktop\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.C
 C:\Users\BuGsBunNy\Desktop\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.CopyComplete
 C:\Users\BuGsBunNy\Desktop\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.exe
 C:\Users\BuGsBunNy\Desktop\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.pdb
-C:\Users\deada\OneDrive\Escritorio\gitRepos\proyectoJeic\Jeic\Jeic\bin\Debug\Refracciones.exe.config
-C:\Users\deada\OneDrive\Escritorio\gitRepos\proyectoJeic\Jeic\Jeic\bin\Debug\Refracciones.exe
-C:\Users\deada\OneDrive\Escritorio\gitRepos\proyectoJeic\Jeic\Jeic\bin\Debug\Refracciones.pdb
-C:\Users\deada\OneDrive\Escritorio\gitRepos\proyectoJeic\Jeic\Jeic\bin\Debug\Microsoft.IdentityModel.Logging.dll
-C:\Users\deada\OneDrive\Escritorio\gitRepos\proyectoJeic\Jeic\Jeic\bin\Debug\Microsoft.IdentityModel.Protocols.dll
-C:\Users\deada\OneDrive\Escritorio\gitRepos\proyectoJeic\Jeic\Jeic\bin\Debug\Microsoft.IdentityModel.Tokens.dll
-C:\Users\deada\OneDrive\Escritorio\gitRepos\proyectoJeic\Jeic\Jeic\bin\Debug\Microsoft.IdentityModel.Logging.xml
-C:\Users\deada\OneDrive\Escritorio\gitRepos\proyectoJeic\Jeic\Jeic\bin\Debug\Microsoft.IdentityModel.Protocols.xml
-C:\Users\deada\OneDrive\Escritorio\gitRepos\proyectoJeic\Jeic\Jeic\bin\Debug\Microsoft.IdentityModel.Tokens.xml
-C:\Users\deada\OneDrive\Escritorio\gitRepos\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.BusquedaPedidos.resources
-C:\Users\deada\OneDrive\Escritorio\gitRepos\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.InicioSesion.resources
-C:\Users\deada\OneDrive\Escritorio\gitRepos\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Pedido.resources
-C:\Users\deada\OneDrive\Escritorio\gitRepos\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Pieza.resources
-C:\Users\deada\OneDrive\Escritorio\gitRepos\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Siniestro.resources
-C:\Users\deada\OneDrive\Escritorio\gitRepos\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Properties.Resources.resources
-C:\Users\deada\OneDrive\Escritorio\gitRepos\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.GenerateResource.cache
-C:\Users\deada\OneDrive\Escritorio\gitRepos\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.CoreCompileInputs.cache
-C:\Users\deada\OneDrive\Escritorio\gitRepos\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.CopyComplete
-C:\Users\deada\OneDrive\Escritorio\gitRepos\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.exe
-C:\Users\deada\OneDrive\Escritorio\gitRepos\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.pdb
-C:\Users\deada\OneDrive\Escritorio\gitRepos\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csprojAssemblyReference.cache
+C:\Users\BuGsBunNy\Desktop\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.registroFactura.resources
+C:\Users\BuGsBunNy\Desktop\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.registrarRefactura.resources
+C:\Users\BuGsBunNy\Desktop\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Devolucion.resources
+C:\Users\BuGsBunNy\Desktop\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.BusquedaEntrega_Devolucion.resources
+C:\Users\pc\Desktop\GitHub\proyectoJeic\Jeic\Jeic\bin\Debug\Refracciones.exe.config
+C:\Users\pc\Desktop\GitHub\proyectoJeic\Jeic\Jeic\bin\Debug\Refracciones.exe
+C:\Users\pc\Desktop\GitHub\proyectoJeic\Jeic\Jeic\bin\Debug\Refracciones.pdb
+C:\Users\pc\Desktop\GitHub\proyectoJeic\Jeic\Jeic\bin\Debug\Microsoft.IdentityModel.Logging.dll
+C:\Users\pc\Desktop\GitHub\proyectoJeic\Jeic\Jeic\bin\Debug\Microsoft.IdentityModel.Protocols.dll
+C:\Users\pc\Desktop\GitHub\proyectoJeic\Jeic\Jeic\bin\Debug\Microsoft.IdentityModel.Tokens.dll
+C:\Users\pc\Desktop\GitHub\proyectoJeic\Jeic\Jeic\bin\Debug\Microsoft.IdentityModel.Logging.xml
+C:\Users\pc\Desktop\GitHub\proyectoJeic\Jeic\Jeic\bin\Debug\Microsoft.IdentityModel.Protocols.xml
+C:\Users\pc\Desktop\GitHub\proyectoJeic\Jeic\Jeic\bin\Debug\Microsoft.IdentityModel.Tokens.xml
+C:\Users\pc\Desktop\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csprojAssemblyReference.cache
+C:\Users\pc\Desktop\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.BusquedaEntrega_Devolucion.resources
+C:\Users\pc\Desktop\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.BusquedaPedidos.resources
+C:\Users\pc\Desktop\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Devolucion.resources
+C:\Users\pc\Desktop\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.InicioSesion.resources
+C:\Users\pc\Desktop\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.registrarRefactura.resources
+C:\Users\pc\Desktop\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.registroFactura.resources
+C:\Users\pc\Desktop\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Properties.Resources.resources
+C:\Users\pc\Desktop\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.GenerateResource.cache
+C:\Users\pc\Desktop\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.CoreCompileInputs.cache
+C:\Users\pc\Desktop\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.CopyComplete
+C:\Users\pc\Desktop\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.exe
+C:\Users\pc\Desktop\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.pdb
+C:\Users\pc\Desktop\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Busqueda_Devolver.resources
+C:\Users\pc\Desktop\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Eleccion.resources
+C:\Users\BuGsBunNy\Desktop\JEIC\GitHub\proyectoJeic\Jeic\Jeic\bin\Debug\Refracciones.exe.config
+C:\Users\BuGsBunNy\Desktop\JEIC\GitHub\proyectoJeic\Jeic\Jeic\bin\Debug\Refracciones.exe
+C:\Users\BuGsBunNy\Desktop\JEIC\GitHub\proyectoJeic\Jeic\Jeic\bin\Debug\Refracciones.pdb
+C:\Users\BuGsBunNy\Desktop\JEIC\GitHub\proyectoJeic\Jeic\Jeic\bin\Debug\Microsoft.IdentityModel.Logging.dll
+C:\Users\BuGsBunNy\Desktop\JEIC\GitHub\proyectoJeic\Jeic\Jeic\bin\Debug\Microsoft.IdentityModel.Protocols.dll
+C:\Users\BuGsBunNy\Desktop\JEIC\GitHub\proyectoJeic\Jeic\Jeic\bin\Debug\Microsoft.IdentityModel.Tokens.dll
+C:\Users\BuGsBunNy\Desktop\JEIC\GitHub\proyectoJeic\Jeic\Jeic\bin\Debug\Microsoft.IdentityModel.Logging.xml
+C:\Users\BuGsBunNy\Desktop\JEIC\GitHub\proyectoJeic\Jeic\Jeic\bin\Debug\Microsoft.IdentityModel.Protocols.xml
+C:\Users\BuGsBunNy\Desktop\JEIC\GitHub\proyectoJeic\Jeic\Jeic\bin\Debug\Microsoft.IdentityModel.Tokens.xml
+C:\Users\BuGsBunNy\Desktop\JEIC\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Eleccion.resources
+C:\Users\BuGsBunNy\Desktop\JEIC\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Busqueda_Devolver.resources
+C:\Users\BuGsBunNy\Desktop\JEIC\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.BusquedaEntrega_Devolucion.resources
+C:\Users\BuGsBunNy\Desktop\JEIC\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.BusquedaPedidos.resources
+C:\Users\BuGsBunNy\Desktop\JEIC\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Devolucion.resources
+C:\Users\BuGsBunNy\Desktop\JEIC\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.InicioSesion.resources
+C:\Users\BuGsBunNy\Desktop\JEIC\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.registrarRefactura.resources
+C:\Users\BuGsBunNy\Desktop\JEIC\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.registroFactura.resources
+C:\Users\BuGsBunNy\Desktop\JEIC\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Properties.Resources.resources
+C:\Users\BuGsBunNy\Desktop\JEIC\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.GenerateResource.cache
+C:\Users\BuGsBunNy\Desktop\JEIC\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.CoreCompileInputs.cache
+C:\Users\BuGsBunNy\Desktop\JEIC\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.CopyComplete
+C:\Users\BuGsBunNy\Desktop\JEIC\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.exe
+C:\Users\BuGsBunNy\Desktop\JEIC\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.pdb
+C:\Users\BuGsBunNy\Desktop\JEIC\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csprojAssemblyReference.cache
+C:\Users\deada\Downloads\GitHub\proyectoJeic\Jeic\Jeic\bin\Debug\Refracciones.exe.config
+C:\Users\deada\Downloads\GitHub\proyectoJeic\Jeic\Jeic\bin\Debug\Refracciones.exe
+C:\Users\deada\Downloads\GitHub\proyectoJeic\Jeic\Jeic\bin\Debug\Refracciones.pdb
+C:\Users\deada\Downloads\GitHub\proyectoJeic\Jeic\Jeic\bin\Debug\Microsoft.IdentityModel.Logging.dll
+C:\Users\deada\Downloads\GitHub\proyectoJeic\Jeic\Jeic\bin\Debug\Microsoft.IdentityModel.Protocols.dll
+C:\Users\deada\Downloads\GitHub\proyectoJeic\Jeic\Jeic\bin\Debug\Microsoft.IdentityModel.Tokens.dll
+C:\Users\deada\Downloads\GitHub\proyectoJeic\Jeic\Jeic\bin\Debug\Microsoft.IdentityModel.Logging.xml
+C:\Users\deada\Downloads\GitHub\proyectoJeic\Jeic\Jeic\bin\Debug\Microsoft.IdentityModel.Protocols.xml
+C:\Users\deada\Downloads\GitHub\proyectoJeic\Jeic\Jeic\bin\Debug\Microsoft.IdentityModel.Tokens.xml
+C:\Users\deada\Downloads\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csprojAssemblyReference.cache
+C:\Users\deada\Downloads\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Eleccion.resources
+C:\Users\deada\Downloads\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Busqueda_Devolver.resources
+C:\Users\deada\Downloads\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.BusquedaEntrega_Devolucion.resources
+C:\Users\deada\Downloads\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.BusquedaPedidos.resources
+C:\Users\deada\Downloads\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Devolucion.resources
+C:\Users\deada\Downloads\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.InicioSesion.resources
+C:\Users\deada\Downloads\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Pedido.resources
+C:\Users\deada\Downloads\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Pieza.resources
+C:\Users\deada\Downloads\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.registrarRefactura.resources
+C:\Users\deada\Downloads\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.registroFactura.resources
+C:\Users\deada\Downloads\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Siniestro.resources
+C:\Users\deada\Downloads\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Properties.Resources.resources
+C:\Users\deada\Downloads\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.GenerateResource.cache
+C:\Users\deada\Downloads\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.CoreCompileInputs.cache
+C:\Users\deada\Downloads\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.CopyComplete
+C:\Users\deada\Downloads\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.exe
+C:\Users\deada\Downloads\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.pdb
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.0\GitHub\proyectoJeic\Jeic\Jeic\bin\Debug\Refracciones.exe.config
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.0\GitHub\proyectoJeic\Jeic\Jeic\bin\Debug\Refracciones.exe
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.0\GitHub\proyectoJeic\Jeic\Jeic\bin\Debug\Refracciones.pdb
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.0\GitHub\proyectoJeic\Jeic\Jeic\bin\Debug\Microsoft.IdentityModel.Logging.dll
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.0\GitHub\proyectoJeic\Jeic\Jeic\bin\Debug\Microsoft.IdentityModel.Protocols.dll
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.0\GitHub\proyectoJeic\Jeic\Jeic\bin\Debug\Microsoft.IdentityModel.Tokens.dll
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.0\GitHub\proyectoJeic\Jeic\Jeic\bin\Debug\Microsoft.IdentityModel.Logging.xml
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.0\GitHub\proyectoJeic\Jeic\Jeic\bin\Debug\Microsoft.IdentityModel.Protocols.xml
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.0\GitHub\proyectoJeic\Jeic\Jeic\bin\Debug\Microsoft.IdentityModel.Tokens.xml
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.0\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Eleccion.resources
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.0\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Busqueda_Devolver.resources
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.0\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.BusquedaEntrega_Devolucion.resources
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.0\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.BusquedaPedidos.resources
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.0\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Devolucion.resources
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.0\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.InicioSesion.resources
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.0\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Pedido.resources
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.0\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Pieza.resources
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.0\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.registrarRefactura.resources
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.0\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.registroFactura.resources
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.0\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Siniestro.resources
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.0\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Properties.Resources.resources
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.0\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.GenerateResource.cache
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.0\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.CoreCompileInputs.cache
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.0\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.CopyComplete
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.0\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.exe
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.0\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.pdb
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.0\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csprojAssemblyReference.cache
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.1\GitHub\proyectoJeic\Jeic\Jeic\bin\Debug\Refracciones.exe.config
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.1\GitHub\proyectoJeic\Jeic\Jeic\bin\Debug\Refracciones.exe
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.1\GitHub\proyectoJeic\Jeic\Jeic\bin\Debug\Refracciones.pdb
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.1\GitHub\proyectoJeic\Jeic\Jeic\bin\Debug\Microsoft.IdentityModel.Logging.dll
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.1\GitHub\proyectoJeic\Jeic\Jeic\bin\Debug\Microsoft.IdentityModel.Protocols.dll
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.1\GitHub\proyectoJeic\Jeic\Jeic\bin\Debug\Microsoft.IdentityModel.Tokens.dll
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.1\GitHub\proyectoJeic\Jeic\Jeic\bin\Debug\Microsoft.IdentityModel.Logging.xml
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.1\GitHub\proyectoJeic\Jeic\Jeic\bin\Debug\Microsoft.IdentityModel.Protocols.xml
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.1\GitHub\proyectoJeic\Jeic\Jeic\bin\Debug\Microsoft.IdentityModel.Tokens.xml
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.1\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csprojAssemblyReference.cache
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.1\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Eleccion.resources
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.1\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Busqueda_Devolver.resources
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.1\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.BusquedaEntrega_Devolucion.resources
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.1\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.BusquedaPedidos.resources
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.1\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Devolucion.resources
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.1\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.InicioSesion.resources
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.1\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Pedido.resources
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.1\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Pieza.resources
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.1\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.registrarRefactura.resources
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.1\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.registroFactura.resources
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.1\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Siniestro.resources
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.1\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Properties.Resources.resources
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.1\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.GenerateResource.cache
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.1\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.CoreCompileInputs.cache
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.1\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.CopyComplete
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.1\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.exe
+C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.1\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.pdb
