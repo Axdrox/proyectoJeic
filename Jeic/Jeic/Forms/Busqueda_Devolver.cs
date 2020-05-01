@@ -19,7 +19,13 @@ namespace Refracciones.Forms
         public Busqueda_Devolver()
         {
             InitializeComponent();
+        }
 
+        private void Busqueda_Devolver_Load(object sender, EventArgs e)
+        {
+            //DAR FORMATO
+            OperBD llenarDefaultDGV = new OperBD();
+            llenarDefaultDGV.defaultDGV(dvgPedido);
         }
 
         OperBD llenar = new OperBD();
@@ -57,8 +63,6 @@ namespace Refracciones.Forms
             
             //siniestro = dvgPedido.Rows[fila].Cells[0].Value.ToString();
             //pedido = dvgPedido.Rows[fila].Cells[1].Value.ToString();
-
-
         }
 
         
@@ -127,9 +131,6 @@ namespace Refracciones.Forms
 
         private void pictureBox1_DoubleClick(object sender, EventArgs e)
         {
-
-
-
                 OperBD factura = new OperBD();
 
                 string path = AppDomain.CurrentDomain.BaseDirectory;

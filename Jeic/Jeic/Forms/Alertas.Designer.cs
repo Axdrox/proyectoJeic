@@ -40,14 +40,16 @@
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.dgvAlertas);
-            this.splitContainer1.Size = new System.Drawing.Size(645, 380);
-            this.splitContainer1.SplitterDistance = 57;
+            this.splitContainer1.Size = new System.Drawing.Size(872, 160);
+            this.splitContainer1.SplitterDistance = 25;
+            this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 0;
             // 
             // dgvAlertas
@@ -56,17 +58,22 @@
             this.dgvAlertas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAlertas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvAlertas.Location = new System.Drawing.Point(0, 0);
+            this.dgvAlertas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvAlertas.Name = "dgvAlertas";
-            this.dgvAlertas.Size = new System.Drawing.Size(645, 319);
+            this.dgvAlertas.ReadOnly = true;
+            this.dgvAlertas.RowHeadersWidth = 51;
+            this.dgvAlertas.Size = new System.Drawing.Size(872, 130);
             this.dgvAlertas.TabIndex = 0;
             // 
             // Alertas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(645, 380);
+            this.ClientSize = new System.Drawing.Size(872, 160);
             this.Controls.Add(this.splitContainer1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Alertas";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Alertas";
             this.Load += new System.EventHandler(this.Alertas_Load);
             this.splitContainer1.Panel2.ResumeLayout(false);

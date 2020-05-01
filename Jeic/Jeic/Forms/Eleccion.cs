@@ -120,15 +120,10 @@ namespace Refracciones
 
         private void Eleccion_Load(object sender, EventArgs e)
         {
-            
-            MessageBox.Show(dato_1.Text);
-            MessageBox.Show(dato_2.Text);
             cve_factura = oper.Clave_Fact(dato_1.Text, Int32.Parse(dato_2.Text));
-            MessageBox.Show(cve_factura.ToString());
             if(cve_factura != 0)
                 cve_refactura = oper.Clave_Refact(cve_factura);
             
-            MessageBox.Show("cve_refactura: " + cve_refactura.ToString());
             dato_3.Text = cve_factura.ToString();
             if(dato_3.Text != "0")
             {

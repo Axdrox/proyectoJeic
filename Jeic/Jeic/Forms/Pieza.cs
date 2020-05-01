@@ -20,8 +20,8 @@ namespace Refracciones.Forms
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            //this.DialogResult = DialogResult.Cancel;
-            this.Close();
+            this.DialogResult = DialogResult.Cancel;
+            //this.Close();
         }
 
 
@@ -250,7 +250,6 @@ namespace Refracciones.Forms
         }
 
         string[] datosPieza = new string[15];
-
         private void btnAniadirPieza_Click(object sender, EventArgs e)
         {
 
@@ -302,11 +301,6 @@ namespace Refracciones.Forms
             {
                 return datosPieza;
             }
-        }
-
-        private void cbCostoEnvio_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void cbCostoEnvio_Click(object sender, EventArgs e)

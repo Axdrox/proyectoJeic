@@ -160,15 +160,29 @@ namespace Refracciones.Forms
             {
                 if (chbOtraAseguradora.Checked == true)
                 {
+                    cbAseguradora.SelectedIndex = -1;
+                    cbValuador.SelectedIndex = -1;
+                    chbOtroValuador.Enabled = false;
+
+                    chbOtroValuador.Checked = true;
                     txtAseguradora.Hide();
                     cbAseguradora.Show();
                     cbAseguradora.Enabled = true;
+                    cbValuador.Show();
+                    cbValuador.Enabled = true;
                 }
                 else
                 {
                     //else: que el texto se vuelva a escribir y se cambie el color al gris
+                    cbAseguradora.SelectedIndex = -1;
+                    cbValuador.SelectedIndex = -1;
+                    chbOtroValuador.Enabled = true;
+
+                    chbOtroValuador.Checked = false;
                     txtAseguradora.Show();
                     cbAseguradora.Hide();
+                    txtValuador.Show();
+                    cbValuador.Hide();
                 }
             }
             else
@@ -201,6 +215,7 @@ namespace Refracciones.Forms
                 {
                     txtValuador.Show();
                     cbValuador.Hide();
+                    cbValuador.SelectedIndex = -1;
                 }
             }
             else
@@ -214,6 +229,70 @@ namespace Refracciones.Forms
                 {
                     txtValuador.Hide();
                     cbValuador.Show();
+                }
+            }
+        }
+
+        private void chbOtroTaller_CheckedChanged(object sender, EventArgs e)
+        {
+            if(actualizar == 1)
+            {
+                if (chbOtroTaller.Checked == true)
+                {
+                    txtTaller.Hide();
+                    cbTaller.Show();
+                    cbTaller.Enabled = true;
+                }
+                else
+                {
+                    txtTaller.Show();
+                    cbTaller.Hide();
+                    cbTaller.SelectedIndex = -1;
+                }
+            }
+            else
+            {
+                if (chbOtroTaller.Checked == true)
+                {
+                    txtTaller.Show();
+                    cbTaller.Hide();
+                }
+                else
+                {
+                    txtTaller.Hide();
+                    cbTaller.Show();
+                }
+            }
+        }
+
+        private void chbOtroDestino_CheckedChanged(object sender, EventArgs e)
+        {
+            if (actualizar == 1)
+            {
+                if (chbOtroDestino.Checked == true)
+                {
+                    txtDestino.Hide();
+                    cbDestino.Show();
+                    cbDestino.Enabled = true;
+                }
+                else
+                {
+                    txtDestino.Show();
+                    cbDestino.Hide();
+                    cbDestino.SelectedIndex = -1;
+                }
+            }
+            else
+            {
+                if (chbOtroDestino.Checked == true)
+                {
+                    txtDestino.Show();
+                    cbDestino.Hide();
+                }
+                else
+                {
+                    txtDestino.Hide();
+                    cbDestino.Show();
                 }
             }
         }
@@ -242,34 +321,6 @@ namespace Refracciones.Forms
             dtpFechaPromesa.Enabled = true;
             dtpFechaBaja.Enabled = true;
             btnFinalizarPedido.Enabled = true;
-        }
-
-        private void chbOtroTaller_CheckedChanged(object sender, EventArgs e)
-        {
-            if (chbOtroTaller.Checked == true)
-            {
-                txtTaller.Show();
-                cbTaller.Hide();
-            }
-            else
-            {
-                txtTaller.Hide();
-                cbTaller.Show();
-            }
-        }
-
-        private void chbOtroDestino_CheckedChanged(object sender, EventArgs e)
-        {
-            if (chbOtroDestino.Checked == true)
-            {
-                txtDestino.Show();
-                cbDestino.Hide();
-            }
-            else
-            {
-                txtDestino.Hide();
-                cbDestino.Show();
-            }
         }
 
         private void txtClavePedido_Click(object sender, EventArgs e)

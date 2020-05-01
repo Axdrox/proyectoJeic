@@ -43,7 +43,7 @@
             // 
             this.btnModificarDatosPedido.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModificarDatosPedido.Location = new System.Drawing.Point(16, 59);
-            this.btnModificarDatosPedido.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnModificarDatosPedido.Margin = new System.Windows.Forms.Padding(4);
             this.btnModificarDatosPedido.Name = "btnModificarDatosPedido";
             this.btnModificarDatosPedido.Size = new System.Drawing.Size(207, 49);
             this.btnModificarDatosPedido.TabIndex = 0;
@@ -55,7 +55,7 @@
             // 
             this.btnFactura.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFactura.Location = new System.Drawing.Point(16, 116);
-            this.btnFactura.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnFactura.Margin = new System.Windows.Forms.Padding(4);
             this.btnFactura.Name = "btnFactura";
             this.btnFactura.Size = new System.Drawing.Size(207, 43);
             this.btnFactura.TabIndex = 1;
@@ -67,7 +67,7 @@
             // 
             this.btnDevolucionEntrega.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDevolucionEntrega.Location = new System.Drawing.Point(16, 220);
-            this.btnDevolucionEntrega.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDevolucionEntrega.Margin = new System.Windows.Forms.Padding(4);
             this.btnDevolucionEntrega.Name = "btnDevolucionEntrega";
             this.btnDevolucionEntrega.Size = new System.Drawing.Size(207, 54);
             this.btnDevolucionEntrega.TabIndex = 2;
@@ -90,7 +90,7 @@
             // 
             this.btnRefactura.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRefactura.Location = new System.Drawing.Point(16, 166);
-            this.btnRefactura.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRefactura.Margin = new System.Windows.Forms.Padding(4);
             this.btnRefactura.Name = "btnRefactura";
             this.btnRefactura.Size = new System.Drawing.Size(207, 47);
             this.btnRefactura.TabIndex = 4;
@@ -102,7 +102,7 @@
             // 
             this.button1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(16, 284);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(207, 54);
             this.button1.TabIndex = 5;
@@ -154,8 +154,9 @@
             this.Controls.Add(this.btnDevolucionEntrega);
             this.Controls.Add(this.btnFactura);
             this.Controls.Add(this.btnModificarDatosPedido);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Eleccion";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Eleccion";
             this.Load += new System.EventHandler(this.Eleccion_Load);
             this.ResumeLayout(false);

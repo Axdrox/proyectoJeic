@@ -501,7 +501,6 @@
             this.cbCostoEnvio.Name = "cbCostoEnvio";
             this.cbCostoEnvio.Size = new System.Drawing.Size(121, 24);
             this.cbCostoEnvio.TabIndex = 46;
-            this.cbCostoEnvio.SelectedIndexChanged += new System.EventHandler(this.cbCostoEnvio_SelectedIndexChanged);
             this.cbCostoEnvio.Click += new System.EventHandler(this.cbCostoEnvio_Click);
             // 
             // Pieza

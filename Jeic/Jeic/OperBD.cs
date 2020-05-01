@@ -760,6 +760,27 @@ namespace Refracciones
             }
         }
         //-----------------------------------------------------------------------------------------------------------------
+        //---------------------------LLENAR DATOS EN DGV POR DEFAULT--------------------
+        public void defaultDGV(DataGridView dgv)
+        {
+            //SELECT TOP 10 * FROM PEDIDO
+            try
+            {
+                using (SqlConnection nuevacon = Conexion.conexion())
+                {
+                    da = new SqlDataAdapter(string.Format("SELECT TOP 10 * FROM PEDIDO"), nuevacon);
+                    nuevacon.Open();
+                    dt = new DataTable();
+                    da.Fill(dt);
+                    dgv.DataSource = dt;
+                    nuevacon.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
         //--------------------------------------------------------------------------------------------------------
 
         //---------------------------OBTENER CLAVE DE FACTURA-------------------
