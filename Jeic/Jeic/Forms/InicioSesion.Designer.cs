@@ -81,6 +81,7 @@
             this.txtContra.Size = new System.Drawing.Size(117, 20);
             this.txtContra.TabIndex = 5;
             this.txtContra.UseSystemPasswordChar = true;
+            this.txtContra.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtContra_KeyPress);
             // 
             // pictureBox1
             // 

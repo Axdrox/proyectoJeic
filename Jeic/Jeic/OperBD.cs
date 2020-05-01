@@ -848,6 +848,23 @@ namespace Refracciones
             }
             return dias_espera;
         }
+        //---------------------------TABLA ALERTAS--------------------
+        public DataTable Alertas(DateTime fecha_sys)
+        {
+            dt = new DataTable();
+            using (SqlConnection nuevaConexion = Conexion.conexion())
+            {
+                nuevaConexion.Open();
+                Comando = new SqlCommand("SELECT ped.cve_siniestro AS Siniestro, ped.cve_pedido AS Pedido, fact.cve_factura AS Factura, fact.fact_sinIVA AS 'Factura sin IVA', fact.fact_neto AS 'Factura Neto', fact.fecha_pago AS 'Fecha de Pago' FROM PEDIDO ped INNER JOIN FACTURA fact ON ped.cve_factura = fact.cve_factura WHERE DATEDIFF (DAY,@fecha_sys,fact.fecha_pago) < 7", nuevaConexion);
+                Comando.Parameters.Add("@fecha_sys",SqlDbType.Date);
+                Comando.Parameters["@fecha_sys"].Value = fecha_sys;
+                da = new SqlDataAdapter(Comando);
+                da.Fill(dt);
+                nuevaConexion.Close();
+            }
+
+            return dt;
+        }
         //---------------------ALEX--------------------------------------------------------------------
         //---------------- VEHICULOS-REGISTRADOS
         public DataSet VehiculosRegistrados()

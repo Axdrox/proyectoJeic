@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Refracciones.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -28,10 +29,14 @@ namespace Refracciones
             OperBD Operacion = new OperBD();
             if (Operacion.logeo(txtUsuario.Text.ToUpper(), txtContra.Text) == 1)
             {
+                Alertas alert = new Alertas();
                 MessageBox.Show("Bienvenido");
                 Forms.Busqueda_Devolver bus = new Forms.Busqueda_Devolver();
-                bus.ShowDialog();
                 bus.lblUsuario.Text = "Usuario : " + txtUsuario.Text;
+                bus.Show();
+                alert.Show();
+
+                
             }
             else
             {
@@ -40,5 +45,26 @@ namespace Refracciones
 
         }
 
+        private void txtContra_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                OperBD Operacion = new OperBD();
+                if (Operacion.logeo(txtUsuario.Text.ToUpper(), txtContra.Text) == 1)
+                {
+                    Alertas alert = new Alertas();
+                    MessageBox.Show("Bienvenido");
+                    Forms.Busqueda_Devolver bus = new Forms.Busqueda_Devolver();
+                    bus.Show();
+                    alert.Show();
+
+                    bus.lblUsuario.Text = "Usuario : " + txtUsuario.Text;
+                }
+                else
+                {
+                    MessageBox.Show("Usuario y/o contraseña incorrectos");
+                }
+            }
+        }
     }
 }
