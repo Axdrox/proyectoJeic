@@ -59,14 +59,31 @@ namespace Refracciones.Forms
             {
                 txtClavePedido.Enabled = false;
                 btnFinalizarPedido.Text = "Actualizar pedido";
+
+
+                chbOtraAseguradora.Enabled = true;
+                chbOtraAseguradora.Text = "Modificar";
                 cbAseguradora.Hide();
                 txtAseguradora.Text = operacion.Cliente(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
+                txtAseguradora.Enabled = false;
+
+                chbOtroValuador.Enabled = true;
+                chbOtroValuador.Text = "Modificar";
                 cbValuador.Hide();
                 txtValuador.Text = operacion.Valuador(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
+                txtValuador.Enabled = false;
+
+                chbOtroTaller.Enabled = true;
+                chbOtroTaller.Text = "Modificar";
                 cbTaller.Hide();
                 txtTaller.Text = operacion.Taller(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
+                txtTaller.Enabled = false;
+
+                chbOtroDestino.Enabled = true;
+                chbOtroDestino.Text = "Modificar";
                 cbDestino.Hide();
                 txtDestino.Text = operacion.Destino(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
+                txtDestino.Enabled = false;
             }
             else
             {
@@ -139,33 +156,66 @@ namespace Refracciones.Forms
 
         private void chbOtraAseguradora_CheckedChanged(object sender, EventArgs e)
         {
-            if (chbOtraAseguradora.Checked == true)
+            if(actualizar == 1)
             {
-                txtAseguradora.Show();
-                cbAseguradora.Hide();
+                if (chbOtraAseguradora.Checked == true)
+                {
+                    txtAseguradora.Hide();
+                    cbAseguradora.Show();
+                    cbAseguradora.Enabled = true;
+                }
+                else
+                {
+                    //else: que el texto se vuelva a escribir y se cambie el color al gris
+                    txtAseguradora.Show();
+                    cbAseguradora.Hide();
+                }
             }
             else
             {
-                //else: que el texto se vuelva a escribir y se cambie el color al gris
-                txtAseguradora.Hide();
-                cbAseguradora.Show();
+                if (chbOtraAseguradora.Checked == true)
+                {
+                    txtAseguradora.Show();
+                    cbAseguradora.Hide();
+                }
+                else
+                {
+                    //else: que el texto se vuelva a escribir y se cambie el color al gris
+                    txtAseguradora.Hide();
+                    cbAseguradora.Show();
+                }
             }
-
         }
 
         private void chbOtroValuador_CheckedChanged(object sender, EventArgs e)
         {
-            if (chbOtroValuador.Checked == true)
+            if(actualizar == 1)
             {
-                txtValuador.Show();
-                cbValuador.Hide();
+                if (chbOtroValuador.Checked == true)
+                {
+                    txtValuador.Hide();
+                    cbValuador.Show();
+                    cbValuador.Enabled = true;
+                }
+                else
+                {
+                    txtValuador.Show();
+                    cbValuador.Hide();
+                }
             }
             else
             {
-                txtValuador.Hide();
-                cbValuador.Show();
+                if (chbOtroValuador.Checked == true)
+                {
+                    txtValuador.Show();
+                    cbValuador.Hide();
+                }
+                else
+                {
+                    txtValuador.Hide();
+                    cbValuador.Show();
+                }
             }
-
         }
 
         private void txtClavePedido_KeyPress(object sender, KeyPressEventArgs e)
@@ -402,13 +452,26 @@ namespace Refracciones.Forms
             //Carga los datos registros de valuadores en el combobox
             cbValuador.DataSource = operacion.ValuadoresRegistrados(cbAseguradora.Text.Trim()).Tables[0].DefaultView;
             cbValuador.ValueMember = "nombre";
+            if (actualizar == 1 && chbOtroValuador.Checked == true && chbOtroValuador.Text == "Modificar")
+            {
+               
+            }
         }
 
         private void cbValuador_Click(object sender, EventArgs e)
         {
             //Carga los datos registros de valuadores en el combobox
-            cbValuador.DataSource = operacion.ValuadoresRegistrados(cbAseguradora.Text.Trim()).Tables[0].DefaultView;
-            cbValuador.ValueMember = "nombre";
+            
+            if (actualizar == 1 && chbOtroValuador.Checked == true && chbOtroValuador.Text == "Modificar" && chbOtraAseguradora.Checked == false)
+            {
+                cbValuador.DataSource = operacion.ValuadoresRegistrados(txtAseguradora.Text.Trim()).Tables[0].DefaultView;
+                cbValuador.ValueMember = "nombre";
+            }
+            else
+            {
+                cbValuador.DataSource = operacion.ValuadoresRegistrados(cbAseguradora.Text.Trim()).Tables[0].DefaultView;
+                cbValuador.ValueMember = "nombre";
+            }
         }
 
         private void cbTaller_Click(object sender, EventArgs e)
