@@ -1272,6 +1272,88 @@ namespace Refracciones
             return destino;
         }
 
+        //-------------OBTENER LA FECHA DE ASIGNACION A PARTIR DE LAS CLAVES PEDIDO Y SINIESTRO
+        public string fechaAsignacion(string clavePedido, string claveSiniestro)
+        {
+            string fechaAsignacion = "";
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("SELECT ent.fecha_asignacion FROM PEDIDO ped INNER JOIN ENTREGA ent ON ped.cve_entrega = ent.cve_entrega WHERE ped.cve_pedido = @cve_pedido AND ped.cve_siniestro = @cve_siniestro", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@cve_pedido", Convert.ToInt32(clavePedido));
+                    Comando.Parameters.AddWithValue("@cve_siniestro", claveSiniestro);
+                    Lector = Comando.ExecuteReader();
+                    if (Lector.Read())
+                    {
+                        fechaAsignacion = Lector["fecha_asignacion"].ToString().Trim();
+                    }
+                    Lector.Close();
+                    nuevaConexion.Close();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return fechaAsignacion;
+        }
+
+        //-------------OBTENER LA FECHA PROMESA A PARTIR DE LAS CLAVES PEDIDO Y SINIESTRO
+        public string fechaPromesa(string clavePedido, string claveSiniestro)
+        {
+            string fechaPromesa = "";
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("SELECT ent.fecha_promesa FROM PEDIDO ped INNER JOIN ENTREGA ent ON ped.cve_entrega = ent.cve_entrega WHERE ped.cve_pedido = @cve_pedido AND ped.cve_siniestro = @cve_siniestro", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@cve_pedido", Convert.ToInt32(clavePedido));
+                    Comando.Parameters.AddWithValue("@cve_siniestro", claveSiniestro);
+                    Lector = Comando.ExecuteReader();
+                    if (Lector.Read())
+                    {
+                        fechaPromesa = Lector["fecha_promesa"].ToString().Trim();
+                    }
+                    Lector.Close();
+                    nuevaConexion.Close();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return fechaPromesa;
+        }
+
+        public string fechaBaja(string clavePedido, string claveSiniestro)
+        {
+            string fechaBaja = "";
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("SELECT fecha_baja FROM PEDIDO WHERE cve_pedido = @cve_pedido AND cve_siniestro = @cve_siniestro", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@cve_pedido", Convert.ToInt32(clavePedido));
+                    Comando.Parameters.AddWithValue("@cve_siniestro", claveSiniestro);
+                    Lector = Comando.ExecuteReader();
+                    if (Lector.Read())
+                    {
+                        fechaBaja = Lector["fecha_baja"].ToString().Trim();
+                    }
+                    Lector.Close();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return fechaBaja;
+        }
+
         //-------------INSERTAR DATOS EN VEHICULO
         public void registroVehiculo(string modelo, string anio)
         {

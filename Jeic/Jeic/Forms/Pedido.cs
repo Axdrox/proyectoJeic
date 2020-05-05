@@ -84,6 +84,15 @@ namespace Refracciones.Forms
                 cbDestino.Hide();
                 txtDestino.Text = operacion.Destino(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
                 txtDestino.Enabled = false;
+
+                chbModificarFechaAsignacion.Visible = true;
+                dtpFechaAsignacion.Text = operacion.fechaAsignacion(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
+
+                chbModificarFechaPromesa.Visible = true;
+                dtpFechaPromesa.Text = operacion.fechaPromesa(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
+
+                chbModificarFechaBaja.Visible = true;
+                dtpFechaBaja.Text = operacion.fechaBaja(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
             }
             else
             {
@@ -394,7 +403,15 @@ namespace Refracciones.Forms
             DateTime dt1 = dtpFechaAsignacion.Value.Date;
             DateTime dt2 = dtpFechaPromesa.Value.Date;
             int resta = DateTime.Compare(dt1, dt2);
-            if (resta > 0)
+            if(actualizar == 1)
+            {
+                if (resta > 0)
+                {
+                    MessageBox.Show("No es posible elegir esa fecha.", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    dtpFechaPromesa.Text = dtpFechaPromesa.Text = operacion.fechaAsignacion(txtClavePedido.Text, lblClaveSiniestro.Text);
+                }
+            }
+            else
             {
                 MessageBox.Show("No es posible elegir esa fecha.", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 dtpFechaPromesa.Text = "";
@@ -556,6 +573,26 @@ namespace Refracciones.Forms
             this.DialogResult = DialogResult.Cancel;
         }
 
-        
+        private void chbModificarFechaAsignacion_CheckedChanged(object sender, EventArgs e)
+        {
+            if(chbModificarFechaAsignacion.Checked == true)
+                dtpFechaAsignacion.Enabled = true;
+            else
+            {
+                dtpFechaAsignacion.Text = operacion.fechaAsignacion(txtClavePedido.Text, lblClaveSiniestro.Text);
+                dtpFechaAsignacion.Enabled = false;
+            }
+        }
+
+        private void chbModificarFechaPromesa_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chbModificarFechaPromesa.Checked == true)
+                dtpFechaPromesa.Enabled = true;
+            else
+            {
+                dtpFechaPromesa.Text = operacion.fechaAsignacion(txtClavePedido.Text, lblClaveSiniestro.Text);
+                dtpFechaPromesa.Enabled = false;
+            }
+        }
     }
 }
