@@ -1,29 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace Refracciones.Forms
+﻿namespace Refracciones.Forms
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Data;
+    using System.Drawing;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Windows.Forms;
+
+    /// <summary>
+    /// Defines the <see cref="Pieza" />.
+    /// </summary>
     public partial class Pieza : Form
     {
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Pieza"/> class.
+        /// </summary>
         public Pieza()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// The btnCancelar_Click.
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/>.</param>
+        /// <param name="e">The e<see cref="EventArgs"/>.</param>
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
-            //this.Close();
         }
-
 
         /*
         private void obteniendoClaves()
@@ -31,7 +39,11 @@ namespace Refracciones.Forms
             
         }
         */
-
+        /// <summary>
+        /// The cbPiezaNombre_Click.
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/>.</param>
+        /// <param name="e">The e<see cref="EventArgs"/>.</param>
         private void cbPiezaNombre_Click(object sender, EventArgs e)
         {
             OperBD operacion = new OperBD();
@@ -39,6 +51,11 @@ namespace Refracciones.Forms
             cbPiezaNombre.ValueMember = "nombre";
         }
 
+        /// <summary>
+        /// The chbOtroPieza_CheckedChanged.
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/>.</param>
+        /// <param name="e">The e<see cref="EventArgs"/>.</param>
         private void chbOtroPieza_CheckedChanged(object sender, EventArgs e)
         {
             if (chbOtroPieza.Checked == true)
@@ -51,6 +68,11 @@ namespace Refracciones.Forms
             }
         }
 
+        /// <summary>
+        /// The cbPortal_Click.
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/>.</param>
+        /// <param name="e">The e<see cref="EventArgs"/>.</param>
         private void cbPortal_Click(object sender, EventArgs e)
         {
             OperBD operacion = new OperBD();
@@ -58,6 +80,11 @@ namespace Refracciones.Forms
             cbPortal.ValueMember = "nombre";
         }
 
+        /// <summary>
+        /// The chbOtroPortal_CheckedChanged.
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/>.</param>
+        /// <param name="e">The e<see cref="EventArgs"/>.</param>
         private void chbOtroPortal_CheckedChanged(object sender, EventArgs e)
         {
             if (chbOtroPortal.Checked == true)
@@ -70,6 +97,11 @@ namespace Refracciones.Forms
             }
         }
 
+        /// <summary>
+        /// The cbOrigen_Click.
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/>.</param>
+        /// <param name="e">The e<see cref="EventArgs"/>.</param>
         private void cbOrigen_Click(object sender, EventArgs e)
         {
             OperBD operacion = new OperBD();
@@ -77,6 +109,11 @@ namespace Refracciones.Forms
             cbOrigen.ValueMember = "origen";
         }
 
+        /// <summary>
+        /// The chbOtroOrigen_CheckedChanged.
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/>.</param>
+        /// <param name="e">The e<see cref="EventArgs"/>.</param>
         private void chbOtroOrigen_CheckedChanged(object sender, EventArgs e)
         {
             if (chbOtroOrigen.Checked == true)
@@ -89,6 +126,11 @@ namespace Refracciones.Forms
             }
         }
 
+        /// <summary>
+        /// The cbProveedores_Click.
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/>.</param>
+        /// <param name="e">The e<see cref="EventArgs"/>.</param>
         private void cbProveedores_Click(object sender, EventArgs e)
         {
             OperBD operacion = new OperBD();
@@ -96,6 +138,11 @@ namespace Refracciones.Forms
             cbProveedores.ValueMember = "nombre";
         }
 
+        /// <summary>
+        /// The chbOtroProveedor_CheckedChanged.
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/>.</param>
+        /// <param name="e">The e<see cref="EventArgs"/>.</param>
         private void chbOtroProveedor_CheckedChanged(object sender, EventArgs e)
         {
             if (chbOtroProveedor.Checked == true)
@@ -108,15 +155,24 @@ namespace Refracciones.Forms
             }
         }
 
+        /// <summary>
+        /// The txtCantidad_KeyPress.
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/>.</param>
+        /// <param name="e">The e<see cref="KeyPressEventArgs"/>.</param>
         private void txtCantidad_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
             }
-            //txtCantidad.ForeColor = Color.Black;
         }
 
+        /// <summary>
+        /// The txtDiasEntrega_KeyPress.
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/>.</param>
+        /// <param name="e">The e<see cref="KeyPressEventArgs"/>.</param>
         private void txtDiasEntrega_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
@@ -125,6 +181,11 @@ namespace Refracciones.Forms
             }
         }
 
+        /// <summary>
+        /// The Pieza_FormClosing.
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/>.</param>
+        /// <param name="e">The e<see cref="FormClosingEventArgs"/>.</param>
         private void Pieza_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (e.CloseReason == CloseReason.UserClosing)
@@ -142,6 +203,11 @@ namespace Refracciones.Forms
             }
         }
 
+        /// <summary>
+        /// The txtPiezaNombre_Click.
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/>.</param>
+        /// <param name="e">The e<see cref="EventArgs"/>.</param>
         private void txtPiezaNombre_Click(object sender, EventArgs e)
         {
             if (txtPiezaNombre.Text == "Escribe nombre de pieza")
@@ -149,9 +215,13 @@ namespace Refracciones.Forms
                 txtPiezaNombre.Text = "";
                 txtPiezaNombre.ForeColor = Color.Black;
             }
-
         }
 
+        /// <summary>
+        /// The txtPortal_Click.
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/>.</param>
+        /// <param name="e">The e<see cref="EventArgs"/>.</param>
         private void txtPortal_Click(object sender, EventArgs e)
         {
             if (txtPortal.Text == "Escribe nuevo portal")
@@ -161,6 +231,11 @@ namespace Refracciones.Forms
             }
         }
 
+        /// <summary>
+        /// The txtOrigen_Click.
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/>.</param>
+        /// <param name="e">The e<see cref="EventArgs"/>.</param>
         private void txtOrigen_Click(object sender, EventArgs e)
         {
             if (txtOrigen.Text == "Escribe un nuevo origen")
@@ -170,6 +245,11 @@ namespace Refracciones.Forms
             }
         }
 
+        /// <summary>
+        /// The txtProveedor_Click.
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/>.</param>
+        /// <param name="e">The e<see cref="EventArgs"/>.</param>
         private void txtProveedor_Click(object sender, EventArgs e)
         {
             if (txtProveedor.Text == "Escribe un nuevo proveedor")
@@ -179,6 +259,11 @@ namespace Refracciones.Forms
             }
         }
 
+        /// <summary>
+        /// The txtCostoSinIVA_KeyPress.
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/>.</param>
+        /// <param name="e">The e<see cref="KeyPressEventArgs"/>.</param>
         private void txtCostoSinIVA_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
@@ -193,6 +278,11 @@ namespace Refracciones.Forms
             }
         }
 
+        /// <summary>
+        /// The txtCostoNeto_KeyPress.
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/>.</param>
+        /// <param name="e">The e<see cref="KeyPressEventArgs"/>.</param>
         private void txtCostoNeto_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
@@ -207,6 +297,11 @@ namespace Refracciones.Forms
             }
         }
 
+        /// <summary>
+        /// The txtCostoEnvio_KeyPress.
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/>.</param>
+        /// <param name="e">The e<see cref="KeyPressEventArgs"/>.</param>
         private void txtCostoEnvio_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
@@ -221,6 +316,11 @@ namespace Refracciones.Forms
             }
         }
 
+        /// <summary>
+        /// The txtPrecioVenta_KeyPress.
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/>.</param>
+        /// <param name="e">The e<see cref="KeyPressEventArgs"/>.</param>
         private void txtPrecioVenta_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
@@ -235,6 +335,11 @@ namespace Refracciones.Forms
             }
         }
 
+        /// <summary>
+        /// The txtPrecioReparacion_KeyPress.
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/>.</param>
+        /// <param name="e">The e<see cref="KeyPressEventArgs"/>.</param>
         private void txtPrecioReparacion_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
@@ -249,7 +354,16 @@ namespace Refracciones.Forms
             }
         }
 
-        string[] datosPieza = new string[13];
+        /// <summary>
+        /// Defines the datosPieza.
+        /// </summary>
+        internal string[] datosPieza = new string[13];
+
+        /// <summary>
+        /// The btnAniadirPieza_Click.
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/>.</param>
+        /// <param name="e">The e<see cref="EventArgs"/>.</param>
         private void btnAniadirPieza_Click(object sender, EventArgs e)
         {
             OperBD operacion = new OperBD();
@@ -371,10 +485,25 @@ namespace Refracciones.Forms
 
             if (modificacion == j)
             {
+                if(chbOtroPieza.Checked == true)
+                    operacion.registrarPieza(txtPiezaNombre.Text.Trim().ToUpper());
+
+                if (chbOtroPortal.Checked == true)
+                    operacion.registrarPortal(txtPortal.Text.Trim());
+
+                if (chbOtroOrigen.Checked == true)
+                    operacion.registrarOrigen(txtOrigen.Text.Trim().ToUpper());
+
+                if (chbOtroProveedor.Checked == true)
+                    operacion.registrarProveedor(txtProveedor.Text.Trim().ToUpper());
+
                 this.Close();
             }
         }
 
+        /// <summary>
+        /// Gets the datosMandar.
+        /// </summary>
         public string[] datosMandar
         {
             get
@@ -383,6 +512,11 @@ namespace Refracciones.Forms
             }
         }
 
+        /// <summary>
+        /// The cbCostoEnvio_Click.
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/>.</param>
+        /// <param name="e">The e<see cref="EventArgs"/>.</param>
         private void cbCostoEnvio_Click(object sender, EventArgs e)
         {
             OperBD operacion = new OperBD();
@@ -390,6 +524,11 @@ namespace Refracciones.Forms
             cbCostoEnvio.ValueMember = "costo";
         }
 
+        /// <summary>
+        /// The txtCostoSinIVA_Leave.
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/>.</param>
+        /// <param name="e">The e<see cref="EventArgs"/>.</param>
         private void txtCostoSinIVA_Leave(object sender, EventArgs e)
         {
             if (txtCostoSinIVA.Text != string.Empty)

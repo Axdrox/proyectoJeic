@@ -496,7 +496,6 @@ namespace Refracciones.Forms
                     //MessageBox.Show(Convert.ToInt32(dgvPedido.Rows).ToString());
                     foreach (DataGridViewRow row in dgvPedido.Rows)
                     {
-
                         DateTime dtFechaCosto = new DateTime();
                         //if(row.Cells["Fecha costo"].Value != null || row.Cells["Fecha costo"].Value != DBNull.Value || row.Cells["Fecha costo"].Value.ToString() != string.Empty)
                         dtFechaCosto = DateTime.Parse(row.Cells["Fecha costo"].Value.ToString());

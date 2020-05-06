@@ -222,3 +222,4 @@ C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.
 C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.CopyComplete
 C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.exe
 C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.pdb
+C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csprojAssemblyReference.cache
