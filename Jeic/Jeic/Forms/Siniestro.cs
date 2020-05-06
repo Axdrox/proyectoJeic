@@ -19,16 +19,6 @@ namespace Refracciones.Forms
             InitializeComponent();
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.Cancel;
-        }
-
-        private void cbVehiculo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            lblAnio.Text = operacion.anioVehiculo(cbVehiculo.Text.Trim());
-        }
-
         private void Siniestro_Load(object sender, EventArgs e)
         {
             //Carga los datos de los modelos de vehículos en el combobox
@@ -50,9 +40,19 @@ namespace Refracciones.Forms
 
         }
 
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+        }
+
+        private void cbVehiculo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lblAnio.Text = operacion.anioVehiculo(cbVehiculo.Text.Trim());
+        }
+
         private void chbOtroVehiculo_CheckedChanged(object sender, EventArgs e)
         {
-            if (chbOtroVehiculo.Checked)
+            if (chbOtroVehiculo.Checked == true)
             {
                 lblIngreseNombre.Show();
                 txtNombreVehiculoNuevo.Show();
@@ -93,28 +93,37 @@ namespace Refracciones.Forms
                     int i = 0;
                     if (MessageBox.Show("¿Los datos son correctos?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                     {
-                        if (chbOtroVehiculo.Checked)
+                        if (chbOtroVehiculo.Checked == true)
                         {
-                            operacion.registroVehiculo(txtNombreVehiculoNuevo.Text.Trim().ToUpper(), dtpYear.Text.Trim());
-                            i = operacion.registrarSiniestro(txtNombreVehiculoNuevo.Text.Trim().ToUpper(), txtClaveSiniestro.Text.Trim().ToUpper(), txtComentario.Text.Trim());
-                            if (i == 1)
+                            if (operacion.existeVehiculo(txtNombreVehiculoNuevo.Text.Trim().ToUpper(), anioVehiculo = dtpYear.Text.Trim()) == "")
                             {
                                 nombreVehiculo = txtNombreVehiculoNuevo.Text.Trim().ToUpper();
                                 anioVehiculo = dtpYear.Text.Trim();
-                                //this.DialogResult = DialogResult.Cancel;
+                                this.Close();
                             }
+                            else
+                            {
+                                lblIngreseNombre.Hide();
+                                txtNombreVehiculoNuevo.Hide();
+                                txtNombreVehiculoNuevo.Clear();
+                                dtpYear.Hide();
+                                dtpYear.Text = "";
+                                lblAnioRegistro.Hide();
+                                lblAnio.Show();
+                                lblAnioTexto.Show();
+                                lblVehiculoText.Show();
+                                cbVehiculo.Show();
+                                chbOtroVehiculo.Checked = false;
+                                MessageBox.Show("Ya existe un vehículo con esas características", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+
                         }
                         else
                         {
-                            i = operacion.registrarSiniestro(cbVehiculo.Text.Trim(), txtClaveSiniestro.Text.Trim().ToUpper(), txtComentario.Text.Trim());
-                            if (i == 1)
-                            {
-                                nombreVehiculo = cbVehiculo.Text.Trim();
-                                anioVehiculo = lblAnio.Text.Trim();
-                                //this.DialogResult = DialogResult.Cancel;
-                            }
+                            nombreVehiculo = cbVehiculo.Text.Trim();
+                            anioVehiculo = lblAnio.Text.Trim();
+                            this.Close();
                         }
-                        this.Close();
                     }
                 }
             }
@@ -137,6 +146,16 @@ namespace Refracciones.Forms
         public string anioSiniestro
         {
             get { return anioVehiculo; }
+        }
+
+        public string comentario
+        {
+            get { return txtComentario.Text.Trim(); }
+        }
+        
+        public bool otroVehiculo
+        {
+            get { return chbOtroVehiculo.Checked; }
         }
 
         private void Siniestro_FormClosing(object sender, FormClosingEventArgs e)

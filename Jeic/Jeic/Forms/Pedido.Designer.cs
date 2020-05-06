@@ -76,6 +76,8 @@
             this.chbModificarFechaAsignacion = new System.Windows.Forms.CheckBox();
             this.chbModificarFechaPromesa = new System.Windows.Forms.CheckBox();
             this.chbModificarFechaBaja = new System.Windows.Forms.CheckBox();
+            this.chbModificarVendedor = new System.Windows.Forms.CheckBox();
+            this.txtVendedor = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedido)).BeginInit();
             this.SuspendLayout();
             // 
@@ -554,11 +556,34 @@
             this.chbModificarFechaBaja.UseVisualStyleBackColor = true;
             this.chbModificarFechaBaja.Visible = false;
             // 
+            // chbModificarVendedor
+            // 
+            this.chbModificarVendedor.AutoSize = true;
+            this.chbModificarVendedor.Location = new System.Drawing.Point(440, 39);
+            this.chbModificarVendedor.Name = "chbModificarVendedor";
+            this.chbModificarVendedor.Size = new System.Drawing.Size(82, 20);
+            this.chbModificarVendedor.TabIndex = 49;
+            this.chbModificarVendedor.Text = "Modificar";
+            this.chbModificarVendedor.UseVisualStyleBackColor = true;
+            this.chbModificarVendedor.Visible = false;
+            this.chbModificarVendedor.CheckedChanged += new System.EventHandler(this.chbModificarVendedor_CheckedChanged);
+            // 
+            // txtVendedor
+            // 
+            this.txtVendedor.Enabled = false;
+            this.txtVendedor.Location = new System.Drawing.Point(165, 37);
+            this.txtVendedor.Name = "txtVendedor";
+            this.txtVendedor.Size = new System.Drawing.Size(269, 22);
+            this.txtVendedor.TabIndex = 50;
+            this.txtVendedor.Visible = false;
+            // 
             // Pedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(524, 745);
+            this.Controls.Add(this.txtVendedor);
+            this.Controls.Add(this.chbModificarVendedor);
             this.Controls.Add(this.chbModificarFechaBaja);
             this.Controls.Add(this.chbModificarFechaPromesa);
             this.Controls.Add(this.chbModificarFechaAsignacion);
@@ -667,5 +692,7 @@
         private System.Windows.Forms.CheckBox chbModificarFechaAsignacion;
         private System.Windows.Forms.CheckBox chbModificarFechaPromesa;
         private System.Windows.Forms.CheckBox chbModificarFechaBaja;
+        private System.Windows.Forms.CheckBox chbModificarVendedor;
+        private System.Windows.Forms.TextBox txtVendedor;
     }
 }

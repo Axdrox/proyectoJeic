@@ -887,6 +887,21 @@ namespace Refracciones
             return dt;
         }
         //---------------------ALEX--------------------------------------------------------------------
+        //--------------------OBTENER NUMERO DE VEHICULOS REGISTRADOS--------------------
+        //Se ocupará al momento de poner un vehiculo por default en caso de que no haya siniestro
+        public int TotalVehiculos()
+        {
+            int count = 0;
+            using (SqlConnection nuevaConexion = Conexion.conexion())
+            {
+                nuevaConexion.Open();
+                Comando = new SqlCommand("SELECT COUNT(*) FROM VEHICULO", nuevaConexion);
+                count = (int)Comando.ExecuteScalar();
+                nuevaConexion.Close();
+            }
+            return count+1;
+        }
+
         //---------------- VEHICULOS-REGISTRADOS
         public DataSet VehiculosRegistrados()
         {
@@ -896,7 +911,7 @@ namespace Refracciones
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     nuevaConexion.Open();
-                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT modelo FROM VEHICULO", nuevaConexion);
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT modelo FROM VEHICULO WHERE modelo NOT LIKE 'PARTICULAR%'", nuevaConexion);
                     dataAdapter.Fill(dataSet, "VEHICULO");
                     nuevaConexion.Close();
                 }
@@ -1047,6 +1062,62 @@ namespace Refracciones
             return dataSet;
         }
 
+        //---------------- INSERTAR UN NUEVO NOMBRE DE PIEZA
+        public int registrarPieza(string nombre)
+        {
+            int i = 0;
+            try
+            {
+                    using (SqlConnection nuevaConexion = Conexion.conexion())
+                    {
+                        nuevaConexion.Open();
+                        Comando = new SqlCommand("INSERT INTO PIEZA " + "(nombre) " + "VALUES (@nombre) ", nuevaConexion);
+                        Comando.Parameters.AddWithValue("@nombre", nombre);
+
+                        //Para saber si la inserción se hizo correctamente
+                        i = Comando.ExecuteNonQuery();
+                        nuevaConexion.Close();
+                        if (i == 1)
+                            MessageBox.Show("Se registró nueva pieza correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        else
+                            MessageBox.Show("Problemas al registar nueva pieza", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        nuevaConexion.Close();
+                    }
+
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return i;
+        }
+
+        //VALIDAR SI EXISTE UN MISMO REGISTRO DE PIEZA PARA EVITAR DUPLICADOS, ETC.
+        public string existePieza(string nombre)
+        {
+            string resultado = "";
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("SELECT cve_pieza FROM PIEZA WHERE nombre = @nombre", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@nombre", nombre);
+
+                    //Para saber si en realidad existe, de lo contrario devuelve un string vacío
+                    if (Comando.ExecuteScalar() == null) { }
+                    else
+                        resultado = Comando.ExecuteScalar().ToString();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return resultado;
+        }
+
+
         //---------------- PORTALES REGISTRADOS
         public DataSet PortalesRegistrados()
         {
@@ -1066,6 +1137,61 @@ namespace Refracciones
                 MessageBox.Show("Error: " + EX.Message);
             }
             return dataSet;
+        }
+
+        //---------------- INSERTAR UN NUEVO PORTAL PARA PIEZA
+        public int registrarPortal(string nombre)
+        {
+            int i = 0;
+            try
+            {
+                    using (SqlConnection nuevaConexion = Conexion.conexion())
+                    {
+                        nuevaConexion.Open();
+                        Comando = new SqlCommand("INSERT INTO PORTAL " + "(nombre) " + "VALUES (@nombre) ", nuevaConexion);
+                        Comando.Parameters.AddWithValue("@nombre", nombre);
+
+                        //Para saber si la inserción se hizo correctamente
+                        i = Comando.ExecuteNonQuery();
+                        nuevaConexion.Close();
+                        if (i == 1)
+                            MessageBox.Show("Se registró nuevo portal correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        else
+                            MessageBox.Show("Problemas al registar nueva portal", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        nuevaConexion.Close();
+                    }
+
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return i;
+        }
+
+        //VALIDAR SI EXISTE UN MISMO REGISTRO DE PORTAL PARA EVITAR DUPLICADOS, ETC.
+        public string existePortal(string nombre)
+        {
+            string resultado = "";
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("SELECT cve_portal FROM PORTAL WHERE nombre = @nombre", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@nombre", nombre);
+
+                    //Para saber si en realidad existe, de lo contrario devuelve un string vacío
+                    if(Comando.ExecuteScalar() == null) { }
+                    else
+                        resultado = Comando.ExecuteScalar().ToString();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return resultado;
         }
 
         //---------------- ORIGEN DE PIEZAS REGISTRADAS
@@ -1089,6 +1215,60 @@ namespace Refracciones
             return dataSet;
         }
 
+        //---------------- INSERTAR UN NUEVO ORIGEN PARA PIEZA
+        public int registrarOrigen(string nombre)
+        {
+            int i = 0;
+            try
+            {
+                    using (SqlConnection nuevaConexion = Conexion.conexion())
+                    {
+                        nuevaConexion.Open();
+                        Comando = new SqlCommand("INSERT INTO ORIGEN_PIEZA " + "(origen) " + "VALUES (@origen) ", nuevaConexion);
+                        Comando.Parameters.AddWithValue("@origen", nombre);
+
+                        //Para saber si la inserción se hizo correctamente
+                        i = Comando.ExecuteNonQuery();
+                        nuevaConexion.Close();
+                        if (i == 1)
+                            MessageBox.Show("Se registró nuevo origen correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        else
+                            MessageBox.Show("Problemas al registar nueva origen", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        nuevaConexion.Close();
+                    }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return i;
+        }
+
+        //VALIDAR SI EXISTE UN MISMO REGISTRO DE PORTAL PARA EVITAR DUPLICADOS, ETC.
+        public string existeOrigen(string nombre)
+        {
+            string resultado = "";
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("SELECT cve_origen FROM ORIGEN_PIEZA WHERE origen = @origen", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@origen", nombre);
+
+                    //Para saber si en realidad existe, de lo contrario devuelve un string vacío
+                    if (Comando.ExecuteScalar() == null) { }                        
+                    else
+                        resultado = Comando.ExecuteScalar().ToString();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return resultado;
+        }
+
         //---------------- PROVEEDORES REGISTRADOS
         public DataSet ProveedoresRegistrados()
         {
@@ -1108,6 +1288,60 @@ namespace Refracciones
                 MessageBox.Show("Error: " + EX.Message);
             }
             return dataSet;
+        }
+
+        //---------------- INSERTAR UN NUEVO PROVEEDOR PARA PIEZA
+        public int registrarProveedor(string nombre)
+        {
+            int i = 0;
+            try
+            {
+                    using (SqlConnection nuevaConexion = Conexion.conexion())
+                    {
+                        nuevaConexion.Open();
+                        Comando = new SqlCommand("INSERT INTO PROVEEDOR " + "(nombre) " + "VALUES (@nombre) ", nuevaConexion);
+                        Comando.Parameters.AddWithValue("@nombre", nombre);
+
+                        //Para saber si la inserción se hizo correctamente
+                        i = Comando.ExecuteNonQuery();
+                        nuevaConexion.Close();
+                        if (i == 1)
+                            MessageBox.Show("Se registró nuevo proveedor correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        else
+                            MessageBox.Show("Problemas al registar nueva proveedor", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        nuevaConexion.Close();
+                    }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return i;
+        }
+
+        //VALIDAR SI EXISTE UN MISMO REGISTRO DE PORTAL PARA EVITAR DUPLICADOS, ETC.
+        public string existeProveedor(string nombre)
+        {
+            string resultado = "";
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("SELECT cve_proveedor FROM PROVEEDOR WHERE nombre = @nombre", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@nombre", nombre);
+
+                    //Para saber si en realidad existe, de lo contrario devuelve un string vacío
+                    if (Comando.ExecuteScalar() == null) { }
+                    else
+                        resultado = Comando.ExecuteScalar().ToString();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return resultado;
         }
 
         //---------------- COSTO DE ENVIO REGISTRADOS
@@ -1328,6 +1562,7 @@ namespace Refracciones
             return fechaPromesa;
         }
 
+        //-------------OBTENER LA FECHA BAJA A PARTIR DE LAS CLAVES PEDIDO Y SINIESTRO
         public string fechaBaja(string clavePedido, string claveSiniestro)
         {
             string fechaBaja = "";
@@ -1352,6 +1587,33 @@ namespace Refracciones
                 MessageBox.Show("Error: " + EX.Message);
             }
             return fechaBaja;
+        }
+
+        //-------------OBTENER VENDEDOR EN PARTICULAR A PARTIR DE LAS CLAVES PEDIDO Y SINIESTRO
+        public string Vendedor(string clavePedido, string claveSiniestro)
+        {
+            string vendedor = "";
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("SELECT cve_vendedor FROM PEDIDO WHERE cve_pedido = @cve_pedido AND cve_siniestro = @cve_siniestro", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@cve_pedido", Convert.ToInt32(clavePedido));
+                    Comando.Parameters.AddWithValue("@cve_siniestro", claveSiniestro);
+                    Lector = Comando.ExecuteReader();
+                    if (Lector.Read())
+                    {
+                        vendedor = Lector["cve_vendedor"].ToString().Trim();
+                    }
+                    Lector.Close();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return vendedor;
         }
 
         //-------------INSERTAR DATOS EN VEHICULO
@@ -1380,6 +1642,32 @@ namespace Refracciones
             {
                 MessageBox.Show("Error: " + EX.Message);
             }
+        }
+
+        //VALIDAR SI EXISTE UN MISMO REGISTRO DE VEHÍCULO PARA EVITAR DUPLICADOS, ETC.
+        public string existeVehiculo(string modelo, string anio)
+        {
+            string resultado = "";
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("SELECT cve_vehiculo FROM VEHICULO WHERE modelo = @modelo AND anio = @anio", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@modelo", modelo);
+                    Comando.Parameters.AddWithValue("@anio", anio);
+
+                    //Para saber si en realidad existe, de lo contrario devuelve un string vacío
+                    if(Comando.ExecuteScalar() == null) { }
+                    else
+                        resultado = Comando.ExecuteScalar().ToString();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return resultado;
         }
 
         //-------------INSERTAR DATOS EN ENTREGA (FECHAS)
@@ -1447,6 +1735,7 @@ namespace Refracciones
             return i;
         }
 
+        //-------------OBTENER LA CLAVE DE LA PIEZA DE ACUERDO AL TEXTO
         public int clavePieza(string pieza)
         {
             using (SqlConnection nuevaConexion = Conexion.conexion())
@@ -1467,6 +1756,7 @@ namespace Refracciones
             }
         }
 
+        //-------------OBTENER LA CLAVE DEL ORIGEN DE ACUERDO AL TEXTO
         public int claveOrigen(string origen)
         {
             using (SqlConnection nuevaConexion = Conexion.conexion())
@@ -1487,6 +1777,7 @@ namespace Refracciones
             }
         }
 
+        //-------------OBTENER LA CLAVE DEL PROVEEDOR DE ACUERDO AL TEXTO
         public int claveProveedor(string proveedor)
         {
             using (SqlConnection nuevaConexion = Conexion.conexion())
@@ -1508,6 +1799,7 @@ namespace Refracciones
 
         }
 
+        //-------------OBTENER LA CLAVE DEL PORTAL DE ACUERDO AL TEXTO
         public int clavePortal(string portal)
         {
             using (SqlConnection nuevaConexion = Conexion.conexion())
@@ -1528,6 +1820,7 @@ namespace Refracciones
             }
         }
 
+        //-------------OBTENER LA CLAVE DEL TALLER DE ACUERDO AL TEXTO
         public int claveTaller(string taller)
         {
             using (SqlConnection nuevaConexion = Conexion.conexion())
@@ -1549,6 +1842,7 @@ namespace Refracciones
             }
         }
 
+        //-------------OBTENER LA CLAVE DEL VALUADOR DE ACUERDO AL TEXTO
         public int claveValuador(string valuador)
         {
             using (SqlConnection nuevaConexion = Conexion.conexion())
@@ -1570,6 +1864,7 @@ namespace Refracciones
             }
         }
 
+        //-------------OBTENER LA CLAVE DEL COSTO DE ENVÍO DE ACUERDO AL TEXTO
         public int claveCostoEnvio(string costoEnvio)
         {
             using (SqlConnection nuevaConexion = Conexion.conexion())
@@ -1616,6 +1911,7 @@ namespace Refracciones
             }
         }*/
 
+        //-------------OBTENER LA CLAVE DEL DESTINO DE ACUERDO AL TEXTO
         public int claveDestino(string destino)
         {
             using (SqlConnection nuevaConexion = Conexion.conexion())
@@ -1639,7 +1935,7 @@ namespace Refracciones
 
 
         //-------------INSERTAR DATOS DE PEDIDO
-        public int registrarPedido(int clavePedido, string claveSiniestro, string nombrePieza, string portal, string taller, string origen, string proveedor, int claveVendedor, DateTime fechaCosto, string costoSinIVA, string costoNeto, string costoEnvio, string precioVenta, string precioReparacion, string claveProducto, string numeroGuia, int cantidad, int diasEntrega, string entregaTiempo, DateTime fechaBaja, string valuador, string destino)
+        public int registrarPedido(int clavePedido, string claveSiniestro, string nombrePieza, string portal, string taller, string origen, string proveedor, int claveVendedor, DateTime fechaCosto, string costoSinIVA, string costoNeto, string costoEnvio, string precioVenta, string precioReparacion, string claveProducto, string numeroGuia, int cantidad, DateTime fechaBaja, string valuador, string destino)
         {
             //Variables
             int i = 0;
@@ -1687,8 +1983,6 @@ namespace Refracciones
                 Comando.Parameters.AddWithValue("@precio_venta", Convert.ToDecimal(precioVenta));
                 Comando.Parameters.AddWithValue("@precio_reparacion", Convert.ToDecimal(precioReparacion));
                 Comando.Parameters.AddWithValue("@destino", cve_destino);
-                Comando.Parameters.AddWithValue("@dias_entrega", diasEntrega);
-                Comando.Parameters.AddWithValue("@entrega_enTiempo", Convert.ToBoolean(entregaTiempo));
 
                 //Para saber si la inserción se hizo correctamente
                 i = Comando.ExecuteNonQuery();

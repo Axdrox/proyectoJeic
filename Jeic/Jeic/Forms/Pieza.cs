@@ -249,10 +249,11 @@ namespace Refracciones.Forms
             }
         }
 
-        string[] datosPieza = new string[15];
+        string[] datosPieza = new string[13];
         private void btnAniadirPieza_Click(object sender, EventArgs e)
         {
-
+            OperBD operacion = new OperBD();
+            /*
             if (chbOtroPieza.Checked != true && chbOtroPortal.Checked != true && chbOtroOrigen.Checked != true && chbOtroProveedor.Checked != true)
             {
                 datosPieza[0] = cbPiezaNombre.Text.Trim().ToUpper();
@@ -266,7 +267,7 @@ namespace Refracciones.Forms
                 datosPieza[1] = txtPortal.Text.Trim().ToUpper();
                 datosPieza[2] = txtOrigen.Text.Trim().ToUpper();
                 datosPieza[3] = txtProveedor.Text.Trim().ToUpper();
-            }
+            }*/
             datosPieza[4] = dtpFechaCosto.Text.Trim();
             datosPieza[5] = txtCostoSinIVA.Text.Trim();
             datosPieza[6] = txtCostoNeto.Text.Trim();
@@ -284,15 +285,94 @@ namespace Refracciones.Forms
             datosPieza[10] = txtClaveProducto.Text.Trim().ToUpper();
             datosPieza[11] = txtNumeroGuia.Text.Trim().ToUpper();
             datosPieza[12] = txtCantidad.Text.Trim();
-            datosPieza[13] = txtDiasEntrega.Text.Trim();
-            if (rdbSi.Checked == true)
-                datosPieza[14] = true.ToString();
-            else if (rdbNo.Checked == true)
-                datosPieza[14] = false.ToString();
-            else
-                MessageBox.Show("Seleccionar si se entregó a tiempo o no", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
-            this.Close();
+            int modificacion = 0; int j = 0; //validar
+            //contar con el # de chb marcados y con la inserción correcta
+            if (chbOtroPieza.Checked == true)
+            {
+                j += 1;
+                //int i = operacion.registrarPieza(txtPiezaNombre.Text.Trim().ToUpper()); PONER EN PEDIDO
+                if (operacion.existePieza(txtPiezaNombre.Text.Trim().ToUpper()) == string.Empty)
+                {
+                    datosPieza[0] = txtPiezaNombre.Text.Trim().ToUpper();
+                    modificacion += 1;
+                }
+                else
+                {
+                    MessageBox.Show("Ya existe una pieza con el mismo nombre", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtPiezaNombre.Clear();
+                    txtPiezaNombre.Hide();
+                    chbOtroPieza.Checked = false;
+                }
+            }
+            else
+                datosPieza[0] = cbPiezaNombre.Text.Trim().ToUpper();
+
+
+            if (chbOtroPortal.Checked == true)
+            {
+                j += 1;
+                //int i = operacion.registrarPortal(txtPortal.Text.Trim());
+                if (operacion.existePortal(txtPortal.Text.Trim()) == string.Empty)
+                {
+                    datosPieza[1] = txtPortal.Text.Trim().ToUpper();
+                    modificacion += 1;
+                }
+                else
+                {
+                    MessageBox.Show("Ya existe un portal con el mismo nombre", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtPortal.Clear();
+                    txtPortal.Hide();
+                    chbOtroPortal.Checked = false;
+                }
+            }
+            else
+                datosPieza[1] = cbPortal.Text.Trim().ToUpper();
+
+            if (chbOtroOrigen.Checked == true)
+            {
+                j += 1;
+                //int i = operacion.registrarOrigen(txtOrigen.Text.Trim().ToUpper());
+                if (operacion.existeOrigen(txtOrigen.Text.Trim().ToUpper()) == string.Empty)
+                {
+                    datosPieza[2] = txtOrigen.Text.Trim().ToUpper();
+                    modificacion += 1;
+                }
+                else
+                {
+                    MessageBox.Show("Ya existe un origen con el mismo nombre", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtOrigen.Clear();
+                    txtOrigen.Hide();
+                    chbOtroOrigen.Checked = false;
+                }
+            }
+            else
+                datosPieza[2] = cbOrigen.Text.Trim().ToUpper();
+
+            if (chbOtroProveedor.Checked == true)
+            {
+                j += 1;
+                //int i = operacion.registrarProveedor(txtProveedor.Text.Trim().ToUpper());
+                if (operacion.existeProveedor(txtProveedor.Text.Trim().ToUpper()) == string.Empty)
+                {
+                    datosPieza[3] = txtProveedor.Text.Trim().ToUpper();
+                    modificacion += 1;
+                }
+                else
+                {
+                    MessageBox.Show("Ya existe un proveedor con el mismo nombre", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtProveedor.Clear();
+                    txtProveedor.Hide();
+                    chbOtroProveedor.Checked = false;
+                }
+            }
+            else
+                datosPieza[3] = cbProveedores.Text.Trim().ToUpper();
+
+            if (modificacion == j)
+            {
+                this.Close();
+            }
         }
 
         public string[] datosMandar
@@ -308,6 +388,12 @@ namespace Refracciones.Forms
             OperBD operacion = new OperBD();
             cbCostoEnvio.DataSource = operacion.CostoEnvioRegistrados().Tables[0].DefaultView;
             cbCostoEnvio.ValueMember = "costo";
+        }
+
+        private void txtCostoSinIVA_Leave(object sender, EventArgs e)
+        {
+            if (txtCostoSinIVA.Text != string.Empty)
+                txtCostoNeto.Text = ((Convert.ToDouble(txtCostoSinIVA.Text.Trim()) * .16) + Convert.ToDouble(txtCostoSinIVA.Text.Trim())).ToString();
         }
     }
 }

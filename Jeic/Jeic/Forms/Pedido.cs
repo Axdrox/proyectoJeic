@@ -34,11 +34,10 @@ namespace Refracciones.Forms
             dt.Columns.Add("Clave de producto");
             dt.Columns.Add("Número de guía");
             dt.Columns.Add("Cantidad");
-            dt.Columns.Add("Días entrega");
-            dt.Columns.Add("Entrega en tiempo");
 
             dgvPedido.DataSource = dt;
 
+            //para que toda la clase sepa que está en el modo actualización
             actualizar = i;
         }
 
@@ -57,9 +56,21 @@ namespace Refracciones.Forms
             Eleccion eleccion = new Eleccion();
             if (actualizar == 1)
             {
+                if(autoSiniestro == 1)
+                {
+                    lblClaveSiniestroPedido.Show();
+                    lblClaveSiniestro.Show();
+                    lblAnioPedido.Hide();
+                    lblAnio.Hide();
+                    lblVehiculoPedido.Hide();
+                    lblVehiculo.Hide();
+                }
                 txtClavePedido.Enabled = false;
                 btnFinalizarPedido.Text = "Actualizar pedido";
 
+                chbModificarVendedor.Visible = true;
+                txtVendedor.Show();
+                txtVendedor.Text = operacion.Vendedor(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
 
                 chbOtraAseguradora.Enabled = true;
                 chbOtraAseguradora.Text = "Modificar";
@@ -110,15 +121,19 @@ namespace Refracciones.Forms
             }
         }
 
+        //Comentario de siniestro:
+        string comentarioSiniestro = "";
         private void rdbSi_CheckedChanged(object sender, EventArgs e)
         {
             if (rdbSi.Checked == true)
             {
+                autoSiniestro = 0;
                 Siniestro siniestro = new Siniestro();
                 DialogResult respuesta = siniestro.ShowDialog();
                 //MessageBox.Show(respuesta.ToString());
                 if (respuesta == DialogResult.OK)
                 {
+                    comentarioSiniestro = siniestro.comentario;
                     chbSi.Show();
                     chbSi.Checked = true;
                     chbSi.Enabled = false;
@@ -142,6 +157,15 @@ namespace Refracciones.Forms
             }
         }
 
+        private static Random random = new Random();
+        public static string RandomString(int length)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            return new string(Enumerable.Range(1, length).Select(_ => chars[random.Next(chars.Length)]).ToArray());
+        }
+
+        //Clave Autogenerada para siniestro:
+        private int autoSiniestro = 0;
         private void rdbNo_CheckedChanged(object sender, EventArgs e)
         {
             rdbSi.Enabled = true;
@@ -161,6 +185,13 @@ namespace Refracciones.Forms
             lblClaveSiniestroPedido.Hide();
             lblClaveSiniestro.Text = "";
             lblClaveSiniestro.Hide();
+            if(rdbNo.Checked == true)
+            {
+                lblClaveSiniestroPedido.Show();
+                lblClaveSiniestro.Show();
+                lblClaveSiniestro.Text = RandomString(7);
+                autoSiniestro = 1;
+            }
         }
 
         private void chbOtraAseguradora_CheckedChanged(object sender, EventArgs e)
@@ -408,19 +439,23 @@ namespace Refracciones.Forms
                 if (resta > 0)
                 {
                     MessageBox.Show("No es posible elegir esa fecha.", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    dtpFechaPromesa.Text = dtpFechaPromesa.Text = operacion.fechaAsignacion(txtClavePedido.Text, lblClaveSiniestro.Text);
+                    dtpFechaPromesa.Text = operacion.fechaAsignacion(txtClavePedido.Text, lblClaveSiniestro.Text);
                 }
             }
             else
             {
-                MessageBox.Show("No es posible elegir esa fecha.", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                dtpFechaPromesa.Text = "";
+                if (resta > 0)
+                {
+                    MessageBox.Show("No es posible elegir esa fecha.", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    dtpFechaPromesa.Text = "";
+                }
             }
 
         }
 
         private void btnFinalizarPedido_Click(object sender, EventArgs e)
         {
+            Siniestro siniestro = new Siniestro();
             try
             {
                 if (txtClavePedido.Text.Trim() == string.Empty)
@@ -437,6 +472,21 @@ namespace Refracciones.Forms
 
                     operacion.registrarEntrega(dtFechaAsignacion, dtFechaPromesa);
 
+                    if(rdbNo.Checked == false)
+                    {
+                        if(siniestro.otroVehiculo == true)
+                        {
+                            operacion.registroVehiculo(lblVehiculo.Text.Trim(), lblAnio.Text.Trim());
+                        }
+                        operacion.registrarSiniestro(lblVehiculo.Text.Trim(), lblClaveSiniestro.Text.Trim(), comentarioSiniestro);
+                    }
+                    else
+                    {
+                        string TotalVehiculo = operacion.TotalVehiculos().ToString();
+                        operacion.registroVehiculo("PARTICULAR"+TotalVehiculo, TotalVehiculo);
+                        operacion.registrarSiniestro("PARTICULAR" + TotalVehiculo, lblClaveSiniestro.Text.Trim(), comentarioSiniestro);
+                    }
+                    
 
                     foreach (DataGridViewRow row in dgvPedido.Rows)
                     {
@@ -461,7 +511,6 @@ namespace Refracciones.Forms
                             Convert.ToString(row.Cells["Costo de envío"].Value), Convert.ToString(row.Cells["Precio de venta"].Value),
                             Convert.ToString(row.Cells["Precio de reparación"].Value), Convert.ToString(row.Cells["Clave de producto"].Value),
                             Convert.ToString(row.Cells["Número de guía"].Value), cantidadTotal/*Convert.ToInt32(lblCantidadTotal.Text.Trim())*/,
-                            Convert.ToInt32(row.Cells["Días entrega"].Value), Convert.ToString(row.Cells["Entrega en tiempo"].Value),
                             dtFechaBaja, cbValuador.Text.Trim(), cbDestino.Text.Trim().ToUpper());
                         this.DialogResult = DialogResult.OK;
                     }
@@ -590,8 +639,24 @@ namespace Refracciones.Forms
                 dtpFechaPromesa.Enabled = true;
             else
             {
-                dtpFechaPromesa.Text = operacion.fechaAsignacion(txtClavePedido.Text, lblClaveSiniestro.Text);
+                dtpFechaPromesa.Text = operacion.fechaPromesa(txtClavePedido.Text, lblClaveSiniestro.Text);
                 dtpFechaPromesa.Enabled = false;
+            }
+        }
+
+        private void chbModificarVendedor_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chbModificarVendedor.Checked == true)
+            {
+                txtVendedor.Hide();
+                cbVendedor.Enabled = true;
+            }
+            else
+            {
+                cbVendedor.Text = operacion.Vendedor(txtClavePedido.Text, lblClaveSiniestro.Text);
+                txtVendedor.Show();
+                cbVendedor.Enabled = false;
+                cbVendedor.SelectedIndex = -1;
             }
         }
     }
