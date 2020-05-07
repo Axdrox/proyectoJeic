@@ -50,9 +50,6 @@
             this.txtRutaXml = new System.Windows.Forms.TextBox();
             this.btnBuscarXml = new System.Windows.Forms.Button();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
-            this.chkFechaIngreso = new System.Windows.Forms.CheckBox();
-            this.chkFechaRevision = new System.Windows.Forms.CheckBox();
-            this.chkFechaPago = new System.Windows.Forms.CheckBox();
             this.txtComentario = new System.Windows.Forms.TextBox();
             this.lblComentarios = new System.Windows.Forms.Label();
             this.lblEstadoFactura = new System.Windows.Forms.Label();
@@ -61,13 +58,15 @@
             this.dato1 = new System.Windows.Forms.Label();
             this.dato2 = new System.Windows.Forms.Label();
             this.dato3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
-            this.lblNombre.Location = new System.Drawing.Point(47, 179);
+            this.lblNombre.Location = new System.Drawing.Point(16, 160);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(43, 13);
             this.lblNombre.TabIndex = 0;
@@ -76,7 +75,7 @@
             // lblFacturaSinIVA
             // 
             this.lblFacturaSinIVA.AutoSize = true;
-            this.lblFacturaSinIVA.Location = new System.Drawing.Point(15, 94);
+            this.lblFacturaSinIVA.Location = new System.Drawing.Point(16, 97);
             this.lblFacturaSinIVA.Name = "lblFacturaSinIVA";
             this.lblFacturaSinIVA.Size = new System.Drawing.Size(79, 13);
             this.lblFacturaSinIVA.TabIndex = 1;
@@ -86,13 +85,13 @@
             // 
             this.txtCve_Factura.Location = new System.Drawing.Point(106, 58);
             this.txtCve_Factura.Name = "txtCve_Factura";
-            this.txtCve_Factura.Size = new System.Drawing.Size(100, 20);
+            this.txtCve_Factura.Size = new System.Drawing.Size(141, 20);
             this.txtCve_Factura.TabIndex = 2;
             this.txtCve_Factura.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCve_Factura_KeyPress);
             // 
             // txtRutaFactura
             // 
-            this.txtRutaFactura.Location = new System.Drawing.Point(50, 195);
+            this.txtRutaFactura.Location = new System.Drawing.Point(19, 176);
             this.txtRutaFactura.Name = "txtRutaFactura";
             this.txtRutaFactura.ReadOnly = true;
             this.txtRutaFactura.Size = new System.Drawing.Size(228, 20);
@@ -100,9 +99,9 @@
             // 
             // btnBuscarFact
             // 
-            this.btnBuscarFact.Location = new System.Drawing.Point(284, 195);
+            this.btnBuscarFact.Location = new System.Drawing.Point(253, 176);
             this.btnBuscarFact.Name = "btnBuscarFact";
-            this.btnBuscarFact.Size = new System.Drawing.Size(45, 23);
+            this.btnBuscarFact.Size = new System.Drawing.Size(45, 20);
             this.btnBuscarFact.TabIndex = 4;
             this.btnBuscarFact.Text = "...";
             this.btnBuscarFact.UseVisualStyleBackColor = true;
@@ -110,7 +109,7 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(480, 385);
+            this.btnGuardar.Location = new System.Drawing.Point(499, 271);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 23);
             this.btnGuardar.TabIndex = 5;
@@ -121,7 +120,7 @@
             // lblClave_Factura
             // 
             this.lblClave_Factura.AutoSize = true;
-            this.lblClave_Factura.Location = new System.Drawing.Point(15, 58);
+            this.lblClave_Factura.Location = new System.Drawing.Point(16, 61);
             this.lblClave_Factura.Name = "lblClave_Factura";
             this.lblClave_Factura.Size = new System.Drawing.Size(65, 13);
             this.lblClave_Factura.TabIndex = 6;
@@ -132,7 +131,8 @@
             // 
             this.txtFacturasinIVA.Location = new System.Drawing.Point(106, 94);
             this.txtFacturasinIVA.Name = "txtFacturasinIVA";
-            this.txtFacturasinIVA.Size = new System.Drawing.Size(100, 20);
+            this.txtFacturasinIVA.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtFacturasinIVA.Size = new System.Drawing.Size(141, 20);
             this.txtFacturasinIVA.TabIndex = 7;
             this.txtFacturasinIVA.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFacturasinIVA_KeyPress);
             this.txtFacturasinIVA.Leave += new System.EventHandler(this.txtFacturasinIVA_Leave);
@@ -152,13 +152,14 @@
             this.txtFacturaconIVA.Location = new System.Drawing.Point(106, 132);
             this.txtFacturaconIVA.Name = "txtFacturaconIVA";
             this.txtFacturaconIVA.ReadOnly = true;
-            this.txtFacturaconIVA.Size = new System.Drawing.Size(100, 20);
+            this.txtFacturaconIVA.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtFacturaconIVA.Size = new System.Drawing.Size(141, 20);
             this.txtFacturaconIVA.TabIndex = 9;
             // 
             // lblFacturaConIVA
             // 
             this.lblFacturaConIVA.AutoSize = true;
-            this.lblFacturaConIVA.Location = new System.Drawing.Point(16, 132);
+            this.lblFacturaConIVA.Location = new System.Drawing.Point(16, 135);
             this.lblFacturaConIVA.Name = "lblFacturaConIVA";
             this.lblFacturaConIVA.Size = new System.Drawing.Size(84, 13);
             this.lblFacturaConIVA.TabIndex = 10;
@@ -166,7 +167,7 @@
             // 
             // dtpFechaIngreso
             // 
-            this.dtpFechaIngreso.Location = new System.Drawing.Point(358, 58);
+            this.dtpFechaIngreso.Location = new System.Drawing.Point(374, 58);
             this.dtpFechaIngreso.Name = "dtpFechaIngreso";
             this.dtpFechaIngreso.Size = new System.Drawing.Size(200, 20);
             this.dtpFechaIngreso.TabIndex = 11;
@@ -175,7 +176,7 @@
             // lblFechaIngreso
             // 
             this.lblFechaIngreso.AutoSize = true;
-            this.lblFechaIngreso.Location = new System.Drawing.Point(256, 58);
+            this.lblFechaIngreso.Location = new System.Drawing.Point(272, 61);
             this.lblFechaIngreso.Name = "lblFechaIngreso";
             this.lblFechaIngreso.Size = new System.Drawing.Size(90, 13);
             this.lblFechaIngreso.TabIndex = 12;
@@ -183,7 +184,7 @@
             // 
             // dtpFechaRevision
             // 
-            this.dtpFechaRevision.Location = new System.Drawing.Point(358, 94);
+            this.dtpFechaRevision.Location = new System.Drawing.Point(374, 94);
             this.dtpFechaRevision.Name = "dtpFechaRevision";
             this.dtpFechaRevision.Size = new System.Drawing.Size(200, 20);
             this.dtpFechaRevision.TabIndex = 13;
@@ -191,7 +192,7 @@
             // dtpFechaPago
             // 
             this.dtpFechaPago.Enabled = false;
-            this.dtpFechaPago.Location = new System.Drawing.Point(358, 132);
+            this.dtpFechaPago.Location = new System.Drawing.Point(374, 132);
             this.dtpFechaPago.Name = "dtpFechaPago";
             this.dtpFechaPago.Size = new System.Drawing.Size(200, 20);
             this.dtpFechaPago.TabIndex = 14;
@@ -199,7 +200,7 @@
             // lblFechaRevision
             // 
             this.lblFechaRevision.AutoSize = true;
-            this.lblFechaRevision.Location = new System.Drawing.Point(256, 94);
+            this.lblFechaRevision.Location = new System.Drawing.Point(272, 97);
             this.lblFechaRevision.Name = "lblFechaRevision";
             this.lblFechaRevision.Size = new System.Drawing.Size(96, 13);
             this.lblFechaRevision.TabIndex = 15;
@@ -208,7 +209,7 @@
             // lblFechaPago
             // 
             this.lblFechaPago.AutoSize = true;
-            this.lblFechaPago.Location = new System.Drawing.Point(256, 132);
+            this.lblFechaPago.Location = new System.Drawing.Point(272, 135);
             this.lblFechaPago.Name = "lblFechaPago";
             this.lblFechaPago.Size = new System.Drawing.Size(80, 13);
             this.lblFechaPago.TabIndex = 16;
@@ -217,7 +218,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(47, 218);
+            this.label5.Location = new System.Drawing.Point(16, 199);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(24, 13);
             this.label5.TabIndex = 17;
@@ -225,7 +226,7 @@
             // 
             // txtRutaXml
             // 
-            this.txtRutaXml.Location = new System.Drawing.Point(50, 234);
+            this.txtRutaXml.Location = new System.Drawing.Point(19, 215);
             this.txtRutaXml.Name = "txtRutaXml";
             this.txtRutaXml.ReadOnly = true;
             this.txtRutaXml.Size = new System.Drawing.Size(228, 20);
@@ -233,9 +234,9 @@
             // 
             // btnBuscarXml
             // 
-            this.btnBuscarXml.Location = new System.Drawing.Point(284, 234);
+            this.btnBuscarXml.Location = new System.Drawing.Point(253, 215);
             this.btnBuscarXml.Name = "btnBuscarXml";
-            this.btnBuscarXml.Size = new System.Drawing.Size(45, 23);
+            this.btnBuscarXml.Size = new System.Drawing.Size(45, 20);
             this.btnBuscarXml.TabIndex = 19;
             this.btnBuscarXml.Text = "...";
             this.btnBuscarXml.UseVisualStyleBackColor = true;
@@ -245,57 +246,18 @@
             // 
             this.openFileDialog2.FileName = "openFileDialog2";
             // 
-            // chkFechaIngreso
-            // 
-            this.chkFechaIngreso.AutoSize = true;
-            this.chkFechaIngreso.Checked = true;
-            this.chkFechaIngreso.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkFechaIngreso.Location = new System.Drawing.Point(565, 60);
-            this.chkFechaIngreso.Name = "chkFechaIngreso";
-            this.chkFechaIngreso.Size = new System.Drawing.Size(80, 17);
-            this.chkFechaIngreso.TabIndex = 20;
-            this.chkFechaIngreso.Text = "checkBox1";
-            this.chkFechaIngreso.UseVisualStyleBackColor = true;
-            this.chkFechaIngreso.CheckedChanged += new System.EventHandler(this.chkFechaIngreso_CheckedChanged);
-            // 
-            // chkFechaRevision
-            // 
-            this.chkFechaRevision.AutoSize = true;
-            this.chkFechaRevision.Checked = true;
-            this.chkFechaRevision.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkFechaRevision.Location = new System.Drawing.Point(565, 96);
-            this.chkFechaRevision.Name = "chkFechaRevision";
-            this.chkFechaRevision.Size = new System.Drawing.Size(80, 17);
-            this.chkFechaRevision.TabIndex = 21;
-            this.chkFechaRevision.Text = "checkBox2";
-            this.chkFechaRevision.UseVisualStyleBackColor = true;
-            // 
-            // chkFechaPago
-            // 
-            this.chkFechaPago.AutoSize = true;
-            this.chkFechaPago.Checked = true;
-            this.chkFechaPago.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkFechaPago.Enabled = false;
-            this.chkFechaPago.Location = new System.Drawing.Point(565, 134);
-            this.chkFechaPago.Name = "chkFechaPago";
-            this.chkFechaPago.Size = new System.Drawing.Size(80, 17);
-            this.chkFechaPago.TabIndex = 22;
-            this.chkFechaPago.Text = "checkBox3";
-            this.chkFechaPago.UseVisualStyleBackColor = true;
-            this.chkFechaPago.Visible = false;
-            // 
             // txtComentario
             // 
-            this.txtComentario.Location = new System.Drawing.Point(18, 286);
+            this.txtComentario.Location = new System.Drawing.Point(331, 199);
             this.txtComentario.Multiline = true;
             this.txtComentario.Name = "txtComentario";
-            this.txtComentario.Size = new System.Drawing.Size(313, 131);
+            this.txtComentario.Size = new System.Drawing.Size(243, 66);
             this.txtComentario.TabIndex = 23;
             // 
             // lblComentarios
             // 
             this.lblComentarios.AutoSize = true;
-            this.lblComentarios.Location = new System.Drawing.Point(15, 270);
+            this.lblComentarios.Location = new System.Drawing.Point(328, 176);
             this.lblComentarios.Name = "lblComentarios";
             this.lblComentarios.Size = new System.Drawing.Size(65, 13);
             this.lblComentarios.TabIndex = 24;
@@ -304,7 +266,7 @@
             // lblEstadoFactura
             // 
             this.lblEstadoFactura.AutoSize = true;
-            this.lblEstadoFactura.Location = new System.Drawing.Point(247, 173);
+            this.lblEstadoFactura.Location = new System.Drawing.Point(15, 247);
             this.lblEstadoFactura.Name = "lblEstadoFactura";
             this.lblEstadoFactura.Size = new System.Drawing.Size(105, 13);
             this.lblEstadoFactura.TabIndex = 25;
@@ -318,7 +280,7 @@
             "PENDIENTE",
             "PAGADA",
             "CANCELADA"});
-            this.cmbEstadoFactura.Location = new System.Drawing.Point(358, 170);
+            this.cmbEstadoFactura.Location = new System.Drawing.Point(126, 244);
             this.cmbEstadoFactura.Name = "cmbEstadoFactura";
             this.cmbEstadoFactura.Size = new System.Drawing.Size(121, 21);
             this.cmbEstadoFactura.TabIndex = 26;
@@ -327,7 +289,7 @@
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Enabled = false;
-            this.dataGridView1.Location = new System.Drawing.Point(335, 197);
+            this.dataGridView1.Location = new System.Drawing.Point(19, 288);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(240, 150);
             this.dataGridView1.TabIndex = 27;
@@ -336,35 +298,57 @@
             // dato1
             // 
             this.dato1.AutoSize = true;
-            this.dato1.Location = new System.Drawing.Point(12, 9);
+            this.dato1.Location = new System.Drawing.Point(179, 32);
             this.dato1.Name = "dato1";
-            this.dato1.Size = new System.Drawing.Size(35, 13);
+            this.dato1.Size = new System.Drawing.Size(68, 13);
             this.dato1.TabIndex = 28;
-            this.dato1.Text = "label1";
+            this.dato1.Text = "SINIESTRO:";
             // 
             // dato2
             // 
             this.dato2.AutoSize = true;
-            this.dato2.Location = new System.Drawing.Point(12, 32);
+            this.dato2.Location = new System.Drawing.Point(16, 32);
             this.dato2.Name = "dato2";
-            this.dato2.Size = new System.Drawing.Size(35, 13);
+            this.dato2.Size = new System.Drawing.Size(51, 13);
             this.dato2.TabIndex = 29;
-            this.dato2.Text = "label2";
+            this.dato2.Text = "PEDIDO:";
             // 
             // dato3
             // 
             this.dato3.AutoSize = true;
-            this.dato3.Location = new System.Drawing.Point(65, 9);
+            this.dato3.Location = new System.Drawing.Point(539, 9);
             this.dato3.Name = "dato3";
             this.dato3.Size = new System.Drawing.Size(35, 13);
             this.dato3.TabIndex = 30;
             this.dato3.Text = "label1";
+            this.dato3.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label1.Location = new System.Drawing.Point(108, 97);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(13, 13);
+            this.label1.TabIndex = 31;
+            this.label1.Text = "$";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(108, 135);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(13, 13);
+            this.label2.TabIndex = 32;
+            this.label2.Text = "$";
             // 
             // registroFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(579, 450);
+            this.ClientSize = new System.Drawing.Size(579, 305);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.dato3);
             this.Controls.Add(this.dato2);
             this.Controls.Add(this.dato1);
@@ -373,9 +357,6 @@
             this.Controls.Add(this.lblEstadoFactura);
             this.Controls.Add(this.lblComentarios);
             this.Controls.Add(this.txtComentario);
-            this.Controls.Add(this.chkFechaPago);
-            this.Controls.Add(this.chkFechaRevision);
-            this.Controls.Add(this.chkFechaIngreso);
             this.Controls.Add(this.btnBuscarXml);
             this.Controls.Add(this.txtRutaXml);
             this.Controls.Add(this.label5);
@@ -397,6 +378,7 @@
             this.Controls.Add(this.lblFacturaSinIVA);
             this.Controls.Add(this.lblNombre);
             this.Name = "registroFactura";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "registroFactura";
             this.Load += new System.EventHandler(this.registroFactura_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -429,9 +411,6 @@
         private System.Windows.Forms.TextBox txtRutaXml;
         private System.Windows.Forms.Button btnBuscarXml;
         private System.Windows.Forms.OpenFileDialog openFileDialog2;
-        private System.Windows.Forms.CheckBox chkFechaIngreso;
-        private System.Windows.Forms.CheckBox chkFechaRevision;
-        private System.Windows.Forms.CheckBox chkFechaPago;
         private System.Windows.Forms.TextBox txtComentario;
         private System.Windows.Forms.Label lblComentarios;
         private System.Windows.Forms.Label lblEstadoFactura;
@@ -440,5 +419,7 @@
         public System.Windows.Forms.Label dato1;
         public System.Windows.Forms.Label dato2;
         public System.Windows.Forms.Label dato3;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

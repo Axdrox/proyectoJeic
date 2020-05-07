@@ -69,14 +69,13 @@ namespace Refracciones.Forms
             else if (cmbEstadoFactura.Text.Equals("CANCELADA"))
                 cve_estado = 3;
 
-            if (chkFechaIngreso.Checked)
-            {
+            
                 fecha_ingreso = DateTime.Parse(dtpFechaIngreso.Value.ToShortDateString());
 
-            }
-            if (chkFechaRevision.Checked)
+            
+            
                 fecha_revision = DateTime.Parse(dtpFechaRevision.Value.ToShortDateString());
-            //if (chkFechaPago.Checked)
+          
             fecha_pago = DateTime.Parse(dtpFechaPago.Value.ToShortDateString());
             //obtenemos el arreglo de bytes de factura
             if (txtRutaFactura.Text == string.Empty && txtRutaXml.Text == string.Empty)
@@ -137,9 +136,13 @@ namespace Refracciones.Forms
         {
 
 
-            cve_siniestro = /*"1G";*/dato1.Text;
-            cve_pedido = /*2;*/Int32.Parse(dato2.Text);
+            /*cve_siniestro = dato1.Text;
+            cve_pedido = Int32.Parse(dato2.Text);*/
+            cve_pedido = Int32.Parse(dato2.Text.Substring(8, (dato2.Text.Length - 8)));
+            cve_siniestro = dato1.Text.Substring(11, dato1.Text.Length - 11);
+
             cmbEstadoFactura.SelectedIndex = 0;
+            dtpFechaPago.Value = dtpFechaIngreso.Value.AddDays(oper.Dias_Espera(cve_siniestro, cve_pedido));
             if (dato3.Text == "0")
             {
                 dataGridView1.DataSource = oper.Actualizar_Factura(oper.Clave_Fact(cve_siniestro,cve_pedido));
@@ -216,13 +219,13 @@ namespace Refracciones.Forms
 
         private void chkFechaIngreso_CheckedChanged(object sender, EventArgs e)
         {
-            if (chkFechaIngreso.Checked == true)
-                dtpFechaPago.Value = dtpFechaIngreso.Value.AddDays(oper.Dias_Espera(cve_siniestro, cve_pedido));
+            //if (chkFechaIngreso.Checked == true)
+                
         }
 
         private void dtpFechaIngreso_ValueChanged(object sender, EventArgs e)
         {
-            chkFechaIngreso.Checked = false;
+            dtpFechaPago.Value = dtpFechaIngreso.Value.AddDays(oper.Dias_Espera(cve_siniestro, cve_pedido));
         }
 
         private void txtFacturasinIVA_Leave(object sender, EventArgs e)

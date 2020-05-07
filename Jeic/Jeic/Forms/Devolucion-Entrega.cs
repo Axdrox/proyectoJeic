@@ -54,6 +54,7 @@ namespace Refracciones.Forms
         }
         private void dgvDevolucion_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            
             int fila = Int32.Parse(e.RowIndex.ToString());
             
             //MessageBox.Show(fila.ToString());
@@ -86,6 +87,7 @@ namespace Refracciones.Forms
         private void rbtnEntrega_CheckedChanged(object sender, EventArgs e)
         {
             //rbtnDevolucion.Checked = false;
+            //cmbCantidad.Enabled = true;
             lbl1.Text = "Fecha Entrega";
             lbl2.Text = "Cantidad Entregada";
             btnAceptar.Text = "ENTREGA";
@@ -93,6 +95,15 @@ namespace Refracciones.Forms
             for(int i=1; i<=(cantidad-pzas_entregadas); i++)
             {
                 cmbCantidad.Items.Add(i.ToString());
+            }
+            if (cmbCantidad.Items.Count != 0)
+            {
+                cmbCantidad.Enabled = true;
+                cmbCantidad.SelectedIndex = 0;
+            }
+            else
+            {
+                cmbCantidad.Enabled = false;
             }
             lblMotivoDev.Visible = false;
             cmbMotivoDev.Enabled = false;
@@ -107,18 +118,29 @@ namespace Refracciones.Forms
             lbl2.Text = "Cantidad a Devolver";
             btnAceptar.Text = "DEVOLUCIÓN";
             cmbCantidad.Items.Clear();
-            for(int i =1;i<=pzas_entregadas-pzas_devolucion;i++)
+            for (int i = 1; i <= pzas_entregadas - pzas_devolucion; i++)
             {
                 cmbCantidad.Items.Add(i.ToString());
             }
+            if (cmbCantidad.Items.Count != 0)
+            {
+                cmbCantidad.Enabled = true;
+                cmbCantidad.SelectedIndex = 0;
+                cmbMotivoDev.Enabled = true;
+            }
+            else
+            {
+                cmbCantidad.Enabled = false;
+                cmbMotivoDev.Enabled = false;
+            }
             lblMotivoDev.Visible = true;
-            cmbMotivoDev.Enabled = true;
+            //cmbMotivoDev.Enabled = true;
             cmbMotivoDev.Visible = true;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (cmbCantidad.Items.Count == 0)
+            if (cmbCantidad.Items.Count == 0 )
             {
                 if (rbtnEntrega.Checked == true)
                     MessageBox.Show("Ya se registraron todas las entregas disponibles para esa pieza");

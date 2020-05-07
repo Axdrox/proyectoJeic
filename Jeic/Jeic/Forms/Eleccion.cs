@@ -30,8 +30,8 @@ namespace Refracciones
             if (cve_factura == 0)
             {
                 registroFactura factura = new registroFactura();
-                factura.dato1.Text = dato_1.Text;
-                factura.dato2.Text = dato_2.Text;
+                factura.dato1.Text = factura.dato1.Text + " " + dato_1.Text;
+                factura.dato2.Text = factura.dato2.Text + " " + dato_2.Text;
                 factura.dato3.Text = "1";
                 factura.ShowDialog();
 
@@ -39,16 +39,16 @@ namespace Refracciones
             else if(cve_factura != 0 && cve_refactura == 0)
             {
                 registroFactura factura = new registroFactura();
-                factura.dato1.Text = dato_1.Text;
-                factura.dato2.Text = dato_2.Text;
+                factura.dato1.Text = factura.dato1.Text + " " + dato_1.Text;
+                factura.dato2.Text = factura.dato2.Text + " " + dato_2.Text;
                 factura.dato3.Text = "0";
                 factura.ShowDialog();
             }
             else if(cve_factura != 0 && cve_refactura != 0)
             {
                 registrarRefactura refactura = new registrarRefactura();
-                refactura.dato1.Text = dato_1.Text;
-                refactura.dato2.Text = dato_2.Text;
+                refactura.dato1.Text = refactura.dato1.Text + " " + dato_1.Text;
+                refactura.dato2.Text = refactura.dato2.Text + " " + dato_2.Text;
                 refactura.dato3.Text = "0";
                 refactura.ShowDialog();
                 /*if (cve_refactura == 0)
@@ -84,8 +84,8 @@ namespace Refracciones
         {
             //ABRIR FORMULARIO DE REFACTURA
             registrarRefactura refactura = new registrarRefactura();
-            refactura.dato1.Text = dato_1.Text;
-            refactura.dato2.Text = dato_2.Text;
+            refactura.dato1.Text = refactura.dato1.Text +" "+ dato_1.Text;
+            refactura.dato2.Text = refactura.dato2.Text +" "+ dato_2.Text;
             refactura.txtRefactura.Text = dato_3.Text;
             /*if (dato_3.Text == "0")
             {
@@ -104,8 +104,8 @@ namespace Refracciones
             
             //ABRIR FORMULARIO DE DEVOLUCION/ENTREGA
             Devolucion dev = new Devolucion();
-            dev.dato1.Text = dato_1.Text;
-            dev.dato2.Text = dato_2.Text;
+            dev.dato1.Text = dev.dato1 + " " + dato_1.Text;
+            dev.dato2.Text = dev.dato2 + " " + dato_2.Text;
             dev.ShowDialog();
            
         }

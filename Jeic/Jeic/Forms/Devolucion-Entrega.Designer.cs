@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.cmbMotivoDev = new System.Windows.Forms.ComboBox();
+            this.lblMotivoDev = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.rbtnDevolucion = new System.Windows.Forms.RadioButton();
@@ -40,8 +42,6 @@
             this.dato2 = new System.Windows.Forms.Label();
             this.dato1 = new System.Windows.Forms.Label();
             this.dgvDevolucion = new System.Windows.Forms.DataGridView();
-            this.lblMotivoDev = new System.Windows.Forms.Label();
-            this.cmbMotivoDev = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -77,6 +77,34 @@
             this.splitContainer1.Size = new System.Drawing.Size(1092, 450);
             this.splitContainer1.SplitterDistance = 253;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // cmbMotivoDev
+            // 
+            this.cmbMotivoDev.Enabled = false;
+            this.cmbMotivoDev.FormattingEnabled = true;
+            this.cmbMotivoDev.Items.AddRange(new object[] {
+            "Cancelada",
+            "Pago Daños",
+            "Asegurado Transito",
+            "Pieza con daño",
+            "Cambio Origen",
+            "Perdida Total",
+            "Pieza Incorrecta"});
+            this.cmbMotivoDev.Location = new System.Drawing.Point(18, 287);
+            this.cmbMotivoDev.Name = "cmbMotivoDev";
+            this.cmbMotivoDev.Size = new System.Drawing.Size(121, 21);
+            this.cmbMotivoDev.TabIndex = 11;
+            this.cmbMotivoDev.Visible = false;
+            // 
+            // lblMotivoDev
+            // 
+            this.lblMotivoDev.AutoSize = true;
+            this.lblMotivoDev.Location = new System.Drawing.Point(15, 260);
+            this.lblMotivoDev.Name = "lblMotivoDev";
+            this.lblMotivoDev.Size = new System.Drawing.Size(99, 13);
+            this.lblMotivoDev.TabIndex = 10;
+            this.lblMotivoDev.Text = "Motivo Devolución:";
+            this.lblMotivoDev.Visible = false;
             // 
             // btnCancelar
             // 
@@ -163,23 +191,24 @@
             // dato2
             // 
             this.dato2.AutoSize = true;
-            this.dato2.Location = new System.Drawing.Point(12, 37);
+            this.dato2.Location = new System.Drawing.Point(134, 9);
             this.dato2.Name = "dato2";
-            this.dato2.Size = new System.Drawing.Size(70, 13);
+            this.dato2.Size = new System.Drawing.Size(51, 13);
             this.dato2.TabIndex = 1;
-            this.dato2.Text = "Clave Pedido";
+            this.dato2.Text = "PEDIDO:";
             // 
             // dato1
             // 
             this.dato1.AutoSize = true;
             this.dato1.Location = new System.Drawing.Point(12, 9);
             this.dato1.Name = "dato1";
-            this.dato1.Size = new System.Drawing.Size(77, 13);
+            this.dato1.Size = new System.Drawing.Size(68, 13);
             this.dato1.TabIndex = 0;
-            this.dato1.Text = "Clave Siniestro";
+            this.dato1.Text = "SINIESTRO:";
             // 
             // dgvDevolucion
             // 
+            this.dgvDevolucion.AllowUserToAddRows = false;
             this.dgvDevolucion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDevolucion.Location = new System.Drawing.Point(3, 3);
             this.dgvDevolucion.Name = "dgvDevolucion";
@@ -187,34 +216,6 @@
             this.dgvDevolucion.Size = new System.Drawing.Size(829, 426);
             this.dgvDevolucion.TabIndex = 0;
             this.dgvDevolucion.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDevolucion_CellContentClick);
-            // 
-            // lblMotivoDev
-            // 
-            this.lblMotivoDev.AutoSize = true;
-            this.lblMotivoDev.Location = new System.Drawing.Point(15, 260);
-            this.lblMotivoDev.Name = "lblMotivoDev";
-            this.lblMotivoDev.Size = new System.Drawing.Size(99, 13);
-            this.lblMotivoDev.TabIndex = 10;
-            this.lblMotivoDev.Text = "Motivo Devolución:";
-            this.lblMotivoDev.Visible = false;
-            // 
-            // cmbMotivoDev
-            // 
-            this.cmbMotivoDev.Enabled = false;
-            this.cmbMotivoDev.FormattingEnabled = true;
-            this.cmbMotivoDev.Items.AddRange(new object[] {
-            "Cancelada",
-            "Pago Daños",
-            "Asegurado Transito",
-            "Pieza con daño",
-            "Cambio Origen",
-            "Perdida Total",
-            "Pieza Incorrecta"});
-            this.cmbMotivoDev.Location = new System.Drawing.Point(18, 287);
-            this.cmbMotivoDev.Name = "cmbMotivoDev";
-            this.cmbMotivoDev.Size = new System.Drawing.Size(121, 21);
-            this.cmbMotivoDev.TabIndex = 11;
-            this.cmbMotivoDev.Visible = false;
             // 
             // Devolucion
             // 

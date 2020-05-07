@@ -80,14 +80,14 @@ namespace Refracciones.Forms
             else if (cmbEstadoFactura.Text.Trim().Equals("CANCELADA"))
                 cve_estado = 3;
 
-            if (chkFechaIngreso.Checked)
-                fecha_ingreso = DateTime.Parse(dtpFechaIngreso.Value.ToShortDateString());
-            if (chkFechaRevision.Checked)
-                fecha_revision = DateTime.Parse(dtpFechaRevision.Value.ToShortDateString());
+            //if (chkFechaIngreso.Checked)
+            fecha_ingreso = DateTime.Parse(dtpFechaIngreso.Value.ToShortDateString());
+           // if (chkFechaRevision.Checked)
+            fecha_revision = DateTime.Parse(dtpFechaRevision.Value.ToShortDateString());
             //if (chkFechaPago.Checked)
             fecha_pago = DateTime.Parse(dtpFechaPago.Value.ToShortDateString());
-            if (chkFechaRefacturacion.Checked)
-                fecha_refactura = DateTime.Parse(dtpFechaRefacturacion.Value.ToShortDateString());
+           // if (chkFechaRefacturacion.Checked)
+            fecha_refactura = DateTime.Parse(dtpFechaRefacturacion.Value.ToShortDateString());
             if (txtRutaFactura.Text == string.Empty && txtRutaXml.Text == string.Empty)
             { }
             else
@@ -122,9 +122,10 @@ namespace Refracciones.Forms
 
         private void registrarRefactura_Load(object sender, EventArgs e)
         {
-            cve_siniestro = /*"1H";*/dato1.Text;
-            cve_pedido = /*3;*/Int32.Parse(dato2.Text);
-            
+            cve_pedido = Int32.Parse(dato2.Text.Substring(8, (dato2.Text.Length - 8))); 
+            cve_siniestro = dato1.Text.Substring(11, dato1.Text.Length - 11);
+
+            dtpFechaPago.Value = dtpFechaIngreso.Value.AddDays(factura.Dias_Espera(cve_siniestro, cve_pedido));
             cmbEstadoFactura.SelectedIndex = 0;
             if (dato3.Text == "0")
             {
@@ -209,13 +210,15 @@ namespace Refracciones.Forms
 
         private void chkFechaIngreso_CheckedChanged(object sender, EventArgs e)
         {
-            if (chkFechaIngreso.Checked == true)
-                dtpFechaPago.Value = dtpFechaIngreso.Value.AddDays(factura.Dias_Espera(cve_siniestro, cve_pedido));
+           // if (chkFechaIngreso.Checked == true)
+                //dtpFechaPago.Value = dtpFechaIngreso.Value.AddDays(factura.Dias_Espera(cve_siniestro, cve_pedido));
         }
 
         private void dtpFechaIngreso_ValueChanged(object sender, EventArgs e)
         {
-            chkFechaIngreso.Checked = false;
+            
+            dtpFechaPago.Value = dtpFechaIngreso.Value.AddDays(factura.Dias_Espera(cve_siniestro, cve_pedido));
+            //chkFechaIngreso.Checked = false;
         }
 
         private void txtFacturasinIVA_Leave(object sender, EventArgs e)

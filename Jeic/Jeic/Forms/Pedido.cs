@@ -535,7 +535,7 @@ namespace Refracciones.Forms
                             Convert.ToString(row.Cells["Costo de envío"].Value), Convert.ToString(row.Cells["Precio de venta"].Value),
                             Convert.ToString(row.Cells["Precio de reparación"].Value), Convert.ToString(row.Cells["Clave de producto"].Value),
                             Convert.ToString(row.Cells["Número de guía"].Value), cantidadTotal/*Convert.ToInt32(lblCantidadTotal.Text.Trim())*/,
-                            dtFechaBaja, cbValuador.Text.Trim(), cbDestino.Text.Trim().ToUpper());
+                            dtFechaBaja, cbValuador.Text.Trim(), cbDestino.Text.Trim().ToUpper(),0);
                         this.DialogResult = DialogResult.OK;
                     }
 
