@@ -372,7 +372,7 @@ namespace Refracciones
 
 
         //--------------------REGISTRAR DEVOLUCION ACTUALIZAR COLUMNA CANTIDAD Y ASIGNAR CVE DE DEVOLUCION CON FECHA--------------------
-        public string Registrar_Devolucion(string cve_siniestro, int cve_pedido, int cve_pieza, int cve_devolucion, int cantidad, DateTime fecha,int cantidadD,int cve_factura)
+        public string Registrar_Devolucion(string cve_siniestro, int cve_pedido, int cve_pieza, int cve_devolucion, int cantidad, DateTime fecha,int cantidadD,int cve_factura, string motivo)
         {
             string mensaje = "ERROR AL HACER LA DEVOLUCIÓN";
            
@@ -380,15 +380,17 @@ namespace Refracciones
             {
 
                 nuevaConexion.Open();
-                Comando = new SqlCommand("INSERT INTO DEVOLUCION (fecha,cantidad,cve_pieza,cve_factura) VALUES(@fecha,@cantidadD,@cve_pieza,@cve_factura)", nuevaConexion);
+                Comando = new SqlCommand("INSERT INTO DEVOLUCION (fecha,cantidad,cve_pieza,cve_factura,motivo) VALUES(@fecha,@cantidadD,@cve_pieza,@cve_factura,@motivo)", nuevaConexion);
                 Comando.Parameters.Add("@fecha",SqlDbType.Date);
                 Comando.Parameters.Add("@cantidadD",SqlDbType.Int);
                 Comando.Parameters.Add("@cve_pieza",SqlDbType.Int);
                 Comando.Parameters.Add("@cve_factura",SqlDbType.Int);
+                Comando.Parameters.Add("@motivo",SqlDbType.NVarChar,50);
                 Comando.Parameters["@fecha"].Value = fecha;
                 Comando.Parameters["@cantidadD"].Value = cantidadD;
                 Comando.Parameters["@cve_pieza"].Value = cve_pieza;
                 Comando.Parameters["@cve_factura"].Value = cve_factura;
+                Comando.Parameters["@motivo"].Value = motivo;
                 Comando.ExecuteNonQuery();
                 //SqlCommand cmd = new SqlCommand(string.Format("UPDATE PEDIDO SET cantidad = {0}, cve_devolucion = {1}  WHERE cve_siniestro = '{2}' AND cve_pedido = {3} AND cve_pieza = {4}",/*cantidad,*/cve_devolucion, cve_siniestro, cve_pedido, cve_pieza), nuevaConexion);
                 SqlCommand cmd = new SqlCommand(string.Format("UPDATE PEDIDO SET  cve_devolucion = {0}, pzas_devolucion = {1}  WHERE cve_siniestro = '{2}' AND cve_pedido = {3} AND cve_pieza = {4}",/*cantidad,*/cve_devolucion,cantidad,cve_siniestro,cve_pedido,cve_pieza ),nuevaConexion);
@@ -768,7 +770,7 @@ namespace Refracciones
             {
                 using (SqlConnection nuevacon = Conexion.conexion())
                 {
-                    da = new SqlDataAdapter(string.Format("SELECT TOP 10 * FROM PEDIDO"), nuevacon);
+                    da = new SqlDataAdapter(string.Format("SELECT TOP 10 p.cve_pedido,p.cve_siniestro,p.cve_vendedor,c.cve_nombre,k.nombre,p.cantidad,e.fecha_asignacion,e.fecha_promesa FROM Pedido p LEFT OUTER JOIN Pieza k ON p.cve_pieza=k.cve_pieza  LEFT OUTER JOIN Entrega e ON p.cve_entrega=e.cve_entrega LEFT OUTER JOIN Valuador v ON v.cve_valuador=p.cve_valuador LEFT OUTER JOIN Cliente c ON c.cve_valuador=v.cve_valuador order by fecha desc"), nuevacon);
                     nuevacon.Open();
                     dt = new DataTable();
                     da.Fill(dt);
@@ -876,7 +878,7 @@ namespace Refracciones
             using (SqlConnection nuevaConexion = Conexion.conexion())
             {
                 nuevaConexion.Open();
-                Comando = new SqlCommand("SELECT DISTINCT ped.cve_siniestro AS Siniestro, ped.cve_pedido AS Pedido, fact.cve_factura AS Factura, fact.fact_sinIVA AS 'Factura sin IVA', fact.fact_neto AS 'Factura Neto', fact.fecha_pago AS 'Fecha de Pago' FROM PEDIDO ped INNER JOIN FACTURA fact ON ped.cve_factura = fact.cve_factura WHERE DATEDIFF (DAY,@fecha_sys,fact.fecha_pago) < 7 AND fact.cve_estado = 0", nuevaConexion);
+                Comando = new SqlCommand("SELECT DISTINCT ped.cve_siniestro AS Siniestro, ped.cve_pedido AS Pedido, fact.cve_factura AS Factura, fact.fact_sinIVA AS 'Factura sin IVA', fact.fact_neto AS 'Factura Neto', fact.fecha_pago AS 'Fecha de Pago' FROM PEDIDO ped INNER JOIN FACTURA fact ON ped.cve_factura = fact.cve_factura WHERE DATEDIFF (DAY,@fecha_sys,fact.fecha_pago) < 7 AND fact.cve_estado = 1", nuevaConexion);
                 Comando.Parameters.Add("@fecha_sys",SqlDbType.Date);
                 Comando.Parameters["@fecha_sys"].Value = fecha_sys;
                 da = new SqlDataAdapter(Comando);

@@ -135,6 +135,7 @@
             this.txtFacturasinIVA.Size = new System.Drawing.Size(100, 20);
             this.txtFacturasinIVA.TabIndex = 7;
             this.txtFacturasinIVA.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFacturasinIVA_KeyPress);
+            this.txtFacturasinIVA.Leave += new System.EventHandler(this.txtFacturasinIVA_Leave);
             // 
             // btnAbrir
             // 
@@ -247,6 +248,8 @@
             // chkFechaIngreso
             // 
             this.chkFechaIngreso.AutoSize = true;
+            this.chkFechaIngreso.Checked = true;
+            this.chkFechaIngreso.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkFechaIngreso.Location = new System.Drawing.Point(565, 60);
             this.chkFechaIngreso.Name = "chkFechaIngreso";
             this.chkFechaIngreso.Size = new System.Drawing.Size(80, 17);
@@ -258,6 +261,8 @@
             // chkFechaRevision
             // 
             this.chkFechaRevision.AutoSize = true;
+            this.chkFechaRevision.Checked = true;
+            this.chkFechaRevision.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkFechaRevision.Location = new System.Drawing.Point(565, 96);
             this.chkFechaRevision.Name = "chkFechaRevision";
             this.chkFechaRevision.Size = new System.Drawing.Size(80, 17);
@@ -268,6 +273,8 @@
             // chkFechaPago
             // 
             this.chkFechaPago.AutoSize = true;
+            this.chkFechaPago.Checked = true;
+            this.chkFechaPago.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkFechaPago.Enabled = false;
             this.chkFechaPago.Location = new System.Drawing.Point(565, 134);
             this.chkFechaPago.Name = "chkFechaPago";

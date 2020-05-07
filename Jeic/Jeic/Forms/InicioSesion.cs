@@ -32,7 +32,7 @@ namespace Refracciones
                 Alertas alert = new Alertas();
                 MessageBox.Show("Bienvenido");
                 Forms.Busqueda_Devolver bus = new Forms.Busqueda_Devolver();
-                bus.lblUsuario.Text = "Usuario : " + txtUsuario.Text;
+                bus.lblUsuario.Text = "Usuario : " + txtUsuario.Text.ToUpper();
                 bus.Show();
                 alert.Show();
 
@@ -58,13 +58,18 @@ namespace Refracciones
                     bus.Show();
                     alert.Show();
 
-                    bus.lblUsuario.Text = "Usuario : " + txtUsuario.Text;
+                    bus.lblUsuario.Text = "Usuario : " + txtUsuario.Text.ToUpper();
                 }
                 else
                 {
                     MessageBox.Show("Usuario y/o contraseña incorrectos");
                 }
             }
+        }
+
+        private void InicioSesion_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

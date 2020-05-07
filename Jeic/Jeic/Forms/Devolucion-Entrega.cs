@@ -94,6 +94,9 @@ namespace Refracciones.Forms
             {
                 cmbCantidad.Items.Add(i.ToString());
             }
+            lblMotivoDev.Visible = false;
+            cmbMotivoDev.Enabled = false;
+            cmbMotivoDev.Visible = false;
 
         }
 
@@ -108,62 +111,76 @@ namespace Refracciones.Forms
             {
                 cmbCantidad.Items.Add(i.ToString());
             }
+            lblMotivoDev.Visible = true;
+            cmbMotivoDev.Enabled = true;
+            cmbMotivoDev.Visible = true;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            
-            
-            fecha = DateTime.Parse(dtpFecha.Value.ToShortDateString());
-            cantidadD = Int32.Parse(cmbCantidad.Text);
-
-            
-
-            if (rbtnDevolucion.Checked == true)
+            if (cmbCantidad.Items.Count == 0)
             {
-                cantidad = pzas_devolucion + cantidadD;
-                oDlgRes = MessageBox.Show("¿Está seguro que desea Registrar la devolución del registro seleccionado ?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-                if (oDlgRes == DialogResult.Yes)
-                {
-                    rbtnEntrega.Enabled = false;
-                    rbtnDevolucion.Enabled = false;
-                    dtpFecha.Enabled = false;
-                    cmbCantidad.Enabled = false;
-                    btnAceptar.Enabled = false;
-                    btnCancelar.Enabled = false;
-                    dgvDevolucion.Enabled = true;
-                    MessageBox.Show(oper.Registrar_Devolucion(cve_siniestro,cve_pedido,cve_pieza,count,cantidad,fecha,cantidadD,cve_factura));
-                    cmbCantidad.Items.Clear();
-                }
+                if (rbtnEntrega.Checked == true)
+                    MessageBox.Show("Ya se registraron todas las entregas disponibles para esa pieza");
                 else
-                {
-                    MessageBox.Show("No se realizó ninguna operación");
-                }
+                    MessageBox.Show("Ya se registraron todas las devoluciones disponibles para esa pieza");
             }
-            else if (rbtnEntrega.Checked == true)
+            else
             {
-                cantidad = pzas_entregadas + cantidadD;
-                oDlgRes = MessageBox.Show("¿Está seguro que desea Registrar la entrega del registro seleccionado ?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-                if (oDlgRes == DialogResult.Yes)
+                fecha = DateTime.Parse(dtpFecha.Value.ToShortDateString());
+                cantidadD = Int32.Parse(cmbCantidad.Text);
+
+
+
+                if (rbtnDevolucion.Checked == true)
                 {
-                    rbtnEntrega.Enabled = false;
-                    rbtnDevolucion.Enabled = false;
-                    dtpFecha.Enabled = false;
-                    cmbCantidad.Enabled = false;
-                    btnAceptar.Enabled = false;
-                    btnCancelar.Enabled = false;
-                    dgvDevolucion.Enabled = true;
-                    MessageBox.Show(oper.Registrar_Entrega(cve_siniestro, cve_pedido, cve_pieza, count2, cantidad, fecha, cantidadD, cve_factura, fecha_asignacion, fecha_promesa));
-                    cmbCantidad.Items.Clear();
+                    cantidad = pzas_devolucion + cantidadD;
+                    oDlgRes = MessageBox.Show("¿Está seguro que desea Registrar la devolución del registro seleccionado ?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                    if (oDlgRes == DialogResult.Yes)
+                    {
+                        rbtnEntrega.Enabled = false;
+                        rbtnDevolucion.Enabled = false;
+                        dtpFecha.Enabled = false;
+                        cmbCantidad.Enabled = false;
+                        btnAceptar.Enabled = false;
+                        btnCancelar.Enabled = false;
+                        dgvDevolucion.Enabled = true;
+                        cmbMotivoDev.Text = "";
+                        cmbMotivoDev.Enabled = false;
+                        string motivo = cmbMotivoDev.Text.Trim();
+                        MessageBox.Show(oper.Registrar_Devolucion(cve_siniestro, cve_pedido, cve_pieza, count, cantidad, fecha, cantidadD, cve_factura,motivo));
+                        cmbCantidad.Items.Clear();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se realizó ninguna operación");
+                    }
                 }
-                else
+                else if (rbtnEntrega.Checked == true)
                 {
-                    MessageBox.Show("No se realizó ninguna operación");
+                    cantidad = pzas_entregadas + cantidadD;
+                    oDlgRes = MessageBox.Show("¿Está seguro que desea Registrar la entrega del registro seleccionado ?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                    if (oDlgRes == DialogResult.Yes)
+                    {
+                        rbtnEntrega.Enabled = false;
+                        rbtnDevolucion.Enabled = false;
+                        dtpFecha.Enabled = false;
+                        cmbCantidad.Enabled = false;
+                        btnAceptar.Enabled = false;
+                        btnCancelar.Enabled = false;
+                        dgvDevolucion.Enabled = true;
+                        MessageBox.Show(oper.Registrar_Entrega(cve_siniestro, cve_pedido, cve_pieza, count2, cantidad, fecha, cantidadD, cve_factura, fecha_asignacion, fecha_promesa));
+                        cmbCantidad.Items.Clear();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se realizó ninguna operación");
+                    }
+
                 }
-                
+
+                refresh();
             }
-           
-            refresh();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -176,6 +193,8 @@ namespace Refracciones.Forms
             btnAceptar.Enabled = false;
             btnCancelar.Enabled = false;
             dgvDevolucion.Enabled = true;
+            cmbMotivoDev.Text = "";
+            cmbMotivoDev.Enabled = false;
         }
     }
 }

@@ -111,6 +111,8 @@
             // chkFechaPago
             // 
             this.chkFechaPago.AutoSize = true;
+            this.chkFechaPago.Checked = true;
+            this.chkFechaPago.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkFechaPago.Enabled = false;
             this.chkFechaPago.Location = new System.Drawing.Point(554, 159);
             this.chkFechaPago.Name = "chkFechaPago";
@@ -122,6 +124,8 @@
             // chkFechaRevision
             // 
             this.chkFechaRevision.AutoSize = true;
+            this.chkFechaRevision.Checked = true;
+            this.chkFechaRevision.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkFechaRevision.Location = new System.Drawing.Point(554, 125);
             this.chkFechaRevision.Name = "chkFechaRevision";
             this.chkFechaRevision.Size = new System.Drawing.Size(15, 14);
@@ -131,6 +135,8 @@
             // chkFechaIngreso
             // 
             this.chkFechaIngreso.AutoSize = true;
+            this.chkFechaIngreso.Checked = true;
+            this.chkFechaIngreso.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkFechaIngreso.Location = new System.Drawing.Point(554, 87);
             this.chkFechaIngreso.Name = "chkFechaIngreso";
             this.chkFechaIngreso.Size = new System.Drawing.Size(15, 14);
@@ -230,9 +236,11 @@
             this.txtFacturasinIVA.Size = new System.Drawing.Size(100, 20);
             this.txtFacturasinIVA.TabIndex = 35;
             this.txtFacturasinIVA.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFacturasinIVA_KeyPress);
+            this.txtFacturasinIVA.Leave += new System.EventHandler(this.txtFacturasinIVA_Leave);
             // 
             // txtRefactura
             // 
+            this.txtRefactura.Enabled = false;
             this.txtRefactura.Location = new System.Drawing.Point(109, 88);
             this.txtRefactura.Name = "txtRefactura";
             this.txtRefactura.Size = new System.Drawing.Size(100, 20);
@@ -355,6 +363,8 @@
             // chkFechaRefacturacion
             // 
             this.chkFechaRefacturacion.AutoSize = true;
+            this.chkFechaRefacturacion.Checked = true;
+            this.chkFechaRefacturacion.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkFechaRefacturacion.Location = new System.Drawing.Point(554, 49);
             this.chkFechaRefacturacion.Name = "chkFechaRefacturacion";
             this.chkFechaRefacturacion.Size = new System.Drawing.Size(15, 14);
@@ -477,7 +487,6 @@
         private System.Windows.Forms.DateTimePicker dtpFechaIngreso;
         private System.Windows.Forms.Label lblFacturaConIVA;
         private System.Windows.Forms.TextBox txtFacturasinIVA;
-        private System.Windows.Forms.TextBox txtRefactura;
         private System.Windows.Forms.Label lblClave_FacturaAnterior;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnBuscarFact;
@@ -498,5 +507,6 @@
         public System.Windows.Forms.Label dato1;
         public System.Windows.Forms.Label dato2;
         public System.Windows.Forms.Label dato3;
+        public System.Windows.Forms.TextBox txtRefactura;
     }
 }

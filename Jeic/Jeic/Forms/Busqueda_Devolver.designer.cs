@@ -548,7 +548,7 @@
             // btnAgregarPedido
             // 
             this.btnAgregarPedido.Location = new System.Drawing.Point(165, 89);
-            this.btnAgregarPedido.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAgregarPedido.Margin = new System.Windows.Forms.Padding(2);
             this.btnAgregarPedido.Name = "btnAgregarPedido";
             this.btnAgregarPedido.Size = new System.Drawing.Size(124, 22);
             this.btnAgregarPedido.TabIndex = 13;
@@ -560,7 +560,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1028, 576);
+            this.ClientSize = new System.Drawing.Size(1117, 576);
             this.Controls.Add(this.btnAgregarPedido);
             this.Controls.Add(this.dgvDatos);
             this.Controls.Add(this.PanelFecha);

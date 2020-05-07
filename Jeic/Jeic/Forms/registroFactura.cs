@@ -149,9 +149,15 @@ namespace Refracciones.Forms
                 txtCve_Factura.Text = dataGridView1.Rows[0].Cells[0].Value.ToString();
                 txtFacturasinIVA.Text = dataGridView1.Rows[0].Cells[3].Value.ToString();
                 txtFacturaconIVA.Text = dataGridView1.Rows[0].Cells[4].Value.ToString();
-                dtpFechaIngreso.Value = DateTime.Parse(dataGridView1.Rows[0].Cells[7].Value.ToString());
-                dtpFechaRevision.Value = DateTime.Parse(dataGridView1.Rows[0].Cells[8].Value.ToString());
-                dtpFechaPago.Value = DateTime.Parse(dataGridView1.Rows[0].Cells[9].Value.ToString());
+                if (dataGridView1.Rows[0].Cells[7].Value.ToString() != DateTime.MinValue.ToString())
+                { dtpFechaIngreso.Value = DateTime.Parse(dataGridView1.Rows[0].Cells[7].Value.ToString()); }
+                else { dtpFechaIngreso.Value = DateTime.Now; }
+                if (dataGridView1.Rows[0].Cells[8].Value.ToString() != DateTime.MinValue.ToString())
+                { dtpFechaRevision.Value = DateTime.Parse(dataGridView1.Rows[0].Cells[8].Value.ToString()); }
+                else { dtpFechaRevision.Value = DateTime.Now; }
+                if(dataGridView1.Rows[0].Cells[9].Value.ToString() != DateTime.MinValue.ToString())
+                { dtpFechaPago.Value = DateTime.Parse(dataGridView1.Rows[0].Cells[9].Value.ToString()); }
+                else { dtpFechaPago.Value = DateTime.Now; }
                 txtComentario.Text = dataGridView1.Rows[0].Cells[10].Value.ToString();
                 txtCve_Factura.ReadOnly = true;
                 btnGuardar.Text = "Actualizar";
@@ -217,6 +223,16 @@ namespace Refracciones.Forms
         private void dtpFechaIngreso_ValueChanged(object sender, EventArgs e)
         {
             chkFechaIngreso.Checked = false;
+        }
+
+        private void txtFacturasinIVA_Leave(object sender, EventArgs e)
+        {
+            if (txtFacturasinIVA.Text != string.Empty)
+            {
+                double calculo = double.Parse(txtFacturasinIVA.Text, culture);
+                calculo = calculo * 1.16;
+                txtFacturaconIVA.Text = calculo.ToString();
+            }
         }
     }
 }

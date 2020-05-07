@@ -86,6 +86,7 @@ namespace Refracciones
             registrarRefactura refactura = new registrarRefactura();
             refactura.dato1.Text = dato_1.Text;
             refactura.dato2.Text = dato_2.Text;
+            refactura.txtRefactura.Text = dato_3.Text;
             /*if (dato_3.Text == "0")
             {
                 refactura.dato3.Text = "1";
@@ -133,6 +134,7 @@ namespace Refracciones
             {
                 btnFactura.Text = "Agregar factura";
                 btnRefactura.Enabled = false;
+                btnDevolucionEntrega.Enabled = false;
                 
             }
         }

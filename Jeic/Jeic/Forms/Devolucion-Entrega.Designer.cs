@@ -40,6 +40,8 @@
             this.dato2 = new System.Windows.Forms.Label();
             this.dato1 = new System.Windows.Forms.Label();
             this.dgvDevolucion = new System.Windows.Forms.DataGridView();
+            this.lblMotivoDev = new System.Windows.Forms.Label();
+            this.cmbMotivoDev = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -55,6 +57,8 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.cmbMotivoDev);
+            this.splitContainer1.Panel1.Controls.Add(this.lblMotivoDev);
             this.splitContainer1.Panel1.Controls.Add(this.btnCancelar);
             this.splitContainer1.Panel1.Controls.Add(this.btnAceptar);
             this.splitContainer1.Panel1.Controls.Add(this.rbtnDevolucion);
@@ -88,7 +92,7 @@
             // btnAceptar
             // 
             this.btnAceptar.Enabled = false;
-            this.btnAceptar.Location = new System.Drawing.Point(61, 295);
+            this.btnAceptar.Location = new System.Drawing.Point(61, 326);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(124, 23);
             this.btnAceptar.TabIndex = 8;
@@ -184,6 +188,34 @@
             this.dgvDevolucion.TabIndex = 0;
             this.dgvDevolucion.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDevolucion_CellContentClick);
             // 
+            // lblMotivoDev
+            // 
+            this.lblMotivoDev.AutoSize = true;
+            this.lblMotivoDev.Location = new System.Drawing.Point(15, 260);
+            this.lblMotivoDev.Name = "lblMotivoDev";
+            this.lblMotivoDev.Size = new System.Drawing.Size(99, 13);
+            this.lblMotivoDev.TabIndex = 10;
+            this.lblMotivoDev.Text = "Motivo Devolución:";
+            this.lblMotivoDev.Visible = false;
+            // 
+            // cmbMotivoDev
+            // 
+            this.cmbMotivoDev.Enabled = false;
+            this.cmbMotivoDev.FormattingEnabled = true;
+            this.cmbMotivoDev.Items.AddRange(new object[] {
+            "Cancelada",
+            "Pago Daños",
+            "Asegurado Transito",
+            "Pieza con daño",
+            "Cambio Origen",
+            "Perdida Total",
+            "Pieza Incorrecta"});
+            this.cmbMotivoDev.Location = new System.Drawing.Point(18, 287);
+            this.cmbMotivoDev.Name = "cmbMotivoDev";
+            this.cmbMotivoDev.Size = new System.Drawing.Size(121, 21);
+            this.cmbMotivoDev.TabIndex = 11;
+            this.cmbMotivoDev.Visible = false;
+            // 
             // Devolucion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -217,5 +249,7 @@
         private System.Windows.Forms.Button btnCancelar;
         public System.Windows.Forms.Label dato2;
         public System.Windows.Forms.Label dato1;
+        private System.Windows.Forms.ComboBox cmbMotivoDev;
+        private System.Windows.Forms.Label lblMotivoDev;
     }
 }

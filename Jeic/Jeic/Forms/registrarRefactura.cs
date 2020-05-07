@@ -217,5 +217,15 @@ namespace Refracciones.Forms
         {
             chkFechaIngreso.Checked = false;
         }
+
+        private void txtFacturasinIVA_Leave(object sender, EventArgs e)
+        {
+            if (txtFacturasinIVA.Text != string.Empty)
+            {
+                double calculo = double.Parse(txtFacturasinIVA.Text, culture);
+                calculo = calculo * 1.16;
+                txtFacturaconIVA.Text = calculo.ToString();
+            }
+        }
     }
 }
