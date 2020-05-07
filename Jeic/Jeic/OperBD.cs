@@ -902,6 +902,41 @@ namespace Refracciones
             return count+1;
         }
 
+        //Se ocupará al momento de generar la clave para cuando no haya un siniestro
+        public int TotalSiniestro()
+        {
+            int count = 0;
+            using (SqlConnection nuevaConexion = Conexion.conexion())
+            {
+                nuevaConexion.Open();
+                Comando = new SqlCommand("SELECT COUNT(*) FROM SINIESTRO", nuevaConexion);
+                count = (int)Comando.ExecuteScalar();
+                nuevaConexion.Close();
+            }
+            return count + 1;
+        }
+
+        //---------------- ESTADO DE SINIESTRO (llena combobox)
+        public DataSet EstadoSiniestro()
+        {
+            DataSet dataSet = new DataSet();
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT estado FROM ESTADO_SINIESTRO", nuevaConexion);
+                    dataAdapter.Fill(dataSet, "ESTADO_SINIESTRO");
+                    nuevaConexion.Close();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return dataSet;
+        }
+
         //---------------- VEHICULOS-REGISTRADOS
         public DataSet VehiculosRegistrados()
         {
@@ -1693,7 +1728,7 @@ namespace Refracciones
         }
 
         //-------------INSERTAR DATOS EN SINIESTRO
-        public int registrarSiniestro(string modelo, string claveSiniestro, string comentario)
+        public int registrarSiniestro(string modelo, string claveSiniestro, string comentario, string estado)
         {
             int i = 0;
             try
@@ -1701,6 +1736,7 @@ namespace Refracciones
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     int claveVehiculo = 0;
+                    int claveEstado = 0;
 
                     nuevaConexion.Open();
                     //Obteniendo la clave del vehículo
@@ -1713,11 +1749,22 @@ namespace Refracciones
                     }
                     Lector.Close();
 
+                    //Obteniendo la clave del estado
+                    Comando = new SqlCommand("SELECT cve_estado FROM ESTADO_SINIESTRO WHERE estado = @estado", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@estado", estado.Trim());
+                    Lector = Comando.ExecuteReader();
+                    if (Lector.Read())
+                    {
+                        claveEstado = (int)Lector["cve_estado"];
+                    }
+                    Lector.Close();
+
                     //Insertando los datos en la tabla SINIESTRO
-                    Comando = new SqlCommand("INSERT INTO SINIESTRO " + "(cve_siniestro, cve_vehiculo, comentario) " + "VALUES (@cve_siniestro, @cve_vehiculo, @comentario) ", nuevaConexion);
+                    Comando = new SqlCommand("INSERT INTO SINIESTRO " + "(cve_siniestro, cve_vehiculo, comentario, estado) " + "VALUES (@cve_siniestro, @cve_vehiculo, @comentario, @estado) ", nuevaConexion);
                     Comando.Parameters.AddWithValue("@cve_siniestro", claveSiniestro.Trim());
                     Comando.Parameters.AddWithValue("@cve_vehiculo", claveVehiculo);
-                    Comando.Parameters.AddWithValue("comentario", comentario.Trim());
+                    Comando.Parameters.AddWithValue("@comentario", comentario.Trim());
+                    Comando.Parameters.AddWithValue("@estado", claveEstado);
 
                     //Para saber si la inserción se hizo correctamente
                     i = Comando.ExecuteNonQuery();
@@ -1959,8 +2006,8 @@ namespace Refracciones
 
                 nuevaConexion.Open();
                 //Insertando los datos en la tabla PEDIDO
-                Comando = new SqlCommand("INSERT INTO PEDIDO " + "(cve_pedido, cve_siniestro, cve_pieza, cantidad, cve_origen, cve_proveedor, cve_entrega, cve_vendedor, cve_portal, cve_taller, cve_valuador, cve_guia, cve_producto, fecha_baja, fecha_costo, costo_comprasinIVA, costo_envio, costo_neto, precio_venta, precio_reparacion, destino, dias_entrega, entrega_enTiempo) " +
-                    "VALUES (@cve_pedido, @cve_siniestro, @cve_pieza, @cantidad, @cve_origen, @cve_proveedor, @cve_entrega, @cve_vendedor, @cve_portal, @cve_taller, @cve_valuador, @cve_guia, @cve_producto, @fecha_baja, @fecha_costo, @costo_comprasinIVA, @costo_envio, @costo_neto, @precio_venta, @precio_reparacion, @destino, @dias_entrega, @entrega_enTiempo) ", nuevaConexion);
+                Comando = new SqlCommand("INSERT INTO PEDIDO " + "(cve_pedido, cve_siniestro, cve_pieza, cantidad, cve_origen, cve_proveedor, cve_entrega, cve_vendedor, cve_portal, cve_taller, cve_valuador, cve_guia, cve_producto, fecha_baja, fecha_costo, costo_comprasinIVA, costo_envio, costo_neto, precio_venta, precio_reparacion, destino) " +
+                    "VALUES (@cve_pedido, @cve_siniestro, @cve_pieza, @cantidad, @cve_origen, @cve_proveedor, @cve_entrega, @cve_vendedor, @cve_portal, @cve_taller, @cve_valuador, @cve_guia, @cve_producto, @fecha_baja, @fecha_costo, @costo_comprasinIVA, @costo_envio, @costo_neto, @precio_venta, @precio_reparacion, @destino) ", nuevaConexion);
                 //Añadiendo los parámetros al query
                 Comando.Parameters.AddWithValue("@cve_pedido", clavePedido);
                 Comando.Parameters.AddWithValue("@cve_siniestro", claveSiniestro);

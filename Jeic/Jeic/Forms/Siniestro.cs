@@ -50,6 +50,12 @@ namespace Refracciones.Forms
             lblAnio.Text = operacion.anioVehiculo(cbVehiculo.Text.Trim());
         }
 
+        private void cbEstadoSiniestro_Click(object sender, EventArgs e)
+        {
+            cbEstadoSiniestro.DataSource = operacion.EstadoSiniestro().Tables[0].DefaultView;
+            cbEstadoSiniestro.ValueMember = "estado";
+        }
+
         private void chbOtroVehiculo_CheckedChanged(object sender, EventArgs e)
         {
             if (chbOtroVehiculo.Checked == true)
@@ -156,6 +162,11 @@ namespace Refracciones.Forms
         public bool otroVehiculo
         {
             get { return chbOtroVehiculo.Checked; }
+        }
+
+        public string estadoSiniestro
+        {
+            get { return cbEstadoSiniestro.Text.Trim(); }
         }
 
         private void Siniestro_FormClosing(object sender, FormClosingEventArgs e)

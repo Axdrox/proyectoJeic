@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -56,14 +57,20 @@ namespace Refracciones.Forms
             Eleccion eleccion = new Eleccion();
             if (actualizar == 1)
             {
-                if(autoSiniestro == 1)
-                {
-                    lblClaveSiniestroPedido.Show();
-                    lblClaveSiniestro.Show();
-                    lblAnioPedido.Hide();
-                    lblAnio.Hide();
-                    lblVehiculoPedido.Hide();
-                    lblVehiculo.Hide();
+                label1.Hide();
+                chbSi.Hide();
+                rdbSi.Hide();
+                rdbNo.Hide();
+                if (lblClaveSiniestro.Text.Length > 6) { 
+                    if(lblClaveSiniestro.Text.Substring(0,6) == "CVE-S-")//funciona
+                    {
+                        lblClaveSiniestroPedido.Show();
+                        lblClaveSiniestro.Show();
+                        lblAnioPedido.Hide();
+                        lblAnio.Hide();
+                        lblVehiculoPedido.Hide();
+                        lblVehiculo.Hide();
+                    }
                 }
                 txtClavePedido.Enabled = false;
                 btnFinalizarPedido.Text = "Actualizar pedido";
@@ -118,22 +125,34 @@ namespace Refracciones.Forms
                 txtValuador.Hide();
                 txtTaller.Hide();
                 txtDestino.Hide();
+
+                lblEstado.Hide();
+                cbEstadoSiniestro.Hide();
+
+                lblComentarioSiniestro.Hide();
+                txtComentarioSiniestro.Hide();
             }
         }
 
         //Comentario de siniestro:
         string comentarioSiniestro = "";
+        string estadoSiniestro = "";
         private void rdbSi_CheckedChanged(object sender, EventArgs e)
         {
             if (rdbSi.Checked == true)
             {
-                autoSiniestro = 0;
+                lblComentarioSiniestro.Hide();
+                txtComentarioSiniestro.Hide();
+                lblEstado.Hide();
+                cbEstadoSiniestro.Hide();
                 Siniestro siniestro = new Siniestro();
                 DialogResult respuesta = siniestro.ShowDialog();
                 //MessageBox.Show(respuesta.ToString());
                 if (respuesta == DialogResult.OK)
                 {
                     comentarioSiniestro = siniestro.comentario;
+                    estadoSiniestro = siniestro.estadoSiniestro;
+
                     chbSi.Show();
                     chbSi.Checked = true;
                     chbSi.Enabled = false;
@@ -157,15 +176,15 @@ namespace Refracciones.Forms
             }
         }
 
+        //Genera la clave aleatoria
+        /*
         private static Random random = new Random();
         public static string RandomString(int length)
         {
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             return new string(Enumerable.Range(1, length).Select(_ => chars[random.Next(chars.Length)]).ToArray());
-        }
+        }*/
 
-        //Clave Autogenerada para siniestro:
-        private int autoSiniestro = 0;
         private void rdbNo_CheckedChanged(object sender, EventArgs e)
         {
             rdbSi.Enabled = true;
@@ -189,8 +208,11 @@ namespace Refracciones.Forms
             {
                 lblClaveSiniestroPedido.Show();
                 lblClaveSiniestro.Show();
-                lblClaveSiniestro.Text = RandomString(7);
-                autoSiniestro = 1;
+                lblClaveSiniestro.Text = "CVE-S-" + operacion.TotalSiniestro().ToString();
+                lblComentarioSiniestro.Show();
+                txtComentarioSiniestro.Show();
+                lblEstado.Show();
+                cbEstadoSiniestro.Show();
             }
         }
 
@@ -478,13 +500,13 @@ namespace Refracciones.Forms
                         {
                             operacion.registroVehiculo(lblVehiculo.Text.Trim(), lblAnio.Text.Trim());
                         }
-                        operacion.registrarSiniestro(lblVehiculo.Text.Trim(), lblClaveSiniestro.Text.Trim(), comentarioSiniestro);
+                        operacion.registrarSiniestro(lblVehiculo.Text.Trim(), lblClaveSiniestro.Text.Trim(), comentarioSiniestro, estadoSiniestro);
                     }
                     else
                     {
                         string TotalVehiculo = operacion.TotalVehiculos().ToString();
                         operacion.registroVehiculo("PARTICULAR"+TotalVehiculo, TotalVehiculo);
-                        operacion.registrarSiniestro("PARTICULAR" + TotalVehiculo, lblClaveSiniestro.Text.Trim(), comentarioSiniestro);
+                        operacion.registrarSiniestro("PARTICULAR" + TotalVehiculo, lblClaveSiniestro.Text.Trim(), txtComentarioSiniestro.Text.Trim(), cbEstadoSiniestro.Text.Trim());
                     }
                     
 
@@ -657,6 +679,12 @@ namespace Refracciones.Forms
                 cbVendedor.Enabled = false;
                 cbVendedor.SelectedIndex = -1;
             }
+        }
+
+        private void cbEstadoSiniestro_Click(object sender, EventArgs e)
+        {
+            cbEstadoSiniestro.DataSource = operacion.EstadoSiniestro().Tables[0].DefaultView;
+            cbEstadoSiniestro.ValueMember = "estado";
         }
     }
 }

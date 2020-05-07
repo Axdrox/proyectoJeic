@@ -78,13 +78,19 @@
             this.chbModificarFechaBaja = new System.Windows.Forms.CheckBox();
             this.chbModificarVendedor = new System.Windows.Forms.CheckBox();
             this.txtVendedor = new System.Windows.Forms.TextBox();
+            this.lblComentarioSiniestro = new System.Windows.Forms.Label();
+            this.txtComentarioSiniestro = new System.Windows.Forms.TextBox();
+            this.cbEstadoSiniestro = new System.Windows.Forms.ComboBox();
+            this.lblEstado = new System.Windows.Forms.Label();
+            this.txtEstado = new System.Windows.Forms.TextBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedido)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(25, 82);
+            this.label1.Location = new System.Drawing.Point(25, 34);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(124, 16);
             this.label1.TabIndex = 0;
@@ -92,7 +98,7 @@
             // 
             // lblVehiculoPedido
             // 
-            this.lblVehiculoPedido.Location = new System.Drawing.Point(62, 120);
+            this.lblVehiculoPedido.Location = new System.Drawing.Point(207, 61);
             this.lblVehiculoPedido.Name = "lblVehiculoPedido";
             this.lblVehiculoPedido.Size = new System.Drawing.Size(74, 17);
             this.lblVehiculoPedido.TabIndex = 0;
@@ -100,7 +106,7 @@
             // 
             // lblAnioPedido
             // 
-            this.lblAnioPedido.Location = new System.Drawing.Point(62, 137);
+            this.lblAnioPedido.Location = new System.Drawing.Point(366, 60);
             this.lblAnioPedido.Name = "lblAnioPedido";
             this.lblAnioPedido.Size = new System.Drawing.Size(46, 17);
             this.lblAnioPedido.TabIndex = 0;
@@ -109,7 +115,7 @@
             // lblVehiculo
             // 
             this.lblVehiculo.AutoSize = true;
-            this.lblVehiculo.Location = new System.Drawing.Point(163, 120);
+            this.lblVehiculo.Location = new System.Drawing.Point(308, 61);
             this.lblVehiculo.Name = "lblVehiculo";
             this.lblVehiculo.Size = new System.Drawing.Size(0, 16);
             this.lblVehiculo.TabIndex = 2;
@@ -117,7 +123,7 @@
             // lblAnio
             // 
             this.lblAnio.AutoSize = true;
-            this.lblAnio.Location = new System.Drawing.Point(163, 141);
+            this.lblAnio.Location = new System.Drawing.Point(448, 60);
             this.lblAnio.Name = "lblAnio";
             this.lblAnio.Size = new System.Drawing.Size(0, 16);
             this.lblAnio.TabIndex = 3;
@@ -125,7 +131,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(25, 205);
+            this.label4.Location = new System.Drawing.Point(25, 235);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(66, 16);
             this.label4.TabIndex = 4;
@@ -136,7 +142,7 @@
             this.cbAseguradora.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbAseguradora.Enabled = false;
             this.cbAseguradora.FormattingEnabled = true;
-            this.cbAseguradora.Location = new System.Drawing.Point(166, 169);
+            this.cbAseguradora.Location = new System.Drawing.Point(166, 199);
             this.cbAseguradora.Name = "cbAseguradora";
             this.cbAseguradora.Size = new System.Drawing.Size(268, 24);
             this.cbAseguradora.TabIndex = 5;
@@ -146,7 +152,7 @@
             // lblClientePedido
             // 
             this.lblClientePedido.AutoSize = true;
-            this.lblClientePedido.Location = new System.Drawing.Point(25, 172);
+            this.lblClientePedido.Location = new System.Drawing.Point(25, 202);
             this.lblClientePedido.Name = "lblClientePedido";
             this.lblClientePedido.Size = new System.Drawing.Size(52, 16);
             this.lblClientePedido.TabIndex = 6;
@@ -155,7 +161,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(25, 37);
+            this.label6.Location = new System.Drawing.Point(25, 162);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(71, 16);
             this.label6.TabIndex = 8;
@@ -166,7 +172,7 @@
             this.cbVendedor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbVendedor.Enabled = false;
             this.cbVendedor.FormattingEnabled = true;
-            this.cbVendedor.Location = new System.Drawing.Point(165, 37);
+            this.cbVendedor.Location = new System.Drawing.Point(165, 162);
             this.cbVendedor.Name = "cbVendedor";
             this.cbVendedor.Size = new System.Drawing.Size(269, 24);
             this.cbVendedor.TabIndex = 9;
@@ -176,7 +182,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(21, 322);
+            this.label7.Location = new System.Drawing.Point(21, 352);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(134, 16);
             this.label7.TabIndex = 10;
@@ -185,7 +191,7 @@
             // dtpFechaAsignacion
             // 
             this.dtpFechaAsignacion.Enabled = false;
-            this.dtpFechaAsignacion.Location = new System.Drawing.Point(179, 317);
+            this.dtpFechaAsignacion.Location = new System.Drawing.Point(179, 347);
             this.dtpFechaAsignacion.Name = "dtpFechaAsignacion";
             this.dtpFechaAsignacion.Size = new System.Drawing.Size(255, 22);
             this.dtpFechaAsignacion.TabIndex = 11;
@@ -193,7 +199,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(21, 356);
+            this.label8.Location = new System.Drawing.Point(21, 386);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(106, 16);
             this.label8.TabIndex = 12;
@@ -202,7 +208,7 @@
             // dtpFechaPromesa
             // 
             this.dtpFechaPromesa.Enabled = false;
-            this.dtpFechaPromesa.Location = new System.Drawing.Point(179, 351);
+            this.dtpFechaPromesa.Location = new System.Drawing.Point(179, 381);
             this.dtpFechaPromesa.Name = "dtpFechaPromesa";
             this.dtpFechaPromesa.Size = new System.Drawing.Size(255, 22);
             this.dtpFechaPromesa.TabIndex = 13;
@@ -211,7 +217,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(26, 242);
+            this.label9.Location = new System.Drawing.Point(26, 272);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(46, 16);
             this.label9.TabIndex = 14;
@@ -220,7 +226,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(26, 276);
+            this.label10.Location = new System.Drawing.Point(26, 306);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(57, 16);
             this.label10.TabIndex = 15;
@@ -231,7 +237,7 @@
             this.cbTaller.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTaller.Enabled = false;
             this.cbTaller.FormattingEnabled = true;
-            this.cbTaller.Location = new System.Drawing.Point(165, 239);
+            this.cbTaller.Location = new System.Drawing.Point(165, 269);
             this.cbTaller.Name = "cbTaller";
             this.cbTaller.Size = new System.Drawing.Size(269, 24);
             this.cbTaller.TabIndex = 16;
@@ -242,7 +248,7 @@
             this.cbDestino.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbDestino.Enabled = false;
             this.cbDestino.FormattingEnabled = true;
-            this.cbDestino.Location = new System.Drawing.Point(165, 273);
+            this.cbDestino.Location = new System.Drawing.Point(165, 303);
             this.cbDestino.Name = "cbDestino";
             this.cbDestino.Size = new System.Drawing.Size(269, 24);
             this.cbDestino.TabIndex = 17;
@@ -285,7 +291,7 @@
             // 
             this.rdbNo.AutoSize = true;
             this.rdbNo.Enabled = false;
-            this.rdbNo.Location = new System.Drawing.Point(227, 80);
+            this.rdbNo.Location = new System.Drawing.Point(227, 32);
             this.rdbNo.Name = "rdbNo";
             this.rdbNo.Size = new System.Drawing.Size(44, 20);
             this.rdbNo.TabIndex = 22;
@@ -297,7 +303,7 @@
             // 
             this.rdbSi.AutoSize = true;
             this.rdbSi.Enabled = false;
-            this.rdbSi.Location = new System.Drawing.Point(166, 80);
+            this.rdbSi.Location = new System.Drawing.Point(166, 32);
             this.rdbSi.Name = "rdbSi";
             this.rdbSi.Size = new System.Drawing.Size(38, 20);
             this.rdbSi.TabIndex = 23;
@@ -308,7 +314,7 @@
             // chbSi
             // 
             this.chbSi.AutoSize = true;
-            this.chbSi.Location = new System.Drawing.Point(166, 81);
+            this.chbSi.Location = new System.Drawing.Point(166, 33);
             this.chbSi.Name = "chbSi";
             this.chbSi.Size = new System.Drawing.Size(39, 20);
             this.chbSi.TabIndex = 24;
@@ -319,7 +325,7 @@
             // 
             this.chbOtroValuador.AutoSize = true;
             this.chbOtroValuador.Enabled = false;
-            this.chbOtroValuador.Location = new System.Drawing.Point(440, 205);
+            this.chbOtroValuador.Location = new System.Drawing.Point(440, 235);
             this.chbOtroValuador.Name = "chbOtroValuador";
             this.chbOtroValuador.Size = new System.Drawing.Size(52, 20);
             this.chbOtroValuador.TabIndex = 25;
@@ -330,7 +336,7 @@
             // txtValuador
             // 
             this.txtValuador.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.txtValuador.Location = new System.Drawing.Point(165, 202);
+            this.txtValuador.Location = new System.Drawing.Point(165, 232);
             this.txtValuador.Name = "txtValuador";
             this.txtValuador.Size = new System.Drawing.Size(269, 22);
             this.txtValuador.TabIndex = 26;
@@ -342,7 +348,7 @@
             this.cbValuador.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbValuador.Enabled = false;
             this.cbValuador.FormattingEnabled = true;
-            this.cbValuador.Location = new System.Drawing.Point(166, 202);
+            this.cbValuador.Location = new System.Drawing.Point(166, 232);
             this.cbValuador.Name = "cbValuador";
             this.cbValuador.Size = new System.Drawing.Size(269, 24);
             this.cbValuador.TabIndex = 27;
@@ -351,7 +357,7 @@
             // txtAseguradora
             // 
             this.txtAseguradora.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.txtAseguradora.Location = new System.Drawing.Point(165, 169);
+            this.txtAseguradora.Location = new System.Drawing.Point(165, 199);
             this.txtAseguradora.Name = "txtAseguradora";
             this.txtAseguradora.Size = new System.Drawing.Size(269, 22);
             this.txtAseguradora.TabIndex = 28;
@@ -362,7 +368,7 @@
             // 
             this.chbOtraAseguradora.AutoSize = true;
             this.chbOtraAseguradora.Enabled = false;
-            this.chbOtraAseguradora.Location = new System.Drawing.Point(440, 171);
+            this.chbOtraAseguradora.Location = new System.Drawing.Point(440, 201);
             this.chbOtraAseguradora.Name = "chbOtraAseguradora";
             this.chbOtraAseguradora.Size = new System.Drawing.Size(52, 20);
             this.chbOtraAseguradora.TabIndex = 29;
@@ -373,7 +379,7 @@
             // lblClaveSiniestroPedido
             // 
             this.lblClaveSiniestroPedido.AutoSize = true;
-            this.lblClaveSiniestroPedido.Location = new System.Drawing.Point(59, 103);
+            this.lblClaveSiniestroPedido.Location = new System.Drawing.Point(56, 61);
             this.lblClaveSiniestroPedido.Name = "lblClaveSiniestroPedido";
             this.lblClaveSiniestroPedido.Size = new System.Drawing.Size(99, 16);
             this.lblClaveSiniestroPedido.TabIndex = 30;
@@ -382,7 +388,7 @@
             // lblClaveSiniestro
             // 
             this.lblClaveSiniestro.AutoSize = true;
-            this.lblClaveSiniestro.Location = new System.Drawing.Point(165, 103);
+            this.lblClaveSiniestro.Location = new System.Drawing.Point(162, 61);
             this.lblClaveSiniestro.Name = "lblClaveSiniestro";
             this.lblClaveSiniestro.Size = new System.Drawing.Size(0, 16);
             this.lblClaveSiniestro.TabIndex = 31;
@@ -411,7 +417,7 @@
             // 
             this.chbOtroTaller.AutoSize = true;
             this.chbOtroTaller.Enabled = false;
-            this.chbOtroTaller.Location = new System.Drawing.Point(441, 242);
+            this.chbOtroTaller.Location = new System.Drawing.Point(441, 272);
             this.chbOtroTaller.Name = "chbOtroTaller";
             this.chbOtroTaller.Size = new System.Drawing.Size(52, 20);
             this.chbOtroTaller.TabIndex = 34;
@@ -423,7 +429,7 @@
             // 
             this.chbOtroDestino.AutoSize = true;
             this.chbOtroDestino.Enabled = false;
-            this.chbOtroDestino.Location = new System.Drawing.Point(440, 275);
+            this.chbOtroDestino.Location = new System.Drawing.Point(440, 305);
             this.chbOtroDestino.Name = "chbOtroDestino";
             this.chbOtroDestino.Size = new System.Drawing.Size(52, 20);
             this.chbOtroDestino.TabIndex = 35;
@@ -434,7 +440,7 @@
             // txtTaller
             // 
             this.txtTaller.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.txtTaller.Location = new System.Drawing.Point(165, 239);
+            this.txtTaller.Location = new System.Drawing.Point(165, 269);
             this.txtTaller.Name = "txtTaller";
             this.txtTaller.Size = new System.Drawing.Size(269, 22);
             this.txtTaller.TabIndex = 36;
@@ -444,7 +450,7 @@
             // txtDestino
             // 
             this.txtDestino.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.txtDestino.Location = new System.Drawing.Point(165, 273);
+            this.txtDestino.Location = new System.Drawing.Point(165, 303);
             this.txtDestino.Name = "txtDestino";
             this.txtDestino.Size = new System.Drawing.Size(269, 22);
             this.txtDestino.TabIndex = 37;
@@ -464,7 +470,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(24, 393);
+            this.label3.Location = new System.Drawing.Point(24, 423);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(98, 16);
             this.label3.TabIndex = 39;
@@ -473,7 +479,7 @@
             // dtpFechaBaja
             // 
             this.dtpFechaBaja.Enabled = false;
-            this.dtpFechaBaja.Location = new System.Drawing.Point(179, 388);
+            this.dtpFechaBaja.Location = new System.Drawing.Point(179, 418);
             this.dtpFechaBaja.Name = "dtpFechaBaja";
             this.dtpFechaBaja.Size = new System.Drawing.Size(255, 22);
             this.dtpFechaBaja.TabIndex = 40;
@@ -524,7 +530,7 @@
             // chbModificarFechaAsignacion
             // 
             this.chbModificarFechaAsignacion.AutoSize = true;
-            this.chbModificarFechaAsignacion.Location = new System.Drawing.Point(440, 321);
+            this.chbModificarFechaAsignacion.Location = new System.Drawing.Point(440, 351);
             this.chbModificarFechaAsignacion.Name = "chbModificarFechaAsignacion";
             this.chbModificarFechaAsignacion.Size = new System.Drawing.Size(82, 20);
             this.chbModificarFechaAsignacion.TabIndex = 46;
@@ -536,7 +542,7 @@
             // chbModificarFechaPromesa
             // 
             this.chbModificarFechaPromesa.AutoSize = true;
-            this.chbModificarFechaPromesa.Location = new System.Drawing.Point(440, 355);
+            this.chbModificarFechaPromesa.Location = new System.Drawing.Point(440, 385);
             this.chbModificarFechaPromesa.Name = "chbModificarFechaPromesa";
             this.chbModificarFechaPromesa.Size = new System.Drawing.Size(82, 20);
             this.chbModificarFechaPromesa.TabIndex = 47;
@@ -548,7 +554,7 @@
             // chbModificarFechaBaja
             // 
             this.chbModificarFechaBaja.AutoSize = true;
-            this.chbModificarFechaBaja.Location = new System.Drawing.Point(440, 392);
+            this.chbModificarFechaBaja.Location = new System.Drawing.Point(440, 422);
             this.chbModificarFechaBaja.Name = "chbModificarFechaBaja";
             this.chbModificarFechaBaja.Size = new System.Drawing.Size(82, 20);
             this.chbModificarFechaBaja.TabIndex = 48;
@@ -559,7 +565,7 @@
             // chbModificarVendedor
             // 
             this.chbModificarVendedor.AutoSize = true;
-            this.chbModificarVendedor.Location = new System.Drawing.Point(440, 39);
+            this.chbModificarVendedor.Location = new System.Drawing.Point(440, 164);
             this.chbModificarVendedor.Name = "chbModificarVendedor";
             this.chbModificarVendedor.Size = new System.Drawing.Size(82, 20);
             this.chbModificarVendedor.TabIndex = 49;
@@ -571,17 +577,79 @@
             // txtVendedor
             // 
             this.txtVendedor.Enabled = false;
-            this.txtVendedor.Location = new System.Drawing.Point(165, 37);
+            this.txtVendedor.Location = new System.Drawing.Point(165, 162);
             this.txtVendedor.Name = "txtVendedor";
             this.txtVendedor.Size = new System.Drawing.Size(269, 22);
             this.txtVendedor.TabIndex = 50;
             this.txtVendedor.Visible = false;
             // 
+            // lblComentarioSiniestro
+            // 
+            this.lblComentarioSiniestro.AutoSize = true;
+            this.lblComentarioSiniestro.Location = new System.Drawing.Point(68, 114);
+            this.lblComentarioSiniestro.Name = "lblComentarioSiniestro";
+            this.lblComentarioSiniestro.Size = new System.Drawing.Size(80, 16);
+            this.lblComentarioSiniestro.TabIndex = 51;
+            this.lblComentarioSiniestro.Text = "Comentario:";
+            this.lblComentarioSiniestro.Visible = false;
+            // 
+            // txtComentarioSiniestro
+            // 
+            this.txtComentarioSiniestro.Location = new System.Drawing.Point(166, 111);
+            this.txtComentarioSiniestro.Multiline = true;
+            this.txtComentarioSiniestro.Name = "txtComentarioSiniestro";
+            this.txtComentarioSiniestro.Size = new System.Drawing.Size(268, 41);
+            this.txtComentarioSiniestro.TabIndex = 52;
+            this.txtComentarioSiniestro.Visible = false;
+            // 
+            // cbEstadoSiniestro
+            // 
+            this.cbEstadoSiniestro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbEstadoSiniestro.FormattingEnabled = true;
+            this.cbEstadoSiniestro.Location = new System.Drawing.Point(165, 80);
+            this.cbEstadoSiniestro.Name = "cbEstadoSiniestro";
+            this.cbEstadoSiniestro.Size = new System.Drawing.Size(269, 24);
+            this.cbEstadoSiniestro.TabIndex = 53;
+            this.cbEstadoSiniestro.Click += new System.EventHandler(this.cbEstadoSiniestro_Click);
+            // 
+            // lblEstado
+            // 
+            this.lblEstado.AutoSize = true;
+            this.lblEstado.Location = new System.Drawing.Point(68, 83);
+            this.lblEstado.Name = "lblEstado";
+            this.lblEstado.Size = new System.Drawing.Size(54, 16);
+            this.lblEstado.TabIndex = 54;
+            this.lblEstado.Text = "Estado:";
+            // 
+            // txtEstado
+            // 
+            this.txtEstado.Enabled = false;
+            this.txtEstado.Location = new System.Drawing.Point(165, 81);
+            this.txtEstado.Name = "txtEstado";
+            this.txtEstado.Size = new System.Drawing.Size(271, 22);
+            this.txtEstado.TabIndex = 55;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(439, 83);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(93, 20);
+            this.checkBox1.TabIndex = 56;
+            this.checkBox1.Text = "checkBox1";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // Pedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(524, 745);
+            this.ClientSize = new System.Drawing.Size(527, 749);
+            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.txtEstado);
+            this.Controls.Add(this.lblEstado);
+            this.Controls.Add(this.cbEstadoSiniestro);
+            this.Controls.Add(this.txtComentarioSiniestro);
+            this.Controls.Add(this.lblComentarioSiniestro);
             this.Controls.Add(this.txtVendedor);
             this.Controls.Add(this.chbModificarVendedor);
             this.Controls.Add(this.chbModificarFechaBaja);
@@ -694,5 +762,11 @@
         private System.Windows.Forms.CheckBox chbModificarFechaBaja;
         private System.Windows.Forms.CheckBox chbModificarVendedor;
         private System.Windows.Forms.TextBox txtVendedor;
+        private System.Windows.Forms.Label lblComentarioSiniestro;
+        private System.Windows.Forms.TextBox txtComentarioSiniestro;
+        private System.Windows.Forms.ComboBox cbEstadoSiniestro;
+        private System.Windows.Forms.Label lblEstado;
+        private System.Windows.Forms.TextBox txtEstado;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
