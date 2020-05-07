@@ -72,6 +72,9 @@ namespace Refracciones.Forms
                         lblVehiculo.Hide();
                     }
                 }
+                cbEstadoSiniestro.Enabled = false;
+                txtEstado.Text = operacion.estadoSiniestroClaves(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
+
                 txtClavePedido.Enabled = false;
                 btnFinalizarPedido.Text = "Actualizar pedido";
 
@@ -673,8 +676,7 @@ namespace Refracciones.Forms
                 cbVendedor.Enabled = true;
             }
             else
-            {
-                cbVendedor.Text = operacion.Vendedor(txtClavePedido.Text, lblClaveSiniestro.Text);
+            {                
                 txtVendedor.Show();
                 cbVendedor.Enabled = false;
                 cbVendedor.SelectedIndex = -1;
@@ -685,6 +687,21 @@ namespace Refracciones.Forms
         {
             cbEstadoSiniestro.DataSource = operacion.EstadoSiniestro().Tables[0].DefaultView;
             cbEstadoSiniestro.ValueMember = "estado";
+        }
+
+        private void chbModificarEstado_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chbModificarEstado.Checked == true)
+            {
+                txtEstado.Hide();
+                cbEstadoSiniestro.Enabled = true;
+            }
+            else
+            {
+                txtEstado.Show();
+                cbEstadoSiniestro.Enabled = false;
+                cbEstadoSiniestro.SelectedIndex = -1;
+            }
         }
     }
 }

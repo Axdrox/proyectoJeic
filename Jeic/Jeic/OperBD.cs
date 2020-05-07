@@ -1427,6 +1427,34 @@ namespace Refracciones
             return anio;
         }
 
+        //------------- OBTENER ESTADO SINIESTRO EN PARTICULAR DE ACUERDO A CLAVES PEDIDO & SINIESTRO
+        public string estadoSiniestroClaves(string clavePedido, string claveSiniestro)
+        {
+            string estado = "";
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("SELECT esin.estado FROM PEDIDO ped INNER JOIN SINIESTRO sin ON ped.cve_siniestro = sin.estado INNER JOIN ESTADO_SINIESTRO esin ON sin.estado = esin.cve_estado WHERE ped.cve_pedido = @cve_pedido AND ped.cve_siniestro = @cve_siniestro", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@cve_pedido", Convert.ToInt32(clavePedido));
+                    Comando.Parameters.AddWithValue("@cve_siniestro", claveSiniestro);
+                    Lector = Comando.ExecuteReader();
+                    if (Lector.Read())
+                    {
+                        estado = Lector["estado"].ToString().Trim();
+                    }
+                    Lector.Close();
+                    nuevaConexion.Close();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return estado;
+        }
+
         //------------- OBTENER ASEGURADORA/CLIENTE EN PARTICULAR DE ACUERDO A CLAVES PEDIDO & SINIESTRO
         public string Cliente(string clavePedido, string claveSiniestro)
         {
@@ -1436,6 +1464,7 @@ namespace Refracciones
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     nuevaConexion.Open();
+                    //CORREGIR BUGSOTE, ESTA RARO DICE BRYAN
                     Comando = new SqlCommand("SELECT cli.cve_nombre FROM PEDIDO ped INNER JOIN VALUADOR val ON ped.cve_valuador = val.cve_valuador INNER JOIN CLIENTE cli ON val.cve_valuador = cli.cve_valuador WHERE ped.cve_pedido = @cve_pedido AND ped.cve_siniestro = @cve_siniestro", nuevaConexion);
                     Comando.Parameters.AddWithValue("@cve_pedido", Convert.ToInt32(clavePedido));
                     Comando.Parameters.AddWithValue("@cve_siniestro", claveSiniestro);
