@@ -173,5 +173,10 @@ namespace Refracciones.Forms
 
             }
         }
+
+        private void pbFactura_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
