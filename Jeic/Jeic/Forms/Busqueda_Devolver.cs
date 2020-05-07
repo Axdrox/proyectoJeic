@@ -178,5 +178,11 @@ namespace Refracciones.Forms
         {
             
         }
+        
+        private void pbAlertas_Click(object sender, EventArgs e)
+        {
+            Alertas alert = new Alertas();
+            alert.Show();
+        }
     }
 }

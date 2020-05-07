@@ -206,7 +206,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Recursos\notify.png" />
     <Content Include="Recursos\usuarioF.png" />
+    <None Include="Resources\notify.png" />
     <None Include="Recursos\boton-abrir-archivo.png" />
   </ItemGroup>
   <ItemGroup>

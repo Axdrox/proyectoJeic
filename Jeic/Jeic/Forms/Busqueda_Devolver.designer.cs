@@ -38,7 +38,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.Fecha_in = new System.Windows.Forms.DateTimePicker();
             this.Panelinfo = new System.Windows.Forms.Panel();
-            this.pbFactura = new System.Windows.Forms.PictureBox();
             this.lblEstadoFac = new System.Windows.Forms.Label();
             this.lblFacturaConIva = new System.Windows.Forms.Label();
             this.lblFacturaSinIva = new System.Windows.Forms.Label();
@@ -73,11 +72,14 @@
             this.PanelFecha = new System.Windows.Forms.Panel();
             this.dgvDatos = new System.Windows.Forms.DataGridView();
             this.btnAgregarPedido = new System.Windows.Forms.Button();
+            this.pbAlertas = new System.Windows.Forms.PictureBox();
+            this.pbFactura = new System.Windows.Forms.PictureBox();
             this.Panelinfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbFactura)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dvgPedido)).BeginInit();
             this.PanelFecha.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAlertas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFactura)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -173,18 +175,6 @@
             this.Panelinfo.Name = "Panelinfo";
             this.Panelinfo.Size = new System.Drawing.Size(338, 434);
             this.Panelinfo.TabIndex = 6;
-            // 
-            // pbFactura
-            // 
-            this.pbFactura.Image = global::Refracciones.Properties.Resources.boton_abrir_archivo;
-            this.pbFactura.Location = new System.Drawing.Point(252, 396);
-            this.pbFactura.Name = "pbFactura";
-            this.pbFactura.Size = new System.Drawing.Size(30, 23);
-            this.pbFactura.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbFactura.TabIndex = 32;
-            this.pbFactura.TabStop = false;
-            this.pbFactura.Click += new System.EventHandler(this.pbFactura_Click);
-            this.pbFactura.DoubleClick += new System.EventHandler(this.pictureBox1_DoubleClick);
             // 
             // lblEstadoFac
             // 
@@ -556,11 +546,36 @@
             this.btnAgregarPedido.UseVisualStyleBackColor = true;
             this.btnAgregarPedido.Click += new System.EventHandler(this.btnAgregarPedido_Click);
             // 
+            // pbAlertas
+            // 
+            this.pbAlertas.Image = global::Refracciones.Properties.Resources.notify;
+            this.pbAlertas.InitialImage = global::Refracciones.Properties.Resources.notify;
+            this.pbAlertas.Location = new System.Drawing.Point(987, 4);
+            this.pbAlertas.Name = "pbAlertas";
+            this.pbAlertas.Size = new System.Drawing.Size(28, 31);
+            this.pbAlertas.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbAlertas.TabIndex = 14;
+            this.pbAlertas.TabStop = false;
+            this.pbAlertas.Click += new System.EventHandler(this.pbAlertas_Click);
+            // 
+            // pbFactura
+            // 
+            this.pbFactura.Image = global::Refracciones.Properties.Resources.boton_abrir_archivo;
+            this.pbFactura.Location = new System.Drawing.Point(252, 396);
+            this.pbFactura.Name = "pbFactura";
+            this.pbFactura.Size = new System.Drawing.Size(30, 23);
+            this.pbFactura.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbFactura.TabIndex = 32;
+            this.pbFactura.TabStop = false;
+            this.pbFactura.Click += new System.EventHandler(this.pbFactura_Click);
+            this.pbFactura.DoubleClick += new System.EventHandler(this.pictureBox1_DoubleClick);
+            // 
             // Busqueda_Devolver
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1117, 576);
+            this.Controls.Add(this.pbAlertas);
             this.Controls.Add(this.btnAgregarPedido);
             this.Controls.Add(this.dgvDatos);
             this.Controls.Add(this.PanelFecha);
@@ -577,11 +592,12 @@
             this.Load += new System.EventHandler(this.Busqueda_Devolver_Load);
             this.Panelinfo.ResumeLayout(false);
             this.Panelinfo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbFactura)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dvgPedido)).EndInit();
             this.PanelFecha.ResumeLayout(false);
             this.PanelFecha.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAlertas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFactura)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -631,5 +647,6 @@
         private System.Windows.Forms.DataGridView dgvDatos;
         private System.Windows.Forms.PictureBox pbFactura;
         private System.Windows.Forms.Button btnAgregarPedido;
+        private System.Windows.Forms.PictureBox pbAlertas;
     }
 }

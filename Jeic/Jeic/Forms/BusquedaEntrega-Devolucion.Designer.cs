@@ -40,11 +40,11 @@
             // dato3
             // 
             this.dato3.AutoSize = true;
-            this.dato3.Location = new System.Drawing.Point(242, 20);
+            this.dato3.Location = new System.Drawing.Point(296, 20);
             this.dato3.Name = "dato3";
-            this.dato3.Size = new System.Drawing.Size(73, 13);
+            this.dato3.Size = new System.Drawing.Size(60, 13);
             this.dato3.TabIndex = 0;
-            this.dato3.Text = "Clave Factura";
+            this.dato3.Text = "FACTURA:";
             // 
             // dataGridView1
             // 
@@ -84,18 +84,18 @@
             this.dato1.AutoSize = true;
             this.dato1.Location = new System.Drawing.Point(30, 20);
             this.dato1.Name = "dato1";
-            this.dato1.Size = new System.Drawing.Size(69, 13);
+            this.dato1.Size = new System.Drawing.Size(68, 13);
             this.dato1.TabIndex = 4;
-            this.dato1.Text = "cve_siniestro";
+            this.dato1.Text = "SINIESTRO:";
             // 
             // dato2
             // 
             this.dato2.AutoSize = true;
-            this.dato2.Location = new System.Drawing.Point(138, 20);
+            this.dato2.Location = new System.Drawing.Point(184, 20);
             this.dato2.Name = "dato2";
-            this.dato2.Size = new System.Drawing.Size(63, 13);
+            this.dato2.Size = new System.Drawing.Size(51, 13);
             this.dato2.TabIndex = 5;
-            this.dato2.Text = "cve_pedido";
+            this.dato2.Text = "PEDIDO:";
             // 
             // BusquedaEntrega_Devolucion
             // 

@@ -104,8 +104,8 @@ namespace Refracciones
             
             //ABRIR FORMULARIO DE DEVOLUCION/ENTREGA
             Devolucion dev = new Devolucion();
-            dev.dato1.Text = dev.dato1 + " " + dato_1.Text;
-            dev.dato2.Text = dev.dato2 + " " + dato_2.Text;
+            dev.dato1.Text = dev.dato1.Text + " " + dato_1.Text;
+            dev.dato2.Text = dev.dato2.Text + " " + dato_2.Text;
             dev.ShowDialog();
            
         }
@@ -113,8 +113,8 @@ namespace Refracciones
         private void button1_Click_1(object sender, EventArgs e)
         {
             BusquedaEntrega_Devolucion bdev = new BusquedaEntrega_Devolucion();
-            bdev.dato1.Text = dato_1.Text;
-            bdev.dato2.Text = dato_2.Text;
+            bdev.dato1.Text = bdev.dato1.Text + " " + dato_1.Text;
+            bdev.dato2.Text = bdev.dato2.Text + " " + dato_2.Text;
             bdev.ShowDialog();
             
         }

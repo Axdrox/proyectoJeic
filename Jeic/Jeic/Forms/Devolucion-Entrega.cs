@@ -39,8 +39,11 @@ namespace Refracciones.Forms
 
         private void Devolucion_Load(object sender, EventArgs e)
         {
-            cve_siniestro = dato1.Text;
-            cve_pedido = Int32.Parse(dato2.Text);
+            /*cve_siniestro = dato1.Text;
+            cve_pedido = Int32.Parse(dato2.Text);*/
+            
+            cve_pedido = Int32.Parse(dato2.Text.Substring(8, (dato2.Text.Length - 8)));
+            cve_siniestro = dato1.Text.Substring(11, dato1.Text.Length - 11);
             dgvDevolucion.DataSource = oper.Devolucion(cve_siniestro, cve_pedido);
             count = oper.Total_Registros() +1 ;
             count2 = oper.Total_Registros2() + 1;

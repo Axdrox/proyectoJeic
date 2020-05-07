@@ -101,10 +101,12 @@ namespace Refracciones.Forms
             if (btnGuardar.Text == "Guardar")
             {
                 MessageBox.Show(oper.Registrar_factura(cve_siniestro, cve_pedido, cve_factura, cve_estado, fact_sinIVA, fact_neto, fecha_ingreso, fecha_revision, fecha_pago, nombre_factura, file, nombre_xml, xml_file, comentario));
+                this.Close();
             }
             else if (btnGuardar.Text == "Actualizar")
             {
                 MessageBox.Show(oper.Actualizar_Factura(cve_factura, cve_estado, fact_sinIVA, fact_neto, fecha_ingreso, fecha_revision, fecha_pago, nombre_factura, file, nombre_xml, xml_file, comentario));
+                this.Close();
             }
         }
 
