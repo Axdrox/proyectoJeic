@@ -688,7 +688,7 @@ namespace Refracciones
 //-------------------------------------------------------------------------------------------------------------------
 
         //----------------LLENAR TABLA TXBOX----------------------------------
-        public void Llenartabla(DataGridView dtgv, string cve_Siniestro, int cve_Pedido)
+        public void Llenartabla1(DataGridView dtgv, string cve_Siniestro, string cve_Pedido)
         {
             try
             {
@@ -697,15 +697,15 @@ namespace Refracciones
 
                     if (cve_Siniestro == "")
                     {
-                        da = new SqlDataAdapter(string.Format("SELECT p.cve_pedido,p.cve_siniestro,p.cve_vendedor,c.cve_nombre,k.nombre,p.cantidad,e.fecha_asignacion,e.fecha_promesa FROM Pedido p LEFT OUTER JOIN Pieza k ON p.cve_pieza=k.cve_pieza  LEFT OUTER JOIN Entrega e ON p.cve_entrega=e.cve_entrega LEFT OUTER JOIN Valuador v ON v.cve_valuador=p.cve_valuador LEFT OUTER JOIN Cliente c ON c.cve_valuador=v.cve_valuador where p.cve_pedido like {0}", cve_Pedido), nuevacon);
+                        da = new SqlDataAdapter(string.Format("SELECT p.cve_pedido,p.cve_siniestro,p.cve_vendedor,c.cve_nombre,k.nombre,p.cantidad,e.fecha_asignacion,e.fecha_promesa FROM Pedido p LEFT OUTER JOIN Pieza k ON p.cve_pieza=k.cve_pieza  LEFT OUTER JOIN Entrega e ON p.cve_entrega=e.cve_entrega LEFT OUTER JOIN Valuador v ON v.cve_valuador=p.cve_valuador LEFT OUTER JOIN Cliente c ON c.cve_valuador=v.cve_valuador where CAST(cve_pedido AS nvarchar) like '%{0}%'", cve_Pedido), nuevacon);
                     }
-                    else if (cve_Pedido == 0)
+                    else if (cve_Pedido == "")
                     {
                         da = new SqlDataAdapter(string.Format("SELECT p.cve_pedido,p.cve_siniestro,p.cve_vendedor,c.cve_nombre,k.nombre,p.cantidad,e.fecha_asignacion,e.fecha_promesa FROM Pedido p LEFT OUTER JOIN Pieza k ON p.cve_pieza=k.cve_pieza LEFT OUTER JOIN Entrega e ON p.cve_entrega=e.cve_entrega LEFT OUTER JOIN Valuador v ON v.cve_valuador=p.cve_valuador LEFT OUTER JOIN Cliente c ON c.cve_valuador=v.cve_valuador where p.cve_siniestro like '%{0}%'", cve_Siniestro), nuevacon);
                     }
                     else
                     {
-                        da = new SqlDataAdapter(string.Format("SELECT p.cve_pedido,p.cve_siniestro,p.cve_vendedor,c.cve_nombre,k.nombre,p.cantidad,e.fecha_asignacion,e.fecha_promesa FROM Pedido p LEFT OUTER JOIN Pieza k ON p.cve_pieza=k.cve_pieza LEFT OUTER JOIN Entrega e ON p.cve_entrega=e.cve_entrega LEFT OUTER JOIN Valuador v ON v.cve_valuador=p.cve_valuador LEFT OUTER JOIN Cliente c ON c.cve_valuador=v.cve_valuador where p.cve_siniestro like '%{0}%' and p.cve_pedido like {1}", cve_Siniestro, cve_Pedido), nuevacon);
+                        da = new SqlDataAdapter(string.Format("SELECT p.cve_pedido,p.cve_siniestro,p.cve_vendedor,c.cve_nombre,k.nombre,p.cantidad,e.fecha_asignacion,e.fecha_promesa FROM Pedido p LEFT OUTER JOIN Pieza k ON p.cve_pieza=k.cve_pieza LEFT OUTER JOIN Entrega e ON p.cve_entrega=e.cve_entrega LEFT OUTER JOIN Valuador v ON v.cve_valuador=p.cve_valuador LEFT OUTER JOIN Cliente c ON c.cve_valuador=v.cve_valuador where p.cve_siniestro like '%{0}%' and CAST(cve_pedido AS nvarchar) like '%{1}%'", cve_Siniestro, cve_Pedido), nuevacon);
                     }
                     nuevacon.Open();
                     dt = new DataTable();
@@ -723,7 +723,7 @@ namespace Refracciones
 //------------------------------------------------------------------------------------------------------
 
         //-----------------LLENAR TABLA FECHAS-------------------------------
-        public void Llenartabla(DataGridView dvg, string Fecha_inicio, string fecha_fin)
+        public void Llenartabla2(DataGridView dvg, string Fecha_inicio, string fecha_fin)
         {
             try
             {

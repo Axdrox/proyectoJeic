@@ -38,6 +38,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.Fecha_in = new System.Windows.Forms.DateTimePicker();
             this.Panelinfo = new System.Windows.Forms.Panel();
+            this.pbFactura = new System.Windows.Forms.PictureBox();
             this.lblEstadoFac = new System.Windows.Forms.Label();
             this.lblFacturaConIva = new System.Windows.Forms.Label();
             this.lblFacturaSinIva = new System.Windows.Forms.Label();
@@ -73,13 +74,12 @@
             this.dgvDatos = new System.Windows.Forms.DataGridView();
             this.btnAgregarPedido = new System.Windows.Forms.Button();
             this.pbAlertas = new System.Windows.Forms.PictureBox();
-            this.pbFactura = new System.Windows.Forms.PictureBox();
             this.Panelinfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFactura)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dvgPedido)).BeginInit();
             this.PanelFecha.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbAlertas)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbFactura)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -175,6 +175,17 @@
             this.Panelinfo.Name = "Panelinfo";
             this.Panelinfo.Size = new System.Drawing.Size(338, 434);
             this.Panelinfo.TabIndex = 6;
+            // 
+            // pbFactura
+            // 
+            this.pbFactura.Image = global::Refracciones.Properties.Resources.boton_abrir_archivo;
+            this.pbFactura.Location = new System.Drawing.Point(252, 396);
+            this.pbFactura.Name = "pbFactura";
+            this.pbFactura.Size = new System.Drawing.Size(30, 23);
+            this.pbFactura.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbFactura.TabIndex = 32;
+            this.pbFactura.TabStop = false;          
+            this.pbFactura.DoubleClick += new System.EventHandler(this.pictureBox1_DoubleClick);
             // 
             // lblEstadoFac
             // 
@@ -477,11 +488,9 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dvgPedido.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dvgPedido.RowHeadersWidth = 51;
-            this.dvgPedido.Size = new System.Drawing.Size(740, 299);
+            this.dvgPedido.Size = new System.Drawing.Size(740, 403);
             this.dvgPedido.TabIndex = 7;
             this.dvgPedido.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgPedido_CellContentClick);
-            this.dvgPedido.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dvgPedido_RowHeaderMouseClick);
-            // 
             // Fecha_Fin
             // 
             this.Fecha_Fin.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -558,18 +567,6 @@
             this.pbAlertas.TabStop = false;
             this.pbAlertas.Click += new System.EventHandler(this.pbAlertas_Click);
             // 
-            // pbFactura
-            // 
-            this.pbFactura.Image = global::Refracciones.Properties.Resources.boton_abrir_archivo;
-            this.pbFactura.Location = new System.Drawing.Point(252, 396);
-            this.pbFactura.Name = "pbFactura";
-            this.pbFactura.Size = new System.Drawing.Size(30, 23);
-            this.pbFactura.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbFactura.TabIndex = 32;
-            this.pbFactura.TabStop = false;
-            this.pbFactura.Click += new System.EventHandler(this.pbFactura_Click);
-            this.pbFactura.DoubleClick += new System.EventHandler(this.pictureBox1_DoubleClick);
-            // 
             // Busqueda_Devolver
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -592,12 +589,12 @@
             this.Load += new System.EventHandler(this.Busqueda_Devolver_Load);
             this.Panelinfo.ResumeLayout(false);
             this.Panelinfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFactura)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dvgPedido)).EndInit();
             this.PanelFecha.ResumeLayout(false);
             this.PanelFecha.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbAlertas)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbFactura)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
