@@ -12,7 +12,7 @@ namespace Refracciones.Forms
 {
     public partial class Siniestro : Form
     {
-        OperBD operacion = new OperBD();
+        private OperBD operacion = new OperBD();
 
         public Siniestro()
         {
@@ -37,7 +37,6 @@ namespace Refracciones.Forms
             //dtpYear.Format = DateTimePickerFormat.Custom;
             //dtpYear.CustomFormat = "yyyy";
             dtpYear.ShowUpDown = true;
-
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -122,7 +121,6 @@ namespace Refracciones.Forms
                                 chbOtroVehiculo.Checked = false;
                                 MessageBox.Show("Ya existe un vehículo con esas características", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             }
-
                         }
                         else
                         {
@@ -158,7 +156,7 @@ namespace Refracciones.Forms
         {
             get { return txtComentario.Text.Trim(); }
         }
-        
+
         public bool otroVehiculo
         {
             get { return chbOtroVehiculo.Checked; }

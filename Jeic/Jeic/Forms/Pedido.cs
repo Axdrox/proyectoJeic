@@ -140,6 +140,7 @@ namespace Refracciones.Forms
         //Comentario de siniestro:
         string comentarioSiniestro = "";
         string estadoSiniestro = "";
+        bool nuevoVehiculo;
         private void rdbSi_CheckedChanged(object sender, EventArgs e)
         {
             if (rdbSi.Checked == true)
@@ -155,6 +156,7 @@ namespace Refracciones.Forms
                 {
                     comentarioSiniestro = siniestro.comentario;
                     estadoSiniestro = siniestro.estadoSiniestro;
+                    nuevoVehiculo = siniestro.otroVehiculo;
 
                     chbSi.Show();
                     chbSi.Checked = true;
@@ -499,7 +501,7 @@ namespace Refracciones.Forms
 
                     if(rdbNo.Checked == false)
                     {
-                        if(siniestro.otroVehiculo == true)
+                        if(nuevoVehiculo == true)
                         {
                             operacion.registroVehiculo(lblVehiculo.Text.Trim(), lblAnio.Text.Trim());
                         }
