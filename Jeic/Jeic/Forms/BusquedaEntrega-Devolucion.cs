@@ -26,7 +26,8 @@ namespace Refracciones.Forms
             int cve_pedido = Int32.Parse(dato2.Text.Substring(8, (dato2.Text.Length - 8)));
             string cve_siniestro = dato1.Text.Substring(11, dato1.Text.Length - 11);
             cve_factura = oper.Clave_Fact(cve_siniestro,cve_pedido);
-            dato3.Text = cve_factura.ToString();
+            dataGridView1.DataSource = oper.Tabla_Entrega(cve_factura);
+            dato3.Text =dato3.Text + " " + cve_factura.ToString();
         }
 
         private void rbtnEntregas_CheckedChanged(object sender, EventArgs e)

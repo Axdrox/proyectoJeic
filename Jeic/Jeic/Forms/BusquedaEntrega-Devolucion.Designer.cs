@@ -40,7 +40,7 @@
             // dato3
             // 
             this.dato3.AutoSize = true;
-            this.dato3.Location = new System.Drawing.Point(296, 20);
+            this.dato3.Location = new System.Drawing.Point(341, 20);
             this.dato3.Name = "dato3";
             this.dato3.Size = new System.Drawing.Size(60, 13);
             this.dato3.TabIndex = 0;
@@ -52,7 +52,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(12, 66);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(943, 372);
+            this.dataGridView1.Size = new System.Drawing.Size(440, 372);
             this.dataGridView1.TabIndex = 1;
             // 
             // rbtnEntregas
@@ -91,7 +91,7 @@
             // dato2
             // 
             this.dato2.AutoSize = true;
-            this.dato2.Location = new System.Drawing.Point(184, 20);
+            this.dato2.Location = new System.Drawing.Point(199, 20);
             this.dato2.Name = "dato2";
             this.dato2.Size = new System.Drawing.Size(51, 13);
             this.dato2.TabIndex = 5;
@@ -101,7 +101,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(966, 450);
+            this.ClientSize = new System.Drawing.Size(462, 450);
             this.Controls.Add(this.dato2);
             this.Controls.Add(this.dato1);
             this.Controls.Add(this.rbtnDev);
@@ -109,6 +109,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.dato3);
             this.Name = "BusquedaEntrega_Devolucion";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BusquedaEntrega_Devolucion";
             this.Load += new System.EventHandler(this.BusquedaEntrega_Devolucion_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

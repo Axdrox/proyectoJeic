@@ -57,34 +57,40 @@ namespace Refracciones.Forms
         }
         private void dgvDevolucion_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
-            int fila = Int32.Parse(e.RowIndex.ToString());
-            
-            //MessageBox.Show(fila.ToString());
-            cantidad = Int32.Parse(dgvDevolucion.Rows[fila].Cells[2].Value.ToString());
+            if (e.RowIndex == -1)
+            { }
+            else if (e.ColumnIndex == -1)
+            { }
+            else
+            {
+                int fila = Int32.Parse(e.RowIndex.ToString());
 
-            /* for (int i =1; i<=cantidad;i++)
-             {
-                 cmbCantidad.Items.Add(i.ToString());
-             }*/
-            
-            cve_pieza = Int32.Parse(dgvDevolucion.Rows[fila].Cells[1].Value.ToString());
-            cve_factura = Int32.Parse(dgvDevolucion.Rows[fila].Cells[10].Value.ToString());
-            fecha_asignacion = DateTime.Parse(dgvDevolucion.Rows[fila].Cells[7].Value.ToString());//7
-            fecha_promesa = DateTime.Parse(dgvDevolucion.Rows[fila].Cells[9].Value.ToString());//9
-            MessageBox.Show("Ahora seleccione Entrega o Devolución, así como la cantidad");
-            rbtnEntrega.Enabled = true;
-            rbtnDevolucion.Enabled = true;
-            dtpFecha.Enabled = true;
-            cmbCantidad.Enabled = true;
-            btnAceptar.Enabled = true;
-            btnCancelar.Enabled = true;
-            dgvDevolucion.Enabled = false;
+                //MessageBox.Show(fila.ToString());
+                cantidad = Int32.Parse(dgvDevolucion.Rows[fila].Cells[2].Value.ToString());
 
-            pzas_entregadas = oper.Pzas_Entregadas(cve_siniestro, cve_pedido, cve_pieza);
-            pzas_devolucion = oper.Pzas_Devolucion(cve_siniestro,cve_pedido,cve_pieza);
-            //MessageBox.Show(pzas_entregadas.ToString());
-            rbtnEntrega.Checked = true;
+                /* for (int i =1; i<=cantidad;i++)
+                 {
+                     cmbCantidad.Items.Add(i.ToString());
+                 }*/
+
+                cve_pieza = Int32.Parse(dgvDevolucion.Rows[fila].Cells[1].Value.ToString());
+                cve_factura = Int32.Parse(dgvDevolucion.Rows[fila].Cells[10].Value.ToString());
+                fecha_asignacion = DateTime.Parse(dgvDevolucion.Rows[fila].Cells[7].Value.ToString());//7
+                fecha_promesa = DateTime.Parse(dgvDevolucion.Rows[fila].Cells[9].Value.ToString());//9
+                MessageBox.Show("Ahora seleccione Entrega o Devolución, así como la cantidad");
+                rbtnEntrega.Enabled = true;
+                rbtnDevolucion.Enabled = true;
+                dtpFecha.Enabled = true;
+                cmbCantidad.Enabled = true;
+                btnAceptar.Enabled = true;
+                btnCancelar.Enabled = true;
+                dgvDevolucion.Enabled = false;
+
+                pzas_entregadas = oper.Pzas_Entregadas(cve_siniestro, cve_pedido, cve_pieza);
+                pzas_devolucion = oper.Pzas_Devolucion(cve_siniestro, cve_pedido, cve_pieza);
+                //MessageBox.Show(pzas_entregadas.ToString());
+                rbtnEntrega.Checked = true;
+            }
         }
 
         private void rbtnEntrega_CheckedChanged(object sender, EventArgs e)

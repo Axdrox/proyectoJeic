@@ -326,7 +326,7 @@ namespace Refracciones
             using (SqlConnection nuevaConexion = Conexion.conexion())
             {
                 nuevaConexion.Open();
-                Comando = new SqlCommand(string.Format("SELECT pie.nombre AS NOMBRE,pie.cve_pieza AS CLAVE_PIEZA, ped.cantidad AS CANTIDAD, prov.nombre AS PROVEEDOR, ped.cve_vendedor AS VENDEDOR, val.nombre AS VALUADOR, c.cve_nombre AS CLIENTE, ent.fecha_asignacion AS FECHA_ASIGNACION, ped.fecha_entrega AS FECHA_ENTREGA, ent.fecha_promesa  AS FECHA_PROMESA, fac.cve_factura AS FACTURA FROM PEDIDO ped JOIN PROVEEDOR prov ON prov.cve_proveedor = ped.cve_proveedor JOIN PIEZA pie ON pie.cve_pieza = ped.cve_pieza JOIN VALUADOR val ON val.cve_valuador = ped.cve_valuador JOIN CLIENTE c ON c.cve_valuador = val.cve_valuador LEFT OUTER JOIN ENTREGA ent ON ent.cve_entrega = ped.cve_entrega LEFT OUTER JOIN FACTURA fac ON fac.cve_factura = ped.cve_factura WHERE ped.cve_siniestro = '{0}' AND ped.cve_pedido = {1} AND ped.pzas_devolucion != ped.cantidad", cve_siniestro,cve_pedido), nuevaConexion);
+                Comando = new SqlCommand(string.Format("SELECT pie.nombre AS NOMBRE,pie.cve_pieza AS 'CLAVE PIEZA', ped.cantidad AS CANTIDAD, prov.nombre AS PROVEEDOR, ped.cve_vendedor AS VENDEDOR, val.nombre AS VALUADOR, c.cve_nombre AS CLIENTE, ent.fecha_asignacion AS 'FECHA DE ASIGNACIÓN', ped.fecha_entrega AS 'FECHA DE ENTREGA', ent.fecha_promesa  AS 'FECHA PROMESA', fac.cve_factura AS FACTURA FROM PEDIDO ped JOIN PROVEEDOR prov ON prov.cve_proveedor = ped.cve_proveedor JOIN PIEZA pie ON pie.cve_pieza = ped.cve_pieza JOIN VALUADOR val ON val.cve_valuador = ped.cve_valuador JOIN CLIENTE c ON c.cve_valuador = val.cve_valuador LEFT OUTER JOIN ENTREGA ent ON ent.cve_entrega = ped.cve_entrega LEFT OUTER JOIN FACTURA fac ON fac.cve_factura = ped.cve_factura WHERE ped.cve_siniestro = '{0}' AND ped.cve_pedido = {1} AND ped.pzas_devolucion != ped.cantidad", cve_siniestro,cve_pedido), nuevaConexion);
                 da = new SqlDataAdapter(Comando);
 
                 da.Fill(dt);
@@ -493,7 +493,7 @@ namespace Refracciones
             {
                 
                 nuevaConexion.Open();
-                Comando = new SqlCommand(string.Format("SELECT DISTINCT ped.cve_siniestro AS SINIESTRO,ped.cve_vendedor AS VENDEDOR, ped.cve_pedido AS PEDIDO,val.nombre AS VALUADOR,c.cve_nombre AS CLIENTE, pie.nombre AS PIEZA, ent.cantidad AS CANTIDAD, ent.fecha AS FECHA, ent.cve_factura AS FACTURA FROM ENTREGA ent JOIN PEDIDO ped ON ped.cve_factura = ent.cve_factura JOIN VALUADOR val ON val.cve_valuador = ped.cve_valuador JOIN CLIENTE c ON c.cve_valuador = val.cve_valuador JOIN PIEZA  pie ON pie.cve_pieza = ped.cve_pieza WHERE ent.cve_factura = {0}",cve_factura), nuevaConexion);
+                Comando = new SqlCommand(string.Format("SELECT DISTINCT  pie.nombre AS PIEZA, ent.cantidad AS CANTIDAD,c.cve_nombre AS CLIENTE, ent.fecha AS FECHA FROM ENTREGA ent JOIN PEDIDO ped ON ped.cve_factura = ent.cve_factura JOIN VALUADOR val ON val.cve_valuador = ped.cve_valuador JOIN CLIENTE c ON c.cve_valuador = val.cve_valuador JOIN PIEZA  pie ON pie.cve_pieza = ent.cve_pieza WHERE ent.cve_factura = {0}", cve_factura), nuevaConexion);
                 da = new SqlDataAdapter(Comando);
                 da.Fill(dt);
                 nuevaConexion.Close();
@@ -510,7 +510,7 @@ namespace Refracciones
             using (SqlConnection nuevaConexion = Conexion.conexion())
             {
                 nuevaConexion.Open();
-                Comando = new SqlCommand(string.Format("SELECT DISTINCT ped.cve_siniestro AS SINIESTRO, ped.cve_vendedor AS VENDEDOR, ped.cve_pedido AS PEDIDO, val.nombre AS VALUADOR, c.cve_nombre AS CLIENTE, pie.nombre AS PIEZA, dev.cantidad AS CANTIDAD, dev.fecha AS FECHA, dev.cve_factura AS FACTURA FROM DEVOLUCION dev JOIN PEDIDO ped ON ped.cve_factura = dev.cve_factura JOIN VALUADOR val ON val.cve_valuador = ped.cve_valuador JOIN CLIENTE c ON c.cve_valuador = val.cve_valuador JOIN PIEZA  pie ON pie.cve_pieza = ped.cve_pieza WHERE dev.cve_factura = {0}", cve_factura), nuevaConexion);
+                Comando = new SqlCommand(string.Format("SELECT DISTINCT pie.nombre AS PIEZA, dev.cantidad AS CANTIDAD,c.cve_nombre AS CLIENTE,dev.motivo AS MOTIVO,dev.fecha AS FECHA FROM DEVOLUCION dev JOIN PEDIDO ped ON ped.cve_factura = dev.cve_factura JOIN VALUADOR val ON val.cve_valuador = ped.cve_valuador JOIN CLIENTE c ON c.cve_valuador = val.cve_valuador JOIN PIEZA  pie ON pie.cve_pieza = dev.cve_pieza WHERE dev.cve_factura = {0}", cve_factura), nuevaConexion);
                 da = new SqlDataAdapter(Comando);
                 da.Fill(dt);
                 nuevaConexion.Close();
