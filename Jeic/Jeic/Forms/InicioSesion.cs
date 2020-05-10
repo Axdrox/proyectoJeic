@@ -40,8 +40,11 @@ namespace Refracciones
 
         private void txtContrasenia_Enter(object sender, EventArgs e)
         {
-            if (txtContrasenia.Text == "Default")
+            if (txtContrasenia.Text == "Default" || txtContrasenia.Text == string.Empty)
+            {
                 txtContrasenia.Text = "";
+                txtContrasenia.isPassword = true;
+            }
         }
 
         private void txtContrasenia_KeyPress(object sender, KeyPressEventArgs e)
@@ -50,7 +53,7 @@ namespace Refracciones
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
                 OperBD Operacion = new OperBD();
-                if (Operacion.logeo(txtUsuario.Text.ToUpper(), txtContrasenia.Text) == 1)
+                if (Operacion.logeo(txtUsuario.Text, txtContrasenia.Text) == 1)
                 {
                     Alertas alert = new Alertas();
                     MessageBox.Show("Bienvenido");
@@ -58,13 +61,15 @@ namespace Refracciones
                     bus.Show();
                     alert.Show();
 
-                    bus.lblUsuario.Text = "Usuario : " + txtUsuario.Text.ToUpper();
+                    bus.lblUsuario.Text = "Usuario : " + txtUsuario.Text;
                 }
                 else
                 {
                     MessageBox.Show("Usuario y/o contraseña incorrectos");
-                    txtUsuario.Text = "";
-                    txtContrasenia.Text = "";
+                    txtUsuario.Text = "Nombre de usuario";
+                    txtContrasenia.Text = "Default";
+                    txtUsuario.ForeColor = Color.White;
+                    txtContrasenia.ForeColor = Color.White;
                 }
             }
         }
@@ -72,18 +77,22 @@ namespace Refracciones
         private void btnEntrar_Click_1(object sender, EventArgs e)
         {
             OperBD Operacion = new OperBD();
-            if (Operacion.logeo(txtUsuario.Text.ToUpper(), txtContrasenia.Text) == 1)
+            if (Operacion.logeo(txtUsuario.Text, txtContrasenia.Text) == 1)
             {
                 Alertas alert = new Alertas();
                 MessageBox.Show("Bienvenido");
                 Forms.Busqueda_Devolver bus = new Forms.Busqueda_Devolver();
-                bus.lblUsuario.Text = "Usuario : " + txtUsuario.Text.ToUpper();
+                bus.lblUsuario.Text = "Usuario : " + txtUsuario.Text;
                 bus.Show();
                 alert.Show();
             }
             else
             {
                 MessageBox.Show("Usuario y/o contraseña incorrectos");
+                txtUsuario.Text = "Nombre de usuario";
+                txtContrasenia.Text = "Default";
+                txtUsuario.ForeColor = Color.White;
+                txtContrasenia.ForeColor = Color.White;
             }
         }
 
@@ -106,7 +115,7 @@ namespace Refracciones
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
                 OperBD Operacion = new OperBD();
-                if (Operacion.logeo(txtUsuario.Text.ToUpper(), txtContrasenia.Text) == 1)
+                if (Operacion.logeo(txtUsuario.Text, txtContrasenia.Text) == 1)
                 {
                     Alertas alert = new Alertas();
                     MessageBox.Show("Bienvenido");
@@ -114,13 +123,15 @@ namespace Refracciones
                     bus.Show();
                     alert.Show();
 
-                    bus.lblUsuario.Text = "Usuario : " + txtUsuario.Text.ToUpper();
+                    bus.lblUsuario.Text = "Usuario : " + txtUsuario.Text;
                 }
                 else
                 {
                     MessageBox.Show("Usuario y/o contraseña incorrectos");
-                    txtUsuario.Text = "";
-                    txtContrasenia.Text = "";
+                    txtUsuario.Text = "Nombre de usuario";
+                    txtContrasenia.Text = "Default";
+                    txtUsuario.ForeColor = Color.White;
+                    txtContrasenia.ForeColor = Color.White;
                 }
             }
         }

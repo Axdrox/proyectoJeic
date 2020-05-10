@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.lblVehiculoPedido = new System.Windows.Forms.Label();
             this.lblAnioPedido = new System.Windows.Forms.Label();
@@ -84,6 +85,7 @@
             this.lblEstado = new System.Windows.Forms.Label();
             this.txtEstado = new System.Windows.Forms.TextBox();
             this.chbModificarEstado = new System.Windows.Forms.CheckBox();
+            this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedido)).BeginInit();
             this.SuspendLayout();
             // 
@@ -99,7 +101,7 @@
             // 
             // lblVehiculoPedido
             // 
-            this.lblVehiculoPedido.Location = new System.Drawing.Point(155, 50);
+            this.lblVehiculoPedido.Location = new System.Drawing.Point(179, 50);
             this.lblVehiculoPedido.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblVehiculoPedido.Name = "lblVehiculoPedido";
             this.lblVehiculoPedido.Size = new System.Drawing.Size(56, 14);
@@ -118,7 +120,7 @@
             // lblVehiculo
             // 
             this.lblVehiculo.AutoSize = true;
-            this.lblVehiculo.Location = new System.Drawing.Point(231, 50);
+            this.lblVehiculo.Location = new System.Drawing.Point(239, 50);
             this.lblVehiculo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblVehiculo.Name = "lblVehiculo";
             this.lblVehiculo.Size = new System.Drawing.Size(0, 13);
@@ -127,7 +129,7 @@
             // lblAnio
             // 
             this.lblAnio.AutoSize = true;
-            this.lblAnio.Location = new System.Drawing.Point(336, 49);
+            this.lblAnio.Location = new System.Drawing.Point(312, 49);
             this.lblAnio.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblAnio.Name = "lblAnio";
             this.lblAnio.Size = new System.Drawing.Size(0, 13);
@@ -149,7 +151,7 @@
             this.cbAseguradora.Enabled = false;
             this.cbAseguradora.FormattingEnabled = true;
             this.cbAseguradora.Location = new System.Drawing.Point(124, 162);
-            this.cbAseguradora.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbAseguradora.Margin = new System.Windows.Forms.Padding(2);
             this.cbAseguradora.Name = "cbAseguradora";
             this.cbAseguradora.Size = new System.Drawing.Size(202, 21);
             this.cbAseguradora.TabIndex = 5;
@@ -182,7 +184,7 @@
             this.cbVendedor.Enabled = false;
             this.cbVendedor.FormattingEnabled = true;
             this.cbVendedor.Location = new System.Drawing.Point(124, 132);
-            this.cbVendedor.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbVendedor.Margin = new System.Windows.Forms.Padding(2);
             this.cbVendedor.Name = "cbVendedor";
             this.cbVendedor.Size = new System.Drawing.Size(203, 21);
             this.cbVendedor.TabIndex = 9;
@@ -203,7 +205,7 @@
             // 
             this.dtpFechaAsignacion.Enabled = false;
             this.dtpFechaAsignacion.Location = new System.Drawing.Point(134, 282);
-            this.dtpFechaAsignacion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpFechaAsignacion.Margin = new System.Windows.Forms.Padding(2);
             this.dtpFechaAsignacion.Name = "dtpFechaAsignacion";
             this.dtpFechaAsignacion.Size = new System.Drawing.Size(192, 20);
             this.dtpFechaAsignacion.TabIndex = 11;
@@ -222,7 +224,7 @@
             // 
             this.dtpFechaPromesa.Enabled = false;
             this.dtpFechaPromesa.Location = new System.Drawing.Point(134, 310);
-            this.dtpFechaPromesa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpFechaPromesa.Margin = new System.Windows.Forms.Padding(2);
             this.dtpFechaPromesa.Name = "dtpFechaPromesa";
             this.dtpFechaPromesa.Size = new System.Drawing.Size(192, 20);
             this.dtpFechaPromesa.TabIndex = 13;
@@ -254,7 +256,7 @@
             this.cbTaller.Enabled = false;
             this.cbTaller.FormattingEnabled = true;
             this.cbTaller.Location = new System.Drawing.Point(124, 219);
-            this.cbTaller.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbTaller.Margin = new System.Windows.Forms.Padding(2);
             this.cbTaller.Name = "cbTaller";
             this.cbTaller.Size = new System.Drawing.Size(203, 21);
             this.cbTaller.TabIndex = 16;
@@ -266,7 +268,7 @@
             this.cbDestino.Enabled = false;
             this.cbDestino.FormattingEnabled = true;
             this.cbDestino.Location = new System.Drawing.Point(124, 246);
-            this.cbDestino.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbDestino.Margin = new System.Windows.Forms.Padding(2);
             this.cbDestino.Name = "cbDestino";
             this.cbDestino.Size = new System.Drawing.Size(203, 21);
             this.cbDestino.TabIndex = 17;
@@ -277,7 +279,7 @@
             this.dgvPedido.AllowUserToAddRows = false;
             this.dgvPedido.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPedido.Location = new System.Drawing.Point(18, 401);
-            this.dgvPedido.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvPedido.Margin = new System.Windows.Forms.Padding(2);
             this.dgvPedido.Name = "dgvPedido";
             this.dgvPedido.RowHeadersWidth = 51;
             this.dgvPedido.RowTemplate.Height = 24;
@@ -289,7 +291,7 @@
             // 
             this.btnFinalizarPedido.Enabled = false;
             this.btnFinalizarPedido.Location = new System.Drawing.Point(277, 570);
-            this.btnFinalizarPedido.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnFinalizarPedido.Margin = new System.Windows.Forms.Padding(2);
             this.btnFinalizarPedido.Name = "btnFinalizarPedido";
             this.btnFinalizarPedido.Size = new System.Drawing.Size(107, 25);
             this.btnFinalizarPedido.TabIndex = 19;
@@ -300,7 +302,7 @@
             // btnCancelar
             // 
             this.btnCancelar.Location = new System.Drawing.Point(200, 570);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(62, 25);
             this.btnCancelar.TabIndex = 20;
@@ -313,7 +315,7 @@
             this.rdbNo.AutoSize = true;
             this.rdbNo.Enabled = false;
             this.rdbNo.Location = new System.Drawing.Point(170, 26);
-            this.rdbNo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rdbNo.Margin = new System.Windows.Forms.Padding(2);
             this.rdbNo.Name = "rdbNo";
             this.rdbNo.Size = new System.Drawing.Size(39, 17);
             this.rdbNo.TabIndex = 22;
@@ -326,7 +328,7 @@
             this.rdbSi.AutoSize = true;
             this.rdbSi.Enabled = false;
             this.rdbSi.Location = new System.Drawing.Point(124, 26);
-            this.rdbSi.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rdbSi.Margin = new System.Windows.Forms.Padding(2);
             this.rdbSi.Name = "rdbSi";
             this.rdbSi.Size = new System.Drawing.Size(36, 17);
             this.rdbSi.TabIndex = 23;
@@ -338,7 +340,7 @@
             // 
             this.chbSi.AutoSize = true;
             this.chbSi.Location = new System.Drawing.Point(124, 27);
-            this.chbSi.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chbSi.Margin = new System.Windows.Forms.Padding(2);
             this.chbSi.Name = "chbSi";
             this.chbSi.Size = new System.Drawing.Size(37, 17);
             this.chbSi.TabIndex = 24;
@@ -350,7 +352,7 @@
             this.chbOtroValuador.AutoSize = true;
             this.chbOtroValuador.Enabled = false;
             this.chbOtroValuador.Location = new System.Drawing.Point(330, 191);
-            this.chbOtroValuador.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chbOtroValuador.Margin = new System.Windows.Forms.Padding(2);
             this.chbOtroValuador.Name = "chbOtroValuador";
             this.chbOtroValuador.Size = new System.Drawing.Size(46, 17);
             this.chbOtroValuador.TabIndex = 25;
@@ -362,7 +364,7 @@
             // 
             this.txtValuador.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.txtValuador.Location = new System.Drawing.Point(124, 188);
-            this.txtValuador.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtValuador.Margin = new System.Windows.Forms.Padding(2);
             this.txtValuador.Name = "txtValuador";
             this.txtValuador.Size = new System.Drawing.Size(203, 20);
             this.txtValuador.TabIndex = 26;
@@ -375,7 +377,7 @@
             this.cbValuador.Enabled = false;
             this.cbValuador.FormattingEnabled = true;
             this.cbValuador.Location = new System.Drawing.Point(124, 188);
-            this.cbValuador.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbValuador.Margin = new System.Windows.Forms.Padding(2);
             this.cbValuador.Name = "cbValuador";
             this.cbValuador.Size = new System.Drawing.Size(203, 21);
             this.cbValuador.TabIndex = 27;
@@ -385,7 +387,7 @@
             // 
             this.txtAseguradora.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.txtAseguradora.Location = new System.Drawing.Point(124, 162);
-            this.txtAseguradora.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtAseguradora.Margin = new System.Windows.Forms.Padding(2);
             this.txtAseguradora.Name = "txtAseguradora";
             this.txtAseguradora.Size = new System.Drawing.Size(203, 20);
             this.txtAseguradora.TabIndex = 28;
@@ -397,7 +399,7 @@
             this.chbOtraAseguradora.AutoSize = true;
             this.chbOtraAseguradora.Enabled = false;
             this.chbOtraAseguradora.Location = new System.Drawing.Point(330, 163);
-            this.chbOtraAseguradora.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chbOtraAseguradora.Margin = new System.Windows.Forms.Padding(2);
             this.chbOtraAseguradora.Name = "chbOtraAseguradora";
             this.chbOtraAseguradora.Size = new System.Drawing.Size(46, 17);
             this.chbOtraAseguradora.TabIndex = 29;
@@ -438,7 +440,7 @@
             // 
             this.txtClavePedido.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.txtClavePedido.Location = new System.Drawing.Point(124, 3);
-            this.txtClavePedido.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtClavePedido.Margin = new System.Windows.Forms.Padding(2);
             this.txtClavePedido.Name = "txtClavePedido";
             this.txtClavePedido.Size = new System.Drawing.Size(203, 20);
             this.txtClavePedido.TabIndex = 33;
@@ -451,7 +453,7 @@
             this.chbOtroTaller.AutoSize = true;
             this.chbOtroTaller.Enabled = false;
             this.chbOtroTaller.Location = new System.Drawing.Point(331, 221);
-            this.chbOtroTaller.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chbOtroTaller.Margin = new System.Windows.Forms.Padding(2);
             this.chbOtroTaller.Name = "chbOtroTaller";
             this.chbOtroTaller.Size = new System.Drawing.Size(46, 17);
             this.chbOtroTaller.TabIndex = 34;
@@ -464,7 +466,7 @@
             this.chbOtroDestino.AutoSize = true;
             this.chbOtroDestino.Enabled = false;
             this.chbOtroDestino.Location = new System.Drawing.Point(330, 248);
-            this.chbOtroDestino.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chbOtroDestino.Margin = new System.Windows.Forms.Padding(2);
             this.chbOtroDestino.Name = "chbOtroDestino";
             this.chbOtroDestino.Size = new System.Drawing.Size(46, 17);
             this.chbOtroDestino.TabIndex = 35;
@@ -476,7 +478,7 @@
             // 
             this.txtTaller.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.txtTaller.Location = new System.Drawing.Point(124, 219);
-            this.txtTaller.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtTaller.Margin = new System.Windows.Forms.Padding(2);
             this.txtTaller.Name = "txtTaller";
             this.txtTaller.Size = new System.Drawing.Size(203, 20);
             this.txtTaller.TabIndex = 36;
@@ -487,7 +489,7 @@
             // 
             this.txtDestino.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.txtDestino.Location = new System.Drawing.Point(124, 246);
-            this.txtDestino.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDestino.Margin = new System.Windows.Forms.Padding(2);
             this.txtDestino.Name = "txtDestino";
             this.txtDestino.Size = new System.Drawing.Size(203, 20);
             this.txtDestino.TabIndex = 37;
@@ -497,7 +499,7 @@
             // btnAgregarPieza
             // 
             this.btnAgregarPieza.Location = new System.Drawing.Point(18, 370);
-            this.btnAgregarPieza.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAgregarPieza.Margin = new System.Windows.Forms.Padding(2);
             this.btnAgregarPieza.Name = "btnAgregarPieza";
             this.btnAgregarPieza.Size = new System.Drawing.Size(100, 25);
             this.btnAgregarPieza.TabIndex = 38;
@@ -519,7 +521,7 @@
             // 
             this.dtpFechaBaja.Enabled = false;
             this.dtpFechaBaja.Location = new System.Drawing.Point(134, 340);
-            this.dtpFechaBaja.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpFechaBaja.Margin = new System.Windows.Forms.Padding(2);
             this.dtpFechaBaja.Name = "dtpFechaBaja";
             this.dtpFechaBaja.Size = new System.Drawing.Size(192, 20);
             this.dtpFechaBaja.TabIndex = 40;
@@ -576,7 +578,7 @@
             // 
             this.chbModificarFechaAsignacion.AutoSize = true;
             this.chbModificarFechaAsignacion.Location = new System.Drawing.Point(330, 285);
-            this.chbModificarFechaAsignacion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chbModificarFechaAsignacion.Margin = new System.Windows.Forms.Padding(2);
             this.chbModificarFechaAsignacion.Name = "chbModificarFechaAsignacion";
             this.chbModificarFechaAsignacion.Size = new System.Drawing.Size(69, 17);
             this.chbModificarFechaAsignacion.TabIndex = 46;
@@ -589,7 +591,7 @@
             // 
             this.chbModificarFechaPromesa.AutoSize = true;
             this.chbModificarFechaPromesa.Location = new System.Drawing.Point(330, 313);
-            this.chbModificarFechaPromesa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chbModificarFechaPromesa.Margin = new System.Windows.Forms.Padding(2);
             this.chbModificarFechaPromesa.Name = "chbModificarFechaPromesa";
             this.chbModificarFechaPromesa.Size = new System.Drawing.Size(69, 17);
             this.chbModificarFechaPromesa.TabIndex = 47;
@@ -602,7 +604,7 @@
             // 
             this.chbModificarFechaBaja.AutoSize = true;
             this.chbModificarFechaBaja.Location = new System.Drawing.Point(330, 343);
-            this.chbModificarFechaBaja.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chbModificarFechaBaja.Margin = new System.Windows.Forms.Padding(2);
             this.chbModificarFechaBaja.Name = "chbModificarFechaBaja";
             this.chbModificarFechaBaja.Size = new System.Drawing.Size(69, 17);
             this.chbModificarFechaBaja.TabIndex = 48;
@@ -614,7 +616,7 @@
             // 
             this.chbModificarVendedor.AutoSize = true;
             this.chbModificarVendedor.Location = new System.Drawing.Point(330, 133);
-            this.chbModificarVendedor.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chbModificarVendedor.Margin = new System.Windows.Forms.Padding(2);
             this.chbModificarVendedor.Name = "chbModificarVendedor";
             this.chbModificarVendedor.Size = new System.Drawing.Size(69, 17);
             this.chbModificarVendedor.TabIndex = 49;
@@ -627,7 +629,7 @@
             // 
             this.txtVendedor.Enabled = false;
             this.txtVendedor.Location = new System.Drawing.Point(124, 132);
-            this.txtVendedor.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtVendedor.Margin = new System.Windows.Forms.Padding(2);
             this.txtVendedor.Name = "txtVendedor";
             this.txtVendedor.Size = new System.Drawing.Size(203, 20);
             this.txtVendedor.TabIndex = 50;
@@ -647,7 +649,7 @@
             // txtComentarioSiniestro
             // 
             this.txtComentarioSiniestro.Location = new System.Drawing.Point(124, 90);
-            this.txtComentarioSiniestro.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtComentarioSiniestro.Margin = new System.Windows.Forms.Padding(2);
             this.txtComentarioSiniestro.Multiline = true;
             this.txtComentarioSiniestro.Name = "txtComentarioSiniestro";
             this.txtComentarioSiniestro.Size = new System.Drawing.Size(202, 34);
@@ -659,7 +661,7 @@
             this.cbEstadoSiniestro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbEstadoSiniestro.FormattingEnabled = true;
             this.cbEstadoSiniestro.Location = new System.Drawing.Point(124, 65);
-            this.cbEstadoSiniestro.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbEstadoSiniestro.Margin = new System.Windows.Forms.Padding(2);
             this.cbEstadoSiniestro.Name = "cbEstadoSiniestro";
             this.cbEstadoSiniestro.Size = new System.Drawing.Size(203, 21);
             this.cbEstadoSiniestro.TabIndex = 53;
@@ -679,7 +681,7 @@
             // 
             this.txtEstado.Enabled = false;
             this.txtEstado.Location = new System.Drawing.Point(124, 66);
-            this.txtEstado.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtEstado.Margin = new System.Windows.Forms.Padding(2);
             this.txtEstado.Name = "txtEstado";
             this.txtEstado.Size = new System.Drawing.Size(204, 20);
             this.txtEstado.TabIndex = 55;
@@ -688,13 +690,18 @@
             // 
             this.chbModificarEstado.AutoSize = true;
             this.chbModificarEstado.Location = new System.Drawing.Point(330, 68);
-            this.chbModificarEstado.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chbModificarEstado.Margin = new System.Windows.Forms.Padding(2);
             this.chbModificarEstado.Name = "chbModificarEstado";
             this.chbModificarEstado.Size = new System.Drawing.Size(69, 17);
             this.chbModificarEstado.TabIndex = 56;
             this.chbModificarEstado.Text = "Modificar";
             this.chbModificarEstado.UseVisualStyleBackColor = true;
             this.chbModificarEstado.CheckedChanged += new System.EventHandler(this.chbModificarEstado_CheckedChanged);
+            // 
+            // bunifuElipse1
+            // 
+            this.bunifuElipse1.ElipseRadius = 5;
+            this.bunifuElipse1.TargetControl = this;
             // 
             // Pedido
             // 
@@ -757,7 +764,8 @@
             this.Controls.Add(this.lblAnioPedido);
             this.Controls.Add(this.lblVehiculoPedido);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Pedido";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pedido";
@@ -826,5 +834,6 @@
         private System.Windows.Forms.Label lblEstado;
         private System.Windows.Forms.TextBox txtEstado;
         private System.Windows.Forms.CheckBox chbModificarEstado;
+        private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
     }
 }

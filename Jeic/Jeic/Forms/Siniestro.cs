@@ -28,7 +28,7 @@ namespace Refracciones.Forms
             //Hace que no sea posible escribir en el combobox, también se puede configurar seleccionando el elemento
             this.cbVehiculo.DropDownStyle = ComboBoxStyle.DropDownList;
 
-            dtpYear.Hide();
+            //dtpYear.Hide();
             lblAnioRegistro.Hide();
             lblIngreseNombre.Hide();
             txtNombreVehiculoNuevo.Hide();
@@ -46,7 +46,7 @@ namespace Refracciones.Forms
 
         private void cbVehiculo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            lblAnio.Text = operacion.anioVehiculo(cbVehiculo.Text.Trim());
+            //lblAnio.Text = operacion.anioVehiculo(cbVehiculo.Text.Trim());
         }
 
         private void cbEstadoSiniestro_Click(object sender, EventArgs e)
@@ -63,7 +63,7 @@ namespace Refracciones.Forms
                 txtNombreVehiculoNuevo.Show();
                 dtpYear.Show();
                 lblAnioRegistro.Show();
-                lblAnio.Hide();
+                //lblAnio.Hide();
                 lblAnioTexto.Hide();
                 lblVehiculoText.Hide();
                 cbVehiculo.Hide();
@@ -72,9 +72,9 @@ namespace Refracciones.Forms
             {
                 lblIngreseNombre.Hide();
                 txtNombreVehiculoNuevo.Hide();
-                dtpYear.Hide();
+                //dtpYear.Hide();
                 lblAnioRegistro.Hide();
-                lblAnio.Show();
+                //lblAnio.Show();
                 lblAnioTexto.Show();
                 lblVehiculoText.Show();
                 cbVehiculo.Show();
@@ -100,7 +100,7 @@ namespace Refracciones.Forms
                     {
                         if (chbOtroVehiculo.Checked == true)
                         {
-                            if (operacion.existeVehiculo(txtNombreVehiculoNuevo.Text.Trim().ToUpper(), anioVehiculo = dtpYear.Text.Trim()) == "")
+                            if (operacion.existeVehiculo(txtNombreVehiculoNuevo.Text.Trim().ToUpper()) == "")
                             {
                                 nombreVehiculo = txtNombreVehiculoNuevo.Text.Trim().ToUpper();
                                 anioVehiculo = dtpYear.Text.Trim();
@@ -114,18 +114,18 @@ namespace Refracciones.Forms
                                 dtpYear.Hide();
                                 dtpYear.Text = "";
                                 lblAnioRegistro.Hide();
-                                lblAnio.Show();
+                                //lblAnio.Show();
                                 lblAnioTexto.Show();
                                 lblVehiculoText.Show();
                                 cbVehiculo.Show();
                                 chbOtroVehiculo.Checked = false;
-                                MessageBox.Show("Ya existe un vehículo con esas características", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                MessageBox.Show("Modelo ya existente", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             }
                         }
                         else
                         {
                             nombreVehiculo = cbVehiculo.Text.Trim();
-                            anioVehiculo = lblAnio.Text.Trim();
+                            //anioVehiculo = lblAnio.Text.Trim();
                             this.Close();
                         }
                     }

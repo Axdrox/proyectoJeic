@@ -32,7 +32,7 @@ namespace Refracciones
                 using (SqlConnection nuevacon = Conexion.conexion())
                 {
 
-                    this.Comando = new SqlCommand(string.Format("SELECT usuario,contrasenia FROM administrador WHERE usuario='{0}' AND dbo.fnDescifraClave(contrasenia)='{1}';", us, pass), nuevacon);
+                    this.Comando = new SqlCommand(string.Format("SELECT usuario,contrasenia FROM administrador WHERE usuario='{0}' AND dbo.fnDescifraClave(contrasenia) COLLATE SQL_Latin1_General_CP1_CS_AS = '{1}';", us, pass), nuevacon);
                     nuevacon.Open();
                     Lector = Comando.ExecuteReader();
                     while (Lector.Read()) { contador++; }
@@ -665,15 +665,15 @@ namespace Refracciones
 
                     if (cve_Siniestro == "")
                     {
-                        da = new SqlDataAdapter(string.Format("SELECT p.cve_pedido,p.cve_siniestro,p.cve_vendedor,c.cve_nombre,k.nombre,p.cantidad,e.fecha_asignacion,e.fecha_promesa FROM Pedido p LEFT OUTER JOIN Pieza k ON p.cve_pieza=k.cve_pieza  LEFT OUTER JOIN Entrega e ON p.cve_entrega=e.cve_entrega LEFT OUTER JOIN Valuador v ON v.cve_valuador=p.cve_valuador LEFT OUTER JOIN Cliente c ON c.cve_valuador=v.cve_valuador where CAST(cve_pedido AS nvarchar) like '%{0}%'", cve_Pedido), nuevacon);
+                        da = new SqlDataAdapter(string.Format("SELECT p.cve_pedido AS PEDIDO,p.cve_siniestro AS SINIESTRO,p.cve_vendedor AS VENDEDOR,c.cve_nombre AS CLIENTE ,k.nombre AS PIEZA ,p.cantidad AS CANTIDAD,e.fecha_asignacion 'FECHA DE ASIGNACIÓN',e.fecha_promesa AS 'FECHA PROMESA' FROM Pedido p LEFT OUTER JOIN Pieza k ON p.cve_pieza=k.cve_pieza  LEFT OUTER JOIN Entrega e ON p.cve_entrega=e.cve_entrega LEFT OUTER JOIN Valuador v ON v.cve_valuador=p.cve_valuador LEFT OUTER JOIN Cliente c ON c.cve_valuador=v.cve_valuador where CAST(cve_pedido AS nvarchar) like '%{0}%'", cve_Pedido), nuevacon);
                     }
                     else if (cve_Pedido == "")
                     {
-                        da = new SqlDataAdapter(string.Format("SELECT p.cve_pedido,p.cve_siniestro,p.cve_vendedor,c.cve_nombre,k.nombre,p.cantidad,e.fecha_asignacion,e.fecha_promesa FROM Pedido p LEFT OUTER JOIN Pieza k ON p.cve_pieza=k.cve_pieza LEFT OUTER JOIN Entrega e ON p.cve_entrega=e.cve_entrega LEFT OUTER JOIN Valuador v ON v.cve_valuador=p.cve_valuador LEFT OUTER JOIN Cliente c ON c.cve_valuador=v.cve_valuador where p.cve_siniestro like '%{0}%'", cve_Siniestro), nuevacon);
+                        da = new SqlDataAdapter(string.Format("SELECT p.cve_pedido AS PEDIDO,p.cve_siniestro AS SINIESTRO,p.cve_vendedor AS VENDEDOR ,c.cve_nombre AS CLIENTE ,k.nombre AS PIEZA,p.cantidad AS CANTIDAD,e.fecha_asignacion AS 'FECHA DE ASIGNACIÓN',e.fecha_promesa AS 'FECHA PROMESA' FROM Pedido p LEFT OUTER JOIN Pieza k ON p.cve_pieza=k.cve_pieza LEFT OUTER JOIN Entrega e ON p.cve_entrega=e.cve_entrega LEFT OUTER JOIN Valuador v ON v.cve_valuador=p.cve_valuador LEFT OUTER JOIN Cliente c ON c.cve_valuador=v.cve_valuador where p.cve_siniestro like '%{0}%'", cve_Siniestro), nuevacon);
                     }
                     else
                     {
-                        da = new SqlDataAdapter(string.Format("SELECT p.cve_pedido,p.cve_siniestro,p.cve_vendedor,c.cve_nombre,k.nombre,p.cantidad,e.fecha_asignacion,e.fecha_promesa FROM Pedido p LEFT OUTER JOIN Pieza k ON p.cve_pieza=k.cve_pieza LEFT OUTER JOIN Entrega e ON p.cve_entrega=e.cve_entrega LEFT OUTER JOIN Valuador v ON v.cve_valuador=p.cve_valuador LEFT OUTER JOIN Cliente c ON c.cve_valuador=v.cve_valuador where p.cve_siniestro like '%{0}%' and CAST(cve_pedido AS nvarchar) like '%{1}%'", cve_Siniestro, cve_Pedido), nuevacon);
+                        da = new SqlDataAdapter(string.Format("SELECT p.cve_pedido AS PEDIDO,p.cve_siniestro AS SINIESTRO,p.cve_vendedor AS VENDEDOR,c.cve_nombre AS CLIENTE,k.nombre AS PIEZA,p.cantidad AS CANTIDAD,e.fecha_asignacion AS 'FECHA DE ASIGNACIÓN',e.fecha_promesa AS 'FECHA PROMESA' FROM Pedido p LEFT OUTER JOIN Pieza k ON p.cve_pieza=k.cve_pieza LEFT OUTER JOIN Entrega e ON p.cve_entrega=e.cve_entrega LEFT OUTER JOIN Valuador v ON v.cve_valuador=p.cve_valuador LEFT OUTER JOIN Cliente c ON c.cve_valuador=v.cve_valuador where p.cve_siniestro like '%{0}%' and CAST(cve_pedido AS nvarchar) like '%{1}%'", cve_Siniestro, cve_Pedido), nuevacon);
                     }
                     nuevacon.Open();
                     dt = new DataTable();
@@ -738,7 +738,7 @@ namespace Refracciones
             {
                 using (SqlConnection nuevacon = Conexion.conexion())
                 {
-                    da = new SqlDataAdapter(string.Format("SELECT TOP 10 p.cve_pedido,p.cve_siniestro,p.cve_vendedor,c.cve_nombre,k.nombre,p.cantidad,e.fecha_asignacion,e.fecha_promesa FROM Pedido p LEFT OUTER JOIN Pieza k ON p.cve_pieza=k.cve_pieza  LEFT OUTER JOIN Entrega e ON p.cve_entrega=e.cve_entrega LEFT OUTER JOIN Valuador v ON v.cve_valuador=p.cve_valuador LEFT OUTER JOIN Cliente c ON c.cve_valuador=v.cve_valuador order by fecha desc"), nuevacon);
+                    da = new SqlDataAdapter(string.Format("SELECT TOP 10 p.cve_pedido AS PEDIDO,p.cve_siniestro AS 'CLAVE SINIESTRO',p.cve_vendedor AS VENDEDOR,c.cve_nombre AS CLIENTE ,k.nombre AS PIEZA,p.cantidad AS CANTIDAD,e.fecha_asignacion AS 'FECHA DE ASIGNACIÓN',e.fecha_promesa AS 'FECHA PROMESA' FROM Pedido p LEFT OUTER JOIN Pieza k ON p.cve_pieza=k.cve_pieza  LEFT OUTER JOIN Entrega e ON p.cve_entrega=e.cve_entrega LEFT OUTER JOIN Valuador v ON v.cve_valuador=p.cve_valuador LEFT OUTER JOIN Cliente c ON c.cve_valuador=v.cve_valuador order by fecha_asignacion desc"), nuevacon);
                     nuevacon.Open();
                     dt = new DataTable();
                     da.Fill(dt);
@@ -968,6 +968,31 @@ namespace Refracciones
                 MessageBox.Show("Error: " + EX.Message);
             }
             return dataSet;
+        }
+
+        //VALIDAR SI EXISTE UN MISMO REGISTRO DE ASEGURADORA PARA EVITAR DUPLICADOS, ETC.
+        public string existeCliente(string nombre)
+        {
+            string resultado = "";
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("SELECT cve_nombre FROM CLIENTE WHERE cve_nombre = @cve_nombre", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@nombre", nombre);
+
+                    //Para saber si en realidad existe, de lo contrario devuelve un string vacío
+                    if (Comando.ExecuteScalar() == null) { }
+                    else
+                        resultado = Comando.ExecuteScalar().ToString();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return resultado;
         }
 
         //-------------VALUADORES REGISTRADOS
@@ -1679,7 +1704,7 @@ namespace Refracciones
         }
 
         //VALIDAR SI EXISTE UN MISMO REGISTRO DE VEHÍCULO PARA EVITAR DUPLICADOS, ETC.
-        public string existeVehiculo(string modelo, string anio)
+        public string existeVehiculo(string modelo)
         {
             string resultado = "";
             try
@@ -1687,9 +1712,8 @@ namespace Refracciones
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     nuevaConexion.Open();
-                    Comando = new SqlCommand("SELECT cve_vehiculo FROM VEHICULO WHERE modelo = @modelo AND anio = @anio", nuevaConexion);
+                    Comando = new SqlCommand("SELECT cve_vehiculo FROM VEHICULO WHERE modelo = @modelo", nuevaConexion);
                     Comando.Parameters.AddWithValue("@modelo", modelo);
-                    Comando.Parameters.AddWithValue("@anio", anio);
 
                     //Para saber si en realidad existe, de lo contrario devuelve un string vacío
                     if(Comando.ExecuteScalar() == null) { }

@@ -54,8 +54,6 @@
             this.lblCostoEnvio = new System.Windows.Forms.Label();
             this.lblCostoSinIva = new System.Windows.Forms.Label();
             this.lblFechaEntreg = new System.Windows.Forms.Label();
-            this.lblEntregadas = new System.Windows.Forms.Label();
-            this.lblAsiganadas = new System.Windows.Forms.Label();
             this.lblPromesa = new System.Windows.Forms.Label();
             this.lblAsignacion = new System.Windows.Forms.Label();
             this.lblOrigen = new System.Windows.Forms.Label();
@@ -159,8 +157,6 @@
             this.Panelinfo.Controls.Add(this.lblCostoEnvio);
             this.Panelinfo.Controls.Add(this.lblCostoSinIva);
             this.Panelinfo.Controls.Add(this.lblFechaEntreg);
-            this.Panelinfo.Controls.Add(this.lblEntregadas);
-            this.Panelinfo.Controls.Add(this.lblAsiganadas);
             this.Panelinfo.Controls.Add(this.lblPromesa);
             this.Panelinfo.Controls.Add(this.lblAsignacion);
             this.Panelinfo.Controls.Add(this.lblOrigen);
@@ -183,7 +179,7 @@
             this.pbFactura.Size = new System.Drawing.Size(30, 23);
             this.pbFactura.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbFactura.TabIndex = 32;
-            this.pbFactura.TabStop = false;          
+            this.pbFactura.TabStop = false;
             this.pbFactura.DoubleClick += new System.EventHandler(this.pictureBox1_DoubleClick);
             // 
             // lblEstadoFac
@@ -336,26 +332,6 @@
             this.lblFechaEntreg.TabIndex = 17;
             this.lblFechaEntreg.Text = "Fecha Entrega: ";
             // 
-            // lblEntregadas
-            // 
-            this.lblEntregadas.AutoSize = true;
-            this.lblEntregadas.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEntregadas.Location = new System.Drawing.Point(170, 219);
-            this.lblEntregadas.Name = "lblEntregadas";
-            this.lblEntregadas.Size = new System.Drawing.Size(112, 16);
-            this.lblEntregadas.TabIndex = 16;
-            this.lblEntregadas.Text = "Pzas Entregadas:";
-            // 
-            // lblAsiganadas
-            // 
-            this.lblAsiganadas.AutoSize = true;
-            this.lblAsiganadas.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAsiganadas.Location = new System.Drawing.Point(23, 219);
-            this.lblAsiganadas.Name = "lblAsiganadas";
-            this.lblAsiganadas.Size = new System.Drawing.Size(106, 16);
-            this.lblAsiganadas.TabIndex = 15;
-            this.lblAsiganadas.Text = "Pzas Asignadas:";
-            // 
             // lblPromesa
             // 
             this.lblPromesa.AutoSize = true;
@@ -490,6 +466,7 @@
             this.dvgPedido.Size = new System.Drawing.Size(740, 403);
             this.dvgPedido.TabIndex = 7;
             this.dvgPedido.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgPedido_CellContentClick);
+            // 
             // Fecha_Fin
             // 
             this.Fecha_Fin.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -623,8 +600,6 @@
         private System.Windows.Forms.Label lblPromesa;
         private System.Windows.Forms.Label lblAsignacion;
         private System.Windows.Forms.Label lblOrigen;
-        private System.Windows.Forms.Label lblAsiganadas;
-        private System.Windows.Forms.Label lblEntregadas;
         private System.Windows.Forms.Label lblFechaEntreg;
         private System.Windows.Forms.Label lblEstadoFac;
         private System.Windows.Forms.Label lblFacturaConIva;

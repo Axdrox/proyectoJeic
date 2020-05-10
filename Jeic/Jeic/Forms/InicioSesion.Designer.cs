@@ -68,7 +68,7 @@
             this.txtUsuario.LineIdleColor = System.Drawing.Color.Gray;
             this.txtUsuario.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(71)))), ((int)(((byte)(122)))));
             this.txtUsuario.LineThickness = 3;
-            this.txtUsuario.Location = new System.Drawing.Point(39, 84);
+            this.txtUsuario.Location = new System.Drawing.Point(44, 84);
             this.txtUsuario.Margin = new System.Windows.Forms.Padding(4);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(177, 22);

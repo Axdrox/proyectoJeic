@@ -72,6 +72,7 @@ namespace Refracciones.Forms
                         lblVehiculo.Hide();
                     }
                 }
+                chbModificarEstado.Show();
                 cbEstadoSiniestro.Enabled = false;
                 txtEstado.Text = operacion.estadoSiniestroClaves(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
 
@@ -134,6 +135,11 @@ namespace Refracciones.Forms
 
                 lblComentarioSiniestro.Hide();
                 txtComentarioSiniestro.Hide();
+
+                txtEstado.Hide();
+                cbEstadoSiniestro.Hide();
+                chbModificarEstado.Hide();
+                lblEstado.Hide();
             }
         }
 
@@ -218,6 +224,13 @@ namespace Refracciones.Forms
                 txtComentarioSiniestro.Show();
                 lblEstado.Show();
                 cbEstadoSiniestro.Show();
+            }
+            else
+            {
+                txtEstado.Hide();
+                cbEstadoSiniestro.Hide();
+                chbModificarEstado.Hide();
+                lblEstado.Hide();
             }
         }
 
@@ -482,6 +495,20 @@ namespace Refracciones.Forms
 
         private void btnFinalizarPedido_Click(object sender, EventArgs e)
         {
+
+            if(chbOtraAseguradora.Checked == true)
+            {
+                if(operacion.existeCliente(txtAseguradora.Text.Trim().ToUpper()) == string.Empty){
+                    //CONTINUAR
+                }
+                else
+                {
+                    MessageBox.Show("Cliente ya existente", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtAseguradora.Clear();
+                    txtAseguradora.Hide();
+                    chbOtraAseguradora.Checked = false;
+                }
+            }
             Siniestro siniestro = new Siniestro();
             try
             {
@@ -518,7 +545,7 @@ namespace Refracciones.Forms
                     foreach (DataGridViewRow row in dgvPedido.Rows)
                     {
                         //Corregir, es cantidad por pieza
-                        cantidadTotal += Convert.ToInt32(row.Cells["Cantidad"].Value);
+                        //cantidadTotal += Convert.ToInt32(row.Cells["Cantidad"].Value);
                     }
                     //MessageBox.Show(Convert.ToInt32(dgvPedido.Rows).ToString());
                     foreach (DataGridViewRow row in dgvPedido.Rows)
@@ -536,7 +563,7 @@ namespace Refracciones.Forms
                             Convert.ToString(row.Cells["Costo sin IVA"].Value), Convert.ToString(row.Cells["Costo neto"].Value),
                             Convert.ToString(row.Cells["Costo de envío"].Value), Convert.ToString(row.Cells["Precio de venta"].Value),
                             Convert.ToString(row.Cells["Precio de reparación"].Value), Convert.ToString(row.Cells["Clave de producto"].Value),
-                            Convert.ToString(row.Cells["Número de guía"].Value), cantidadTotal/*Convert.ToInt32(lblCantidadTotal.Text.Trim())*/,
+                            Convert.ToString(row.Cells["Número de guía"].Value), Convert.ToInt32(row.Cells["Cantidad"].Value)/*Convert.ToInt32(lblCantidadTotal.Text.Trim())*/,
                             dtFechaBaja, cbValuador.Text.Trim(), cbDestino.Text.Trim().ToUpper(),0);
                         this.DialogResult = DialogResult.OK;
                     }
