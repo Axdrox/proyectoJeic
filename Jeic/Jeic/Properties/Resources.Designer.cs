@@ -63,9 +63,39 @@ namespace Refracciones.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap boton_abrir_archivo {
+        internal static System.Drawing.Bitmap Businessman_48px {
             get {
-                object obj = ResourceManager.GetObject("boton-abrir-archivo", resourceCulture);
+                object obj = ResourceManager.GetObject("Businessman_48px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Close_Window__2_48px {
+            get {
+                object obj = ResourceManager.GetObject("Close Window_ 2 48px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap herramientas_y_utensilios {
+            get {
+                object obj = ResourceManager.GetObject("herramientas-y-utensilios", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Minimize_Window_2_48px {
+            get {
+                object obj = ResourceManager.GetObject("Minimize Window_2 48px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -76,16 +106,6 @@ namespace Refracciones.Properties {
         internal static System.Drawing.Bitmap notify {
             get {
                 object obj = ResourceManager.GetObject("notify", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap usuarioF {
-            get {
-                object obj = ResourceManager.GetObject("usuarioF", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
