@@ -121,7 +121,7 @@ namespace Refracciones
 
         private void Eleccion_Load(object sender, EventArgs e)
         {
-            cve_factura = oper.Clave_Fact(dato_1.Text, Int32.Parse(dato_2.Text));
+            cve_factura = oper.Clave_Fact(dato_1.Text, dato_2.Text);
             if(cve_factura != 0)
                 cve_refactura = oper.Clave_Refact(cve_factura);
             

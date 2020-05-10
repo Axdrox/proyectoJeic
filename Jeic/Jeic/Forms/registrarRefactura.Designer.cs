@@ -197,9 +197,11 @@
             // 
             this.txtFacturasinIVA.Location = new System.Drawing.Point(109, 126);
             this.txtFacturasinIVA.Name = "txtFacturasinIVA";
+            this.txtFacturasinIVA.ReadOnly = true;
             this.txtFacturasinIVA.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtFacturasinIVA.Size = new System.Drawing.Size(100, 20);
             this.txtFacturasinIVA.TabIndex = 35;
+            this.txtFacturasinIVA.TextChanged += new System.EventHandler(this.txtFacturasinIVA_TextChanged);
             this.txtFacturasinIVA.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFacturasinIVA_KeyPress);
             this.txtFacturasinIVA.Leave += new System.EventHandler(this.txtFacturasinIVA_Leave);
             // 

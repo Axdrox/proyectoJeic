@@ -18,7 +18,7 @@ namespace Refracciones.Forms
         OperBD factura = new OperBD();
         CultureInfo culture = new CultureInfo("en-US");
         string cve_siniestro;
-        int cve_pedido;
+        string cve_pedido;
         public registrarRefactura()
         {
             InitializeComponent();
@@ -124,9 +124,9 @@ namespace Refracciones.Forms
 
         private void registrarRefactura_Load(object sender, EventArgs e)
         {
-            cve_pedido = Int32.Parse(dato2.Text.Substring(8, (dato2.Text.Length - 8))); 
+            cve_pedido = dato2.Text.Substring(8, (dato2.Text.Length - 8)); 
             cve_siniestro = dato1.Text.Substring(11, dato1.Text.Length - 11);
-
+            txtFacturasinIVA.Text = (factura.totalPrecioPedido(cve_pedido, cve_siniestro)).ToString();
             dtpFechaPago.Value = dtpFechaIngreso.Value.AddDays(factura.Dias_Espera(cve_siniestro, cve_pedido));
             cmbEstadoFactura.SelectedIndex = 0;
             if (dato3.Text == "0")
@@ -224,6 +224,16 @@ namespace Refracciones.Forms
         }
 
         private void txtFacturasinIVA_Leave(object sender, EventArgs e)
+        {
+            if (txtFacturasinIVA.Text != string.Empty)
+            {
+                double calculo = double.Parse(txtFacturasinIVA.Text, culture);
+                calculo = calculo * 1.16;
+                txtFacturaconIVA.Text = calculo.ToString();
+            }
+        }
+
+        private void txtFacturasinIVA_TextChanged(object sender, EventArgs e)
         {
             if (txtFacturasinIVA.Text != string.Empty)
             {

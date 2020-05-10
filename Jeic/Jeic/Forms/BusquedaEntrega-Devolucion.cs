@@ -23,7 +23,7 @@ namespace Refracciones.Forms
         private void BusquedaEntrega_Devolucion_Load(object sender, EventArgs e)
         {
             //cve_factura =Int32.Parse(dato3.Text);
-            int cve_pedido = Int32.Parse(dato2.Text.Substring(8, (dato2.Text.Length - 8)));
+            string cve_pedido = dato2.Text.Substring(8, (dato2.Text.Length - 8));
             string cve_siniestro = dato1.Text.Substring(11, dato1.Text.Length - 11);
             cve_factura = oper.Clave_Fact(cve_siniestro,cve_pedido);
             dataGridView1.DataSource = oper.Tabla_Entrega(cve_factura);

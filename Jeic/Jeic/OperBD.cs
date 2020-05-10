@@ -49,7 +49,7 @@ namespace Refracciones
 
 
         //--------------------INGRESAR FACTURA--------------------
-        public string Registrar_factura(string cve_siniestro,int cve_pedido,int cve_factura, int cve_estado, decimal fact_sinIVA, decimal fact_neto, DateTime fecha_ingreso, DateTime fecha_revision, DateTime fecha_pago, string nombre_factura,byte[] archivo, string nombre_xml, byte[] archivo_xml, string comentario)
+        public string Registrar_factura(string cve_siniestro,string cve_pedido,int cve_factura, int cve_estado, decimal fact_sinIVA, decimal fact_neto, DateTime fecha_ingreso, DateTime fecha_revision, DateTime fecha_pago, string nombre_factura,byte[] archivo, string nombre_xml, byte[] archivo_xml, string comentario)
         {
             string mensaje = "Se inserto la factura";
             try
@@ -113,7 +113,7 @@ namespace Refracciones
                     }
                     //MessageBox.Show(cve_siniestro.ToString());
                     //MessageBox.Show(cve_pedido.ToString());
-                    comm = new SqlCommand(string.Format("UPDATE PEDIDO SET cve_factura = {0} WHERE cve_siniestro = '{1}' AND cve_pedido = {2}",cve_factura,cve_siniestro,cve_pedido),nuevaConexion);
+                    comm = new SqlCommand(string.Format("UPDATE PEDIDO SET cve_factura = {0} WHERE cve_siniestro = '{1}' AND cve_pedido = '{2}'",cve_factura,cve_siniestro,cve_pedido),nuevaConexion);
                     comm.ExecuteNonQuery();
                     nuevaConexion.Close();
                 }
@@ -194,7 +194,7 @@ namespace Refracciones
 
 
         //--------------------INGRESAR FACTURA--------------------
-        public string Registrar_Refactura(string cve_siniestro, int cve_pedido, int cve_factura, int cve_estado,int cve_refactura, decimal fact_sinIVA, decimal fact_neto, decimal costo_refactura,DateTime fecha_refactura, DateTime fecha_ingreso, DateTime fecha_revision, DateTime fecha_pago, string nombre_factura, byte[] archivo, string nombre_xml, byte[] archivo_xml, string comentario)
+        public string Registrar_Refactura(string cve_siniestro, string cve_pedido, int cve_factura, int cve_estado,int cve_refactura, decimal fact_sinIVA, decimal fact_neto, decimal costo_refactura,DateTime fecha_refactura, DateTime fecha_ingreso, DateTime fecha_revision, DateTime fecha_pago, string nombre_factura, byte[] archivo, string nombre_xml, byte[] archivo_xml, string comentario)
         {
             string mensaje = "Se inserto la factura";
             SqlCommand comm;
@@ -270,40 +270,8 @@ namespace Refracciones
                         Comando.ExecuteNonQuery();
                     }
 
-                    /*Comando = new SqlCommand("INSERT INTO FACTURA(cve_factura,cve_estado,cve_refactura,fact_sinIVA,fact_neto,costo_refactura,fecha_refactura,fecha_ingreso,fecha_revision,fecha_pago,nombre_factura,archivo,nombre_xml,archivo_xml,comentario) VALUES (@cve_factura,@cve_estado,@cve_refactura,@fact_sinIVA,@fact_neto,@costo_refactura,@fecha_refactura,@fecha_ingreso,@fecha_revision,@fecha_pago,@nombre_factura,@archivo,@nombre_xml,@archivo_xml,@comentario)", nuevaConexion);
-                    Comando.Parameters.Add("@cve_factura", SqlDbType.Int);
-                    Comando.Parameters.Add("@cve_estado", SqlDbType.Int);
-                    Comando.Parameters.Add("@cve_refactura", SqlDbType.Int);
-                    Comando.Parameters.Add("@fact_sinIVA", SqlDbType.Decimal);
-                    Comando.Parameters.Add("@fact_neto", SqlDbType.Decimal);
-                    Comando.Parameters.Add("@costo_refactura", SqlDbType.Decimal);
-                    Comando.Parameters.Add("@fecha_refactura", SqlDbType.Date);
-                    Comando.Parameters.Add("@fecha_ingreso", SqlDbType.Date);
-                    Comando.Parameters.Add("@fecha_revision", SqlDbType.Date);
-                    Comando.Parameters.Add("@fecha_pago", SqlDbType.Date);
-                    Comando.Parameters.Add("@nombre_Factura", SqlDbType.NVarChar, 100);
-                    Comando.Parameters.Add("@archivo", SqlDbType.VarBinary);
-                    Comando.Parameters.Add("@nombre_xml", SqlDbType.NVarChar, 100);
-                    Comando.Parameters.Add("@archivo_xml", SqlDbType.VarBinary);
-                    Comando.Parameters.Add("@comentario", SqlDbType.NVarChar, 100);
-
-                    Comando.Parameters["@cve_factura"].Value = cve_factura;
-                    Comando.Parameters["@cve_estado"].Value = cve_estado;
-                    Comando.Parameters["@cve_refactura"].Value = cve_refactura;
-                    Comando.Parameters["@fact_sinIVA"].Value = fact_sinIVA;
-                    Comando.Parameters["@fact_neto"].Value = fact_neto;
-                    Comando.Parameters["@costo_refactura"].Value = costo_refactura;
-                    Comando.Parameters["@fecha_refactura"].Value = fecha_refactura;
-                    Comando.Parameters["@fecha_ingreso"].Value = fecha_ingreso;
-                    Comando.Parameters["@fecha_revision"].Value = fecha_revision;
-                    Comando.Parameters["@fecha_pago"].Value = fecha_pago;
-                    Comando.Parameters["@nombre_factura"].Value = nombre_factura;
-                    Comando.Parameters["@archivo"].Value = archivo;
-                    Comando.Parameters["@nombre_xml"].Value = nombre_xml;
-                    Comando.Parameters["@archivo_xml"].Value = archivo_xml;
-                    Comando.Parameters["@comentario"].Value = comentario;
-                    Comando.ExecuteNonQuery();*/
-                    comm = new SqlCommand(string.Format("UPDATE PEDIDO SET cve_factura = {0} WHERE cve_siniestro = '{1}' AND cve_pedido = {2}", cve_factura, cve_siniestro, cve_pedido), nuevaConexion);
+                    
+                    comm = new SqlCommand(string.Format("UPDATE PEDIDO SET cve_factura = {0} WHERE cve_siniestro = '{1}' AND cve_pedido = '{2}'", cve_factura, cve_siniestro, cve_pedido), nuevaConexion);
                     comm.ExecuteNonQuery();
                     cmd = new SqlCommand(string.Format("UPDATE FACTURA SET cve_refactura = {0} WHERE cve_factura = {1}", cve_factura, cve_refactura), nuevaConexion);
                     cmd.ExecuteNonQuery();
@@ -786,7 +754,7 @@ namespace Refracciones
         //--------------------------------------------------------------------------------------------------------
 
         //---------------------------OBTENER CLAVE DE FACTURA-------------------
-        public int Clave_Fact(string siniestro,int  cve_pedido)
+        public int Clave_Fact(string siniestro,string cve_pedido)
         {
             int cve_factura = 0;
             try
@@ -794,7 +762,7 @@ namespace Refracciones
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     nuevaConexion.Open();
-                    Comando = new SqlCommand(string.Format("SELECT cve_factura FROM PEDIDO WHERE cve_siniestro = '{0}' AND cve_pedido = {1}",siniestro,cve_pedido), nuevaConexion);
+                    Comando = new SqlCommand(string.Format("SELECT cve_factura FROM PEDIDO WHERE cve_siniestro = '{0}' AND cve_pedido = '{1}'",siniestro,cve_pedido), nuevaConexion);
                     if (Comando.ExecuteScalar().ToString() == string.Empty)
                     {
                         cve_factura = 0;
@@ -841,7 +809,7 @@ namespace Refracciones
             return cve_refactura;
         }
         //---------------------------OBTENER DIAS ESPERA POR CLIENTE-------------------
-        public int Dias_Espera(string siniestro, int cve_pedido)
+        public int Dias_Espera(string siniestro, string cve_pedido)
         {
             int dias_espera = 0;
             try
@@ -851,7 +819,7 @@ namespace Refracciones
                     nuevaConexion.Open();
                     Comando = new SqlCommand("SELECT c.dias_espera FROM PEDIDO p JOIN VALUADOR val ON p.cve_valuador = val.cve_valuador JOIN CLIENTE c ON val.cve_valuador = c.cve_valuador WHERE p.cve_siniestro = @cve_siniestro AND p.cve_pedido = @cve_pedido", nuevaConexion);
                     Comando.Parameters.Add("@cve_siniestro", SqlDbType.NVarChar, 50);
-                    Comando.Parameters.Add("@cve_pedido", SqlDbType.Int);
+                    Comando.Parameters.Add("@cve_pedido", SqlDbType.NVarChar,50);
 
                     Comando.Parameters["@cve_siniestro"].Value = siniestro;
                     Comando.Parameters["@cve_pedido"].Value = cve_pedido;
@@ -2011,7 +1979,42 @@ namespace Refracciones
             }
         }
 
-
+        //-------------OBTENER EL PRECIO TOTAL DEL PEDIDO 
+        public double totalPrecioPedido(string pedido, string siniestro)
+        {
+            double totalCostoEnvio = 0;
+            double precioPedido = 0;
+            using (SqlConnection nuevaConexion = Conexion.conexion())
+            {
+                nuevaConexion.Open();
+                int claveDestino = 0;
+                //Obteniendo Total Costo Envío
+                Comando = new SqlCommand("SELECT SUM(costoEnvio.costo) AS costo FROM (SELECT DISTINCT (cve_guia), envio.costo FROM PEDIDO ped INNER JOIN COSTO_ENVIO envio ON envio.cve_costoEnvio= ped.costo_envio WHERE cve_pedido = @cve_pedido AND cve_siniestro = @cve_siniestro) AS costoEnvio", nuevaConexion);
+                Comando.Parameters.AddWithValue("cve_pedido",pedido);
+                Comando.Parameters.AddWithValue("cve_siniestro", siniestro);
+                Lector = Comando.ExecuteReader();
+                if (Lector.Read())
+                {
+                    // totalCostoEnvio = double.Parse(Lector["costo"].ToString());
+                    totalCostoEnvio = Convert.ToDouble(Lector["costo"]);
+                }
+                Lector.Close();
+                //Obteniendo el Precio Total del Pedido
+                Comando = new SqlCommand("SELECT (SUM(precio_venta * cantidad) + SUM(precio_reparacion)) AS total FROM PEDIDO WHERE cve_pedido = @cve_pedido AND cve_siniestro = @cve_siniestro", nuevaConexion);
+                Comando.Parameters.AddWithValue("cve_pedido", pedido);
+                Comando.Parameters.AddWithValue("cve_siniestro", siniestro);
+                Lector = Comando.ExecuteReader();
+                if (Lector.Read())
+                {
+                    //precioPedido = double.Parse(Lector["total"].ToString());
+                    precioPedido = Convert.ToDouble(Lector["total"]);
+                }
+                Lector.Close();
+               
+                nuevaConexion.Close();
+                return totalCostoEnvio + precioPedido;
+            }
+        }
         //-------------INSERTAR DATOS DE PEDIDO
         public int registrarPedido(int clavePedido, string claveSiniestro, string nombrePieza, string portal, string taller, string origen, string proveedor, int claveVendedor, DateTime fechaCosto, string costoSinIVA, string costoNeto, string costoEnvio, string precioVenta, string precioReparacion, string claveProducto, string numeroGuia, int cantidad, DateTime fechaBaja, string valuador, string destino, int pzas_devolucion)
         {
