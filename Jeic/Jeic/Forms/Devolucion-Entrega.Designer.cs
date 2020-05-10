@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.chkMotivo = new Bunifu.Framework.UI.BunifuCheckbox();
+            this.txtMotivo = new System.Windows.Forms.TextBox();
             this.cmbMotivoDev = new System.Windows.Forms.ComboBox();
             this.lblMotivoDev = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
@@ -42,6 +44,7 @@
             this.dato2 = new System.Windows.Forms.Label();
             this.dato1 = new System.Windows.Forms.Label();
             this.dgvDevolucion = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -57,6 +60,9 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.label1);
+            this.splitContainer1.Panel1.Controls.Add(this.chkMotivo);
+            this.splitContainer1.Panel1.Controls.Add(this.txtMotivo);
             this.splitContainer1.Panel1.Controls.Add(this.cmbMotivoDev);
             this.splitContainer1.Panel1.Controls.Add(this.lblMotivoDev);
             this.splitContainer1.Panel1.Controls.Add(this.btnCancelar);
@@ -78,8 +84,32 @@
             this.splitContainer1.SplitterDistance = 253;
             this.splitContainer1.TabIndex = 0;
             // 
+            // chkMotivo
+            // 
+            this.chkMotivo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
+            this.chkMotivo.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
+            this.chkMotivo.Checked = false;
+            this.chkMotivo.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(205)))), ((int)(((byte)(117)))));
+            this.chkMotivo.ForeColor = System.Drawing.Color.White;
+            this.chkMotivo.Location = new System.Drawing.Point(145, 288);
+            this.chkMotivo.Name = "chkMotivo";
+            this.chkMotivo.Size = new System.Drawing.Size(20, 20);
+            this.chkMotivo.TabIndex = 13;
+            this.chkMotivo.Visible = false;
+            this.chkMotivo.OnChange += new System.EventHandler(this.chkMotivo_OnChange);
+            // 
+            // txtMotivo
+            // 
+            this.txtMotivo.Enabled = false;
+            this.txtMotivo.Location = new System.Drawing.Point(18, 287);
+            this.txtMotivo.Name = "txtMotivo";
+            this.txtMotivo.Size = new System.Drawing.Size(121, 20);
+            this.txtMotivo.TabIndex = 12;
+            this.txtMotivo.Visible = false;
+            // 
             // cmbMotivoDev
             // 
+            this.cmbMotivoDev.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMotivoDev.Enabled = false;
             this.cmbMotivoDev.FormattingEnabled = true;
             this.cmbMotivoDev.Items.AddRange(new object[] {
@@ -217,6 +247,16 @@
             this.dgvDevolucion.TabIndex = 0;
             this.dgvDevolucion.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDevolucion_CellContentClick);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(164, 291);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(27, 13);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Otro";
+            this.label1.Visible = false;
+            // 
             // Devolucion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -252,5 +292,8 @@
         public System.Windows.Forms.Label dato1;
         private System.Windows.Forms.ComboBox cmbMotivoDev;
         private System.Windows.Forms.Label lblMotivoDev;
+        private Bunifu.Framework.UI.BunifuCheckbox chkMotivo;
+        private System.Windows.Forms.TextBox txtMotivo;
+        private System.Windows.Forms.Label label1;
     }
 }

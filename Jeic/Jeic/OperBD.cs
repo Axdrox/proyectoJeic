@@ -288,13 +288,13 @@ namespace Refracciones
 
 
         //--------------------LLENAR DATAGRID DEVOLUCIÓN-ENTREGA--------------------
-        public DataTable Devolucion(string cve_siniestro, int cve_pedido)
+        public DataTable Devolucion(string cve_siniestro, string cve_pedido)
         {
             dt = new DataTable();
             using (SqlConnection nuevaConexion = Conexion.conexion())
             {
                 nuevaConexion.Open();
-                Comando = new SqlCommand(string.Format("SELECT pie.nombre AS NOMBRE,pie.cve_pieza AS 'CLAVE PIEZA', ped.cantidad AS CANTIDAD, prov.nombre AS PROVEEDOR, ped.cve_vendedor AS VENDEDOR, val.nombre AS VALUADOR, c.cve_nombre AS CLIENTE, ent.fecha_asignacion AS 'FECHA DE ASIGNACIÓN', ped.fecha_entrega AS 'FECHA DE ENTREGA', ent.fecha_promesa  AS 'FECHA PROMESA', fac.cve_factura AS FACTURA FROM PEDIDO ped JOIN PROVEEDOR prov ON prov.cve_proveedor = ped.cve_proveedor JOIN PIEZA pie ON pie.cve_pieza = ped.cve_pieza JOIN VALUADOR val ON val.cve_valuador = ped.cve_valuador JOIN CLIENTE c ON c.cve_valuador = val.cve_valuador LEFT OUTER JOIN ENTREGA ent ON ent.cve_entrega = ped.cve_entrega LEFT OUTER JOIN FACTURA fac ON fac.cve_factura = ped.cve_factura WHERE ped.cve_siniestro = '{0}' AND ped.cve_pedido = {1} AND ped.pzas_devolucion != ped.cantidad", cve_siniestro,cve_pedido), nuevaConexion);
+                Comando = new SqlCommand(string.Format("SELECT pie.nombre AS NOMBRE,pie.cve_pieza AS 'CLAVE PIEZA', ped.cantidad AS CANTIDAD, prov.nombre AS PROVEEDOR, ped.cve_vendedor AS VENDEDOR, val.nombre AS VALUADOR, c.cve_nombre AS CLIENTE, ent.fecha_asignacion AS 'FECHA DE ASIGNACIÓN', ped.fecha_entrega AS 'FECHA DE ENTREGA', ent.fecha_promesa  AS 'FECHA PROMESA', fac.cve_factura AS FACTURA FROM PEDIDO ped JOIN PROVEEDOR prov ON prov.cve_proveedor = ped.cve_proveedor JOIN PIEZA pie ON pie.cve_pieza = ped.cve_pieza JOIN VALUADOR val ON val.cve_valuador = ped.cve_valuador JOIN CLIENTE c ON c.cve_valuador = val.cve_valuador LEFT OUTER JOIN ENTREGA ent ON ent.cve_entrega = ped.cve_entrega LEFT OUTER JOIN FACTURA fac ON fac.cve_factura = ped.cve_factura WHERE ped.cve_siniestro = '{0}' AND ped.cve_pedido = '{1}' AND ped.pzas_devolucion != ped.cantidad", cve_siniestro,cve_pedido), nuevaConexion);
                 da = new SqlDataAdapter(Comando);
 
                 da.Fill(dt);
@@ -340,7 +340,7 @@ namespace Refracciones
 
 
         //--------------------REGISTRAR DEVOLUCION ACTUALIZAR COLUMNA CANTIDAD Y ASIGNAR CVE DE DEVOLUCION CON FECHA--------------------
-        public string Registrar_Devolucion(string cve_siniestro, int cve_pedido, int cve_pieza, int cve_devolucion, int cantidad, DateTime fecha,int cantidadD,int cve_factura, string motivo)
+        public string Registrar_Devolucion(string cve_siniestro, string cve_pedido, int cve_pieza, int cve_devolucion, int cantidad, DateTime fecha,int cantidadD,int cve_factura, string motivo)
         {
             string mensaje = "ERROR AL HACER LA DEVOLUCIÓN";
            
@@ -361,7 +361,7 @@ namespace Refracciones
                 Comando.Parameters["@motivo"].Value = motivo;
                 Comando.ExecuteNonQuery();
                 //SqlCommand cmd = new SqlCommand(string.Format("UPDATE PEDIDO SET cantidad = {0}, cve_devolucion = {1}  WHERE cve_siniestro = '{2}' AND cve_pedido = {3} AND cve_pieza = {4}",/*cantidad,*/cve_devolucion, cve_siniestro, cve_pedido, cve_pieza), nuevaConexion);
-                SqlCommand cmd = new SqlCommand(string.Format("UPDATE PEDIDO SET  cve_devolucion = {0}, pzas_devolucion = {1}  WHERE cve_siniestro = '{2}' AND cve_pedido = {3} AND cve_pieza = {4}",/*cantidad,*/cve_devolucion,cantidad,cve_siniestro,cve_pedido,cve_pieza ),nuevaConexion);
+                SqlCommand cmd = new SqlCommand(string.Format("UPDATE PEDIDO SET  cve_devolucion = {0}, pzas_devolucion = {1}  WHERE cve_siniestro = '{2}' AND cve_pedido = '{3}' AND cve_pieza = {4}",/*cantidad,*/cve_devolucion,cantidad,cve_siniestro,cve_pedido,cve_pieza ),nuevaConexion);
                 cmd.ExecuteNonQuery();
                 nuevaConexion.Close();
                 mensaje = "DEVOLUCIÓN EXITOSA";
@@ -372,13 +372,13 @@ namespace Refracciones
 //---------------------------------------------------------------------------------------------------------------
 
         //--------------------OBTENGO LAS PIEZAS ENTREGADAS DE ESE SINIESTRO, PEDIDO CON WHERE EN PIEZA--------------------
-        public int Pzas_Devolucion(string cve_siniestro, int cve_pedido, int cve_pieza)
+        public int Pzas_Devolucion(string cve_siniestro, string cve_pedido, int cve_pieza)
         {
             int pzas;
             using (SqlConnection nuevaConexion = Conexion.conexion())
             {
                 nuevaConexion.Open();
-                Comando = new SqlCommand(string.Format("SELECT pzas_devolucion FROM PEDIDO WHERE cve_siniestro = '{0}' AND cve_pedido = {1} AND cve_pieza = {2}", cve_siniestro, cve_pedido, cve_pieza), nuevaConexion);
+                Comando = new SqlCommand(string.Format("SELECT pzas_devolucion FROM PEDIDO WHERE cve_siniestro = '{0}' AND cve_pedido = '{1}' AND cve_pieza = {2}", cve_siniestro, cve_pedido, cve_pieza), nuevaConexion);
                 if (Comando.ExecuteScalar().ToString() == string.Empty)
                 { pzas = 0; }
                 else { pzas = (Int32)Comando.ExecuteScalar(); }
@@ -390,7 +390,7 @@ namespace Refracciones
 //-------------------------------------------------------------------------------------------------------------------------
 
         //--------------------REGISTRAR ENTREGA ACTUALIZAR COLUMNA CANTIDAD Y ASIGNAR CVE DE ENTREGA CON FECHA--------------------
-        public string Registrar_Entrega(string cve_siniestro, int cve_pedido, int cve_pieza, int cve_entrega, int cantidad, DateTime fecha, int cantidadE, int cve_factura, DateTime fecha_asignacion, DateTime fecha_promesa)
+        public string Registrar_Entrega(string cve_siniestro, string cve_pedido, int cve_pieza, int cve_entrega, int cantidad, DateTime fecha, int cantidadE, int cve_factura, DateTime fecha_asignacion, DateTime fecha_promesa)
         {
             string mensaje = "ERROR AL HACER LA ENTREGA";
             using (SqlConnection nuevaConexion = Conexion.conexion())
@@ -417,7 +417,7 @@ namespace Refracciones
                 cmd.Parameters.Add("@pzas_entregadas",SqlDbType.Int);
                 cmd.Parameters.Add("@fecha_entrega",SqlDbType.Date);
                 cmd.Parameters.Add("@cve_siniestro",SqlDbType.NVarChar,50);
-                cmd.Parameters.Add("@cve_pedido",SqlDbType.Int);
+                cmd.Parameters.Add("@cve_pedido",SqlDbType.NVarChar,50);
                 cmd.Parameters.Add("@cve_pieza",SqlDbType.Int);
 
                 cmd.Parameters["@cve_entrega"].Value = cve_entrega;
@@ -436,13 +436,13 @@ namespace Refracciones
 //----------------------------------------------------------------------------------------------------------------------------------
 
         //--------------------OBTENGO LAS PIEZAS ENTREGADAS DE ESE SINIESTRO, PEDIDO CON WHERE EN PIEZA--------------------
-        public int Pzas_Entregadas(string cve_siniestro, int cve_pedido, int cve_pieza)
+        public int Pzas_Entregadas(string cve_siniestro, string cve_pedido, int cve_pieza)
         {
             int pzas;
             using (SqlConnection nuevaConexion = Conexion.conexion())
             {
                 nuevaConexion.Open();
-                Comando = new SqlCommand(string.Format("SELECT pzas_entregadas FROM PEDIDO WHERE cve_siniestro = '{0}' AND cve_pedido = {1} AND cve_pieza = {2}",cve_siniestro,cve_pedido,cve_pieza), nuevaConexion);
+                Comando = new SqlCommand(string.Format("SELECT pzas_entregadas FROM PEDIDO WHERE cve_siniestro = '{0}' AND cve_pedido = '{1}' AND cve_pieza = {2}",cve_siniestro,cve_pedido,cve_pieza), nuevaConexion);
                 if (Comando.ExecuteScalar().ToString() == string.Empty)
                 { pzas = 0; }
                 else { pzas = (Int32)Comando.ExecuteScalar(); }

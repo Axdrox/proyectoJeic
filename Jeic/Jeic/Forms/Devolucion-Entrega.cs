@@ -17,7 +17,8 @@ namespace Refracciones.Forms
         int pzas_entregadas;//piezas entregadas en la tabla de pedido
         int pzas_devolucion;//piezas regresadas por el cliente
         string cve_siniestro;
-        int cve_pedido;
+        string cve_pedido;
+        string motivo;
         int cve_factura;
         int cantidad = 0;
         int cantidadD = 0;
@@ -42,7 +43,7 @@ namespace Refracciones.Forms
             /*cve_siniestro = dato1.Text;
             cve_pedido = Int32.Parse(dato2.Text);*/
             
-            cve_pedido = Int32.Parse(dato2.Text.Substring(8, (dato2.Text.Length - 8)));
+            cve_pedido = dato2.Text.Substring(8, (dato2.Text.Length - 8));
             cve_siniestro = dato1.Text.Substring(11, dato1.Text.Length - 11);
             dgvDevolucion.DataSource = oper.Devolucion(cve_siniestro, cve_pedido);
             count = oper.Total_Registros() +1 ;
@@ -117,6 +118,9 @@ namespace Refracciones.Forms
             lblMotivoDev.Visible = false;
             cmbMotivoDev.Enabled = false;
             cmbMotivoDev.Visible = false;
+            chkMotivo.Visible = false;
+            chkMotivo.Enabled = false;
+            label1.Visible = false;
 
         }
 
@@ -145,6 +149,9 @@ namespace Refracciones.Forms
             lblMotivoDev.Visible = true;
             //cmbMotivoDev.Enabled = true;
             cmbMotivoDev.Visible = true;
+            chkMotivo.Enabled = true;
+            chkMotivo.Visible = true;
+            label1.Visible = true;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -178,7 +185,11 @@ namespace Refracciones.Forms
                         dgvDevolucion.Enabled = true;
                         cmbMotivoDev.Text = "";
                         cmbMotivoDev.Enabled = false;
-                        string motivo = cmbMotivoDev.Text.Trim();
+                        if (chkMotivo.Checked != true)
+                            motivo = cmbMotivoDev.SelectedItem.ToString();
+                        else
+                            motivo = txtMotivo.Text.Trim();
+                        MessageBox.Show(motivo);
                         MessageBox.Show(oper.Registrar_Devolucion(cve_siniestro, cve_pedido, cve_pieza, count, cantidad, fecha, cantidadD, cve_factura,motivo));
                         cmbCantidad.Items.Clear();
                     }
@@ -226,6 +237,24 @@ namespace Refracciones.Forms
             dgvDevolucion.Enabled = true;
             cmbMotivoDev.Text = "";
             cmbMotivoDev.Enabled = false;
+        }
+
+        private void chkMotivo_OnChange(object sender, EventArgs e)
+        {
+            if(chkMotivo.Checked == true)
+            {
+                txtMotivo.Enabled = true;
+                txtMotivo.Visible = true;
+                cmbMotivoDev.Enabled = false;
+                cmbMotivoDev.Visible = false;
+            }
+            else
+            {
+                txtMotivo.Enabled = false;
+                txtMotivo.Visible = false;
+                cmbMotivoDev.Enabled = true;
+                cmbMotivoDev.Visible = true;
+            }
         }
     }
 }
