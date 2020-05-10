@@ -86,11 +86,11 @@ namespace Refracciones.Forms
 
                 lblFacturaSinIva.Text = lblFacturaSinIva.Text.Substring(0, 16) + " " + dgvDatos.Rows[0].Cells[21].Value.ToString();
                 lblFacturaConIva.Text = lblFacturaConIva.Text.Substring(0, 16) + " " + dgvDatos.Rows[0].Cells[22].Value.ToString();
-                if (dgvDatos.Rows[0].Cells[23].Value.ToString() == "0")
-                    EstadoFact = "PENDIENTE";
                 if (dgvDatos.Rows[0].Cells[23].Value.ToString() == "1")
-                    EstadoFact = "PAGADA";
+                    EstadoFact = "PENDIENTE";
                 if (dgvDatos.Rows[0].Cells[23].Value.ToString() == "2")
+                    EstadoFact = "PAGADA";
+                if (dgvDatos.Rows[0].Cells[23].Value.ToString() == "3")
                     EstadoFact = "CANCELADA";
                 lblEstadoFac.Text = lblEstadoFac.Text.Substring(0, 7) + " " + EstadoFact;
             }
