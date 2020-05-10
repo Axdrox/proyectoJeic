@@ -41,11 +41,13 @@
             this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel2 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.bunifuGradientPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // bunifuElipse1
@@ -55,6 +57,7 @@
             // 
             // txtUsuario
             // 
+            this.txtUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.txtUsuario.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.txtUsuario.ForeColor = System.Drawing.Color.Silver;
@@ -65,7 +68,7 @@
             this.txtUsuario.LineIdleColor = System.Drawing.Color.Gray;
             this.txtUsuario.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(71)))), ((int)(((byte)(122)))));
             this.txtUsuario.LineThickness = 3;
-            this.txtUsuario.Location = new System.Drawing.Point(54, 194);
+            this.txtUsuario.Location = new System.Drawing.Point(52, 104);
             this.txtUsuario.Margin = new System.Windows.Forms.Padding(4);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(236, 27);
@@ -78,6 +81,7 @@
             // 
             // txtContrasenia
             // 
+            this.txtContrasenia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.txtContrasenia.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtContrasenia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.txtContrasenia.ForeColor = System.Drawing.Color.Silver;
@@ -88,7 +92,7 @@
             this.txtContrasenia.LineIdleColor = System.Drawing.Color.Gray;
             this.txtContrasenia.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(71)))), ((int)(((byte)(122)))));
             this.txtContrasenia.LineThickness = 3;
-            this.txtContrasenia.Location = new System.Drawing.Point(54, 244);
+            this.txtContrasenia.Location = new System.Drawing.Point(52, 158);
             this.txtContrasenia.Margin = new System.Windows.Forms.Padding(4);
             this.txtContrasenia.Name = "txtContrasenia";
             this.txtContrasenia.Size = new System.Drawing.Size(236, 28);
@@ -101,20 +105,22 @@
             // 
             // pictureBox5
             // 
+            this.pictureBox5.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox5.Image = global::Refracciones.Properties.Resources.herramientas_y_utensilios;
-            this.pictureBox5.Location = new System.Drawing.Point(26, 252);
+            this.pictureBox5.Location = new System.Drawing.Point(29, 158);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(21, 20);
+            this.pictureBox5.Size = new System.Drawing.Size(22, 22);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox5.TabIndex = 13;
             this.pictureBox5.TabStop = false;
             // 
             // pictureBox4
             // 
+            this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox4.Image = global::Refracciones.Properties.Resources.Businessman_48px;
-            this.pictureBox4.Location = new System.Drawing.Point(26, 201);
+            this.pictureBox4.Location = new System.Drawing.Point(29, 104);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(21, 20);
+            this.pictureBox4.Size = new System.Drawing.Size(22, 22);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 12;
             this.pictureBox4.TabStop = false;
@@ -157,10 +163,10 @@
             this.btnEntrar.IdleFillColor = System.Drawing.Color.RoyalBlue;
             this.btnEntrar.IdleForecolor = System.Drawing.Color.White;
             this.btnEntrar.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.btnEntrar.Location = new System.Drawing.Point(98, 290);
+            this.btnEntrar.Location = new System.Drawing.Point(100, 195);
             this.btnEntrar.Margin = new System.Windows.Forms.Padding(5);
             this.btnEntrar.Name = "btnEntrar";
-            this.btnEntrar.Size = new System.Drawing.Size(143, 33);
+            this.btnEntrar.Size = new System.Drawing.Size(137, 34);
             this.btnEntrar.TabIndex = 9;
             this.btnEntrar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnEntrar.Click += new System.EventHandler(this.btnEntrar_Click_1);
@@ -169,9 +175,10 @@
             // bunifuCustomLabel1
             // 
             this.bunifuCustomLabel1.AutoSize = true;
+            this.bunifuCustomLabel1.BackColor = System.Drawing.Color.Transparent;
             this.bunifuCustomLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuCustomLabel1.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.bunifuCustomLabel1.Location = new System.Drawing.Point(54, 182);
+            this.bunifuCustomLabel1.Location = new System.Drawing.Point(53, 88);
             this.bunifuCustomLabel1.Name = "bunifuCustomLabel1";
             this.bunifuCustomLabel1.Size = new System.Drawing.Size(43, 13);
             this.bunifuCustomLabel1.TabIndex = 14;
@@ -180,9 +187,10 @@
             // bunifuCustomLabel2
             // 
             this.bunifuCustomLabel2.AutoSize = true;
+            this.bunifuCustomLabel2.BackColor = System.Drawing.Color.Transparent;
             this.bunifuCustomLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuCustomLabel2.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.bunifuCustomLabel2.Location = new System.Drawing.Point(54, 234);
+            this.bunifuCustomLabel2.Location = new System.Drawing.Point(53, 142);
             this.bunifuCustomLabel2.Name = "bunifuCustomLabel2";
             this.bunifuCustomLabel2.Size = new System.Drawing.Size(61, 13);
             this.bunifuCustomLabel2.TabIndex = 15;
@@ -190,28 +198,44 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(126, 44);
+            this.pictureBox1.Location = new System.Drawing.Point(123, -27);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(90, 90);
             this.pictureBox1.TabIndex = 16;
             this.pictureBox1.TabStop = false;
             // 
+            // bunifuGradientPanel1
+            // 
+            this.bunifuGradientPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
+            this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuGradientPanel1.Controls.Add(this.pictureBox1);
+            this.bunifuGradientPanel1.Controls.Add(this.btnEntrar);
+            this.bunifuGradientPanel1.Controls.Add(this.txtContrasenia);
+            this.bunifuGradientPanel1.Controls.Add(this.pictureBox5);
+            this.bunifuGradientPanel1.Controls.Add(this.txtUsuario);
+            this.bunifuGradientPanel1.Controls.Add(this.bunifuCustomLabel2);
+            this.bunifuGradientPanel1.Controls.Add(this.bunifuCustomLabel1);
+            this.bunifuGradientPanel1.Controls.Add(this.pictureBox4);
+            this.bunifuGradientPanel1.GradientBottomLeft = System.Drawing.Color.Black;
+            this.bunifuGradientPanel1.GradientBottomRight = System.Drawing.Color.RoyalBlue;
+            this.bunifuGradientPanel1.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.bunifuGradientPanel1.GradientTopRight = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.bunifuGradientPanel1.Location = new System.Drawing.Point(0, 30);
+            this.bunifuGradientPanel1.Name = "bunifuGradientPanel1";
+            this.bunifuGradientPanel1.Quality = 10;
+            this.bunifuGradientPanel1.Size = new System.Drawing.Size(322, 242);
+            this.bunifuGradientPanel1.TabIndex = 17;
+            // 
             // InicioSesion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.ClientSize = new System.Drawing.Size(324, 337);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.bunifuCustomLabel2);
-            this.Controls.Add(this.bunifuCustomLabel1);
-            this.Controls.Add(this.pictureBox5);
-            this.Controls.Add(this.pictureBox4);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(28)))), ((int)(((byte)(27)))));
+            this.ClientSize = new System.Drawing.Size(324, 273);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.btnEntrar);
-            this.Controls.Add(this.txtContrasenia);
-            this.Controls.Add(this.txtUsuario);
+            this.Controls.Add(this.bunifuGradientPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "InicioSesion";
@@ -224,8 +248,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.bunifuGradientPanel1.ResumeLayout(false);
+            this.bunifuGradientPanel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -241,6 +266,7 @@
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel1;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel2;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private Bunifu.Framework.UI.BunifuGradientPanel bunifuGradientPanel1;
     }
 }
 

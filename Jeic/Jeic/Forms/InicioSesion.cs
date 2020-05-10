@@ -19,10 +19,12 @@ namespace Refracciones
         public InicioSesion()
         {
             InitializeComponent();
+            btnEntrar.BackColor = Color.Transparent;
         }
 
         private void InicioSesion_Load(object sender, EventArgs e)
         {
+            btnEntrar.BackColor = Color.Transparent;
         }
 
         private void txtUsuario_Enter(object sender, EventArgs e)
