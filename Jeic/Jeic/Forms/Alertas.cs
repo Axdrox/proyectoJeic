@@ -23,5 +23,13 @@ namespace Refracciones.Forms
             DateTime fecha_sys = DateTime.Parse((DateTime.Now.ToShortDateString()));
             dgvAlertas.DataSource = oper.Alertas(fecha_sys);
         }
+
+        private void Alertas_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
+        }
     }
 }

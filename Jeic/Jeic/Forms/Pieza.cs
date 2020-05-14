@@ -382,23 +382,23 @@
                 datosPieza[2] = txtOrigen.Text.Trim().ToUpper();
                 datosPieza[3] = txtProveedor.Text.Trim().ToUpper();
             }*/
-            datosPieza[4] = dtpFechaCosto.Text.Trim();
-            datosPieza[5] = txtCostoSinIVA.Text.Trim();
-            datosPieza[6] = txtCostoNeto.Text.Trim();
-            datosPieza[7] = cbCostoEnvio.Text.Trim();
-            datosPieza[8] = txtPrecioVenta.Text.Trim();
+            datosPieza[7] = dtpFechaCosto.Text.Trim();
+            datosPieza[8] = txtCostoSinIVA.Text.Trim();
+            datosPieza[9] = txtCostoNeto.Text.Trim();
+            datosPieza[10] = cbCostoEnvio.Text.Trim();
+            datosPieza[11] = txtPrecioVenta.Text.Trim();
 
             if (txtPrecioReparacion.Text.Trim() == string.Empty)
             {
                 txtPrecioReparacion.Text = "0";
-                datosPieza[9] = txtPrecioReparacion.Text.Trim();
+                datosPieza[12] = txtPrecioReparacion.Text.Trim();
             }
             else
-                datosPieza[9] = txtPrecioReparacion.Text.Trim();
+                datosPieza[12] = txtPrecioReparacion.Text.Trim();
 
-            datosPieza[10] = txtClaveProducto.Text.Trim().ToUpper();
-            datosPieza[11] = txtNumeroGuia.Text.Trim().ToUpper();
-            datosPieza[12] = txtCantidad.Text.Trim();
+            datosPieza[2] = txtClaveProducto.Text.Trim().ToUpper();
+            datosPieza[3] = txtNumeroGuia.Text.Trim().ToUpper();
+            datosPieza[1] = txtCantidad.Text.Trim();
 
             int modificacion = 0; int j = 0; //validar
             //contar con el # de chb marcados y con la inserción correcta
@@ -429,7 +429,7 @@
                 //int i = operacion.registrarPortal(txtPortal.Text.Trim());
                 if (operacion.existePortal(txtPortal.Text.Trim()) == string.Empty)
                 {
-                    datosPieza[1] = txtPortal.Text.Trim().ToUpper();
+                    datosPieza[4] = txtPortal.Text.Trim().ToUpper();
                     modificacion += 1;
                 }
                 else
@@ -441,7 +441,7 @@
                 }
             }
             else
-                datosPieza[1] = cbPortal.Text.Trim().ToUpper();
+                datosPieza[4] = cbPortal.Text.Trim().ToUpper();
 
             if (chbOtroOrigen.Checked == true)
             {
@@ -449,7 +449,7 @@
                 //int i = operacion.registrarOrigen(txtOrigen.Text.Trim().ToUpper());
                 if (operacion.existeOrigen(txtOrigen.Text.Trim().ToUpper()) == string.Empty)
                 {
-                    datosPieza[2] = txtOrigen.Text.Trim().ToUpper();
+                    datosPieza[5] = txtOrigen.Text.Trim().ToUpper();
                     modificacion += 1;
                 }
                 else
@@ -461,7 +461,7 @@
                 }
             }
             else
-                datosPieza[2] = cbOrigen.Text.Trim().ToUpper();
+                datosPieza[5] = cbOrigen.Text.Trim().ToUpper();
 
             if (chbOtroProveedor.Checked == true)
             {
@@ -469,7 +469,7 @@
                 //int i = operacion.registrarProveedor(txtProveedor.Text.Trim().ToUpper());
                 if (operacion.existeProveedor(txtProveedor.Text.Trim().ToUpper()) == string.Empty)
                 {
-                    datosPieza[3] = txtProveedor.Text.Trim().ToUpper();
+                    datosPieza[6] = txtProveedor.Text.Trim().ToUpper();
                     modificacion += 1;
                 }
                 else
@@ -481,7 +481,7 @@
                 }
             }
             else
-                datosPieza[3] = cbProveedores.Text.Trim().ToUpper();
+                datosPieza[6] = cbProveedores.Text.Trim().ToUpper();
 
             if (modificacion == j)
             {

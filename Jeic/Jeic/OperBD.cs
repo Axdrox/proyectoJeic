@@ -928,6 +928,34 @@ namespace Refracciones
             return dataSet;
         }
 
+        //------------- OBTENER ESTADO SINIESTRO EN PARTICULAR DE ACUERDO A CLAVES PEDIDO & SINIESTRO
+        public string Vehiculo(string clavePedido, string claveSiniestro)
+        {
+            string vehiculo = "";
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("SELECT DISTINCT veh.modelo FROM PEDIDO ped INNER JOIN SINIESTRO sin ON ped.cve_siniestro = sin.cve_siniestro INNER JOIN VEHICULO veh ON sin.cve_vehiculo = veh.cve_vehiculo WHERE ped.cve_pedido = @cve_pedido AND ped.cve_siniestro = @cve_siniestro", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@cve_pedido", clavePedido);
+                    Comando.Parameters.AddWithValue("@cve_siniestro", claveSiniestro);
+                    Lector = Comando.ExecuteReader();
+                    if (Lector.Read())
+                    {
+                        vehiculo = Lector["modelo"].ToString().Trim();
+                    }
+                    Lector.Close();
+                    nuevaConexion.Close();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return vehiculo;
+        }
+
         //---------------- VENDEDORES REGISTRADOS
         public DataSet VendedoresRegistrados()
         {
@@ -1431,8 +1459,8 @@ namespace Refracciones
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     nuevaConexion.Open();
-                    Comando = new SqlCommand("SELECT esin.estado FROM PEDIDO ped INNER JOIN SINIESTRO sin ON ped.cve_siniestro = sin.estado INNER JOIN ESTADO_SINIESTRO esin ON sin.estado = esin.cve_estado WHERE ped.cve_pedido = @cve_pedido AND ped.cve_siniestro = @cve_siniestro", nuevaConexion);
-                    Comando.Parameters.AddWithValue("@cve_pedido", Convert.ToInt32(clavePedido));
+                    Comando = new SqlCommand("SELECT DISTINCT esin.estado FROM PEDIDO ped INNER JOIN SINIESTRO sin ON ped.cve_siniestro = sin.cve_siniestro INNER JOIN ESTADO_SINIESTRO esin ON sin.estado = esin.cve_estado WHERE ped.cve_pedido = @cve_pedido AND ped.cve_siniestro = @cve_siniestro", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@cve_pedido", clavePedido);
                     Comando.Parameters.AddWithValue("@cve_siniestro", claveSiniestro);
                     Lector = Comando.ExecuteReader();
                     if (Lector.Read())
@@ -1461,7 +1489,7 @@ namespace Refracciones
                     nuevaConexion.Open();
                     //CORREGIR BUGSOTE, ESTA RARO DICE BRYAN
                     Comando = new SqlCommand("SELECT cli.cve_nombre FROM PEDIDO ped INNER JOIN VALUADOR val ON ped.cve_valuador = val.cve_valuador INNER JOIN CLIENTE cli ON val.cve_valuador = cli.cve_valuador WHERE ped.cve_pedido = @cve_pedido AND ped.cve_siniestro = @cve_siniestro", nuevaConexion);
-                    Comando.Parameters.AddWithValue("@cve_pedido", Convert.ToInt32(clavePedido));
+                    Comando.Parameters.AddWithValue("@cve_pedido", clavePedido);
                     Comando.Parameters.AddWithValue("@cve_siniestro", claveSiniestro);
                     Lector = Comando.ExecuteReader();
                     if (Lector.Read())
@@ -1489,7 +1517,7 @@ namespace Refracciones
                 {
                     nuevaConexion.Open();
                     Comando = new SqlCommand("SELECT val.nombre FROM PEDIDO ped INNER JOIN VALUADOR val ON ped.cve_valuador = val.cve_valuador WHERE ped.cve_siniestro = @cve_siniestro AND ped.cve_pedido = @cve_pedido", nuevaConexion);
-                    Comando.Parameters.AddWithValue("@cve_pedido", Convert.ToInt32(clavePedido));
+                    Comando.Parameters.AddWithValue("@cve_pedido", clavePedido);
                     Comando.Parameters.AddWithValue("@cve_siniestro", claveSiniestro);
                     Lector = Comando.ExecuteReader();
                     if (Lector.Read())
@@ -1517,7 +1545,7 @@ namespace Refracciones
                 {
                     nuevaConexion.Open();
                     Comando = new SqlCommand("SELECT tal.nombre FROM PEDIDO ped INNER JOIN TALLER tal ON ped.cve_taller = tal.cve_taller WHERE ped.cve_pedido = @cve_pedido AND ped.cve_siniestro = @cve_siniestro", nuevaConexion);
-                    Comando.Parameters.AddWithValue("@cve_pedido", Convert.ToInt32(clavePedido));
+                    Comando.Parameters.AddWithValue("@cve_pedido", clavePedido);
                     Comando.Parameters.AddWithValue("@cve_siniestro", claveSiniestro);
                     Lector = Comando.ExecuteReader();
                     if (Lector.Read())
@@ -1546,7 +1574,7 @@ namespace Refracciones
                     nuevaConexion.Open();
                     //cambiar a cve_destino
                     Comando = new SqlCommand("SELECT dest.destino FROM PEDIDO ped INNER JOIN DESTINO dest ON ped.destino = dest.cve_destino WHERE ped.cve_pedido = @cve_pedido AND ped.cve_siniestro = @cve_siniestro", nuevaConexion);
-                    Comando.Parameters.AddWithValue("@cve_pedido", Convert.ToInt32(clavePedido));
+                    Comando.Parameters.AddWithValue("@cve_pedido", clavePedido);
                     Comando.Parameters.AddWithValue("@cve_siniestro", claveSiniestro);
                     Lector = Comando.ExecuteReader();
                     if (Lector.Read())
@@ -1575,7 +1603,7 @@ namespace Refracciones
                 {
                     nuevaConexion.Open();
                     Comando = new SqlCommand("SELECT ent.fecha_asignacion FROM PEDIDO ped INNER JOIN ENTREGA ent ON ped.cve_entrega = ent.cve_entrega WHERE ped.cve_pedido = @cve_pedido AND ped.cve_siniestro = @cve_siniestro", nuevaConexion);
-                    Comando.Parameters.AddWithValue("@cve_pedido", Convert.ToInt32(clavePedido));
+                    Comando.Parameters.AddWithValue("@cve_pedido", clavePedido);
                     Comando.Parameters.AddWithValue("@cve_siniestro", claveSiniestro);
                     Lector = Comando.ExecuteReader();
                     if (Lector.Read())
@@ -1603,7 +1631,7 @@ namespace Refracciones
                 {
                     nuevaConexion.Open();
                     Comando = new SqlCommand("SELECT ent.fecha_promesa FROM PEDIDO ped INNER JOIN ENTREGA ent ON ped.cve_entrega = ent.cve_entrega WHERE ped.cve_pedido = @cve_pedido AND ped.cve_siniestro = @cve_siniestro", nuevaConexion);
-                    Comando.Parameters.AddWithValue("@cve_pedido", Convert.ToInt32(clavePedido));
+                    Comando.Parameters.AddWithValue("@cve_pedido", clavePedido);
                     Comando.Parameters.AddWithValue("@cve_siniestro", claveSiniestro);
                     Lector = Comando.ExecuteReader();
                     if (Lector.Read())
@@ -1631,7 +1659,7 @@ namespace Refracciones
                 {
                     nuevaConexion.Open();
                     Comando = new SqlCommand("SELECT fecha_baja FROM PEDIDO WHERE cve_pedido = @cve_pedido AND cve_siniestro = @cve_siniestro", nuevaConexion);
-                    Comando.Parameters.AddWithValue("@cve_pedido", Convert.ToInt32(clavePedido));
+                    Comando.Parameters.AddWithValue("@cve_pedido", clavePedido);
                     Comando.Parameters.AddWithValue("@cve_siniestro", claveSiniestro);
                     Lector = Comando.ExecuteReader();
                     if (Lector.Read())
@@ -1658,7 +1686,7 @@ namespace Refracciones
                 {
                     nuevaConexion.Open();
                     Comando = new SqlCommand("SELECT cve_vendedor FROM PEDIDO WHERE cve_pedido = @cve_pedido AND cve_siniestro = @cve_siniestro", nuevaConexion);
-                    Comando.Parameters.AddWithValue("@cve_pedido", Convert.ToInt32(clavePedido));
+                    Comando.Parameters.AddWithValue("@cve_pedido", clavePedido);
                     Comando.Parameters.AddWithValue("@cve_siniestro", claveSiniestro);
                     Lector = Comando.ExecuteReader();
                     if (Lector.Read())
@@ -2040,7 +2068,7 @@ namespace Refracciones
             }
         }
         //-------------INSERTAR DATOS DE PEDIDO
-        public int registrarPedido(int clavePedido, string claveSiniestro, string nombrePieza, string portal, string taller, string origen, string proveedor, int claveVendedor, DateTime fechaCosto, string costoSinIVA, string costoNeto, string costoEnvio, string precioVenta, string precioReparacion, string claveProducto, string numeroGuia, int cantidad, DateTime fechaBaja, string valuador, string destino, int pzas_devolucion)
+        public int registrarPedido(int clavePedido, string claveSiniestro, string nombrePieza, string portal, string taller, string origen, string proveedor, int claveVendedor, DateTime fechaCosto, string costoSinIVA, string costoNeto, string costoEnvio, string precioVenta, string precioReparacion, string claveProducto, string numeroGuia, int cantidad, string valuador, string destino, int pzas_devolucion)
         {
             //Variables
             int i = 0;
@@ -2064,8 +2092,8 @@ namespace Refracciones
 
                 nuevaConexion.Open();
                 //Insertando los datos en la tabla PEDIDO
-                Comando = new SqlCommand("INSERT INTO PEDIDO " + "(cve_pedido, cve_siniestro, cve_pieza, cantidad, cve_origen, cve_proveedor, cve_entrega, cve_vendedor, cve_portal, cve_taller, cve_valuador, cve_guia, cve_producto, fecha_baja, fecha_costo, costo_comprasinIVA, costo_envio, costo_neto, precio_venta, precio_reparacion, destino, pzas_devolucion) " +
-                    "VALUES (@cve_pedido, @cve_siniestro, @cve_pieza, @cantidad, @cve_origen, @cve_proveedor, @cve_entrega, @cve_vendedor, @cve_portal, @cve_taller, @cve_valuador, @cve_guia, @cve_producto, @fecha_baja, @fecha_costo, @costo_comprasinIVA, @costo_envio, @costo_neto, @precio_venta, @precio_reparacion, @destino,@pzas_devolucion) ", nuevaConexion);
+                Comando = new SqlCommand("INSERT INTO PEDIDO " + "(cve_pedido, cve_siniestro, cve_pieza, cantidad, cve_origen, cve_proveedor, cve_entrega, cve_vendedor, cve_portal, cve_taller, cve_valuador, cve_guia, cve_producto, fecha_costo, costo_comprasinIVA, costo_envio, costo_neto, precio_venta, precio_reparacion, destino, pzas_devolucion) " +
+                    "VALUES (@cve_pedido, @cve_siniestro, @cve_pieza, @cantidad, @cve_origen, @cve_proveedor, @cve_entrega, @cve_vendedor, @cve_portal, @cve_taller, @cve_valuador, @cve_guia, @cve_producto, @fecha_costo, @costo_comprasinIVA, @costo_envio, @costo_neto, @precio_venta, @precio_reparacion, @destino,@pzas_devolucion) ", nuevaConexion);
                 //Añadiendo los parámetros al query
                 Comando.Parameters.AddWithValue("@cve_pedido", clavePedido);
                 Comando.Parameters.AddWithValue("@cve_siniestro", claveSiniestro);
@@ -2080,7 +2108,6 @@ namespace Refracciones
                 Comando.Parameters.AddWithValue("@cve_valuador", cve_valuador);
                 Comando.Parameters.AddWithValue("@cve_guia", numeroGuia);
                 Comando.Parameters.AddWithValue("@cve_producto", claveProducto);
-                Comando.Parameters.AddWithValue("@fecha_baja", fechaBaja);
                 Comando.Parameters.AddWithValue("@fecha_costo", fechaCosto);
                 Comando.Parameters.AddWithValue("@costo_comprasinIVA", Convert.ToDecimal(costoSinIVA));
                 Comando.Parameters.AddWithValue("@costo_envio", cve_costoEnvio);//cambiar nombre de columna

@@ -62,6 +62,9 @@ namespace Refracciones
                     alert.Show();
 
                     bus.lblUsuario.Text = "Usuario : " + txtUsuario.Text;
+                    txtUsuario.Text = "";
+                    txtContrasenia.Text = "";
+                    this.Hide();
                 }
                 else
                 {
@@ -85,6 +88,10 @@ namespace Refracciones
                 bus.lblUsuario.Text = "Usuario : " + txtUsuario.Text;
                 bus.Show();
                 alert.Show();
+
+                txtUsuario.Text = "";
+                txtContrasenia.Text = "";
+                this.Hide();
             }
             else
             {
@@ -117,6 +124,7 @@ namespace Refracciones
                 OperBD Operacion = new OperBD();
                 if (Operacion.logeo(txtUsuario.Text, txtContrasenia.Text) == 1)
                 {
+                    
                     Alertas alert = new Alertas();
                     MessageBox.Show("Bienvenido");
                     Forms.Busqueda_Devolver bus = new Forms.Busqueda_Devolver();
@@ -124,6 +132,9 @@ namespace Refracciones
                     alert.Show();
 
                     bus.lblUsuario.Text = "Usuario : " + txtUsuario.Text;
+                    txtUsuario.Text = "";
+                    txtContrasenia.Text = "";
+                    this.Hide();
                 }
                 else
                 {

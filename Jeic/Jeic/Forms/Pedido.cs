@@ -23,6 +23,9 @@ namespace Refracciones.Forms
             InitializeComponent();
             dt = new DataTable();
             dt.Columns.Add("Pieza");
+            dt.Columns.Add("Cantidad");
+            dt.Columns.Add("Clave de producto");
+            dt.Columns.Add("Número de guía");
             dt.Columns.Add("Portal");
             dt.Columns.Add("Origen");
             dt.Columns.Add("Proveedor");
@@ -32,10 +35,6 @@ namespace Refracciones.Forms
             dt.Columns.Add("Costo de envío");
             dt.Columns.Add("Precio de venta");
             dt.Columns.Add("Precio de reparación");
-            dt.Columns.Add("Clave de producto");
-            dt.Columns.Add("Número de guía");
-            dt.Columns.Add("Cantidad");
-
             dgvPedido.DataSource = dt;
 
             //para que toda la clase sepa que está en el modo actualización
@@ -72,6 +71,7 @@ namespace Refracciones.Forms
                         lblVehiculo.Hide();
                     }
                 }
+                lblVehiculo.Text = operacion.Vehiculo(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
                 chbModificarEstado.Show();
                 cbEstadoSiniestro.Enabled = false;
                 txtEstado.Text = operacion.estadoSiniestroClaves(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
@@ -140,6 +140,10 @@ namespace Refracciones.Forms
                 cbEstadoSiniestro.Hide();
                 chbModificarEstado.Hide();
                 lblEstado.Hide();
+
+                dtpFechaBaja.Hide();
+                chbModificarFechaBaja.Hide();
+                lblFechaBaja.Hide();
             }
         }
 
@@ -487,7 +491,7 @@ namespace Refracciones.Forms
                 if (resta > 0)
                 {
                     MessageBox.Show("No es posible elegir esa fecha.", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    dtpFechaPromesa.Text = "";
+                    dtpFechaPromesa.Text = dtpFechaAsignacion.Text;
                 }
             }
 
@@ -564,7 +568,7 @@ namespace Refracciones.Forms
                             Convert.ToString(row.Cells["Costo de envío"].Value), Convert.ToString(row.Cells["Precio de venta"].Value),
                             Convert.ToString(row.Cells["Precio de reparación"].Value), Convert.ToString(row.Cells["Clave de producto"].Value),
                             Convert.ToString(row.Cells["Número de guía"].Value), Convert.ToInt32(row.Cells["Cantidad"].Value)/*Convert.ToInt32(lblCantidadTotal.Text.Trim())*/,
-                            dtFechaBaja, cbValuador.Text.Trim(), cbDestino.Text.Trim().ToUpper(),0);
+                            cbValuador.Text.Trim(), cbDestino.Text.Trim().ToUpper(),0);
                         this.DialogResult = DialogResult.OK;
                     }
 

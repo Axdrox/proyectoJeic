@@ -68,10 +68,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(654, 215);
             this.Controls.Add(this.splitContainer1);
+            this.KeyPreview = true;
             this.Name = "Alertas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Alertas";
             this.Load += new System.EventHandler(this.Alertas_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Alertas_KeyDown);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);

@@ -125,7 +125,7 @@ namespace Refracciones.Forms
                         else
                         {
                             nombreVehiculo = cbVehiculo.Text.Trim();
-                            //anioVehiculo = lblAnio.Text.Trim();
+                            anioVehiculo = dtpYear.Text.Trim();
                             this.Close();
                         }
                     }
