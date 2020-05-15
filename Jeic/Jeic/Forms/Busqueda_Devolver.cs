@@ -59,7 +59,7 @@ namespace Refracciones.Forms
             else if (e.ColumnIndex == -1) {
                 string EstadoFact = "";
                 OperBD llenardatos = new OperBD();
-                llenardatos.Llenartabla(dgvDatos, dvgPedido.Rows[fila].Cells[1].Value.ToString(), Int32.Parse(dvgPedido.Rows[fila].Cells[0].Value.ToString()), dvgPedido.Rows[fila].Cells[4].Value.ToString());
+                llenardatos.Llenartabla(dgvDatos, dvgPedido.Rows[fila].Cells[1].Value.ToString(),dvgPedido.Rows[fila].Cells[0].Value.ToString(), dvgPedido.Rows[fila].Cells[4].Value.ToString());
                 lblcvePedido.Text = lblcvePedido.Text.Substring(0, 8) + " " + dgvDatos.Rows[0].Cells[0].Value.ToString();
                 lblcveSiniestro.Text = lblcveSiniestro.Text.Substring(0, 12) + " " + dgvDatos.Rows[0].Cells[1].Value.ToString();
                 lblPieza.Text = lblPieza.Text.Substring(0, 6) + " " + dgvDatos.Rows[0].Cells[2].Value.ToString();
