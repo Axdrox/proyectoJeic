@@ -763,7 +763,7 @@ namespace Refracciones
                 {
                     nuevaConexion.Open();
                     Comando = new SqlCommand(string.Format("SELECT cve_factura FROM PEDIDO WHERE cve_siniestro = '{0}' AND cve_pedido = '{1}'",siniestro,cve_pedido), nuevaConexion);
-                    if (Comando.ExecuteScalar().ToString() == string.Empty)
+                    if (Comando.ExecuteScalar() == null)
                     {
                         cve_factura = 0;
                     }

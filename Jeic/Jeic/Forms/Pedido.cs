@@ -547,7 +547,7 @@ namespace Refracciones.Forms
                     if (chbOtroValuador.Checked == true)
                         operacion.registrarValuador(txtValuador.Text.Trim().ToUpper());
                     if (chbOtraAseguradora.Checked == true)
-                        operacion.registrarCliente(txtAseguradora.Text.Trim().ToUpper());
+                        //operacion.registrarCliente(txtAseguradora.Text.Trim().ToUpper());
                     if (chbOtroTaller.Checked == true)
                         operacion.registrarTaller(txtTaller.Text.Trim().ToUpper());
                     if (chbOtroDestino.Checked == true)

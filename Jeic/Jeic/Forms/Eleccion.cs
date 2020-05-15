@@ -1,4 +1,8 @@
-﻿using Refracciones.Forms;
+﻿using iText.IO.Font;
+using iText.Kernel.Font;
+using iText.Kernel.Pdf;
+using iText.Kernel.Pdf.Canvas;
+using Refracciones.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -159,7 +163,151 @@ namespace Refracciones
 
         private void btnPDF_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("coneja premium, diceeee");
+            //MessageBox.Show("coneja premium, diceeee");
+            PdfWriter pdfWriter = new PdfWriter(@"C:\Users\BuGsBunNy\Desktop\PDF JEIC\Vale.pdf");
+            PdfReader pdfReader = new PdfReader(@"C:\Users\BuGsBunNy\Desktop\PDF JEIC\JEIC_FACT.pdf");
+
+            PdfDocument pdfdoc = new PdfDocument(pdfReader, pdfWriter);
+            int i = 692;
+            int x = 76;
+
+            PdfCanvas canvasC = new PdfCanvas(pdfdoc.GetFirstPage());
+            canvasC.BeginText().SetFontAndSize(
+                    PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 7)
+                    .MoveText(x + 2, i)
+                    .ShowText("Bancomer")
+                    .EndText();
+            PdfCanvas canvasFS = new PdfCanvas(pdfdoc.GetFirstPage());
+            canvasFS.BeginText().SetFontAndSize(
+                    PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 7)
+                    .MoveText(235, i)
+                    .ShowText("14/05/2020")
+                    .EndText();
+            PdfCanvas canvasFP = new PdfCanvas(pdfdoc.GetFirstPage());
+            canvasFP.BeginText().SetFontAndSize(
+                    PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 7)
+                    .MoveText(355, i)
+                    .ShowText("24/05/2020")
+                    .EndText();
+            PdfCanvas canvasT = new PdfCanvas(pdfdoc.GetFirstPage());
+            canvasT.BeginText().SetFontAndSize(
+                    PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 7)
+                    .MoveText(460, i)
+                    .ShowText("Tecnocar")
+                    .EndText();
+            PdfCanvas canvasP = new PdfCanvas(pdfdoc.GetFirstPage());
+            canvasP.BeginText().SetFontAndSize(
+                    PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 5)
+                    .MoveText(x + 2, i - 9)
+                    .ShowText("ABCTW56")
+                    .EndText();
+            PdfCanvas canvasS = new PdfCanvas(pdfdoc.GetFirstPage());
+            canvasS.BeginText().SetFontAndSize(
+                    PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 5)
+                    .MoveText(x + 2, i - 16)
+                    .ShowText("BBN9T7A")
+                    .EndText();
+            PdfCanvas canvasM = new PdfCanvas(pdfdoc.GetFirstPage());
+            canvasM.BeginText().SetFontAndSize(
+                    PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 6)
+                    .MoveText(x + 270, i - 13)
+                    .ShowText("Toledo")
+                    .EndText();
+            PdfCanvas canvasAn = new PdfCanvas(pdfdoc.GetFirstPage());
+            canvasAn.BeginText().SetFontAndSize(
+                    PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 6)
+                    .MoveText(x + 295, i - 13)
+                    .ShowText("2020")
+                    .EndText();
+            PdfCanvas canvasR = new PdfCanvas(pdfdoc.GetFirstPage());
+            canvasR.BeginText().SetFontAndSize(
+                    PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 5)
+                    .MoveText(450, i + 11)
+                    .ShowText("Bryan Ramírez")
+                    .EndText();
+
+
+            /*for (int count = 0; count < 10; count++)
+            {
+                canvasCa.BeginText().SetFontAndSize(
+                        PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 7)
+                        .MoveText(x-12 , i - 35)
+                        .ShowText("10")
+                        .EndText();
+                i -= 10;
+            }
+            i = 692;*/
+            PdfCanvas canvasPi = new PdfCanvas(pdfdoc.GetFirstPage());
+            PdfCanvas canvasCa = new PdfCanvas(pdfdoc.GetFirstPage());
+            PdfCanvas canvasPt = new PdfCanvas(pdfdoc.GetFirstPage());
+            string[] piezas = new string[3];
+            piezas[0] = "Engranaje";
+            piezas[1] = "Calaberas";
+            piezas[2] = "Bateria";
+            string[] cantidad = new string[3];
+            cantidad[0] = "1";
+            cantidad[1] = "2";
+            cantidad[2] = "1";
+            string[] precio = new string[3];
+            precio[0] = "$ " + (Int32.Parse(cantidad[0]) * 75.375).ToString();
+            precio[1] = "$ " + (Int32.Parse(cantidad[1]) * 84.50).ToString();
+            precio[2] = "$ " + (Int32.Parse(cantidad[2]) * 250).ToString();
+            for (int count = 0; count < 3; count++)
+            {
+                canvasCa.BeginText().SetFontAndSize(
+                        PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 7)
+                        .MoveText(x - 12, i - 35)
+                        .ShowText(cantidad[count])
+                        .EndText();
+                canvasPi.BeginText().SetFontAndSize(
+                        PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 7)
+                        .MoveText(x + 20, i - 35)
+                        .ShowText(piezas[count])
+                        .EndText();
+                canvasPt.BeginText().SetFontAndSize(
+                        PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 7)
+                        .MoveText(x + 410, i - 35)
+                        .ShowText(precio[count])
+                        .EndText();
+                i -= 10;
+            }
+            double subTotal = 0;
+            int numItems = 0;
+            for (int c = 0; c < precio.Length; c++)
+            {
+                subTotal += double.Parse(precio[c].Substring(1, precio[c].Length - 1));
+            }
+            for (int c = 0; c < cantidad.Length; c++)
+            {
+                numItems += Int32.Parse(cantidad[c]);
+            }
+            PdfCanvas canvasnumItems = new PdfCanvas(pdfdoc.GetFirstPage());
+            canvasnumItems.BeginText().SetFontAndSize(
+                        PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 7)
+                        .MoveText(x + 50, i - 210)
+                        .ShowText(numItems.ToString())
+                        .EndText();
+            double Iva = subTotal * .16;
+            double Total = subTotal + Iva;
+            PdfCanvas canvasStotal = new PdfCanvas(pdfdoc.GetFirstPage());
+            canvasStotal.BeginText().SetFontAndSize(
+                        PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 7)
+                        .MoveText(x + 410, i - 217)
+                        .ShowText("$" + subTotal.ToString())
+                        .EndText();
+            PdfCanvas canvasIva = new PdfCanvas(pdfdoc.GetFirstPage());
+            canvasIva.BeginText().SetFontAndSize(
+                        PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 7)
+                        .MoveText(x + 410, i - 226)
+                        .ShowText("$" + (Iva).ToString())
+                        .EndText();
+            PdfCanvas canvasTotal = new PdfCanvas(pdfdoc.GetFirstPage());
+            canvasTotal.BeginText().SetFontAndSize(
+                        PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 7)
+                        .MoveText(x + 410, i - 234)
+                        .ShowText("$" + (Total).ToString())
+                        .EndText();
+            pdfdoc.Close();
         }
     }
 }
