@@ -37,6 +37,7 @@
             this.dato_1 = new System.Windows.Forms.Label();
             this.dato_2 = new System.Windows.Forms.Label();
             this.dato_3 = new System.Windows.Forms.Label();
+            this.btnPDF = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnModificarDatosPedido
@@ -134,11 +135,23 @@
             this.dato_3.Text = "cve_factura";
             this.dato_3.Visible = false;
             // 
+            // btnPDF
+            // 
+            this.btnPDF.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPDF.Location = new System.Drawing.Point(12, 281);
+            this.btnPDF.Name = "btnPDF";
+            this.btnPDF.Size = new System.Drawing.Size(155, 44);
+            this.btnPDF.TabIndex = 9;
+            this.btnPDF.Text = "Generar PDF";
+            this.btnPDF.UseVisualStyleBackColor = true;
+            this.btnPDF.Click += new System.EventHandler(this.btnPDF_Click);
+            // 
             // Eleccion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(179, 287);
+            this.ClientSize = new System.Drawing.Size(177, 346);
+            this.Controls.Add(this.btnPDF);
             this.Controls.Add(this.dato_3);
             this.Controls.Add(this.dato_2);
             this.Controls.Add(this.dato_1);
@@ -168,5 +181,6 @@
         public System.Windows.Forms.Label dato_1;
         public System.Windows.Forms.Label dato_2;
         public System.Windows.Forms.Label dato_3;
+        private System.Windows.Forms.Button btnPDF;
     }
 }

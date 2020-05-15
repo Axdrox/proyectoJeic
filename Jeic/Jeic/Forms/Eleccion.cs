@@ -156,5 +156,10 @@ namespace Refracciones
             pedido.labelSiniestro = claveSiniestro;
             pedido.ShowDialog();
         }
+
+        private void btnPDF_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
