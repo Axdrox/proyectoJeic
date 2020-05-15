@@ -93,6 +93,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(11, 84);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
@@ -102,6 +103,7 @@
             // 
             // lblVehiculoPedido
             // 
+            this.lblVehiculoPedido.ForeColor = System.Drawing.Color.White;
             this.lblVehiculoPedido.Location = new System.Drawing.Point(66, 120);
             this.lblVehiculoPedido.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblVehiculoPedido.Name = "lblVehiculoPedido";
@@ -139,7 +141,8 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(481, 135);
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(435, 130);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(52, 13);
@@ -151,10 +154,10 @@
             this.cbAseguradora.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbAseguradora.Enabled = false;
             this.cbAseguradora.FormattingEnabled = true;
-            this.cbAseguradora.Location = new System.Drawing.Point(586, 106);
+            this.cbAseguradora.Location = new System.Drawing.Point(495, 91);
             this.cbAseguradora.Margin = new System.Windows.Forms.Padding(2);
             this.cbAseguradora.Name = "cbAseguradora";
-            this.cbAseguradora.Size = new System.Drawing.Size(202, 21);
+            this.cbAseguradora.Size = new System.Drawing.Size(295, 21);
             this.cbAseguradora.TabIndex = 5;
             this.cbAseguradora.SelectedIndexChanged += new System.EventHandler(this.cbAseguradora_SelectedIndexChanged);
             this.cbAseguradora.Click += new System.EventHandler(this.cbAseguradora_Click);
@@ -162,7 +165,8 @@
             // lblClientePedido
             // 
             this.lblClientePedido.AutoSize = true;
-            this.lblClientePedido.Location = new System.Drawing.Point(481, 108);
+            this.lblClientePedido.ForeColor = System.Drawing.Color.White;
+            this.lblClientePedido.Location = new System.Drawing.Point(435, 92);
             this.lblClientePedido.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblClientePedido.Name = "lblClientePedido";
             this.lblClientePedido.Size = new System.Drawing.Size(42, 13);
@@ -172,7 +176,8 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(481, 76);
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(435, 55);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(56, 13);
@@ -184,10 +189,10 @@
             this.cbVendedor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbVendedor.Enabled = false;
             this.cbVendedor.FormattingEnabled = true;
-            this.cbVendedor.Location = new System.Drawing.Point(586, 76);
+            this.cbVendedor.Location = new System.Drawing.Point(495, 52);
             this.cbVendedor.Margin = new System.Windows.Forms.Padding(2);
             this.cbVendedor.Name = "cbVendedor";
-            this.cbVendedor.Size = new System.Drawing.Size(203, 21);
+            this.cbVendedor.Size = new System.Drawing.Size(295, 21);
             this.cbVendedor.TabIndex = 9;
             this.cbVendedor.SelectedIndexChanged += new System.EventHandler(this.cbVendedor_SelectedIndexChanged);
             this.cbVendedor.Click += new System.EventHandler(this.cbVendedor_Click);
@@ -195,7 +200,8 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(910, 80);
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(910, 77);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(106, 13);
@@ -205,15 +211,17 @@
             // dtpFechaAsignacion
             // 
             this.dtpFechaAsignacion.Enabled = false;
-            this.dtpFechaAsignacion.Location = new System.Drawing.Point(1028, 76);
+            this.dtpFechaAsignacion.Location = new System.Drawing.Point(1028, 71);
             this.dtpFechaAsignacion.Margin = new System.Windows.Forms.Padding(2);
             this.dtpFechaAsignacion.Name = "dtpFechaAsignacion";
-            this.dtpFechaAsignacion.Size = new System.Drawing.Size(192, 20);
+            this.dtpFechaAsignacion.Size = new System.Drawing.Size(216, 20);
             this.dtpFechaAsignacion.TabIndex = 11;
+            this.dtpFechaAsignacion.ValueChanged += new System.EventHandler(this.dtpFechaAsignacion_ValueChanged);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
+            this.label8.ForeColor = System.Drawing.Color.White;
             this.label8.Location = new System.Drawing.Point(910, 108);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
@@ -224,17 +232,18 @@
             // dtpFechaPromesa
             // 
             this.dtpFechaPromesa.Enabled = false;
-            this.dtpFechaPromesa.Location = new System.Drawing.Point(1028, 104);
+            this.dtpFechaPromesa.Location = new System.Drawing.Point(1028, 101);
             this.dtpFechaPromesa.Margin = new System.Windows.Forms.Padding(2);
             this.dtpFechaPromesa.Name = "dtpFechaPromesa";
-            this.dtpFechaPromesa.Size = new System.Drawing.Size(192, 20);
+            this.dtpFechaPromesa.Size = new System.Drawing.Size(216, 20);
             this.dtpFechaPromesa.TabIndex = 13;
             this.dtpFechaPromesa.ValueChanged += new System.EventHandler(this.dtpFechaPromesa_ValueChanged);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(482, 165);
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(435, 170);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(36, 13);
@@ -244,7 +253,8 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(482, 193);
+            this.label10.ForeColor = System.Drawing.Color.White;
+            this.label10.Location = new System.Drawing.Point(435, 209);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(46, 13);
@@ -256,10 +266,10 @@
             this.cbTaller.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTaller.Enabled = false;
             this.cbTaller.FormattingEnabled = true;
-            this.cbTaller.Location = new System.Drawing.Point(586, 163);
+            this.cbTaller.Location = new System.Drawing.Point(495, 170);
             this.cbTaller.Margin = new System.Windows.Forms.Padding(2);
             this.cbTaller.Name = "cbTaller";
-            this.cbTaller.Size = new System.Drawing.Size(203, 21);
+            this.cbTaller.Size = new System.Drawing.Size(295, 21);
             this.cbTaller.TabIndex = 16;
             this.cbTaller.Click += new System.EventHandler(this.cbTaller_Click);
             // 
@@ -268,10 +278,10 @@
             this.cbDestino.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbDestino.Enabled = false;
             this.cbDestino.FormattingEnabled = true;
-            this.cbDestino.Location = new System.Drawing.Point(586, 190);
+            this.cbDestino.Location = new System.Drawing.Point(495, 209);
             this.cbDestino.Margin = new System.Windows.Forms.Padding(2);
             this.cbDestino.Name = "cbDestino";
-            this.cbDestino.Size = new System.Drawing.Size(203, 21);
+            this.cbDestino.Size = new System.Drawing.Size(295, 21);
             this.cbDestino.TabIndex = 17;
             this.cbDestino.Click += new System.EventHandler(this.cbDestino_Click);
             // 
@@ -290,6 +300,7 @@
             // 
             // btnFinalizarPedido
             // 
+            this.btnFinalizarPedido.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnFinalizarPedido.Enabled = false;
             this.btnFinalizarPedido.Location = new System.Drawing.Point(1217, 491);
             this.btnFinalizarPedido.Margin = new System.Windows.Forms.Padding(2);
@@ -297,24 +308,26 @@
             this.btnFinalizarPedido.Size = new System.Drawing.Size(107, 25);
             this.btnFinalizarPedido.TabIndex = 19;
             this.btnFinalizarPedido.Text = "Finalizar pedido";
-            this.btnFinalizarPedido.UseVisualStyleBackColor = true;
+            this.btnFinalizarPedido.UseVisualStyleBackColor = false;
             this.btnFinalizarPedido.Click += new System.EventHandler(this.btnFinalizarPedido_Click);
             // 
             // btnCancelar
             // 
+            this.btnCancelar.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnCancelar.Location = new System.Drawing.Point(1140, 491);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(62, 25);
             this.btnCancelar.TabIndex = 20;
             this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // rdbNo
             // 
             this.rdbNo.AutoSize = true;
             this.rdbNo.Enabled = false;
+            this.rdbNo.ForeColor = System.Drawing.Color.White;
             this.rdbNo.Location = new System.Drawing.Point(167, 82);
             this.rdbNo.Margin = new System.Windows.Forms.Padding(2);
             this.rdbNo.Name = "rdbNo";
@@ -328,6 +341,7 @@
             // 
             this.rdbSi.AutoSize = true;
             this.rdbSi.Enabled = false;
+            this.rdbSi.ForeColor = System.Drawing.Color.White;
             this.rdbSi.Location = new System.Drawing.Point(121, 82);
             this.rdbSi.Margin = new System.Windows.Forms.Padding(2);
             this.rdbSi.Name = "rdbSi";
@@ -340,6 +354,7 @@
             // chbSi
             // 
             this.chbSi.AutoSize = true;
+            this.chbSi.ForeColor = System.Drawing.Color.White;
             this.chbSi.Location = new System.Drawing.Point(121, 83);
             this.chbSi.Margin = new System.Windows.Forms.Padding(2);
             this.chbSi.Name = "chbSi";
@@ -352,7 +367,8 @@
             // 
             this.chbOtroValuador.AutoSize = true;
             this.chbOtroValuador.Enabled = false;
-            this.chbOtroValuador.Location = new System.Drawing.Point(792, 135);
+            this.chbOtroValuador.ForeColor = System.Drawing.Color.White;
+            this.chbOtroValuador.Location = new System.Drawing.Point(795, 132);
             this.chbOtroValuador.Margin = new System.Windows.Forms.Padding(2);
             this.chbOtroValuador.Name = "chbOtroValuador";
             this.chbOtroValuador.Size = new System.Drawing.Size(46, 17);
@@ -364,12 +380,12 @@
             // txtValuador
             // 
             this.txtValuador.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.txtValuador.Location = new System.Drawing.Point(586, 132);
+            this.txtValuador.Location = new System.Drawing.Point(494, 130);
             this.txtValuador.Margin = new System.Windows.Forms.Padding(2);
             this.txtValuador.Name = "txtValuador";
-            this.txtValuador.Size = new System.Drawing.Size(203, 20);
+            this.txtValuador.Size = new System.Drawing.Size(297, 20);
             this.txtValuador.TabIndex = 26;
-            this.txtValuador.Text = "Escribe nombre del valuador";
+            this.txtValuador.Text = "Escriba nombre del valuador";
             this.txtValuador.Click += new System.EventHandler(this.txtValuador_Click);
             // 
             // cbValuador
@@ -377,20 +393,20 @@
             this.cbValuador.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbValuador.Enabled = false;
             this.cbValuador.FormattingEnabled = true;
-            this.cbValuador.Location = new System.Drawing.Point(586, 132);
+            this.cbValuador.Location = new System.Drawing.Point(494, 130);
             this.cbValuador.Margin = new System.Windows.Forms.Padding(2);
             this.cbValuador.Name = "cbValuador";
-            this.cbValuador.Size = new System.Drawing.Size(203, 21);
+            this.cbValuador.Size = new System.Drawing.Size(296, 21);
             this.cbValuador.TabIndex = 27;
             this.cbValuador.Click += new System.EventHandler(this.cbValuador_Click);
             // 
             // txtAseguradora
             // 
             this.txtAseguradora.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.txtAseguradora.Location = new System.Drawing.Point(586, 106);
+            this.txtAseguradora.Location = new System.Drawing.Point(495, 91);
             this.txtAseguradora.Margin = new System.Windows.Forms.Padding(2);
             this.txtAseguradora.Name = "txtAseguradora";
-            this.txtAseguradora.Size = new System.Drawing.Size(203, 20);
+            this.txtAseguradora.Size = new System.Drawing.Size(295, 20);
             this.txtAseguradora.TabIndex = 28;
             this.txtAseguradora.Text = "Escriba el nombre del cliente";
             this.txtAseguradora.Click += new System.EventHandler(this.txtAseguradora_Click);
@@ -399,7 +415,8 @@
             // 
             this.chbOtraAseguradora.AutoSize = true;
             this.chbOtraAseguradora.Enabled = false;
-            this.chbOtraAseguradora.Location = new System.Drawing.Point(792, 107);
+            this.chbOtraAseguradora.ForeColor = System.Drawing.Color.White;
+            this.chbOtraAseguradora.Location = new System.Drawing.Point(795, 94);
             this.chbOtraAseguradora.Margin = new System.Windows.Forms.Padding(2);
             this.chbOtraAseguradora.Name = "chbOtraAseguradora";
             this.chbOtraAseguradora.Size = new System.Drawing.Size(46, 17);
@@ -411,6 +428,7 @@
             // lblClaveSiniestroPedido
             // 
             this.lblClaveSiniestroPedido.AutoSize = true;
+            this.lblClaveSiniestroPedido.ForeColor = System.Drawing.Color.White;
             this.lblClaveSiniestroPedido.Location = new System.Drawing.Point(40, 107);
             this.lblClaveSiniestroPedido.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblClaveSiniestroPedido.Name = "lblClaveSiniestroPedido";
@@ -430,6 +448,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(11, 52);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
@@ -443,9 +462,9 @@
             this.txtClavePedido.Location = new System.Drawing.Point(119, 48);
             this.txtClavePedido.Margin = new System.Windows.Forms.Padding(2);
             this.txtClavePedido.Name = "txtClavePedido";
-            this.txtClavePedido.Size = new System.Drawing.Size(203, 20);
+            this.txtClavePedido.Size = new System.Drawing.Size(232, 20);
             this.txtClavePedido.TabIndex = 33;
-            this.txtClavePedido.Text = "Escribe una clave";
+            this.txtClavePedido.Text = "Escriba una clave";
             this.txtClavePedido.Click += new System.EventHandler(this.txtClavePedido_Click);
             this.txtClavePedido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtClavePedido_KeyPress);
             // 
@@ -453,7 +472,8 @@
             // 
             this.chbOtroTaller.AutoSize = true;
             this.chbOtroTaller.Enabled = false;
-            this.chbOtroTaller.Location = new System.Drawing.Point(793, 165);
+            this.chbOtroTaller.ForeColor = System.Drawing.Color.White;
+            this.chbOtroTaller.Location = new System.Drawing.Point(795, 172);
             this.chbOtroTaller.Margin = new System.Windows.Forms.Padding(2);
             this.chbOtroTaller.Name = "chbOtroTaller";
             this.chbOtroTaller.Size = new System.Drawing.Size(46, 17);
@@ -466,7 +486,8 @@
             // 
             this.chbOtroDestino.AutoSize = true;
             this.chbOtroDestino.Enabled = false;
-            this.chbOtroDestino.Location = new System.Drawing.Point(792, 192);
+            this.chbOtroDestino.ForeColor = System.Drawing.Color.White;
+            this.chbOtroDestino.Location = new System.Drawing.Point(795, 211);
             this.chbOtroDestino.Margin = new System.Windows.Forms.Padding(2);
             this.chbOtroDestino.Name = "chbOtroDestino";
             this.chbOtroDestino.Size = new System.Drawing.Size(46, 17);
@@ -478,10 +499,10 @@
             // txtTaller
             // 
             this.txtTaller.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.txtTaller.Location = new System.Drawing.Point(586, 163);
+            this.txtTaller.Location = new System.Drawing.Point(494, 170);
             this.txtTaller.Margin = new System.Windows.Forms.Padding(2);
             this.txtTaller.Name = "txtTaller";
-            this.txtTaller.Size = new System.Drawing.Size(203, 20);
+            this.txtTaller.Size = new System.Drawing.Size(297, 20);
             this.txtTaller.TabIndex = 36;
             this.txtTaller.Text = "Escriba nombre de taller";
             this.txtTaller.Click += new System.EventHandler(this.txtTaller_Click);
@@ -489,29 +510,31 @@
             // txtDestino
             // 
             this.txtDestino.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.txtDestino.Location = new System.Drawing.Point(586, 190);
+            this.txtDestino.Location = new System.Drawing.Point(494, 209);
             this.txtDestino.Margin = new System.Windows.Forms.Padding(2);
             this.txtDestino.Name = "txtDestino";
-            this.txtDestino.Size = new System.Drawing.Size(203, 20);
+            this.txtDestino.Size = new System.Drawing.Size(297, 20);
             this.txtDestino.TabIndex = 37;
             this.txtDestino.Text = "Escriba el destino";
             this.txtDestino.Click += new System.EventHandler(this.txtDestino_Click);
             // 
             // btnAgregarPieza
             // 
-            this.btnAgregarPieza.Location = new System.Drawing.Point(14, 239);
+            this.btnAgregarPieza.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnAgregarPieza.Location = new System.Drawing.Point(14, 445);
             this.btnAgregarPieza.Margin = new System.Windows.Forms.Padding(2);
             this.btnAgregarPieza.Name = "btnAgregarPieza";
             this.btnAgregarPieza.Size = new System.Drawing.Size(100, 25);
             this.btnAgregarPieza.TabIndex = 38;
             this.btnAgregarPieza.Text = "Agregar pieza";
-            this.btnAgregarPieza.UseVisualStyleBackColor = true;
+            this.btnAgregarPieza.UseVisualStyleBackColor = false;
             this.btnAgregarPieza.Click += new System.EventHandler(this.btnAgregarPieza_Click);
             // 
             // lblFechaBaja
             // 
             this.lblFechaBaja.AutoSize = true;
-            this.lblFechaBaja.Location = new System.Drawing.Point(912, 138);
+            this.lblFechaBaja.ForeColor = System.Drawing.Color.White;
+            this.lblFechaBaja.Location = new System.Drawing.Point(910, 141);
             this.lblFechaBaja.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFechaBaja.Name = "lblFechaBaja";
             this.lblFechaBaja.Size = new System.Drawing.Size(78, 13);
@@ -521,16 +544,16 @@
             // dtpFechaBaja
             // 
             this.dtpFechaBaja.Enabled = false;
-            this.dtpFechaBaja.Location = new System.Drawing.Point(1028, 134);
+            this.dtpFechaBaja.Location = new System.Drawing.Point(1028, 135);
             this.dtpFechaBaja.Margin = new System.Windows.Forms.Padding(2);
             this.dtpFechaBaja.Name = "dtpFechaBaja";
-            this.dtpFechaBaja.Size = new System.Drawing.Size(192, 20);
+            this.dtpFechaBaja.Size = new System.Drawing.Size(216, 20);
             this.dtpFechaBaja.TabIndex = 40;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(1183, 471);
+            this.label5.Location = new System.Drawing.Point(1188, 451);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(42, 13);
@@ -540,7 +563,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(1228, 459);
+            this.label11.Location = new System.Drawing.Point(1233, 439);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(38, 13);
@@ -550,7 +573,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(1270, 459);
+            this.label12.Location = new System.Drawing.Point(1275, 439);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(37, 13);
@@ -560,7 +583,7 @@
             // lblCantidadTotal
             // 
             this.lblCantidadTotal.AutoSize = true;
-            this.lblCantidadTotal.Location = new System.Drawing.Point(1228, 471);
+            this.lblCantidadTotal.Location = new System.Drawing.Point(1233, 451);
             this.lblCantidadTotal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCantidadTotal.Name = "lblCantidadTotal";
             this.lblCantidadTotal.Size = new System.Drawing.Size(0, 13);
@@ -569,7 +592,7 @@
             // lblPrecioTotal
             // 
             this.lblPrecioTotal.AutoSize = true;
-            this.lblPrecioTotal.Location = new System.Drawing.Point(1270, 471);
+            this.lblPrecioTotal.Location = new System.Drawing.Point(1275, 451);
             this.lblPrecioTotal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPrecioTotal.Name = "lblPrecioTotal";
             this.lblPrecioTotal.Size = new System.Drawing.Size(0, 13);
@@ -578,7 +601,8 @@
             // chbModificarFechaAsignacion
             // 
             this.chbModificarFechaAsignacion.AutoSize = true;
-            this.chbModificarFechaAsignacion.Location = new System.Drawing.Point(1224, 79);
+            this.chbModificarFechaAsignacion.ForeColor = System.Drawing.Color.White;
+            this.chbModificarFechaAsignacion.Location = new System.Drawing.Point(1255, 73);
             this.chbModificarFechaAsignacion.Margin = new System.Windows.Forms.Padding(2);
             this.chbModificarFechaAsignacion.Name = "chbModificarFechaAsignacion";
             this.chbModificarFechaAsignacion.Size = new System.Drawing.Size(69, 17);
@@ -591,7 +615,8 @@
             // chbModificarFechaPromesa
             // 
             this.chbModificarFechaPromesa.AutoSize = true;
-            this.chbModificarFechaPromesa.Location = new System.Drawing.Point(1224, 107);
+            this.chbModificarFechaPromesa.ForeColor = System.Drawing.Color.White;
+            this.chbModificarFechaPromesa.Location = new System.Drawing.Point(1255, 103);
             this.chbModificarFechaPromesa.Margin = new System.Windows.Forms.Padding(2);
             this.chbModificarFechaPromesa.Name = "chbModificarFechaPromesa";
             this.chbModificarFechaPromesa.Size = new System.Drawing.Size(69, 17);
@@ -604,7 +629,8 @@
             // chbModificarFechaBaja
             // 
             this.chbModificarFechaBaja.AutoSize = true;
-            this.chbModificarFechaBaja.Location = new System.Drawing.Point(1224, 137);
+            this.chbModificarFechaBaja.ForeColor = System.Drawing.Color.White;
+            this.chbModificarFechaBaja.Location = new System.Drawing.Point(1255, 137);
             this.chbModificarFechaBaja.Margin = new System.Windows.Forms.Padding(2);
             this.chbModificarFechaBaja.Name = "chbModificarFechaBaja";
             this.chbModificarFechaBaja.Size = new System.Drawing.Size(69, 17);
@@ -616,7 +642,8 @@
             // chbModificarVendedor
             // 
             this.chbModificarVendedor.AutoSize = true;
-            this.chbModificarVendedor.Location = new System.Drawing.Point(792, 77);
+            this.chbModificarVendedor.ForeColor = System.Drawing.Color.White;
+            this.chbModificarVendedor.Location = new System.Drawing.Point(795, 54);
             this.chbModificarVendedor.Margin = new System.Windows.Forms.Padding(2);
             this.chbModificarVendedor.Name = "chbModificarVendedor";
             this.chbModificarVendedor.Size = new System.Drawing.Size(69, 17);
@@ -629,16 +656,17 @@
             // txtVendedor
             // 
             this.txtVendedor.Enabled = false;
-            this.txtVendedor.Location = new System.Drawing.Point(586, 76);
+            this.txtVendedor.Location = new System.Drawing.Point(495, 52);
             this.txtVendedor.Margin = new System.Windows.Forms.Padding(2);
             this.txtVendedor.Name = "txtVendedor";
-            this.txtVendedor.Size = new System.Drawing.Size(203, 20);
+            this.txtVendedor.Size = new System.Drawing.Size(296, 20);
             this.txtVendedor.TabIndex = 50;
             this.txtVendedor.Visible = false;
             // 
             // lblComentarioSiniestro
             // 
             this.lblComentarioSiniestro.AutoSize = true;
+            this.lblComentarioSiniestro.ForeColor = System.Drawing.Color.White;
             this.lblComentarioSiniestro.Location = new System.Drawing.Point(47, 197);
             this.lblComentarioSiniestro.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblComentarioSiniestro.Name = "lblComentarioSiniestro";
@@ -653,7 +681,7 @@
             this.txtComentarioSiniestro.Margin = new System.Windows.Forms.Padding(2);
             this.txtComentarioSiniestro.Multiline = true;
             this.txtComentarioSiniestro.Name = "txtComentarioSiniestro";
-            this.txtComentarioSiniestro.Size = new System.Drawing.Size(202, 34);
+            this.txtComentarioSiniestro.Size = new System.Drawing.Size(231, 48);
             this.txtComentarioSiniestro.TabIndex = 52;
             this.txtComentarioSiniestro.Visible = false;
             // 
@@ -664,13 +692,14 @@
             this.cbEstadoSiniestro.Location = new System.Drawing.Point(121, 164);
             this.cbEstadoSiniestro.Margin = new System.Windows.Forms.Padding(2);
             this.cbEstadoSiniestro.Name = "cbEstadoSiniestro";
-            this.cbEstadoSiniestro.Size = new System.Drawing.Size(203, 21);
+            this.cbEstadoSiniestro.Size = new System.Drawing.Size(230, 21);
             this.cbEstadoSiniestro.TabIndex = 53;
             this.cbEstadoSiniestro.Click += new System.EventHandler(this.cbEstadoSiniestro_Click);
             // 
             // lblEstado
             // 
             this.lblEstado.AutoSize = true;
+            this.lblEstado.ForeColor = System.Drawing.Color.White;
             this.lblEstado.Location = new System.Drawing.Point(48, 167);
             this.lblEstado.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblEstado.Name = "lblEstado";
@@ -681,16 +710,17 @@
             // txtEstado
             // 
             this.txtEstado.Enabled = false;
-            this.txtEstado.Location = new System.Drawing.Point(121, 166);
+            this.txtEstado.Location = new System.Drawing.Point(121, 164);
             this.txtEstado.Margin = new System.Windows.Forms.Padding(2);
             this.txtEstado.Name = "txtEstado";
-            this.txtEstado.Size = new System.Drawing.Size(204, 20);
+            this.txtEstado.Size = new System.Drawing.Size(230, 20);
             this.txtEstado.TabIndex = 55;
             // 
             // chbModificarEstado
             // 
             this.chbModificarEstado.AutoSize = true;
-            this.chbModificarEstado.Location = new System.Drawing.Point(327, 168);
+            this.chbModificarEstado.ForeColor = System.Drawing.Color.White;
+            this.chbModificarEstado.Location = new System.Drawing.Point(355, 166);
             this.chbModificarEstado.Margin = new System.Windows.Forms.Padding(2);
             this.chbModificarEstado.Name = "chbModificarEstado";
             this.chbModificarEstado.Size = new System.Drawing.Size(69, 17);
@@ -716,7 +746,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.ClientSize = new System.Drawing.Size(1346, 527);
+            this.Controls.Add(this.txtVendedor);
+            this.Controls.Add(this.txtValuador);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.chbModificarEstado);
             this.Controls.Add(this.txtEstado);
@@ -724,7 +757,6 @@
             this.Controls.Add(this.cbEstadoSiniestro);
             this.Controls.Add(this.txtComentarioSiniestro);
             this.Controls.Add(this.lblComentarioSiniestro);
-            this.Controls.Add(this.txtVendedor);
             this.Controls.Add(this.chbModificarVendedor);
             this.Controls.Add(this.chbModificarFechaBaja);
             this.Controls.Add(this.chbModificarFechaPromesa);
@@ -748,7 +780,6 @@
             this.Controls.Add(this.chbOtraAseguradora);
             this.Controls.Add(this.txtAseguradora);
             this.Controls.Add(this.cbValuador);
-            this.Controls.Add(this.txtValuador);
             this.Controls.Add(this.chbOtroValuador);
             this.Controls.Add(this.chbSi);
             this.Controls.Add(this.rdbSi);
@@ -774,6 +805,7 @@
             this.Controls.Add(this.lblAnioPedido);
             this.Controls.Add(this.lblVehiculoPedido);
             this.Controls.Add(this.label1);
+            this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Pedido";

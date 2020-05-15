@@ -998,6 +998,46 @@ namespace Refracciones
             return dataSet;
         }
 
+        //---------------- INSERTAR UN NUEVO CLIENTE
+        public int registrarCliente(string nombreCliente, string nombreValuador)
+        {
+            int i = 0; int cve_valuador = 0;
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("SELECT cve_valuador FROM VALUADOR WHERE nombre = @nombre", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@nombre", nombreValuador);
+                    Lector = Comando.ExecuteReader();
+                    if (Lector.Read())
+                    {
+                        cve_valuador = (int)Lector["cve_valuador"];
+                    }
+                    Lector.Close();
+
+                    Comando = new SqlCommand("INSERT INTO CLIENTE " + "(cve_nombre, cve_valuador, dias_espera) " + "VALUES (@cve_nombre, @cve_valuador, @dias_espera) ", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@nombre", nombreCliente);
+                    Comando.Parameters.AddWithValue("@nombre", nombreValuador);
+
+                    //Para saber si la inserción se hizo correctamente
+                    i = Comando.ExecuteNonQuery();
+                    nuevaConexion.Close();
+                    if (i == 1)
+                        MessageBox.Show("Se registró nueva cliente correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    else
+                        MessageBox.Show("Problemas al registar nueva cliente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    nuevaConexion.Close();
+                }
+
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return i;
+        }
+
         //VALIDAR SI EXISTE UN MISMO REGISTRO DE ASEGURADORA PARA EVITAR DUPLICADOS, ETC.
         public string existeCliente(string nombre)
         {
@@ -1057,6 +1097,61 @@ namespace Refracciones
             return dataSet;
         }
 
+        //---------------- INSERTAR UN NUEVO VALUADOR
+        public int registrarValuador(string nombre)
+        {
+            int i = 0;
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("INSERT INTO VALUADOR " + "(nombre) " + "VALUES (@nombre) ", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@nombre", nombre);
+
+                    //Para saber si la inserción se hizo correctamente
+                    i = Comando.ExecuteNonQuery();
+                    nuevaConexion.Close();
+                    if (i == 1)
+                        MessageBox.Show("Se registró nuevo valuador correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    else
+                        MessageBox.Show("Problemas al registar nuevo valuador", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    nuevaConexion.Close();
+                }
+
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return i;
+        }
+
+        //VALIDAR SI EXISTE UN MISMO REGISTRO DE VALUADOR PARA EVITAR DUPLICADOS, ETC.
+        public string existeValuador(string nombre)
+        {
+            string resultado = "";
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("SELECT nombre FROM VALUADOR WHERE nombre = @nombre", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@nombre", nombre);
+
+                    //Para saber si en realidad existe, de lo contrario devuelve un string vacío
+                    if (Comando.ExecuteScalar() == null) { }
+                    else
+                        resultado = Comando.ExecuteScalar().ToString();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return resultado;
+        }
+
         //---------------- TALLERES REGISTRADOS
         public DataSet TalleresRegistrados()
         {
@@ -1078,6 +1173,61 @@ namespace Refracciones
             return dataSet;
         }
 
+        //---------------- INSERTAR UN NUEVO TALLER
+        public int registrarTaller(string nombre)
+        {
+            int i = 0;
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("INSERT INTO TALLER " + "(nombre) " + "VALUES (@nombre) ", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@nombre", nombre);
+
+                    //Para saber si la inserción se hizo correctamente
+                    i = Comando.ExecuteNonQuery();
+                    nuevaConexion.Close();
+                    if (i == 1)
+                        MessageBox.Show("Se registró nuevo taller correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    else
+                        MessageBox.Show("Problemas al registar nuevo taller", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    nuevaConexion.Close();
+                }
+
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return i;
+        }
+
+        //VALIDAR SI EXISTE UN MISMO REGISTRO DE TALLERES PARA EVITAR DUPLICADOS, ETC.
+        public string existeTaller(string nombre)
+        {
+            string resultado = "";
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("SELECT nombre FROM TALLER WHERE nombre = @nombre", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@nombre", nombre);
+
+                    //Para saber si en realidad existe, de lo contrario devuelve un string vacío
+                    if (Comando.ExecuteScalar() == null) { }
+                    else
+                        resultado = Comando.ExecuteScalar().ToString();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return resultado;
+        }
+
         //---------------- DESTINOS REGISTRADOS
         public DataSet DestinosRegistrados()
         {
@@ -1097,6 +1247,61 @@ namespace Refracciones
                 MessageBox.Show("Error: " + EX.Message);
             }
             return dataSet;
+        }
+
+        //---------------- INSERTAR UN NUEVO DESTINO
+        public int registrarDestino(string nombre)
+        {
+            int i = 0;
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("INSERT INTO DESTINO " + "(destino) " + "VALUES (@destino) ", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@nombre", nombre);
+
+                    //Para saber si la inserción se hizo correctamente
+                    i = Comando.ExecuteNonQuery();
+                    nuevaConexion.Close();
+                    if (i == 1)
+                        MessageBox.Show("Se registró nuevo destino correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    else
+                        MessageBox.Show("Problemas al registar nuevo destino", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    nuevaConexion.Close();
+                }
+
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return i;
+        }
+
+        //VALIDAR SI EXISTE UN MISMO REGISTRO DE TALLERES PARA EVITAR DUPLICADOS, ETC.
+        public string existeDestino(string nombre)
+        {
+            string resultado = "";
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("SELECT destino FROM DESTINO WHERE destino = @nombre", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@destino", nombre);
+
+                    //Para saber si en realidad existe, de lo contrario devuelve un string vacío
+                    if (Comando.ExecuteScalar() == null) { }
+                    else
+                        resultado = Comando.ExecuteScalar().ToString();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return resultado;
         }
 
         //---------------- NOMBRES DE PIEZAS REGISTRADOS
@@ -2068,7 +2273,7 @@ namespace Refracciones
             }
         }
         //-------------INSERTAR DATOS DE PEDIDO
-        public int registrarPedido(int clavePedido, string claveSiniestro, string nombrePieza, string portal, string taller, string origen, string proveedor, int claveVendedor, DateTime fechaCosto, string costoSinIVA, string costoNeto, string costoEnvio, string precioVenta, string precioReparacion, string claveProducto, string numeroGuia, int cantidad, string valuador, string destino, int pzas_devolucion)
+        public int registrarPedido(string clavePedido, string claveSiniestro, string nombrePieza, string portal, string taller, string origen, string proveedor, int claveVendedor, DateTime fechaCosto, string costoSinIVA, string costoNeto, string costoEnvio, string precioVenta, string precioReparacion, string claveProducto, string numeroGuia, int cantidad, string valuador, string destino, int pzas_devolucion)
         {
             //Variables
             int i = 0;

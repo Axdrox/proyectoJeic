@@ -159,7 +159,7 @@ namespace Refracciones
 
         private void btnPDF_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("coneja premium, diceeee");
         }
     }
 }
