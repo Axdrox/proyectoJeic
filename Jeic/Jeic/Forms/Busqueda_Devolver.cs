@@ -32,7 +32,6 @@ namespace Refracciones.Forms
         private void BusquedaPedido(object sender, KeyEventArgs e)
         {
             if (TxtClavePed.Text == "" && TxtClaveSin.Text == "") {
-                MessageBox.Show("Debe ingresar un valor o buscar por fecha");
                 OperBD llenarDefaultDGV = new OperBD();
                 llenarDefaultDGV.defaultDGV(dvgPedido);
             }
@@ -127,9 +126,6 @@ namespace Refracciones.Forms
                 if (!Directory.Exists(folder))
                     Directory.CreateDirectory(folder);
 
-            //if (File.Exists(fullFilePath))
-            //  Directory.Delete(fullFilePath);
-            //MessageBox.Show(factura.Buscar_factura(cve_factura).Length.ToString());
             if (factura.Buscar_factura(cve_factura) != null)
             { File.WriteAllBytes(fullFilePath, factura.Buscar_factura(cve_factura));
                 Process.Start(fullFilePath);

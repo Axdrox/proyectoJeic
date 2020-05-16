@@ -163,62 +163,76 @@ namespace Refracciones
 
         private void btnPDF_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show("coneja premium, diceeee");
-            PdfWriter pdfWriter = new PdfWriter(@"C:\Users\BuGsBunNy\Desktop\PDF JEIC\Vale.pdf");
-            PdfReader pdfReader = new PdfReader(@"C:\Users\BuGsBunNy\Desktop\PDF JEIC\JEIC_FACT.pdf");
+            PdfWriter pdfWriter = new PdfWriter(@"D:\VALE.pdf");
+            PdfReader pdfReader = new PdfReader(@"D:\VALE JEIC.pdf");
 
             PdfDocument pdfdoc = new PdfDocument(pdfReader, pdfWriter);
             int i = 692;
             int x = 76;
-
+            //CLIENTE
             PdfCanvas canvasC = new PdfCanvas(pdfdoc.GetFirstPage());
             canvasC.BeginText().SetFontAndSize(
                     PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 7)
                     .MoveText(x + 2, i)
                     .ShowText("Bancomer")
                     .EndText();
+            //FECHA SOLICITUD
             PdfCanvas canvasFS = new PdfCanvas(pdfdoc.GetFirstPage());
             canvasFS.BeginText().SetFontAndSize(
                     PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 7)
                     .MoveText(235, i)
                     .ShowText("14/05/2020")
                     .EndText();
+            //FECHA PROMESA
             PdfCanvas canvasFP = new PdfCanvas(pdfdoc.GetFirstPage());
             canvasFP.BeginText().SetFontAndSize(
                     PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 7)
                     .MoveText(355, i)
                     .ShowText("24/05/2020")
                     .EndText();
+            //TALLER
             PdfCanvas canvasT = new PdfCanvas(pdfdoc.GetFirstPage());
             canvasT.BeginText().SetFontAndSize(
                     PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 7)
                     .MoveText(460, i)
                     .ShowText("Tecnocar")
                     .EndText();
+            //PEDIDO
             PdfCanvas canvasP = new PdfCanvas(pdfdoc.GetFirstPage());
             canvasP.BeginText().SetFontAndSize(
                     PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 5)
                     .MoveText(x + 2, i - 9)
                     .ShowText("ABCTW56")
                     .EndText();
+            //SINIESTRO
             PdfCanvas canvasS = new PdfCanvas(pdfdoc.GetFirstPage());
             canvasS.BeginText().SetFontAndSize(
                     PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 5)
                     .MoveText(x + 2, i - 16)
                     .ShowText("BBN9T7A")
                     .EndText();
-            PdfCanvas canvasM = new PdfCanvas(pdfdoc.GetFirstPage());
-            canvasM.BeginText().SetFontAndSize(
+            //MARCA
+            PdfCanvas canvasMa = new PdfCanvas(pdfdoc.GetFirstPage());
+            canvasMa.BeginText().SetFontAndSize(
                     PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 6)
                     .MoveText(x + 270, i - 13)
                     .ShowText("Toledo")
                     .EndText();
+            //MODELO
+            PdfCanvas canvasMo = new PdfCanvas(pdfdoc.GetFirstPage());
+            canvasMo.BeginText().SetFontAndSize(
+                    PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 6)
+                    .MoveText(x + 295, i - 13)
+                    .ShowText("2020")
+                    .EndText();
+            //AÑO
             PdfCanvas canvasAn = new PdfCanvas(pdfdoc.GetFirstPage());
             canvasAn.BeginText().SetFontAndSize(
                     PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 6)
                     .MoveText(x + 295, i - 13)
                     .ShowText("2020")
                     .EndText();
+            //VENDEDOR
             PdfCanvas canvasR = new PdfCanvas(pdfdoc.GetFirstPage());
             canvasR.BeginText().SetFontAndSize(
                     PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 5)
@@ -226,17 +240,6 @@ namespace Refracciones
                     .ShowText("Bryan Ramírez")
                     .EndText();
 
-
-            /*for (int count = 0; count < 10; count++)
-            {
-                canvasCa.BeginText().SetFontAndSize(
-                        PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 7)
-                        .MoveText(x-12 , i - 35)
-                        .ShowText("10")
-                        .EndText();
-                i -= 10;
-            }
-            i = 692;*/
             PdfCanvas canvasPi = new PdfCanvas(pdfdoc.GetFirstPage());
             PdfCanvas canvasCa = new PdfCanvas(pdfdoc.GetFirstPage());
             PdfCanvas canvasPt = new PdfCanvas(pdfdoc.GetFirstPage());
@@ -271,6 +274,7 @@ namespace Refracciones
                         .EndText();
                 i -= 10;
             }
+
             double subTotal = 0;
             int numItems = 0;
             for (int c = 0; c < precio.Length; c++)
