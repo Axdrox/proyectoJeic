@@ -3,6 +3,7 @@ using iText.Kernel.Font;
 using iText.Kernel.Pdf;
 using iText.Kernel.Pdf.Canvas;
 using Refracciones.Forms;
+using Refracciones.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -55,33 +56,9 @@ namespace Refracciones
                 refactura.dato2.Text = refactura.dato2.Text + " " + dato_2.Text;
                 refactura.dato3.Text = "0";
                 refactura.ShowDialog();
-                /*if (cve_refactura == 0)
-                {
-                    refactura.dato1.Text = dato_1.Text;
-                    refactura.dato2.Text = dato_2.Text;
-                    refactura.dato3.Text = "1";
-                    refactura.ShowDialog();
-                }
-                else
-                {
-                    refactura.dato1.Text = dato_1.Text;
-                    refactura.dato2.Text = dato_2.Text;
-                    refactura.dato3.Text = "0";
-                    refactura.ShowDialog();
-                }*/
-
-
+               
             }
-           /* if(dato_3.Text == "0")
-            {
-                factura.dato3.Text = "1";
-            }
-            else
-            {
-                factura.dato3.Text = "0";
-            }*/
-           
-            
+          
         }
 
         private void btnRefactura_Click(object sender, EventArgs e)
@@ -163,155 +140,236 @@ namespace Refracciones
 
         private void btnPDF_Click(object sender, EventArgs e)
         {
-            PdfWriter pdfWriter = new PdfWriter(@"D:\VALE.pdf");
-            PdfReader pdfReader = new PdfReader(@"D:\VALE JEIC.pdf");
-
+            PdfWriter pdfWriter = new PdfWriter(Environment.GetFolderPath(Environment.SpecialFolder.Desktop)+"\\Ped_"+dato_2.Text+".pdf");
+            PdfReader pdfReader = new PdfReader(Application.StartupPath + "\\VALE JEIC.pdf");
             PdfDocument pdfdoc = new PdfDocument(pdfReader, pdfWriter);
-            int i = 692;
-            int x = 76;
-            //CLIENTE
-            PdfCanvas canvasC = new PdfCanvas(pdfdoc.GetFirstPage());
-            canvasC.BeginText().SetFontAndSize(
-                    PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 7)
-                    .MoveText(x + 2, i)
-                    .ShowText("Bancomer")
-                    .EndText();
-            //FECHA SOLICITUD
-            PdfCanvas canvasFS = new PdfCanvas(pdfdoc.GetFirstPage());
-            canvasFS.BeginText().SetFontAndSize(
-                    PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 7)
-                    .MoveText(235, i)
-                    .ShowText("14/05/2020")
-                    .EndText();
-            //FECHA PROMESA
-            PdfCanvas canvasFP = new PdfCanvas(pdfdoc.GetFirstPage());
-            canvasFP.BeginText().SetFontAndSize(
-                    PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 7)
-                    .MoveText(355, i)
-                    .ShowText("24/05/2020")
-                    .EndText();
-            //TALLER
-            PdfCanvas canvasT = new PdfCanvas(pdfdoc.GetFirstPage());
-            canvasT.BeginText().SetFontAndSize(
-                    PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 7)
-                    .MoveText(460, i)
-                    .ShowText("Tecnocar")
-                    .EndText();
-            //PEDIDO
-            PdfCanvas canvasP = new PdfCanvas(pdfdoc.GetFirstPage());
-            canvasP.BeginText().SetFontAndSize(
-                    PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 5)
-                    .MoveText(x + 2, i - 9)
-                    .ShowText("ABCTW56")
-                    .EndText();
-            //SINIESTRO
-            PdfCanvas canvasS = new PdfCanvas(pdfdoc.GetFirstPage());
-            canvasS.BeginText().SetFontAndSize(
-                    PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 5)
-                    .MoveText(x + 2, i - 16)
-                    .ShowText("BBN9T7A")
-                    .EndText();
-            //MARCA
-            PdfCanvas canvasMa = new PdfCanvas(pdfdoc.GetFirstPage());
-            canvasMa.BeginText().SetFontAndSize(
-                    PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 6)
-                    .MoveText(x + 270, i - 13)
-                    .ShowText("Toledo")
-                    .EndText();
-            //MODELO
-            PdfCanvas canvasMo = new PdfCanvas(pdfdoc.GetFirstPage());
-            canvasMo.BeginText().SetFontAndSize(
-                    PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 6)
-                    .MoveText(x + 295, i - 13)
-                    .ShowText("2020")
-                    .EndText();
-            //AÑO
-            PdfCanvas canvasAn = new PdfCanvas(pdfdoc.GetFirstPage());
-            canvasAn.BeginText().SetFontAndSize(
-                    PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 6)
-                    .MoveText(x + 295, i - 13)
-                    .ShowText("2020")
-                    .EndText();
-            //VENDEDOR
-            PdfCanvas canvasR = new PdfCanvas(pdfdoc.GetFirstPage());
-            canvasR.BeginText().SetFontAndSize(
-                    PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 5)
-                    .MoveText(450, i + 11)
-                    .ShowText("Bryan Ramírez")
-                    .EndText();
 
-            PdfCanvas canvasPi = new PdfCanvas(pdfdoc.GetFirstPage());
-            PdfCanvas canvasCa = new PdfCanvas(pdfdoc.GetFirstPage());
-            PdfCanvas canvasPt = new PdfCanvas(pdfdoc.GetFirstPage());
-            string[] piezas = new string[3];
-            piezas[0] = "Engranaje";
-            piezas[1] = "Calaberas";
-            piezas[2] = "Bateria";
-            string[] cantidad = new string[3];
-            cantidad[0] = "1";
-            cantidad[1] = "2";
-            cantidad[2] = "1";
-            string[] precio = new string[3];
-            precio[0] = "$ " + (Int32.Parse(cantidad[0]) * 75.375).ToString();
-            precio[1] = "$ " + (Int32.Parse(cantidad[1]) * 84.50).ToString();
-            precio[2] = "$ " + (Int32.Parse(cantidad[2]) * 250).ToString();
-            for (int count = 0; count < 3; count++)
-            {
-                canvasCa.BeginText().SetFontAndSize(
-                        PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 7)
-                        .MoveText(x - 12, i - 35)
-                        .ShowText(cantidad[count])
-                        .EndText();
-                canvasPi.BeginText().SetFontAndSize(
-                        PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 7)
-                        .MoveText(x + 20, i - 35)
-                        .ShowText(piezas[count])
-                        .EndText();
-                canvasPt.BeginText().SetFontAndSize(
-                        PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 7)
-                        .MoveText(x + 410, i - 35)
-                        .ShowText(precio[count])
-                        .EndText();
-                i -= 10;
-            }
-
+            OperBD pdfnuevo = new OperBD();
+            pdfnuevo.Llenartabla(dgvDatosPDF,dato_2.Text);
+            
+            int NumeroFila = pdfnuevo.NumeroFilas(dato_2.Text);
+            int Items = 0;
             double subTotal = 0;
-            int numItems = 0;
-            for (int c = 0; c < precio.Length; c++)
+            int y = 692;
+            int x = 76;
+
+            PdfCanvas canvas = new PdfCanvas(pdfdoc.GetFirstPage());
+
+            //CLIENTE
+            canvas.BeginText().SetFontAndSize(
+                    PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 7)
+                    .MoveText(x + 2, y)
+                    .ShowText(dgvDatosPDF.Rows[0].Cells[5].Value.ToString())
+                    .EndText();
+            //CLIENTE2
+            canvas.BeginText().SetFontAndSize(
+                    PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 7)
+                    .MoveText(x + 2, y-356)
+                    .ShowText(dgvDatosPDF.Rows[0].Cells[5].Value.ToString())
+                    .EndText();
+
+            //FECHA SOLICITUD
+            canvas.BeginText().SetFontAndSize(
+                    PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 7)
+                    .MoveText(235, y)
+                    .ShowText(dgvDatosPDF.Rows[0].Cells[7].Value.ToString().Substring(0,10))
+                    .EndText();
+            //FECHA SOLICITUD2
+            canvas.BeginText().SetFontAndSize(
+                    PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 7)
+                    .MoveText(235, y - 356)
+                    .ShowText(dgvDatosPDF.Rows[0].Cells[7].Value.ToString().Substring(0, 10))
+                    .EndText();
+
+            //FECHA PROMESA
+            canvas.BeginText().SetFontAndSize(
+                    PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 7)
+                    .MoveText(355, y)
+                    .ShowText(dgvDatosPDF.Rows[0].Cells[8].Value.ToString().Substring(0,10))
+                    .EndText();
+            //FECHA PROMESA2
+            canvas.BeginText().SetFontAndSize(
+                    PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 7)
+                    .MoveText(355, y-356)
+                    .ShowText(dgvDatosPDF.Rows[0].Cells[8].Value.ToString().Substring(0, 10))
+                    .EndText();
+
+            //TALLER
+            canvas.BeginText().SetFontAndSize(
+                    PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 7)
+                    .MoveText(460, y)
+                    .ShowText(dgvDatosPDF.Rows[0].Cells[6].Value.ToString())
+                    .EndText();
+            //TALLER2
+            canvas.BeginText().SetFontAndSize(
+                    PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 7)
+                    .MoveText(460, y-356)
+                    .ShowText(dgvDatosPDF.Rows[0].Cells[6].Value.ToString())
+                    .EndText();
+          
+            //PEDIDO
+            canvas.BeginText().SetFontAndSize(
+                    PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 6)
+                    .MoveText(x + 3, y - 9)
+                    .ShowText(dgvDatosPDF.Rows[0].Cells[0].Value.ToString())
+                    .EndText();
+            //PEDIDO2
+            canvas.BeginText().SetFontAndSize(
+                    PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 6)
+                    .MoveText(x + 3, y - 365)
+                    .ShowText(dgvDatosPDF.Rows[0].Cells[0].Value.ToString())
+                    .EndText();
+
+            //SINIESTRO
+            canvas.BeginText().SetFontAndSize(
+                    PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 6)
+                    .MoveText(x + 3, y - 16)
+                    .ShowText(dgvDatosPDF.Rows[0].Cells[1].Value.ToString())
+                    .EndText();
+            //SINIESTRO2
+            canvas.BeginText().SetFontAndSize(
+                    PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 6)
+                    .MoveText(x + 3, y - 372)
+                    .ShowText(dgvDatosPDF.Rows[0].Cells[1].Value.ToString())
+                    .EndText();
+
+            //MODELO
+            canvas.BeginText().SetFontAndSize(
+                    PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 6)
+                    .MoveText(x + 275, y - 13)
+                    .ShowText("/ " + dgvDatosPDF.Rows[0].Cells[10].Value.ToString())
+                    .EndText();
+            //MODELO2
+            canvas.BeginText().SetFontAndSize(
+                    PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 6)
+                    .MoveText(x + 275, y - 369)
+                    .ShowText("/ " + dgvDatosPDF.Rows[0].Cells[10].Value.ToString())
+                    .EndText();
+
+            //AÑO
+            canvas.BeginText().SetFontAndSize(
+                    PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 6)
+                    .MoveText(x + 325, y - 13)
+                    .ShowText("/ " + dgvDatosPDF.Rows[0].Cells[11].Value.ToString())
+                    .EndText();
+            //AÑO2
+            canvas.BeginText().SetFontAndSize(
+                    PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 6)
+                    .MoveText(x + 325, y - 369)
+                    .ShowText("/ " + dgvDatosPDF.Rows[0].Cells[11].Value.ToString())
+                    .EndText();
+
+            //VENDEDOR
+            canvas.BeginText().SetFontAndSize(
+                    PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 6)
+                    .MoveText(450, y + 11)
+                    .ShowText(dgvDatosPDF.Rows[0].Cells[4].Value.ToString())
+                    .EndText();
+            //VENDEDOR2
+            canvas.BeginText().SetFontAndSize(
+                    PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 6)
+                    .MoveText(450, y - 345)
+                    .ShowText(dgvDatosPDF.Rows[0].Cells[4].Value.ToString())
+                    .EndText();
+
+
+            for (int count = 0; count < NumeroFila; count++)
             {
-                subTotal += double.Parse(precio[c].Substring(1, precio[c].Length - 1));
-            }
-            for (int c = 0; c < cantidad.Length; c++)
-            {
-                numItems += Int32.Parse(cantidad[c]);
-            }
-            PdfCanvas canvasnumItems = new PdfCanvas(pdfdoc.GetFirstPage());
-            canvasnumItems.BeginText().SetFontAndSize(
+                //CANTIDAD
+                canvas.BeginText().SetFontAndSize(
                         PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 7)
-                        .MoveText(x + 50, i - 210)
-                        .ShowText(numItems.ToString())
+                        .MoveText(x - 12, y - 35)
+                        .ShowText(dgvDatosPDF.Rows[count].Cells[3].Value.ToString())
                         .EndText();
-            double Iva = subTotal * .16;
-            double Total = subTotal + Iva;
-            PdfCanvas canvasStotal = new PdfCanvas(pdfdoc.GetFirstPage());
-            canvasStotal.BeginText().SetFontAndSize(
+                //CANTIDAD2
+                canvas.BeginText().SetFontAndSize(
                         PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 7)
-                        .MoveText(x + 410, i - 217)
+                        .MoveText(x - 12, y - 391)
+                        .ShowText(dgvDatosPDF.Rows[count].Cells[3].Value.ToString())
+                        .EndText();
+
+                //PIEZAS
+                canvas.BeginText().SetFontAndSize(
+                        PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 7)
+                        .MoveText(x + 20, y - 35)
+                        .ShowText("- "+dgvDatosPDF.Rows[count].Cells[2].Value.ToString())
+                        .EndText();
+                //PIEZAS2
+                canvas.BeginText().SetFontAndSize(
+                        PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 7)
+                        .MoveText(x + 20, y - 391)
+                        .ShowText("- " + dgvDatosPDF.Rows[count].Cells[2].Value.ToString())
+                        .EndText();
+
+                //PRECIO
+                canvas.BeginText().SetFontAndSize(
+                        PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 7)
+                        .MoveText(x + 410, y - 35)
+                        .ShowText("$ "+dgvDatosPDF.Rows[count].Cells[9].Value.ToString())
+                        .EndText();
+                //PRECIO2
+                canvas.BeginText().SetFontAndSize(
+                        PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 7)
+                        .MoveText(x + 410, y - 391)
+                        .ShowText("$ " + dgvDatosPDF.Rows[count].Cells[9].Value.ToString())
+                        .EndText();
+
+                subTotal += double.Parse(dgvDatosPDF.Rows[count].Cells[9].Value.ToString());
+                Items += Int32.Parse(dgvDatosPDF.Rows[count].Cells[3].Value.ToString());
+                y -= 10;
+            }
+
+            y = 452;
+            //NUMERO DE ITEMS
+            canvas.BeginText().SetFontAndSize(
+                        PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 7)
+                        .MoveText(x + 50, y)
+                        .ShowText(Items.ToString())
+                        .EndText();
+            //NUMERO DE ITEMS2
+            canvas.BeginText().SetFontAndSize(
+                        PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 7)
+                        .MoveText(x + 50, y-376)
+                        .ShowText(Items.ToString())
+                        .EndText();
+            //SUBTOTAL
+            canvas.BeginText().SetFontAndSize(
+                        PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 7)
+                        .MoveText(x + 410, y-8)
                         .ShowText("$" + subTotal.ToString())
                         .EndText();
-            PdfCanvas canvasIva = new PdfCanvas(pdfdoc.GetFirstPage());
-            canvasIva.BeginText().SetFontAndSize(
+            //SUBTOTAL2
+            canvas.BeginText().SetFontAndSize(
                         PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 7)
-                        .MoveText(x + 410, i - 226)
-                        .ShowText("$" + (Iva).ToString())
+                        .MoveText(x + 410, y - 384)
+                        .ShowText("$" + subTotal.ToString())
                         .EndText();
-            PdfCanvas canvasTotal = new PdfCanvas(pdfdoc.GetFirstPage());
-            canvasTotal.BeginText().SetFontAndSize(
+            //IVA
+            canvas.BeginText().SetFontAndSize(
                         PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 7)
-                        .MoveText(x + 410, i - 234)
-                        .ShowText("$" + (Total).ToString())
+                        .MoveText(x + 410, y - 16)
+                        .ShowText("$" + (subTotal * .16))
+                        .EndText();
+            //IVA2
+            canvas.BeginText().SetFontAndSize(
+                        PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 7)
+                        .MoveText(x + 410, y - 392)
+                        .ShowText("$" + (subTotal * .16))
+                        .EndText();
+            //TOTAL
+            canvas.BeginText().SetFontAndSize(
+                        PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 7)
+                        .MoveText(x + 410, y - 24)
+                        .ShowText("$" + (subTotal+(subTotal * .16)))
+                        .EndText();
+            //TOTAL2
+            canvas.BeginText().SetFontAndSize(
+                        PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 7)
+                        .MoveText(x + 410, y - 401)
+                        .ShowText("$" + (subTotal + (subTotal * .16)))
                         .EndText();
             pdfdoc.Close();
+            MessageBox.Show("PDF CREADO EN EL ESCRITORIO");
         }
     }
 }

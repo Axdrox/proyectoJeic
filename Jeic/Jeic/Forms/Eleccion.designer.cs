@@ -38,6 +38,8 @@
             this.dato_2 = new System.Windows.Forms.Label();
             this.dato_3 = new System.Windows.Forms.Label();
             this.btnPDF = new System.Windows.Forms.Button();
+            this.dgvDatosPDF = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDatosPDF)).BeginInit();
             this.SuspendLayout();
             // 
             // btnModificarDatosPedido
@@ -146,11 +148,25 @@
             this.btnPDF.UseVisualStyleBackColor = true;
             this.btnPDF.Click += new System.EventHandler(this.btnPDF_Click);
             // 
+            // dgvDatosPDF
+            // 
+            this.dgvDatosPDF.AllowUserToAddRows = false;
+            this.dgvDatosPDF.AllowUserToDeleteRows = false;
+            this.dgvDatosPDF.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDatosPDF.Enabled = false;
+            this.dgvDatosPDF.Location = new System.Drawing.Point(68, 335);
+            this.dgvDatosPDF.Name = "dgvDatosPDF";
+            this.dgvDatosPDF.ReadOnly = true;
+            this.dgvDatosPDF.Size = new System.Drawing.Size(40, 8);
+            this.dgvDatosPDF.TabIndex = 10;
+            this.dgvDatosPDF.Visible = false;
+            // 
             // Eleccion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(177, 346);
+            this.Controls.Add(this.dgvDatosPDF);
             this.Controls.Add(this.btnPDF);
             this.Controls.Add(this.dato_3);
             this.Controls.Add(this.dato_2);
@@ -165,6 +181,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Eleccion";
             this.Load += new System.EventHandler(this.Eleccion_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDatosPDF)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -182,5 +199,6 @@
         public System.Windows.Forms.Label dato_2;
         public System.Windows.Forms.Label dato_3;
         private System.Windows.Forms.Button btnPDF;
+        private System.Windows.Forms.DataGridView dgvDatosPDF;
     }
 }
