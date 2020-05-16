@@ -294,7 +294,7 @@ namespace Refracciones
             using (SqlConnection nuevaConexion = Conexion.conexion())
             {
                 nuevaConexion.Open();
-                Comando = new SqlCommand(string.Format("SELECT pie.nombre AS NOMBRE,pie.cve_pieza AS 'CLAVE PIEZA', ped.cantidad AS CANTIDAD, prov.nombre AS PROVEEDOR, ped.cve_vendedor AS VENDEDOR, val.nombre AS VALUADOR, c.cve_nombre AS CLIENTE, ent.fecha_asignacion AS 'FECHA DE ASIGNACIÓN', ped.fecha_entrega AS 'FECHA DE ENTREGA', ent.fecha_promesa  AS 'FECHA PROMESA', fac.cve_factura AS FACTURA FROM PEDIDO ped JOIN PROVEEDOR prov ON prov.cve_proveedor = ped.cve_proveedor JOIN PIEZA pie ON pie.cve_pieza = ped.cve_pieza JOIN VALUADOR val ON val.cve_valuador = ped.cve_valuador JOIN CLIENTE c ON c.cve_valuador = val.cve_valuador LEFT OUTER JOIN ENTREGA ent ON ent.cve_entrega = ped.cve_entrega LEFT OUTER JOIN FACTURA fac ON fac.cve_factura = ped.cve_factura WHERE ped.cve_siniestro = '{0}' AND ped.cve_pedido = '{1}' AND ped.pzas_devolucion != ped.cantidad", cve_siniestro,cve_pedido), nuevaConexion);
+                Comando = new SqlCommand(string.Format("SELECT pie.nombre AS NOMBRE, pie.cve_pieza AS 'CLAVE PIEZA', ped.cantidad AS CANTIDAD, prov.nombre AS PROVEEDOR, ven.cve_vendedor AS VENDEDOR, val.nombre AS VALUADOR, c.cve_nombre AS CLIENTE, ent.fecha_asignacion AS 'FECHA DE ASIGNACIÓN', ped.fecha_entrega AS 'FECHA DE ENTREGA', ent.fecha_promesa  AS 'FECHA PROMESA', fac.cve_factura AS FACTURA FROM PEDIDO ped JOIN VENTAS ven ON ven.cve_venta = ped.cve_venta JOIN PROVEEDOR prov ON prov.cve_proveedor = ped.cve_proveedor JOIN PIEZA pie ON pie.cve_pieza = ped.cve_pieza JOIN VALUADOR val ON val.cve_valuador = ven.cve_valuador JOIN CLIENTE c ON c.cve_valuador = val.cve_valuador LEFT OUTER JOIN ENTREGA ent ON ent.cve_entrega = ped.cve_entrega LEFT OUTER JOIN FACTURA fac ON fac.cve_factura = ven.cve_factura WHERE ven.cve_siniestro = '{0}' AND ven.cve_pedido = '{1}' AND ped.pzas_devolucion != ped.cantidad", cve_siniestro,cve_pedido), nuevaConexion);
                 da = new SqlDataAdapter(Comando);
 
                 da.Fill(dt);
@@ -361,7 +361,7 @@ namespace Refracciones
                 Comando.Parameters["@motivo"].Value = motivo;
                 Comando.ExecuteNonQuery();
                 //SqlCommand cmd = new SqlCommand(string.Format("UPDATE PEDIDO SET cantidad = {0}, cve_devolucion = {1}  WHERE cve_siniestro = '{2}' AND cve_pedido = {3} AND cve_pieza = {4}",/*cantidad,*/cve_devolucion, cve_siniestro, cve_pedido, cve_pieza), nuevaConexion);
-                SqlCommand cmd = new SqlCommand(string.Format("UPDATE PEDIDO SET  cve_devolucion = {0}, pzas_devolucion = {1}  WHERE cve_siniestro = '{2}' AND cve_pedido = '{3}' AND cve_pieza = {4}",/*cantidad,*/cve_devolucion,cantidad,cve_siniestro,cve_pedido,cve_pieza ),nuevaConexion);
+                SqlCommand cmd = new SqlCommand(string.Format("UPDATE p  SET  p.cve_devolucion = {0}, p.pzas_devolucion = {1} FROM PEDIDO p INNER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta WHERE ven.ve_siniestro = '{2}' AND ven.cve_pedido = '{3}' AND p.cve_pieza = {4}",/*cantidad,*/cve_devolucion,cantidad,cve_siniestro,cve_pedido,cve_pieza ),nuevaConexion);
                 cmd.ExecuteNonQuery();
                 nuevaConexion.Close();
                 mensaje = "DEVOLUCIÓN EXITOSA";
@@ -412,7 +412,7 @@ namespace Refracciones
                 Comando.Parameters["@cve_factura"].Value = cve_factura;
                 Comando.ExecuteNonQuery();
                 //SqlCommand cmd = new SqlCommand(string.Format("UPDATE PEDIDO SET cve_entrega = {0}, pzas_entregadas = {1}, fecha_entrega = '{2}' WHERE cve_siniestro = '{3}' AND cve_pedido = {4} AND cve_pieza = {5}",cve_entrega, cantidad,fecha, cve_siniestro, cve_pedido, cve_pieza), nuevaConexion);
-                SqlCommand cmd = new SqlCommand("UPDATE PEDIDO SET cve_entrega = @cve_entrega, pzas_entregadas = @pzas_entregadas, fecha_entrega = @fecha_entrega WHERE cve_siniestro = @cve_siniestro AND cve_pedido = @cve_pedido AND cve_pieza = @cve_pieza", nuevaConexion);
+                SqlCommand cmd = new SqlCommand("UPDATE p SET p.cve_entrega = @cve_entrega, p.pzas_entregadas = @pzas_entregadas, p.fecha_entrega = @fecha_entrega FROM PEDIDO p INNER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta WHERE ven.cve_siniestro = @cve_siniestro AND ven.cve_pedido = @cve_pedido AND cve_pieza = @cve_pieza", nuevaConexion);
                 cmd.Parameters.Add("@cve_entrega",SqlDbType.Int);
                 cmd.Parameters.Add("@pzas_entregadas",SqlDbType.Int);
                 cmd.Parameters.Add("@fecha_entrega",SqlDbType.Date);
@@ -461,7 +461,7 @@ namespace Refracciones
             {
                 
                 nuevaConexion.Open();
-                Comando = new SqlCommand(string.Format("SELECT DISTINCT  pie.nombre AS PIEZA, ent.cantidad AS CANTIDAD,c.cve_nombre AS CLIENTE, ent.fecha AS FECHA FROM ENTREGA ent JOIN PEDIDO ped ON ped.cve_factura = ent.cve_factura JOIN VALUADOR val ON val.cve_valuador = ped.cve_valuador JOIN CLIENTE c ON c.cve_valuador = val.cve_valuador JOIN PIEZA  pie ON pie.cve_pieza = ent.cve_pieza WHERE ent.cve_factura = {0}", cve_factura), nuevaConexion);
+                Comando = new SqlCommand(string.Format("SELECT DISTINCT pie.nombre AS PIEZA, dev.cantidad AS CANTIDAD, c.cve_nombre AS CLIENTE, dev.motivo AS MOTIVO, dev.fecha AS FECHA FROM DEVOLUCION dev JOIN VENTAS ven ON ven.cve_factura = dev.cve_factura JOIN VALUADOR val ON val.cve_valuador = ven.cve_valuador JOIN CLIENTE c ON c.cve_valuador = val.cve_valuador JOIN PIEZA  pie ON pie.cve_pieza = dev.cve_pieza WHERE dev.cve_factura ={0}", cve_factura), nuevaConexion);
                 da = new SqlDataAdapter(Comando);
                 da.Fill(dt);
                 nuevaConexion.Close();
@@ -665,15 +665,15 @@ namespace Refracciones
 
                     if (cve_Siniestro == "")
                     {
-                        da = new SqlDataAdapter(string.Format("SELECT p.cve_pedido AS PEDIDO,p.cve_siniestro AS SINIESTRO,p.cve_vendedor AS VENDEDOR,c.cve_nombre AS CLIENTE ,k.nombre AS PIEZA ,p.cantidad AS CANTIDAD,e.fecha_asignacion 'FECHA DE ASIGNACIÓN',e.fecha_promesa AS 'FECHA PROMESA' FROM Pedido p LEFT OUTER JOIN Pieza k ON p.cve_pieza=k.cve_pieza  LEFT OUTER JOIN Entrega e ON p.cve_entrega=e.cve_entrega LEFT OUTER JOIN Valuador v ON v.cve_valuador=p.cve_valuador LEFT OUTER JOIN Cliente c ON c.cve_valuador=v.cve_valuador where CAST(cve_pedido AS nvarchar) like '%{0}%'", cve_Pedido), nuevacon);
+                        da = new SqlDataAdapter(string.Format("SELECT ven.cve_pedido AS PEDIDO, ven.cve_siniestro AS SINIESTRO, ven.cve_vendedor AS VENDEDOR, c.cve_nombre AS CLIENTE, k.nombre AS PIEZA, p.cantidad AS CANTIDAD, e.fecha_asignacion 'FECHA DE ASIGNACIÓN', e.fecha_promesa AS 'FECHA PROMESA' FROM VENTAS ven LEFT OUTER JOIN PEDIDO p ON ven.cve_venta = p.cve_venta LEFT OUTER JOIN PIEZA k ON p.cve_pieza = k.cve_pieza LEFT OUTER JOIN ENTREGA e ON p.cve_entrega = e.cve_entrega LEFT OUTER JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE c ON c.cve_valuador = v.cve_valuador where CAST(ven.cve_pedido AS nvarchar) like '%{0}%'", cve_Pedido), nuevacon);
                     }
                     else if (cve_Pedido == "")
                     {
-                        da = new SqlDataAdapter(string.Format("SELECT p.cve_pedido AS PEDIDO,p.cve_siniestro AS SINIESTRO,p.cve_vendedor AS VENDEDOR ,c.cve_nombre AS CLIENTE ,k.nombre AS PIEZA,p.cantidad AS CANTIDAD,e.fecha_asignacion AS 'FECHA DE ASIGNACIÓN',e.fecha_promesa AS 'FECHA PROMESA' FROM Pedido p LEFT OUTER JOIN Pieza k ON p.cve_pieza=k.cve_pieza LEFT OUTER JOIN Entrega e ON p.cve_entrega=e.cve_entrega LEFT OUTER JOIN Valuador v ON v.cve_valuador=p.cve_valuador LEFT OUTER JOIN Cliente c ON c.cve_valuador=v.cve_valuador where p.cve_siniestro like '%{0}%'", cve_Siniestro), nuevacon);
+                        da = new SqlDataAdapter(string.Format("SELECT ven.cve_pedido AS PEDIDO, ven.cve_siniestro AS SINIESTRO, ven.cve_vendedor AS VENDEDOR, c.cve_nombre AS CLIENTE, k.nombre AS PIEZA, p.cantidad AS CANTIDAD, e.fecha_asignacion AS 'FECHA DE ASIGNACIÓN', e.fecha_promesa AS 'FECHA PROMESA' FROM VENTAS ven LEFT OUTER JOIN PEDIDO p ON ven.cve_venta = p.cve_venta LEFT OUTER JOIN PIEZA k ON p.cve_pieza = k.cve_pieza LEFT OUTER JOIN ENTREGA e ON p.cve_entrega = e.cve_entrega LEFT OUTER JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE c ON c.cve_valuador = v.cve_valuador where ven.cve_siniestro like '%{0}%'", cve_Siniestro), nuevacon);
                     }
                     else
                     {
-                        da = new SqlDataAdapter(string.Format("SELECT p.cve_pedido AS PEDIDO,p.cve_siniestro AS SINIESTRO,p.cve_vendedor AS VENDEDOR,c.cve_nombre AS CLIENTE,k.nombre AS PIEZA,p.cantidad AS CANTIDAD,e.fecha_asignacion AS 'FECHA DE ASIGNACIÓN',e.fecha_promesa AS 'FECHA PROMESA' FROM Pedido p LEFT OUTER JOIN Pieza k ON p.cve_pieza=k.cve_pieza LEFT OUTER JOIN Entrega e ON p.cve_entrega=e.cve_entrega LEFT OUTER JOIN Valuador v ON v.cve_valuador=p.cve_valuador LEFT OUTER JOIN Cliente c ON c.cve_valuador=v.cve_valuador where p.cve_siniestro like '%{0}%' and CAST(cve_pedido AS nvarchar) like '%{1}%'", cve_Siniestro, cve_Pedido), nuevacon);
+                        da = new SqlDataAdapter(string.Format("SELECT ven.cve_pedido AS PEDIDO, ven.cve_siniestro AS SINIESTRO, ven.cve_vendedor AS VENDEDOR, c.cve_nombre AS CLIENTE, k.nombre AS PIEZA, p.cantidad AS CANTIDAD, e.fecha_asignacion AS 'FECHA DE ASIGNACIÓN', e.fecha_promesa AS 'FECHA PROMESA' FROM VENTAS ven LEFT OUTER JOIN PEDIDO p ON ven.cve_venta = p.cve_venta LEFT OUTER JOIN PIEZA k ON p.cve_pieza = k.cve_pieza LEFT OUTER JOIN ENTREGA e ON p.cve_entrega = e.cve_entrega LEFT OUTER JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE c ON c.cve_valuador = v.cve_valuador where ven.cve_siniestro like '%{0}%' and CAST(ven.cve_pedido AS nvarchar) like '%{1}%'", cve_Siniestro, cve_Pedido), nuevacon);
                     }
                     nuevacon.Open();
                     dt = new DataTable();
@@ -697,7 +697,7 @@ namespace Refracciones
             {
                 using (SqlConnection nuevacon = Conexion.conexion())
                 {
-                    da = new SqlDataAdapter(string.Format("SELECT p.cve_pedido,p.cve_siniestro,p.cve_vendedor,c.cve_nombre,k.nombre,p.cantidad,e.fecha_asignacion,e.fecha_promesa FROM Pedido p INNER JOIN Pieza k ON p.cve_pieza=k.cve_pieza INNER JOIN Entrega e ON p.cve_entrega=e.cve_entrega INNER JOIN Valuador v ON v.cve_valuador=p.cve_valuador INNER JOIN Cliente c ON c.cve_valuador=v.cve_valuador where fecha_asignacion between '{0}' and '{1}'", Fecha_inicio, fecha_fin), nuevacon);
+                    da = new SqlDataAdapter(string.Format("SELECT ven.cve_pedido AS PEDIDO, ven.cve_siniestro AS SINIESTRO, ven.cve_vendedor AS VENDEDOR, c.cve_nombre AS CLIENTE, k.nombre AS PIEZA, p.cantidad AS CANTIDAD, e.fecha_asignacion AS 'FECHA DE ASIGNACIÓN', e.fecha_promesa AS 'FECHA PROMESA' FROM VENTAS ven INNER JOIN PEDIDO p ON p.cve_venta = ven.cve_venta INNER JOIN PIEZA k ON p.cve_pieza = k.cve_pieza INNER JOIN ENTREGA e ON p.cve_entrega = e.cve_entrega INNER JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador INNER JOIN CLIENTE c ON c.cve_valuador = v.cve_valuador where fecha_asignacion between '{0}' and '{1}'", Fecha_inicio, fecha_fin), nuevacon);
                     nuevacon.Open();
                     dt = new DataTable();
                     da.Fill(dt);
@@ -716,7 +716,7 @@ namespace Refracciones
             {
                 using (SqlConnection nuevacon = Conexion.conexion())
                 {
-                    da = new SqlDataAdapter(string.Format("SELECT p.cve_pedido,p.cve_siniestro,pi.nombre,p.cantidad,p.cve_vendedor,p.cve_guia,o.origen,pro.nombre,v.nombre,c.cve_nombre,po.nombre,t.nombre,e.fecha_asignacion, e.fecha_promesa,ent.fecha,p.costo_comprasinIVA,cos.costo,p.costo_neto,p.precio_venta,p.precio_reparacion,p.cve_factura,fa.fact_sinIVA,fa.fact_neto,es.estado FROM Pedido p LEFT OUTER JOIN Origen_pieza o ON o.cve_origen=p.cve_origen LEFT OUTER JOIN Pieza pi ON p.cve_pieza=pi.cve_pieza LEFT OUTER JOIN Proveedor pro ON p.cve_proveedor=pro.cve_proveedor LEFT OUTER JOIN Valuador v ON v.cve_valuador=p.cve_valuador LEFT OUTER JOIN Cliente c ON c.cve_valuador=v.cve_valuador LEFT OUTER JOIN Portal po ON po.cve_portal=p.cve_portal LEFT OUTER JOIN Taller t ON t.cve_taller=p.cve_taller LEFT OUTER JOIN Entrega e ON p.cve_entrega=e.cve_entrega LEFT OUTER JOIN Factura fa ON fa.cve_factura=p.cve_factura LEFT OUTER JOIN Estado_factura es ON es.cve_estado=fa.cve_estado LEFT OUTER JOIN ENTREGA ent ON ent.cve_entrega = p.cve_entrega LEFT OUTER JOIN COSTO_ENVIO cos ON cos.cve_costoEnvio = p.costo_envio where p.cve_pedido='{0}' and p.cve_siniestro='{1}' and pi.nombre='{2}'", cve_Pedido, cve_Siniestro, nombre_pieza), nuevacon);
+                    da = new SqlDataAdapter(string.Format("SELECT ven.cve_pedido AS PEDIDO, ven.cve_siniestro AS SINIESTRO, pi.nombre AS PIEZA, p.cantidad AS CANTIDAD, ven.cve_vendedor AS VENDEDOR, p.cve_guia 'CLAVE GUIA', o.origen AS ORIGEN, pro.nombre AS PROVEEDOR, v.nombre AS VALUADOR, c.cve_nombre AS CLIENTE, po.nombre AS PORTAL, t.nombre AS TALLER, e.fecha_asignacion AS 'FECHA DE ASIGNACIÓN', e.fecha_promesa AS 'FECHA PROMESA', ent.fecha AS 'FECHA DE ENTREGA', p.costo_comprasinIVA AS 'COSTO COMPRA', cos.costo AS 'COSTO DE ENVÍO', p.costo_neto AS 'COSTO NETO', p.precio_venta AS 'PRECIO DE VENTA', p.precio_reparacion AS 'PRECIO REPARACIÓN', ven.cve_factura AS 'FACTURA', fa.fact_sinIVA AS 'FACTURA SIN IVA', fa.fact_neto AS 'FACTURA NETO', es.estado AS 'ESTADO FACTURA' FROM PEDIDO p INNER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta LEFT OUTER JOIN ORIGEN_PIEZA o ON o.cve_origen = p.cve_origen LEFT OUTER JOIN PIEZA pi ON p.cve_pieza = pi.cve_pieza LEFT OUTER JOIN PROVEEDOR pro ON p.cve_proveedor = pro.cve_proveedor LEFT OUTER JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE c ON c.cve_valuador = v.cve_valuador LEFT OUTER JOIN PORTAL po ON po.cve_portal = p.cve_portal LEFT OUTER JOIN TALLER t ON t.cve_taller = ven.cve_taller LEFT OUTER JOIN ENTREGA e ON p.cve_entrega = e.cve_entrega LEFT OUTER JOIN FACTURA fa ON fa.cve_factura = ven.cve_factura LEFT OUTER JOIN ESTADO_FACTURA es ON es.cve_estado = fa.cve_estado LEFT OUTER JOIN ENTREGA ent ON ent.cve_entrega = p.cve_entrega LEFT OUTER JOIN COSTO_ENVIO cos ON cos.cve_costoEnvio = p.costo_envio where ven.cve_pedido = '{0}' and ven.cve_siniestro = '{1}' and pi.nombre = '{2}'", cve_Pedido, cve_Siniestro, nombre_pieza), nuevacon);
                     nuevacon.Open();
                     dt = new DataTable();
                     da.Fill(dt);
@@ -738,7 +738,7 @@ namespace Refracciones
             {
                 using (SqlConnection nuevacon = Conexion.conexion())
                 {
-                    da = new SqlDataAdapter(string.Format("SELECT TOP 10 p.cve_pedido AS PEDIDO,p.cve_siniestro AS 'CLAVE SINIESTRO',p.cve_vendedor AS VENDEDOR,c.cve_nombre AS CLIENTE ,k.nombre AS PIEZA,p.cantidad AS CANTIDAD,e.fecha_asignacion AS 'FECHA DE ASIGNACIÓN',e.fecha_promesa AS 'FECHA PROMESA' FROM Pedido p LEFT OUTER JOIN Pieza k ON p.cve_pieza=k.cve_pieza  LEFT OUTER JOIN Entrega e ON p.cve_entrega=e.cve_entrega LEFT OUTER JOIN Valuador v ON v.cve_valuador=p.cve_valuador LEFT OUTER JOIN Cliente c ON c.cve_valuador=v.cve_valuador order by fecha_asignacion desc"), nuevacon);
+                    da = new SqlDataAdapter(string.Format("SELECT TOP 10 ven.cve_pedido AS PEDIDO, ven.cve_siniestro AS 'SINIESTRO', ven.cve_vendedor AS VENDEDOR, c.cve_nombre AS CLIENTE, k.nombre AS PIEZA, p.cantidad AS CANTIDAD, e.fecha_asignacion AS 'FECHA DE ASIGNACIÓN', e.fecha_promesa AS 'FECHA PROMESA' FROM VENTAS ven LEFT OUTER JOIN PEDIDO p ON ven.cve_venta = p.cve_venta LEFT OUTER JOIN PIEZA k ON p.cve_pieza = k.cve_pieza LEFT OUTER JOIN ENTREGA e ON p.cve_entrega = e.cve_entrega LEFT OUTER JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE c ON c.cve_valuador = v.cve_valuador order by fecha_asignacion desc"), nuevacon);
                     nuevacon.Open();
                     dt = new DataTable();
                     da.Fill(dt);
@@ -762,7 +762,7 @@ namespace Refracciones
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     nuevaConexion.Open();
-                    Comando = new SqlCommand(string.Format("SELECT cve_factura FROM PEDIDO WHERE cve_siniestro = '{0}' AND cve_pedido = '{1}'",siniestro,cve_pedido), nuevaConexion);
+                    Comando = new SqlCommand(string.Format("SELECT cve_factura FROM VENTAS WHERE cve_siniestro = '{0}' AND cve_pedido = '{1}'", siniestro,cve_pedido), nuevaConexion);
                     if (Comando.ExecuteScalar() == null)
                     {
                         cve_factura = 0;
@@ -817,7 +817,7 @@ namespace Refracciones
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     nuevaConexion.Open();
-                    Comando = new SqlCommand("SELECT c.dias_espera FROM PEDIDO p JOIN VALUADOR val ON p.cve_valuador = val.cve_valuador JOIN CLIENTE c ON val.cve_valuador = c.cve_valuador WHERE p.cve_siniestro = @cve_siniestro AND p.cve_pedido = @cve_pedido", nuevaConexion);
+                    Comando = new SqlCommand("SELECT c.dias_espera FROM VENTAS ven JOIN VALUADOR val ON ven.cve_valuador = val.cve_valuador JOIN CLIENTE c ON val.cve_valuador = c.cve_valuador WHERE ven.cve_siniestro = @cve_siniestro AND ven.cve_pedido = @cve_pedido", nuevaConexion);
                     Comando.Parameters.Add("@cve_siniestro", SqlDbType.NVarChar, 50);
                     Comando.Parameters.Add("@cve_pedido", SqlDbType.NVarChar,50);
 
@@ -846,7 +846,7 @@ namespace Refracciones
             using (SqlConnection nuevaConexion = Conexion.conexion())
             {
                 nuevaConexion.Open();
-                Comando = new SqlCommand("SELECT DISTINCT ped.cve_siniestro AS Siniestro, ped.cve_pedido AS Pedido, fact.cve_factura AS Factura, fact.fact_sinIVA AS 'Factura sin IVA', fact.fact_neto AS 'Factura Neto', fact.fecha_pago AS 'Fecha de Pago' FROM PEDIDO ped INNER JOIN FACTURA fact ON ped.cve_factura = fact.cve_factura WHERE DATEDIFF (DAY,@fecha_sys,fact.fecha_pago) < 7 AND fact.cve_estado = 1", nuevaConexion);
+                Comando = new SqlCommand("SELECT DISTINCT ven.cve_siniestro AS Siniestro, fact.cve_factura AS Factura, fact.fact_sinIVA AS 'Factura sin IVA', fact.fact_neto AS 'Factura Neto', fact.fecha_pago AS 'Fecha de Pago' FROM VENTAS ven INNER JOIN FACTURA fact ON ven.cve_factura = fact.cve_factura WHERE DATEDIFF(DAY, @fecha_sys, fact.fecha_pago) < 7 AND fact.cve_estado = 1", nuevaConexion);
                 Comando.Parameters.Add("@fecha_sys",SqlDbType.Date);
                 Comando.Parameters["@fecha_sys"].Value = fecha_sys;
                 da = new SqlDataAdapter(Comando);

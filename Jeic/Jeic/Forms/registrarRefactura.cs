@@ -126,7 +126,7 @@ namespace Refracciones.Forms
         {
             cve_pedido = dato2.Text.Substring(8, (dato2.Text.Length - 8)); 
             cve_siniestro = dato1.Text.Substring(11, dato1.Text.Length - 11);
-            txtFacturasinIVA.Text = (factura.totalPrecioPedido(cve_pedido, cve_siniestro)).ToString();
+            //txtFacturasinIVA.Text = (factura.totalPrecioPedido(cve_pedido, cve_siniestro)).ToString();
             dtpFechaPago.Value = dtpFechaIngreso.Value.AddDays(factura.Dias_Espera(cve_siniestro, cve_pedido));
             cmbEstadoFactura.SelectedIndex = 0;
             if (dato3.Text == "0")
