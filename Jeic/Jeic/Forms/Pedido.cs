@@ -481,12 +481,19 @@ namespace Refracciones.Forms
         {
             try
             {
+                //Variables
+                string aseguradora = "";
+                string valuador = "";
+                string taller = "";
+                string destino = "";
+
                 int modificacion = 0; int j = 0; //validar
                 if (chbOtraAseguradora.Checked == true)
                 {
                     j += 1;
                     if (operacion.existeCliente(txtAseguradora.Text.Trim().ToUpper()) == string.Empty)
                     {
+                        aseguradora = txtAseguradora.Text.Trim().ToUpper();
                         modificacion += 1;
                     }
                     else
@@ -497,11 +504,16 @@ namespace Refracciones.Forms
                         chbOtraAseguradora.Checked = false;
                     }
                 }
+                else
+                    aseguradora = cbAseguradora.Text.Trim();
+
+
                 if (chbOtroValuador.Checked == true)
                 {
                     j += 1;
                     if (operacion.existeValuador(txtValuador.Text.Trim().ToUpper()) == string.Empty)
                     {
+                        valuador = txtValuador.Text.Trim().ToUpper();
                         modificacion += 1;
                     }
                     else
@@ -512,11 +524,15 @@ namespace Refracciones.Forms
                         chbOtraAseguradora.Checked = false;
                     }
                 }
+                else
+                    valuador = cbValuador.Text.Trim();
+
                 if (chbOtroTaller.Checked == true)
                 {
                     j += 1;
                     if (operacion.existeTaller(txtTaller.Text.Trim().ToUpper()) == string.Empty)
                     {
+                        taller = txtTaller.Text.Trim().ToUpper();
                         modificacion += 1;
                     }
                     else
@@ -527,11 +543,15 @@ namespace Refracciones.Forms
                         chbOtraAseguradora.Checked = false;
                     }
                 }
+                else
+                    taller = cbTaller.Text.Trim();
+
                 if (chbOtroDestino.Checked == true)
                 {
                     j += 1;
                     if (operacion.existeDestino(txtDestino.Text.Trim().ToUpper()) == string.Empty)
                     {
+                        destino = txtDestino.Text.Trim().ToUpper();
                         modificacion += 1;
                     }
                     else
@@ -542,29 +562,40 @@ namespace Refracciones.Forms
                         chbOtraAseguradora.Checked = false;
                     }
                 }
+                else
+                    destino = cbDestino.Text.Trim();
+
                 if (modificacion == j)
                 {
+                    //CHECAR INSERCIÓN DE CLIENTE
                     if (chbOtroValuador.Checked == true)
-                        operacion.registrarValuador(txtValuador.Text.Trim().ToUpper());
+                        operacion.registrarValuador(valuador);
                     if (chbOtraAseguradora.Checked == true)
                         //operacion.registrarCliente(txtAseguradora.Text.Trim().ToUpper());
                     if (chbOtroTaller.Checked == true)
-                        operacion.registrarTaller(txtTaller.Text.Trim().ToUpper());
+                        operacion.registrarTaller(taller);
                     if (chbOtroDestino.Checked == true)
-                        operacion.registrarDestino(txtDestino.Text.Trim().ToUpper());
+                        operacion.registrarDestino(destino);
 
                     if (txtClavePedido.Text.Trim() == string.Empty)
                     {
-                        MessageBox.Show("Favor de añadir la clave del pedido.", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Añada la clave del pedido.", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     else
                     {
                         OperBD operacion = new OperBD();
                         int cantidadTotal = 0;
-                        DateTime dtFechaBaja = dtpFechaBaja.Value.Date;
+
+
+                        //VALIDAR CUANDO SEA ACTUALIZACIÓN ANTES, POR LO MIENTRAS LO DEJARÉ ASÍ
+                        DateTime dtFechaBaja;
+                        if (actualizar == 1)
+                            dtFechaBaja = dtpFechaBaja.Value.Date;
+                        else
+                            dtFechaBaja = default;
+
                         DateTime dtFechaAsignacion = dtpFechaAsignacion.Value.Date;
                         DateTime dtFechaPromesa = dtpFechaPromesa.Value.Date;
-
                         operacion.registrarEntrega(dtFechaAsignacion, dtFechaPromesa);
 
                         if (rdbNo.Checked == false)
@@ -582,12 +613,7 @@ namespace Refracciones.Forms
                             operacion.registrarSiniestro("PARTICULAR" + TotalVehiculo, lblClaveSiniestro.Text.Trim(), txtComentarioSiniestro.Text.Trim(), cbEstadoSiniestro.Text.Trim());
                         }
 
-                        foreach (DataGridViewRow row in dgvPedido.Rows)
-                        {
-                            //Corregir, es cantidad por pieza
-                            //cantidadTotal += Convert.ToInt32(row.Cells["Cantidad"].Value);
-                        }
-                        //MessageBox.Show(Convert.ToInt32(dgvPedido.Rows).ToString());
+                        //AGREGANDO DATOS A PEDIDO
                         foreach (DataGridViewRow row in dgvPedido.Rows)
                         {
                             DateTime dtFechaCosto = new DateTime();
@@ -596,17 +622,18 @@ namespace Refracciones.Forms
 
                             operacion = new OperBD();
                             operacion.registrarPedido(
-                                txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(),
                                 Convert.ToString(row.Cells["Pieza"].Value), Convert.ToString(row.Cells["Portal"].Value),
-                                cbTaller.Text.Trim().ToUpper(), Convert.ToString(row.Cells["Origen"].Value).Trim(),
-                                Convert.ToString(row.Cells["Proveedor"].Value), Convert.ToInt32(cbVendedor.Text), dtFechaCosto,
-                                Convert.ToString(row.Cells["Costo sin IVA"].Value), Convert.ToString(row.Cells["Costo neto"].Value),
+                                Convert.ToString(row.Cells["Origen"].Value).Trim(), Convert.ToString(row.Cells["Proveedor"].Value),
+                                dtFechaCosto, Convert.ToString(row.Cells["Costo sin IVA"].Value), Convert.ToString(row.Cells["Costo neto"].Value),
                                 Convert.ToString(row.Cells["Costo de envío"].Value), Convert.ToString(row.Cells["Precio de venta"].Value),
                                 Convert.ToString(row.Cells["Precio de reparación"].Value), Convert.ToString(row.Cells["Clave de producto"].Value),
-                                Convert.ToString(row.Cells["Número de guía"].Value), Convert.ToInt32(row.Cells["Cantidad"].Value)/*Convert.ToInt32(lblCantidadTotal.Text.Trim())*/,
-                                cbValuador.Text.Trim(), cbDestino.Text.Trim().ToUpper(), 0);
-                            this.DialogResult = DialogResult.OK;
+                                Convert.ToString(row.Cells["Número de guía"].Value), Convert.ToInt32(row.Cells["Cantidad"].Value), 0);
+                            //this.DialogResult = DialogResult.OK;
                         }
+
+                        //AGREGANDO DATOS A VENTA
+                        operacion.registrarVenta(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(), taller, Convert.ToInt32(cbVendedor.Text.Trim()), dtFechaBaja, valuador, destino);
+                        this.DialogResult = DialogResult.OK;
                     }
                 }
             }
