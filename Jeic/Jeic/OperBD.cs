@@ -1049,7 +1049,7 @@ namespace Refracciones
                 {
                     nuevaConexion.Open();
                     Comando = new SqlCommand("SELECT cve_nombre FROM CLIENTE WHERE cve_nombre = @cve_nombre", nuevaConexion);
-                    Comando.Parameters.AddWithValue("@nombre", nombre);
+                    Comando.Parameters.AddWithValue("@cve_nombre", nombre);
 
                     //Para saber si en realidad existe, de lo contrario devuelve un string vacío
                     if (Comando.ExecuteScalar() == null) { }
@@ -1260,7 +1260,7 @@ namespace Refracciones
                 {
                     nuevaConexion.Open();
                     Comando = new SqlCommand("INSERT INTO DESTINO " + "(destino) " + "VALUES (@destino) ", nuevaConexion);
-                    Comando.Parameters.AddWithValue("@nombre", nombre);
+                    Comando.Parameters.AddWithValue("@destino", nombre);
 
                     //Para saber si la inserción se hizo correctamente
                     i = Comando.ExecuteNonQuery();
@@ -1289,7 +1289,7 @@ namespace Refracciones
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     nuevaConexion.Open();
-                    Comando = new SqlCommand("SELECT destino FROM DESTINO WHERE destino = @nombre", nuevaConexion);
+                    Comando = new SqlCommand("SELECT destino FROM DESTINO WHERE destino = @destino", nuevaConexion);
                     Comando.Parameters.AddWithValue("@destino", nombre);
 
                     //Para saber si en realidad existe, de lo contrario devuelve un string vacío
@@ -2190,6 +2190,29 @@ namespace Refracciones
             }
         }
 
+        //-------------OBTENER LA CLAVE DE LA VENTA
+        public int claveVenta(string clavePedido, string claveSiniestro)
+        {
+            using (SqlConnection nuevaConexion = Conexion.conexion())
+            {
+                nuevaConexion.Open();
+                int claveVenta = 0;
+                //Obteniendo la clave del valuador
+                //Combobox de costoEnvio
+                Comando = new SqlCommand("SELECT cve_venta FROM VENTAS WHERE cve_pedido = @cve_pedido AND cve_siniestro = @cve_siniestro", nuevaConexion);
+                Comando.Parameters.AddWithValue("cve_pedido", clavePedido);
+                Comando.Parameters.AddWithValue("cve_siniestro", claveSiniestro);
+                Lector = Comando.ExecuteReader();
+                if (Lector.Read())
+                {
+                    claveVenta = (int)Lector["cve_venta"];
+                }
+                Lector.Close();
+                nuevaConexion.Close();
+                return claveVenta;
+            }
+        }
+
         /*
         public int claveEntrega(DateTime fechaAsignacion, DateTime fechaPromesa)
         {
@@ -2274,9 +2297,52 @@ namespace Refracciones
             }
         }
 
+        //-------------INSERTAR DATOS DE PEDIDO VENTAS
+        public int registrarVenta(string clavePedido, string claveSiniestro, string taller, int claveVendedor, DateTime fechaBaja, string valuador, string destino)
+        {
+            //Variables
+            int i = 0;
+            int cve_taller = claveTaller(taller);
+            int cve_valuador = claveValuador(valuador);
+            int cve_destino = claveDestino(destino);
+
+            using (SqlConnection nuevaConexion = Conexion.conexion())
+            {
+
+
+                nuevaConexion.Open();
+                //Insertando los datos en la relación VENTAS 
+                Comando = new SqlCommand("INSERT INTO VENTAS " + "(cve_pedido, cve_siniestro, cve_vendedor, cve_taller, cve_valuador, fecha_baja, cve_destino) " +
+                    "VALUES (@cve_pedido, @cve_siniestro, @cve_vendedor, @cve_taller, @cve_valuador, @fecha_baja, @cve_destino) ", nuevaConexion);
+                Comando.Parameters.AddWithValue("@cve_pedido", clavePedido);
+                Comando.Parameters.AddWithValue("@cve_siniestro", claveSiniestro);
+                Comando.Parameters.AddWithValue("@cve_vendedor", claveVendedor);
+                Comando.Parameters.AddWithValue("@cve_taller", cve_taller);
+                Comando.Parameters.AddWithValue("@cve_valuador", cve_valuador);
+                Comando.Parameters.AddWithValue("@fecha_baja", fechaBaja);
+                Comando.Parameters.AddWithValue("@cve_destino", cve_destino);
+
+                //Para saber si la inserción se hizo correctamente
+                i = Comando.ExecuteNonQuery();
+                nuevaConexion.Close();
+                if (i == 1)
+                {
+                    
+                }
+
+                else
+                    MessageBox.Show("Problemas al venta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            /*}
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }*/
+            return i;
+        }
 
         //-------------INSERTAR DATOS DE PEDIDO
-        public int registrarPedido(string nombrePieza, string portal, string origen, string proveedor, DateTime fechaCosto, string costoSinIVA, string costoNeto, string costoEnvio, string precioVenta, string precioReparacion, string claveProducto, string numeroGuia, int cantidad, int pzas_devolucion)
+        public int registrarPedido(string clavePedido, string claveSiniestro, string nombrePieza, string portal, string origen, string proveedor, DateTime fechaCosto, string costoSinIVA, string costoNeto, string costoEnvio, string precioVenta, string precioReparacion, string claveProducto, string numeroGuia, int cantidad, int pzas_devolucion)
         {
             string destino;
             //Variables
@@ -2288,6 +2354,7 @@ namespace Refracciones
             int cve_portal = clavePortal(portal);
             int cve_costoEnvio = claveCostoEnvio(costoEnvio);
             int cve_entrega = Total_Registros2();
+            int cve_venta = claveVenta(clavePedido, claveSiniestro);
 
             using (SqlConnection nuevaConexion = Conexion.conexion())
             {
@@ -2298,9 +2365,10 @@ namespace Refracciones
 
                 nuevaConexion.Open();
                 //Insertando los datos en la tabla PEDIDO
-                Comando = new SqlCommand("INSERT INTO PEDIDO " + "(cve_pieza, cantidad, cve_origen, cve_proveedor, cve_entrega, cve_portal, cve_guia, cve_producto, fecha_costo, costo_comprasinIVA, costo_envio, costo_neto, precio_venta, precio_reparacion, pzas_devolucion) " +
-                    "VALUES (@cve_pieza, @cantidad, @cve_origen, @cve_proveedor, @cve_entrega, @cve_portal, @cve_guia, @cve_producto, @fecha_costo, @costo_comprasinIVA, @costo_envio, @costo_neto, @precio_venta, @precio_reparacion, @pzas_devolucion) ", nuevaConexion);
+                Comando = new SqlCommand("INSERT INTO PEDIDO " + "(cve_venta, cve_pieza, cantidad, cve_origen, cve_proveedor, cve_entrega, cve_portal, cve_guia, cve_producto, fecha_costo, costo_comprasinIVA, costo_envio, costo_neto, precio_venta, precio_reparacion, pzas_devolucion) " +
+                    "VALUES (@cve_venta, @cve_pieza, @cantidad, @cve_origen, @cve_proveedor, @cve_entrega, @cve_portal, @cve_guia, @cve_producto, @fecha_costo, @costo_comprasinIVA, @costo_envio, @costo_neto, @precio_venta, @precio_reparacion, @pzas_devolucion) ", nuevaConexion);
                 //Añadiendo los parámetros al query
+                Comando.Parameters.AddWithValue("@cve_venta", cve_venta);
                 Comando.Parameters.AddWithValue("@cve_pieza", cve_pieza);
                 Comando.Parameters.AddWithValue("@cantidad", cantidad);
                 Comando.Parameters.AddWithValue("@cve_origen", cve_origen);
@@ -2333,42 +2401,19 @@ namespace Refracciones
             return i;
         }
 
-        //-------------INSERTAR DATOS DE PEDIDO VENTAS
-        public int registrarVenta(string clavePedido, string claveSiniestro, string taller, int claveVendedor, DateTime fechaBaja, string valuador, string destino)
+        //CALCULAR CANTIDADES PARA AGREGAR A VENTAS
+        public void totales(string clavePedido, string claveSiniestro)
         {
-            //Variables
-            int i = 0;
-            int cve_taller = claveTaller(taller);
-            int cve_valuador = claveValuador(valuador);
-            int cve_destino = claveDestino(destino);
-            double costoTotal = 0;
-            double precioTotal = 0;
-            double utilidad;
-
-            using (SqlConnection nuevaConexion = Conexion.conexion())
+            try
             {
-                
-
-                nuevaConexion.Open();
-                //Insertando los datos en la relación VENTAS 
-                Comando = new SqlCommand("INSERT INTO VENTAS " + "(cve_pedido, cve_siniestro, cve_vendedor, cve_taller, cve_valuador, fecha_baja, cve_destino) " +
-                    "VALUES (@cve_pedido, @cve_siniestro, @cve_vendedor, @cve_taller, @cve_valuador, @fecha_baja, @cve_destino) ", nuevaConexion);
-                Comando.Parameters.AddWithValue("@cve_pedido", clavePedido);
-                Comando.Parameters.AddWithValue("@cve_siniestro", claveSiniestro);
-                Comando.Parameters.AddWithValue("@cve_vendedor", claveVendedor);
-                Comando.Parameters.AddWithValue("@cve_taller", cve_taller);
-                Comando.Parameters.AddWithValue("@cve_valuador", cve_valuador);
-                Comando.Parameters.AddWithValue("@fecha_baja", fechaBaja);
-                Comando.Parameters.AddWithValue("@cve_destino", cve_destino);
-
-                //Para saber si la inserción se hizo correctamente
-                i = Comando.ExecuteNonQuery();
-                nuevaConexion.Close();
-                if (i == 1)
+                double costoTotal = 0;
+                double precioTotal = 0;
+                double utilidad;
+                using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     nuevaConexion.Open();
                     //Obteniendo costo total del pedido
-                    Comando = new SqlCommand("SELECT (SUM(costo_neto * cantidad)) AS 'Costo Total' FROM PEDIDO p INNER JOIN VENTAS ven ON p.cve_venta = ven.cve_venta WHERE ven.cve_pedido = @cve_pedido AND ven.cve_siniestro = @cve_siniestro", nuevaConexion);
+                    Comando = new SqlCommand("SELECT (SUM(p.costo_neto * p.cantidad)) AS 'Costo Total' FROM PEDIDO p INNER JOIN VENTAS ven ON p.cve_venta = ven.cve_venta WHERE ven.cve_pedido = @cve_pedido AND ven.cve_siniestro = @cve_siniestro", nuevaConexion);
                     Comando.Parameters.AddWithValue("@cve_pedido", clavePedido);
                     Comando.Parameters.AddWithValue("@cve_siniestro", claveSiniestro);
                     Lector = Comando.ExecuteReader();
@@ -2379,7 +2424,7 @@ namespace Refracciones
                     Lector.Close();
 
                     //Obteniendo precio total del pedido
-                    Comando = new SqlCommand("SELECT (SUM(precio_venta * cantidad)) AS 'Precio Total' FROM PEDIDO p INNER JOIN VENTAS ven ON p.cve_venta = ven.cve_venta WHERE ven.cve_pedido = @cve_pedido AND ven.cve_siniestro = @cve_siniestro", nuevaConexion);
+                    Comando = new SqlCommand("SELECT (SUM(p.precio_venta * p.cantidad)) AS 'Precio Total' FROM PEDIDO p INNER JOIN VENTAS ven ON p.cve_venta = ven.cve_venta WHERE ven.cve_pedido = @cve_pedido AND ven.cve_siniestro = @cve_siniestro", nuevaConexion);
                     Comando.Parameters.AddWithValue("@cve_pedido", clavePedido);
                     Comando.Parameters.AddWithValue("@cve_siniestro", claveSiniestro);
                     Lector = Comando.ExecuteReader();
@@ -2394,26 +2439,22 @@ namespace Refracciones
 
                     //Insertando los datos en venta
                     Comando = new SqlCommand("INSERT INTO VENTAS " + "(cve_destino, costo_total, venta_total, utilidad) " +
-                    "VALUES (@costo_total, @venta_total, @utilidad) cve_pedido = @cve_pedido AND cve_siniestro = @cve_siniestro", nuevaConexion);
-                    Comando.Parameters.AddWithValue("@cve_destino", costoTotal);
-                    Comando.Parameters.AddWithValue("@cve_siniestro", precioTotal);
-                    Comando.Parameters.AddWithValue("@cve_siniestro", utilidad);
+                    "VALUES (@costo_total, @venta_total, @utilidad) WHERE cve_pedido = @cve_pedido AND cve_siniestro = @cve_siniestro", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@costo_total", costoTotal);
+                    Comando.Parameters.AddWithValue("@venta_total", precioTotal);
+                    Comando.Parameters.AddWithValue("@utilidad", utilidad);
                     Comando.Parameters.AddWithValue("@cve_pedido", clavePedido);
                     Comando.Parameters.AddWithValue("@cve_siniestro", claveSiniestro);
                     Comando.ExecuteNonQuery();
                     nuevaConexion.Close();
                 }
-                    
-                else
-                    MessageBox.Show("Problemas al venta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            /*}
-            catch (Exception EX)
+            catch(Exception Ex)
             {
-                MessageBox.Show("Error: " + EX.Message);
-            }*/
-            return i;
+                MessageBox.Show("Error: " + Ex);
+            }
         }
+
     }
 }
 //PROBANDO 

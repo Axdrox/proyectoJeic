@@ -258,9 +258,6 @@ namespace Refracciones.Forms
                     cbAseguradora.Enabled = true;
                     cbValuador.Show();
                     cbValuador.Enabled = true;
-
-                    lblDiasEspera.Visible = true;
-                    txtDiasEspera.Visible = true;
                 }
                 else
                 {
@@ -274,9 +271,6 @@ namespace Refracciones.Forms
                     cbAseguradora.Hide();
                     txtValuador.Show();
                     cbValuador.Hide();
-
-                    lblDiasEspera.Visible = false;
-                    txtDiasEspera.Visible = false;
                 }
             }
             else
@@ -285,12 +279,19 @@ namespace Refracciones.Forms
                 {
                     txtAseguradora.Show();
                     cbAseguradora.Hide();
+
+
+                    lblDiasEspera.Visible = true;
+                    txtDiasEspera.Visible = true;
                 }
                 else
                 {
                     //else: que el texto se vuelva a escribir y se cambie el color al gris
                     txtAseguradora.Hide();
                     cbAseguradora.Show();
+
+                    lblDiasEspera.Visible = false;
+                    txtDiasEspera.Visible = false;
                 }
             }
         }
@@ -585,7 +586,7 @@ namespace Refracciones.Forms
 
                     if (txtClavePedido.Text.Trim() == string.Empty)
                     {
-                        MessageBox.Show("Añada la clave del pedido.", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Añada clave del pedido", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     else
                     {
@@ -598,7 +599,7 @@ namespace Refracciones.Forms
                         if (actualizar == 1)
                             dtFechaBaja = dtpFechaBaja.Value.Date;
                         else
-                            dtFechaBaja = default;
+                            dtFechaBaja = DateTime.Parse("1753/01/01");
 
                         DateTime dtFechaAsignacion = dtpFechaAsignacion.Value.Date;
                         DateTime dtFechaPromesa = dtpFechaPromesa.Value.Date;
@@ -619,6 +620,9 @@ namespace Refracciones.Forms
                             operacion.registrarSiniestro("PARTICULAR" + TotalVehiculo, lblClaveSiniestro.Text.Trim(), txtComentarioSiniestro.Text.Trim(), cbEstadoSiniestro.Text.Trim());
                         }
 
+                        //AGREGANDO DATOS A VENTA
+                        operacion.registrarVenta(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(), taller, Convert.ToInt32(cbVendedor.Text.Trim()), dtFechaBaja, valuador, destino);
+
                         //AGREGANDO DATOS A PEDIDO
                         foreach (DataGridViewRow row in dgvPedido.Rows)
                         {
@@ -627,19 +631,18 @@ namespace Refracciones.Forms
                             dtFechaCosto = DateTime.Parse(row.Cells["Fecha costo"].Value.ToString());
 
                             operacion = new OperBD();
-                            operacion.registrarPedido(
+                            operacion.registrarPedido(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(),
                                 Convert.ToString(row.Cells["Pieza"].Value), Convert.ToString(row.Cells["Portal"].Value),
                                 Convert.ToString(row.Cells["Origen"].Value).Trim(), Convert.ToString(row.Cells["Proveedor"].Value),
                                 dtFechaCosto, Convert.ToString(row.Cells["Costo sin IVA"].Value), Convert.ToString(row.Cells["Costo neto"].Value),
                                 Convert.ToString(row.Cells["Costo de envío"].Value), Convert.ToString(row.Cells["Precio de venta"].Value),
                                 Convert.ToString(row.Cells["Precio de reparación"].Value), Convert.ToString(row.Cells["Clave de producto"].Value),
-                                Convert.ToString(row.Cells["Número de guía"].Value), Convert.ToInt32(row.Cells["Cantidad"].Value), 0);
-                            //this.DialogResult = DialogResult.OK;
+                                Convert.ToString(row.Cells["Número de guía"].Value), Convert.ToInt32(row.Cells["Cantidad"].Value), 0); ; ;
+                            this.DialogResult = DialogResult.OK;
                         }
 
-                        //AGREGANDO DATOS A VENTA
-                        operacion.registrarVenta(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(), taller, Convert.ToInt32(cbVendedor.Text.Trim()), dtFechaBaja, valuador, destino);
-                        this.DialogResult = DialogResult.OK;
+                        //AGREGA LOS TOTALES DE COSTO Y PRECIO A LA TABLA VENTAS
+                        operacion.totales(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim());
                     }
                 }
             }
