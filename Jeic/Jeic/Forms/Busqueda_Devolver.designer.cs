@@ -174,6 +174,7 @@
             // 
             // pbFactura
             // 
+            this.pbFactura.Image = global::Refracciones.Properties.Resources.file;
             this.pbFactura.Location = new System.Drawing.Point(252, 396);
             this.pbFactura.Name = "pbFactura";
             this.pbFactura.Size = new System.Drawing.Size(30, 23);

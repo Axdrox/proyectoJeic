@@ -113,7 +113,7 @@ namespace Refracciones
                     }
                     //MessageBox.Show(cve_siniestro.ToString());
                     //MessageBox.Show(cve_pedido.ToString());
-                    comm = new SqlCommand(string.Format("UPDATE PEDIDO SET cve_factura = {0} WHERE cve_siniestro = '{1}' AND cve_pedido = '{2}'",cve_factura,cve_siniestro,cve_pedido),nuevaConexion);
+                    comm = new SqlCommand(string.Format("UPDATE VENTAS SET cve_factura = {0} WHERE cve_siniestro = '{1}' AND cve_pedido = '{2}'",cve_factura,cve_siniestro,cve_pedido),nuevaConexion);
                     comm.ExecuteNonQuery();
                     nuevaConexion.Close();
                 }
@@ -271,7 +271,7 @@ namespace Refracciones
                     }
 
                     
-                    comm = new SqlCommand(string.Format("UPDATE PEDIDO SET cve_factura = {0} WHERE cve_siniestro = '{1}' AND cve_pedido = '{2}'", cve_factura, cve_siniestro, cve_pedido), nuevaConexion);
+                    comm = new SqlCommand(string.Format("UPDATE VENTAS SET cve_factura = {0} WHERE cve_siniestro = '{1}' AND cve_pedido = '{2}'", cve_factura, cve_siniestro, cve_pedido), nuevaConexion);
                     comm.ExecuteNonQuery();
                     cmd = new SqlCommand(string.Format("UPDATE FACTURA SET cve_refactura = {0} WHERE cve_factura = {1}", cve_factura, cve_refactura), nuevaConexion);
                     cmd.ExecuteNonQuery();
@@ -294,7 +294,7 @@ namespace Refracciones
             using (SqlConnection nuevaConexion = Conexion.conexion())
             {
                 nuevaConexion.Open();
-                Comando = new SqlCommand(string.Format("SELECT pie.nombre AS NOMBRE, pie.cve_pieza AS 'CLAVE PIEZA', ped.cantidad AS CANTIDAD, prov.nombre AS PROVEEDOR, ven.cve_vendedor AS VENDEDOR, val.nombre AS VALUADOR, c.cve_nombre AS CLIENTE, ent.fecha_asignacion AS 'FECHA DE ASIGNACIÓN', ped.fecha_entrega AS 'FECHA DE ENTREGA', ent.fecha_promesa  AS 'FECHA PROMESA', fac.cve_factura AS FACTURA FROM PEDIDO ped JOIN VENTAS ven ON ven.cve_venta = ped.cve_venta JOIN PROVEEDOR prov ON prov.cve_proveedor = ped.cve_proveedor JOIN PIEZA pie ON pie.cve_pieza = ped.cve_pieza JOIN VALUADOR val ON val.cve_valuador = ven.cve_valuador JOIN CLIENTE c ON c.cve_valuador = val.cve_valuador LEFT OUTER JOIN ENTREGA ent ON ent.cve_entrega = ped.cve_entrega LEFT OUTER JOIN FACTURA fac ON fac.cve_factura = ven.cve_factura WHERE ven.cve_siniestro = '{0}' AND ven.cve_pedido = '{1}' AND ped.pzas_devolucion != ped.cantidad", cve_siniestro,cve_pedido), nuevaConexion);
+                Comando = new SqlCommand(string.Format("SELECT DISTINCT pie.nombre AS NOMBRE, pie.cve_pieza AS 'CLAVE PIEZA', ped.cantidad AS CANTIDAD, prov.nombre AS PROVEEDOR, ven.cve_vendedor AS VENDEDOR, val.nombre AS VALUADOR, c.cve_nombre AS CLIENTE, ent.fecha_asignacion AS 'FECHA DE ASIGNACIÓN', ped.fecha_entrega AS 'FECHA DE ENTREGA', ent.fecha_promesa  AS 'FECHA PROMESA', fac.cve_factura AS FACTURA FROM PEDIDO ped JOIN VENTAS ven ON ven.cve_venta = ped.cve_venta JOIN PROVEEDOR prov ON prov.cve_proveedor = ped.cve_proveedor JOIN PIEZA pie ON pie.cve_pieza = ped.cve_pieza JOIN VALUADOR val ON val.cve_valuador = ven.cve_valuador JOIN CLIENTE c ON c.cve_valuador = val.cve_valuador LEFT OUTER JOIN ENTREGA ent ON ent.cve_entrega = ped.cve_entrega LEFT OUTER JOIN FACTURA fac ON fac.cve_factura = ven.cve_factura WHERE ven.cve_siniestro = '{0}' AND ven.cve_pedido = '{1}' AND ped.pzas_devolucion != ped.cantidad", cve_siniestro,cve_pedido), nuevaConexion);
                 da = new SqlDataAdapter(Comando);
 
                 da.Fill(dt);
@@ -361,7 +361,7 @@ namespace Refracciones
                 Comando.Parameters["@motivo"].Value = motivo;
                 Comando.ExecuteNonQuery();
                 //SqlCommand cmd = new SqlCommand(string.Format("UPDATE PEDIDO SET cantidad = {0}, cve_devolucion = {1}  WHERE cve_siniestro = '{2}' AND cve_pedido = {3} AND cve_pieza = {4}",/*cantidad,*/cve_devolucion, cve_siniestro, cve_pedido, cve_pieza), nuevaConexion);
-                SqlCommand cmd = new SqlCommand(string.Format("UPDATE p  SET  p.cve_devolucion = {0}, p.pzas_devolucion = {1} FROM PEDIDO p INNER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta WHERE ven.ve_siniestro = '{2}' AND ven.cve_pedido = '{3}' AND p.cve_pieza = {4}",/*cantidad,*/cve_devolucion,cantidad,cve_siniestro,cve_pedido,cve_pieza ),nuevaConexion);
+                SqlCommand cmd = new SqlCommand(string.Format("UPDATE p  SET  p.cve_devolucion = {0}, p.pzas_devolucion = {1} FROM PEDIDO p INNER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta WHERE ven.cve_siniestro = '{2}' AND ven.cve_pedido = '{3}' AND p.cve_pieza = {4}",/*cantidad,*/cve_devolucion,cantidad,cve_siniestro,cve_pedido,cve_pieza ),nuevaConexion);
                 cmd.ExecuteNonQuery();
                 nuevaConexion.Close();
                 mensaje = "DEVOLUCIÓN EXITOSA";
@@ -378,7 +378,7 @@ namespace Refracciones
             using (SqlConnection nuevaConexion = Conexion.conexion())
             {
                 nuevaConexion.Open();
-                Comando = new SqlCommand(string.Format("SELECT pzas_devolucion FROM PEDIDO WHERE cve_siniestro = '{0}' AND cve_pedido = '{1}' AND cve_pieza = {2}", cve_siniestro, cve_pedido, cve_pieza), nuevaConexion);
+                Comando = new SqlCommand(string.Format("SELECT p.pzas_devolucion FROM PEDIDO p INNER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta WHERE ven.cve_siniestro = '{0}' AND ven.cve_pedido = '{1}' AND p.cve_pieza = {2}", cve_siniestro, cve_pedido, cve_pieza), nuevaConexion);
                 if (Comando.ExecuteScalar().ToString() == string.Empty)
                 { pzas = 0; }
                 else { pzas = (Int32)Comando.ExecuteScalar(); }
@@ -442,7 +442,7 @@ namespace Refracciones
             using (SqlConnection nuevaConexion = Conexion.conexion())
             {
                 nuevaConexion.Open();
-                Comando = new SqlCommand(string.Format("SELECT pzas_entregadas FROM PEDIDO WHERE cve_siniestro = '{0}' AND cve_pedido = '{1}' AND cve_pieza = {2}",cve_siniestro,cve_pedido,cve_pieza), nuevaConexion);
+                Comando = new SqlCommand(string.Format("SELECT p.pzas_entregadas FROM PEDIDO p INNER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta WHERE ven.cve_siniestro = '{0}' AND ven.cve_pedido = '{1}' AND p.cve_pieza = {2}", cve_siniestro,cve_pedido,cve_pieza), nuevaConexion);
                 if (Comando.ExecuteScalar().ToString() == string.Empty)
                 { pzas = 0; }
                 else { pzas = (Int32)Comando.ExecuteScalar(); }
@@ -461,7 +461,7 @@ namespace Refracciones
             {
                 
                 nuevaConexion.Open();
-                Comando = new SqlCommand(string.Format("SELECT DISTINCT pie.nombre AS PIEZA, dev.cantidad AS CANTIDAD, c.cve_nombre AS CLIENTE, dev.motivo AS MOTIVO, dev.fecha AS FECHA FROM DEVOLUCION dev JOIN VENTAS ven ON ven.cve_factura = dev.cve_factura JOIN VALUADOR val ON val.cve_valuador = ven.cve_valuador JOIN CLIENTE c ON c.cve_valuador = val.cve_valuador JOIN PIEZA  pie ON pie.cve_pieza = dev.cve_pieza WHERE dev.cve_factura ={0}", cve_factura), nuevaConexion);
+                Comando = new SqlCommand(string.Format("SELECT DISTINCT  pie.nombre AS PIEZA,  ent.cantidad AS CANTIDAD, c.cve_nombre AS CLIENTE, ent.fecha AS FECHA FROM ENTREGA ent JOIN VENTAS ven ON ven.cve_factura = ent.cve_factura JOIN VALUADOR val ON val.cve_valuador = ven.cve_valuador JOIN CLIENTE c ON c.cve_valuador = val.cve_valuador JOIN PIEZA  pie ON pie.cve_pieza = ent.cve_pieza WHERE ent.cve_factura = {0}", cve_factura), nuevaConexion);
                 da = new SqlDataAdapter(Comando);
                 da.Fill(dt);
                 nuevaConexion.Close();
@@ -478,7 +478,7 @@ namespace Refracciones
             using (SqlConnection nuevaConexion = Conexion.conexion())
             {
                 nuevaConexion.Open();
-                Comando = new SqlCommand(string.Format("SELECT DISTINCT pie.nombre AS PIEZA, dev.cantidad AS CANTIDAD,c.cve_nombre AS CLIENTE,dev.motivo AS MOTIVO,dev.fecha AS FECHA FROM DEVOLUCION dev JOIN PEDIDO ped ON ped.cve_factura = dev.cve_factura JOIN VALUADOR val ON val.cve_valuador = ped.cve_valuador JOIN CLIENTE c ON c.cve_valuador = val.cve_valuador JOIN PIEZA  pie ON pie.cve_pieza = dev.cve_pieza WHERE dev.cve_factura = {0}", cve_factura), nuevaConexion);
+                Comando = new SqlCommand(string.Format("SELECT DISTINCT pie.nombre AS PIEZA,  dev.cantidad AS CANTIDAD, c.cve_nombre AS CLIENTE, dev.motivo AS MOTIVO, dev.fecha AS FECHA FROM DEVOLUCION dev JOIN VENTAS ven ON ven.cve_factura = dev.cve_factura JOIN VALUADOR val ON val.cve_valuador = ven.cve_valuador JOIN CLIENTE c ON c.cve_valuador = val.cve_valuador JOIN PIEZA  pie ON pie.cve_pieza = dev.cve_pieza WHERE dev.cve_factura ={0}", cve_factura), nuevaConexion);
                 da = new SqlDataAdapter(Comando);
                 da.Fill(dt);
                 nuevaConexion.Close();
@@ -763,7 +763,7 @@ namespace Refracciones
                 {
                     nuevaConexion.Open();
                     Comando = new SqlCommand(string.Format("SELECT cve_factura FROM VENTAS WHERE cve_siniestro = '{0}' AND cve_pedido = '{1}'", siniestro,cve_pedido), nuevaConexion);
-                    if (Comando.ExecuteScalar() == null)
+                    if (Comando.ExecuteScalar() == null || Comando.ExecuteScalar().ToString() == string.Empty)
                     {
                         cve_factura = 0;
                     }
@@ -855,6 +855,32 @@ namespace Refracciones
             }
 
             return dt;
+        }
+        public double venta_total(string pedido, string siniestro)
+        {
+            double ventaTotal = 0;
+            
+            using (SqlConnection nuevaConexion = Conexion.conexion())
+            {
+                nuevaConexion.Open();
+                
+                //Obteniendo Total de la Venta de ese pedido con ese siniestro
+                Comando = new SqlCommand("SELECT venta_total FROM VENTAS WHERE  cve_pedido = @cve_pedido AND cve_siniestro = @cve_siniestro", nuevaConexion);
+                Comando.Parameters.AddWithValue("cve_pedido", pedido);
+                Comando.Parameters.AddWithValue("cve_siniestro", siniestro);
+                Lector = Comando.ExecuteReader();
+                if (Lector.Read())
+                {
+                    // totalCostoEnvio = double.Parse(Lector["costo"].ToString());
+                   if(Lector["venta_total"].ToString() != string.Empty)
+                    ventaTotal = Convert.ToDouble(Lector["venta_total"]);
+                }
+                Lector.Close();
+              
+
+                nuevaConexion.Close();
+                return ventaTotal;
+            }
         }
         //---------------------ALEX--------------------------------------------------------------------
         //--------------------OBTENER NUMERO DE VEHICULOS REGISTRADOS--------------------
