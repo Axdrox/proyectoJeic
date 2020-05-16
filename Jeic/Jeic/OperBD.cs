@@ -999,7 +999,7 @@ namespace Refracciones
         }
 
         //---------------- INSERTAR UN NUEVO CLIENTE
-        public int registrarCliente(string nombreCliente, string nombreValuador)
+        public int registrarCliente(string nombreCliente, string nombreValuador, int diasEspera)
         {
             int i = 0; int cve_valuador = 0;
             try
@@ -1017,8 +1017,9 @@ namespace Refracciones
                     Lector.Close();
 
                     Comando = new SqlCommand("INSERT INTO CLIENTE " + "(cve_nombre, cve_valuador, dias_espera) " + "VALUES (@cve_nombre, @cve_valuador, @dias_espera) ", nuevaConexion);
-                    Comando.Parameters.AddWithValue("@nombre", nombreCliente);
-                    Comando.Parameters.AddWithValue("@nombre", nombreValuador);
+                    Comando.Parameters.AddWithValue("@cve_nombre", nombreCliente);
+                    Comando.Parameters.AddWithValue("@cve_valuador", cve_valuador);
+                    Comando.Parameters.AddWithValue("@dias_espera", diasEspera);
 
                     //Para saber si la inserción se hizo correctamente
                     i = Comando.ExecuteNonQuery();
@@ -1026,7 +1027,7 @@ namespace Refracciones
                     if (i == 1)
                         MessageBox.Show("Se registró nueva cliente correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     else
-                        MessageBox.Show("Problemas al registar nueva cliente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Problemas al registar nuevo cliente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     nuevaConexion.Close();
                 }
 

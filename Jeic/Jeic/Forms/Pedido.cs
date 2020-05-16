@@ -258,6 +258,9 @@ namespace Refracciones.Forms
                     cbAseguradora.Enabled = true;
                     cbValuador.Show();
                     cbValuador.Enabled = true;
+
+                    lblDiasEspera.Visible = true;
+                    txtDiasEspera.Visible = true;
                 }
                 else
                 {
@@ -271,6 +274,9 @@ namespace Refracciones.Forms
                     cbAseguradora.Hide();
                     txtValuador.Show();
                     cbValuador.Hide();
+
+                    lblDiasEspera.Visible = false;
+                    txtDiasEspera.Visible = false;
                 }
             }
             else
@@ -571,7 +577,7 @@ namespace Refracciones.Forms
                     if (chbOtroValuador.Checked == true)
                         operacion.registrarValuador(valuador);
                     if (chbOtraAseguradora.Checked == true)
-                        //operacion.registrarCliente(txtAseguradora.Text.Trim().ToUpper());
+                        operacion.registrarCliente(txtAseguradora.Text.Trim().ToUpper(), cbValuador.Text.Trim(), Convert.ToInt32(txtDiasEspera.Text.Trim()));
                     if (chbOtroTaller.Checked == true)
                         operacion.registrarTaller(taller);
                     if (chbOtroDestino.Checked == true)

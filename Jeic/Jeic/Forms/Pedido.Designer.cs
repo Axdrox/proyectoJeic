@@ -87,6 +87,8 @@
             this.chbModificarEstado = new System.Windows.Forms.CheckBox();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtDiasEspera = new System.Windows.Forms.TextBox();
+            this.lblDiasEspera = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedido)).BeginInit();
             this.SuspendLayout();
             // 
@@ -142,7 +144,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(435, 130);
+            this.label4.Location = new System.Drawing.Point(435, 155);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(52, 13);
@@ -243,7 +245,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(435, 170);
+            this.label9.Location = new System.Drawing.Point(435, 195);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(36, 13);
@@ -254,7 +256,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(435, 209);
+            this.label10.Location = new System.Drawing.Point(435, 234);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(46, 13);
@@ -266,7 +268,7 @@
             this.cbTaller.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTaller.Enabled = false;
             this.cbTaller.FormattingEnabled = true;
-            this.cbTaller.Location = new System.Drawing.Point(495, 170);
+            this.cbTaller.Location = new System.Drawing.Point(495, 195);
             this.cbTaller.Margin = new System.Windows.Forms.Padding(2);
             this.cbTaller.Name = "cbTaller";
             this.cbTaller.Size = new System.Drawing.Size(295, 21);
@@ -278,7 +280,7 @@
             this.cbDestino.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbDestino.Enabled = false;
             this.cbDestino.FormattingEnabled = true;
-            this.cbDestino.Location = new System.Drawing.Point(495, 209);
+            this.cbDestino.Location = new System.Drawing.Point(495, 234);
             this.cbDestino.Margin = new System.Windows.Forms.Padding(2);
             this.cbDestino.Name = "cbDestino";
             this.cbDestino.Size = new System.Drawing.Size(295, 21);
@@ -368,7 +370,7 @@
             this.chbOtroValuador.AutoSize = true;
             this.chbOtroValuador.Enabled = false;
             this.chbOtroValuador.ForeColor = System.Drawing.Color.White;
-            this.chbOtroValuador.Location = new System.Drawing.Point(795, 132);
+            this.chbOtroValuador.Location = new System.Drawing.Point(795, 157);
             this.chbOtroValuador.Margin = new System.Windows.Forms.Padding(2);
             this.chbOtroValuador.Name = "chbOtroValuador";
             this.chbOtroValuador.Size = new System.Drawing.Size(46, 17);
@@ -380,7 +382,7 @@
             // txtValuador
             // 
             this.txtValuador.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.txtValuador.Location = new System.Drawing.Point(494, 130);
+            this.txtValuador.Location = new System.Drawing.Point(494, 155);
             this.txtValuador.Margin = new System.Windows.Forms.Padding(2);
             this.txtValuador.Name = "txtValuador";
             this.txtValuador.Size = new System.Drawing.Size(297, 20);
@@ -393,7 +395,7 @@
             this.cbValuador.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbValuador.Enabled = false;
             this.cbValuador.FormattingEnabled = true;
-            this.cbValuador.Location = new System.Drawing.Point(494, 130);
+            this.cbValuador.Location = new System.Drawing.Point(494, 155);
             this.cbValuador.Margin = new System.Windows.Forms.Padding(2);
             this.cbValuador.Name = "cbValuador";
             this.cbValuador.Size = new System.Drawing.Size(296, 21);
@@ -473,7 +475,7 @@
             this.chbOtroTaller.AutoSize = true;
             this.chbOtroTaller.Enabled = false;
             this.chbOtroTaller.ForeColor = System.Drawing.Color.White;
-            this.chbOtroTaller.Location = new System.Drawing.Point(795, 172);
+            this.chbOtroTaller.Location = new System.Drawing.Point(795, 197);
             this.chbOtroTaller.Margin = new System.Windows.Forms.Padding(2);
             this.chbOtroTaller.Name = "chbOtroTaller";
             this.chbOtroTaller.Size = new System.Drawing.Size(46, 17);
@@ -487,7 +489,7 @@
             this.chbOtroDestino.AutoSize = true;
             this.chbOtroDestino.Enabled = false;
             this.chbOtroDestino.ForeColor = System.Drawing.Color.White;
-            this.chbOtroDestino.Location = new System.Drawing.Point(795, 211);
+            this.chbOtroDestino.Location = new System.Drawing.Point(795, 236);
             this.chbOtroDestino.Margin = new System.Windows.Forms.Padding(2);
             this.chbOtroDestino.Name = "chbOtroDestino";
             this.chbOtroDestino.Size = new System.Drawing.Size(46, 17);
@@ -499,7 +501,7 @@
             // txtTaller
             // 
             this.txtTaller.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.txtTaller.Location = new System.Drawing.Point(494, 170);
+            this.txtTaller.Location = new System.Drawing.Point(494, 195);
             this.txtTaller.Margin = new System.Windows.Forms.Padding(2);
             this.txtTaller.Name = "txtTaller";
             this.txtTaller.Size = new System.Drawing.Size(297, 20);
@@ -510,7 +512,7 @@
             // txtDestino
             // 
             this.txtDestino.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.txtDestino.Location = new System.Drawing.Point(494, 209);
+            this.txtDestino.Location = new System.Drawing.Point(494, 234);
             this.txtDestino.Margin = new System.Windows.Forms.Padding(2);
             this.txtDestino.Name = "txtDestino";
             this.txtDestino.Size = new System.Drawing.Size(297, 20);
@@ -742,12 +744,34 @@
             this.panel1.Size = new System.Drawing.Size(1346, 43);
             this.panel1.TabIndex = 57;
             // 
+            // txtDiasEspera
+            // 
+            this.txtDiasEspera.Location = new System.Drawing.Point(726, 117);
+            this.txtDiasEspera.Name = "txtDiasEspera";
+            this.txtDiasEspera.Size = new System.Drawing.Size(64, 20);
+            this.txtDiasEspera.TabIndex = 58;
+            this.txtDiasEspera.Visible = false;
+            // 
+            // lblDiasEspera
+            // 
+            this.lblDiasEspera.AutoSize = true;
+            this.lblDiasEspera.ForeColor = System.Drawing.Color.White;
+            this.lblDiasEspera.Location = new System.Drawing.Point(653, 120);
+            this.lblDiasEspera.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDiasEspera.Name = "lblDiasEspera";
+            this.lblDiasEspera.Size = new System.Drawing.Size(68, 13);
+            this.lblDiasEspera.TabIndex = 59;
+            this.lblDiasEspera.Text = "Días espera:";
+            this.lblDiasEspera.Visible = false;
+            // 
             // Pedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
             this.ClientSize = new System.Drawing.Size(1346, 527);
+            this.Controls.Add(this.lblDiasEspera);
+            this.Controls.Add(this.txtDiasEspera);
             this.Controls.Add(this.txtVendedor);
             this.Controls.Add(this.txtValuador);
             this.Controls.Add(this.panel1);
@@ -878,5 +902,7 @@
         private System.Windows.Forms.CheckBox chbModificarEstado;
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblDiasEspera;
+        private System.Windows.Forms.TextBox txtDiasEspera;
     }
 }
