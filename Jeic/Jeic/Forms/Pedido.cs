@@ -280,7 +280,6 @@ namespace Refracciones.Forms
                     txtAseguradora.Show();
                     cbAseguradora.Hide();
 
-
                     lblDiasEspera.Visible = true;
                     txtDiasEspera.Visible = true;
                 }
@@ -514,7 +513,6 @@ namespace Refracciones.Forms
                 else
                     aseguradora = cbAseguradora.Text.Trim();
 
-
                 if (chbOtroValuador.Checked == true)
                 {
                     j += 1;
@@ -593,7 +591,6 @@ namespace Refracciones.Forms
                         OperBD operacion = new OperBD();
                         int cantidadTotal = 0;
 
-
                         //VALIDAR CUANDO SEA ACTUALIZACIÓN ANTES, POR LO MIENTRAS LO DEJARÉ ASÍ
                         DateTime dtFechaBaja;
                         if (actualizar == 1)
@@ -620,8 +617,31 @@ namespace Refracciones.Forms
                             operacion.registrarSiniestro("PARTICULAR" + TotalVehiculo, lblClaveSiniestro.Text.Trim(), txtComentarioSiniestro.Text.Trim(), cbEstadoSiniestro.Text.Trim());
                         }
 
+                        //si numero de guia se encuentra no ese array se añade a ese array y va a ir guardando en otra variable la suma del costo de envio
+                        string[] guia = new string[dgvPedido.Rows.Count];
+                        int i = 0;
+                        double totalCosto = 0;
+                        double subtotalPrecio = 0;
+                        double totalPrecio = 0;
+                        double utilidad;
+                        //double totalCostoEnvio = 0; Ya no es tan necesaria puesto que se le tiene que sumar a la variable subtotalPrecio
+                        foreach (DataGridViewRow row in dgvPedido.Rows)
+                        {
+                            totalCosto += Convert.ToInt32(row.Cells["Cantidad"].Value) * Convert.ToDouble(row.Cells["Costo neto"].Value);
+                            subtotalPrecio += (Convert.ToInt32(row.Cells["Cantidad"].Value) * Convert.ToDouble(row.Cells["Precio de venta"].Value) + Convert.ToDouble(row.Cells["Precio de reparación"].Value));
+                            if (!guia.Contains(Convert.ToString(row.Cells["Número de guía"].Value)))
+                            {
+                                guia[i] = Convert.ToString(row.Cells["Número de guía"].Value);
+                                //totalCostoEnvio += Convert.ToDouble(row.Cells["Costo de envío"].Value);
+                                subtotalPrecio += Convert.ToDouble(row.Cells["Costo de envío"].Value);
+                                i++;
+                            }
+                        }
+                        totalPrecio = (subtotalPrecio * .16) + subtotalPrecio;
+                        utilidad = totalPrecio - totalCosto;
+
                         //AGREGANDO DATOS A VENTA
-                        operacion.registrarVenta(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(), taller, Convert.ToInt32(cbVendedor.Text.Trim()), dtFechaBaja, valuador, destino);
+                        operacion.registrarVenta(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(), taller, Convert.ToInt32(cbVendedor.Text.Trim()), dtFechaBaja, valuador, destino, totalCosto, subtotalPrecio, totalPrecio, utilidad);
 
                         //AGREGANDO DATOS A PEDIDO
                         foreach (DataGridViewRow row in dgvPedido.Rows)
@@ -640,9 +660,8 @@ namespace Refracciones.Forms
                                 Convert.ToString(row.Cells["Número de guía"].Value), Convert.ToInt32(row.Cells["Cantidad"].Value), 0); ; ;
                             this.DialogResult = DialogResult.OK;
                         }
-
                         //AGREGA LOS TOTALES DE COSTO Y PRECIO A LA TABLA VENTAS
-                        operacion.totales(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim());
+                        //operacion.totales(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim());
                     }
                 }
             }
