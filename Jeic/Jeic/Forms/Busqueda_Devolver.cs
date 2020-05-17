@@ -157,5 +157,7 @@ namespace Refracciones.Forms
             Alertas alert = new Alertas();
             alert.Show();
         }
+
+
     }
 }

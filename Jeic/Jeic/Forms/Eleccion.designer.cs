@@ -39,6 +39,7 @@
             this.dato_3 = new System.Windows.Forms.Label();
             this.btnPDF = new System.Windows.Forms.Button();
             this.dgvDatosPDF = new System.Windows.Forms.DataGridView();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatosPDF)).BeginInit();
             this.SuspendLayout();
             // 
@@ -200,5 +201,6 @@
         public System.Windows.Forms.Label dato_3;
         private System.Windows.Forms.Button btnPDF;
         private System.Windows.Forms.DataGridView dgvDatosPDF;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }

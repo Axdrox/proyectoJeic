@@ -928,15 +928,15 @@ namespace Refracciones
                 nuevaConexion.Open();
 
                 //Obteniendo Total de la Venta de ese pedido con ese siniestro
-                Comando = new SqlCommand("SELECT venta_total FROM VENTAS WHERE  cve_pedido = @cve_pedido AND cve_siniestro = @cve_siniestro", nuevaConexion);
+                Comando = new SqlCommand("SELECT sub_total FROM VENTAS WHERE  cve_pedido = @cve_pedido AND cve_siniestro = @cve_siniestro", nuevaConexion);
                 Comando.Parameters.AddWithValue("cve_pedido", pedido);
                 Comando.Parameters.AddWithValue("cve_siniestro", siniestro);
                 Lector = Comando.ExecuteReader();
                 if (Lector.Read())
                 {
                     // totalCostoEnvio = double.Parse(Lector["costo"].ToString());
-                    if (Lector["venta_total"].ToString() != string.Empty)
-                        ventaTotal = Convert.ToDouble(Lector["venta_total"]);
+                    if (Lector["sub_total"].ToString() != string.Empty)
+                        ventaTotal = Convert.ToDouble(Lector["sub_total"]);
                 }
                 Lector.Close();
 
