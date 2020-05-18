@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
 using System.Globalization;
+using Refracciones.Properties;
 
 namespace Refracciones.Forms
 {
@@ -136,7 +137,8 @@ namespace Refracciones.Forms
 
         private void registroFactura_Load(object sender, EventArgs e)
         {
-            
+            //Colocar ICONO
+            this.Icon = Resources.iconJeic;
 
             /*cve_siniestro = dato1.Text;
             cve_pedido = Int32.Parse(dato2.Text);*/

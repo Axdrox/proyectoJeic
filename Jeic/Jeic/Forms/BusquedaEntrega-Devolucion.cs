@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Refracciones.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,6 +23,8 @@ namespace Refracciones.Forms
 
         private void BusquedaEntrega_Devolucion_Load(object sender, EventArgs e)
         {
+            //Colocar ICONO
+            this.Icon = Resources.iconJeic;
             //cve_factura =Int32.Parse(dato3.Text);
             string cve_pedido = dato2.Text.Substring(8, (dato2.Text.Length - 8));
             string cve_siniestro = dato1.Text.Substring(11, dato1.Text.Length - 11);

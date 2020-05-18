@@ -276,5 +276,11 @@
   <ItemGroup>
     <None Include="Resources\file.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\appIcon.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconJeic.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

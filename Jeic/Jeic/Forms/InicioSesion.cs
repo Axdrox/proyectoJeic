@@ -1,4 +1,5 @@
 ﻿using Refracciones.Forms;
+using Refracciones.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,6 +25,7 @@ namespace Refracciones
 
         private void InicioSesion_Load(object sender, EventArgs e)
         {
+            this.Icon = Resources.iconJeic;
             btnEntrar.BackColor = Color.Transparent;
         }
 

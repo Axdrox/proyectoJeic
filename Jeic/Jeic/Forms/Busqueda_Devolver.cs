@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Refracciones.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -23,6 +24,8 @@ namespace Refracciones.Forms
 
         private void Busqueda_Devolver_Load(object sender, EventArgs e)
         {
+            //Colocar ICONO
+            this.Icon = Resources.iconJeic;
             //DAR FORMATO
             OperBD llenarDefaultDGV = new OperBD();
             llenarDefaultDGV.defaultDGV(dvgPedido);

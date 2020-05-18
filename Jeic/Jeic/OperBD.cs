@@ -119,9 +119,9 @@ namespace Refracciones
                     nuevaConexion.Close();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                mensaje = "No se inserto la factura: " + ex.ToString();
+                mensaje = "No se inserto la factura, es posible que exista una con el mismo folio: ";
             }
             return mensaje;
         }

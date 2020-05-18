@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Refracciones.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,6 +21,8 @@ namespace Refracciones.Forms
 
         private void Alertas_Load(object sender, EventArgs e)
         {
+            //Colocar ICONO
+            this.Icon = Resources.iconJeic;
             DateTime fecha_sys = DateTime.Parse((DateTime.Now.ToShortDateString()));
             dgvAlertas.DataSource = oper.Alertas(fecha_sys);
         }

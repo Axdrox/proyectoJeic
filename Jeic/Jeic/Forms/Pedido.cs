@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Refracciones.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -54,6 +55,8 @@ namespace Refracciones.Forms
 
         private void Pedido_Load(object sender, EventArgs e)
         {
+            //Colocar ICONO
+            this.Icon = Resources.iconJeic;
             Eleccion eleccion = new Eleccion();
             if (actualizar == 1)
             {
@@ -835,5 +838,7 @@ namespace Refracciones.Forms
             if (actualizar != 1)
                 dtpFechaPromesa.Text = dtpFechaAsignacion.Text;
         }
+
+
     }
 }

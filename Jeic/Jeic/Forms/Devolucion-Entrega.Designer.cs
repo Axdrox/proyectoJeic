@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.label1 = new System.Windows.Forms.Label();
             this.chkMotivo = new Bunifu.Framework.UI.BunifuCheckbox();
             this.txtMotivo = new System.Windows.Forms.TextBox();
             this.cmbMotivoDev = new System.Windows.Forms.ComboBox();
@@ -44,7 +45,6 @@
             this.dato2 = new System.Windows.Forms.Label();
             this.dato1 = new System.Windows.Forms.Label();
             this.dgvDevolucion = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -83,6 +83,16 @@
             this.splitContainer1.Size = new System.Drawing.Size(1092, 450);
             this.splitContainer1.SplitterDistance = 253;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(164, 291);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(27, 13);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Otro";
+            this.label1.Visible = false;
             // 
             // chkMotivo
             // 
@@ -246,16 +256,6 @@
             this.dgvDevolucion.Size = new System.Drawing.Size(829, 426);
             this.dgvDevolucion.TabIndex = 0;
             this.dgvDevolucion.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDevolucion_CellContentClick);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(164, 291);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(27, 13);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "Otro";
-            this.label1.Visible = false;
             // 
             // Devolucion
             // 

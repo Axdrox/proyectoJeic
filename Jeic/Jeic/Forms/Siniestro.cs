@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Refracciones.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,6 +22,8 @@ namespace Refracciones.Forms
 
         private void Siniestro_Load(object sender, EventArgs e)
         {
+            //Colocar ICONO
+            this.Icon = Resources.iconJeic;
             //Carga los datos de los modelos de vehículos en el combobox
             cbVehiculo.DataSource = operacion.VehiculosRegistrados().Tables[0].DefaultView;
             cbVehiculo.ValueMember = "modelo";

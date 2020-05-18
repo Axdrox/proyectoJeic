@@ -46,7 +46,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.dgvAlertas);
-            this.splitContainer1.Size = new System.Drawing.Size(654, 215);
+            this.splitContainer1.Size = new System.Drawing.Size(556, 215);
             this.splitContainer1.SplitterDistance = 33;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -59,14 +59,14 @@
             this.dgvAlertas.Name = "dgvAlertas";
             this.dgvAlertas.ReadOnly = true;
             this.dgvAlertas.RowHeadersWidth = 51;
-            this.dgvAlertas.Size = new System.Drawing.Size(654, 178);
+            this.dgvAlertas.Size = new System.Drawing.Size(556, 178);
             this.dgvAlertas.TabIndex = 0;
             // 
             // Alertas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(654, 215);
+            this.ClientSize = new System.Drawing.Size(556, 215);
             this.Controls.Add(this.splitContainer1);
             this.KeyPreview = true;
             this.Name = "Alertas";

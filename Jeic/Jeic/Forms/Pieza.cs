@@ -1,5 +1,6 @@
 ﻿namespace Refracciones.Forms
 {
+    using Refracciones.Properties;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
@@ -533,6 +534,12 @@
         {
             if (txtCostoSinIVA.Text != string.Empty)
                 txtCostoNeto.Text = ((Convert.ToDouble(txtCostoSinIVA.Text.Trim()) * .16) + Convert.ToDouble(txtCostoSinIVA.Text.Trim())).ToString();
+        }
+
+        private void Pieza_Load(object sender, EventArgs e)
+        {
+            //Colocar ICONO
+            this.Icon = Resources.iconJeic;
         }
     }
 }

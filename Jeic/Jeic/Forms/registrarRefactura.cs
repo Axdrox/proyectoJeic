@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Refracciones.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -124,6 +125,8 @@ namespace Refracciones.Forms
 
         private void registrarRefactura_Load(object sender, EventArgs e)
         {
+            //Colocar ICONO
+            this.Icon = Resources.iconJeic;
             cve_pedido = dato2.Text.Substring(8, (dato2.Text.Length - 8)); 
             cve_siniestro = dato1.Text.Substring(11, dato1.Text.Length - 11);
             txtFacturasinIVA.Text = (factura.venta_total(cve_pedido, cve_siniestro)).ToString();
