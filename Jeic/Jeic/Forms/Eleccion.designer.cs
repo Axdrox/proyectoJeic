@@ -40,6 +40,7 @@
             this.btnPDF = new System.Windows.Forms.Button();
             this.dgvDatosPDF = new System.Windows.Forms.DataGridView();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.lblCve_venta = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatosPDF)).BeginInit();
             this.SuspendLayout();
             // 
@@ -162,11 +163,21 @@
             this.dgvDatosPDF.TabIndex = 10;
             this.dgvDatosPDF.Visible = false;
             // 
+            // lblCve_venta
+            // 
+            this.lblCve_venta.AutoSize = true;
+            this.lblCve_venta.Location = new System.Drawing.Point(15, 332);
+            this.lblCve_venta.Name = "lblCve_venta";
+            this.lblCve_venta.Size = new System.Drawing.Size(58, 13);
+            this.lblCve_venta.TabIndex = 11;
+            this.lblCve_venta.Text = "cve_venta";
+            // 
             // Eleccion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(177, 346);
+            this.Controls.Add(this.lblCve_venta);
             this.Controls.Add(this.dgvDatosPDF);
             this.Controls.Add(this.btnPDF);
             this.Controls.Add(this.dato_3);
@@ -202,5 +213,6 @@
         private System.Windows.Forms.Button btnPDF;
         private System.Windows.Forms.DataGridView dgvDatosPDF;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        public System.Windows.Forms.Label lblCve_venta;
     }
 }

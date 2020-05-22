@@ -20,7 +20,8 @@ namespace Refracciones.Forms
         string cve_siniestro;
         string cve_pedido;
         string motivo;
-        int cve_factura;
+        //int cve_factura;
+        int cve_venta;
         int cantidad = 0;
         int cantidadD = 0;
         int cve_pieza = 0;
@@ -78,7 +79,8 @@ namespace Refracciones.Forms
                  }*/
 
                 cve_pieza = Int32.Parse(dgvDevolucion.Rows[fila].Cells[1].Value.ToString());
-                cve_factura = Int32.Parse(dgvDevolucion.Rows[fila].Cells[10].Value.ToString());
+                //cve_factura = Int32.Parse(dgvDevolucion.Rows[fila].Cells[10].Value.ToString());
+                cve_venta = Int32.Parse(dgvDevolucion.Rows[fila].Cells[11].Value.ToString());
                 fecha_asignacion = DateTime.Parse(dgvDevolucion.Rows[fila].Cells[7].Value.ToString());//7
                 fecha_promesa = DateTime.Parse(dgvDevolucion.Rows[fila].Cells[9].Value.ToString());//9
                 MessageBox.Show("Ahora seleccione Entrega o Devolución, así como la cantidad");
@@ -193,7 +195,7 @@ namespace Refracciones.Forms
                         else
                             motivo = txtMotivo.Text.Trim();
                         MessageBox.Show(motivo);
-                        MessageBox.Show(oper.Registrar_Devolucion(cve_siniestro, cve_pedido, cve_pieza, count, cantidad, fecha, cantidadD, cve_factura,motivo));
+                        MessageBox.Show(oper.Registrar_Devolucion(cve_siniestro, cve_pedido, cve_pieza, count, cantidad, fecha, cantidadD, cve_venta, motivo));
                         cmbCantidad.Items.Clear();
                     }
                     else
@@ -214,7 +216,7 @@ namespace Refracciones.Forms
                         btnAceptar.Enabled = false;
                         btnCancelar.Enabled = false;
                         dgvDevolucion.Enabled = true;
-                        MessageBox.Show(oper.Registrar_Entrega(cve_siniestro, cve_pedido, cve_pieza, count2, cantidad, fecha, cantidadD, cve_factura, fecha_asignacion, fecha_promesa));
+                        MessageBox.Show(oper.Registrar_Entrega(cve_siniestro, cve_pedido, cve_pieza, count2, cantidad, fecha, cantidadD, cve_venta, fecha_asignacion, fecha_promesa));
                         cmbCantidad.Items.Clear();
                     }
                     else

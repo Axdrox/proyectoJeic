@@ -97,6 +97,7 @@ namespace Refracciones
             BusquedaEntrega_Devolucion bdev = new BusquedaEntrega_Devolucion();
             bdev.dato1.Text = bdev.dato1.Text + " " + dato_1.Text;
             bdev.dato2.Text = bdev.dato2.Text + " " + dato_2.Text;
+            bdev.lblcve_venta.Text = lblCve_venta.Text;
             bdev.ShowDialog();
             
         }
@@ -118,7 +119,7 @@ namespace Refracciones
             {
                 btnFactura.Text = "Agregar factura";
                 btnRefactura.Enabled = false;
-                btnDevolucionEntrega.Enabled = false;
+                //btnDevolucionEntrega.Enabled = false;
                 
             }
         }

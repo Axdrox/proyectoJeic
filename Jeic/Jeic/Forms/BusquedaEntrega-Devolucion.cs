@@ -16,6 +16,7 @@ namespace Refracciones.Forms
         OperBD oper = new OperBD();
         DataTable dt = new DataTable();
         int cve_factura = 0;
+        int cve_venta = 0;
         public BusquedaEntrega_Devolucion()
         {
             InitializeComponent();
@@ -28,8 +29,9 @@ namespace Refracciones.Forms
             //cve_factura =Int32.Parse(dato3.Text);
             string cve_pedido = dato2.Text.Substring(8, (dato2.Text.Length - 8));
             string cve_siniestro = dato1.Text.Substring(11, dato1.Text.Length - 11);
-            cve_factura = oper.Clave_Fact(cve_siniestro,cve_pedido);
-            dataGridView1.DataSource = oper.Tabla_Entrega(cve_factura);
+            //cve_factura = oper.Clave_Fact(cve_siniestro,cve_pedido);
+            cve_venta = Int32.Parse(lblcve_venta.Text);
+            dataGridView1.DataSource = oper.Tabla_Entrega(cve_venta);
             dato3.Text =dato3.Text + " " + cve_factura.ToString();
         }
 
@@ -37,7 +39,7 @@ namespace Refracciones.Forms
         {
             
             dataGridView1.DataSource = dt;
-            dataGridView1.DataSource = oper.Tabla_Entrega(cve_factura);
+            dataGridView1.DataSource = oper.Tabla_Entrega(cve_venta);
         }
 
         private void rbtnDev_CheckedChanged(object sender, EventArgs e)
@@ -45,7 +47,7 @@ namespace Refracciones.Forms
             /*cve_factura = oper.Clave_Fact(dato1.Text, Int32.Parse(dato2.Text));
             dato3.Text = cve_factura.ToString();*/
             dataGridView1.DataSource = dt;
-            dataGridView1.DataSource = oper.Tabla_Devolucion(cve_factura);
+            dataGridView1.DataSource = oper.Tabla_Devolucion(cve_venta);
         }
     }
 }

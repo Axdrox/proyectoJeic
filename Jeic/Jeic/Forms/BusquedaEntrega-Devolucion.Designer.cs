@@ -34,6 +34,7 @@
             this.rbtnDev = new System.Windows.Forms.RadioButton();
             this.dato1 = new System.Windows.Forms.Label();
             this.dato2 = new System.Windows.Forms.Label();
+            this.lblcve_venta = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -97,11 +98,21 @@
             this.dato2.TabIndex = 5;
             this.dato2.Text = "PEDIDO:";
             // 
+            // lblcve_venta
+            // 
+            this.lblcve_venta.AutoSize = true;
+            this.lblcve_venta.Location = new System.Drawing.Point(416, 43);
+            this.lblcve_venta.Name = "lblcve_venta";
+            this.lblcve_venta.Size = new System.Drawing.Size(58, 13);
+            this.lblcve_venta.TabIndex = 6;
+            this.lblcve_venta.Text = "cve_venta";
+            // 
             // BusquedaEntrega_Devolucion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(462, 450);
+            this.Controls.Add(this.lblcve_venta);
             this.Controls.Add(this.dato2);
             this.Controls.Add(this.dato1);
             this.Controls.Add(this.rbtnDev);
@@ -125,5 +136,6 @@
         public System.Windows.Forms.Label dato3;
         public System.Windows.Forms.Label dato1;
         public System.Windows.Forms.Label dato2;
+        public System.Windows.Forms.Label lblcve_venta;
     }
 }

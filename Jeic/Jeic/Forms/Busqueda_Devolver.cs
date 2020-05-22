@@ -86,6 +86,7 @@ namespace Refracciones.Forms
                 elec.lblUsuario.Text = lblUsuario.Text;
                 elec.dato_1.Text = dvgPedido.Rows[fila].Cells[1].Value.ToString();
                 elec.dato_2.Text = dvgPedido.Rows[fila].Cells[0].Value.ToString();
+                elec.lblCve_venta.Text = dvgPedido.Rows[fila].Cells[8].Value.ToString();
                 elec.ShowDialog();
             }
 
