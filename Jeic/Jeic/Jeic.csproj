@@ -68,6 +68,9 @@
     <Reference Include="Common.Logging.Core, Version=3.4.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
       <HintPath>..\packages\Common.Logging.Core.3.4.1\lib\net40\Common.Logging.Core.dll</HintPath>
     </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.5.5631.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.5\lib\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
     <Reference Include="itext.barcodes, Version=7.1.11.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\itext7.7.1.11\lib\net40\itext.barcodes.dll</HintPath>
     </Reference>
@@ -103,6 +106,9 @@
     </Reference>
     <Reference Include="Microsoft.IdentityModel.Tokens, Version=6.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.IdentityModel.Tokens.6.5.0\lib\net461\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
+    <Reference Include="SpreadsheetLight, Version=3.4.11.0, Culture=neutral, PublicKeyToken=32fbb46dc1730c57, processorArchitecture=MSIL">
+      <HintPath>..\packages\SpreadsheetLight.3.4.11\lib\net40\SpreadsheetLight.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -155,6 +161,12 @@
     </Compile>
     <Compile Include="Forms\Devolucion-Entrega.Designer.cs">
       <DependentUpon>Devolucion-Entrega.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\exportarExcel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\exportarExcel.Designer.cs">
+      <DependentUpon>exportarExcel.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\InicioSesion.cs">
       <SubType>Form</SubType>
@@ -217,6 +229,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Devolucion-Entrega.resx">
       <DependentUpon>Devolucion-Entrega.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\exportarExcel.resx">
+      <DependentUpon>exportarExcel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\InicioSesion.resx">
       <DependentUpon>InicioSesion.cs</DependentUpon>

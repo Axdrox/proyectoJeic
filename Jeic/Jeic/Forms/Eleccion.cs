@@ -143,7 +143,7 @@ namespace Refracciones
 
         private void btnPDF_Click(object sender, EventArgs e)
         {
-           saveFileDialog1.InitialDirectory = @"C:\";      
+            saveFileDialog1.InitialDirectory = @"C:\";      
             saveFileDialog1.Title = "PEDIDO";
             saveFileDialog1.CheckPathExists = true;
             saveFileDialog1.DefaultExt = "pdf";
