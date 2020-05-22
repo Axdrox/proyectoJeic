@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.TxtClaveSin = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -72,6 +72,8 @@
             this.dgvDatos = new System.Windows.Forms.DataGridView();
             this.btnAgregarPedido = new System.Windows.Forms.Button();
             this.pbAlertas = new System.Windows.Forms.PictureBox();
+            this.txtCveVendedor = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.Panelinfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFactura)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dvgPedido)).BeginInit();
@@ -103,7 +105,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(162, 46);
+            this.label2.Location = new System.Drawing.Point(216, 45);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(92, 17);
             this.label2.TabIndex = 2;
@@ -111,7 +113,7 @@
             // 
             // TxtClavePed
             // 
-            this.TxtClavePed.Location = new System.Drawing.Point(162, 66);
+            this.TxtClavePed.Location = new System.Drawing.Point(197, 66);
             this.TxtClavePed.MaxLength = 30;
             this.TxtClavePed.Name = "TxtClavePed";
             this.TxtClavePed.Size = new System.Drawing.Size(133, 20);
@@ -435,34 +437,34 @@
             // 
             this.dvgPedido.AllowUserToAddRows = false;
             this.dvgPedido.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dvgPedido.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dvgPedido.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dvgPedido.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dvgPedido.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dvgPedido.DefaultCellStyle = dataGridViewCellStyle5;
             this.dvgPedido.Location = new System.Drawing.Point(355, 136);
             this.dvgPedido.Name = "dvgPedido";
             this.dvgPedido.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dvgPedido.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dvgPedido.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dvgPedido.RowHeadersWidth = 51;
             this.dvgPedido.Size = new System.Drawing.Size(740, 403);
             this.dvgPedido.TabIndex = 7;
@@ -505,7 +507,7 @@
             this.PanelFecha.Controls.Add(this.label3);
             this.PanelFecha.Controls.Add(this.Fecha_Fin);
             this.PanelFecha.Controls.Add(this.label4);
-            this.PanelFecha.Location = new System.Drawing.Point(416, 24);
+            this.PanelFecha.Location = new System.Drawing.Point(633, 46);
             this.PanelFecha.Name = "PanelFecha";
             this.PanelFecha.Size = new System.Drawing.Size(356, 65);
             this.PanelFecha.TabIndex = 11;
@@ -514,19 +516,19 @@
             // 
             this.dgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDatos.Enabled = false;
-            this.dgvDatos.Location = new System.Drawing.Point(819, 33);
+            this.dgvDatos.Location = new System.Drawing.Point(1016, 33);
             this.dgvDatos.Name = "dgvDatos";
             this.dgvDatos.RowHeadersWidth = 51;
-            this.dgvDatos.Size = new System.Drawing.Size(276, 53);
+            this.dgvDatos.Size = new System.Drawing.Size(79, 53);
             this.dgvDatos.TabIndex = 12;
             this.dgvDatos.Visible = false;
             // 
             // btnAgregarPedido
             // 
-            this.btnAgregarPedido.Location = new System.Drawing.Point(165, 89);
+            this.btnAgregarPedido.Location = new System.Drawing.Point(209, 89);
             this.btnAgregarPedido.Margin = new System.Windows.Forms.Padding(2);
             this.btnAgregarPedido.Name = "btnAgregarPedido";
-            this.btnAgregarPedido.Size = new System.Drawing.Size(124, 22);
+            this.btnAgregarPedido.Size = new System.Drawing.Size(111, 22);
             this.btnAgregarPedido.TabIndex = 13;
             this.btnAgregarPedido.Text = "Agregar Pedido";
             this.btnAgregarPedido.UseVisualStyleBackColor = true;
@@ -544,11 +546,32 @@
             this.pbAlertas.TabStop = false;
             this.pbAlertas.Click += new System.EventHandler(this.pbAlertas_Click);
             // 
+            // txtCveVendedor
+            // 
+            this.txtCveVendedor.Location = new System.Drawing.Point(385, 66);
+            this.txtCveVendedor.MaxLength = 30;
+            this.txtCveVendedor.Name = "txtCveVendedor";
+            this.txtCveVendedor.Size = new System.Drawing.Size(133, 20);
+            this.txtCveVendedor.TabIndex = 15;
+            this.txtCveVendedor.KeyUp += new System.Windows.Forms.KeyEventHandler(this.BusquedaPedido);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(398, 46);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(109, 17);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "Clave vendedor";
+            // 
             // Busqueda_Devolver
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1117, 576);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.txtCveVendedor);
             this.Controls.Add(this.pbAlertas);
             this.Controls.Add(this.btnAgregarPedido);
             this.Controls.Add(this.dgvDatos);
@@ -620,5 +643,7 @@
         private System.Windows.Forms.PictureBox pbFactura;
         private System.Windows.Forms.Button btnAgregarPedido;
         private System.Windows.Forms.PictureBox pbAlertas;
+        private System.Windows.Forms.TextBox txtCveVendedor;
+        private System.Windows.Forms.Label label5;
     }
 }

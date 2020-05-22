@@ -34,22 +34,7 @@ namespace Refracciones.Forms
         OperBD llenar = new OperBD();
         private void BusquedaPedido(object sender, KeyEventArgs e)
         {
-            if (TxtClavePed.Text == "" && TxtClaveSin.Text == "") {
-                OperBD llenarDefaultDGV = new OperBD();
-                llenarDefaultDGV.defaultDGV(dvgPedido);
-            }
-            else if (TxtClaveSin.Text == "")
-            {
-                llenar.Llenartabla1(dvgPedido, "", TxtClavePed.Text);
-            }
-            else if (TxtClavePed.Text == "")
-            {
-                llenar.Llenartabla1(dvgPedido, TxtClaveSin.Text, "");
-            }
-            else {
-                llenar.Llenartabla1(dvgPedido, TxtClaveSin.Text, TxtClavePed.Text);
-            }
-        
+            llenar.Llenartabla1(dvgPedido, TxtClaveSin.Text.ToString(), TxtClavePed.Text.ToString(), txtCveVendedor.Text.ToString());
         }
   
         private void dvgPedido_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -112,7 +97,7 @@ namespace Refracciones.Forms
             string Fecha_Final = Fecha_Fin.Value.Year.ToString() + "-" + Fecha_Fin.Value.Month.ToString() + "-" + Fecha_Fin.Value.Day.ToString();
 
             OperBD llenarFecha = new OperBD();
-            llenarFecha.Llenartabla2(dvgPedido, Fecha_inicio, Fecha_Final);
+            llenarFecha.Llenartabla(dvgPedido, Fecha_inicio, Fecha_Final);
             TxtClavePed.Text = "";
             TxtClaveSin.Text = "";
 
@@ -160,7 +145,5 @@ namespace Refracciones.Forms
             Alertas alert = new Alertas();
             alert.Show();
         }
-
-
     }
 }
