@@ -143,8 +143,31 @@ namespace Refracciones.Forms
 
         private void pbAlertas_Click(object sender, EventArgs e)
         {
+            
+        }
+
+        private void generarReporteVentasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            exportarExcel reporte = new exportarExcel();
+            reporte.ShowDialog();
+        }
+
+
+
+
+
+        private void notificacionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
             Alertas alert = new Alertas();
             alert.Show();
+        }
+
+        private void cerrarSesionToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            InicioSesion sesion = new InicioSesion();
+            sesion.Show();
+            this.Close();
+                
         }
     }
 }
