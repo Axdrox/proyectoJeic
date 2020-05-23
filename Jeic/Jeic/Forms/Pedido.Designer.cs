@@ -162,10 +162,13 @@
             // 
             // cbAseguradora
             // 
+            this.cbAseguradora.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.cbAseguradora.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbAseguradora.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbAseguradora.Enabled = false;
+            this.cbAseguradora.ForeColor = System.Drawing.Color.White;
             this.cbAseguradora.FormattingEnabled = true;
-            this.cbAseguradora.Location = new System.Drawing.Point(495, 91);
+            this.cbAseguradora.Location = new System.Drawing.Point(497, 66);
             this.cbAseguradora.Margin = new System.Windows.Forms.Padding(2);
             this.cbAseguradora.Name = "cbAseguradora";
             this.cbAseguradora.Size = new System.Drawing.Size(295, 21);
@@ -199,10 +202,13 @@
             // 
             // cbVendedor
             // 
+            this.cbVendedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.cbVendedor.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbVendedor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbVendedor.Enabled = false;
+            this.cbVendedor.ForeColor = System.Drawing.Color.White;
             this.cbVendedor.FormattingEnabled = true;
-            this.cbVendedor.Location = new System.Drawing.Point(495, 52);
+            this.cbVendedor.Location = new System.Drawing.Point(497, 29);
             this.cbVendedor.Margin = new System.Windows.Forms.Padding(2);
             this.cbVendedor.Name = "cbVendedor";
             this.cbVendedor.Size = new System.Drawing.Size(295, 21);
@@ -287,10 +293,12 @@
             // 
             // cbTaller
             // 
+            this.cbTaller.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.cbTaller.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTaller.Enabled = false;
+            this.cbTaller.ForeColor = System.Drawing.Color.White;
             this.cbTaller.FormattingEnabled = true;
-            this.cbTaller.Location = new System.Drawing.Point(495, 195);
+            this.cbTaller.Location = new System.Drawing.Point(497, 169);
             this.cbTaller.Margin = new System.Windows.Forms.Padding(2);
             this.cbTaller.Name = "cbTaller";
             this.cbTaller.Size = new System.Drawing.Size(295, 21);
@@ -299,10 +307,12 @@
             // 
             // cbDestino
             // 
+            this.cbDestino.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.cbDestino.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbDestino.Enabled = false;
+            this.cbDestino.ForeColor = System.Drawing.Color.White;
             this.cbDestino.FormattingEnabled = true;
-            this.cbDestino.Location = new System.Drawing.Point(495, 234);
+            this.cbDestino.Location = new System.Drawing.Point(497, 208);
             this.cbDestino.Margin = new System.Windows.Forms.Padding(2);
             this.cbDestino.Name = "cbDestino";
             this.cbDestino.Size = new System.Drawing.Size(295, 21);
@@ -400,6 +410,7 @@
             // 
             this.rdbSi.AutoSize = true;
             this.rdbSi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(35)))), ((int)(((byte)(41)))));
+            this.rdbSi.Cursor = System.Windows.Forms.Cursors.Default;
             this.rdbSi.Enabled = false;
             this.rdbSi.ForeColor = System.Drawing.Color.White;
             this.rdbSi.Location = new System.Drawing.Point(121, 82);
@@ -428,6 +439,7 @@
             // 
             this.chbOtroValuador.AutoSize = true;
             this.chbOtroValuador.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(45)))), ((int)(((byte)(57)))));
+            this.chbOtroValuador.Cursor = System.Windows.Forms.Cursors.Default;
             this.chbOtroValuador.Enabled = false;
             this.chbOtroValuador.ForeColor = System.Drawing.Color.White;
             this.chbOtroValuador.Location = new System.Drawing.Point(795, 157);
@@ -444,23 +456,27 @@
             this.txtValuador.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.txtValuador.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtValuador.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.txtValuador.Location = new System.Drawing.Point(494, 155);
+            this.txtValuador.Location = new System.Drawing.Point(496, 133);
             this.txtValuador.Margin = new System.Windows.Forms.Padding(2);
             this.txtValuador.Name = "txtValuador";
             this.txtValuador.Size = new System.Drawing.Size(297, 20);
             this.txtValuador.TabIndex = 26;
             this.txtValuador.Text = "Escriba nombre del valuador";
             this.txtValuador.Click += new System.EventHandler(this.txtValuador_Click);
+            this.txtValuador.Leave += new System.EventHandler(this.txtValuador_Leave);
             // 
             // cbValuador
             // 
+            this.cbValuador.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.cbValuador.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbValuador.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbValuador.Enabled = false;
+            this.cbValuador.ForeColor = System.Drawing.Color.White;
             this.cbValuador.FormattingEnabled = true;
-            this.cbValuador.Location = new System.Drawing.Point(494, 155);
+            this.cbValuador.Location = new System.Drawing.Point(497, 132);
             this.cbValuador.Margin = new System.Windows.Forms.Padding(2);
             this.cbValuador.Name = "cbValuador";
-            this.cbValuador.Size = new System.Drawing.Size(296, 21);
+            this.cbValuador.Size = new System.Drawing.Size(295, 21);
             this.cbValuador.TabIndex = 27;
             this.cbValuador.Click += new System.EventHandler(this.cbValuador_Click);
             // 
@@ -469,21 +485,23 @@
             this.txtAseguradora.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.txtAseguradora.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtAseguradora.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.txtAseguradora.Location = new System.Drawing.Point(495, 91);
+            this.txtAseguradora.Location = new System.Drawing.Point(497, 67);
             this.txtAseguradora.Margin = new System.Windows.Forms.Padding(2);
             this.txtAseguradora.Name = "txtAseguradora";
-            this.txtAseguradora.Size = new System.Drawing.Size(295, 20);
+            this.txtAseguradora.Size = new System.Drawing.Size(296, 20);
             this.txtAseguradora.TabIndex = 28;
             this.txtAseguradora.Text = "Escriba el nombre del cliente";
             this.txtAseguradora.Click += new System.EventHandler(this.txtAseguradora_Click);
+            this.txtAseguradora.Leave += new System.EventHandler(this.txtAseguradora_Leave);
             // 
             // chbOtraAseguradora
             // 
             this.chbOtraAseguradora.AutoSize = true;
             this.chbOtraAseguradora.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(43)))));
+            this.chbOtraAseguradora.Cursor = System.Windows.Forms.Cursors.Default;
             this.chbOtraAseguradora.Enabled = false;
             this.chbOtraAseguradora.ForeColor = System.Drawing.Color.White;
-            this.chbOtraAseguradora.Location = new System.Drawing.Point(795, 94);
+            this.chbOtraAseguradora.Location = new System.Drawing.Point(795, 90);
             this.chbOtraAseguradora.Margin = new System.Windows.Forms.Padding(2);
             this.chbOtraAseguradora.Name = "chbOtraAseguradora";
             this.chbOtraAseguradora.Size = new System.Drawing.Size(46, 17);
@@ -538,14 +556,16 @@
             this.txtClavePedido.Text = "Escriba una clave";
             this.txtClavePedido.Click += new System.EventHandler(this.txtClavePedido_Click);
             this.txtClavePedido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtClavePedido_KeyPress);
+            this.txtClavePedido.Leave += new System.EventHandler(this.txtClavePedido_Leave);
             // 
             // chbOtroTaller
             // 
             this.chbOtroTaller.AutoSize = true;
             this.chbOtroTaller.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(52)))), ((int)(((byte)(67)))));
+            this.chbOtroTaller.Cursor = System.Windows.Forms.Cursors.Default;
             this.chbOtroTaller.Enabled = false;
             this.chbOtroTaller.ForeColor = System.Drawing.Color.White;
-            this.chbOtroTaller.Location = new System.Drawing.Point(795, 197);
+            this.chbOtroTaller.Location = new System.Drawing.Point(795, 194);
             this.chbOtroTaller.Margin = new System.Windows.Forms.Padding(2);
             this.chbOtroTaller.Name = "chbOtroTaller";
             this.chbOtroTaller.Size = new System.Drawing.Size(46, 17);
@@ -558,9 +578,10 @@
             // 
             this.chbOtroDestino.AutoSize = true;
             this.chbOtroDestino.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(57)))), ((int)(((byte)(76)))));
+            this.chbOtroDestino.Cursor = System.Windows.Forms.Cursors.Default;
             this.chbOtroDestino.Enabled = false;
             this.chbOtroDestino.ForeColor = System.Drawing.Color.White;
-            this.chbOtroDestino.Location = new System.Drawing.Point(795, 236);
+            this.chbOtroDestino.Location = new System.Drawing.Point(795, 233);
             this.chbOtroDestino.Margin = new System.Windows.Forms.Padding(2);
             this.chbOtroDestino.Name = "chbOtroDestino";
             this.chbOtroDestino.Size = new System.Drawing.Size(46, 17);
@@ -574,26 +595,28 @@
             this.txtTaller.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.txtTaller.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTaller.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.txtTaller.Location = new System.Drawing.Point(494, 195);
+            this.txtTaller.Location = new System.Drawing.Point(497, 170);
             this.txtTaller.Margin = new System.Windows.Forms.Padding(2);
             this.txtTaller.Name = "txtTaller";
-            this.txtTaller.Size = new System.Drawing.Size(297, 20);
+            this.txtTaller.Size = new System.Drawing.Size(295, 20);
             this.txtTaller.TabIndex = 36;
             this.txtTaller.Text = "Escriba nombre de taller";
             this.txtTaller.Click += new System.EventHandler(this.txtTaller_Click);
+            this.txtTaller.Leave += new System.EventHandler(this.txtTaller_Leave);
             // 
             // txtDestino
             // 
             this.txtDestino.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.txtDestino.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDestino.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.txtDestino.Location = new System.Drawing.Point(494, 234);
+            this.txtDestino.Location = new System.Drawing.Point(497, 209);
             this.txtDestino.Margin = new System.Windows.Forms.Padding(2);
             this.txtDestino.Name = "txtDestino";
-            this.txtDestino.Size = new System.Drawing.Size(297, 20);
+            this.txtDestino.Size = new System.Drawing.Size(296, 20);
             this.txtDestino.TabIndex = 37;
             this.txtDestino.Text = "Escriba el destino";
             this.txtDestino.Click += new System.EventHandler(this.txtDestino_Click);
+            this.txtDestino.Leave += new System.EventHandler(this.txtDestino_Leave);
             // 
             // btnAgregarPieza
             // 
@@ -727,6 +750,7 @@
             // 
             this.chbModificarVendedor.AutoSize = true;
             this.chbModificarVendedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(30)))), ((int)(((byte)(33)))));
+            this.chbModificarVendedor.Cursor = System.Windows.Forms.Cursors.Default;
             this.chbModificarVendedor.ForeColor = System.Drawing.Color.White;
             this.chbModificarVendedor.Location = new System.Drawing.Point(795, 54);
             this.chbModificarVendedor.Margin = new System.Windows.Forms.Padding(2);
@@ -744,7 +768,7 @@
             this.txtVendedor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtVendedor.Enabled = false;
             this.txtVendedor.ForeColor = System.Drawing.Color.White;
-            this.txtVendedor.Location = new System.Drawing.Point(495, 52);
+            this.txtVendedor.Location = new System.Drawing.Point(497, 30);
             this.txtVendedor.Margin = new System.Windows.Forms.Padding(2);
             this.txtVendedor.Name = "txtVendedor";
             this.txtVendedor.Size = new System.Drawing.Size(296, 20);
@@ -768,14 +792,18 @@
             // 
             this.txtComentarioSiniestro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.txtComentarioSiniestro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtComentarioSiniestro.ForeColor = System.Drawing.Color.White;
+            this.txtComentarioSiniestro.ForeColor = System.Drawing.Color.DarkGray;
             this.txtComentarioSiniestro.Location = new System.Drawing.Point(120, 194);
             this.txtComentarioSiniestro.Margin = new System.Windows.Forms.Padding(2);
             this.txtComentarioSiniestro.Multiline = true;
             this.txtComentarioSiniestro.Name = "txtComentarioSiniestro";
             this.txtComentarioSiniestro.Size = new System.Drawing.Size(231, 48);
             this.txtComentarioSiniestro.TabIndex = 52;
+            this.txtComentarioSiniestro.Text = "Agregue un comentario";
             this.txtComentarioSiniestro.Visible = false;
+            this.txtComentarioSiniestro.Click += new System.EventHandler(this.txtComentarioSiniestro_Click);
+            this.txtComentarioSiniestro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtComentarioSiniestro_KeyPress);
+            this.txtComentarioSiniestro.Leave += new System.EventHandler(this.txtComentarioSiniestro_Leave);
             // 
             // cbEstadoSiniestro
             // 
@@ -809,21 +837,20 @@
             this.txtEstado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.txtEstado.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtEstado.Enabled = false;
-            this.txtEstado.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.txtEstado.ForeColor = System.Drawing.Color.White;
             this.txtEstado.Location = new System.Drawing.Point(119, 140);
             this.txtEstado.Margin = new System.Windows.Forms.Padding(2);
             this.txtEstado.Name = "txtEstado";
             this.txtEstado.Size = new System.Drawing.Size(232, 20);
             this.txtEstado.TabIndex = 55;
-            this.txtEstado.Text = "Agregue nuevo estado";
-            this.txtEstado.Click += new System.EventHandler(this.txtEstado_Click);
             // 
             // chbModificarEstado
             // 
             this.chbModificarEstado.AutoSize = true;
             this.chbModificarEstado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(47)))), ((int)(((byte)(59)))));
+            this.chbModificarEstado.Cursor = System.Windows.Forms.Cursors.Default;
             this.chbModificarEstado.ForeColor = System.Drawing.Color.White;
-            this.chbModificarEstado.Location = new System.Drawing.Point(355, 166);
+            this.chbModificarEstado.Location = new System.Drawing.Point(355, 163);
             this.chbModificarEstado.Margin = new System.Windows.Forms.Padding(2);
             this.chbModificarEstado.Name = "chbModificarEstado";
             this.chbModificarEstado.Size = new System.Drawing.Size(69, 17);
@@ -866,7 +893,9 @@
             this.bunifuGradientPanel1.BackColor = System.Drawing.Color.Transparent;
             this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
             this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuGradientPanel1.Controls.Add(this.txtVendedor);
             this.bunifuGradientPanel1.Controls.Add(this.dgvPedido);
+            this.bunifuGradientPanel1.Controls.Add(this.txtValuador);
             this.bunifuGradientPanel1.Controls.Add(this.btnAgregarPieza);
             this.bunifuGradientPanel1.Controls.Add(this.label5);
             this.bunifuGradientPanel1.Controls.Add(this.label11);
@@ -874,6 +903,14 @@
             this.bunifuGradientPanel1.Controls.Add(this.txtEstado);
             this.bunifuGradientPanel1.Controls.Add(this.cbEstadoSiniestro);
             this.bunifuGradientPanel1.Controls.Add(this.chbSi);
+            this.bunifuGradientPanel1.Controls.Add(this.cbVendedor);
+            this.bunifuGradientPanel1.Controls.Add(this.txtAseguradora);
+            this.bunifuGradientPanel1.Controls.Add(this.cbValuador);
+            this.bunifuGradientPanel1.Controls.Add(this.cbAseguradora);
+            this.bunifuGradientPanel1.Controls.Add(this.txtDestino);
+            this.bunifuGradientPanel1.Controls.Add(this.txtTaller);
+            this.bunifuGradientPanel1.Controls.Add(this.cbDestino);
+            this.bunifuGradientPanel1.Controls.Add(this.cbTaller);
             this.bunifuGradientPanel1.GradientBottomLeft = System.Drawing.Color.Black;
             this.bunifuGradientPanel1.GradientBottomRight = System.Drawing.Color.CornflowerBlue;
             this.bunifuGradientPanel1.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
@@ -889,11 +926,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(28)))), ((int)(((byte)(27)))));
-            this.ClientSize = new System.Drawing.Size(1346, 527);
+            this.ClientSize = new System.Drawing.Size(1341, 527);
             this.Controls.Add(this.lblDiasEspera);
             this.Controls.Add(this.txtDiasEspera);
-            this.Controls.Add(this.txtVendedor);
-            this.Controls.Add(this.txtValuador);
             this.Controls.Add(this.chbModificarEstado);
             this.Controls.Add(this.lblEstado);
             this.Controls.Add(this.txtComentarioSiniestro);
@@ -906,8 +941,6 @@
             this.Controls.Add(this.lblCantidadTotal);
             this.Controls.Add(this.dtpFechaBaja);
             this.Controls.Add(this.lblFechaBaja);
-            this.Controls.Add(this.txtDestino);
-            this.Controls.Add(this.txtTaller);
             this.Controls.Add(this.chbOtroDestino);
             this.Controls.Add(this.chbOtroTaller);
             this.Controls.Add(this.txtClavePedido);
@@ -915,25 +948,19 @@
             this.Controls.Add(this.lblClaveSiniestro);
             this.Controls.Add(this.lblClaveSiniestroPedido);
             this.Controls.Add(this.chbOtraAseguradora);
-            this.Controls.Add(this.txtAseguradora);
-            this.Controls.Add(this.cbValuador);
             this.Controls.Add(this.chbOtroValuador);
             this.Controls.Add(this.rdbSi);
             this.Controls.Add(this.rdbNo);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnFinalizarPedido);
-            this.Controls.Add(this.cbDestino);
-            this.Controls.Add(this.cbTaller);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.dtpFechaPromesa);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.dtpFechaAsignacion);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.cbVendedor);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.lblClientePedido);
-            this.Controls.Add(this.cbAseguradora);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.lblAnio);
             this.Controls.Add(this.lblVehiculo);

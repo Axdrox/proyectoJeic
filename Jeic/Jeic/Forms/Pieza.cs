@@ -37,9 +37,9 @@
         /*
         private void obteniendoClaves()
         {
-            
         }
         */
+
         /// <summary>
         /// The cbPiezaNombre_Click.
         /// </summary>
@@ -62,10 +62,16 @@
             if (chbOtroPieza.Checked == true)
             {
                 txtPiezaNombre.Visible = true;
+                cbPiezaNombre.Hide();
+                cbPiezaNombre.SelectedIndex = -1;
             }
             else
             {
+                cbPiezaNombre.Show();
+                txtPiezaNombre.Clear();
                 txtPiezaNombre.Visible = false;
+                txtPiezaNombre.Text = "Escriba nombre de pieza";
+                txtPiezaNombre.ForeColor = Color.FromArgb(160, 160, 140);
             }
         }
 
@@ -91,10 +97,16 @@
             if (chbOtroPortal.Checked == true)
             {
                 txtPortal.Visible = true;
+                cbPortal.Hide();
+                cbPortal.SelectedIndex = -1;
             }
             else
             {
+                cbPortal.Show();
+                txtPortal.Clear();
                 txtPortal.Visible = false;
+                txtPortal.Text = "Escriba un nuevo portal";
+                txtPortal.ForeColor = Color.FromArgb(160, 160, 140);
             }
         }
 
@@ -120,10 +132,16 @@
             if (chbOtroOrigen.Checked == true)
             {
                 txtOrigen.Visible = true;
+                cbOrigen.Hide();
+                cbOrigen.SelectedIndex = -1;
             }
             else
             {
+                cbOrigen.Show();
                 txtOrigen.Visible = false;
+                txtOrigen.Clear();
+                txtOrigen.Text = "Escriba un nuevo origen";
+                txtOrigen.ForeColor = Color.FromArgb(160, 160, 140);
             }
         }
 
@@ -149,10 +167,16 @@
             if (chbOtroProveedor.Checked == true)
             {
                 txtProveedor.Visible = true;
+                cbProveedores.Hide();
+                cbProveedores.SelectedIndex = -1;
             }
             else
             {
+                cbProveedores.Show();
                 txtProveedor.Visible = false;
+                txtProveedor.Clear();
+                txtProveedor.Text = "Escriba un nuevo proveedor";
+                txtProveedor.ForeColor = Color.FromArgb(160, 160, 140);
             }
         }
 
@@ -211,10 +235,10 @@
         /// <param name="e">The e<see cref="EventArgs"/>.</param>
         private void txtPiezaNombre_Click(object sender, EventArgs e)
         {
-            if (txtPiezaNombre.Text == "Escribe nombre de pieza")
+            if (txtPiezaNombre.Text == "Escriba nombre de pieza")
             {
                 txtPiezaNombre.Text = "";
-                txtPiezaNombre.ForeColor = Color.Black;
+                txtPiezaNombre.ForeColor = Color.White;
             }
         }
 
@@ -225,10 +249,10 @@
         /// <param name="e">The e<see cref="EventArgs"/>.</param>
         private void txtPortal_Click(object sender, EventArgs e)
         {
-            if (txtPortal.Text == "Escribe nuevo portal")
+            if (txtPortal.Text == "Escriba un nuevo portal")
             {
                 txtPortal.Text = "";
-                txtPortal.ForeColor = Color.Black;
+                txtPortal.ForeColor = Color.White;
             }
         }
 
@@ -239,10 +263,10 @@
         /// <param name="e">The e<see cref="EventArgs"/>.</param>
         private void txtOrigen_Click(object sender, EventArgs e)
         {
-            if (txtOrigen.Text == "Escribe un nuevo origen")
+            if (txtOrigen.Text == "Escriba un nuevo origen")
             {
                 txtOrigen.Text = "";
-                txtOrigen.ForeColor = Color.Black;
+                txtOrigen.ForeColor = Color.White;
             }
         }
 
@@ -253,10 +277,10 @@
         /// <param name="e">The e<see cref="EventArgs"/>.</param>
         private void txtProveedor_Click(object sender, EventArgs e)
         {
-            if (txtProveedor.Text == "Escribe un nuevo proveedor")
+            if (txtProveedor.Text == "Escriba un nuevo proveedor")
             {
                 txtProveedor.Text = "";
-                txtProveedor.ForeColor = Color.Black;
+                txtProveedor.ForeColor = Color.White;
             }
         }
 
@@ -407,7 +431,7 @@
             {
                 j += 1;
                 //int i = operacion.registrarPieza(txtPiezaNombre.Text.Trim().ToUpper()); PONER EN PEDIDO
-                if (operacion.existePieza(txtPiezaNombre.Text.Trim().ToUpper()) == string.Empty)
+                if ((operacion.existePieza(txtPiezaNombre.Text.Trim().ToUpper()) == string.Empty) && txtPiezaNombre.Text != "Escriba nombre de pieza")
                 {
                     datosPieza[0] = txtPiezaNombre.Text.Trim().ToUpper();
                     modificacion += 1;
@@ -423,12 +447,11 @@
             else
                 datosPieza[0] = cbPiezaNombre.Text.Trim().ToUpper();
 
-
             if (chbOtroPortal.Checked == true)
             {
                 j += 1;
                 //int i = operacion.registrarPortal(txtPortal.Text.Trim());
-                if (operacion.existePortal(txtPortal.Text.Trim()) == string.Empty)
+                if ((operacion.existePortal(txtPortal.Text.Trim()) == string.Empty) && txtPortal.Text != "Escriba un nuevo portal")
                 {
                     datosPieza[4] = txtPortal.Text.Trim().ToUpper();
                     modificacion += 1;
@@ -448,7 +471,7 @@
             {
                 j += 1;
                 //int i = operacion.registrarOrigen(txtOrigen.Text.Trim().ToUpper());
-                if (operacion.existeOrigen(txtOrigen.Text.Trim().ToUpper()) == string.Empty)
+                if ((operacion.existeOrigen(txtOrigen.Text.Trim().ToUpper()) == string.Empty) && txtOrigen.Text != "Escriba un nuevo origen")
                 {
                     datosPieza[5] = txtOrigen.Text.Trim().ToUpper();
                     modificacion += 1;
@@ -468,7 +491,7 @@
             {
                 j += 1;
                 //int i = operacion.registrarProveedor(txtProveedor.Text.Trim().ToUpper());
-                if (operacion.existeProveedor(txtProveedor.Text.Trim().ToUpper()) == string.Empty)
+                if ((operacion.existeProveedor(txtProveedor.Text.Trim().ToUpper()) == string.Empty) && txtProveedor.Text != "Escriba un nuevo proveedor")
                 {
                     datosPieza[6] = txtProveedor.Text.Trim().ToUpper();
                     modificacion += 1;
@@ -486,7 +509,7 @@
 
             if (modificacion == j)
             {
-                if(chbOtroPieza.Checked == true)
+                if (chbOtroPieza.Checked == true)
                     operacion.registrarPieza(txtPiezaNombre.Text.Trim().ToUpper());
 
                 if (chbOtroPortal.Checked == true)
@@ -540,6 +563,78 @@
         {
             //Colocar ICONO
             this.Icon = Resources.iconJeic;
+        }
+
+        private void txtPiezaNombre_Leave(object sender, EventArgs e)
+        {
+            if (txtPiezaNombre.Text == "")
+            {
+                txtPiezaNombre.Text = "Escriba nombre de pieza";
+                txtPiezaNombre.ForeColor = Color.FromArgb(160, 160, 140);
+            }
+        }
+
+        private void txtClaveProducto_Click(object sender, EventArgs e)
+        {
+            if (txtClaveProducto.Text == "Escriba clave del producto")
+            {
+                txtClaveProducto.Text = "";
+                txtClaveProducto.ForeColor = Color.White;
+            }
+        }
+
+        private void txtClaveProducto_Leave(object sender, EventArgs e)
+        {
+            if (txtClaveProducto.Text == "")
+            {
+                txtClaveProducto.Text = "Escriba clave del producto";
+                txtClaveProducto.ForeColor = Color.FromArgb(160, 160, 140);
+            }
+        }
+
+        private void txtNumeroGuia_Click(object sender, EventArgs e)
+        {
+            if (txtNumeroGuia.Text == "Escriba el número de guía")
+            {
+                txtNumeroGuia.Text = "";
+                txtNumeroGuia.ForeColor = Color.White;
+            }
+        }
+
+        private void txtNumeroGuia_Leave(object sender, EventArgs e)
+        {
+            if (txtNumeroGuia.Text == "")
+            {
+                txtNumeroGuia.Text = "Escriba el número de guía";
+                txtNumeroGuia.ForeColor = Color.FromArgb(160, 160, 140);
+            }
+        }
+
+        private void txtPortal_Leave(object sender, EventArgs e)
+        {
+            if (txtPortal.Text == "")
+            {
+                txtPortal.Text = "Escriba un nuevo portal";
+                txtPortal.ForeColor = Color.FromArgb(160, 160, 140);
+            }
+        }
+
+        private void txtOrigen_Leave(object sender, EventArgs e)
+        {
+            if (txtOrigen.Text == "")
+            {
+                txtOrigen.Text = "Escriba un nuevo origen";
+                txtOrigen.ForeColor = Color.FromArgb(160, 160, 140);
+            }
+        }
+
+        private void txtProveedor_Leave(object sender, EventArgs e)
+        {
+            if (txtProveedor.Text == "")
+            {
+                txtProveedor.Text = "Escriba un nuevo proveedor";
+                txtProveedor.ForeColor = Color.FromArgb(160, 160, 140);
+            }
         }
     }
 }

@@ -87,6 +87,7 @@ namespace Refracciones.Forms
                 lblVehiculo.Text = operacion.Vehiculo(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
                 chbModificarEstado.Show();
                 cbEstadoSiniestro.Enabled = false;
+                cbEstadoSiniestro.Hide();
                 txtEstado.Text = operacion.estadoSiniestroClaves(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
 
                 txtClavePedido.Enabled = false;
@@ -94,6 +95,7 @@ namespace Refracciones.Forms
 
                 chbModificarVendedor.Visible = true;
                 txtVendedor.Show();
+                cbVendedor.Hide();
                 txtVendedor.Text = operacion.Vendedor(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
 
                 chbOtraAseguradora.Enabled = true;
@@ -290,6 +292,7 @@ namespace Refracciones.Forms
                 {
                     txtAseguradora.Show();
                     cbAseguradora.Hide();
+                    cbAseguradora.SelectedIndex = -1;
 
                     lblDiasEspera.Visible = true;
                     txtDiasEspera.Visible = true;
@@ -298,6 +301,8 @@ namespace Refracciones.Forms
                 {
                     //else: que el texto se vuelva a escribir y se cambie el color al gris
                     txtAseguradora.Hide();
+                    txtAseguradora.Text = "Escriba el nombre del cliente";
+                    txtAseguradora.ForeColor = Color.FromArgb(160, 160, 140);
                     cbAseguradora.Show();
 
                     lblDiasEspera.Visible = false;
@@ -329,10 +334,13 @@ namespace Refracciones.Forms
                 {
                     txtValuador.Show();
                     cbValuador.Hide();
+                    cbValuador.SelectedIndex = -1;
                 }
                 else
                 {
                     txtValuador.Hide();
+                    txtValuador.Text = "Escriba nombre del valuador";
+                    txtValuador.ForeColor = Color.FromArgb(160, 160, 140);
                     cbValuador.Show();
                 }
             }
@@ -361,10 +369,13 @@ namespace Refracciones.Forms
                 {
                     txtTaller.Show();
                     cbTaller.Hide();
+                    cbTaller.SelectedIndex = -1;
                 }
                 else
                 {
                     txtTaller.Hide();
+                    txtTaller.Text = "Escriba nombre de taller";
+                    txtTaller.ForeColor = Color.FromArgb(160, 160, 140);
                     cbTaller.Show();
                 }
             }
@@ -393,10 +404,13 @@ namespace Refracciones.Forms
                 {
                     txtDestino.Show();
                     cbDestino.Hide();
+                    cbDestino.SelectedIndex = -1;
                 }
                 else
                 {
                     txtDestino.Hide();
+                    txtDestino.Text = "Escriba el destino";
+                    txtDestino.ForeColor = Color.FromArgb(160, 160, 140);
                     cbDestino.Show();
                 }
             }
@@ -409,7 +423,6 @@ namespace Refracciones.Forms
             {
                 e.Handled = true;
             }*/
-            txtClavePedido.ForeColor = Color.White;
             cbVendedor.Enabled = true;
 
             //CAMBIAR PARA VALIDACION
@@ -432,7 +445,10 @@ namespace Refracciones.Forms
         private void txtClavePedido_Click(object sender, EventArgs e)
         {
             if (txtClavePedido.Text == "Escriba una clave")
+            {
                 txtClavePedido.Text = "";
+                txtClavePedido.ForeColor = Color.White;
+            }
         }
 
         private void txtAseguradora_Click(object sender, EventArgs e)
@@ -440,7 +456,7 @@ namespace Refracciones.Forms
             if (txtAseguradora.Text == "Escriba el nombre del cliente")
             {
                 txtAseguradora.Text = "";
-                txtAseguradora.ForeColor = Color.Black;
+                txtAseguradora.ForeColor = Color.White;
             }
         }
 
@@ -449,7 +465,7 @@ namespace Refracciones.Forms
             if (txtValuador.Text == "Escriba nombre del valuador")
             {
                 txtValuador.Text = "";
-                txtValuador.ForeColor = Color.Black;
+                txtValuador.ForeColor = Color.White;
             }
         }
 
@@ -458,7 +474,7 @@ namespace Refracciones.Forms
             if (txtTaller.Text == "Escriba nombre de taller")
             {
                 txtTaller.Text = "";
-                txtTaller.ForeColor = Color.Black;
+                txtTaller.ForeColor = Color.White;
             }
         }
 
@@ -467,7 +483,7 @@ namespace Refracciones.Forms
             if (txtDestino.Text == "Escriba el destino")
             {
                 txtDestino.Text = "";
-                txtDestino.ForeColor = Color.Black;
+                txtDestino.ForeColor = Color.White;
             }
         }
 
@@ -810,12 +826,14 @@ namespace Refracciones.Forms
             if (chbModificarVendedor.Checked == true)
             {
                 txtVendedor.Hide();
+                cbVendedor.Show();
                 cbVendedor.Enabled = true;
             }
             else
             {
                 txtVendedor.Show();
                 cbVendedor.Enabled = false;
+                cbVendedor.Hide();
                 cbVendedor.SelectedIndex = -1;
             }
         }
@@ -832,12 +850,14 @@ namespace Refracciones.Forms
             {
                 txtEstado.Hide();
                 cbEstadoSiniestro.Enabled = true;
+                cbEstadoSiniestro.Show();
             }
             else
             {
                 txtEstado.Show();
                 cbEstadoSiniestro.Enabled = false;
                 cbEstadoSiniestro.SelectedIndex = -1;
+                cbEstadoSiniestro.Hide();
             }
         }
 
@@ -847,10 +867,72 @@ namespace Refracciones.Forms
                 dtpFechaPromesa.Text = dtpFechaAsignacion.Text;
         }
 
-        private void txtEstado_Click(object sender, EventArgs e)
+        private void txtComentarioSiniestro_Click(object sender, EventArgs e)
         {
-            if (txtClavePedido.Text == "Agregue nuevo estado")
-                txtClavePedido.Text = "";
+            if (txtComentarioSiniestro.Text == "Agregue un comentario")
+            {
+                txtComentarioSiniestro.Clear();
+                txtComentarioSiniestro.ForeColor = Color.White;
+            }
+        }
+
+        private void txtClavePedido_Leave(object sender, EventArgs e)
+        {
+            if (txtClavePedido.Text == "")
+            {
+                txtClavePedido.Text = "Escriba una clave";
+                txtClavePedido.ForeColor = Color.FromArgb(160, 160, 140);
+            }
+        }
+
+        private void txtComentarioSiniestro_Leave(object sender, EventArgs e)
+        {
+            if (txtComentarioSiniestro.Text == "")
+            {
+                txtComentarioSiniestro.Text = "Agregue un comentario";
+                txtComentarioSiniestro.ForeColor = Color.FromArgb(160, 160, 140);
+            }
+        }
+
+        private void txtComentarioSiniestro_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            txtComentarioSiniestro.ForeColor = Color.White;
+        }
+
+        private void txtAseguradora_Leave(object sender, EventArgs e)
+        {
+            if (txtAseguradora.Text == "")
+            {
+                txtAseguradora.Text = "Escriba el nombre del cliente";
+                txtAseguradora.ForeColor = Color.FromArgb(160, 160, 140);
+            }
+        }
+
+        private void txtValuador_Leave(object sender, EventArgs e)
+        {
+            if (txtValuador.Text == "")
+            {
+                txtValuador.Text = "Escriba nombre del valuador";
+                txtValuador.ForeColor = Color.FromArgb(160, 160, 140);
+            }
+        }
+
+        private void txtTaller_Leave(object sender, EventArgs e)
+        {
+            if (txtTaller.Text == "")
+            {
+                txtTaller.Text = "Escriba nombre de taller";
+                txtTaller.ForeColor = Color.FromArgb(160, 160, 140);
+            }
+        }
+
+        private void txtDestino_Leave(object sender, EventArgs e)
+        {
+            if (txtDestino.Text == "")
+            {
+                txtDestino.Text = "Escriba el destino";
+                txtDestino.ForeColor = Color.FromArgb(160, 160, 140);
+            }
         }
     }
 }
