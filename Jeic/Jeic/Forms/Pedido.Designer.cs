@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Pedido));
             this.label1 = new System.Windows.Forms.Label();
             this.lblVehiculoPedido = new System.Windows.Forms.Label();
             this.lblAnioPedido = new System.Windows.Forms.Label();
@@ -86,15 +90,17 @@
             this.txtEstado = new System.Windows.Forms.TextBox();
             this.chbModificarEstado = new System.Windows.Forms.CheckBox();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.panel1 = new System.Windows.Forms.Panel();
             this.txtDiasEspera = new System.Windows.Forms.TextBox();
             this.lblDiasEspera = new System.Windows.Forms.Label();
+            this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedido)).BeginInit();
+            this.bunifuGradientPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(40)))));
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(11, 84);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -105,6 +111,7 @@
             // 
             // lblVehiculoPedido
             // 
+            this.lblVehiculoPedido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(40)))), ((int)(((byte)(48)))));
             this.lblVehiculoPedido.ForeColor = System.Drawing.Color.White;
             this.lblVehiculoPedido.Location = new System.Drawing.Point(66, 120);
             this.lblVehiculoPedido.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -115,6 +122,7 @@
             // 
             // lblAnioPedido
             // 
+            this.lblAnioPedido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(42)))), ((int)(((byte)(52)))));
             this.lblAnioPedido.Location = new System.Drawing.Point(90, 134);
             this.lblAnioPedido.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblAnioPedido.Name = "lblAnioPedido";
@@ -143,6 +151,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(45)))), ((int)(((byte)(57)))));
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(435, 155);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -167,6 +176,7 @@
             // lblClientePedido
             // 
             this.lblClientePedido.AutoSize = true;
+            this.lblClientePedido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(35)))), ((int)(((byte)(42)))));
             this.lblClientePedido.ForeColor = System.Drawing.Color.White;
             this.lblClientePedido.Location = new System.Drawing.Point(435, 92);
             this.lblClientePedido.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -178,6 +188,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(30)))), ((int)(((byte)(33)))));
             this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.Location = new System.Drawing.Point(435, 55);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -202,6 +213,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(33)))), ((int)(((byte)(39)))));
             this.label7.ForeColor = System.Drawing.Color.White;
             this.label7.Location = new System.Drawing.Point(910, 77);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -212,6 +224,10 @@
             // 
             // dtpFechaAsignacion
             // 
+            this.dtpFechaAsignacion.CalendarForeColor = System.Drawing.Color.White;
+            this.dtpFechaAsignacion.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.dtpFechaAsignacion.CalendarTitleForeColor = System.Drawing.Color.White;
+            this.dtpFechaAsignacion.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dtpFechaAsignacion.Enabled = false;
             this.dtpFechaAsignacion.Location = new System.Drawing.Point(1028, 71);
             this.dtpFechaAsignacion.Margin = new System.Windows.Forms.Padding(2);
@@ -223,6 +239,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(39)))), ((int)(((byte)(46)))));
             this.label8.ForeColor = System.Drawing.Color.White;
             this.label8.Location = new System.Drawing.Point(910, 108);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -233,6 +250,9 @@
             // 
             // dtpFechaPromesa
             // 
+            this.dtpFechaPromesa.CalendarForeColor = System.Drawing.Color.White;
+            this.dtpFechaPromesa.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.dtpFechaPromesa.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dtpFechaPromesa.Enabled = false;
             this.dtpFechaPromesa.Location = new System.Drawing.Point(1028, 101);
             this.dtpFechaPromesa.Margin = new System.Windows.Forms.Padding(2);
@@ -244,6 +264,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(51)))), ((int)(((byte)(66)))));
             this.label9.ForeColor = System.Drawing.Color.White;
             this.label9.Location = new System.Drawing.Point(435, 195);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -255,6 +276,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(57)))), ((int)(((byte)(76)))));
             this.label10.ForeColor = System.Drawing.Color.White;
             this.label10.Location = new System.Drawing.Point(435, 234);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -290,13 +312,47 @@
             // dgvPedido
             // 
             this.dgvPedido.AllowUserToAddRows = false;
-            this.dgvPedido.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPedido.Location = new System.Drawing.Point(14, 270);
+            this.dgvPedido.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvPedido.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvPedido.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.dgvPedido.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvPedido.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvPedido.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(28)))), ((int)(((byte)(27)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(52)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPedido.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvPedido.ColumnHeadersHeight = 30;
+            this.dgvPedido.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvPedido.EnableHeadersVisualStyles = false;
+            this.dgvPedido.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(51)))), ((int)(((byte)(65)))));
+            this.dgvPedido.Location = new System.Drawing.Point(116, 251);
             this.dgvPedido.Margin = new System.Windows.Forms.Padding(2);
             this.dgvPedido.Name = "dgvPedido";
+            this.dgvPedido.ReadOnly = true;
+            this.dgvPedido.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(125)))), ((int)(((byte)(184)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPedido.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvPedido.RowHeadersVisible = false;
             this.dgvPedido.RowHeadersWidth = 51;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(64)))), ((int)(((byte)(88)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvPedido.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvPedido.RowTemplate.Height = 24;
-            this.dgvPedido.Size = new System.Drawing.Size(1310, 167);
+            this.dgvPedido.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPedido.Size = new System.Drawing.Size(1068, 167);
             this.dgvPedido.TabIndex = 18;
             this.dgvPedido.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPedido_CellClick);
             // 
@@ -328,6 +384,7 @@
             // rdbNo
             // 
             this.rdbNo.AutoSize = true;
+            this.rdbNo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(35)))), ((int)(((byte)(41)))));
             this.rdbNo.Enabled = false;
             this.rdbNo.ForeColor = System.Drawing.Color.White;
             this.rdbNo.Location = new System.Drawing.Point(167, 82);
@@ -336,12 +393,13 @@
             this.rdbNo.Size = new System.Drawing.Size(39, 17);
             this.rdbNo.TabIndex = 22;
             this.rdbNo.Text = "No";
-            this.rdbNo.UseVisualStyleBackColor = true;
+            this.rdbNo.UseVisualStyleBackColor = false;
             this.rdbNo.CheckedChanged += new System.EventHandler(this.rdbNo_CheckedChanged);
             // 
             // rdbSi
             // 
             this.rdbSi.AutoSize = true;
+            this.rdbSi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(35)))), ((int)(((byte)(41)))));
             this.rdbSi.Enabled = false;
             this.rdbSi.ForeColor = System.Drawing.Color.White;
             this.rdbSi.Location = new System.Drawing.Point(121, 82);
@@ -350,24 +408,26 @@
             this.rdbSi.Size = new System.Drawing.Size(36, 17);
             this.rdbSi.TabIndex = 23;
             this.rdbSi.Text = "Sí";
-            this.rdbSi.UseVisualStyleBackColor = true;
+            this.rdbSi.UseVisualStyleBackColor = false;
             this.rdbSi.CheckedChanged += new System.EventHandler(this.rdbSi_CheckedChanged);
             // 
             // chbSi
             // 
             this.chbSi.AutoSize = true;
+            this.chbSi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(35)))), ((int)(((byte)(41)))));
             this.chbSi.ForeColor = System.Drawing.Color.White;
-            this.chbSi.Location = new System.Drawing.Point(121, 83);
+            this.chbSi.Location = new System.Drawing.Point(121, 60);
             this.chbSi.Margin = new System.Windows.Forms.Padding(2);
             this.chbSi.Name = "chbSi";
             this.chbSi.Size = new System.Drawing.Size(37, 17);
             this.chbSi.TabIndex = 24;
             this.chbSi.Text = "Sí";
-            this.chbSi.UseVisualStyleBackColor = true;
+            this.chbSi.UseVisualStyleBackColor = false;
             // 
             // chbOtroValuador
             // 
             this.chbOtroValuador.AutoSize = true;
+            this.chbOtroValuador.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(45)))), ((int)(((byte)(57)))));
             this.chbOtroValuador.Enabled = false;
             this.chbOtroValuador.ForeColor = System.Drawing.Color.White;
             this.chbOtroValuador.Location = new System.Drawing.Point(795, 157);
@@ -376,11 +436,13 @@
             this.chbOtroValuador.Size = new System.Drawing.Size(46, 17);
             this.chbOtroValuador.TabIndex = 25;
             this.chbOtroValuador.Text = "Otro";
-            this.chbOtroValuador.UseVisualStyleBackColor = true;
+            this.chbOtroValuador.UseVisualStyleBackColor = false;
             this.chbOtroValuador.CheckedChanged += new System.EventHandler(this.chbOtroValuador_CheckedChanged);
             // 
             // txtValuador
             // 
+            this.txtValuador.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.txtValuador.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtValuador.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.txtValuador.Location = new System.Drawing.Point(494, 155);
             this.txtValuador.Margin = new System.Windows.Forms.Padding(2);
@@ -404,6 +466,8 @@
             // 
             // txtAseguradora
             // 
+            this.txtAseguradora.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.txtAseguradora.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtAseguradora.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.txtAseguradora.Location = new System.Drawing.Point(495, 91);
             this.txtAseguradora.Margin = new System.Windows.Forms.Padding(2);
@@ -416,6 +480,7 @@
             // chbOtraAseguradora
             // 
             this.chbOtraAseguradora.AutoSize = true;
+            this.chbOtraAseguradora.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(43)))));
             this.chbOtraAseguradora.Enabled = false;
             this.chbOtraAseguradora.ForeColor = System.Drawing.Color.White;
             this.chbOtraAseguradora.Location = new System.Drawing.Point(795, 94);
@@ -424,12 +489,13 @@
             this.chbOtraAseguradora.Size = new System.Drawing.Size(46, 17);
             this.chbOtraAseguradora.TabIndex = 29;
             this.chbOtraAseguradora.Text = "Otro";
-            this.chbOtraAseguradora.UseVisualStyleBackColor = true;
+            this.chbOtraAseguradora.UseVisualStyleBackColor = false;
             this.chbOtraAseguradora.CheckedChanged += new System.EventHandler(this.chbOtraAseguradora_CheckedChanged);
             // 
             // lblClaveSiniestroPedido
             // 
             this.lblClaveSiniestroPedido.AutoSize = true;
+            this.lblClaveSiniestroPedido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(38)))), ((int)(((byte)(45)))));
             this.lblClaveSiniestroPedido.ForeColor = System.Drawing.Color.White;
             this.lblClaveSiniestroPedido.Location = new System.Drawing.Point(40, 107);
             this.lblClaveSiniestroPedido.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -450,6 +516,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(30)))), ((int)(((byte)(33)))));
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(11, 52);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -460,6 +527,8 @@
             // 
             // txtClavePedido
             // 
+            this.txtClavePedido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.txtClavePedido.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtClavePedido.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.txtClavePedido.Location = new System.Drawing.Point(119, 48);
             this.txtClavePedido.Margin = new System.Windows.Forms.Padding(2);
@@ -473,6 +542,7 @@
             // chbOtroTaller
             // 
             this.chbOtroTaller.AutoSize = true;
+            this.chbOtroTaller.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(52)))), ((int)(((byte)(67)))));
             this.chbOtroTaller.Enabled = false;
             this.chbOtroTaller.ForeColor = System.Drawing.Color.White;
             this.chbOtroTaller.Location = new System.Drawing.Point(795, 197);
@@ -481,12 +551,13 @@
             this.chbOtroTaller.Size = new System.Drawing.Size(46, 17);
             this.chbOtroTaller.TabIndex = 34;
             this.chbOtroTaller.Text = "Otro";
-            this.chbOtroTaller.UseVisualStyleBackColor = true;
+            this.chbOtroTaller.UseVisualStyleBackColor = false;
             this.chbOtroTaller.CheckedChanged += new System.EventHandler(this.chbOtroTaller_CheckedChanged);
             // 
             // chbOtroDestino
             // 
             this.chbOtroDestino.AutoSize = true;
+            this.chbOtroDestino.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(57)))), ((int)(((byte)(76)))));
             this.chbOtroDestino.Enabled = false;
             this.chbOtroDestino.ForeColor = System.Drawing.Color.White;
             this.chbOtroDestino.Location = new System.Drawing.Point(795, 236);
@@ -495,11 +566,13 @@
             this.chbOtroDestino.Size = new System.Drawing.Size(46, 17);
             this.chbOtroDestino.TabIndex = 35;
             this.chbOtroDestino.Text = "Otro";
-            this.chbOtroDestino.UseVisualStyleBackColor = true;
+            this.chbOtroDestino.UseVisualStyleBackColor = false;
             this.chbOtroDestino.CheckedChanged += new System.EventHandler(this.chbOtroDestino_CheckedChanged);
             // 
             // txtTaller
             // 
+            this.txtTaller.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.txtTaller.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTaller.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.txtTaller.Location = new System.Drawing.Point(494, 195);
             this.txtTaller.Margin = new System.Windows.Forms.Padding(2);
@@ -511,6 +584,8 @@
             // 
             // txtDestino
             // 
+            this.txtDestino.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.txtDestino.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDestino.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.txtDestino.Location = new System.Drawing.Point(494, 234);
             this.txtDestino.Margin = new System.Windows.Forms.Padding(2);
@@ -523,7 +598,7 @@
             // btnAgregarPieza
             // 
             this.btnAgregarPieza.BackColor = System.Drawing.Color.RoyalBlue;
-            this.btnAgregarPieza.Location = new System.Drawing.Point(14, 445);
+            this.btnAgregarPieza.Location = new System.Drawing.Point(121, 428);
             this.btnAgregarPieza.Margin = new System.Windows.Forms.Padding(2);
             this.btnAgregarPieza.Name = "btnAgregarPieza";
             this.btnAgregarPieza.Size = new System.Drawing.Size(100, 25);
@@ -535,6 +610,7 @@
             // lblFechaBaja
             // 
             this.lblFechaBaja.AutoSize = true;
+            this.lblFechaBaja.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(43)))), ((int)(((byte)(53)))));
             this.lblFechaBaja.ForeColor = System.Drawing.Color.White;
             this.lblFechaBaja.Location = new System.Drawing.Point(910, 141);
             this.lblFechaBaja.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -545,6 +621,9 @@
             // 
             // dtpFechaBaja
             // 
+            this.dtpFechaBaja.CalendarForeColor = System.Drawing.Color.White;
+            this.dtpFechaBaja.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.dtpFechaBaja.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dtpFechaBaja.Enabled = false;
             this.dtpFechaBaja.Location = new System.Drawing.Point(1028, 135);
             this.dtpFechaBaja.Margin = new System.Windows.Forms.Padding(2);
@@ -555,7 +634,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(1188, 451);
+            this.label5.Location = new System.Drawing.Point(1025, 434);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(42, 13);
@@ -565,7 +644,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(1233, 439);
+            this.label11.Location = new System.Drawing.Point(1070, 422);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(38, 13);
@@ -575,7 +654,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(1275, 439);
+            this.label12.Location = new System.Drawing.Point(1112, 422);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(37, 13);
@@ -603,6 +682,7 @@
             // chbModificarFechaAsignacion
             // 
             this.chbModificarFechaAsignacion.AutoSize = true;
+            this.chbModificarFechaAsignacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(33)))), ((int)(((byte)(38)))));
             this.chbModificarFechaAsignacion.ForeColor = System.Drawing.Color.White;
             this.chbModificarFechaAsignacion.Location = new System.Drawing.Point(1255, 73);
             this.chbModificarFechaAsignacion.Margin = new System.Windows.Forms.Padding(2);
@@ -610,13 +690,14 @@
             this.chbModificarFechaAsignacion.Size = new System.Drawing.Size(69, 17);
             this.chbModificarFechaAsignacion.TabIndex = 46;
             this.chbModificarFechaAsignacion.Text = "Modificar";
-            this.chbModificarFechaAsignacion.UseVisualStyleBackColor = true;
+            this.chbModificarFechaAsignacion.UseVisualStyleBackColor = false;
             this.chbModificarFechaAsignacion.Visible = false;
             this.chbModificarFechaAsignacion.CheckedChanged += new System.EventHandler(this.chbModificarFechaAsignacion_CheckedChanged);
             // 
             // chbModificarFechaPromesa
             // 
             this.chbModificarFechaPromesa.AutoSize = true;
+            this.chbModificarFechaPromesa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(38)))), ((int)(((byte)(45)))));
             this.chbModificarFechaPromesa.ForeColor = System.Drawing.Color.White;
             this.chbModificarFechaPromesa.Location = new System.Drawing.Point(1255, 103);
             this.chbModificarFechaPromesa.Margin = new System.Windows.Forms.Padding(2);
@@ -624,13 +705,14 @@
             this.chbModificarFechaPromesa.Size = new System.Drawing.Size(69, 17);
             this.chbModificarFechaPromesa.TabIndex = 47;
             this.chbModificarFechaPromesa.Text = "Modificar";
-            this.chbModificarFechaPromesa.UseVisualStyleBackColor = true;
+            this.chbModificarFechaPromesa.UseVisualStyleBackColor = false;
             this.chbModificarFechaPromesa.Visible = false;
             this.chbModificarFechaPromesa.CheckedChanged += new System.EventHandler(this.chbModificarFechaPromesa_CheckedChanged);
             // 
             // chbModificarFechaBaja
             // 
             this.chbModificarFechaBaja.AutoSize = true;
+            this.chbModificarFechaBaja.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(42)))), ((int)(((byte)(52)))));
             this.chbModificarFechaBaja.ForeColor = System.Drawing.Color.White;
             this.chbModificarFechaBaja.Location = new System.Drawing.Point(1255, 137);
             this.chbModificarFechaBaja.Margin = new System.Windows.Forms.Padding(2);
@@ -638,12 +720,13 @@
             this.chbModificarFechaBaja.Size = new System.Drawing.Size(69, 17);
             this.chbModificarFechaBaja.TabIndex = 48;
             this.chbModificarFechaBaja.Text = "Modificar";
-            this.chbModificarFechaBaja.UseVisualStyleBackColor = true;
+            this.chbModificarFechaBaja.UseVisualStyleBackColor = false;
             this.chbModificarFechaBaja.Visible = false;
             // 
             // chbModificarVendedor
             // 
             this.chbModificarVendedor.AutoSize = true;
+            this.chbModificarVendedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(30)))), ((int)(((byte)(33)))));
             this.chbModificarVendedor.ForeColor = System.Drawing.Color.White;
             this.chbModificarVendedor.Location = new System.Drawing.Point(795, 54);
             this.chbModificarVendedor.Margin = new System.Windows.Forms.Padding(2);
@@ -651,13 +734,16 @@
             this.chbModificarVendedor.Size = new System.Drawing.Size(69, 17);
             this.chbModificarVendedor.TabIndex = 49;
             this.chbModificarVendedor.Text = "Modificar";
-            this.chbModificarVendedor.UseVisualStyleBackColor = true;
+            this.chbModificarVendedor.UseVisualStyleBackColor = false;
             this.chbModificarVendedor.Visible = false;
             this.chbModificarVendedor.CheckedChanged += new System.EventHandler(this.chbModificarVendedor_CheckedChanged);
             // 
             // txtVendedor
             // 
+            this.txtVendedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.txtVendedor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtVendedor.Enabled = false;
+            this.txtVendedor.ForeColor = System.Drawing.Color.White;
             this.txtVendedor.Location = new System.Drawing.Point(495, 52);
             this.txtVendedor.Margin = new System.Windows.Forms.Padding(2);
             this.txtVendedor.Name = "txtVendedor";
@@ -668,6 +754,7 @@
             // lblComentarioSiniestro
             // 
             this.lblComentarioSiniestro.AutoSize = true;
+            this.lblComentarioSiniestro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(52)))), ((int)(((byte)(67)))));
             this.lblComentarioSiniestro.ForeColor = System.Drawing.Color.White;
             this.lblComentarioSiniestro.Location = new System.Drawing.Point(47, 197);
             this.lblComentarioSiniestro.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -679,6 +766,9 @@
             // 
             // txtComentarioSiniestro
             // 
+            this.txtComentarioSiniestro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.txtComentarioSiniestro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtComentarioSiniestro.ForeColor = System.Drawing.Color.White;
             this.txtComentarioSiniestro.Location = new System.Drawing.Point(120, 194);
             this.txtComentarioSiniestro.Margin = new System.Windows.Forms.Padding(2);
             this.txtComentarioSiniestro.Multiline = true;
@@ -689,18 +779,23 @@
             // 
             // cbEstadoSiniestro
             // 
+            this.cbEstadoSiniestro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.cbEstadoSiniestro.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cbEstadoSiniestro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbEstadoSiniestro.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cbEstadoSiniestro.ForeColor = System.Drawing.Color.White;
             this.cbEstadoSiniestro.FormattingEnabled = true;
-            this.cbEstadoSiniestro.Location = new System.Drawing.Point(121, 164);
+            this.cbEstadoSiniestro.Location = new System.Drawing.Point(119, 139);
             this.cbEstadoSiniestro.Margin = new System.Windows.Forms.Padding(2);
             this.cbEstadoSiniestro.Name = "cbEstadoSiniestro";
-            this.cbEstadoSiniestro.Size = new System.Drawing.Size(230, 21);
+            this.cbEstadoSiniestro.Size = new System.Drawing.Size(232, 21);
             this.cbEstadoSiniestro.TabIndex = 53;
             this.cbEstadoSiniestro.Click += new System.EventHandler(this.cbEstadoSiniestro_Click);
             // 
             // lblEstado
             // 
             this.lblEstado.AutoSize = true;
+            this.lblEstado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(47)))), ((int)(((byte)(59)))));
             this.lblEstado.ForeColor = System.Drawing.Color.White;
             this.lblEstado.Location = new System.Drawing.Point(48, 167);
             this.lblEstado.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -711,16 +806,22 @@
             // 
             // txtEstado
             // 
+            this.txtEstado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.txtEstado.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtEstado.Enabled = false;
-            this.txtEstado.Location = new System.Drawing.Point(121, 164);
+            this.txtEstado.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.txtEstado.Location = new System.Drawing.Point(119, 140);
             this.txtEstado.Margin = new System.Windows.Forms.Padding(2);
             this.txtEstado.Name = "txtEstado";
-            this.txtEstado.Size = new System.Drawing.Size(230, 20);
+            this.txtEstado.Size = new System.Drawing.Size(232, 20);
             this.txtEstado.TabIndex = 55;
+            this.txtEstado.Text = "Agregue nuevo estado";
+            this.txtEstado.Click += new System.EventHandler(this.txtEstado_Click);
             // 
             // chbModificarEstado
             // 
             this.chbModificarEstado.AutoSize = true;
+            this.chbModificarEstado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(47)))), ((int)(((byte)(59)))));
             this.chbModificarEstado.ForeColor = System.Drawing.Color.White;
             this.chbModificarEstado.Location = new System.Drawing.Point(355, 166);
             this.chbModificarEstado.Margin = new System.Windows.Forms.Padding(2);
@@ -728,7 +829,7 @@
             this.chbModificarEstado.Size = new System.Drawing.Size(69, 17);
             this.chbModificarEstado.TabIndex = 56;
             this.chbModificarEstado.Text = "Modificar";
-            this.chbModificarEstado.UseVisualStyleBackColor = true;
+            this.chbModificarEstado.UseVisualStyleBackColor = false;
             this.chbModificarEstado.CheckedChanged += new System.EventHandler(this.chbModificarEstado_CheckedChanged);
             // 
             // bunifuElipse1
@@ -736,16 +837,11 @@
             this.bunifuElipse1.ElipseRadius = 5;
             this.bunifuElipse1.TargetControl = this;
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(28)))), ((int)(((byte)(27)))));
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1346, 43);
-            this.panel1.TabIndex = 57;
-            // 
             // txtDiasEspera
             // 
+            this.txtDiasEspera.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.txtDiasEspera.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDiasEspera.ForeColor = System.Drawing.Color.White;
             this.txtDiasEspera.Location = new System.Drawing.Point(726, 117);
             this.txtDiasEspera.Name = "txtDiasEspera";
             this.txtDiasEspera.Size = new System.Drawing.Size(64, 20);
@@ -755,6 +851,7 @@
             // lblDiasEspera
             // 
             this.lblDiasEspera.AutoSize = true;
+            this.lblDiasEspera.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(40)))), ((int)(((byte)(48)))));
             this.lblDiasEspera.ForeColor = System.Drawing.Color.White;
             this.lblDiasEspera.Location = new System.Drawing.Point(653, 120);
             this.lblDiasEspera.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -764,21 +861,41 @@
             this.lblDiasEspera.Text = "Días espera:";
             this.lblDiasEspera.Visible = false;
             // 
+            // bunifuGradientPanel1
+            // 
+            this.bunifuGradientPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
+            this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuGradientPanel1.Controls.Add(this.dgvPedido);
+            this.bunifuGradientPanel1.Controls.Add(this.btnAgregarPieza);
+            this.bunifuGradientPanel1.Controls.Add(this.label5);
+            this.bunifuGradientPanel1.Controls.Add(this.label11);
+            this.bunifuGradientPanel1.Controls.Add(this.label12);
+            this.bunifuGradientPanel1.Controls.Add(this.txtEstado);
+            this.bunifuGradientPanel1.Controls.Add(this.cbEstadoSiniestro);
+            this.bunifuGradientPanel1.Controls.Add(this.chbSi);
+            this.bunifuGradientPanel1.GradientBottomLeft = System.Drawing.Color.Black;
+            this.bunifuGradientPanel1.GradientBottomRight = System.Drawing.Color.CornflowerBlue;
+            this.bunifuGradientPanel1.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.bunifuGradientPanel1.GradientTopRight = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.bunifuGradientPanel1.Location = new System.Drawing.Point(0, 23);
+            this.bunifuGradientPanel1.Name = "bunifuGradientPanel1";
+            this.bunifuGradientPanel1.Quality = 10;
+            this.bunifuGradientPanel1.Size = new System.Drawing.Size(1353, 508);
+            this.bunifuGradientPanel1.TabIndex = 60;
+            // 
             // Pedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(28)))), ((int)(((byte)(27)))));
             this.ClientSize = new System.Drawing.Size(1346, 527);
             this.Controls.Add(this.lblDiasEspera);
             this.Controls.Add(this.txtDiasEspera);
             this.Controls.Add(this.txtVendedor);
             this.Controls.Add(this.txtValuador);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.chbModificarEstado);
-            this.Controls.Add(this.txtEstado);
             this.Controls.Add(this.lblEstado);
-            this.Controls.Add(this.cbEstadoSiniestro);
             this.Controls.Add(this.txtComentarioSiniestro);
             this.Controls.Add(this.lblComentarioSiniestro);
             this.Controls.Add(this.chbModificarVendedor);
@@ -787,12 +904,8 @@
             this.Controls.Add(this.chbModificarFechaAsignacion);
             this.Controls.Add(this.lblPrecioTotal);
             this.Controls.Add(this.lblCantidadTotal);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.dtpFechaBaja);
             this.Controls.Add(this.lblFechaBaja);
-            this.Controls.Add(this.btnAgregarPieza);
             this.Controls.Add(this.txtDestino);
             this.Controls.Add(this.txtTaller);
             this.Controls.Add(this.chbOtroDestino);
@@ -805,12 +918,10 @@
             this.Controls.Add(this.txtAseguradora);
             this.Controls.Add(this.cbValuador);
             this.Controls.Add(this.chbOtroValuador);
-            this.Controls.Add(this.chbSi);
             this.Controls.Add(this.rdbSi);
             this.Controls.Add(this.rdbNo);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnFinalizarPedido);
-            this.Controls.Add(this.dgvPedido);
             this.Controls.Add(this.cbDestino);
             this.Controls.Add(this.cbTaller);
             this.Controls.Add(this.label10);
@@ -829,6 +940,7 @@
             this.Controls.Add(this.lblAnioPedido);
             this.Controls.Add(this.lblVehiculoPedido);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.bunifuGradientPanel1);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -837,6 +949,8 @@
             this.Text = "Pedido";
             this.Load += new System.EventHandler(this.Pedido_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedido)).EndInit();
+            this.bunifuGradientPanel1.ResumeLayout(false);
+            this.bunifuGradientPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -901,8 +1015,8 @@
         private System.Windows.Forms.TextBox txtEstado;
         private System.Windows.Forms.CheckBox chbModificarEstado;
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblDiasEspera;
         private System.Windows.Forms.TextBox txtDiasEspera;
+        private Bunifu.Framework.UI.BunifuGradientPanel bunifuGradientPanel1;
     }
 }

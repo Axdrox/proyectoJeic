@@ -23,6 +23,14 @@ namespace Refracciones.Forms
         public Pedido(int i)
         {
             InitializeComponent();
+
+            var deleteButton = new DataGridViewButtonColumn();
+            deleteButton.Name = "dataGridViewDeleteButton";
+            deleteButton.HeaderText = "Eliminar";
+            deleteButton.Text = "Eliminar";
+            deleteButton.UseColumnTextForButtonValue = true;
+            this.dgvPedido.Columns.Add(deleteButton);
+
             dt = new DataTable();
             dt.Columns.Add("Pieza");
             dt.Columns.Add("Cantidad");
@@ -66,7 +74,7 @@ namespace Refracciones.Forms
                 rdbNo.Hide();
                 if (lblClaveSiniestro.Text.Length > 6)
                 {
-                    if (lblClaveSiniestro.Text.Substring(0, 6) == "CVE-S-")//funciona
+                    if (lblClaveSiniestro.Text.Substring(0, 5) == "JEIC-")//funciona
                     {
                         lblClaveSiniestroPedido.Show();
                         lblClaveSiniestro.Show();
@@ -230,7 +238,7 @@ namespace Refracciones.Forms
             {
                 lblClaveSiniestroPedido.Show();
                 lblClaveSiniestro.Show();
-                lblClaveSiniestro.Text = "CVE-S-" + operacion.TotalSiniestro().ToString();
+                lblClaveSiniestro.Text = "JEIC-" + operacion.TotalSiniestro().ToString();
                 lblComentarioSiniestro.Show();
                 txtComentarioSiniestro.Show();
                 lblEstado.Show();
@@ -401,7 +409,7 @@ namespace Refracciones.Forms
             {
                 e.Handled = true;
             }*/
-            txtClavePedido.ForeColor = Color.Black;
+            txtClavePedido.ForeColor = Color.White;
             cbVendedor.Enabled = true;
 
             //CAMBIAR PARA VALIDACION
@@ -839,6 +847,10 @@ namespace Refracciones.Forms
                 dtpFechaPromesa.Text = dtpFechaAsignacion.Text;
         }
 
-
+        private void txtEstado_Click(object sender, EventArgs e)
+        {
+            if (txtClavePedido.Text == "Agregue nuevo estado")
+                txtClavePedido.Text = "";
+        }
     }
 }
