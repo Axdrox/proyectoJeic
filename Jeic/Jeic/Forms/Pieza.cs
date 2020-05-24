@@ -26,20 +26,14 @@
 
         private void Pieza_Load(object sender, EventArgs e)
         {
-            Pedido pedido = new Pedido(0);
             //Colocar ICONO
             this.Icon = Resources.iconJeic;
-            
-            if(numerosGuia != null)
+            if(cbNumeroGuia.Items.Count != 0)
             {
-                cbNumeroGuia.Items.AddRange(numerosGuia);
+                txtNumeroGuia.Hide();
+                cbNumeroGuia.Show();
+                chbOtroNumeroGuia.Visible = true;
             }
-        }
-        internal string[] numerosGuia;
-
-        public string[] guias
-        {
-            set { numerosGuia = value; }
         }
 
         /// <summary>

@@ -698,37 +698,21 @@ namespace Refracciones.Forms
             }
         }
 
-
-        internal string[] guias;
-
-        public string[] numeroGuias
-        {
-            get
-            {
-                return guias;
-            }
-        }
-
         private void btnAgregarPieza_Click(object sender, EventArgs e)
         {
             Pieza pieza = new Pieza();
+            string[] guia = new string[dgvPedido.Rows.Count];
             int j = 0;
             if (dgvPedido.Rows.Count > 0)
             {
-                
                 foreach (DataGridViewRow row in dgvPedido.Rows)
                 {
-                    guias = new string[dgvPedido.Rows.Count];
-                    if (!guias.Contains(Convert.ToString(row.Cells["Número de guía"].Value)))
+                    if (!guia.Contains(Convert.ToString(row.Cells["Número de guía"].Value)))
                     {
-                        guias[j] = Convert.ToString(row.Cells["Número de guía"].Value);
+                        pieza.cbNumeroGuia.Items.Add(Convert.ToString(row.Cells["Número de guía"].Value));
+                        guia[j] = Convert.ToString(row.Cells["Número de guía"].Value);
                         j++;
                     }
-                    foreach (var item in guias)
-                    {
-                        MessageBox.Show(item.ToString());
-                    }
-                    pieza.numerosGuia = guias;
                 }
             }
 

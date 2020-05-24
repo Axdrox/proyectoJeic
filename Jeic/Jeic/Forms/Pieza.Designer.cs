@@ -72,8 +72,8 @@
             this.cbCostoEnvio = new System.Windows.Forms.ComboBox();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
-            this.cbNumeroGuia = new System.Windows.Forms.ComboBox();
             this.chbOtroNumeroGuia = new System.Windows.Forms.CheckBox();
+            this.cbNumeroGuia = new System.Windows.Forms.ComboBox();
             this.bunifuGradientPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -227,7 +227,7 @@
             this.label13.AutoSize = true;
             this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(36)))), ((int)(((byte)(48)))));
             this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(12, 94);
+            this.label13.Location = new System.Drawing.Point(12, 97);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(113, 17);
             this.label13.TabIndex = 13;
@@ -407,7 +407,7 @@
             this.txtNumeroGuia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.txtNumeroGuia.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNumeroGuia.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.txtNumeroGuia.Location = new System.Drawing.Point(145, 92);
+            this.txtNumeroGuia.Location = new System.Drawing.Point(145, 94);
             this.txtNumeroGuia.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNumeroGuia.Name = "txtNumeroGuia";
             this.txtNumeroGuia.Size = new System.Drawing.Size(196, 22);
@@ -594,35 +594,37 @@
             this.bunifuGradientPanel1.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.bunifuGradientPanel1.GradientTopRight = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.bunifuGradientPanel1.Location = new System.Drawing.Point(-1, 0);
-            this.bunifuGradientPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bunifuGradientPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.bunifuGradientPanel1.Name = "bunifuGradientPanel1";
             this.bunifuGradientPanel1.Quality = 10;
             this.bunifuGradientPanel1.Size = new System.Drawing.Size(425, 487);
             this.bunifuGradientPanel1.TabIndex = 47;
-            // 
-            // cbNumeroGuia
-            // 
-            this.cbNumeroGuia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.cbNumeroGuia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbNumeroGuia.ForeColor = System.Drawing.Color.White;
-            this.cbNumeroGuia.Location = new System.Drawing.Point(144, 91);
-            this.cbNumeroGuia.Name = "cbNumeroGuia";
-            this.cbNumeroGuia.Size = new System.Drawing.Size(197, 24);
-            this.cbNumeroGuia.TabIndex = 0;
             // 
             // chbOtroNumeroGuia
             // 
             this.chbOtroNumeroGuia.AutoSize = true;
             this.chbOtroNumeroGuia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(57)))));
             this.chbOtroNumeroGuia.ForeColor = System.Drawing.Color.White;
-            this.chbOtroNumeroGuia.Location = new System.Drawing.Point(348, 91);
+            this.chbOtroNumeroGuia.Location = new System.Drawing.Point(348, 94);
             this.chbOtroNumeroGuia.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chbOtroNumeroGuia.Name = "chbOtroNumeroGuia";
             this.chbOtroNumeroGuia.Size = new System.Drawing.Size(58, 21);
             this.chbOtroNumeroGuia.TabIndex = 48;
             this.chbOtroNumeroGuia.Text = "Otro";
             this.chbOtroNumeroGuia.UseVisualStyleBackColor = false;
+            this.chbOtroNumeroGuia.Visible = false;
             this.chbOtroNumeroGuia.CheckedChanged += new System.EventHandler(this.chbOtroNumeroGuia_CheckedChanged);
+            // 
+            // cbNumeroGuia
+            // 
+            this.cbNumeroGuia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.cbNumeroGuia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbNumeroGuia.ForeColor = System.Drawing.Color.White;
+            this.cbNumeroGuia.Location = new System.Drawing.Point(145, 93);
+            this.cbNumeroGuia.Name = "cbNumeroGuia";
+            this.cbNumeroGuia.Size = new System.Drawing.Size(196, 24);
+            this.cbNumeroGuia.TabIndex = 0;
+            this.cbNumeroGuia.Visible = false;
             // 
             // Pieza
             // 
@@ -722,6 +724,6 @@
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
         private Bunifu.Framework.UI.BunifuGradientPanel bunifuGradientPanel1;
         private System.Windows.Forms.CheckBox chbOtroNumeroGuia;
-        private System.Windows.Forms.ComboBox cbNumeroGuia;
+        public System.Windows.Forms.ComboBox cbNumeroGuia;
     }
 }
