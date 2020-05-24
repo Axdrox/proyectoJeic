@@ -26,7 +26,7 @@ namespace Refracciones.Forms
         int cantidadD = 0;
         int cve_pieza = 0;
         DateTime fecha = DateTime.MinValue;
-       // DateTime fecha_asignacion = DateTime.MinValue;
+        DateTime fecha_asignacion = DateTime.MinValue;
        // DateTime fecha_promesa = DateTime.MinValue;
         DialogResult oDlgRes;
         OperBD oper = new OperBD();
@@ -81,7 +81,7 @@ namespace Refracciones.Forms
                 cve_pieza = Int32.Parse(dgvDevolucion.Rows[fila].Cells[1].Value.ToString());
                 //cve_factura = Int32.Parse(dgvDevolucion.Rows[fila].Cells[10].Value.ToString());
                 cve_venta = Int32.Parse(dgvDevolucion.Rows[fila].Cells[11].Value.ToString());
-                //fecha_asignacion = DateTime.Parse(dgvDevolucion.Rows[fila].Cells[7].Value.ToString());//7
+                fecha_asignacion = DateTime.Parse(dgvDevolucion.Rows[fila].Cells[7].Value.ToString());//7
                 //fecha_promesa = DateTime.Parse(dgvDevolucion.Rows[fila].Cells[9].Value.ToString());//9
                 MessageBox.Show("Ahora seleccione Entrega o Devolución, así como la cantidad");
                 rbtnEntrega.Enabled = true;
@@ -216,7 +216,7 @@ namespace Refracciones.Forms
                         btnAceptar.Enabled = false;
                         btnCancelar.Enabled = false;
                         dgvDevolucion.Enabled = true;
-                        MessageBox.Show(oper.Registrar_Entrega(cve_siniestro, cve_pedido, cve_pieza, count2, cantidad, fecha, cantidadD, cve_venta));
+                        MessageBox.Show(oper.Registrar_Entrega(cve_siniestro, cve_pedido, cve_pieza, count2, cantidad, fecha, cantidadD, cve_venta,fecha_asignacion));
                         cmbCantidad.Items.Clear();
                     }
                     else
