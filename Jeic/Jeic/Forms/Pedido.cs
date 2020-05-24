@@ -627,7 +627,7 @@ namespace Refracciones.Forms
 
                         DateTime dtFechaAsignacion = dtpFechaAsignacion.Value.Date;
                         DateTime dtFechaPromesa = dtpFechaPromesa.Value.Date;
-                        operacion.registrarEntrega(dtFechaAsignacion, dtFechaPromesa);
+                        //operacion.registrarFechasVentas(dtFechaAsignacion, dtFechaPromesa);
 
                         if (rdbNo.Checked == false)
                         {
@@ -668,7 +668,7 @@ namespace Refracciones.Forms
                         utilidad = totalPrecio - totalCosto;
 
                         //AGREGANDO DATOS A VENTA
-                        operacion.registrarVenta(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(), taller, Convert.ToInt32(cbVendedor.Text.Trim()), dtFechaBaja, valuador, destino, totalCosto, subtotalPrecio, totalPrecio, utilidad);
+                        operacion.registrarVenta(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(), taller, Convert.ToInt32(cbVendedor.Text.Trim()), dtFechaBaja, valuador, destino, totalCosto, subtotalPrecio, totalPrecio, utilidad, dtFechaAsignacion, dtFechaPromesa);
 
                         //AGREGANDO DATOS A PEDIDO
                         foreach (DataGridViewRow row in dgvPedido.Rows)
@@ -684,7 +684,7 @@ namespace Refracciones.Forms
                                 dtFechaCosto, Convert.ToString(row.Cells["Costo sin IVA"].Value), Convert.ToString(row.Cells["Costo neto"].Value),
                                 Convert.ToString(row.Cells["Costo de envío"].Value), Convert.ToString(row.Cells["Precio de venta"].Value),
                                 Convert.ToString(row.Cells["Precio de reparación"].Value), Convert.ToString(row.Cells["Clave de producto"].Value),
-                                Convert.ToString(row.Cells["Número de guía"].Value), Convert.ToInt32(row.Cells["Cantidad"].Value), 0); ; ;
+                                Convert.ToString(row.Cells["Número de guía"].Value), Convert.ToInt32(row.Cells["Cantidad"].Value));
                             this.DialogResult = DialogResult.OK;
                         }
                         //AGREGA LOS TOTALES DE COSTO Y PRECIO A LA TABLA VENTAS
