@@ -927,7 +927,21 @@ namespace Refracciones
 
             return dt;
         }
+        //---------------------------TABLA ALERTAS POR PIEZA--------------------
+        public DataTable Alertas()
+        {
+            dt = new DataTable();
+            using (SqlConnection nuevaConexion = Conexion.conexion())
+            {
+                nuevaConexion.Open();
+                Comando = new SqlCommand("SELECT ven.cve_pedido AS 'PEDIDO', ven.cve_siniestro AS 'SINIESTRO',ven.fecha_promesa AS 'FECHA PROMESA', p.cantidad AS 'TOTAL DE PIEZAS', p.pzas_entregadas AS 'PIEZAS ENTREGADAS', p.fecha_entrega AS 'ULTIMA FECHA DE ENTREGA' FROM PEDIDO p INNER JOIN VENTAS ven ON p.cve_venta = ven.cve_venta  WHERE p.pzas_entregadas != p.cantidad ", nuevaConexion);
+                da = new SqlDataAdapter(Comando);
+                da.Fill(dt);
+                nuevaConexion.Close();
+            }
 
+            return dt;
+        }
         public double venta_total(string pedido, string siniestro)
         {
             double ventaTotal = 0;

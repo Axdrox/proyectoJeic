@@ -23,8 +23,9 @@ namespace Refracciones.Forms
         {
             //Colocar ICONO
             this.Icon = Resources.iconJeic;
-            DateTime fecha_sys = DateTime.Parse((DateTime.Now.ToShortDateString()));
-            dgvAlertas.DataSource = oper.Alertas(fecha_sys);
+            /*DateTime fecha_sys = DateTime.Parse((DateTime.Now.ToShortDateString()));
+            dgvAlertas.DataSource = oper.Alertas(fecha_sys);*/
+            dgvAlertas.DataSource = oper.Alertas();
         }
 
         private void Alertas_KeyDown(object sender, KeyEventArgs e)
