@@ -2533,7 +2533,7 @@ namespace Refracciones
                 {
                 }
                 else
-                    MessageBox.Show("Problemas al venta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Problemas al registrar venta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             /*}
             catch (Exception EX)
@@ -2555,7 +2555,6 @@ namespace Refracciones
             int cve_proveedor = claveProveedor(proveedor);
             int cve_portal = clavePortal(portal);
             int cve_costoEnvio = claveCostoEnvio(costoEnvio);
-            int cve_entrega = Total_Registros2();
             int cve_venta = claveVenta(clavePedido, claveSiniestro);
 
             using (SqlConnection nuevaConexion = Conexion.conexion())
@@ -2567,15 +2566,14 @@ namespace Refracciones
 
                 nuevaConexion.Open();
                 //Insertando los datos en la tabla PEDIDO
-                Comando = new SqlCommand("INSERT INTO PEDIDO " + "(cve_venta, cve_pieza, cantidad, cve_origen, cve_proveedor, cve_entrega, cve_portal, cve_guia, cve_producto, fecha_costo, costo_comprasinIVA, costo_envio, costo_neto, precio_venta, precio_reparacion) " +
-                    "VALUES (@cve_venta, @cve_pieza, @cantidad, @cve_origen, @cve_proveedor, @cve_entrega, @cve_portal, @cve_guia, @cve_producto, @fecha_costo, @costo_comprasinIVA, @costo_envio, @costo_neto, @precio_venta, @precio_reparacion) ", nuevaConexion);
+                Comando = new SqlCommand("INSERT INTO PEDIDO " + "(cve_venta, cve_pieza, cantidad, cve_origen, cve_proveedor, cve_portal, cve_guia, cve_producto, fecha_costo, costo_comprasinIVA, costo_envio, costo_neto, precio_venta, precio_reparacion) " +
+                    "VALUES (@cve_venta, @cve_pieza, @cantidad, @cve_origen, @cve_proveedor, @cve_portal, @cve_guia, @cve_producto, @fecha_costo, @costo_comprasinIVA, @costo_envio, @costo_neto, @precio_venta, @precio_reparacion) ", nuevaConexion);
                 //Añadiendo los parámetros al query
                 Comando.Parameters.AddWithValue("@cve_venta", cve_venta);
                 Comando.Parameters.AddWithValue("@cve_pieza", cve_pieza);
                 Comando.Parameters.AddWithValue("@cantidad", cantidad);
                 Comando.Parameters.AddWithValue("@cve_origen", cve_origen);
                 Comando.Parameters.AddWithValue("@cve_proveedor", cve_proveedor);
-                Comando.Parameters.AddWithValue("@cve_entrega", cve_entrega);
                 Comando.Parameters.AddWithValue("@cve_portal", cve_portal);
                 Comando.Parameters.AddWithValue("@cve_guia", numeroGuia);
                 Comando.Parameters.AddWithValue("@cve_producto", claveProducto);

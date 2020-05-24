@@ -24,6 +24,24 @@
             InitializeComponent();
         }
 
+        private void Pieza_Load(object sender, EventArgs e)
+        {
+            Pedido pedido = new Pedido(0);
+            //Colocar ICONO
+            this.Icon = Resources.iconJeic;
+            
+            if(numerosGuia != null)
+            {
+                cbNumeroGuia.Items.AddRange(numerosGuia);
+            }
+        }
+        internal string[] numerosGuia;
+
+        public string[] guias
+        {
+            set { numerosGuia = value; }
+        }
+
         /// <summary>
         /// The btnCancelar_Click.
         /// </summary>
@@ -559,12 +577,6 @@
                 txtCostoNeto.Text = ((Convert.ToDouble(txtCostoSinIVA.Text.Trim()) * .16) + Convert.ToDouble(txtCostoSinIVA.Text.Trim())).ToString();
         }
 
-        private void Pieza_Load(object sender, EventArgs e)
-        {
-            //Colocar ICONO
-            this.Icon = Resources.iconJeic;
-        }
-
         private void txtPiezaNombre_Leave(object sender, EventArgs e)
         {
             if (txtPiezaNombre.Text == "")
@@ -634,6 +646,24 @@
             {
                 txtProveedor.Text = "Escriba un nuevo proveedor";
                 txtProveedor.ForeColor = Color.FromArgb(160, 160, 140);
+            }
+        }
+
+        private void chbOtroNumeroGuia_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chbOtroNumeroGuia.Checked == true)
+            {
+                txtNumeroGuia.Visible = true;
+                cbNumeroGuia.Hide();
+                cbNumeroGuia.SelectedIndex = -1;
+            }
+            else
+            {
+                cbNumeroGuia.Show();
+                txtNumeroGuia.Clear();
+                txtNumeroGuia.Visible = false;
+                txtNumeroGuia.Text = "Escriba el número de guía";
+                txtNumeroGuia.ForeColor = Color.FromArgb(160, 160, 140);
             }
         }
     }
