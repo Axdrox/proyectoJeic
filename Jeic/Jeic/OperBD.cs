@@ -298,7 +298,7 @@ namespace Refracciones
             using (SqlConnection nuevaConexion = Conexion.conexion())
             {
                 nuevaConexion.Open();
-                Comando = new SqlCommand(string.Format("SELECT DISTINCT pie.nombre AS NOMBRE, pie.cve_pieza AS 'CLAVE PIEZA', ped.cantidad AS CANTIDAD, prov.nombre AS PROVEEDOR, ven.cve_vendedor AS VENDEDOR, val.nombre AS VALUADOR, c.cve_nombre AS CLIENTE, ent.fecha_asignacion AS 'FECHA DE ASIGNACIÓN', ped.fecha_entrega AS 'FECHA DE ENTREGA', ent.fecha_promesa  AS 'FECHA PROMESA', fac.cve_factura AS FACTURA,ven.cve_venta AS 'CLAVE VENTA' FROM PEDIDO ped JOIN VENTAS ven ON ven.cve_venta = ped.cve_venta JOIN PROVEEDOR prov ON prov.cve_proveedor = ped.cve_proveedor JOIN PIEZA pie ON pie.cve_pieza = ped.cve_pieza JOIN VALUADOR val ON val.cve_valuador = ven.cve_valuador JOIN CLIENTE c ON c.cve_valuador = val.cve_valuador LEFT OUTER JOIN ENTREGA ent ON ent.cve_entrega = ped.cve_entrega LEFT OUTER JOIN FACTURA fac ON fac.cve_factura = ven.cve_factura WHERE ven.cve_siniestro = '{0}' AND ven.cve_pedido = '{1}' AND ped.pzas_devolucion != ped.cantidad", cve_siniestro, cve_pedido), nuevaConexion);
+                Comando = new SqlCommand(string.Format("SELECT DISTINCT pie.nombre AS NOMBRE, pie.cve_pieza AS 'CLAVE PIEZA', ped.cantidad AS CANTIDAD, prov.nombre AS PROVEEDOR, ven.cve_vendedor AS VENDEDOR, val.nombre AS VALUADOR, c.cve_nombre AS CLIENTE, ven.fecha_asignacion AS 'FECHA DE ASIGNACIÓN', ped.fecha_entrega AS 'FECHA DE ENTREGA', ven.fecha_promesa  AS 'FECHA PROMESA', fac.cve_factura AS FACTURA,ven.cve_venta AS 'CLAVE VENTA' FROM PEDIDO ped JOIN VENTAS ven ON ven.cve_venta = ped.cve_venta JOIN PROVEEDOR prov ON prov.cve_proveedor = ped.cve_proveedor JOIN PIEZA pie ON pie.cve_pieza = ped.cve_pieza JOIN VALUADOR val ON val.cve_valuador = ven.cve_valuador JOIN CLIENTE c ON c.cve_valuador = val.cve_valuador LEFT OUTER JOIN FACTURA fac ON fac.cve_factura = ven.cve_factura WHERE ven.cve_siniestro = '{0}' AND ven.cve_pedido = '{1}' AND ped.pzas_devolucion != ped.cantidad", cve_siniestro, cve_pedido), nuevaConexion);
                 da = new SqlDataAdapter(Comando);
 
                 da.Fill(dt);
@@ -395,22 +395,22 @@ namespace Refracciones
         //-------------------------------------------------------------------------------------------------------------------------
 
         //--------------------REGISTRAR ENTREGA ACTUALIZAR COLUMNA CANTIDAD Y ASIGNAR CVE DE ENTREGA CON FECHA--------------------
-        public string Registrar_Entrega(string cve_siniestro, string cve_pedido, int cve_pieza, int cve_entrega, int cantidad, DateTime fecha, int cantidadE, int cve_venta, DateTime fecha_asignacion, DateTime fecha_promesa)
+        public string Registrar_Entrega(string cve_siniestro, string cve_pedido, int cve_pieza, int cve_entrega, int cantidad, DateTime fecha, int cantidadE, int cve_venta)
         {
             string mensaje = "ERROR AL HACER LA ENTREGA";
             using (SqlConnection nuevaConexion = Conexion.conexion())
             {
                 nuevaConexion.Open();
-                Comando = new SqlCommand("INSERT INTO ENTREGA (fecha_asignacion,fecha_promesa,fecha,cantidad,cve_pieza,cve_venta) VALUES (@fecha_asignacion,@fecha_promesa,@fecha,@cantidadE,@cve_pieza,@cve_venta)", nuevaConexion);
-                Comando.Parameters.Add("@fecha_asignacion", SqlDbType.Date);
-                Comando.Parameters.Add("@fecha_promesa", SqlDbType.Date);
+                Comando = new SqlCommand("INSERT INTO ENTREGA (fecha,cantidad,cve_pieza,cve_venta) VALUES (@fecha,@cantidadE,@cve_pieza,@cve_venta)", nuevaConexion);
+                /*Comando.Parameters.Add("@fecha_asignacion", SqlDbType.Date);
+                Comando.Parameters.Add("@fecha_promesa", SqlDbType.Date);*/
                 Comando.Parameters.Add("@fecha", SqlDbType.Date);
                 Comando.Parameters.Add("@cantidadE", SqlDbType.Int);
                 Comando.Parameters.Add("@cve_pieza", SqlDbType.Int);
                 Comando.Parameters.Add("@cve_venta", SqlDbType.Int);
 
-                Comando.Parameters["@fecha_asignacion"].Value = fecha_asignacion;
-                Comando.Parameters["@fecha_promesa"].Value = fecha_promesa;
+                /*Comando.Parameters["@fecha_asignacion"].Value = fecha_asignacion;
+                Comando.Parameters["@fecha_promesa"].Value = fecha_promesa;*/
                 Comando.Parameters["@fecha"].Value = fecha;
                 Comando.Parameters["@cantidadE"].Value = cantidadE;
                 Comando.Parameters["@cve_pieza"].Value = cve_pieza;
@@ -431,6 +431,22 @@ namespace Refracciones
                 cmd.Parameters["@cve_siniestro"].Value = cve_siniestro;
                 cmd.Parameters["@cve_pedido"].Value = cve_pedido;
                 cmd.Parameters["@cve_pieza"].Value = cve_pieza;
+                cmd.ExecuteNonQuery();
+                //SI SE CUMPLE SE SE REGISTRA DÍAS DE ENTREGA
+                cmd = new SqlCommand("SELECT p.fecha_entrega,ven.fecha_promesa FROM PEDIDO p INNER JOIN ENTREGA ent ON p.cve_entrega = ent.cve_entrega INNER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta WHERE p.cve_venta = @cve_venta AND p.cve_pieza = @cve_pieza AND p.pzas_entregadas = p.cantidad AND p.fecha_entrega <= ent.fecha_promesa", nuevaConexion);
+                cmd.Parameters.Add("@cve_venta", SqlDbType.Int);
+                cmd.Parameters.Add("@cve_pieza", SqlDbType.Int);
+                cmd.Parameters["@cve_venta"].Value = cve_venta;
+                cmd.Parameters["@cve_pieza"].Value = cve_pieza;
+                if(cmd.ExecuteScalar() != null)
+                {
+                    cmd = new SqlCommand("UPDATE PEDIDO SET entrega_enTiempo = 1 WHERE cve_venta = @cve_venta  AND cve_pieza = @cve_pieza", nuevaConexion);
+                    cmd.Parameters.Add("@cve_venta", SqlDbType.Int);
+                    cmd.Parameters.Add("@cve_pieza", SqlDbType.Int);
+                    cmd.Parameters["@cve_venta"].Value = cve_venta;
+                    cmd.Parameters["@cve_pieza"].Value = cve_pieza;
+                }
+
                 cmd.ExecuteNonQuery();
                 nuevaConexion.Close();
                 mensaje = "ENTREGA EXITOSA";
@@ -671,7 +687,7 @@ namespace Refracciones
                 using (SqlConnection nuevacon = Conexion.conexion())
                 {
                    
-                        da = new SqlDataAdapter(string.Format("SELECT ven.cve_pedido AS PEDIDO, ven.cve_siniestro AS SINIESTRO, ven.cve_vendedor AS VENDEDOR, c.cve_nombre AS CLIENTE, k.nombre AS PIEZA, p.cantidad AS CANTIDAD, e.fecha_asignacion AS 'FECHA DE ASIGNACIÓN', e.fecha_promesa AS 'FECHA PROMESA', ven.cve_venta AS 'VENTA' FROM VENTAS ven LEFT OUTER JOIN PEDIDO p ON ven.cve_venta = p.cve_venta LEFT OUTER JOIN PIEZA k ON p.cve_pieza = k.cve_pieza LEFT OUTER JOIN ENTREGA e ON p.cve_entrega = e.cve_entrega LEFT OUTER JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE c ON c.cve_valuador = v.cve_valuador where ven.cve_siniestro like '%{0}%' and CAST(ven.cve_pedido AS nvarchar) like '%{1}%' and ven.cve_vendedor like '%{2}%'", cve_Siniestro, cve_Pedido,cve_vendedor), nuevacon);
+                        da = new SqlDataAdapter(string.Format("SELECT ven.cve_pedido AS PEDIDO, ven.cve_siniestro AS SINIESTRO, ven.cve_vendedor AS VENDEDOR, c.cve_nombre AS CLIENTE, k.nombre AS PIEZA, p.cantidad AS CANTIDAD, ven.fecha_asignacion AS 'FECHA DE ASIGNACIÓN', ven.fecha_promesa AS 'FECHA PROMESA', ven.cve_venta AS 'VENTA' FROM VENTAS ven LEFT OUTER JOIN PEDIDO p ON ven.cve_venta = p.cve_venta LEFT OUTER JOIN PIEZA k ON p.cve_pieza = k.cve_pieza LEFT OUTER JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE c ON c.cve_valuador = v.cve_valuador where ven.cve_siniestro like '%{0}%' and CAST(ven.cve_pedido AS nvarchar) like '%{1}%' and ven.cve_vendedor like '%{2}%'", cve_Siniestro, cve_Pedido,cve_vendedor), nuevacon);
                     
                     nuevacon.Open();
                     dt = new DataTable();
@@ -695,7 +711,7 @@ namespace Refracciones
             {
                 using (SqlConnection nuevacon = Conexion.conexion())
                 {
-                    da = new SqlDataAdapter(string.Format("SELECT ven.cve_pedido AS PEDIDO, ven.cve_siniestro AS SINIESTRO, ven.cve_vendedor AS VENDEDOR, c.cve_nombre AS CLIENTE, k.nombre AS PIEZA, p.cantidad AS CANTIDAD, e.fecha_asignacion AS 'FECHA DE ASIGNACIÓN', e.fecha_promesa AS 'FECHA PROMESA', ven.cve_venta AS 'VENTA' FROM VENTAS ven LEFT OUTER JOIN PEDIDO p ON p.cve_venta = ven.cve_venta LEFT OUTER JOIN PIEZA k ON p.cve_pieza = k.cve_pieza LEFT OUTER JOIN ENTREGA e ON p.cve_entrega = e.cve_entrega LEFT OUTER JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE c ON c.cve_valuador = v.cve_valuador where fecha_asignacion between '{0}' and '{1}'", Fecha_inicio, fecha_fin), nuevacon);
+                    da = new SqlDataAdapter(string.Format("SELECT ven.cve_pedido AS PEDIDO, ven.cve_siniestro AS SINIESTRO, ven.cve_vendedor AS VENDEDOR, c.cve_nombre AS CLIENTE, k.nombre AS PIEZA, p.cantidad AS CANTIDAD, ven.fecha_asignacion AS 'FECHA DE ASIGNACIÓN', ven.fecha_promesa AS 'FECHA PROMESA', ven.cve_venta AS 'VENTA' FROM VENTAS ven LEFT OUTER JOIN PEDIDO p ON p.cve_venta = ven.cve_venta LEFT OUTER JOIN PIEZA k ON p.cve_pieza = k.cve_pieza  LEFT OUTER JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE c ON c.cve_valuador = v.cve_valuador where fecha_asignacion between '{0}' and '{1}'", Fecha_inicio, fecha_fin), nuevacon);
                     nuevacon.Open();
                     dt = new DataTable();
                     da.Fill(dt);
@@ -715,7 +731,7 @@ namespace Refracciones
             {
                 using (SqlConnection nuevacon = Conexion.conexion())
                 {
-                    da = new SqlDataAdapter(string.Format("SELECT ven.cve_pedido AS PEDIDO, ven.cve_siniestro AS SINIESTRO, pi.nombre AS PIEZA, p.cantidad AS CANTIDAD, ven.cve_vendedor AS VENDEDOR, p.cve_guia 'CLAVE GUIA', o.origen AS ORIGEN, pro.nombre AS PROVEEDOR, v.nombre AS VALUADOR, c.cve_nombre AS CLIENTE, po.nombre AS PORTAL, t.nombre AS TALLER, e.fecha_asignacion AS 'FECHA DE ASIGNACIÓN', e.fecha_promesa AS 'FECHA PROMESA', ent.fecha AS 'FECHA DE ENTREGA', p.costo_comprasinIVA AS 'COSTO COMPRA', cos.costo AS 'COSTO DE ENVÍO', p.costo_neto AS 'COSTO NETO', p.precio_venta AS 'PRECIO DE VENTA', p.precio_reparacion AS 'PRECIO REPARACIÓN', ven.cve_factura AS 'FACTURA', fa.fact_sinIVA AS 'FACTURA SIN IVA', fa.fact_neto AS 'FACTURA NETO', es.estado AS 'ESTADO FACTURA' FROM PEDIDO p LEFT OUTER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta LEFT OUTER JOIN ORIGEN_PIEZA o ON o.cve_origen = p.cve_origen LEFT OUTER JOIN PIEZA pi ON p.cve_pieza = pi.cve_pieza LEFT OUTER JOIN PROVEEDOR pro ON p.cve_proveedor = pro.cve_proveedor LEFT OUTER JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE c ON c.cve_valuador = v.cve_valuador LEFT OUTER JOIN PORTAL po ON po.cve_portal = p.cve_portal LEFT OUTER JOIN TALLER t ON t.cve_taller = ven.cve_taller LEFT OUTER JOIN ENTREGA e ON p.cve_entrega = e.cve_entrega LEFT OUTER JOIN FACTURA fa ON fa.cve_factura = ven.cve_factura LEFT OUTER JOIN ESTADO_FACTURA es ON es.cve_estado = fa.cve_estado LEFT OUTER JOIN ENTREGA ent ON ent.cve_entrega = p.cve_entrega LEFT OUTER JOIN COSTO_ENVIO cos ON cos.cve_costoEnvio = p.costo_envio where ven.cve_pedido = '{0}' and ven.cve_siniestro = '{1}' and pi.nombre = '{2}'", cve_Pedido, cve_Siniestro, nombre_pieza), nuevacon);
+                    da = new SqlDataAdapter(string.Format("SELECT ven.cve_pedido AS PEDIDO, ven.cve_siniestro AS SINIESTRO, pi.nombre AS PIEZA, p.cantidad AS CANTIDAD, ven.cve_vendedor AS VENDEDOR, p.cve_guia 'CLAVE GUIA', o.origen AS ORIGEN, pro.nombre AS PROVEEDOR, v.nombre AS VALUADOR, c.cve_nombre AS CLIENTE, po.nombre AS PORTAL, t.nombre AS TALLER, ven.fecha_asignacion AS 'FECHA DE ASIGNACIÓN', ven.fecha_promesa AS 'FECHA PROMESA', ent.fecha AS 'FECHA DE ENTREGA', p.costo_comprasinIVA AS 'COSTO COMPRA', cos.costo AS 'COSTO DE ENVÍO', p.costo_neto AS 'COSTO NETO', p.precio_venta AS 'PRECIO DE VENTA', p.precio_reparacion AS 'PRECIO REPARACIÓN', ven.cve_factura AS 'FACTURA', fa.fact_sinIVA AS 'FACTURA SIN IVA', fa.fact_neto AS 'FACTURA NETO', es.estado AS 'ESTADO FACTURA' FROM PEDIDO p LEFT OUTER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta LEFT OUTER JOIN ORIGEN_PIEZA o ON o.cve_origen = p.cve_origen LEFT OUTER JOIN PIEZA pi ON p.cve_pieza = pi.cve_pieza LEFT OUTER JOIN PROVEEDOR pro ON p.cve_proveedor = pro.cve_proveedor LEFT OUTER JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE c ON c.cve_valuador = v.cve_valuador LEFT OUTER JOIN PORTAL po ON po.cve_portal = p.cve_portal LEFT OUTER JOIN TALLER t ON t.cve_taller = ven.cve_taller  LEFT OUTER JOIN FACTURA fa ON fa.cve_factura = ven.cve_factura LEFT OUTER JOIN ESTADO_FACTURA es ON es.cve_estado = fa.cve_estado LEFT OUTER JOIN ENTREGA ent ON ent.cve_entrega = p.cve_entrega LEFT OUTER JOIN COSTO_ENVIO cos ON cos.cve_costoEnvio = p.costo_envio where ven.cve_pedido = '{0}' and ven.cve_siniestro = '{1}' and pi.nombre = '{2}'", cve_Pedido, cve_Siniestro, nombre_pieza), nuevacon);
                     nuevacon.Open();
                     dt = new DataTable();
                     da.Fill(dt);
@@ -738,7 +754,7 @@ namespace Refracciones
             {
                 using (SqlConnection nuevacon = Conexion.conexion())
                 {
-                    da = new SqlDataAdapter(string.Format("SELECT ven.cve_pedido AS PEDIDO, ven.cve_siniestro AS SINIESTRO, pi.nombre AS PIEZA, p.cantidad AS CANTIDAD, ven.cve_vendedor AS VENDEDOR, c.cve_nombre AS CLIENTE, t.nombre AS TALLER, e.fecha_asignacion AS 'FECHA DE ASIGNACIÓN', e.fecha_promesa AS 'FECHA PROMESA', veh.modelo AS 'MODELO', veh.anio AS 'ANIO' FROM PEDIDO p LEFT OUTER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta  LEFT OUTER JOIN PIEZA pi ON p.cve_pieza = pi.cve_pieza  LEFT OUTER JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE c ON c.cve_valuador = v.cve_valuador LEFT OUTER JOIN TALLER t ON t.cve_taller = ven.cve_taller LEFT OUTER JOIN ENTREGA e ON p.cve_entrega = e.cve_entrega LEFT OUTER JOIN SINIESTRO si ON si.cve_siniestro=ven.cve_siniestro LEFT OUTER JOIN VEHICULO veh ON veh.cve_vehiculo=si.cve_vehiculo where ven.cve_pedido ='{0}'", cve_Pedido), nuevacon);
+                    da = new SqlDataAdapter(string.Format("SELECT ven.cve_pedido AS PEDIDO, ven.cve_siniestro AS SINIESTRO, pi.nombre AS PIEZA, p.cantidad AS CANTIDAD, ven.cve_vendedor AS VENDEDOR, c.cve_nombre AS CLIENTE, t.nombre AS TALLER, ven.fecha_asignacion AS 'FECHA DE ASIGNACIÓN', ven.fecha_promesa AS 'FECHA PROMESA', veh.modelo AS 'MODELO', veh.anio AS 'ANIO' FROM PEDIDO p LEFT OUTER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta  LEFT OUTER JOIN PIEZA pi ON p.cve_pieza = pi.cve_pieza  LEFT OUTER JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE c ON c.cve_valuador = v.cve_valuador LEFT OUTER JOIN TALLER t ON t.cve_taller = ven.cve_taller LEFT OUTER JOIN SINIESTRO si ON si.cve_siniestro=ven.cve_siniestro LEFT OUTER JOIN VEHICULO veh ON veh.cve_vehiculo=si.cve_vehiculo where ven.cve_pedido ='{0}'", cve_Pedido), nuevacon);
                     dt = new DataTable();
                     da.Fill(dt);
                     dgv.DataSource = dt;
@@ -788,7 +804,7 @@ namespace Refracciones
             {
                 using (SqlConnection nuevacon = Conexion.conexion())
                 {
-                    da = new SqlDataAdapter(string.Format("SELECT TOP 10 ven.cve_pedido AS PEDIDO, ven.cve_siniestro AS 'SINIESTRO', ven.cve_vendedor AS VENDEDOR, c.cve_nombre AS CLIENTE, k.nombre AS PIEZA, p.cantidad AS CANTIDAD, e.fecha_asignacion AS 'FECHA DE ASIGNACIÓN', e.fecha_promesa AS 'FECHA PROMESA', ven.cve_venta AS 'VENTA' FROM VENTAS ven LEFT OUTER JOIN PEDIDO p ON ven.cve_venta = p.cve_venta LEFT OUTER JOIN PIEZA k ON p.cve_pieza = k.cve_pieza LEFT OUTER JOIN ENTREGA e ON p.cve_entrega = e.cve_entrega LEFT OUTER JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE c ON c.cve_valuador = v.cve_valuador order by fecha_asignacion desc"), nuevacon);
+                    da = new SqlDataAdapter(string.Format("SELECT TOP 10 ven.cve_pedido AS PEDIDO, ven.cve_siniestro AS 'SINIESTRO', ven.cve_vendedor AS VENDEDOR, c.cve_nombre AS CLIENTE, k.nombre AS PIEZA, p.cantidad AS CANTIDAD, ven.fecha_asignacion AS 'FECHA DE ASIGNACIÓN', ven.fecha_promesa AS 'FECHA PROMESA', ven.cve_venta AS 'VENTA' FROM VENTAS ven LEFT OUTER JOIN PEDIDO p ON ven.cve_venta = p.cve_venta LEFT OUTER JOIN PIEZA k ON p.cve_pieza = k.cve_pieza LEFT OUTER JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE c ON c.cve_valuador = v.cve_valuador order by ven.fecha_asignacion desc"), nuevacon);
                     nuevacon.Open();
                     dt = new DataTable();
                     da.Fill(dt);
