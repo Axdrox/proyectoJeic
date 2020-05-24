@@ -131,7 +131,6 @@
             // 
             this.txtFacturasinIVA.Location = new System.Drawing.Point(106, 94);
             this.txtFacturasinIVA.Name = "txtFacturasinIVA";
-            this.txtFacturasinIVA.ReadOnly = true;
             this.txtFacturasinIVA.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtFacturasinIVA.Size = new System.Drawing.Size(141, 20);
             this.txtFacturasinIVA.TabIndex = 7;

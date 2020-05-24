@@ -496,7 +496,7 @@ namespace Refracciones
             {
                 nuevaConexion.Open();
                 //Comando = new SqlCommand(string.Format("SELECT DISTINCT  pie.nombre AS PIEZA,  ent.cantidad AS CANTIDAD, c.cve_nombre AS CLIENTE, ent.fecha AS 'FECHA ENTREGA', ven.fecha_promesa AS 'FECHA PROMESA' FROM ENTREGA ent JOIN VENTAS ven ON ven.cve_venta= ent.cve_venta JOIN VALUADOR val ON val.cve_valuador = ven.cve_valuador JOIN CLIENTE c ON c.cve_valuador = val.cve_valuador JOIN PIEZA  pie ON pie.cve_pieza = ent.cve_pieza WHERE ent.cve_venta = {0}", cve_venta), nuevaConexion);
-                Comando = new SqlCommand(string.Format("SELECT DISTINCT  pie.nombre AS PIEZA,  ent.cantidad AS CANTIDAD, c.cve_nombre AS CLIENTE, ent.fecha AS 'FECHA ENTREGA', ven.fecha_promesa AS 'FECHA PROMESA',p.entrega_enTiempo AS 'ENTREGA EN TIEMPO' FROM ENTREGA ent INNER JOIN VENTAS ven ON ven.cve_venta= ent.cve_venta INNER JOIN VALUADOR val ON val.cve_valuador = ven.cve_valuador INNER JOIN CLIENTE c ON c.cve_valuador = val.cve_valuador INNER JOIN PIEZA  pie ON pie.cve_pieza = ent.cve_pieza INNER JOIN PEDIDO p ON p.cve_entrega = ent.cve_entrega WHERE ent.cve_venta = {0}", cve_venta), nuevaConexion);
+                Comando = new SqlCommand(string.Format("SELECT   pie.nombre AS PIEZA,  ent.cantidad AS CANTIDAD, c.cve_nombre AS CLIENTE, ent.fecha AS 'FECHA ENTREGA', ven.fecha_promesa AS 'FECHA PROMESA',p.entrega_enTiempo AS 'ENTREGA EN TIEMPO' FROM ENTREGA ent INNER JOIN VENTAS ven ON ven.cve_venta= ent.cve_venta INNER JOIN VALUADOR val ON val.cve_valuador = ven.cve_valuador INNER JOIN CLIENTE c ON c.cve_valuador = val.cve_valuador INNER JOIN PIEZA  pie ON pie.cve_pieza = ent.cve_pieza INNER JOIN PEDIDO p ON p.cve_entrega = ent.cve_entrega WHERE ent.cve_venta = {0}", cve_venta), nuevaConexion);
                 da = new SqlDataAdapter(Comando);
                 da.Fill(dt);
                 nuevaConexion.Close();
@@ -513,7 +513,7 @@ namespace Refracciones
             using (SqlConnection nuevaConexion = Conexion.conexion())
             {
                 nuevaConexion.Open();
-                Comando = new SqlCommand(string.Format("SELECT DISTINCT pie.nombre AS PIEZA,  dev.cantidad AS CANTIDAD, c.cve_nombre AS CLIENTE, dev.motivo AS MOTIVO,pen.porcentaje AS 'PORCENTAJE (%)', dev.fecha AS FECHA FROM DEVOLUCION dev JOIN VENTAS ven ON ven.cve_venta= dev.cve_venta JOIN VALUADOR val ON val.cve_valuador = ven.cve_valuador JOIN CLIENTE c ON c.cve_valuador = val.cve_valuador JOIN PIEZA  pie ON pie.cve_pieza = dev.cve_pieza JOIN PENALIZACION pen ON dev.cve_penalizacion = pen.cve_penalizacion WHERE dev.cve_venta  = {0}", cve_venta), nuevaConexion);
+                Comando = new SqlCommand(string.Format("SELECT  pie.nombre AS PIEZA,  dev.cantidad AS CANTIDAD, c.cve_nombre AS CLIENTE, dev.motivo AS MOTIVO,pen.porcentaje AS 'PORCENTAJE (%)', dev.fecha AS FECHA FROM DEVOLUCION dev JOIN VENTAS ven ON ven.cve_venta= dev.cve_venta JOIN VALUADOR val ON val.cve_valuador = ven.cve_valuador JOIN CLIENTE c ON c.cve_valuador = val.cve_valuador JOIN PIEZA  pie ON pie.cve_pieza = dev.cve_pieza JOIN PENALIZACION pen ON dev.cve_penalizacion = pen.cve_penalizacion WHERE dev.cve_venta  = {0}", cve_venta), nuevaConexion);
                 da = new SqlDataAdapter(Comando);
                 da.Fill(dt);
                 nuevaConexion.Close();
@@ -947,7 +947,7 @@ namespace Refracciones
             using (SqlConnection nuevaConexion = Conexion.conexion())
             {
                 nuevaConexion.Open();
-                Comando = new SqlCommand("SELECT ven.cve_pedido AS 'PEDIDO', ven.cve_siniestro AS 'SINIESTRO',ven.fecha_promesa AS 'FECHA PROMESA', p.cantidad AS 'TOTAL DE PIEZAS', p.pzas_entregadas AS 'PIEZAS ENTREGADAS', p.fecha_entrega AS 'ULTIMA FECHA DE ENTREGA', p.entrega_enTiempo AS 'ENTREGA EN TIEMPO' FROM PEDIDO p INNER JOIN VENTAS ven ON p.cve_venta = ven.cve_venta  WHERE p.pzas_entregadas != p.cantidad ", nuevaConexion);
+                Comando = new SqlCommand("SELECT ven.cve_pedido AS 'PEDIDO', ven.cve_siniestro AS 'SINIESTRO',ven.fecha_promesa AS 'FECHA PROMESA',pie.nombre AS 'PIEZA', p.cantidad AS 'TOTAL DE PIEZAS', p.pzas_entregadas AS 'PIEZAS ENTREGADAS', p.fecha_entrega AS 'ULTIMA FECHA DE ENTREGA', p.entrega_enTiempo AS 'ENTREGA EN TIEMPO' FROM PEDIDO p INNER JOIN VENTAS ven ON p.cve_venta = ven.cve_venta INNER JOIN PIEZA pie ON p.cve_pieza = pie.cve_pieza  WHERE p.pzas_entregadas != p.cantidad ", nuevaConexion);
                 da = new SqlDataAdapter(Comando);
                 da.Fill(dt);
                 nuevaConexion.Close();
