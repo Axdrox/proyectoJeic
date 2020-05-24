@@ -25,6 +25,7 @@ namespace Refracciones.Forms
         int cantidad = 0;
         int cantidadD = 0;
         int cve_pieza = 0;
+        int penalizacion = 0;
         DateTime fecha = DateTime.MinValue;
         DateTime fecha_asignacion = DateTime.MinValue;
        // DateTime fecha_promesa = DateTime.MinValue;
@@ -52,7 +53,7 @@ namespace Refracciones.Forms
             dgvDevolucion.DataSource = oper.Devolucion(cve_siniestro, cve_pedido);
             count = oper.Total_Registros() +1 ;
             count2 = oper.Total_Registros2() + 1;
-           
+            cmbPenalizacion.SelectedIndex = 0;
             //MessageBox.Show(count.ToString());
         }
 
@@ -91,7 +92,8 @@ namespace Refracciones.Forms
                 btnAceptar.Enabled = true;
                 btnCancelar.Enabled = true;
                 dgvDevolucion.Enabled = false;
-
+                cmbPenalizacion.Enabled = false;
+                cmbPenalizacion.Visible = false;
                 pzas_entregadas = oper.Pzas_Entregadas(cve_siniestro, cve_pedido, cve_pieza);
                 pzas_devolucion = oper.Pzas_Devolucion(cve_siniestro, cve_pedido, cve_pieza);
                 //MessageBox.Show(pzas_entregadas.ToString());
@@ -103,60 +105,71 @@ namespace Refracciones.Forms
         {
             //rbtnDevolucion.Checked = false;
             //cmbCantidad.Enabled = true;
-            lbl1.Text = "Fecha Entrega";
-            lbl2.Text = "Cantidad Entregada";
-            btnAceptar.Text = "ENTREGA";
-            cmbCantidad.Items.Clear();
-            for(int i=1; i<=(cantidad-pzas_entregadas); i++)
+            if (rbtnEntrega.Checked == true)
             {
-                cmbCantidad.Items.Add(i.ToString());
+                lbl1.Text = "Fecha Entrega";
+                lbl2.Text = "Cantidad Entregada";
+                btnAceptar.Text = "ENTREGA";
+                cmbCantidad.Items.Clear();
+                for (int i = 1; i <= (cantidad - pzas_entregadas); i++)
+                {
+                    cmbCantidad.Items.Add(i.ToString());
+                }
+                if (cmbCantidad.Items.Count != 0)
+                {
+                    cmbCantidad.Enabled = true;
+                    cmbCantidad.SelectedIndex = 0;
+                }
+                else
+                {
+                    cmbCantidad.Enabled = false;
+                }
+                lblMotivoDev.Visible = false;
+                cmbMotivoDev.Enabled = false;
+                cmbMotivoDev.Visible = false;
+                chkMotivo.Visible = false;
+                chkMotivo.Enabled = false;
+                label1.Visible = false;
+                lblPenalizacion.Visible = false;
+                cmbPenalizacion.Enabled = false;
+                cmbPenalizacion.Visible = false;
             }
-            if (cmbCantidad.Items.Count != 0)
-            {
-                cmbCantidad.Enabled = true;
-                cmbCantidad.SelectedIndex = 0;
-            }
-            else
-            {
-                cmbCantidad.Enabled = false;
-            }
-            lblMotivoDev.Visible = false;
-            cmbMotivoDev.Enabled = false;
-            cmbMotivoDev.Visible = false;
-            chkMotivo.Visible = false;
-            chkMotivo.Enabled = false;
-            label1.Visible = false;
-
         }
 
         private void rbtnDevolucion_CheckedChanged(object sender, EventArgs e)
         {
             //rbtnEntrega.Checked = false;
-            lbl1.Text = "Fecha Devolucion";
-            lbl2.Text = "Cantidad a Devolver";
-            btnAceptar.Text = "DEVOLUCIÓN";
-            cmbCantidad.Items.Clear();
-            for (int i = 1; i <= pzas_entregadas - pzas_devolucion; i++)
+            if (rbtnDevolucion.Checked == true)
             {
-                cmbCantidad.Items.Add(i.ToString());
+                lbl1.Text = "Fecha Devolucion";
+                lbl2.Text = "Cantidad a Devolver";
+                btnAceptar.Text = "DEVOLUCIÓN";
+                cmbCantidad.Items.Clear();
+                for (int i = 1; i <= pzas_entregadas - pzas_devolucion; i++)
+                {
+                    cmbCantidad.Items.Add(i.ToString());
+                }
+                if (cmbCantidad.Items.Count != 0)
+                {
+                    cmbCantidad.Enabled = true;
+                    cmbCantidad.SelectedIndex = 0;
+                    cmbMotivoDev.Enabled = true;
+                }
+                else
+                {
+                    cmbCantidad.Enabled = false;
+                    cmbMotivoDev.Enabled = false;
+                }
+                lblMotivoDev.Visible = true;
+                //cmbMotivoDev.Enabled = true;
+                cmbMotivoDev.Visible = true;
+                chkMotivo.Enabled = true;
+                chkMotivo.Visible = true;
+                label1.Visible = true;
+                lblPenalizacion.Visible = true;
+                cmbPenalizacion.Enabled = true;
+                cmbPenalizacion.Visible = true;
             }
-            if (cmbCantidad.Items.Count != 0)
-            {
-                cmbCantidad.Enabled = true;
-                cmbCantidad.SelectedIndex = 0;
-                cmbMotivoDev.Enabled = true;
-            }
-            else
-            {
-                cmbCantidad.Enabled = false;
-                cmbMotivoDev.Enabled = false;
-            }
-            lblMotivoDev.Visible = true;
-            //cmbMotivoDev.Enabled = true;
-            cmbMotivoDev.Visible = true;
-            chkMotivo.Enabled = true;
-            chkMotivo.Visible = true;
-            label1.Visible = true;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -194,8 +207,11 @@ namespace Refracciones.Forms
                             motivo = cmbMotivoDev.SelectedItem.ToString();
                         else
                             motivo = txtMotivo.Text.Trim();
-                        MessageBox.Show(motivo);
-                        MessageBox.Show(oper.Registrar_Devolucion(cve_siniestro, cve_pedido, cve_pieza, count, cantidad, fecha, cantidadD, cve_venta, motivo));
+                        if (cmbPenalizacion.Text.Equals("20%"))
+                            penalizacion = 1;
+                        else if (cmbPenalizacion.Text.Equals("100%"))
+                            penalizacion = 2;
+                        MessageBox.Show(oper.Registrar_Devolucion(cve_siniestro, cve_pedido, cve_pieza, count, cantidad, fecha, cantidadD, cve_venta, motivo,penalizacion));
                         cmbCantidad.Items.Clear();
                     }
                     else

@@ -30,7 +30,10 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dgvAlertas = new System.Windows.Forms.DataGridView();
+            this.rbtnFacturas = new System.Windows.Forms.RadioButton();
+            this.rbtnPieza = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlertas)).BeginInit();
@@ -42,6 +45,11 @@
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.rbtnPieza);
+            this.splitContainer1.Panel1.Controls.Add(this.rbtnFacturas);
             // 
             // splitContainer1.Panel2
             // 
@@ -62,6 +70,30 @@
             this.dgvAlertas.Size = new System.Drawing.Size(556, 178);
             this.dgvAlertas.TabIndex = 0;
             // 
+            // rbtnFacturas
+            // 
+            this.rbtnFacturas.AutoSize = true;
+            this.rbtnFacturas.Checked = true;
+            this.rbtnFacturas.Location = new System.Drawing.Point(13, 13);
+            this.rbtnFacturas.Name = "rbtnFacturas";
+            this.rbtnFacturas.Size = new System.Drawing.Size(165, 17);
+            this.rbtnFacturas.TabIndex = 0;
+            this.rbtnFacturas.TabStop = true;
+            this.rbtnFacturas.Text = "Facturas Pendientes de Pago";
+            this.rbtnFacturas.UseVisualStyleBackColor = true;
+            this.rbtnFacturas.CheckedChanged += new System.EventHandler(this.rbtnFacturas_CheckedChanged);
+            // 
+            // rbtnPieza
+            // 
+            this.rbtnPieza.AutoSize = true;
+            this.rbtnPieza.Location = new System.Drawing.Point(231, 14);
+            this.rbtnPieza.Name = "rbtnPieza";
+            this.rbtnPieza.Size = new System.Drawing.Size(167, 17);
+            this.rbtnPieza.TabIndex = 1;
+            this.rbtnPieza.Text = "Piezas Pendientes de Entrega";
+            this.rbtnPieza.UseVisualStyleBackColor = true;
+            this.rbtnPieza.CheckedChanged += new System.EventHandler(this.rbtnPieza_CheckedChanged);
+            // 
             // Alertas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -74,6 +106,8 @@
             this.Text = "Alertas";
             this.Load += new System.EventHandler(this.Alertas_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Alertas_KeyDown);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
@@ -86,5 +120,7 @@
 
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.DataGridView dgvAlertas;
+        private System.Windows.Forms.RadioButton rbtnPieza;
+        private System.Windows.Forms.RadioButton rbtnFacturas;
     }
 }

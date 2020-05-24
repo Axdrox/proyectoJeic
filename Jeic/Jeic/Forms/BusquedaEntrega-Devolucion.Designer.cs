@@ -53,12 +53,14 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(12, 66);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(440, 372);
             this.dataGridView1.TabIndex = 1;
             // 
             // rbtnEntregas
             // 
             this.rbtnEntregas.AutoSize = true;
+            this.rbtnEntregas.Checked = true;
             this.rbtnEntregas.Location = new System.Drawing.Point(33, 43);
             this.rbtnEntregas.Name = "rbtnEntregas";
             this.rbtnEntregas.Size = new System.Drawing.Size(84, 17);
@@ -75,7 +77,6 @@
             this.rbtnDev.Name = "rbtnDev";
             this.rbtnDev.Size = new System.Drawing.Size(109, 17);
             this.rbtnDev.TabIndex = 3;
-            this.rbtnDev.TabStop = true;
             this.rbtnDev.Text = "DEVOLUCIONES";
             this.rbtnDev.UseVisualStyleBackColor = true;
             this.rbtnDev.CheckedChanged += new System.EventHandler(this.rbtnDev_CheckedChanged);

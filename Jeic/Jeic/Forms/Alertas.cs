@@ -23,9 +23,8 @@ namespace Refracciones.Forms
         {
             //Colocar ICONO
             this.Icon = Resources.iconJeic;
-            /*DateTime fecha_sys = DateTime.Parse((DateTime.Now.ToShortDateString()));
-            dgvAlertas.DataSource = oper.Alertas(fecha_sys);*/
-            dgvAlertas.DataSource = oper.Alertas();
+            DateTime fecha_sys = DateTime.Parse((DateTime.Now.ToShortDateString()));
+            dgvAlertas.DataSource = oper.Alertas(fecha_sys);
         }
 
         private void Alertas_KeyDown(object sender, KeyEventArgs e)
@@ -33,6 +32,23 @@ namespace Refracciones.Forms
             if (e.KeyCode == Keys.Escape)
             {
                 this.Close();
+            }
+        }
+
+        private void rbtnFacturas_CheckedChanged(object sender, EventArgs e)
+        {
+            if(rbtnFacturas.Checked == true)
+            {
+                DateTime fecha_sys = DateTime.Parse((DateTime.Now.ToShortDateString()));
+                dgvAlertas.DataSource = oper.Alertas(fecha_sys);
+            }
+        }
+
+        private void rbtnPieza_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbtnPieza.Checked == true)
+            {
+                dgvAlertas.DataSource = oper.Alertas();
             }
         }
     }

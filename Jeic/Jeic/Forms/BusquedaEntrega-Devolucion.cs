@@ -37,17 +37,22 @@ namespace Refracciones.Forms
 
         private void rbtnEntregas_CheckedChanged(object sender, EventArgs e)
         {
-            
-            dataGridView1.DataSource = dt;
-            dataGridView1.DataSource = oper.Tabla_Entrega(cve_venta);
+            if (rbtnEntregas.Checked == true)
+            {
+                dataGridView1.DataSource = dt;
+                dataGridView1.DataSource = oper.Tabla_Entrega(cve_venta);
+            }
         }
 
         private void rbtnDev_CheckedChanged(object sender, EventArgs e)
         {
             /*cve_factura = oper.Clave_Fact(dato1.Text, Int32.Parse(dato2.Text));
             dato3.Text = cve_factura.ToString();*/
-            dataGridView1.DataSource = dt;
-            dataGridView1.DataSource = oper.Tabla_Devolucion(cve_venta);
+            if (rbtnDev.Checked == true)
+            {
+                dataGridView1.DataSource = dt;
+                dataGridView1.DataSource = oper.Tabla_Devolucion(cve_venta);
+            }
         }
     }
 }

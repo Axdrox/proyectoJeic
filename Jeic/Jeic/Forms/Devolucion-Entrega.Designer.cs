@@ -45,6 +45,8 @@
             this.dato2 = new System.Windows.Forms.Label();
             this.dato1 = new System.Windows.Forms.Label();
             this.dgvDevolucion = new System.Windows.Forms.DataGridView();
+            this.cmbPenalizacion = new System.Windows.Forms.ComboBox();
+            this.lblPenalizacion = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -60,6 +62,8 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.lblPenalizacion);
+            this.splitContainer1.Panel1.Controls.Add(this.cmbPenalizacion);
             this.splitContainer1.Panel1.Controls.Add(this.label1);
             this.splitContainer1.Panel1.Controls.Add(this.chkMotivo);
             this.splitContainer1.Panel1.Controls.Add(this.txtMotivo);
@@ -87,7 +91,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(164, 291);
+            this.label1.Location = new System.Drawing.Point(164, 246);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(27, 13);
             this.label1.TabIndex = 14;
@@ -101,7 +105,7 @@
             this.chkMotivo.Checked = false;
             this.chkMotivo.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(205)))), ((int)(((byte)(117)))));
             this.chkMotivo.ForeColor = System.Drawing.Color.White;
-            this.chkMotivo.Location = new System.Drawing.Point(145, 288);
+            this.chkMotivo.Location = new System.Drawing.Point(145, 243);
             this.chkMotivo.Name = "chkMotivo";
             this.chkMotivo.Size = new System.Drawing.Size(20, 20);
             this.chkMotivo.TabIndex = 13;
@@ -111,7 +115,7 @@
             // txtMotivo
             // 
             this.txtMotivo.Enabled = false;
-            this.txtMotivo.Location = new System.Drawing.Point(18, 287);
+            this.txtMotivo.Location = new System.Drawing.Point(18, 242);
             this.txtMotivo.Name = "txtMotivo";
             this.txtMotivo.Size = new System.Drawing.Size(121, 20);
             this.txtMotivo.TabIndex = 12;
@@ -130,7 +134,7 @@
             "Cambio Origen",
             "Perdida Total",
             "Pieza Incorrecta"});
-            this.cmbMotivoDev.Location = new System.Drawing.Point(18, 287);
+            this.cmbMotivoDev.Location = new System.Drawing.Point(18, 242);
             this.cmbMotivoDev.Name = "cmbMotivoDev";
             this.cmbMotivoDev.Size = new System.Drawing.Size(121, 21);
             this.cmbMotivoDev.TabIndex = 11;
@@ -139,7 +143,7 @@
             // lblMotivoDev
             // 
             this.lblMotivoDev.AutoSize = true;
-            this.lblMotivoDev.Location = new System.Drawing.Point(15, 260);
+            this.lblMotivoDev.Location = new System.Drawing.Point(15, 215);
             this.lblMotivoDev.Name = "lblMotivoDev";
             this.lblMotivoDev.Size = new System.Drawing.Size(99, 13);
             this.lblMotivoDev.TabIndex = 10;
@@ -160,7 +164,7 @@
             // btnAceptar
             // 
             this.btnAceptar.Enabled = false;
-            this.btnAceptar.Location = new System.Drawing.Point(61, 326);
+            this.btnAceptar.Location = new System.Drawing.Point(91, 370);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(124, 23);
             this.btnAceptar.TabIndex = 8;
@@ -172,7 +176,7 @@
             // 
             this.rbtnDevolucion.AutoSize = true;
             this.rbtnDevolucion.Enabled = false;
-            this.rbtnDevolucion.Location = new System.Drawing.Point(106, 68);
+            this.rbtnDevolucion.Location = new System.Drawing.Point(106, 44);
             this.rbtnDevolucion.Name = "rbtnDevolucion";
             this.rbtnDevolucion.Size = new System.Drawing.Size(79, 17);
             this.rbtnDevolucion.TabIndex = 7;
@@ -184,7 +188,7 @@
             // 
             this.rbtnEntrega.AutoSize = true;
             this.rbtnEntrega.Enabled = false;
-            this.rbtnEntrega.Location = new System.Drawing.Point(15, 68);
+            this.rbtnEntrega.Location = new System.Drawing.Point(15, 44);
             this.rbtnEntrega.Name = "rbtnEntrega";
             this.rbtnEntrega.Size = new System.Drawing.Size(62, 17);
             this.rbtnEntrega.TabIndex = 6;
@@ -197,7 +201,7 @@
             this.cmbCantidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCantidad.Enabled = false;
             this.cmbCantidad.FormattingEnabled = true;
-            this.cmbCantidad.Location = new System.Drawing.Point(15, 232);
+            this.cmbCantidad.Location = new System.Drawing.Point(15, 179);
             this.cmbCantidad.Name = "cmbCantidad";
             this.cmbCantidad.Size = new System.Drawing.Size(121, 21);
             this.cmbCantidad.TabIndex = 5;
@@ -205,7 +209,7 @@
             // lbl2
             // 
             this.lbl2.AutoSize = true;
-            this.lbl2.Location = new System.Drawing.Point(12, 206);
+            this.lbl2.Location = new System.Drawing.Point(12, 159);
             this.lbl2.Name = "lbl2";
             this.lbl2.Size = new System.Drawing.Size(104, 13);
             this.lbl2.TabIndex = 4;
@@ -214,7 +218,7 @@
             // dtpFecha
             // 
             this.dtpFecha.Enabled = false;
-            this.dtpFecha.Location = new System.Drawing.Point(15, 148);
+            this.dtpFecha.Location = new System.Drawing.Point(15, 115);
             this.dtpFecha.Name = "dtpFecha";
             this.dtpFecha.Size = new System.Drawing.Size(200, 20);
             this.dtpFecha.TabIndex = 3;
@@ -222,7 +226,7 @@
             // lbl1
             // 
             this.lbl1.AutoSize = true;
-            this.lbl1.Location = new System.Drawing.Point(12, 120);
+            this.lbl1.Location = new System.Drawing.Point(12, 87);
             this.lbl1.Name = "lbl1";
             this.lbl1.Size = new System.Drawing.Size(77, 13);
             this.lbl1.TabIndex = 2;
@@ -256,6 +260,29 @@
             this.dgvDevolucion.Size = new System.Drawing.Size(829, 426);
             this.dgvDevolucion.TabIndex = 0;
             this.dgvDevolucion.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDevolucion_CellContentClick);
+            // 
+            // cmbPenalizacion
+            // 
+            this.cmbPenalizacion.Enabled = false;
+            this.cmbPenalizacion.FormattingEnabled = true;
+            this.cmbPenalizacion.Items.AddRange(new object[] {
+            "0%",
+            "20%",
+            "100%"});
+            this.cmbPenalizacion.Location = new System.Drawing.Point(18, 301);
+            this.cmbPenalizacion.Name = "cmbPenalizacion";
+            this.cmbPenalizacion.Size = new System.Drawing.Size(121, 21);
+            this.cmbPenalizacion.TabIndex = 15;
+            // 
+            // lblPenalizacion
+            // 
+            this.lblPenalizacion.AutoSize = true;
+            this.lblPenalizacion.Location = new System.Drawing.Point(18, 282);
+            this.lblPenalizacion.Name = "lblPenalizacion";
+            this.lblPenalizacion.Size = new System.Drawing.Size(136, 13);
+            this.lblPenalizacion.TabIndex = 16;
+            this.lblPenalizacion.Text = "Porcentaje de Penalización";
+            this.lblPenalizacion.Visible = false;
             // 
             // Devolucion
             // 
@@ -295,5 +322,7 @@
         private Bunifu.Framework.UI.BunifuCheckbox chkMotivo;
         private System.Windows.Forms.TextBox txtMotivo;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblPenalizacion;
+        private System.Windows.Forms.ComboBox cmbPenalizacion;
     }
 }
