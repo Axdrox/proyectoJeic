@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.cmbEstadoFactura = new System.Windows.Forms.ComboBox();
             this.lblEstadoFactura = new System.Windows.Forms.Label();
             this.lblComentarios = new System.Windows.Forms.Label();
@@ -66,7 +67,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.errorP = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorP)).BeginInit();
             this.SuspendLayout();
             // 
             // cmbEstadoFactura
@@ -203,6 +206,7 @@
             this.txtFacturasinIVA.TextChanged += new System.EventHandler(this.txtFacturasinIVA_TextChanged);
             this.txtFacturasinIVA.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFacturasinIVA_KeyPress);
             this.txtFacturasinIVA.Leave += new System.EventHandler(this.txtFacturasinIVA_Leave);
+            this.txtFacturasinIVA.Validated += new System.EventHandler(this.txtFacturasinIVA_Validated);
             // 
             // txtRefactura
             // 
@@ -224,6 +228,7 @@
             // 
             // btnGuardar
             // 
+            this.btnGuardar.Enabled = false;
             this.btnGuardar.Location = new System.Drawing.Point(473, 346);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 23);
@@ -258,6 +263,7 @@
             this.txtCve_Factura.Size = new System.Drawing.Size(100, 20);
             this.txtCve_Factura.TabIndex = 29;
             this.txtCve_Factura.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCve_Factura_KeyPress);
+            this.txtCve_Factura.Validated += new System.EventHandler(this.txtCve_Factura_Validated);
             // 
             // lblFacturaSinIVA
             // 
@@ -312,6 +318,7 @@
             this.txtCostoRefactura.Size = new System.Drawing.Size(100, 20);
             this.txtCostoRefactura.TabIndex = 56;
             this.txtCostoRefactura.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCostoRefactura_KeyPress);
+            this.txtCostoRefactura.Validated += new System.EventHandler(this.txtCostoRefactura_Validated);
             // 
             // lblFechaRefacturacion
             // 
@@ -404,6 +411,10 @@
             this.label3.TabIndex = 66;
             this.label3.Text = "$";
             // 
+            // errorP
+            // 
+            this.errorP.ContainerControl = this;
+            // 
             // registrarRefactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -450,6 +461,7 @@
             this.Text = "registrarRefactura";
             this.Load += new System.EventHandler(this.registrarRefactura_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorP)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -495,5 +507,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ErrorProvider errorP;
     }
 }

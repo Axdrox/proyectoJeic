@@ -252,5 +252,35 @@ namespace Refracciones.Forms
                 txtFacturaconIVA.Text = calculo.ToString();
             }
         }
+
+        private void txtCve_Factura_Validated(object sender, EventArgs e)
+        {
+            if(txtCve_Factura.Text.Trim() == "")
+            {
+                errorP.SetError(txtCve_Factura,"Introduce un número de factura");
+                txtCve_Factura.Focus();
+                btnGuardar.Enabled = false;
+            }
+            else
+            {
+                errorP.Clear();
+                btnGuardar.Enabled = true;
+            }
+        }
+
+        private void txtFacturasinIVA_Validated(object sender, EventArgs e)
+        {
+            if (txtFacturasinIVA.Text.Trim() == "")
+            {
+                errorP.SetError(txtFacturasinIVA, "No se puede dejar este campo vacio");
+                txtFacturasinIVA.Focus();
+                btnGuardar.Enabled = false;
+            }
+            else
+            {
+                errorP.Clear();
+                btnGuardar.Enabled = true;
+            }
+        }
     }
 }

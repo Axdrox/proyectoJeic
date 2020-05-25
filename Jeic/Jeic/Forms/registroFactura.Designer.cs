@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblFacturaSinIVA = new System.Windows.Forms.Label();
             this.txtCve_Factura = new System.Windows.Forms.TextBox();
@@ -60,7 +61,9 @@
             this.dato3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.errorP = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorP)).BeginInit();
             this.SuspendLayout();
             // 
             // lblNombre
@@ -88,6 +91,7 @@
             this.txtCve_Factura.Size = new System.Drawing.Size(141, 20);
             this.txtCve_Factura.TabIndex = 2;
             this.txtCve_Factura.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCve_Factura_KeyPress);
+            this.txtCve_Factura.Validated += new System.EventHandler(this.txtCve_Factura_Validated);
             // 
             // txtRutaFactura
             // 
@@ -109,6 +113,7 @@
             // 
             // btnGuardar
             // 
+            this.btnGuardar.Enabled = false;
             this.btnGuardar.Location = new System.Drawing.Point(499, 271);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 23);
@@ -122,9 +127,9 @@
             this.lblClave_Factura.AutoSize = true;
             this.lblClave_Factura.Location = new System.Drawing.Point(16, 61);
             this.lblClave_Factura.Name = "lblClave_Factura";
-            this.lblClave_Factura.Size = new System.Drawing.Size(65, 13);
+            this.lblClave_Factura.Size = new System.Drawing.Size(83, 13);
             this.lblClave_Factura.TabIndex = 6;
-            this.lblClave_Factura.Text = "Cve Factura";
+            this.lblClave_Factura.Text = "Número Factura";
             this.lblClave_Factura.Click += new System.EventHandler(this.label1_Click);
             // 
             // txtFacturasinIVA
@@ -137,6 +142,7 @@
             this.txtFacturasinIVA.TextChanged += new System.EventHandler(this.txtFacturasinIVA_TextChanged);
             this.txtFacturasinIVA.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFacturasinIVA_KeyPress);
             this.txtFacturasinIVA.Leave += new System.EventHandler(this.txtFacturasinIVA_Leave);
+            this.txtFacturasinIVA.Validated += new System.EventHandler(this.txtFacturasinIVA_Validated);
             // 
             // btnAbrir
             // 
@@ -343,6 +349,10 @@
             this.label2.TabIndex = 32;
             this.label2.Text = "$";
             // 
+            // errorP
+            // 
+            this.errorP.ContainerControl = this;
+            // 
             // registroFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -383,6 +393,7 @@
             this.Text = "registroFactura";
             this.Load += new System.EventHandler(this.registroFactura_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorP)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -422,5 +433,6 @@
         public System.Windows.Forms.Label dato3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ErrorProvider errorP;
     }
 }
