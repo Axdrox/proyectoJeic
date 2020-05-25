@@ -48,67 +48,83 @@ namespace Refracciones.Forms
             //MessageBox.Show(elec.cve_siniestro);
             /*string cve_siniestro = "1F";//dato1.Text;
             int cve_pedido = 1;//Int32.Parse(dato2.Text);*/
-
-            //Variables
-            int cve_factura = Int32.Parse(txtCve_Factura.Text);
-            int cve_estado = 1;
-            decimal fact_sinIVA = decimal.Parse(txtFacturasinIVA.Text, culture);
-            decimal fact_neto = decimal.Parse(txtFacturaconIVA.Text, culture);
-            DateTime fecha_ingreso = DateTime.MinValue;
-            DateTime fecha_revision = DateTime.MinValue;
-            DateTime fecha_pago = DateTime.MinValue;
-            string nombre_factura = string.Empty;
-            byte[] file = null;
-            string nombre_xml = string.Empty;
-            byte[] xml_file = null;
-            string comentario = txtComentario.Text;
-            //OperBD factura = new OperBD();
-
-            if (cmbEstadoFactura.Text.Equals("PAGADA"))
-                cve_estado = 2;
-
-            else if (cmbEstadoFactura.Text.Equals("CANCELADA"))
-                cve_estado = 3;
-
-            
-                fecha_ingreso = DateTime.Parse(dtpFechaIngreso.Value.ToShortDateString());
-
-            
-            
-                fecha_revision = DateTime.Parse(dtpFechaRevision.Value.ToShortDateString());
-          
-            fecha_pago = DateTime.Parse(dtpFechaPago.Value.ToShortDateString());
-            //obtenemos el arreglo de bytes de factura
-            if (txtRutaFactura.Text == string.Empty && txtRutaXml.Text == string.Empty)
-            { }
+            if (txtCve_Factura.Text.Trim() == "")
+            {
+                errorP.SetError(txtCve_Factura, "Introduce un número de factura");
+                txtCve_Factura.Focus();
+                btnGuardar.Enabled = false;
+            }
+            else if (txtFacturasinIVA.Text.Trim() == "")
+            {
+                errorP.SetError(txtFacturasinIVA, "No se puede dejar este campo vacío");
+                txtFacturasinIVA.Focus();
+                btnGuardar.Enabled = false;
+            }
             else
             {
-                Stream myStream = openFileDialog1.OpenFile();
-                using (MemoryStream ms = new MemoryStream())
-                {
-                    myStream.CopyTo(ms);
-                    file = ms.ToArray();
-                }
-                nombre_factura = openFileDialog1.SafeFileName;
-                //obtenemos el arreglo de bytes del xml
-                Stream myStream2 = openFileDialog1.OpenFile();
-                using (MemoryStream ms2 = new MemoryStream())
-                {
-                    myStream2.CopyTo(ms2);
-                    xml_file = ms2.ToArray();
-                }
-                nombre_xml = openFileDialog2.SafeFileName;
-            }
-            if (btnGuardar.Text == "Guardar")
-            {
-                MessageBox.Show(oper.Registrar_factura(cve_siniestro, cve_pedido, cve_factura, cve_estado, fact_sinIVA, fact_neto, fecha_ingreso, fecha_revision, fecha_pago, nombre_factura, file, nombre_xml, xml_file, comentario));
-                this.Close();
+                errorP.Clear();
                 
-            }
-            else if (btnGuardar.Text == "Actualizar")
-            {
-                MessageBox.Show(oper.Actualizar_Factura(cve_factura, cve_estado, fact_sinIVA, fact_neto, fecha_ingreso, fecha_revision, fecha_pago, nombre_factura, file, nombre_xml, xml_file, comentario));
-                this.Close();
+                //Variables
+                int cve_factura = Int32.Parse(txtCve_Factura.Text);
+                int cve_estado = 1;
+                decimal fact_sinIVA = decimal.Parse(txtFacturasinIVA.Text, culture);
+                decimal fact_neto = decimal.Parse(txtFacturaconIVA.Text, culture);
+                DateTime fecha_ingreso = DateTime.MinValue;
+                DateTime fecha_revision = DateTime.MinValue;
+                DateTime fecha_pago = DateTime.MinValue;
+                string nombre_factura = string.Empty;
+                byte[] file = null;
+                string nombre_xml = string.Empty;
+                byte[] xml_file = null;
+                string comentario = txtComentario.Text;
+                //OperBD factura = new OperBD();
+
+                if (cmbEstadoFactura.Text.Equals("PAGADA"))
+                    cve_estado = 2;
+
+                else if (cmbEstadoFactura.Text.Equals("CANCELADA"))
+                    cve_estado = 3;
+
+
+                fecha_ingreso = DateTime.Parse(dtpFechaIngreso.Value.ToShortDateString());
+
+
+
+                fecha_revision = DateTime.Parse(dtpFechaRevision.Value.ToShortDateString());
+
+                fecha_pago = DateTime.Parse(dtpFechaPago.Value.ToShortDateString());
+                //obtenemos el arreglo de bytes de factura
+                if (txtRutaFactura.Text == string.Empty && txtRutaXml.Text == string.Empty)
+                { }
+                else
+                {
+                    Stream myStream = openFileDialog1.OpenFile();
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        myStream.CopyTo(ms);
+                        file = ms.ToArray();
+                    }
+                    nombre_factura = openFileDialog1.SafeFileName;
+                    //obtenemos el arreglo de bytes del xml
+                    Stream myStream2 = openFileDialog1.OpenFile();
+                    using (MemoryStream ms2 = new MemoryStream())
+                    {
+                        myStream2.CopyTo(ms2);
+                        xml_file = ms2.ToArray();
+                    }
+                    nombre_xml = openFileDialog2.SafeFileName;
+                }
+                if (btnGuardar.Text == "Guardar")
+                {
+                    MessageBox.Show(oper.Registrar_factura(cve_siniestro, cve_pedido, cve_factura, cve_estado, fact_sinIVA, fact_neto, fecha_ingreso, fecha_revision, fecha_pago, nombre_factura, file, nombre_xml, xml_file, comentario));
+                    this.Close();
+
+                }
+                else if (btnGuardar.Text == "Actualizar")
+                {
+                    MessageBox.Show(oper.Actualizar_Factura(cve_factura, cve_estado, fact_sinIVA, fact_neto, fecha_ingreso, fecha_revision, fecha_pago, nombre_factura, file, nombre_xml, xml_file, comentario));
+                    this.Close();
+                }
             }
         }
 
@@ -251,6 +267,7 @@ namespace Refracciones.Forms
                 calculo = calculo * 1.16;
                 txtFacturaconIVA.Text = calculo.ToString();
             }
+            btnGuardar.Enabled = true;
         }
 
         private void txtCve_Factura_Validated(object sender, EventArgs e)
@@ -281,6 +298,11 @@ namespace Refracciones.Forms
                 errorP.Clear();
                 btnGuardar.Enabled = true;
             }
+        }
+
+        private void txtCve_Factura_TextChanged(object sender, EventArgs e)
+        {
+            btnGuardar.Enabled = true;
         }
     }
 }

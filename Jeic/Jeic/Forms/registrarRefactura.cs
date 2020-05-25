@@ -55,72 +55,92 @@ namespace Refracciones.Forms
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            /*string cve_siniestro = dato1.Text;
-            int cve_pedido = Int32.Parse(dato2.Text);*/
-            CultureInfo culture = new CultureInfo("en-US");
-            //Variables
-            int cve_factura = Int32.Parse(txtCve_Factura.Text);
-            int cve_refactura = Int32.Parse(txtRefactura.Text);
-            int cve_estado = 1;
-            decimal fact_sinIVA = decimal.Parse(txtFacturasinIVA.Text, culture);
-            decimal fact_neto = decimal.Parse(txtFacturaconIVA.Text, culture);
-            decimal costo_refactura = decimal.Parse(txtCostoRefactura.Text, culture);
-            DateTime fecha_ingreso = DateTime.MinValue;
-            DateTime fecha_revision = DateTime.MinValue;
-            DateTime fecha_pago = DateTime.MinValue;
-            DateTime fecha_refactura = DateTime.MinValue;
-            string nombre_factura = string.Empty;
-            byte[] file = null;
-            string nombre_xml = string.Empty;
-            byte[] xml_file = null;
-            string comentario = txtComentario.Text;
-
-
-            if (cmbEstadoFactura.Text.Trim().Equals("PAGADA"))
-                cve_estado = 2;
-            else if (cmbEstadoFactura.Text.Trim().Equals("CANCELADA"))
-                cve_estado = 3;
-
-            //if (chkFechaIngreso.Checked)
-            fecha_ingreso = DateTime.Parse(dtpFechaIngreso.Value.ToShortDateString());
-           // if (chkFechaRevision.Checked)
-            fecha_revision = DateTime.Parse(dtpFechaRevision.Value.ToShortDateString());
-            //if (chkFechaPago.Checked)
-            fecha_pago = DateTime.Parse(dtpFechaPago.Value.ToShortDateString());
-           // if (chkFechaRefacturacion.Checked)
-            fecha_refactura = DateTime.Parse(dtpFechaRefacturacion.Value.ToShortDateString());
-            if (txtRutaFactura.Text == string.Empty && txtRutaXml.Text == string.Empty)
-            { }
+            if (txtCve_Factura.Text.Trim() == "")
+            {
+                errorP.SetError(txtCve_Factura, "Introduce un número de factura");
+                txtCve_Factura.Focus();
+                btnGuardar.Enabled = false;
+            }
+            else if (txtFacturasinIVA.Text.Trim() == "")
+            {
+                errorP.SetError(txtFacturasinIVA, "No se puede dejar este campo vacío");
+                txtFacturasinIVA.Focus();
+                btnGuardar.Enabled = false;
+            }
+            else if (txtCostoRefactura.Text.Trim() == "")
+            {
+                errorP.SetError(txtCostoRefactura, "No se puede dejar este campo vacío");
+                txtCostoRefactura.Focus();
+                btnGuardar.Enabled = false;
+            }
             else
             {
-                //obtenemos el arreglo de bytes de factura
-                Stream myStream = openFileDialog1.OpenFile();
-                using (MemoryStream ms = new MemoryStream())
-                {
-                    myStream.CopyTo(ms);
-                    file = ms.ToArray();
-                }
-                nombre_factura = openFileDialog1.SafeFileName;
-                //obtenemos el arreglo de bytes del xml
-                Stream myStream2 = openFileDialog1.OpenFile();
-                using (MemoryStream ms2 = new MemoryStream())
-                {
-                    myStream2.CopyTo(ms2);
-                    xml_file = ms2.ToArray();
-                }
-                nombre_xml = openFileDialog2.SafeFileName;
-            }
-            if (btnGuardar.Text == "Guardar")
-            {
-                MessageBox.Show(factura.Registrar_Refactura(cve_siniestro, cve_pedido, cve_factura, cve_estado, cve_refactura, fact_sinIVA, fact_neto, costo_refactura, fecha_refactura, fecha_ingreso, fecha_revision, fecha_pago, nombre_factura, file, nombre_xml, xml_file, comentario));
-                this.Close();
-            }
-            else if (btnGuardar.Text == "Actualizar")
-            {
-                MessageBox.Show(factura.Actualizar_Refactura(cve_factura, cve_estado, cve_refactura, fact_sinIVA, fact_neto, costo_refactura, fecha_refactura, fecha_ingreso, fecha_revision, fecha_pago, nombre_factura, file, nombre_xml, xml_file, comentario));
-                this.Close();
-            }
+                /*string cve_siniestro = dato1.Text;
+                int cve_pedido = Int32.Parse(dato2.Text);*/
+                CultureInfo culture = new CultureInfo("en-US");
+                //Variables
+                int cve_factura = Int32.Parse(txtCve_Factura.Text);
+                int cve_refactura = Int32.Parse(txtRefactura.Text);
+                int cve_estado = 1;
+                decimal fact_sinIVA = decimal.Parse(txtFacturasinIVA.Text, culture);
+                decimal fact_neto = decimal.Parse(txtFacturaconIVA.Text, culture);
+                decimal costo_refactura = decimal.Parse(txtCostoRefactura.Text, culture);
+                DateTime fecha_ingreso = DateTime.MinValue;
+                DateTime fecha_revision = DateTime.MinValue;
+                DateTime fecha_pago = DateTime.MinValue;
+                DateTime fecha_refactura = DateTime.MinValue;
+                string nombre_factura = string.Empty;
+                byte[] file = null;
+                string nombre_xml = string.Empty;
+                byte[] xml_file = null;
+                string comentario = txtComentario.Text;
 
+
+                if (cmbEstadoFactura.Text.Trim().Equals("PAGADA"))
+                    cve_estado = 2;
+                else if (cmbEstadoFactura.Text.Trim().Equals("CANCELADA"))
+                    cve_estado = 3;
+
+                //if (chkFechaIngreso.Checked)
+                fecha_ingreso = DateTime.Parse(dtpFechaIngreso.Value.ToShortDateString());
+                // if (chkFechaRevision.Checked)
+                fecha_revision = DateTime.Parse(dtpFechaRevision.Value.ToShortDateString());
+                //if (chkFechaPago.Checked)
+                fecha_pago = DateTime.Parse(dtpFechaPago.Value.ToShortDateString());
+                // if (chkFechaRefacturacion.Checked)
+                fecha_refactura = DateTime.Parse(dtpFechaRefacturacion.Value.ToShortDateString());
+                if (txtRutaFactura.Text == string.Empty && txtRutaXml.Text == string.Empty)
+                { }
+                else
+                {
+                    //obtenemos el arreglo de bytes de factura
+                    Stream myStream = openFileDialog1.OpenFile();
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        myStream.CopyTo(ms);
+                        file = ms.ToArray();
+                    }
+                    nombre_factura = openFileDialog1.SafeFileName;
+                    //obtenemos el arreglo de bytes del xml
+                    Stream myStream2 = openFileDialog1.OpenFile();
+                    using (MemoryStream ms2 = new MemoryStream())
+                    {
+                        myStream2.CopyTo(ms2);
+                        xml_file = ms2.ToArray();
+                    }
+                    nombre_xml = openFileDialog2.SafeFileName;
+                }
+                if (btnGuardar.Text == "Guardar")
+                {
+                    MessageBox.Show(factura.Registrar_Refactura(cve_siniestro, cve_pedido, cve_factura, cve_estado, cve_refactura, fact_sinIVA, fact_neto, costo_refactura, fecha_refactura, fecha_ingreso, fecha_revision, fecha_pago, nombre_factura, file, nombre_xml, xml_file, comentario));
+                    this.Close();
+                }
+                else if (btnGuardar.Text == "Actualizar")
+                {
+                    MessageBox.Show(factura.Actualizar_Refactura(cve_factura, cve_estado, cve_refactura, fact_sinIVA, fact_neto, costo_refactura, fecha_refactura, fecha_ingreso, fecha_revision, fecha_pago, nombre_factura, file, nombre_xml, xml_file, comentario));
+                    this.Close();
+                }
+            }
         }
 
         private void registrarRefactura_Load(object sender, EventArgs e)
@@ -244,6 +264,7 @@ namespace Refracciones.Forms
                 calculo = calculo * 1.16;
                 txtFacturaconIVA.Text = calculo.ToString();
             }
+            btnGuardar.Enabled = true;
         }
 
         private void txtCve_Factura_Validated(object sender, EventArgs e)
@@ -289,6 +310,16 @@ namespace Refracciones.Forms
                 errorP.Clear();
                 btnGuardar.Enabled = true;
             }
+        }
+
+        private void txtCve_Factura_TextChanged(object sender, EventArgs e)
+        {
+            btnGuardar.Enabled = true;
+        }
+
+        private void txtCostoRefactura_TextChanged(object sender, EventArgs e)
+        {
+            btnGuardar.Enabled = true;
         }
     }
 }

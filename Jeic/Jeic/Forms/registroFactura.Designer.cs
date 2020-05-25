@@ -90,6 +90,7 @@
             this.txtCve_Factura.Name = "txtCve_Factura";
             this.txtCve_Factura.Size = new System.Drawing.Size(141, 20);
             this.txtCve_Factura.TabIndex = 2;
+            this.txtCve_Factura.TextChanged += new System.EventHandler(this.txtCve_Factura_TextChanged);
             this.txtCve_Factura.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCve_Factura_KeyPress);
             this.txtCve_Factura.Validated += new System.EventHandler(this.txtCve_Factura_Validated);
             // 
