@@ -703,6 +703,7 @@ namespace Refracciones.Forms
             Pieza pieza = new Pieza();
             string[] guia = new string[dgvPedido.Rows.Count];
             int j = 0;
+            pieza.destino = cbDestino.Text.Trim();
             if (dgvPedido.Rows.Count > 0)
             {
                 foreach (DataGridViewRow row in dgvPedido.Rows)
@@ -716,7 +717,6 @@ namespace Refracciones.Forms
                 }
             }
 
-            
             DialogResult respuesta = pieza.ShowDialog();
             //MessageBox.Show(respuesta.ToString());
             if (respuesta == DialogResult.OK)
@@ -835,6 +835,7 @@ namespace Refracciones.Forms
 
         private void chbModificarFechaBaja_CheckedChanged(object sender, EventArgs e)
         {
+            //CHECAR
         }
 
         private void chbModificarVendedor_CheckedChanged(object sender, EventArgs e)

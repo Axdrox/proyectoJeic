@@ -28,12 +28,34 @@
         {
             //Colocar ICONO
             this.Icon = Resources.iconJeic;
-            if(cbNumeroGuia.Items.Count != 0)
+
+            this.ActiveControl = label1;
+
+            if (destinoLocal == "LOCAL")
             {
-                txtNumeroGuia.Hide();
-                cbNumeroGuia.Show();
-                chbOtroNumeroGuia.Visible = true;
+                txtNumeroGuia.Visible = false;
+                cbNumeroGuia.Visible = false;
+                chbOtroNumeroGuia.Visible = false;
+                label13.Visible = false;
             }
+            else
+            {
+                if (cbNumeroGuia.Items.Count != 0)
+                {
+                    destinosAgregados = 1;
+                    txtNumeroGuia.Hide();
+                    cbNumeroGuia.Show();
+                    chbOtroNumeroGuia.Visible = true;
+                }
+            }
+        }
+
+        private int destinosAgregados = 0;
+        private string destinoLocal = "";
+
+        public string destino
+        {
+            set { destinoLocal = value; }
         }
 
         /// <summary>
@@ -74,12 +96,12 @@
             if (chbOtroPieza.Checked == true)
             {
                 txtPiezaNombre.Visible = true;
-                cbPiezaNombre.Hide();
+                cbPiezaNombre.Visible = false;
                 cbPiezaNombre.SelectedIndex = -1;
             }
             else
             {
-                cbPiezaNombre.Show();
+                cbPiezaNombre.Visible = true;
                 txtPiezaNombre.Clear();
                 txtPiezaNombre.Visible = false;
                 txtPiezaNombre.Text = "Escriba nombre de pieza";
@@ -419,121 +441,134 @@
                 datosPieza[2] = txtOrigen.Text.Trim().ToUpper();
                 datosPieza[3] = txtProveedor.Text.Trim().ToUpper();
             }*/
-            datosPieza[7] = dtpFechaCosto.Text.Trim();
-            datosPieza[8] = txtCostoSinIVA.Text.Trim();
-            datosPieza[9] = txtCostoNeto.Text.Trim();
-            datosPieza[10] = cbCostoEnvio.Text.Trim();
-            datosPieza[11] = txtPrecioVenta.Text.Trim();
-
-            if (txtPrecioReparacion.Text.Trim() == string.Empty)
+            if (ValidateChildren(ValidationConstraints.Enabled))
             {
-                txtPrecioReparacion.Text = "0";
-                datosPieza[12] = txtPrecioReparacion.Text.Trim();
-            }
-            else
-                datosPieza[12] = txtPrecioReparacion.Text.Trim();
+                datosPieza[7] = dtpFechaCosto.Text.Trim();
+                datosPieza[8] = txtCostoSinIVA.Text.Trim();
+                datosPieza[9] = txtCostoNeto.Text.Trim();
 
-            datosPieza[2] = txtClaveProducto.Text.Trim().ToUpper();
-            datosPieza[3] = txtNumeroGuia.Text.Trim().ToUpper();
-            datosPieza[1] = txtCantidad.Text.Trim();
+                if (!string.IsNullOrEmpty(cbCostoEnvio.Text))
+                    datosPieza[10] = cbCostoEnvio.Text.Trim();
+                else
+                    datosPieza[10] = "0";
 
-            int modificacion = 0; int j = 0; //validar
-            //contar con el # de chb marcados y con la inserción correcta
-            if (chbOtroPieza.Checked == true)
-            {
-                j += 1;
-                //int i = operacion.registrarPieza(txtPiezaNombre.Text.Trim().ToUpper()); PONER EN PEDIDO
-                if ((operacion.existePieza(txtPiezaNombre.Text.Trim().ToUpper()) == string.Empty) && txtPiezaNombre.Text != "Escriba nombre de pieza")
+                datosPieza[11] = txtPrecioVenta.Text.Trim();
+
+                if (string.IsNullOrEmpty(txtPrecioReparacion.Text.Trim()))
                 {
-                    datosPieza[0] = txtPiezaNombre.Text.Trim().ToUpper();
-                    modificacion += 1;
+                    txtPrecioReparacion.Text = "0";
+                    datosPieza[12] = txtPrecioReparacion.Text.Trim();
                 }
                 else
-                {
-                    MessageBox.Show("Ya existe una pieza con el mismo nombre", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtPiezaNombre.Clear();
-                    txtPiezaNombre.Hide();
-                    chbOtroPieza.Checked = false;
-                }
-            }
-            else
-                datosPieza[0] = cbPiezaNombre.Text.Trim().ToUpper();
+                    datosPieza[12] = txtPrecioReparacion.Text.Trim();
 
-            if (chbOtroPortal.Checked == true)
-            {
-                j += 1;
-                //int i = operacion.registrarPortal(txtPortal.Text.Trim());
-                if ((operacion.existePortal(txtPortal.Text.Trim()) == string.Empty) && txtPortal.Text != "Escriba un nuevo portal")
-                {
-                    datosPieza[4] = txtPortal.Text.Trim().ToUpper();
-                    modificacion += 1;
-                }
+                datosPieza[2] = txtClaveProducto.Text.Trim().ToUpper();
+
+                if (destinoLocal != "LOCAL")
+                    datosPieza[3] = txtNumeroGuia.Text.Trim().ToUpper();
                 else
-                {
-                    MessageBox.Show("Ya existe un portal con el mismo nombre", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtPortal.Clear();
-                    txtPortal.Hide();
-                    chbOtroPortal.Checked = false;
-                }
-            }
-            else
-                datosPieza[4] = cbPortal.Text.Trim().ToUpper();
+                    datosPieza[3] = "-";
 
-            if (chbOtroOrigen.Checked == true)
-            {
-                j += 1;
-                //int i = operacion.registrarOrigen(txtOrigen.Text.Trim().ToUpper());
-                if ((operacion.existeOrigen(txtOrigen.Text.Trim().ToUpper()) == string.Empty) && txtOrigen.Text != "Escriba un nuevo origen")
-                {
-                    datosPieza[5] = txtOrigen.Text.Trim().ToUpper();
-                    modificacion += 1;
-                }
-                else
-                {
-                    MessageBox.Show("Ya existe un origen con el mismo nombre", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtOrigen.Clear();
-                    txtOrigen.Hide();
-                    chbOtroOrigen.Checked = false;
-                }
-            }
-            else
-                datosPieza[5] = cbOrigen.Text.Trim().ToUpper();
+                datosPieza[1] = txtCantidad.Text.Trim();
 
-            if (chbOtroProveedor.Checked == true)
-            {
-                j += 1;
-                //int i = operacion.registrarProveedor(txtProveedor.Text.Trim().ToUpper());
-                if ((operacion.existeProveedor(txtProveedor.Text.Trim().ToUpper()) == string.Empty) && txtProveedor.Text != "Escriba un nuevo proveedor")
-                {
-                    datosPieza[6] = txtProveedor.Text.Trim().ToUpper();
-                    modificacion += 1;
-                }
-                else
-                {
-                    MessageBox.Show("Ya existe un proveedor con el mismo nombre", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtProveedor.Clear();
-                    txtProveedor.Hide();
-                    chbOtroProveedor.Checked = false;
-                }
-            }
-            else
-                datosPieza[6] = cbProveedores.Text.Trim().ToUpper();
-
-            if (modificacion == j)
-            {
+                int modificacion = 0; int j = 0; //validar
+                                                 //contar con el # de chb marcados y con la inserción correcta
                 if (chbOtroPieza.Checked == true)
-                    operacion.registrarPieza(txtPiezaNombre.Text.Trim().ToUpper());
+                {
+                    j += 1;
+                    //int i = operacion.registrarPieza(txtPiezaNombre.Text.Trim().ToUpper()); PONER EN PEDIDO
+                    if ((operacion.existePieza(txtPiezaNombre.Text.Trim().ToUpper()) == string.Empty) && txtPiezaNombre.Text != "Escriba nombre de pieza")
+                    {
+                        datosPieza[0] = txtPiezaNombre.Text.Trim().ToUpper();
+                        modificacion += 1;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ya existe una pieza con el mismo nombre", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtPiezaNombre.Clear();
+                        txtPiezaNombre.Hide();
+                        chbOtroPieza.Checked = false;
+                    }
+                }
+                else
+                    datosPieza[0] = cbPiezaNombre.Text.Trim().ToUpper();
 
                 if (chbOtroPortal.Checked == true)
-                    operacion.registrarPortal(txtPortal.Text.Trim());
+                {
+                    j += 1;
+                    //int i = operacion.registrarPortal(txtPortal.Text.Trim());
+                    if ((operacion.existePortal(txtPortal.Text.Trim()) == string.Empty) && txtPortal.Text != "Escriba un nuevo portal")
+                    {
+                        datosPieza[4] = txtPortal.Text.Trim().ToUpper();
+                        modificacion += 1;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ya existe un portal con el mismo nombre", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtPortal.Clear();
+                        txtPortal.Hide();
+                        chbOtroPortal.Checked = false;
+                    }
+                }
+                else
+                    datosPieza[4] = cbPortal.Text.Trim().ToUpper();
 
                 if (chbOtroOrigen.Checked == true)
-                    operacion.registrarOrigen(txtOrigen.Text.Trim().ToUpper());
+                {
+                    j += 1;
+                    //int i = operacion.registrarOrigen(txtOrigen.Text.Trim().ToUpper());
+                    if ((operacion.existeOrigen(txtOrigen.Text.Trim().ToUpper()) == string.Empty) && txtOrigen.Text != "Escriba un nuevo origen")
+                    {
+                        datosPieza[5] = txtOrigen.Text.Trim().ToUpper();
+                        modificacion += 1;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ya existe un origen con el mismo nombre", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtOrigen.Clear();
+                        txtOrigen.Hide();
+                        chbOtroOrigen.Checked = false;
+                    }
+                }
+                else
+                    datosPieza[5] = cbOrigen.Text.Trim().ToUpper();
 
                 if (chbOtroProveedor.Checked == true)
-                    operacion.registrarProveedor(txtProveedor.Text.Trim().ToUpper());
+                {
+                    j += 1;
+                    //int i = operacion.registrarProveedor(txtProveedor.Text.Trim().ToUpper());
+                    if ((operacion.existeProveedor(txtProveedor.Text.Trim().ToUpper()) == string.Empty) && txtProveedor.Text != "Escriba un nuevo proveedor")
+                    {
+                        datosPieza[6] = txtProveedor.Text.Trim().ToUpper();
+                        modificacion += 1;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ya existe un proveedor con el mismo nombre", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtProveedor.Clear();
+                        txtProveedor.Hide();
+                        chbOtroProveedor.Checked = false;
+                    }
+                }
+                else
+                    datosPieza[6] = cbProveedores.Text.Trim().ToUpper();
 
-                this.Close();
+                if (modificacion == j)
+                {
+                    if (chbOtroPieza.Checked == true)
+                        operacion.registrarPieza(txtPiezaNombre.Text.Trim().ToUpper());
+
+                    if (chbOtroPortal.Checked == true)
+                        operacion.registrarPortal(txtPortal.Text.Trim());
+
+                    if (chbOtroOrigen.Checked == true)
+                        operacion.registrarOrigen(txtOrigen.Text.Trim().ToUpper());
+
+                    if (chbOtroProveedor.Checked == true)
+                        operacion.registrarProveedor(txtProveedor.Text.Trim().ToUpper());
+
+                    this.Close();
+                }
             }
         }
 
@@ -573,7 +608,7 @@
 
         private void txtPiezaNombre_Leave(object sender, EventArgs e)
         {
-            if (txtPiezaNombre.Text == "")
+            if (string.IsNullOrEmpty(txtPiezaNombre.Text.Trim()))
             {
                 txtPiezaNombre.Text = "Escriba nombre de pieza";
                 txtPiezaNombre.ForeColor = Color.FromArgb(160, 160, 140);
@@ -591,7 +626,7 @@
 
         private void txtClaveProducto_Leave(object sender, EventArgs e)
         {
-            if (txtClaveProducto.Text == "")
+            if (string.IsNullOrEmpty(txtClaveProducto.Text.Trim()))
             {
                 txtClaveProducto.Text = "Escriba clave del producto";
                 txtClaveProducto.ForeColor = Color.FromArgb(160, 160, 140);
@@ -660,5 +695,222 @@
                 txtNumeroGuia.ForeColor = Color.FromArgb(160, 160, 140);
             }
         }
+
+        private void txtPiezaNombre_Validated(object sender, EventArgs e)
+        {
+            if (chbOtroPieza.Checked == true)
+            {
+                if (txtPiezaNombre.Text == "Escriba nombre de pieza")// && string.IsNullOrEmpty(txtPiezaNombre.Text)
+                {
+                    //e.Cancel = true;
+                    //txtPiezaNombre.Focus();
+                    errorProvider1.SetError(txtPiezaNombre, "Favor de escribir un nuevo nombre de pieza");
+                }
+                else
+                {
+                    //e.Cancel = false;
+                    errorProvider1.SetError(txtPiezaNombre, null);
+                }
+            }
+        }
+
+        private void cbPiezaNombre_Validating(object sender, CancelEventArgs e)
+        {
+            if (chbOtroPieza.Checked == false)
+            {
+                if (string.IsNullOrEmpty(cbPiezaNombre.Text))
+                {
+                    e.Cancel = true;
+                    //cbPiezaNombre.Focus();
+                    errorProvider1.SetError(cbPiezaNombre, "Favor de elegir una pieza");
+                }
+                else
+                {
+                    e.Cancel = false;
+                    errorProvider1.SetError(cbPiezaNombre, null);
+                }
+            }
+        }
+
+        private void txtCantidad_Validated(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtCantidad.Text.Trim()))
+            {
+                //e.Cancel = true;
+                //txtCantidad.Focus();
+                errorProvider1.SetError(txtCantidad, "Favor de ingresar cantidad");
+            }
+            else if (txtCantidad.Text.Trim() == "0")
+            {
+                errorProvider1.SetError(txtCantidad, "No se admite tener cantidad cero");
+            }
+
+            else
+            {
+                //e.Cancel = false;
+                errorProvider1.SetError(txtCantidad, null);
+            }
+        }
+
+        private void txtNumeroGuia_Validating(object sender, CancelEventArgs e)
+        {
+            if (destinoLocal != "LOCAL" && chbOtroNumeroGuia.Checked == true && destinosAgregados > 0)
+            {
+                if (string.IsNullOrEmpty(txtNumeroGuia.Text))// || txtNumeroGuia.Text == "Escriba el número de guía"
+                {
+                    e.Cancel = true;
+                    //txtNumeroGuia.Focus();
+                    errorProvider1.SetError(txtNumeroGuia, "Favor de escribir un nuevo número de guía");
+                }
+                else
+                {
+                    e.Cancel = false;
+                    errorProvider1.SetError(txtNumeroGuia, null);
+                }
+            }
+        }
+
+        private void cbNumeroGuia_Validating(object sender, CancelEventArgs e)
+        {
+            if (destinoLocal != "LOCAL" && chbOtroNumeroGuia.Checked == false && destinosAgregados > 0)
+            {
+                if (string.IsNullOrEmpty(cbNumeroGuia.Text))
+                {
+                    e.Cancel = true;
+                    //txtNumeroGuia.Focus();
+                    errorProvider1.SetError(cbNumeroGuia, "Favor de seleccionar un número de guía");
+                }
+                else
+                {
+                    e.Cancel = false;
+                    errorProvider1.SetError(cbNumeroGuia, null);
+                }
+            }
+        }
+
+        private void txtClaveProducto_Validated(object sender, EventArgs e)
+        {
+            if (txtClaveProducto.Text.Trim() == "Escriba clave del producto")// || string.IsNullOrEmpty(txtClaveProducto.Text)
+            {
+                //e.Cancel = true;
+                //txtClaveProducto.Focus();
+                errorProvider1.SetError(txtClaveProducto, "Favor de escribir la clave del producto");
+            }
+            else
+            {
+                //e.Cancel = false;
+                errorProvider1.SetError(txtClaveProducto, null);
+            }
+        }
+
+        private void txtPortal_Validating(object sender, CancelEventArgs e)
+        {
+            if (chbOtroPortal.Checked == true)
+            {
+                if (string.IsNullOrEmpty(txtPortal.Text))// || txtPortal.Text == "Escriba un nuevo portal"
+                {
+                    e.Cancel = true;
+                    //txtPortal.Focus();
+                    errorProvider1.SetError(txtPortal, "Favor de escribir un nuevo portal");
+                }
+                else
+                {
+                    e.Cancel = false;
+                    errorProvider1.SetError(txtPortal, null);
+                }
+            }
+        }
+
+        private void cbPortal_Validating(object sender, CancelEventArgs e)
+        {
+            if (chbOtroPortal.Checked == false)
+            {
+                if (string.IsNullOrEmpty(cbPortal.Text))
+                {
+                    e.Cancel = true;
+                    //cbPortal.Focus();
+                    errorProvider1.SetError(cbPortal, "Favor de elegir un portal");
+                }
+                else
+                {
+                    e.Cancel = false;
+                    errorProvider1.SetError(cbPortal, null);
+                }
+            }
+        }
+
+        private void txtOrigen_Validating(object sender, CancelEventArgs e)
+        {
+            if (chbOtroOrigen.Checked == true)
+            {
+                if (string.IsNullOrEmpty(txtOrigen.Text))// || txtPortal.Text == "Escriba un nuevo origen"
+                {
+                    e.Cancel = true;
+                    //txtOrigen.Focus();
+                    errorProvider1.SetError(txtOrigen, "Favor de escribir un nuevo origen");
+                }
+                else
+                {
+                    e.Cancel = false;
+                    errorProvider1.SetError(txtOrigen, null);
+                }
+            }
+        }
+
+        private void cbOrigen_Validating(object sender, CancelEventArgs e)
+        {
+            if (chbOtroOrigen.Checked == false)
+            {
+                if (string.IsNullOrEmpty(cbOrigen.Text))
+                {
+                    e.Cancel = true;
+                    //cbOrigen.Focus();
+                    errorProvider1.SetError(cbOrigen, "Favor de elegir un origen");
+                }
+                else
+                {
+                    e.Cancel = false;
+                    errorProvider1.SetError(cbOrigen, null);
+                }
+            }
+        }
+
+        private void txtProveedor_Validating(object sender, CancelEventArgs e)
+        {
+            if (chbOtroProveedor.Checked == true)
+            {
+                if (string.IsNullOrEmpty(txtProveedor.Text))// || txtPortal.Text == "Escriba un nuevo origen"
+                {
+                    e.Cancel = true;
+                    //txtClaveProducto.Focus();
+                    errorProvider1.SetError(txtProveedor, "Favor de escribir un nuevo proveedor");
+                }
+                else
+                {
+                    e.Cancel = false;
+                    errorProvider1.SetError(txtProveedor, null);
+                }
+            }
+        }
+
+        private void cbProveedores_Validating(object sender, CancelEventArgs e)
+        {
+            if (chbOtroProveedor.Checked == false)
+            {
+                if (string.IsNullOrEmpty(cbProveedores.Text))
+                {
+                    e.Cancel = true;
+                    //cbProveedores.Focus();
+                    errorProvider1.SetError(cbProveedores, "Favor de elegir un proveedor");
+                }
+                else
+                {
+                    e.Cancel = false;
+                    errorProvider1.SetError(cbOrigen, null);
+                }
+            }
+        }
+
+        
     }
 }
