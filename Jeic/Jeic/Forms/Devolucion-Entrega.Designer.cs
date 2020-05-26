@@ -28,7 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.lblPenalizacion = new System.Windows.Forms.Label();
+            this.cmbPenalizacion = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.chkMotivo = new Bunifu.Framework.UI.BunifuCheckbox();
             this.txtMotivo = new System.Windows.Forms.TextBox();
@@ -45,13 +48,13 @@
             this.dato2 = new System.Windows.Forms.Label();
             this.dato1 = new System.Windows.Forms.Label();
             this.dgvDevolucion = new System.Windows.Forms.DataGridView();
-            this.cmbPenalizacion = new System.Windows.Forms.ComboBox();
-            this.lblPenalizacion = new System.Windows.Forms.Label();
+            this.errorP = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDevolucion)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorP)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -87,6 +90,29 @@
             this.splitContainer1.Size = new System.Drawing.Size(1092, 450);
             this.splitContainer1.SplitterDistance = 253;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // lblPenalizacion
+            // 
+            this.lblPenalizacion.AutoSize = true;
+            this.lblPenalizacion.Location = new System.Drawing.Point(18, 282);
+            this.lblPenalizacion.Name = "lblPenalizacion";
+            this.lblPenalizacion.Size = new System.Drawing.Size(136, 13);
+            this.lblPenalizacion.TabIndex = 16;
+            this.lblPenalizacion.Text = "Porcentaje de Penalización";
+            this.lblPenalizacion.Visible = false;
+            // 
+            // cmbPenalizacion
+            // 
+            this.cmbPenalizacion.Enabled = false;
+            this.cmbPenalizacion.FormattingEnabled = true;
+            this.cmbPenalizacion.Items.AddRange(new object[] {
+            "0%",
+            "20%",
+            "100%"});
+            this.cmbPenalizacion.Location = new System.Drawing.Point(18, 301);
+            this.cmbPenalizacion.Name = "cmbPenalizacion";
+            this.cmbPenalizacion.Size = new System.Drawing.Size(121, 21);
+            this.cmbPenalizacion.TabIndex = 15;
             // 
             // label1
             // 
@@ -261,28 +287,9 @@
             this.dgvDevolucion.TabIndex = 0;
             this.dgvDevolucion.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDevolucion_CellContentClick);
             // 
-            // cmbPenalizacion
+            // errorP
             // 
-            this.cmbPenalizacion.Enabled = false;
-            this.cmbPenalizacion.FormattingEnabled = true;
-            this.cmbPenalizacion.Items.AddRange(new object[] {
-            "0%",
-            "20%",
-            "100%"});
-            this.cmbPenalizacion.Location = new System.Drawing.Point(18, 301);
-            this.cmbPenalizacion.Name = "cmbPenalizacion";
-            this.cmbPenalizacion.Size = new System.Drawing.Size(121, 21);
-            this.cmbPenalizacion.TabIndex = 15;
-            // 
-            // lblPenalizacion
-            // 
-            this.lblPenalizacion.AutoSize = true;
-            this.lblPenalizacion.Location = new System.Drawing.Point(18, 282);
-            this.lblPenalizacion.Name = "lblPenalizacion";
-            this.lblPenalizacion.Size = new System.Drawing.Size(136, 13);
-            this.lblPenalizacion.TabIndex = 16;
-            this.lblPenalizacion.Text = "Porcentaje de Penalización";
-            this.lblPenalizacion.Visible = false;
+            this.errorP.ContainerControl = this;
             // 
             // Devolucion
             // 
@@ -299,6 +306,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDevolucion)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorP)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -324,5 +332,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblPenalizacion;
         private System.Windows.Forms.ComboBox cmbPenalizacion;
+        private System.Windows.Forms.ErrorProvider errorP;
     }
 }

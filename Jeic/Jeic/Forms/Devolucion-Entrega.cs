@@ -53,7 +53,7 @@ namespace Refracciones.Forms
             dgvDevolucion.DataSource = oper.Devolucion(cve_siniestro, cve_pedido);
             count = oper.Total_Registros() +1 ;
             count2 = oper.Total_Registros2() + 1;
-            cmbPenalizacion.SelectedIndex = 0;
+            
             //MessageBox.Show(count.ToString());
         }
 
@@ -84,7 +84,7 @@ namespace Refracciones.Forms
                 cve_venta = Int32.Parse(dgvDevolucion.Rows[fila].Cells[11].Value.ToString());
                 fecha_asignacion = DateTime.Parse(dgvDevolucion.Rows[fila].Cells[7].Value.ToString());//7
                 //fecha_promesa = DateTime.Parse(dgvDevolucion.Rows[fila].Cells[9].Value.ToString());//9
-                MessageBox.Show("Ahora seleccione Entrega o Devolución, así como la cantidad");
+                MessageBox.Show("Pieza seleccionada: "+ dgvDevolucion.Rows[fila].Cells[0].Value.ToString());
                 rbtnEntrega.Enabled = true;
                 rbtnDevolucion.Enabled = true;
                 dtpFecha.Enabled = true;
@@ -141,6 +141,8 @@ namespace Refracciones.Forms
             //rbtnEntrega.Checked = false;
             if (rbtnDevolucion.Checked == true)
             {
+                cmbCantidad.SelectedIndex = 0;
+                cmbPenalizacion.SelectedIndex = 0;
                 lbl1.Text = "Fecha Devolucion";
                 lbl2.Text = "Cantidad a Devolver";
                 btnAceptar.Text = "DEVOLUCIÓN";
@@ -169,80 +171,90 @@ namespace Refracciones.Forms
                 lblPenalizacion.Visible = true;
                 cmbPenalizacion.Enabled = true;
                 cmbPenalizacion.Visible = true;
+                
             }
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (cmbCantidad.Items.Count == 0 )
+            if (cmbCantidad.Text.Trim() == "")
             {
-                if (rbtnEntrega.Checked == true)
-                    MessageBox.Show("Ya se registraron todas las entregas disponibles para esa pieza");
-                else
-                    MessageBox.Show("Ya se registraron todas las devoluciones disponibles para esa pieza");
+                errorP.SetError(cmbCantidad, "Tiene que ingresar este campo");
+                cmbCantidad.Focus();
             }
             else
             {
-                fecha = DateTime.Parse(dtpFecha.Value.ToShortDateString());
-                cantidadD = Int32.Parse(cmbCantidad.Text);
-
-
-
-                if (rbtnDevolucion.Checked == true)
+                errorP.Clear();
+                if (cmbCantidad.Items.Count == 0)
                 {
-                    cantidad = pzas_devolucion + cantidadD;
-                    oDlgRes = MessageBox.Show("¿Está seguro que desea Registrar la devolución del registro seleccionado ?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-                    if (oDlgRes == DialogResult.Yes)
+                    if (rbtnEntrega.Checked == true)
+                        MessageBox.Show("Ya se registraron todas las entregas disponibles para esa pieza");
+                    else
+                        MessageBox.Show("Ya se registraron todas las devoluciones disponibles para esa pieza");
+                }
+                else
+                {
+                    fecha = DateTime.Parse(dtpFecha.Value.ToShortDateString());
+                    cantidadD = Int32.Parse(cmbCantidad.Text);
+
+
+
+                    if (rbtnDevolucion.Checked == true)
                     {
-                        rbtnEntrega.Enabled = false;
-                        rbtnDevolucion.Enabled = false;
-                        dtpFecha.Enabled = false;
-                        cmbCantidad.Enabled = false;
-                        btnAceptar.Enabled = false;
-                        btnCancelar.Enabled = false;
-                        dgvDevolucion.Enabled = true;
-                        cmbMotivoDev.Text = "";
-                        cmbMotivoDev.Enabled = false;
-                        if (chkMotivo.Checked != true)
-                            motivo = cmbMotivoDev.SelectedItem.ToString();
+                        cantidad = pzas_devolucion + cantidadD;
+                        oDlgRes = MessageBox.Show("¿Está seguro que desea Registrar la devolución del registro seleccionado ?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                        if (oDlgRes == DialogResult.Yes)
+                        {
+                            rbtnEntrega.Enabled = false;
+                            rbtnDevolucion.Enabled = false;
+                            dtpFecha.Enabled = false;
+                            cmbCantidad.Enabled = false;
+                            btnAceptar.Enabled = false;
+                            btnCancelar.Enabled = false;
+                            dgvDevolucion.Enabled = true;
+                            cmbMotivoDev.Text = "";
+                            cmbMotivoDev.Enabled = false;
+                            if (chkMotivo.Checked != true)
+                                motivo = cmbMotivoDev.SelectedItem.ToString();
+                            else
+                                motivo = txtMotivo.Text.Trim();
+                            if (cmbPenalizacion.Text.Equals("20%"))
+                                penalizacion = 1;
+                            else if (cmbPenalizacion.Text.Equals("100%"))
+                                penalizacion = 2;
+                            MessageBox.Show(oper.Registrar_Devolucion(cve_siniestro, cve_pedido, cve_pieza, count, cantidad, fecha, cantidadD, cve_venta, motivo, penalizacion));
+                            cmbCantidad.Items.Clear();
+                        }
                         else
-                            motivo = txtMotivo.Text.Trim();
-                        if (cmbPenalizacion.Text.Equals("20%"))
-                            penalizacion = 1;
-                        else if (cmbPenalizacion.Text.Equals("100%"))
-                            penalizacion = 2;
-                        MessageBox.Show(oper.Registrar_Devolucion(cve_siniestro, cve_pedido, cve_pieza, count, cantidad, fecha, cantidadD, cve_venta, motivo,penalizacion));
-                        cmbCantidad.Items.Clear();
+                        {
+                            MessageBox.Show("No se realizó ninguna operación");
+                        }
                     }
-                    else
+                    else if (rbtnEntrega.Checked == true)
                     {
-                        MessageBox.Show("No se realizó ninguna operación");
-                    }
-                }
-                else if (rbtnEntrega.Checked == true)
-                {
-                    cantidad = pzas_entregadas + cantidadD;
-                    oDlgRes = MessageBox.Show("¿Está seguro que desea Registrar la entrega del registro seleccionado ?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-                    if (oDlgRes == DialogResult.Yes)
-                    {
-                        rbtnEntrega.Enabled = false;
-                        rbtnDevolucion.Enabled = false;
-                        dtpFecha.Enabled = false;
-                        cmbCantidad.Enabled = false;
-                        btnAceptar.Enabled = false;
-                        btnCancelar.Enabled = false;
-                        dgvDevolucion.Enabled = true;
-                        MessageBox.Show(oper.Registrar_Entrega(cve_siniestro, cve_pedido, cve_pieza, count2, cantidad, fecha, cantidadD, cve_venta,fecha_asignacion));
-                        cmbCantidad.Items.Clear();
-                    }
-                    else
-                    {
-                        MessageBox.Show("No se realizó ninguna operación");
+                        cantidad = pzas_entregadas + cantidadD;
+                        oDlgRes = MessageBox.Show("¿Está seguro que desea Registrar la entrega del registro seleccionado ?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                        if (oDlgRes == DialogResult.Yes)
+                        {
+                            rbtnEntrega.Enabled = false;
+                            rbtnDevolucion.Enabled = false;
+                            dtpFecha.Enabled = false;
+                            cmbCantidad.Enabled = false;
+                            btnAceptar.Enabled = false;
+                            btnCancelar.Enabled = false;
+                            dgvDevolucion.Enabled = true;
+                            MessageBox.Show(oper.Registrar_Entrega(cve_siniestro, cve_pedido, cve_pieza, count2, cantidad, fecha, cantidadD, cve_venta, fecha_asignacion));
+                            cmbCantidad.Items.Clear();
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se realizó ninguna operación");
+                        }
+
                     }
 
+                    refresh();
                 }
-
-                refresh();
             }
         }
 
