@@ -496,7 +496,7 @@ namespace Refracciones
             {
                 nuevaConexion.Open();
                 //Comando = new SqlCommand(string.Format("SELECT DISTINCT  pie.nombre AS PIEZA,  ent.cantidad AS CANTIDAD, c.cve_nombre AS CLIENTE, ent.fecha AS 'FECHA ENTREGA', ven.fecha_promesa AS 'FECHA PROMESA' FROM ENTREGA ent JOIN VENTAS ven ON ven.cve_venta= ent.cve_venta JOIN VALUADOR val ON val.cve_valuador = ven.cve_valuador JOIN CLIENTE c ON c.cve_valuador = val.cve_valuador JOIN PIEZA  pie ON pie.cve_pieza = ent.cve_pieza WHERE ent.cve_venta = {0}", cve_venta), nuevaConexion);
-                Comando = new SqlCommand(string.Format("SELECT   pie.nombre AS PIEZA,  ent.cantidad AS CANTIDAD, c.cve_nombre AS CLIENTE, ent.fecha AS 'FECHA ENTREGA', ven.fecha_promesa AS 'FECHA PROMESA',p.entrega_enTiempo AS 'ENTREGA EN TIEMPO' FROM ENTREGA ent INNER JOIN VENTAS ven ON ven.cve_venta= ent.cve_venta INNER JOIN VALUADOR val ON val.cve_valuador = ven.cve_valuador INNER JOIN CLIENTE c ON c.cve_valuador = val.cve_valuador INNER JOIN PIEZA  pie ON pie.cve_pieza = ent.cve_pieza INNER JOIN PEDIDO p ON p.cve_entrega = ent.cve_entrega WHERE ent.cve_venta = {0}", cve_venta), nuevaConexion);
+                Comando = new SqlCommand(string.Format("SELECT   pie.nombre AS PIEZA,  ent.cantidad AS CANTIDAD, c.cve_nombre AS CLIENTE, ent.fecha AS 'FECHA ENTREGA', ven.fecha_promesa AS 'FECHA PROMESA',p.entrega_enTiempo AS 'ENTREGA EN TIEMPO' FROM ENTREGA ent INNER JOIN VENTAS ven ON ven.cve_venta= ent.cve_venta INNER JOIN VALUADOR val ON val.cve_valuador = ven.cve_valuador INNER JOIN CLIENTE c ON c.cve_valuador = val.cve_valuador INNER JOIN PIEZA  pie ON pie.cve_pieza = ent.cve_pieza INNER JOIN PEDIDO p ON p.cve_venta= ent.cve_venta WHERE ent.cve_venta = {0}", cve_venta), nuevaConexion);
                 da = new SqlDataAdapter(Comando);
                 da.Fill(dt);
                 nuevaConexion.Close();
@@ -1042,9 +1042,9 @@ namespace Refracciones
                         sl.SetCellValue("AM" + celdaContenido, Lector["FACTURA NETO"].ToString());
                         sl.SetCellValue("AN" + celdaContenido, Lector["COMENTARIOS SINIESTRO"].ToString());
                         sl.SetCellValue("AO" + celdaContenido, Lector["COMENTARIOS FACTURA"].ToString());
-                        sl.SetCellValue("AP" + celdaContenido, Lector["SUB TOTAL"].ToString());
+                        /*sl.SetCellValue("AP" + celdaContenido, Lector["SUB TOTAL"].ToString());
                         sl.SetCellValue("AQ" + celdaContenido, Lector["TOTAL"].ToString());
-                        sl.SetCellValue("AR" + celdaContenido, Lector["UTILIDAD BRUTA"].ToString());
+                        sl.SetCellValue("AR" + celdaContenido, Lector["UTILIDAD BRUTA"].ToString());*/
                         celdaContenido++;
                     }
 

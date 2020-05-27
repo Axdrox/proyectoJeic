@@ -25,7 +25,7 @@ namespace Refracciones.Forms
         int cantidad = 0;
         int cantidadD = 0;
         int cve_pieza = 0;
-        int penalizacion = 0;
+        int penalizacion = 1;
         DateTime fecha = DateTime.MinValue;
         DateTime fecha_asignacion = DateTime.MinValue;
        // DateTime fecha_promesa = DateTime.MinValue;
@@ -51,8 +51,8 @@ namespace Refracciones.Forms
             cve_pedido = dato2.Text.Substring(8, (dato2.Text.Length - 8));
             cve_siniestro = dato1.Text.Substring(11, dato1.Text.Length - 11);
             dgvDevolucion.DataSource = oper.Devolucion(cve_siniestro, cve_pedido);
-            count = oper.Total_Registros() +1 ;
-            count2 = oper.Total_Registros2() + 1;
+            /*count = oper.Total_Registros() +1 ;
+            count2 = oper.Total_Registros2() + 1;*/
             
             //MessageBox.Show(count.ToString());
         }
@@ -141,7 +141,7 @@ namespace Refracciones.Forms
             //rbtnEntrega.Checked = false;
             if (rbtnDevolucion.Checked == true)
             {
-                cmbCantidad.SelectedIndex = 0;
+                //cmbCantidad.SelectedIndex = 0;
                 cmbPenalizacion.SelectedIndex = 0;
                 lbl1.Text = "Fecha Devolucion";
                 lbl2.Text = "Cantidad a Devolver";
@@ -219,9 +219,10 @@ namespace Refracciones.Forms
                             else
                                 motivo = txtMotivo.Text.Trim();
                             if (cmbPenalizacion.Text.Equals("20%"))
-                                penalizacion = 1;
-                            else if (cmbPenalizacion.Text.Equals("100%"))
                                 penalizacion = 2;
+                            else if (cmbPenalizacion.Text.Equals("100%"))
+                                penalizacion = 3;
+                            count = oper.Total_Registros() + 1;//Se calcula el total de registros en la tabla Devolución
                             MessageBox.Show(oper.Registrar_Devolucion(cve_siniestro, cve_pedido, cve_pieza, count, cantidad, fecha, cantidadD, cve_venta, motivo, penalizacion));
                             cmbCantidad.Items.Clear();
                         }
@@ -243,6 +244,7 @@ namespace Refracciones.Forms
                             btnAceptar.Enabled = false;
                             btnCancelar.Enabled = false;
                             dgvDevolucion.Enabled = true;
+                            count2 = oper.Total_Registros2() + 1;//Se calcula el total de registros en la tabla Entrega
                             MessageBox.Show(oper.Registrar_Entrega(cve_siniestro, cve_pedido, cve_pieza, count2, cantidad, fecha, cantidadD, cve_venta, fecha_asignacion));
                             cmbCantidad.Items.Clear();
                         }
@@ -290,6 +292,9 @@ namespace Refracciones.Forms
             }
         }
 
+        private void registrarEntregaDeTodoElPedidoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }

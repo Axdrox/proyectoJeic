@@ -49,12 +49,17 @@
             this.dato1 = new System.Windows.Forms.Label();
             this.dgvDevolucion = new System.Windows.Forms.DataGridView();
             this.errorP = new System.Windows.Forms.ErrorProvider(this.components);
+            this.menu = new System.Windows.Forms.MenuStrip();
+            this.opcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.registrarEntregaDeTodoElPedidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.registrarDevoluciónDeTodoElPedidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDevolucion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorP)).BeginInit();
+            this.menu.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -82,13 +87,14 @@
             this.splitContainer1.Panel1.Controls.Add(this.lbl1);
             this.splitContainer1.Panel1.Controls.Add(this.dato2);
             this.splitContainer1.Panel1.Controls.Add(this.dato1);
+            this.splitContainer1.Panel1.Controls.Add(this.menu);
             this.splitContainer1.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel1_Paint);
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.dgvDevolucion);
             this.splitContainer1.Size = new System.Drawing.Size(1092, 450);
-            this.splitContainer1.SplitterDistance = 253;
+            this.splitContainer1.SplitterDistance = 282;
             this.splitContainer1.TabIndex = 0;
             // 
             // lblPenalizacion
@@ -202,7 +208,7 @@
             // 
             this.rbtnDevolucion.AutoSize = true;
             this.rbtnDevolucion.Enabled = false;
-            this.rbtnDevolucion.Location = new System.Drawing.Point(106, 44);
+            this.rbtnDevolucion.Location = new System.Drawing.Point(136, 55);
             this.rbtnDevolucion.Name = "rbtnDevolucion";
             this.rbtnDevolucion.Size = new System.Drawing.Size(79, 17);
             this.rbtnDevolucion.TabIndex = 7;
@@ -214,7 +220,7 @@
             // 
             this.rbtnEntrega.AutoSize = true;
             this.rbtnEntrega.Enabled = false;
-            this.rbtnEntrega.Location = new System.Drawing.Point(15, 44);
+            this.rbtnEntrega.Location = new System.Drawing.Point(21, 55);
             this.rbtnEntrega.Name = "rbtnEntrega";
             this.rbtnEntrega.Size = new System.Drawing.Size(62, 17);
             this.rbtnEntrega.TabIndex = 6;
@@ -261,7 +267,7 @@
             // dato2
             // 
             this.dato2.AutoSize = true;
-            this.dato2.Location = new System.Drawing.Point(134, 9);
+            this.dato2.Location = new System.Drawing.Point(155, 28);
             this.dato2.Name = "dato2";
             this.dato2.Size = new System.Drawing.Size(51, 13);
             this.dato2.TabIndex = 1;
@@ -270,7 +276,7 @@
             // dato1
             // 
             this.dato1.AutoSize = true;
-            this.dato1.Location = new System.Drawing.Point(12, 9);
+            this.dato1.Location = new System.Drawing.Point(12, 28);
             this.dato1.Name = "dato1";
             this.dato1.Size = new System.Drawing.Size(68, 13);
             this.dato1.TabIndex = 0;
@@ -291,12 +297,46 @@
             // 
             this.errorP.ContainerControl = this;
             // 
+            // menu
+            // 
+            this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.opcionesToolStripMenuItem});
+            this.menu.Location = new System.Drawing.Point(0, 0);
+            this.menu.Name = "menu";
+            this.menu.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.menu.Size = new System.Drawing.Size(282, 24);
+            this.menu.TabIndex = 17;
+            this.menu.Text = "menuStrip1";
+            // 
+            // opcionesToolStripMenuItem
+            // 
+            this.opcionesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.registrarEntregaDeTodoElPedidoToolStripMenuItem,
+            this.registrarDevoluciónDeTodoElPedidoToolStripMenuItem});
+            this.opcionesToolStripMenuItem.Name = "opcionesToolStripMenuItem";
+            this.opcionesToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
+            this.opcionesToolStripMenuItem.Text = "Opciones";
+            // 
+            // registrarEntregaDeTodoElPedidoToolStripMenuItem
+            // 
+            this.registrarEntregaDeTodoElPedidoToolStripMenuItem.Name = "registrarEntregaDeTodoElPedidoToolStripMenuItem";
+            this.registrarEntregaDeTodoElPedidoToolStripMenuItem.Size = new System.Drawing.Size(278, 22);
+            this.registrarEntregaDeTodoElPedidoToolStripMenuItem.Text = "Registrar entrega de todo el pedido ";
+            this.registrarEntregaDeTodoElPedidoToolStripMenuItem.Click += new System.EventHandler(this.registrarEntregaDeTodoElPedidoToolStripMenuItem_Click);
+            // 
+            // registrarDevoluciónDeTodoElPedidoToolStripMenuItem
+            // 
+            this.registrarDevoluciónDeTodoElPedidoToolStripMenuItem.Name = "registrarDevoluciónDeTodoElPedidoToolStripMenuItem";
+            this.registrarDevoluciónDeTodoElPedidoToolStripMenuItem.Size = new System.Drawing.Size(278, 22);
+            this.registrarDevoluciónDeTodoElPedidoToolStripMenuItem.Text = "Registrar devolución de todo el pedido";
+            // 
             // Devolucion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1092, 450);
             this.Controls.Add(this.splitContainer1);
+            this.MainMenuStrip = this.menu;
             this.Name = "Devolucion";
             this.Text = "Devolucion";
             this.Load += new System.EventHandler(this.Devolucion_Load);
@@ -307,6 +347,8 @@
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDevolucion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorP)).EndInit();
+            this.menu.ResumeLayout(false);
+            this.menu.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -333,5 +375,9 @@
         private System.Windows.Forms.Label lblPenalizacion;
         private System.Windows.Forms.ComboBox cmbPenalizacion;
         private System.Windows.Forms.ErrorProvider errorP;
+        private System.Windows.Forms.MenuStrip menu;
+        private System.Windows.Forms.ToolStripMenuItem opcionesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem registrarEntregaDeTodoElPedidoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem registrarDevoluciónDeTodoElPedidoToolStripMenuItem;
     }
 }
