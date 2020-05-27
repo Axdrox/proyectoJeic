@@ -47,19 +47,19 @@
             this.lbl1 = new System.Windows.Forms.Label();
             this.dato2 = new System.Windows.Forms.Label();
             this.dato1 = new System.Windows.Forms.Label();
-            this.dgvDevolucion = new System.Windows.Forms.DataGridView();
-            this.errorP = new System.Windows.Forms.ErrorProvider(this.components);
             this.menu = new System.Windows.Forms.MenuStrip();
             this.opcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registrarEntregaDeTodoElPedidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registrarDevoluciónDeTodoElPedidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dgvDevolucion = new System.Windows.Forms.DataGridView();
+            this.errorP = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDevolucion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorP)).BeginInit();
-            this.menu.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -93,8 +93,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.dgvDevolucion);
-            this.splitContainer1.Size = new System.Drawing.Size(1092, 450);
-            this.splitContainer1.SplitterDistance = 282;
+            this.splitContainer1.Size = new System.Drawing.Size(1370, 450);
+            this.splitContainer1.SplitterDistance = 353;
             this.splitContainer1.TabIndex = 0;
             // 
             // lblPenalizacion
@@ -219,11 +219,13 @@
             // rbtnEntrega
             // 
             this.rbtnEntrega.AutoSize = true;
+            this.rbtnEntrega.Checked = true;
             this.rbtnEntrega.Enabled = false;
             this.rbtnEntrega.Location = new System.Drawing.Point(21, 55);
             this.rbtnEntrega.Name = "rbtnEntrega";
             this.rbtnEntrega.Size = new System.Drawing.Size(62, 17);
             this.rbtnEntrega.TabIndex = 6;
+            this.rbtnEntrega.TabStop = true;
             this.rbtnEntrega.Text = "Entrega";
             this.rbtnEntrega.UseVisualStyleBackColor = true;
             this.rbtnEntrega.CheckedChanged += new System.EventHandler(this.rbtnEntrega_CheckedChanged);
@@ -282,21 +284,6 @@
             this.dato1.TabIndex = 0;
             this.dato1.Text = "SINIESTRO:";
             // 
-            // dgvDevolucion
-            // 
-            this.dgvDevolucion.AllowUserToAddRows = false;
-            this.dgvDevolucion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDevolucion.Location = new System.Drawing.Point(3, 3);
-            this.dgvDevolucion.Name = "dgvDevolucion";
-            this.dgvDevolucion.ReadOnly = true;
-            this.dgvDevolucion.Size = new System.Drawing.Size(829, 426);
-            this.dgvDevolucion.TabIndex = 0;
-            this.dgvDevolucion.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDevolucion_CellContentClick);
-            // 
-            // errorP
-            // 
-            this.errorP.ContainerControl = this;
-            // 
             // menu
             // 
             this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -304,7 +291,7 @@
             this.menu.Location = new System.Drawing.Point(0, 0);
             this.menu.Name = "menu";
             this.menu.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.menu.Size = new System.Drawing.Size(282, 24);
+            this.menu.Size = new System.Drawing.Size(353, 24);
             this.menu.TabIndex = 17;
             this.menu.Text = "menuStrip1";
             // 
@@ -330,11 +317,26 @@
             this.registrarDevoluciónDeTodoElPedidoToolStripMenuItem.Size = new System.Drawing.Size(278, 22);
             this.registrarDevoluciónDeTodoElPedidoToolStripMenuItem.Text = "Registrar devolución de todo el pedido";
             // 
+            // dgvDevolucion
+            // 
+            this.dgvDevolucion.AllowUserToAddRows = false;
+            this.dgvDevolucion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDevolucion.Location = new System.Drawing.Point(3, 3);
+            this.dgvDevolucion.Name = "dgvDevolucion";
+            this.dgvDevolucion.ReadOnly = true;
+            this.dgvDevolucion.Size = new System.Drawing.Size(1007, 426);
+            this.dgvDevolucion.TabIndex = 0;
+            this.dgvDevolucion.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDevolucion_CellContentClick);
+            // 
+            // errorP
+            // 
+            this.errorP.ContainerControl = this;
+            // 
             // Devolucion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1092, 450);
+            this.ClientSize = new System.Drawing.Size(1370, 450);
             this.Controls.Add(this.splitContainer1);
             this.MainMenuStrip = this.menu;
             this.Name = "Devolucion";
@@ -345,10 +347,10 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDevolucion)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorP)).EndInit();
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDevolucion)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorP)).EndInit();
             this.ResumeLayout(false);
 
         }
