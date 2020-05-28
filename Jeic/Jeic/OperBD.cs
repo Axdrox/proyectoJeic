@@ -1077,6 +1077,38 @@ namespace Refracciones
             }
 
         }
+        //--------------------LLENAR DATAGRID BUSCAR FACTURAS--------------------
+        public DataTable buscarFacturas()
+        {
+            dt = new DataTable();
+            using (SqlConnection nuevaConexion = Conexion.conexion())
+            {
+                nuevaConexion.Open();
+                Comando = new SqlCommand("SELECT fact.cve_factura AS 'FACTURA',ven.cve_siniestro AS 'SINIESTRO', ven.cve_pedido AS 'PEDIDO' FROM FACTURA fact LEFT OUTER JOIN VENTAS ven ON fact.cve_factura = ven.cve_factura", nuevaConexion);
+                da = new SqlDataAdapter(Comando);
+
+                da.Fill(dt);
+
+                nuevaConexion.Close();
+            }
+            return dt;
+        }
+        //--------------------LLENAR DATAGRID BUSCAR FACTURAS CON TEXBOX--------------------
+        public DataTable buscarFacturas(int cve_factura)
+        {
+            dt = new DataTable();
+            using (SqlConnection nuevaConexion = Conexion.conexion())
+            {
+                nuevaConexion.Open();
+                Comando = new SqlCommand(string.Format("SELECT fact.cve_factura AS 'FACTURA',ven.cve_siniestro AS 'SINIESTRO', ven.cve_pedido AS 'PEDIDO' FROM FACTURA fact LEFT OUTER JOIN VENTAS ven ON fact.cve_factura = ven.cve_factura WHERE fact.cve_factura like '%{0}%'",cve_factura), nuevaConexion);
+                da = new SqlDataAdapter(Comando);
+
+                da.Fill(dt);
+
+                nuevaConexion.Close();
+            }
+            return dt;
+        }
         //---------------------ALEX--------------------------------------------------------------------
         //--------------------OBTENER NUMERO DE VEHICULOS REGISTRADOS--------------------
         //Se ocupará al momento de poner un vehiculo por default en caso de que no haya siniestro

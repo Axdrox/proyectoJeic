@@ -260,6 +260,11 @@ namespace Refracciones.Forms
                 entregarTodo();
                 errorP.Clear();
             }
+            else if (btnAceptar.Text.Equals("DEVOLVER TODO"))
+            {
+                devolverTodo();
+                errorP.Clear();
+            }
             refresh();
         }
 
@@ -295,6 +300,7 @@ namespace Refracciones.Forms
                 txtMotivo.Visible = false;
                 cmbMotivoDev.Enabled = true;
                 cmbMotivoDev.Visible = true;
+                cmbMotivoDev.SelectedIndex = 0;
             }
         }
 
@@ -318,26 +324,89 @@ namespace Refracciones.Forms
         }
         private void entregarTodo()
         {
-            int filas = dgvDevolucion.RowCount;
-            fecha = DateTime.Parse(dtpFecha.Value.ToShortDateString());//Fecha entrega
-            
-            for (int i =0; i<filas; i++ )
+            oDlgRes = MessageBox.Show("¿Está seguro que desea Registrar la entrega de todo el pedido?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+            if (oDlgRes == DialogResult.OK)
             {
-                fecha_asignacion = DateTime.Parse(dgvDevolucion.Rows[i].Cells[7].Value.ToString());// fecha asiganción de la venta
-                cve_venta = Int32.Parse(dgvDevolucion.Rows[i].Cells[11].Value.ToString());//clave de venta en el pedido
-                cantidad = Int32.Parse(dgvDevolucion.Rows[i].Cells[2].Value.ToString());//cantidad vendida en el pedido
-                cve_pieza = Int32.Parse(dgvDevolucion.Rows[i].Cells[1].Value.ToString());//clave de la pieza
-                pzas_entregadas = oper.Pzas_Entregadas(cve_siniestro, cve_pedido,cve_pieza);
-                count2 = oper.Total_Registros2() + 1;//Se calcula el total de registros en la tabla Entrega
-                if (pzas_entregadas != cantidad)
-                    oper.Registrar_Entrega(cve_siniestro, cve_pedido, cve_pieza, count2, cantidad, fecha, (cantidad - pzas_entregadas), cve_venta, fecha_asignacion);
+                int filas = dgvDevolucion.RowCount;
+                fecha = DateTime.Parse(dtpFecha.Value.ToShortDateString());//Fecha entrega
+
+                for (int i = 0; i < filas; i++)
+                {
+                    fecha_asignacion = DateTime.Parse(dgvDevolucion.Rows[i].Cells[7].Value.ToString());// fecha asiganción de la venta
+                    cve_venta = Int32.Parse(dgvDevolucion.Rows[i].Cells[11].Value.ToString());//clave de venta en el pedido
+                    cantidad = Int32.Parse(dgvDevolucion.Rows[i].Cells[2].Value.ToString());//cantidad vendida en el pedido
+                    cve_pieza = Int32.Parse(dgvDevolucion.Rows[i].Cells[1].Value.ToString());//clave de la pieza
+                    pzas_entregadas = oper.Pzas_Entregadas(cve_siniestro, cve_pedido, cve_pieza);
+                    count2 = oper.Total_Registros2() + 1;//Se calcula el total de registros en la tabla Entrega
+                    if (pzas_entregadas != cantidad)
+                    {
+                        oper.Registrar_Entrega(cve_siniestro, cve_pedido, cve_pieza, count2, cantidad, fecha, (cantidad - pzas_entregadas), cve_venta, fecha_asignacion);
+                    }
+                    else
+                    {
+                        MessageBox.Show("NADA! QUE HACER");
+                    }
+                }
+                btnAceptar.Text = "ENTREGA";
+                btnAceptar.Enabled = false;
+                dtpFecha.Enabled = false;
+                MessageBox.Show("Se registro la entrega de todo el pedido correctamente!");
+            } 
+        }
+        private void devolverTodo()
+        {
+            oDlgRes = MessageBox.Show("¿Está seguro que desea Registrar la devolución de las piezas entregadas?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+            if (oDlgRes == DialogResult.OK)
+            {
+                int filas = dgvDevolucion.RowCount;
+                fecha = DateTime.Parse(dtpFecha.Value.ToShortDateString());//Fecha devolución
+                if (chkMotivo.Checked != true)
+                    motivo = cmbMotivoDev.SelectedItem.ToString();
                 else
-                    MessageBox.Show("NADA! QUE HACER");
+                    motivo = txtMotivo.Text.Trim();
+                if (cmbPenalizacion.Text.Equals("20%"))
+                    penalizacion = 2;
+                else if (cmbPenalizacion.Text.Equals("100%"))
+                    penalizacion = 3;
+                for (int i = 0; i < filas; i++)
+                {
+                    cve_venta = Int32.Parse(dgvDevolucion.Rows[i].Cells[11].Value.ToString());//clave de venta en el pedido
+                    cantidad = Int32.Parse(dgvDevolucion.Rows[i].Cells[2].Value.ToString());//cantidad vendida en el pedido
+                    cve_pieza = Int32.Parse(dgvDevolucion.Rows[i].Cells[1].Value.ToString());//clave de la pieza
+                    pzas_devolucion = oper.Pzas_Devolucion(cve_siniestro, cve_pedido, cve_pieza);
+                    pzas_entregadas = oper.Pzas_Entregadas(cve_siniestro, cve_pedido, cve_pieza);
+                    count = oper.Total_Registros() + 1;//Se calcula el total de registros en la tabla Devolución
+                    if (pzas_devolucion != pzas_entregadas)
+                    {
+                        oper.Registrar_Devolucion(cve_siniestro, cve_pedido, cve_pieza, count, pzas_entregadas, fecha, pzas_entregadas, cve_venta, motivo, penalizacion);
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("NADA! QUE HACER");
+                    }
+                }
+                MessageBox.Show("Se registro la devolución de todo el pedido correctamente!");
+                btnAceptar.Text = "ENTREGA";
+                btnAceptar.Enabled = false;
+                dtpFecha.Enabled = false;
             }
-            btnAceptar.Text = "ENTREGA";
-            btnAceptar.Enabled = false;
-            dtpFecha.Enabled = false;
-            MessageBox.Show("Se registro la entrega de todo el pedido correctamente!");
+        }
+
+        private void registrarDevoluciónDeTodoElPedidoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            rbtnEntrega.Enabled = false;
+            rbtnDevolucion.Checked = true;
+            lbl2.Visible = false;
+            cmbCantidad.Enabled = false;
+            cmbCantidad.Visible = false;
+            dtpFecha.Enabled = true;
+            btnCancelar.Enabled = true;
+            cmbMotivoDev.Enabled = true;
+            cmbMotivoDev.SelectedIndex = 0;
+            chkMotivo.Enabled = true;
+            btnAceptar.Enabled = true;
+            btnAceptar.Text = "DEVOLVER TODO";
         }
     }
 }

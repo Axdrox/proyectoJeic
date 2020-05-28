@@ -77,6 +77,7 @@
             this.otrasOpcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generarReporteVentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notificacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.buscarFacturasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarSesionToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.Panelinfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFactura)).BeginInit();
@@ -103,6 +104,7 @@
             this.TxtClaveSin.Name = "TxtClaveSin";
             this.TxtClaveSin.Size = new System.Drawing.Size(133, 20);
             this.TxtClaveSin.TabIndex = 1;
+
             this.TxtClaveSin.KeyUp += new System.Windows.Forms.KeyEventHandler(this.BusquedaPedido);
             // 
             // label2
@@ -573,6 +575,7 @@
             this.otrasOpcionesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.generarReporteVentasToolStripMenuItem,
             this.notificacionesToolStripMenuItem,
+            this.buscarFacturasToolStripMenuItem,
             this.cerrarSesionToolStripMenuItem1});
             this.otrasOpcionesToolStripMenuItem.Name = "otrasOpcionesToolStripMenuItem";
             this.otrasOpcionesToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F1)));
@@ -594,6 +597,14 @@
             this.notificacionesToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
             this.notificacionesToolStripMenuItem.Text = "Notificaciones";
             this.notificacionesToolStripMenuItem.Click += new System.EventHandler(this.notificacionesToolStripMenuItem_Click);
+            // 
+            // buscarFacturasToolStripMenuItem
+            // 
+            this.buscarFacturasToolStripMenuItem.Name = "buscarFacturasToolStripMenuItem";
+            this.buscarFacturasToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
+            this.buscarFacturasToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
+            this.buscarFacturasToolStripMenuItem.Text = "Buscar Facturas";
+            this.buscarFacturasToolStripMenuItem.Click += new System.EventHandler(this.buscarFacturasToolStripMenuItem_Click);
             // 
             // cerrarSesionToolStripMenuItem1
             // 
@@ -687,5 +698,6 @@
         private System.Windows.Forms.ToolStripMenuItem generarReporteVentasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem notificacionesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cerrarSesionToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem buscarFacturasToolStripMenuItem;
     }
 }

@@ -169,5 +169,13 @@ namespace Refracciones.Forms
             this.Close();
                 
         }
+
+        private void buscarFacturasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            buscarFacturas bfact = new buscarFacturas();
+            bfact.Show();
+        }
+
+
     }
 }
