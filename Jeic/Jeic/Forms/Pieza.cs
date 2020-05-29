@@ -11,7 +11,6 @@
     using System.Threading.Tasks;
     using System.Windows.Forms;
 
-    //PTM
     /// <summary>
     /// Defines the <see cref="Pieza" />.
     /// </summary>
@@ -260,62 +259,6 @@
                 {
                     e.Cancel = true;
                 }
-            }
-        }
-
-        /// <summary>
-        /// The txtPiezaNombre_Click.
-        /// </summary>
-        /// <param name="sender">The sender<see cref="object"/>.</param>
-        /// <param name="e">The e<see cref="EventArgs"/>.</param>
-        private void txtPiezaNombre_Click(object sender, EventArgs e)
-        {
-            if (txtPiezaNombre.Text == "Escriba nombre de pieza")
-            {
-                txtPiezaNombre.Text = "";
-                txtPiezaNombre.ForeColor = Color.White;
-            }
-        }
-
-        /// <summary>
-        /// The txtPortal_Click.
-        /// </summary>
-        /// <param name="sender">The sender<see cref="object"/>.</param>
-        /// <param name="e">The e<see cref="EventArgs"/>.</param>
-        private void txtPortal_Click(object sender, EventArgs e)
-        {
-            if (txtPortal.Text == "Escriba un nuevo portal")
-            {
-                txtPortal.Text = "";
-                txtPortal.ForeColor = Color.White;
-            }
-        }
-
-        /// <summary>
-        /// The txtOrigen_Click.
-        /// </summary>
-        /// <param name="sender">The sender<see cref="object"/>.</param>
-        /// <param name="e">The e<see cref="EventArgs"/>.</param>
-        private void txtOrigen_Click(object sender, EventArgs e)
-        {
-            if (txtOrigen.Text == "Escriba un nuevo origen")
-            {
-                txtOrigen.Text = "";
-                txtOrigen.ForeColor = Color.White;
-            }
-        }
-
-        /// <summary>
-        /// The txtProveedor_Click.
-        /// </summary>
-        /// <param name="sender">The sender<see cref="object"/>.</param>
-        /// <param name="e">The e<see cref="EventArgs"/>.</param>
-        private void txtProveedor_Click(object sender, EventArgs e)
-        {
-            if (txtProveedor.Text == "Escriba un nuevo proveedor")
-            {
-                txtProveedor.Text = "";
-                txtProveedor.ForeColor = Color.White;
             }
         }
 
@@ -616,30 +559,12 @@
             }
         }
 
-        private void txtClaveProducto_Click(object sender, EventArgs e)
-        {
-            if (txtClaveProducto.Text == "Escriba clave del producto")
-            {
-                txtClaveProducto.Text = "";
-                txtClaveProducto.ForeColor = Color.White;
-            }
-        }
-
         private void txtClaveProducto_Leave(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtClaveProducto.Text.Trim()))
             {
                 txtClaveProducto.Text = "Escriba clave del producto";
                 txtClaveProducto.ForeColor = Color.FromArgb(160, 160, 140);
-            }
-        }
-
-        private void txtNumeroGuia_Click(object sender, EventArgs e)
-        {
-            if (txtNumeroGuia.Text == "Escriba el número de guía")
-            {
-                txtNumeroGuia.Text = "";
-                txtNumeroGuia.ForeColor = Color.White;
             }
         }
 
@@ -697,19 +622,72 @@
             }
         }
 
-        private void txtPiezaNombre_Validated(object sender, EventArgs e)
+        private void txtPiezaNombre_Enter(object sender, EventArgs e)
+        {
+            if (txtPiezaNombre.Text == "Escriba nombre de pieza")
+            {
+                txtPiezaNombre.Text = "";
+                txtPiezaNombre.ForeColor = Color.White;
+            }
+        }
+
+        private void txtClaveProducto_Enter(object sender, EventArgs e)
+        {
+            if (txtClaveProducto.Text == "Escriba clave del producto")
+            {
+                txtClaveProducto.Text = "";
+                txtClaveProducto.ForeColor = Color.White;
+            }
+        }
+
+        private void txtNumeroGuia_Enter(object sender, EventArgs e)
+        {
+            if (txtNumeroGuia.Text == "Escriba el número de guía")
+            {
+                txtNumeroGuia.Text = "";
+                txtNumeroGuia.ForeColor = Color.White;
+            }
+        }
+
+        private void txtPortal_Enter(object sender, EventArgs e)
+        {
+            if (txtPortal.Text == "Escriba un nuevo portal")
+            {
+                txtPortal.Text = "";
+                txtPortal.ForeColor = Color.White;
+            }
+        }
+
+        private void txtOrigen_Enter(object sender, EventArgs e)
+        {
+            if (txtOrigen.Text == "Escriba un nuevo origen")
+            {
+                txtOrigen.Text = "";
+                txtOrigen.ForeColor = Color.White;
+            }
+        }
+
+        private void txtProveedor_Enter(object sender, EventArgs e)
+        {
+            if (txtProveedor.Text == "Escriba un nuevo proveedor")
+            {
+                txtProveedor.Text = "";
+                txtProveedor.ForeColor = Color.White;
+            }
+        }
+
+        private void txtPiezaNombre_Validating(object sender, CancelEventArgs e)
         {
             if (chbOtroPieza.Checked == true)
             {
                 if (txtPiezaNombre.Text == "Escriba nombre de pieza")// && string.IsNullOrEmpty(txtPiezaNombre.Text)
                 {
-                    //e.Cancel = true;
-                    //txtPiezaNombre.Focus();
+                    e.Cancel = true;
                     errorProvider1.SetError(txtPiezaNombre, "Favor de escribir un nuevo nombre de pieza");
                 }
                 else
                 {
-                    //e.Cancel = false;
+                    e.Cancel = false;
                     errorProvider1.SetError(txtPiezaNombre, null);
                 }
             }
@@ -733,11 +711,11 @@
             }
         }
 
-        private void txtCantidad_Validated(object sender, EventArgs e)
+        private void txtCantidad_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrEmpty(txtCantidad.Text.Trim()))
             {
-                //e.Cancel = true;
+                e.Cancel = true;
                 //txtCantidad.Focus();
                 errorProvider1.SetError(txtCantidad, "Favor de ingresar cantidad");
             }
@@ -745,11 +723,25 @@
             {
                 errorProvider1.SetError(txtCantidad, "No se admite tener cantidad cero");
             }
-
             else
             {
-                //e.Cancel = false;
+                e.Cancel = false;
                 errorProvider1.SetError(txtCantidad, null);
+            }
+        }
+
+        private void txtClaveProducto_Validating(object sender, CancelEventArgs e)
+        {
+            if (txtClaveProducto.Text.Trim() == "Escriba clave del producto")// || string.IsNullOrEmpty(txtClaveProducto.Text)
+            {
+                e.Cancel = true;
+                //txtClaveProducto.Focus();
+                errorProvider1.SetError(txtClaveProducto, "Favor de escribir la clave del producto");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider1.SetError(txtClaveProducto, null);
             }
         }
 
@@ -757,7 +749,7 @@
         {
             if (destinoLocal != "LOCAL" && chbOtroNumeroGuia.Checked == true && destinosAgregados > 0)
             {
-                if (string.IsNullOrEmpty(txtNumeroGuia.Text))// || txtNumeroGuia.Text == "Escriba el número de guía"
+                if (txtNumeroGuia.Text == "Escriba el número de guía")// || string.IsNullOrEmpty(txtNumeroGuia.Text)
                 {
                     e.Cancel = true;
                     //txtNumeroGuia.Focus();
@@ -777,30 +769,15 @@
             {
                 if (string.IsNullOrEmpty(cbNumeroGuia.Text))
                 {
-                    e.Cancel = true;
+                    //e.Cancel = true;
                     //txtNumeroGuia.Focus();
                     errorProvider1.SetError(cbNumeroGuia, "Favor de seleccionar un número de guía");
                 }
                 else
                 {
-                    e.Cancel = false;
+                    //e.Cancel = false;
                     errorProvider1.SetError(cbNumeroGuia, null);
                 }
-            }
-        }
-
-        private void txtClaveProducto_Validated(object sender, EventArgs e)
-        {
-            if (txtClaveProducto.Text.Trim() == "Escriba clave del producto")// || string.IsNullOrEmpty(txtClaveProducto.Text)
-            {
-                //e.Cancel = true;
-                //txtClaveProducto.Focus();
-                errorProvider1.SetError(txtClaveProducto, "Favor de escribir la clave del producto");
-            }
-            else
-            {
-                //e.Cancel = false;
-                errorProvider1.SetError(txtClaveProducto, null);
             }
         }
 
@@ -912,6 +889,18 @@
             }
         }
 
-        
+        private void txtPrecioReparacion_Validating(object sender, CancelEventArgs e)
+        {
+            if (cbOrigen.Text.Trim() == "USADA" && string.IsNullOrEmpty(cbCostoEnvio.Text.Trim()) == true)
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txtPrecioReparacion, "Proporcionar costo de reparación debido a tipo de origen");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider1.SetError(txtPrecioReparacion, null);
+            }
+        }
     }
 }

@@ -803,7 +803,21 @@ namespace Refracciones.Forms
 
         private void dgvPedido_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //dgvPedido.Rows.RemoveAt(dgvPedido.CurrentRow.Index);
+            //if click is on new row or header row
+            if (e.RowIndex == dgvPedido.NewRowIndex || e.RowIndex < 0)
+                return;
+
+            //Check if click is on specific column 
+            if (e.ColumnIndex == dgvPedido.Columns["dataGridViewDeleteButton"].Index)
+            {
+                dgvPedido.Rows.RemoveAt(dgvPedido.CurrentRow.Index);
+                //Put some logic here, for example to remove row from your binding list.
+                //yourBindingList.RemoveAt(e.RowIndex);
+
+                // Or
+                // var data = (Product)dataGridView1.Rows[e.RowIndex].DataBoundItem;
+                // do something 
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

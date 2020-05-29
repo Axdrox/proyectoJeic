@@ -235,10 +235,11 @@
             this.dtpFechaAsignacion.CalendarTitleForeColor = System.Drawing.Color.White;
             this.dtpFechaAsignacion.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dtpFechaAsignacion.Enabled = false;
+            this.dtpFechaAsignacion.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFechaAsignacion.Location = new System.Drawing.Point(1028, 71);
             this.dtpFechaAsignacion.Margin = new System.Windows.Forms.Padding(2);
             this.dtpFechaAsignacion.Name = "dtpFechaAsignacion";
-            this.dtpFechaAsignacion.Size = new System.Drawing.Size(216, 20);
+            this.dtpFechaAsignacion.Size = new System.Drawing.Size(107, 20);
             this.dtpFechaAsignacion.TabIndex = 11;
             this.dtpFechaAsignacion.ValueChanged += new System.EventHandler(this.dtpFechaAsignacion_ValueChanged);
             // 
@@ -260,10 +261,11 @@
             this.dtpFechaPromesa.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.dtpFechaPromesa.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dtpFechaPromesa.Enabled = false;
+            this.dtpFechaPromesa.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFechaPromesa.Location = new System.Drawing.Point(1028, 101);
             this.dtpFechaPromesa.Margin = new System.Windows.Forms.Padding(2);
             this.dtpFechaPromesa.Name = "dtpFechaPromesa";
-            this.dtpFechaPromesa.Size = new System.Drawing.Size(216, 20);
+            this.dtpFechaPromesa.Size = new System.Drawing.Size(107, 20);
             this.dtpFechaPromesa.TabIndex = 13;
             this.dtpFechaPromesa.ValueChanged += new System.EventHandler(this.dtpFechaPromesa_ValueChanged);
             // 
@@ -370,6 +372,7 @@
             // 
             this.btnFinalizarPedido.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnFinalizarPedido.Enabled = false;
+            this.btnFinalizarPedido.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnFinalizarPedido.Location = new System.Drawing.Point(1217, 491);
             this.btnFinalizarPedido.Margin = new System.Windows.Forms.Padding(2);
             this.btnFinalizarPedido.Name = "btnFinalizarPedido";
@@ -382,6 +385,7 @@
             // btnCancelar
             // 
             this.btnCancelar.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCancelar.Location = new System.Drawing.Point(1140, 491);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelar.Name = "btnCancelar";
@@ -621,6 +625,7 @@
             // btnAgregarPieza
             // 
             this.btnAgregarPieza.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnAgregarPieza.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAgregarPieza.Location = new System.Drawing.Point(121, 428);
             this.btnAgregarPieza.Margin = new System.Windows.Forms.Padding(2);
             this.btnAgregarPieza.Name = "btnAgregarPieza";
@@ -648,10 +653,11 @@
             this.dtpFechaBaja.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.dtpFechaBaja.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dtpFechaBaja.Enabled = false;
+            this.dtpFechaBaja.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFechaBaja.Location = new System.Drawing.Point(1028, 135);
             this.dtpFechaBaja.Margin = new System.Windows.Forms.Padding(2);
             this.dtpFechaBaja.Name = "dtpFechaBaja";
-            this.dtpFechaBaja.Size = new System.Drawing.Size(216, 20);
+            this.dtpFechaBaja.Size = new System.Drawing.Size(107, 20);
             this.dtpFechaBaja.TabIndex = 40;
             // 
             // label5
@@ -707,7 +713,7 @@
             this.chbModificarFechaAsignacion.AutoSize = true;
             this.chbModificarFechaAsignacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(33)))), ((int)(((byte)(38)))));
             this.chbModificarFechaAsignacion.ForeColor = System.Drawing.Color.White;
-            this.chbModificarFechaAsignacion.Location = new System.Drawing.Point(1255, 73);
+            this.chbModificarFechaAsignacion.Location = new System.Drawing.Point(1150, 50);
             this.chbModificarFechaAsignacion.Margin = new System.Windows.Forms.Padding(2);
             this.chbModificarFechaAsignacion.Name = "chbModificarFechaAsignacion";
             this.chbModificarFechaAsignacion.Size = new System.Drawing.Size(69, 17);
@@ -722,7 +728,7 @@
             this.chbModificarFechaPromesa.AutoSize = true;
             this.chbModificarFechaPromesa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(38)))), ((int)(((byte)(45)))));
             this.chbModificarFechaPromesa.ForeColor = System.Drawing.Color.White;
-            this.chbModificarFechaPromesa.Location = new System.Drawing.Point(1255, 103);
+            this.chbModificarFechaPromesa.Location = new System.Drawing.Point(1150, 80);
             this.chbModificarFechaPromesa.Margin = new System.Windows.Forms.Padding(2);
             this.chbModificarFechaPromesa.Name = "chbModificarFechaPromesa";
             this.chbModificarFechaPromesa.Size = new System.Drawing.Size(69, 17);
@@ -737,7 +743,7 @@
             this.chbModificarFechaBaja.AutoSize = true;
             this.chbModificarFechaBaja.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(42)))), ((int)(((byte)(52)))));
             this.chbModificarFechaBaja.ForeColor = System.Drawing.Color.White;
-            this.chbModificarFechaBaja.Location = new System.Drawing.Point(1255, 137);
+            this.chbModificarFechaBaja.Location = new System.Drawing.Point(1150, 114);
             this.chbModificarFechaBaja.Margin = new System.Windows.Forms.Padding(2);
             this.chbModificarFechaBaja.Name = "chbModificarFechaBaja";
             this.chbModificarFechaBaja.Size = new System.Drawing.Size(69, 17);
@@ -900,8 +906,11 @@
             this.bunifuGradientPanel1.Controls.Add(this.label5);
             this.bunifuGradientPanel1.Controls.Add(this.label11);
             this.bunifuGradientPanel1.Controls.Add(this.label12);
+            this.bunifuGradientPanel1.Controls.Add(this.chbModificarFechaBaja);
             this.bunifuGradientPanel1.Controls.Add(this.txtEstado);
+            this.bunifuGradientPanel1.Controls.Add(this.chbModificarFechaPromesa);
             this.bunifuGradientPanel1.Controls.Add(this.cbEstadoSiniestro);
+            this.bunifuGradientPanel1.Controls.Add(this.chbModificarFechaAsignacion);
             this.bunifuGradientPanel1.Controls.Add(this.chbSi);
             this.bunifuGradientPanel1.Controls.Add(this.cbVendedor);
             this.bunifuGradientPanel1.Controls.Add(this.txtAseguradora);
@@ -934,9 +943,6 @@
             this.Controls.Add(this.txtComentarioSiniestro);
             this.Controls.Add(this.lblComentarioSiniestro);
             this.Controls.Add(this.chbModificarVendedor);
-            this.Controls.Add(this.chbModificarFechaBaja);
-            this.Controls.Add(this.chbModificarFechaPromesa);
-            this.Controls.Add(this.chbModificarFechaAsignacion);
             this.Controls.Add(this.lblPrecioTotal);
             this.Controls.Add(this.lblCantidadTotal);
             this.Controls.Add(this.dtpFechaBaja);
