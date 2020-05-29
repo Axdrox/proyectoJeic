@@ -58,6 +58,13 @@
             set { destinoLocal = value; }
         }
 
+        private string[] datos;
+
+        public string[] datosEditar
+        {
+            set { datos = value; }
+        }
+
         /// <summary>
         /// The btnCancelar_Click.
         /// </summary>

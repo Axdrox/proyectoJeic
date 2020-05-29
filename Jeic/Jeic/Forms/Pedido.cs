@@ -41,7 +41,6 @@ namespace Refracciones.Forms
         {
             if (actualizar != 1)
             {
-
                 var editButton = new DataGridViewButtonColumn();
                 editButton.Name = "dataGridViewEditButton";
                 editButton.HeaderText = "Editar";
@@ -55,7 +54,6 @@ namespace Refracciones.Forms
             deleteButton.Text = "Eliminar";
             deleteButton.UseColumnTextForButtonValue = true;
             this.dgvPedido.Columns.Add(deleteButton);
-            
 
             dt = new DataTable();
             dt.Columns.Add("Pieza");
@@ -811,13 +809,21 @@ namespace Refracciones.Forms
             rdbNo.Enabled = true;
         }
 
+        private string[] datosPieza = new string[13];
+        public string[] datosMandar
+        {
+            get
+            {
+                return datosPieza;
+            }
+        }
         private void dgvPedido_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             //if click is on new row or header row
             if (e.RowIndex == dgvPedido.NewRowIndex || e.RowIndex < 0)
                 return;
 
-            //Check if click is on specific column 
+            //Check if click is on specific column
             if (e.ColumnIndex == dgvPedido.Columns["dataGridViewDeleteButton"].Index)
             {
                 dgvPedido.Rows.RemoveAt(dgvPedido.CurrentRow.Index);
@@ -826,7 +832,33 @@ namespace Refracciones.Forms
 
                 // Or
                 // var data = (Product)dataGridView1.Rows[e.RowIndex].DataBoundItem;
-                // do something 
+                // do something
+            }
+            if (e.ColumnIndex == dgvPedido.Columns["dataGridViewEditButton"].Index)
+            {
+                Pieza pieza = new Pieza();
+                foreach (DataGridViewRow row in dgvPedido.SelectedRows)
+                {
+                    datosPieza[0] = Convert.ToString(row.Cells["Pieza"].Value);
+                    datosPieza[1] = Convert.ToString(row.Cells["Cantidad"].Value);
+                    datosPieza[2] = Convert.ToString(row.Cells["Clave de producto"].Value);
+                    datosPieza[3] = Convert.ToString(row.Cells["Número de guía"].Value);
+                    datosPieza[4] = Convert.ToString(row.Cells["Portal"].Value);
+                    datosPieza[5] = Convert.ToString(row.Cells["Origen"].Value);
+                    datosPieza[6] = Convert.ToString(row.Cells["Proveedor"].Value);
+                    datosPieza[7] = Convert.ToString(row.Cells["Fecha costo"].Value);
+                    datosPieza[8] = Convert.ToString(row.Cells["Costo sin IVA"].Value);
+                    datosPieza[9] = Convert.ToString(row.Cells["Costo neto"].Value);
+                    datosPieza[10] = Convert.ToString(row.Cells["Costo de envío"].Value);
+                    datosPieza[11] = Convert.ToString(row.Cells["Precio de reparación"].Value);
+                    datosPieza[12] = Convert.ToString(row.Cells["Precio de venta"].Value);
+                }
+                pieza.datosEditar = datosPieza;
+                DialogResult respuesta = pieza.ShowDialog();
+                if (respuesta == DialogResult.OK)
+                {
+
+                }
             }
         }
 
@@ -860,6 +892,15 @@ namespace Refracciones.Forms
         private void chbModificarFechaBaja_CheckedChanged(object sender, EventArgs e)
         {
             //CHECAR
+            /*
+            if (chbModificarFechaBaja.Checked == true)
+                dtpFechaBaja.Enabled = true;
+            else
+            {
+                dtpFechaBaja.Text = operacion.fechaBaja(txtClavePedido.Text, lblClaveSiniestro.Text);
+                dtpFechaBaja.Enabled = false;
+            }
+            */
         }
 
         private void chbModificarVendedor_CheckedChanged(object sender, EventArgs e)
