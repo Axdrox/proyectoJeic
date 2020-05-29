@@ -29,6 +29,7 @@ namespace Refracciones.Forms
             //DAR FORMATO
             OperBD llenarDefaultDGV = new OperBD();
             llenarDefaultDGV.defaultDGV(dvgPedido);
+            menuStrip1.ForeColor = Color.White;
         }
 
         OperBD llenar = new OperBD();

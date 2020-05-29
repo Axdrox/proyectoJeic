@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Devolucion));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.lblPenalizacion = new System.Windows.Forms.Label();
             this.cmbPenalizacion = new System.Windows.Forms.ComboBox();
@@ -51,15 +55,23 @@
             this.opcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registrarEntregaDeTodoElPedidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registrarDevoluciónDeTodoElPedidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.dgvDevolucion = new System.Windows.Forms.DataGridView();
+            this.bunifuGradientPanel2 = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.errorP = new System.Windows.Forms.ErrorProvider(this.components);
+            this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.pbMinimize = new System.Windows.Forms.PictureBox();
+            this.pbClose = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDevolucion)).BeginInit();
+            this.bunifuGradientPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorP)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -88,11 +100,13 @@
             this.splitContainer1.Panel1.Controls.Add(this.dato2);
             this.splitContainer1.Panel1.Controls.Add(this.dato1);
             this.splitContainer1.Panel1.Controls.Add(this.menu);
+            this.splitContainer1.Panel1.Controls.Add(this.bunifuGradientPanel1);
             this.splitContainer1.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel1_Paint);
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.dgvDevolucion);
+            this.splitContainer1.Panel2.Controls.Add(this.bunifuGradientPanel2);
             this.splitContainer1.Size = new System.Drawing.Size(1370, 450);
             this.splitContainer1.SplitterDistance = 353;
             this.splitContainer1.TabIndex = 0;
@@ -100,6 +114,8 @@
             // lblPenalizacion
             // 
             this.lblPenalizacion.AutoSize = true;
+            this.lblPenalizacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(58)))), ((int)(((byte)(97)))));
+            this.lblPenalizacion.ForeColor = System.Drawing.Color.White;
             this.lblPenalizacion.Location = new System.Drawing.Point(18, 282);
             this.lblPenalizacion.Name = "lblPenalizacion";
             this.lblPenalizacion.Size = new System.Drawing.Size(136, 13);
@@ -123,6 +139,8 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(54)))), ((int)(((byte)(88)))));
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(164, 246);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(27, 13);
@@ -175,6 +193,8 @@
             // lblMotivoDev
             // 
             this.lblMotivoDev.AutoSize = true;
+            this.lblMotivoDev.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
+            this.lblMotivoDev.ForeColor = System.Drawing.Color.White;
             this.lblMotivoDev.Location = new System.Drawing.Point(15, 215);
             this.lblMotivoDev.Name = "lblMotivoDev";
             this.lblMotivoDev.Size = new System.Drawing.Size(99, 13);
@@ -184,50 +204,60 @@
             // 
             // btnCancelar
             // 
+            this.btnCancelar.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnCancelar.Enabled = false;
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCancelar.ForeColor = System.Drawing.Color.White;
             this.btnCancelar.Location = new System.Drawing.Point(15, 415);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 9;
             this.btnCancelar.Text = "CANCELAR";
-            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnAceptar
             // 
+            this.btnAceptar.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnAceptar.Enabled = false;
+            this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAceptar.ForeColor = System.Drawing.Color.White;
             this.btnAceptar.Location = new System.Drawing.Point(91, 370);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(124, 23);
             this.btnAceptar.TabIndex = 8;
             this.btnAceptar.Text = "ENTREGA";
-            this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.UseVisualStyleBackColor = false;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // rbtnDevolucion
             // 
             this.rbtnDevolucion.AutoSize = true;
+            this.rbtnDevolucion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
             this.rbtnDevolucion.Enabled = false;
+            this.rbtnDevolucion.ForeColor = System.Drawing.Color.White;
             this.rbtnDevolucion.Location = new System.Drawing.Point(136, 55);
             this.rbtnDevolucion.Name = "rbtnDevolucion";
             this.rbtnDevolucion.Size = new System.Drawing.Size(79, 17);
             this.rbtnDevolucion.TabIndex = 7;
             this.rbtnDevolucion.Text = "Devolución";
-            this.rbtnDevolucion.UseVisualStyleBackColor = true;
+            this.rbtnDevolucion.UseVisualStyleBackColor = false;
             this.rbtnDevolucion.CheckedChanged += new System.EventHandler(this.rbtnDevolucion_CheckedChanged);
             // 
             // rbtnEntrega
             // 
             this.rbtnEntrega.AutoSize = true;
+            this.rbtnEntrega.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
             this.rbtnEntrega.Checked = true;
             this.rbtnEntrega.Enabled = false;
+            this.rbtnEntrega.ForeColor = System.Drawing.Color.White;
             this.rbtnEntrega.Location = new System.Drawing.Point(21, 55);
             this.rbtnEntrega.Name = "rbtnEntrega";
             this.rbtnEntrega.Size = new System.Drawing.Size(62, 17);
             this.rbtnEntrega.TabIndex = 6;
             this.rbtnEntrega.TabStop = true;
             this.rbtnEntrega.Text = "Entrega";
-            this.rbtnEntrega.UseVisualStyleBackColor = true;
+            this.rbtnEntrega.UseVisualStyleBackColor = false;
             this.rbtnEntrega.CheckedChanged += new System.EventHandler(this.rbtnEntrega_CheckedChanged);
             // 
             // cmbCantidad
@@ -243,6 +273,8 @@
             // lbl2
             // 
             this.lbl2.AutoSize = true;
+            this.lbl2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(44)))), ((int)(((byte)(66)))));
+            this.lbl2.ForeColor = System.Drawing.Color.White;
             this.lbl2.Location = new System.Drawing.Point(12, 159);
             this.lbl2.Name = "lbl2";
             this.lbl2.Size = new System.Drawing.Size(104, 13);
@@ -260,6 +292,8 @@
             // lbl1
             // 
             this.lbl1.AutoSize = true;
+            this.lbl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(35)))), ((int)(((byte)(48)))));
+            this.lbl1.ForeColor = System.Drawing.Color.White;
             this.lbl1.Location = new System.Drawing.Point(12, 87);
             this.lbl1.Name = "lbl1";
             this.lbl1.Size = new System.Drawing.Size(77, 13);
@@ -269,6 +303,8 @@
             // dato2
             // 
             this.dato2.AutoSize = true;
+            this.dato2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(29)))), ((int)(((byte)(34)))));
+            this.dato2.ForeColor = System.Drawing.Color.White;
             this.dato2.Location = new System.Drawing.Point(155, 28);
             this.dato2.Name = "dato2";
             this.dato2.Size = new System.Drawing.Size(51, 13);
@@ -278,6 +314,8 @@
             // dato1
             // 
             this.dato1.AutoSize = true;
+            this.dato1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(29)))), ((int)(((byte)(34)))));
+            this.dato1.ForeColor = System.Drawing.Color.White;
             this.dato1.Location = new System.Drawing.Point(12, 28);
             this.dato1.Name = "dato1";
             this.dato1.Size = new System.Drawing.Size(68, 13);
@@ -286,6 +324,7 @@
             // 
             // menu
             // 
+            this.menu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(28)))), ((int)(((byte)(32)))));
             this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.opcionesToolStripMenuItem});
             this.menu.Location = new System.Drawing.Point(0, 0);
@@ -318,20 +357,112 @@
             this.registrarDevoluciónDeTodoElPedidoToolStripMenuItem.Text = "Registrar devolución de todo el pedido";
             this.registrarDevoluciónDeTodoElPedidoToolStripMenuItem.Click += new System.EventHandler(this.registrarDevoluciónDeTodoElPedidoToolStripMenuItem_Click);
             // 
+            // bunifuGradientPanel1
+            // 
+            this.bunifuGradientPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
+            this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuGradientPanel1.GradientBottomLeft = System.Drawing.Color.Black;
+            this.bunifuGradientPanel1.GradientBottomRight = System.Drawing.Color.RoyalBlue;
+            this.bunifuGradientPanel1.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.bunifuGradientPanel1.GradientTopRight = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.bunifuGradientPanel1.Location = new System.Drawing.Point(0, 0);
+            this.bunifuGradientPanel1.Name = "bunifuGradientPanel1";
+            this.bunifuGradientPanel1.Quality = 10;
+            this.bunifuGradientPanel1.Size = new System.Drawing.Size(1370, 450);
+            this.bunifuGradientPanel1.TabIndex = 18;
+            // 
             // dgvDevolucion
             // 
             this.dgvDevolucion.AllowUserToAddRows = false;
+            this.dgvDevolucion.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.dgvDevolucion.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvDevolucion.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvDevolucion.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(28)))), ((int)(((byte)(27)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(52)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDevolucion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvDevolucion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDevolucion.Location = new System.Drawing.Point(3, 3);
+            this.dgvDevolucion.EnableHeadersVisualStyles = false;
+            this.dgvDevolucion.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(51)))), ((int)(((byte)(65)))));
+            this.dgvDevolucion.Location = new System.Drawing.Point(3, 28);
             this.dgvDevolucion.Name = "dgvDevolucion";
             this.dgvDevolucion.ReadOnly = true;
-            this.dgvDevolucion.Size = new System.Drawing.Size(1007, 426);
+            this.dgvDevolucion.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(28)))), ((int)(((byte)(27)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(52)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDevolucion.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgvDevolucion.RowHeadersVisible = false;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(64)))), ((int)(((byte)(88)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvDevolucion.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvDevolucion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvDevolucion.Size = new System.Drawing.Size(1007, 422);
             this.dgvDevolucion.TabIndex = 0;
             this.dgvDevolucion.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDevolucion_CellContentClick);
+            // 
+            // bunifuGradientPanel2
+            // 
+            this.bunifuGradientPanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.bunifuGradientPanel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel2.BackgroundImage")));
+            this.bunifuGradientPanel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuGradientPanel2.Controls.Add(this.pbMinimize);
+            this.bunifuGradientPanel2.Controls.Add(this.pbClose);
+            this.bunifuGradientPanel2.GradientBottomLeft = System.Drawing.Color.Black;
+            this.bunifuGradientPanel2.GradientBottomRight = System.Drawing.Color.RoyalBlue;
+            this.bunifuGradientPanel2.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.bunifuGradientPanel2.GradientTopRight = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.bunifuGradientPanel2.Location = new System.Drawing.Point(3, 0);
+            this.bunifuGradientPanel2.Name = "bunifuGradientPanel2";
+            this.bunifuGradientPanel2.Quality = 10;
+            this.bunifuGradientPanel2.Size = new System.Drawing.Size(1188, 450);
+            this.bunifuGradientPanel2.TabIndex = 19;
             // 
             // errorP
             // 
             this.errorP.ContainerControl = this;
+            // 
+            // bunifuElipse1
+            // 
+            this.bunifuElipse1.ElipseRadius = 5;
+            this.bunifuElipse1.TargetControl = this;
+            // 
+            // pbMinimize
+            // 
+            this.pbMinimize.Image = global::Refracciones.Properties.Resources.Minimize_Window_2_48px;
+            this.pbMinimize.Location = new System.Drawing.Point(973, 2);
+            this.pbMinimize.Margin = new System.Windows.Forms.Padding(2);
+            this.pbMinimize.Name = "pbMinimize";
+            this.pbMinimize.Size = new System.Drawing.Size(15, 16);
+            this.pbMinimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbMinimize.TabIndex = 73;
+            this.pbMinimize.TabStop = false;
+            this.pbMinimize.Click += new System.EventHandler(this.pbMinimize_Click);
+            // 
+            // pbClose
+            // 
+            this.pbClose.Image = global::Refracciones.Properties.Resources.Close_Window__2_48px;
+            this.pbClose.Location = new System.Drawing.Point(992, 2);
+            this.pbClose.Margin = new System.Windows.Forms.Padding(2);
+            this.pbClose.Name = "pbClose";
+            this.pbClose.Size = new System.Drawing.Size(15, 16);
+            this.pbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbClose.TabIndex = 72;
+            this.pbClose.TabStop = false;
+            this.pbClose.Click += new System.EventHandler(this.pbClose_Click);
             // 
             // Devolucion
             // 
@@ -339,8 +470,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1370, 450);
             this.Controls.Add(this.splitContainer1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MainMenuStrip = this.menu;
             this.Name = "Devolucion";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Devolucion";
             this.Load += new System.EventHandler(this.Devolucion_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -351,7 +484,10 @@
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDevolucion)).EndInit();
+            this.bunifuGradientPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorP)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbClose)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -382,5 +518,10 @@
         private System.Windows.Forms.ToolStripMenuItem opcionesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem registrarEntregaDeTodoElPedidoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem registrarDevoluciónDeTodoElPedidoToolStripMenuItem;
+        private Bunifu.Framework.UI.BunifuGradientPanel bunifuGradientPanel1;
+        private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
+        private Bunifu.Framework.UI.BunifuGradientPanel bunifuGradientPanel2;
+        private System.Windows.Forms.PictureBox pbMinimize;
+        private System.Windows.Forms.PictureBox pbClose;
     }
 }

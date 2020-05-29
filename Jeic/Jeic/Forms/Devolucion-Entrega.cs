@@ -49,6 +49,7 @@ namespace Refracciones.Forms
             cve_pedido = dato2.Text.Substring(8, (dato2.Text.Length - 8));
             cve_siniestro = dato1.Text.Substring(11, dato1.Text.Length - 11);
             dgvDevolucion.DataSource = oper.Devolucion(cve_siniestro, cve_pedido);
+            menu.ForeColor = Color.White;
             /*count = oper.Total_Registros() +1 ;
             count2 = oper.Total_Registros2() + 1;*/
             
@@ -407,6 +408,16 @@ namespace Refracciones.Forms
             chkMotivo.Enabled = true;
             btnAceptar.Enabled = true;
             btnAceptar.Text = "DEVOLVER TODO";
+        }
+
+        private void pbClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void pbMinimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

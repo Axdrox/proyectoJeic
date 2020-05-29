@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(registroFactura));
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblFacturaSinIVA = new System.Windows.Forms.Label();
             this.txtCve_Factura = new System.Windows.Forms.TextBox();
@@ -62,13 +63,22 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.errorP = new System.Windows.Forms.ErrorProvider(this.components);
+            this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.pbMinimize = new System.Windows.Forms.PictureBox();
+            this.pbClose = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorP)).BeginInit();
+            this.bunifuGradientPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
             this.SuspendLayout();
             // 
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
+            this.lblNombre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(53)))), ((int)(((byte)(86)))));
+            this.lblNombre.ForeColor = System.Drawing.Color.White;
             this.lblNombre.Location = new System.Drawing.Point(16, 160);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(43, 13);
@@ -78,6 +88,8 @@
             // lblFacturaSinIVA
             // 
             this.lblFacturaSinIVA.AutoSize = true;
+            this.lblFacturaSinIVA.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(43)))), ((int)(((byte)(64)))));
+            this.lblFacturaSinIVA.ForeColor = System.Drawing.Color.White;
             this.lblFacturaSinIVA.Location = new System.Drawing.Point(16, 97);
             this.lblFacturaSinIVA.Name = "lblFacturaSinIVA";
             this.lblFacturaSinIVA.Size = new System.Drawing.Size(79, 13);
@@ -86,6 +98,9 @@
             // 
             // txtCve_Factura
             // 
+            this.txtCve_Factura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.txtCve_Factura.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCve_Factura.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.txtCve_Factura.Location = new System.Drawing.Point(106, 58);
             this.txtCve_Factura.Name = "txtCve_Factura";
             this.txtCve_Factura.Size = new System.Drawing.Size(141, 20);
@@ -96,6 +111,9 @@
             // 
             // txtRutaFactura
             // 
+            this.txtRutaFactura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.txtRutaFactura.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtRutaFactura.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.txtRutaFactura.Location = new System.Drawing.Point(19, 176);
             this.txtRutaFactura.Name = "txtRutaFactura";
             this.txtRutaFactura.ReadOnly = true;
@@ -104,28 +122,36 @@
             // 
             // btnBuscarFact
             // 
+            this.btnBuscarFact.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnBuscarFact.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnBuscarFact.ForeColor = System.Drawing.Color.White;
             this.btnBuscarFact.Location = new System.Drawing.Point(253, 176);
             this.btnBuscarFact.Name = "btnBuscarFact";
             this.btnBuscarFact.Size = new System.Drawing.Size(45, 20);
             this.btnBuscarFact.TabIndex = 4;
             this.btnBuscarFact.Text = "...";
-            this.btnBuscarFact.UseVisualStyleBackColor = true;
+            this.btnBuscarFact.UseVisualStyleBackColor = false;
             this.btnBuscarFact.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // btnGuardar
             // 
+            this.btnGuardar.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnGuardar.Enabled = false;
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnGuardar.ForeColor = System.Drawing.Color.White;
             this.btnGuardar.Location = new System.Drawing.Point(499, 271);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 23);
             this.btnGuardar.TabIndex = 5;
             this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // lblClave_Factura
             // 
             this.lblClave_Factura.AutoSize = true;
+            this.lblClave_Factura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(36)))), ((int)(((byte)(50)))));
+            this.lblClave_Factura.ForeColor = System.Drawing.Color.White;
             this.lblClave_Factura.Location = new System.Drawing.Point(16, 61);
             this.lblClave_Factura.Name = "lblClave_Factura";
             this.lblClave_Factura.Size = new System.Drawing.Size(83, 13);
@@ -135,6 +161,9 @@
             // 
             // txtFacturasinIVA
             // 
+            this.txtFacturasinIVA.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.txtFacturasinIVA.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtFacturasinIVA.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.txtFacturasinIVA.Location = new System.Drawing.Point(106, 94);
             this.txtFacturasinIVA.Name = "txtFacturasinIVA";
             this.txtFacturasinIVA.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -157,6 +186,9 @@
             // 
             // txtFacturaconIVA
             // 
+            this.txtFacturaconIVA.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.txtFacturaconIVA.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtFacturaconIVA.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.txtFacturaconIVA.Location = new System.Drawing.Point(106, 132);
             this.txtFacturaconIVA.Name = "txtFacturaconIVA";
             this.txtFacturaconIVA.ReadOnly = true;
@@ -167,6 +199,8 @@
             // lblFacturaConIVA
             // 
             this.lblFacturaConIVA.AutoSize = true;
+            this.lblFacturaConIVA.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(78)))));
+            this.lblFacturaConIVA.ForeColor = System.Drawing.Color.White;
             this.lblFacturaConIVA.Location = new System.Drawing.Point(16, 135);
             this.lblFacturaConIVA.Name = "lblFacturaConIVA";
             this.lblFacturaConIVA.Size = new System.Drawing.Size(84, 13);
@@ -184,6 +218,8 @@
             // lblFechaIngreso
             // 
             this.lblFechaIngreso.AutoSize = true;
+            this.lblFechaIngreso.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(36)))), ((int)(((byte)(50)))));
+            this.lblFechaIngreso.ForeColor = System.Drawing.Color.White;
             this.lblFechaIngreso.Location = new System.Drawing.Point(272, 61);
             this.lblFechaIngreso.Name = "lblFechaIngreso";
             this.lblFechaIngreso.Size = new System.Drawing.Size(90, 13);
@@ -208,6 +244,8 @@
             // lblFechaRevision
             // 
             this.lblFechaRevision.AutoSize = true;
+            this.lblFechaRevision.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(43)))), ((int)(((byte)(64)))));
+            this.lblFechaRevision.ForeColor = System.Drawing.Color.White;
             this.lblFechaRevision.Location = new System.Drawing.Point(272, 97);
             this.lblFechaRevision.Name = "lblFechaRevision";
             this.lblFechaRevision.Size = new System.Drawing.Size(96, 13);
@@ -217,6 +255,8 @@
             // lblFechaPago
             // 
             this.lblFechaPago.AutoSize = true;
+            this.lblFechaPago.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(78)))));
+            this.lblFechaPago.ForeColor = System.Drawing.Color.White;
             this.lblFechaPago.Location = new System.Drawing.Point(272, 135);
             this.lblFechaPago.Name = "lblFechaPago";
             this.lblFechaPago.Size = new System.Drawing.Size(80, 13);
@@ -226,6 +266,8 @@
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(101)))));
+            this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(16, 199);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(24, 13);
@@ -234,6 +276,9 @@
             // 
             // txtRutaXml
             // 
+            this.txtRutaXml.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.txtRutaXml.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtRutaXml.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.txtRutaXml.Location = new System.Drawing.Point(19, 215);
             this.txtRutaXml.Name = "txtRutaXml";
             this.txtRutaXml.ReadOnly = true;
@@ -242,12 +287,15 @@
             // 
             // btnBuscarXml
             // 
+            this.btnBuscarXml.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnBuscarXml.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnBuscarXml.ForeColor = System.Drawing.Color.White;
             this.btnBuscarXml.Location = new System.Drawing.Point(253, 215);
             this.btnBuscarXml.Name = "btnBuscarXml";
             this.btnBuscarXml.Size = new System.Drawing.Size(45, 20);
             this.btnBuscarXml.TabIndex = 19;
             this.btnBuscarXml.Text = "...";
-            this.btnBuscarXml.UseVisualStyleBackColor = true;
+            this.btnBuscarXml.UseVisualStyleBackColor = false;
             this.btnBuscarXml.Click += new System.EventHandler(this.btnBuscarXml_Click);
             // 
             // openFileDialog2
@@ -256,6 +304,9 @@
             // 
             // txtComentario
             // 
+            this.txtComentario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.txtComentario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtComentario.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.txtComentario.Location = new System.Drawing.Point(331, 199);
             this.txtComentario.Multiline = true;
             this.txtComentario.Name = "txtComentario";
@@ -265,6 +316,8 @@
             // lblComentarios
             // 
             this.lblComentarios.AutoSize = true;
+            this.lblComentarios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(56)))), ((int)(((byte)(92)))));
+            this.lblComentarios.ForeColor = System.Drawing.Color.White;
             this.lblComentarios.Location = new System.Drawing.Point(328, 176);
             this.lblComentarios.Name = "lblComentarios";
             this.lblComentarios.Size = new System.Drawing.Size(65, 13);
@@ -274,6 +327,8 @@
             // lblEstadoFactura
             // 
             this.lblEstadoFactura.AutoSize = true;
+            this.lblEstadoFactura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(69)))), ((int)(((byte)(119)))));
+            this.lblEstadoFactura.ForeColor = System.Drawing.Color.White;
             this.lblEstadoFactura.Location = new System.Drawing.Point(15, 247);
             this.lblEstadoFactura.Name = "lblEstadoFactura";
             this.lblEstadoFactura.Size = new System.Drawing.Size(105, 13);
@@ -306,6 +361,8 @@
             // dato1
             // 
             this.dato1.AutoSize = true;
+            this.dato1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(31)))), ((int)(((byte)(39)))));
+            this.dato1.ForeColor = System.Drawing.Color.White;
             this.dato1.Location = new System.Drawing.Point(179, 32);
             this.dato1.Name = "dato1";
             this.dato1.Size = new System.Drawing.Size(68, 13);
@@ -315,6 +372,8 @@
             // dato2
             // 
             this.dato2.AutoSize = true;
+            this.dato2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(31)))), ((int)(((byte)(39)))));
+            this.dato2.ForeColor = System.Drawing.Color.White;
             this.dato2.Location = new System.Drawing.Point(16, 32);
             this.dato2.Name = "dato2";
             this.dato2.Size = new System.Drawing.Size(51, 13);
@@ -324,7 +383,7 @@
             // dato3
             // 
             this.dato3.AutoSize = true;
-            this.dato3.Location = new System.Drawing.Point(539, 9);
+            this.dato3.Location = new System.Drawing.Point(539, 33);
             this.dato3.Name = "dato3";
             this.dato3.Size = new System.Drawing.Size(35, 13);
             this.dato3.TabIndex = 30;
@@ -334,7 +393,8 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(108, 97);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(13, 13);
@@ -344,6 +404,8 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(108, 135);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(13, 13);
@@ -354,6 +416,53 @@
             // 
             this.errorP.ContainerControl = this;
             // 
+            // bunifuElipse1
+            // 
+            this.bunifuElipse1.ElipseRadius = 5;
+            this.bunifuElipse1.TargetControl = this;
+            // 
+            // bunifuGradientPanel1
+            // 
+            this.bunifuGradientPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
+            this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuGradientPanel1.Controls.Add(this.pbMinimize);
+            this.bunifuGradientPanel1.Controls.Add(this.pbClose);
+            this.bunifuGradientPanel1.Controls.Add(this.dato3);
+            this.bunifuGradientPanel1.GradientBottomLeft = System.Drawing.Color.Black;
+            this.bunifuGradientPanel1.GradientBottomRight = System.Drawing.Color.RoyalBlue;
+            this.bunifuGradientPanel1.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.bunifuGradientPanel1.GradientTopRight = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.bunifuGradientPanel1.Location = new System.Drawing.Point(0, -1);
+            this.bunifuGradientPanel1.Name = "bunifuGradientPanel1";
+            this.bunifuGradientPanel1.Quality = 10;
+            this.bunifuGradientPanel1.Size = new System.Drawing.Size(581, 305);
+            this.bunifuGradientPanel1.TabIndex = 33;
+            // 
+            // pbMinimize
+            // 
+            this.pbMinimize.Image = global::Refracciones.Properties.Resources.Minimize_Window_2_48px;
+            this.pbMinimize.Location = new System.Drawing.Point(540, 2);
+            this.pbMinimize.Margin = new System.Windows.Forms.Padding(2);
+            this.pbMinimize.Name = "pbMinimize";
+            this.pbMinimize.Size = new System.Drawing.Size(15, 16);
+            this.pbMinimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbMinimize.TabIndex = 71;
+            this.pbMinimize.TabStop = false;
+            this.pbMinimize.Click += new System.EventHandler(this.pbMinimize_Click);
+            // 
+            // pbClose
+            // 
+            this.pbClose.Image = global::Refracciones.Properties.Resources.Close_Window__2_48px;
+            this.pbClose.Location = new System.Drawing.Point(559, 2);
+            this.pbClose.Margin = new System.Windows.Forms.Padding(2);
+            this.pbClose.Name = "pbClose";
+            this.pbClose.Size = new System.Drawing.Size(15, 16);
+            this.pbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbClose.TabIndex = 70;
+            this.pbClose.TabStop = false;
+            this.pbClose.Click += new System.EventHandler(this.pbClose_Click);
+            // 
             // registroFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -361,7 +470,6 @@
             this.ClientSize = new System.Drawing.Size(579, 305);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dato3);
             this.Controls.Add(this.dato2);
             this.Controls.Add(this.dato1);
             this.Controls.Add(this.dataGridView1);
@@ -389,12 +497,19 @@
             this.Controls.Add(this.txtCve_Factura);
             this.Controls.Add(this.lblFacturaSinIVA);
             this.Controls.Add(this.lblNombre);
+            this.Controls.Add(this.bunifuGradientPanel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "registroFactura";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "registroFactura";
             this.Load += new System.EventHandler(this.registroFactura_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.registroFactura_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorP)).EndInit();
+            this.bunifuGradientPanel1.ResumeLayout(false);
+            this.bunifuGradientPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbClose)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -435,5 +550,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ErrorProvider errorP;
+        private Bunifu.Framework.UI.BunifuGradientPanel bunifuGradientPanel1;
+        private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
+        private System.Windows.Forms.PictureBox pbMinimize;
+        private System.Windows.Forms.PictureBox pbClose;
     }
 }

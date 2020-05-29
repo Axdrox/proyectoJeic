@@ -28,9 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Busqueda_Devolver));
             this.label1 = new System.Windows.Forms.Label();
             this.TxtClaveSin = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -79,46 +82,59 @@
             this.notificacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buscarFacturasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarSesionToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.moverFormulario = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.Panelinfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFactura)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dvgPedido)).BeginInit();
             this.PanelFecha.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            this.bunifuGradientPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 45);
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(30)))), ((int)(((byte)(35)))));
+            this.label1.Font = new System.Drawing.Font("Poppins Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(19, 45);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(104, 17);
+            this.label1.Size = new System.Drawing.Size(117, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Clave siniestro";
             // 
             // TxtClaveSin
             // 
+            this.TxtClaveSin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.TxtClaveSin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TxtClaveSin.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.TxtClaveSin.Location = new System.Drawing.Point(12, 66);
             this.TxtClaveSin.MaxLength = 30;
             this.TxtClaveSin.Name = "TxtClaveSin";
             this.TxtClaveSin.Size = new System.Drawing.Size(133, 20);
             this.TxtClaveSin.TabIndex = 1;
-
             this.TxtClaveSin.KeyUp += new System.Windows.Forms.KeyEventHandler(this.BusquedaPedido);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(216, 45);
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(30)))), ((int)(((byte)(35)))));
+            this.label2.Font = new System.Drawing.Font("Poppins Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(209, 45);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(92, 17);
+            this.label2.Size = new System.Drawing.Size(109, 25);
             this.label2.TabIndex = 2;
             this.label2.Text = "Clave pedido";
             // 
             // TxtClavePed
             // 
+            this.TxtClavePed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.TxtClavePed.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TxtClavePed.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.TxtClavePed.Location = new System.Drawing.Point(197, 66);
             this.TxtClavePed.MaxLength = 30;
             this.TxtClavePed.Name = "TxtClavePed";
@@ -129,26 +145,26 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Poppins Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(30, 8);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(94, 17);
+            this.label3.Size = new System.Drawing.Size(106, 25);
             this.label3.TabIndex = 4;
             this.label3.Text = "De la fecha : ";
             // 
             // Fecha_in
             // 
-            this.Fecha_in.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Fecha_in.Font = new System.Drawing.Font("Poppins Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Fecha_in.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.Fecha_in.Location = new System.Drawing.Point(24, 28);
             this.Fecha_in.Name = "Fecha_in";
-            this.Fecha_in.Size = new System.Drawing.Size(112, 25);
+            this.Fecha_in.Size = new System.Drawing.Size(112, 26);
             this.Fecha_in.TabIndex = 5;
             this.Fecha_in.ValueChanged += new System.EventHandler(this.BusquedaFecha);
             // 
             // Panelinfo
             // 
-            this.Panelinfo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Panelinfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(37)))), ((int)(((byte)(50)))));
             this.Panelinfo.Controls.Add(this.pbFactura);
             this.Panelinfo.Controls.Add(this.lblEstadoFac);
             this.Panelinfo.Controls.Add(this.lblFacturaConIva);
@@ -175,9 +191,9 @@
             this.Panelinfo.Controls.Add(this.lblcveSiniestro);
             this.Panelinfo.Controls.Add(this.lblCvePed);
             this.Panelinfo.Controls.Add(this.lblcvePedido);
-            this.Panelinfo.Location = new System.Drawing.Point(12, 136);
+            this.Panelinfo.Location = new System.Drawing.Point(0, 136);
             this.Panelinfo.Name = "Panelinfo";
-            this.Panelinfo.Size = new System.Drawing.Size(338, 434);
+            this.Panelinfo.Size = new System.Drawing.Size(357, 443);
             this.Panelinfo.TabIndex = 6;
             // 
             // pbFactura
@@ -194,230 +210,253 @@
             // lblEstadoFac
             // 
             this.lblEstadoFac.AutoSize = true;
-            this.lblEstadoFac.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEstadoFac.Font = new System.Drawing.Font("Poppins Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEstadoFac.ForeColor = System.Drawing.Color.White;
             this.lblEstadoFac.Location = new System.Drawing.Point(181, 372);
             this.lblEstadoFac.Name = "lblEstadoFac";
-            this.lblEstadoFac.Size = new System.Drawing.Size(53, 16);
+            this.lblEstadoFac.Size = new System.Drawing.Size(57, 21);
             this.lblEstadoFac.TabIndex = 31;
             this.lblEstadoFac.Text = "Estado:";
             // 
             // lblFacturaConIva
             // 
             this.lblFacturaConIva.AutoSize = true;
-            this.lblFacturaConIva.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFacturaConIva.Font = new System.Drawing.Font("Poppins Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFacturaConIva.ForeColor = System.Drawing.Color.White;
             this.lblFacturaConIva.Location = new System.Drawing.Point(10, 403);
             this.lblFacturaConIva.Name = "lblFacturaConIva";
-            this.lblFacturaConIva.Size = new System.Drawing.Size(105, 16);
+            this.lblFacturaConIva.Size = new System.Drawing.Size(116, 21);
             this.lblFacturaConIva.TabIndex = 30;
             this.lblFacturaConIva.Text = "Factura con IVA:";
             // 
             // lblFacturaSinIva
             // 
             this.lblFacturaSinIva.AutoSize = true;
-            this.lblFacturaSinIva.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFacturaSinIva.Font = new System.Drawing.Font("Poppins Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFacturaSinIva.ForeColor = System.Drawing.Color.White;
             this.lblFacturaSinIva.Location = new System.Drawing.Point(10, 385);
             this.lblFacturaSinIva.Name = "lblFacturaSinIva";
-            this.lblFacturaSinIva.Size = new System.Drawing.Size(101, 16);
+            this.lblFacturaSinIva.Size = new System.Drawing.Size(110, 21);
             this.lblFacturaSinIva.TabIndex = 29;
             this.lblFacturaSinIva.Text = "Factura sin IVA:";
             // 
             // lblCveFactura
             // 
             this.lblCveFactura.AutoSize = true;
-            this.lblCveFactura.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCveFactura.Font = new System.Drawing.Font("Poppins Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCveFactura.ForeColor = System.Drawing.Color.White;
             this.lblCveFactura.Location = new System.Drawing.Point(34, 359);
             this.lblCveFactura.Name = "lblCveFactura";
-            this.lblCveFactura.Size = new System.Drawing.Size(67, 16);
+            this.lblCveFactura.Size = new System.Drawing.Size(78, 21);
             this.lblCveFactura.TabIndex = 28;
             this.lblCveFactura.Text = "# Factura:";
             // 
             // lblTaller
             // 
             this.lblTaller.AutoSize = true;
-            this.lblTaller.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTaller.Font = new System.Drawing.Font("Poppins Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTaller.ForeColor = System.Drawing.Color.White;
             this.lblTaller.Location = new System.Drawing.Point(6, 146);
             this.lblTaller.Name = "lblTaller";
-            this.lblTaller.Size = new System.Drawing.Size(46, 16);
+            this.lblTaller.Size = new System.Drawing.Size(53, 21);
             this.lblTaller.TabIndex = 27;
             this.lblTaller.Text = "Taller: ";
             // 
             // lblPortal
             // 
             this.lblPortal.AutoSize = true;
-            this.lblPortal.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPortal.Font = new System.Drawing.Font("Poppins Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPortal.ForeColor = System.Drawing.Color.White;
             this.lblPortal.Location = new System.Drawing.Point(6, 130);
             this.lblPortal.Name = "lblPortal";
-            this.lblPortal.Size = new System.Drawing.Size(50, 16);
+            this.lblPortal.Size = new System.Drawing.Size(54, 21);
             this.lblPortal.TabIndex = 26;
             this.lblPortal.Text = "Portal: ";
             // 
             // lblPrecioReparacion
             // 
             this.lblPrecioReparacion.AutoSize = true;
-            this.lblPrecioReparacion.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrecioReparacion.Font = new System.Drawing.Font("Poppins Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrecioReparacion.ForeColor = System.Drawing.Color.White;
             this.lblPrecioReparacion.Location = new System.Drawing.Point(154, 298);
             this.lblPrecioReparacion.Name = "lblPrecioReparacion";
-            this.lblPrecioReparacion.Size = new System.Drawing.Size(131, 16);
+            this.lblPrecioReparacion.Size = new System.Drawing.Size(150, 21);
             this.lblPrecioReparacion.TabIndex = 25;
             this.lblPrecioReparacion.Text = "Precio de reparacion:";
             // 
             // lblPrecioVenta
             // 
             this.lblPrecioVenta.AutoSize = true;
-            this.lblPrecioVenta.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrecioVenta.Font = new System.Drawing.Font("Poppins Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrecioVenta.ForeColor = System.Drawing.Color.White;
             this.lblPrecioVenta.Location = new System.Drawing.Point(154, 282);
             this.lblPrecioVenta.Name = "lblPrecioVenta";
-            this.lblPrecioVenta.Size = new System.Drawing.Size(101, 16);
+            this.lblPrecioVenta.Size = new System.Drawing.Size(114, 21);
             this.lblPrecioVenta.TabIndex = 24;
             this.lblPrecioVenta.Text = "Precio de venta:";
             // 
             // lblClaveSeguimiento
             // 
             this.lblClaveSeguimiento.AutoSize = true;
-            this.lblClaveSeguimiento.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClaveSeguimiento.Font = new System.Drawing.Font("Poppins Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClaveSeguimiento.ForeColor = System.Drawing.Color.White;
             this.lblClaveSeguimiento.Location = new System.Drawing.Point(6, 97);
             this.lblClaveSeguimiento.Name = "lblClaveSeguimiento";
-            this.lblClaveSeguimiento.Size = new System.Drawing.Size(107, 16);
+            this.lblClaveSeguimiento.Size = new System.Drawing.Size(122, 21);
             this.lblClaveSeguimiento.TabIndex = 23;
             this.lblClaveSeguimiento.Text = "Cve seguimiento:";
             // 
             // lblCliente
             // 
             this.lblCliente.AutoSize = true;
-            this.lblCliente.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCliente.Font = new System.Drawing.Font("Poppins Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCliente.ForeColor = System.Drawing.Color.White;
             this.lblCliente.Location = new System.Drawing.Point(190, 106);
             this.lblCliente.Name = "lblCliente";
-            this.lblCliente.Size = new System.Drawing.Size(52, 16);
+            this.lblCliente.Size = new System.Drawing.Size(58, 21);
             this.lblCliente.TabIndex = 22;
             this.lblCliente.Text = "Cliente:";
             // 
             // lblValuador
             // 
             this.lblValuador.AutoSize = true;
-            this.lblValuador.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblValuador.Font = new System.Drawing.Font("Poppins Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblValuador.ForeColor = System.Drawing.Color.White;
             this.lblValuador.Location = new System.Drawing.Point(190, 90);
             this.lblValuador.Name = "lblValuador";
-            this.lblValuador.Size = new System.Drawing.Size(62, 16);
+            this.lblValuador.Size = new System.Drawing.Size(74, 21);
             this.lblValuador.TabIndex = 21;
             this.lblValuador.Text = "Valuador:";
             // 
             // lblCostoNeto
             // 
             this.lblCostoNeto.AutoSize = true;
-            this.lblCostoNeto.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCostoNeto.Font = new System.Drawing.Font("Poppins Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCostoNeto.ForeColor = System.Drawing.Color.White;
             this.lblCostoNeto.Location = new System.Drawing.Point(10, 323);
             this.lblCostoNeto.Name = "lblCostoNeto";
-            this.lblCostoNeto.Size = new System.Drawing.Size(77, 16);
+            this.lblCostoNeto.Size = new System.Drawing.Size(84, 21);
             this.lblCostoNeto.TabIndex = 20;
             this.lblCostoNeto.Text = "Costo Neto:";
             // 
             // lblCostoEnvio
             // 
             this.lblCostoEnvio.AutoSize = true;
-            this.lblCostoEnvio.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCostoEnvio.Font = new System.Drawing.Font("Poppins Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCostoEnvio.ForeColor = System.Drawing.Color.White;
             this.lblCostoEnvio.Location = new System.Drawing.Point(10, 298);
             this.lblCostoEnvio.Name = "lblCostoEnvio";
-            this.lblCostoEnvio.Size = new System.Drawing.Size(97, 16);
+            this.lblCostoEnvio.Size = new System.Drawing.Size(110, 21);
             this.lblCostoEnvio.TabIndex = 19;
             this.lblCostoEnvio.Text = "Costo de envio:";
             // 
             // lblCostoSinIva
             // 
             this.lblCostoSinIva.AutoSize = true;
-            this.lblCostoSinIva.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCostoSinIva.Font = new System.Drawing.Font("Poppins Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCostoSinIva.ForeColor = System.Drawing.Color.White;
             this.lblCostoSinIva.Location = new System.Drawing.Point(9, 282);
             this.lblCostoSinIva.Name = "lblCostoSinIva";
-            this.lblCostoSinIva.Size = new System.Drawing.Size(91, 16);
+            this.lblCostoSinIva.Size = new System.Drawing.Size(98, 21);
             this.lblCostoSinIva.TabIndex = 18;
             this.lblCostoSinIva.Text = "Costo sin IVA:";
             // 
             // lblFechaEntreg
             // 
             this.lblFechaEntreg.AutoSize = true;
-            this.lblFechaEntreg.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFechaEntreg.Font = new System.Drawing.Font("Poppins Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFechaEntreg.ForeColor = System.Drawing.Color.White;
             this.lblFechaEntreg.Location = new System.Drawing.Point(9, 245);
             this.lblFechaEntreg.Name = "lblFechaEntreg";
-            this.lblFechaEntreg.Size = new System.Drawing.Size(101, 16);
+            this.lblFechaEntreg.Size = new System.Drawing.Size(110, 21);
             this.lblFechaEntreg.TabIndex = 17;
             this.lblFechaEntreg.Text = "Fecha Entrega: ";
             // 
             // lblPromesa
             // 
             this.lblPromesa.AutoSize = true;
-            this.lblPromesa.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPromesa.Font = new System.Drawing.Font("Poppins Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPromesa.ForeColor = System.Drawing.Color.White;
             this.lblPromesa.Location = new System.Drawing.Point(3, 194);
             this.lblPromesa.Name = "lblPromesa";
-            this.lblPromesa.Size = new System.Drawing.Size(102, 16);
+            this.lblPromesa.Size = new System.Drawing.Size(116, 21);
             this.lblPromesa.TabIndex = 13;
             this.lblPromesa.Text = "Fecha promesa:";
             // 
             // lblAsignacion
             // 
             this.lblAsignacion.AutoSize = true;
-            this.lblAsignacion.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAsignacion.Font = new System.Drawing.Font("Poppins Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAsignacion.ForeColor = System.Drawing.Color.White;
             this.lblAsignacion.Location = new System.Drawing.Point(3, 178);
             this.lblAsignacion.Name = "lblAsignacion";
-            this.lblAsignacion.Size = new System.Drawing.Size(108, 16);
+            this.lblAsignacion.Size = new System.Drawing.Size(124, 21);
             this.lblAsignacion.TabIndex = 12;
             this.lblAsignacion.Text = "Fecha asignada: ";
             // 
             // lblOrigen
             // 
             this.lblOrigen.AutoSize = true;
-            this.lblOrigen.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOrigen.Font = new System.Drawing.Font("Poppins Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOrigen.ForeColor = System.Drawing.Color.White;
             this.lblOrigen.Location = new System.Drawing.Point(6, 81);
             this.lblOrigen.Name = "lblOrigen";
-            this.lblOrigen.Size = new System.Drawing.Size(50, 16);
+            this.lblOrigen.Size = new System.Drawing.Size(57, 21);
             this.lblOrigen.TabIndex = 11;
             this.lblOrigen.Text = "Origen:";
             // 
             // lblVendedor
             // 
             this.lblVendedor.AutoSize = true;
-            this.lblVendedor.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVendedor.Font = new System.Drawing.Font("Poppins Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVendedor.ForeColor = System.Drawing.Color.White;
             this.lblVendedor.Location = new System.Drawing.Point(159, 65);
             this.lblVendedor.Name = "lblVendedor";
-            this.lblVendedor.Size = new System.Drawing.Size(66, 16);
+            this.lblVendedor.Size = new System.Drawing.Size(78, 21);
             this.lblVendedor.TabIndex = 10;
             this.lblVendedor.Text = "Vendedor:";
             // 
             // lblProveedor
             // 
             this.lblProveedor.AutoSize = true;
-            this.lblProveedor.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProveedor.Font = new System.Drawing.Font("Poppins Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProveedor.ForeColor = System.Drawing.Color.White;
             this.lblProveedor.Location = new System.Drawing.Point(159, 49);
             this.lblProveedor.Name = "lblProveedor";
-            this.lblProveedor.Size = new System.Drawing.Size(69, 16);
+            this.lblProveedor.Size = new System.Drawing.Size(79, 21);
             this.lblProveedor.TabIndex = 8;
             this.lblProveedor.Text = "Proveedor:";
             // 
             // lblCantidad
             // 
             this.lblCantidad.AutoSize = true;
-            this.lblCantidad.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCantidad.Font = new System.Drawing.Font("Poppins Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCantidad.ForeColor = System.Drawing.Color.White;
             this.lblCantidad.Location = new System.Drawing.Point(6, 65);
             this.lblCantidad.Name = "lblCantidad";
-            this.lblCantidad.Size = new System.Drawing.Size(63, 16);
+            this.lblCantidad.Size = new System.Drawing.Size(75, 21);
             this.lblCantidad.TabIndex = 6;
             this.lblCantidad.Text = "Cantidad:";
             // 
             // lblPieza
             // 
             this.lblPieza.AutoSize = true;
-            this.lblPieza.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPieza.Font = new System.Drawing.Font("Poppins Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPieza.ForeColor = System.Drawing.Color.White;
             this.lblPieza.Location = new System.Drawing.Point(6, 49);
             this.lblPieza.Name = "lblPieza";
-            this.lblPieza.Size = new System.Drawing.Size(45, 16);
+            this.lblPieza.Size = new System.Drawing.Size(47, 21);
             this.lblPieza.TabIndex = 4;
             this.lblPieza.Text = "Pieza:";
             // 
             // lblcveSiniestro
             // 
             this.lblcveSiniestro.AutoSize = true;
-            this.lblcveSiniestro.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblcveSiniestro.Font = new System.Drawing.Font("Poppins Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblcveSiniestro.ForeColor = System.Drawing.Color.White;
             this.lblcveSiniestro.Location = new System.Drawing.Point(154, 20);
             this.lblcveSiniestro.Name = "lblcveSiniestro";
-            this.lblcveSiniestro.Size = new System.Drawing.Size(74, 16);
+            this.lblcveSiniestro.Size = new System.Drawing.Size(82, 21);
             this.lblcveSiniestro.TabIndex = 2;
             this.lblcveSiniestro.Text = "# Siniestro:";
             // 
@@ -432,10 +471,11 @@
             // lblcvePedido
             // 
             this.lblcvePedido.AutoSize = true;
-            this.lblcvePedido.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblcvePedido.Font = new System.Drawing.Font("Poppins Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblcvePedido.ForeColor = System.Drawing.Color.White;
             this.lblcvePedido.Location = new System.Drawing.Point(6, 17);
             this.lblcvePedido.Name = "lblcvePedido";
-            this.lblcvePedido.Size = new System.Drawing.Size(63, 16);
+            this.lblcvePedido.Size = new System.Drawing.Size(73, 21);
             this.lblcvePedido.TabIndex = 0;
             this.lblcvePedido.Text = "# Pedido:";
             // 
@@ -443,64 +483,80 @@
             // 
             this.dvgPedido.AllowUserToAddRows = false;
             this.dvgPedido.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dvgPedido.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dvgPedido.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.dvgPedido.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dvgPedido.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dvgPedido.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(28)))), ((int)(((byte)(27)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(52)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dvgPedido.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dvgPedido.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dvgPedido.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dvgPedido.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dvgPedido.EnableHeadersVisualStyles = false;
+            this.dvgPedido.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(51)))), ((int)(((byte)(65)))));
             this.dvgPedido.Location = new System.Drawing.Point(355, 136);
             this.dvgPedido.Name = "dvgPedido";
             this.dvgPedido.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dvgPedido.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dvgPedido.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(37)))), ((int)(((byte)(50)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(125)))), ((int)(((byte)(184)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dvgPedido.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dvgPedido.RowHeadersWidth = 51;
-            this.dvgPedido.Size = new System.Drawing.Size(740, 403);
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(64)))), ((int)(((byte)(88)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
+            this.dvgPedido.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            this.dvgPedido.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dvgPedido.Size = new System.Drawing.Size(762, 440);
             this.dvgPedido.TabIndex = 7;
             this.dvgPedido.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgPedido_CellContentClick);
             // 
             // Fecha_Fin
             // 
-            this.Fecha_Fin.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Fecha_Fin.Font = new System.Drawing.Font("Poppins Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Fecha_Fin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.Fecha_Fin.Location = new System.Drawing.Point(230, 28);
             this.Fecha_Fin.Name = "Fecha_Fin";
-            this.Fecha_Fin.Size = new System.Drawing.Size(112, 25);
+            this.Fecha_Fin.Size = new System.Drawing.Size(112, 26);
             this.Fecha_Fin.TabIndex = 8;
             this.Fecha_Fin.ValueChanged += new System.EventHandler(this.BusquedaFecha);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Poppins Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(175, 34);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(28, 17);
+            this.label4.Size = new System.Drawing.Size(34, 25);
             this.label4.TabIndex = 9;
             this.label4.Text = "a : ";
             // 
             // lblUsuario
             // 
             this.lblUsuario.AutoSize = true;
+            this.lblUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(28)))), ((int)(((byte)(31)))));
             this.lblUsuario.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsuario.Location = new System.Drawing.Point(4, 9);
+            this.lblUsuario.ForeColor = System.Drawing.Color.White;
+            this.lblUsuario.Location = new System.Drawing.Point(2, 24);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(63, 18);
             this.lblUsuario.TabIndex = 10;
@@ -508,11 +564,13 @@
             // 
             // PanelFecha
             // 
+            this.PanelFecha.BackColor = System.Drawing.Color.Black;
             this.PanelFecha.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PanelFecha.Controls.Add(this.Fecha_in);
             this.PanelFecha.Controls.Add(this.label3);
             this.PanelFecha.Controls.Add(this.Fecha_Fin);
             this.PanelFecha.Controls.Add(this.label4);
+            this.PanelFecha.ForeColor = System.Drawing.Color.White;
             this.PanelFecha.Location = new System.Drawing.Point(633, 46);
             this.PanelFecha.Name = "PanelFecha";
             this.PanelFecha.Size = new System.Drawing.Size(356, 65);
@@ -531,17 +589,23 @@
             // 
             // btnAgregarPedido
             // 
+            this.btnAgregarPedido.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnAgregarPedido.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAgregarPedido.ForeColor = System.Drawing.Color.White;
             this.btnAgregarPedido.Location = new System.Drawing.Point(209, 89);
             this.btnAgregarPedido.Margin = new System.Windows.Forms.Padding(2);
             this.btnAgregarPedido.Name = "btnAgregarPedido";
             this.btnAgregarPedido.Size = new System.Drawing.Size(111, 22);
             this.btnAgregarPedido.TabIndex = 13;
             this.btnAgregarPedido.Text = "Agregar Pedido";
-            this.btnAgregarPedido.UseVisualStyleBackColor = true;
+            this.btnAgregarPedido.UseVisualStyleBackColor = false;
             this.btnAgregarPedido.Click += new System.EventHandler(this.btnAgregarPedido_Click);
             // 
             // txtCveVendedor
             // 
+            this.txtCveVendedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.txtCveVendedor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCveVendedor.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.txtCveVendedor.Location = new System.Drawing.Point(385, 66);
             this.txtCveVendedor.MaxLength = 30;
             this.txtCveVendedor.Name = "txtCveVendedor";
@@ -552,15 +616,18 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(398, 46);
+            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(30)))), ((int)(((byte)(35)))));
+            this.label5.Font = new System.Drawing.Font("Poppins Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(388, 61);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(109, 17);
+            this.label5.Size = new System.Drawing.Size(127, 25);
             this.label5.TabIndex = 16;
             this.label5.Text = "Clave vendedor";
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(27)))), ((int)(((byte)(30)))));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.otrasOpcionesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -613,24 +680,53 @@
             this.cerrarSesionToolStripMenuItem1.Text = "Cerrar Sesión";
             this.cerrarSesionToolStripMenuItem1.Click += new System.EventHandler(this.cerrarSesionToolStripMenuItem1_Click);
             // 
+            // bunifuElipse1
+            // 
+            this.bunifuElipse1.ElipseRadius = 5;
+            this.bunifuElipse1.TargetControl = this;
+            // 
+            // bunifuGradientPanel1
+            // 
+            this.bunifuGradientPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
+            this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuGradientPanel1.Controls.Add(this.label5);
+            this.bunifuGradientPanel1.Controls.Add(this.lblUsuario);
+            this.bunifuGradientPanel1.GradientBottomLeft = System.Drawing.Color.Black;
+            this.bunifuGradientPanel1.GradientBottomRight = System.Drawing.Color.RoyalBlue;
+            this.bunifuGradientPanel1.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.bunifuGradientPanel1.GradientTopRight = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.bunifuGradientPanel1.Location = new System.Drawing.Point(0, -16);
+            this.bunifuGradientPanel1.Name = "bunifuGradientPanel1";
+            this.bunifuGradientPanel1.Quality = 10;
+            this.bunifuGradientPanel1.Size = new System.Drawing.Size(1117, 598);
+            this.bunifuGradientPanel1.TabIndex = 18;
+            // 
+            // moverFormulario
+            // 
+            this.moverFormulario.Fixed = true;
+            this.moverFormulario.Horizontal = true;
+            this.moverFormulario.TargetControl = this.menuStrip1;
+            this.moverFormulario.Vertical = true;
+            // 
             // Busqueda_Devolver
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1117, 576);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.txtCveVendedor);
             this.Controls.Add(this.btnAgregarPedido);
             this.Controls.Add(this.dgvDatos);
             this.Controls.Add(this.PanelFecha);
-            this.Controls.Add(this.lblUsuario);
             this.Controls.Add(this.dvgPedido);
             this.Controls.Add(this.Panelinfo);
             this.Controls.Add(this.TxtClavePed);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.TxtClaveSin);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.bunifuGradientPanel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Busqueda_Devolver";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Busqueda_Devolver";
@@ -644,6 +740,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.bunifuGradientPanel1.ResumeLayout(false);
+            this.bunifuGradientPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -699,5 +797,8 @@
         private System.Windows.Forms.ToolStripMenuItem notificacionesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cerrarSesionToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem buscarFacturasToolStripMenuItem;
+        private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
+        private Bunifu.Framework.UI.BunifuGradientPanel bunifuGradientPanel1;
+        private Bunifu.Framework.UI.BunifuDragControl moverFormulario;
     }
 }

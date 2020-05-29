@@ -69,9 +69,9 @@ namespace Refracciones.Forms
                 int cve_estado = 1;
                 decimal fact_sinIVA = decimal.Parse(txtFacturasinIVA.Text, culture);
                 decimal fact_neto = decimal.Parse(txtFacturaconIVA.Text, culture);
-                DateTime fecha_ingreso = DateTime.MinValue;
-                DateTime fecha_revision = DateTime.MinValue;
-                DateTime fecha_pago = DateTime.MinValue;
+                string fecha_ingreso;
+                string fecha_revision;
+                string fecha_pago;
                 string nombre_factura = string.Empty;
                 byte[] file = null;
                 string nombre_xml = string.Empty;
@@ -86,13 +86,13 @@ namespace Refracciones.Forms
                     cve_estado = 3;
 
 
-                fecha_ingreso = DateTime.Parse(dtpFechaIngreso.Value.ToShortDateString());
+                fecha_ingreso = dtpFechaIngreso.Value.ToString("dd/MM/yyyy");
+                
 
 
+                fecha_revision = dtpFechaRevision.Value.ToString("dd/MM/yyyy");
 
-                fecha_revision = DateTime.Parse(dtpFechaRevision.Value.ToShortDateString());
-
-                fecha_pago = DateTime.Parse(dtpFechaPago.Value.ToShortDateString());
+                fecha_pago = dtpFechaPago.Value.ToString("dd/MM/yyyy");
                 //obtenemos el arreglo de bytes de factura
                 if (txtRutaFactura.Text == string.Empty && txtRutaXml.Text == string.Empty)
                 { }
@@ -303,6 +303,24 @@ namespace Refracciones.Forms
         private void txtCve_Factura_TextChanged(object sender, EventArgs e)
         {
             btnGuardar.Enabled = true;
+        }
+
+        private void registroFactura_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
+        }
+
+        private void pbClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void pbMinimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

@@ -495,5 +495,15 @@ namespace Refracciones
            }
       
         }
+
+        private void pbClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void pbMinimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
     }
 }

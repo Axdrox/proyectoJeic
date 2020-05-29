@@ -321,5 +321,15 @@ namespace Refracciones.Forms
         {
             btnGuardar.Enabled = true;
         }
+
+        private void pbMinimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void pbClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
