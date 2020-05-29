@@ -23,13 +23,39 @@ namespace Refracciones.Forms
         public Pedido(int i)
         {
             InitializeComponent();
+            //para que toda la clase sepa que está en el modo actualización
+            actualizar = i;
+        }
 
+        public string textBoxPedido
+        {
+            set { txtClavePedido.Text = value; }
+        }
+
+        public string labelSiniestro
+        {
+            set { lblClaveSiniestro.Text = value; }
+        }
+
+        private void Pedido_Load(object sender, EventArgs e)
+        {
+            if (actualizar != 1)
+            {
+
+                var editButton = new DataGridViewButtonColumn();
+                editButton.Name = "dataGridViewEditButton";
+                editButton.HeaderText = "Editar";
+                editButton.Text = "Editar";
+                editButton.UseColumnTextForButtonValue = true;
+                this.dgvPedido.Columns.Add(editButton);
+            }
             var deleteButton = new DataGridViewButtonColumn();
             deleteButton.Name = "dataGridViewDeleteButton";
             deleteButton.HeaderText = "Eliminar";
             deleteButton.Text = "Eliminar";
             deleteButton.UseColumnTextForButtonValue = true;
             this.dgvPedido.Columns.Add(deleteButton);
+            
 
             dt = new DataTable();
             dt.Columns.Add("Pieza");
@@ -47,22 +73,6 @@ namespace Refracciones.Forms
             dt.Columns.Add("Precio de reparación");
             dgvPedido.DataSource = dt;
 
-            //para que toda la clase sepa que está en el modo actualización
-            actualizar = i;
-        }
-
-        public string textBoxPedido
-        {
-            set { txtClavePedido.Text = value; }
-        }
-
-        public string labelSiniestro
-        {
-            set { lblClaveSiniestro.Text = value; }
-        }
-
-        private void Pedido_Load(object sender, EventArgs e)
-        {
             //Colocar ICONO
             this.Icon = Resources.iconJeic;
             Eleccion eleccion = new Eleccion();
