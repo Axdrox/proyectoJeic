@@ -339,3 +339,8 @@ C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\D
 C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csprojAssemblyReference.cache
 C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.buscarFacturas.resources
 C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.buscarFacturas.resources
+C:\Users\gears\Desktop\Ramas\Jeic\Jeic\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Users\gears\Desktop\Ramas\Jeic\Jeic\bin\Debug\SpreadsheetLight.dll
+C:\Users\gears\Desktop\Ramas\Jeic\Jeic\bin\Debug\SpreadsheetLight.xml
+C:\Users\gears\Desktop\Ramas\Jeic\Jeic\obj\Debug\Refracciones.Forms.buscarFacturas.resources
+C:\Users\gears\Desktop\Ramas\Jeic\Jeic\obj\Debug\Refracciones.Forms.exportarExcel.resources

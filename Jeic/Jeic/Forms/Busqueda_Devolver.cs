@@ -180,6 +180,29 @@ namespace Refracciones.Forms
             bfact.Show();
         }
 
+        private void label6_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void lblPromesa_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Panelinfo_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblPrecioReparacion_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
