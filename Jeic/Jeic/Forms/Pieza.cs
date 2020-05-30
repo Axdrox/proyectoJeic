@@ -909,5 +909,23 @@
                 errorProvider1.SetError(txtPrecioReparacion, null);
             }
         }
+
+        private string claveProducto(string modelo, string descripcion, string marca, string anio)
+        {
+            string clave = "";
+
+           return clave = modelo + descripcion + "-" + marca.Substring(1,3) + anio.Substring(3,2);
+            
+        }
+
+        private void txtPiezaNombre_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void cbPiezaNombre_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //txtClaveProducto.Text = claveProducto(modelo,cbPiezaNombre.SelectedIndex.ToString(),marca,anio);
+        }
     }
 }

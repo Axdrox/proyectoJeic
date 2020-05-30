@@ -31,6 +31,9 @@ namespace Refracciones.Forms
             int cve_factura = Int32.Parse(dgvFacturas.Rows[fila].Cells[0].Value.ToString());
             if (fila == -1) { }
             else if (e.ColumnIndex == -1)
+            { 
+            }
+            else
             {
                 string path = AppDomain.CurrentDomain.BaseDirectory;
                 string folder = path + "/temp/";
@@ -52,7 +55,7 @@ namespace Refracciones.Forms
 
                 }
                 else
-                { MessageBox.Show("No se encontro un XML"); }
+                {  }
             }
         }
 

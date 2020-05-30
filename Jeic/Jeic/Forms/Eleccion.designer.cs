@@ -56,7 +56,7 @@
             // 
             this.btnModificarDatosPedido.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnModificarDatosPedido.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnModificarDatosPedido.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModificarDatosPedido.Font = new System.Drawing.Font("Poppins Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModificarDatosPedido.ForeColor = System.Drawing.Color.White;
             this.btnModificarDatosPedido.Location = new System.Drawing.Point(12, 48);
             this.btnModificarDatosPedido.Name = "btnModificarDatosPedido";
@@ -70,7 +70,7 @@
             // 
             this.btnFactura.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnFactura.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnFactura.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFactura.Font = new System.Drawing.Font("Poppins Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFactura.ForeColor = System.Drawing.Color.White;
             this.btnFactura.Location = new System.Drawing.Point(12, 94);
             this.btnFactura.Name = "btnFactura";
@@ -84,7 +84,7 @@
             // 
             this.btnDevolucionEntrega.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnDevolucionEntrega.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnDevolucionEntrega.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDevolucionEntrega.Font = new System.Drawing.Font("Poppins Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDevolucionEntrega.ForeColor = System.Drawing.Color.White;
             this.btnDevolucionEntrega.Location = new System.Drawing.Point(12, 179);
             this.btnDevolucionEntrega.Name = "btnDevolucionEntrega";
@@ -98,11 +98,11 @@
             // 
             this.lblUsuario.AutoSize = true;
             this.lblUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(28)))), ((int)(((byte)(32)))));
-            this.lblUsuario.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsuario.Font = new System.Drawing.Font("Poppins Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsuario.ForeColor = System.Drawing.Color.White;
             this.lblUsuario.Location = new System.Drawing.Point(12, 9);
             this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(61, 18);
+            this.lblUsuario.Size = new System.Drawing.Size(65, 25);
             this.lblUsuario.TabIndex = 3;
             this.lblUsuario.Text = "usuario";
             // 
@@ -110,7 +110,7 @@
             // 
             this.btnRefactura.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnRefactura.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnRefactura.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRefactura.Font = new System.Drawing.Font("Poppins Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRefactura.ForeColor = System.Drawing.Color.White;
             this.btnRefactura.Location = new System.Drawing.Point(12, 135);
             this.btnRefactura.Name = "btnRefactura";
@@ -124,7 +124,7 @@
             // 
             this.button1.BackColor = System.Drawing.Color.RoyalBlue;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Font = new System.Drawing.Font("Poppins Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Location = new System.Drawing.Point(12, 231);
             this.button1.Name = "button1";
@@ -174,7 +174,7 @@
             // 
             this.btnPDF.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnPDF.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnPDF.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPDF.Font = new System.Drawing.Font("Poppins Light", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPDF.ForeColor = System.Drawing.Color.White;
             this.btnPDF.Location = new System.Drawing.Point(12, 281);
             this.btnPDF.Name = "btnPDF";
