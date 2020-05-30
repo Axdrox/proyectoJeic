@@ -1,4 +1,5 @@
-﻿using Refracciones.Properties;
+﻿using DocumentFormat.OpenXml.Office.CoverPageProps;
+using Refracciones.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -836,6 +837,8 @@ namespace Refracciones.Forms
             }
             if (e.ColumnIndex == dgvPedido.Columns["dataGridViewEditButton"].Index)
             {
+                int index = dgvPedido.CurrentCell.RowIndex;
+                //MessageBox.Show(Convert.ToString(index));
                 Pieza pieza = new Pieza();
                 foreach (DataGridViewRow row in dgvPedido.SelectedRows)
                 {
@@ -854,10 +857,14 @@ namespace Refracciones.Forms
                     datosPieza[12] = Convert.ToString(row.Cells["Precio de venta"].Value);
                 }
                 pieza.datosEditar = datosPieza;
+                pieza.editarPieza = 1;
                 DialogResult respuesta = pieza.ShowDialog();
                 if (respuesta == DialogResult.OK)
                 {
-
+                    for (int j = 0; j < pieza.datosMandar.Length; j++)
+                    {
+                        dgvPedido[j, index].Value = datosMandar[j];
+                    }
                 }
             }
         }

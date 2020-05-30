@@ -98,7 +98,7 @@
             this.cbPiezaNombre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPiezaNombre.ForeColor = System.Drawing.Color.White;
             this.cbPiezaNombre.FormattingEnabled = true;
-            this.cbPiezaNombre.Location = new System.Drawing.Point(110, 4);
+            this.cbPiezaNombre.Location = new System.Drawing.Point(127, 4);
             this.cbPiezaNombre.Margin = new System.Windows.Forms.Padding(2);
             this.cbPiezaNombre.Name = "cbPiezaNombre";
             this.cbPiezaNombre.Size = new System.Drawing.Size(148, 21);
@@ -113,7 +113,7 @@
             this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(40)))), ((int)(((byte)(56)))));
             this.label2.Font = new System.Drawing.Font("Poppins Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(36, 106);
+            this.label2.Location = new System.Drawing.Point(36, 105);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 18);
@@ -126,7 +126,7 @@
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(44)))), ((int)(((byte)(66)))));
             this.label3.Font = new System.Drawing.Font("Poppins Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(36, 137);
+            this.label3.Location = new System.Drawing.Point(36, 134);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(47, 18);
@@ -191,7 +191,7 @@
             this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(53)))), ((int)(((byte)(84)))));
             this.label8.Font = new System.Drawing.Font("Poppins Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(24, 207);
+            this.label8.Location = new System.Drawing.Point(24, 204);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(78, 18);
@@ -222,7 +222,7 @@
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(123, 18);
             this.label10.TabIndex = 10;
-            this.label10.Text = "Precio de reparación:";
+            this.label10.Text = "Costo de reparación:";
             // 
             // label11
             // 
@@ -256,7 +256,7 @@
             this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(36)))), ((int)(((byte)(48)))));
             this.label13.Font = new System.Drawing.Font("Poppins Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(9, 79);
+            this.label13.Location = new System.Drawing.Point(10, 79);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(97, 18);
@@ -269,7 +269,7 @@
             this.cbPortal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPortal.ForeColor = System.Drawing.Color.White;
             this.cbPortal.FormattingEnabled = true;
-            this.cbPortal.Location = new System.Drawing.Point(109, 104);
+            this.cbPortal.Location = new System.Drawing.Point(127, 104);
             this.cbPortal.Margin = new System.Windows.Forms.Padding(2);
             this.cbPortal.Name = "cbPortal";
             this.cbPortal.Size = new System.Drawing.Size(148, 21);
@@ -283,7 +283,7 @@
             this.cbOrigen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbOrigen.ForeColor = System.Drawing.Color.White;
             this.cbOrigen.FormattingEnabled = true;
-            this.cbOrigen.Location = new System.Drawing.Point(109, 135);
+            this.cbOrigen.Location = new System.Drawing.Point(126, 134);
             this.cbOrigen.Margin = new System.Windows.Forms.Padding(2);
             this.cbOrigen.Name = "cbOrigen";
             this.cbOrigen.Size = new System.Drawing.Size(148, 21);
@@ -297,7 +297,7 @@
             this.cbProveedores.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbProveedores.ForeColor = System.Drawing.Color.White;
             this.cbProveedores.FormattingEnabled = true;
-            this.cbProveedores.Location = new System.Drawing.Point(109, 167);
+            this.cbProveedores.Location = new System.Drawing.Point(126, 166);
             this.cbProveedores.Margin = new System.Windows.Forms.Padding(2);
             this.cbProveedores.Name = "cbProveedores";
             this.cbProveedores.Size = new System.Drawing.Size(148, 21);
@@ -308,11 +308,10 @@
             // dtpFechaCosto
             // 
             this.dtpFechaCosto.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dtpFechaCosto.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaCosto.Location = new System.Drawing.Point(123, 201);
+            this.dtpFechaCosto.Location = new System.Drawing.Point(127, 199);
             this.dtpFechaCosto.Margin = new System.Windows.Forms.Padding(2);
             this.dtpFechaCosto.Name = "dtpFechaCosto";
-            this.dtpFechaCosto.Size = new System.Drawing.Size(113, 20);
+            this.dtpFechaCosto.Size = new System.Drawing.Size(147, 20);
             this.dtpFechaCosto.TabIndex = 5;
             // 
             // txtCostoSinIVA
@@ -320,7 +319,7 @@
             this.txtCostoSinIVA.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.txtCostoSinIVA.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCostoSinIVA.ForeColor = System.Drawing.Color.White;
-            this.txtCostoSinIVA.Location = new System.Drawing.Point(136, 235);
+            this.txtCostoSinIVA.Location = new System.Drawing.Point(160, 237);
             this.txtCostoSinIVA.Margin = new System.Windows.Forms.Padding(2);
             this.txtCostoSinIVA.Name = "txtCostoSinIVA";
             this.txtCostoSinIVA.Size = new System.Drawing.Size(92, 20);
@@ -333,7 +332,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.label16.Location = new System.Drawing.Point(141, 237);
+            this.label16.Location = new System.Drawing.Point(165, 239);
             this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(13, 13);
@@ -346,7 +345,7 @@
             this.txtCostoNeto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCostoNeto.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtCostoNeto.ForeColor = System.Drawing.Color.White;
-            this.txtCostoNeto.Location = new System.Drawing.Point(136, 255);
+            this.txtCostoNeto.Location = new System.Drawing.Point(160, 257);
             this.txtCostoNeto.Margin = new System.Windows.Forms.Padding(2);
             this.txtCostoNeto.Name = "txtCostoNeto";
             this.txtCostoNeto.ReadOnly = true;
@@ -359,7 +358,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.label17.Location = new System.Drawing.Point(141, 258);
+            this.label17.Location = new System.Drawing.Point(165, 260);
             this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(13, 13);
@@ -371,7 +370,7 @@
             this.txtPrecioVenta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.txtPrecioVenta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPrecioVenta.ForeColor = System.Drawing.Color.White;
-            this.txtPrecioVenta.Location = new System.Drawing.Point(136, 319);
+            this.txtPrecioVenta.Location = new System.Drawing.Point(160, 321);
             this.txtPrecioVenta.Margin = new System.Windows.Forms.Padding(2);
             this.txtPrecioVenta.Name = "txtPrecioVenta";
             this.txtPrecioVenta.Size = new System.Drawing.Size(92, 20);
@@ -383,7 +382,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.label19.Location = new System.Drawing.Point(141, 321);
+            this.label19.Location = new System.Drawing.Point(165, 323);
             this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(13, 13);
@@ -395,7 +394,7 @@
             this.txtPrecioReparacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.txtPrecioReparacion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPrecioReparacion.ForeColor = System.Drawing.Color.White;
-            this.txtPrecioReparacion.Location = new System.Drawing.Point(136, 299);
+            this.txtPrecioReparacion.Location = new System.Drawing.Point(160, 301);
             this.txtPrecioReparacion.Margin = new System.Windows.Forms.Padding(2);
             this.txtPrecioReparacion.Name = "txtPrecioReparacion";
             this.txtPrecioReparacion.Size = new System.Drawing.Size(92, 20);
@@ -408,7 +407,7 @@
             // 
             this.label20.AutoSize = true;
             this.label20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.label20.Location = new System.Drawing.Point(141, 302);
+            this.label20.Location = new System.Drawing.Point(165, 304);
             this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(13, 13);
@@ -420,7 +419,7 @@
             this.txtCantidad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.txtCantidad.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCantidad.ForeColor = System.Drawing.Color.White;
-            this.txtCantidad.Location = new System.Drawing.Point(109, 28);
+            this.txtCantidad.Location = new System.Drawing.Point(127, 28);
             this.txtCantidad.Margin = new System.Windows.Forms.Padding(2);
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(38, 20);
@@ -434,11 +433,10 @@
             this.txtClaveProducto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.txtClaveProducto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtClaveProducto.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.txtClaveProducto.Location = new System.Drawing.Point(108, 50);
+            this.txtClaveProducto.Location = new System.Drawing.Point(127, 52);
             this.txtClaveProducto.Margin = new System.Windows.Forms.Padding(2);
             this.txtClaveProducto.Name = "txtClaveProducto";
-            this.txtClaveProducto.ReadOnly = true;
-            this.txtClaveProducto.Size = new System.Drawing.Size(147, 20);
+            this.txtClaveProducto.Size = new System.Drawing.Size(148, 20);
             this.txtClaveProducto.TabIndex = 2;
             this.txtClaveProducto.Text = "Escriba clave del producto";
             this.txtClaveProducto.Enter += new System.EventHandler(this.txtClaveProducto_Enter);
@@ -450,7 +448,7 @@
             this.txtNumeroGuia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.txtNumeroGuia.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNumeroGuia.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.txtNumeroGuia.Location = new System.Drawing.Point(109, 77);
+            this.txtNumeroGuia.Location = new System.Drawing.Point(126, 76);
             this.txtNumeroGuia.Margin = new System.Windows.Forms.Padding(2);
             this.txtNumeroGuia.Name = "txtNumeroGuia";
             this.txtNumeroGuia.Size = new System.Drawing.Size(148, 20);
@@ -465,7 +463,7 @@
             this.btnAniadirPieza.BackColor = System.Drawing.Color.CornflowerBlue;
             this.btnAniadirPieza.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAniadirPieza.Font = new System.Drawing.Font("Poppins Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAniadirPieza.Location = new System.Drawing.Point(259, 364);
+            this.btnAniadirPieza.Location = new System.Drawing.Point(267, 364);
             this.btnAniadirPieza.Margin = new System.Windows.Forms.Padding(2);
             this.btnAniadirPieza.Name = "btnAniadirPieza";
             this.btnAniadirPieza.Size = new System.Drawing.Size(74, 23);
@@ -479,10 +477,10 @@
             this.btnCancelar.BackColor = System.Drawing.Color.CornflowerBlue;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCancelar.Font = new System.Drawing.Font("Poppins Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(188, 364);
+            this.btnCancelar.Location = new System.Drawing.Point(178, 364);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(64, 23);
+            this.btnCancelar.Size = new System.Drawing.Size(74, 23);
             this.btnCancelar.TabIndex = 37;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
@@ -553,7 +551,7 @@
             this.txtPiezaNombre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.txtPiezaNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPiezaNombre.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.txtPiezaNombre.Location = new System.Drawing.Point(110, 5);
+            this.txtPiezaNombre.Location = new System.Drawing.Point(127, 5);
             this.txtPiezaNombre.Margin = new System.Windows.Forms.Padding(2);
             this.txtPiezaNombre.Name = "txtPiezaNombre";
             this.txtPiezaNombre.Size = new System.Drawing.Size(148, 20);
@@ -570,7 +568,7 @@
             this.txtPortal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.txtPortal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPortal.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.txtPortal.Location = new System.Drawing.Point(109, 105);
+            this.txtPortal.Location = new System.Drawing.Point(127, 105);
             this.txtPortal.Margin = new System.Windows.Forms.Padding(2);
             this.txtPortal.Name = "txtPortal";
             this.txtPortal.Size = new System.Drawing.Size(148, 20);
@@ -586,7 +584,7 @@
             this.txtOrigen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.txtOrigen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtOrigen.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.txtOrigen.Location = new System.Drawing.Point(109, 136);
+            this.txtOrigen.Location = new System.Drawing.Point(127, 135);
             this.txtOrigen.Margin = new System.Windows.Forms.Padding(2);
             this.txtOrigen.Name = "txtOrigen";
             this.txtOrigen.Size = new System.Drawing.Size(148, 20);
@@ -602,7 +600,7 @@
             this.txtProveedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.txtProveedor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtProveedor.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.txtProveedor.Location = new System.Drawing.Point(109, 168);
+            this.txtProveedor.Location = new System.Drawing.Point(126, 167);
             this.txtProveedor.Margin = new System.Windows.Forms.Padding(2);
             this.txtProveedor.Name = "txtProveedor";
             this.txtProveedor.Size = new System.Drawing.Size(148, 20);
@@ -619,7 +617,7 @@
             this.cbCostoEnvio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCostoEnvio.ForeColor = System.Drawing.Color.White;
             this.cbCostoEnvio.FormattingEnabled = true;
-            this.cbCostoEnvio.Location = new System.Drawing.Point(136, 277);
+            this.cbCostoEnvio.Location = new System.Drawing.Point(160, 279);
             this.cbCostoEnvio.Margin = new System.Windows.Forms.Padding(2);
             this.cbCostoEnvio.Name = "cbCostoEnvio";
             this.cbCostoEnvio.Size = new System.Drawing.Size(92, 21);
@@ -635,11 +633,15 @@
             // 
             this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
             this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuGradientPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.bunifuGradientPanel1.Controls.Add(this.cbCostoEnvio);
             this.bunifuGradientPanel1.Controls.Add(this.txtNumeroGuia);
             this.bunifuGradientPanel1.Controls.Add(this.cbNumeroGuia);
             this.bunifuGradientPanel1.Controls.Add(this.txtPiezaNombre);
             this.bunifuGradientPanel1.Controls.Add(this.txtProveedor);
+            this.bunifuGradientPanel1.Controls.Add(this.label13);
+            this.bunifuGradientPanel1.Controls.Add(this.txtCantidad);
+            this.bunifuGradientPanel1.Controls.Add(this.txtClaveProducto);
             this.bunifuGradientPanel1.Controls.Add(this.cbPiezaNombre);
             this.bunifuGradientPanel1.Controls.Add(this.txtOrigen);
             this.bunifuGradientPanel1.Controls.Add(this.dtpFechaCosto);
@@ -670,10 +672,10 @@
             this.bunifuGradientPanel1.GradientBottomRight = System.Drawing.Color.RoyalBlue;
             this.bunifuGradientPanel1.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.bunifuGradientPanel1.GradientTopRight = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.bunifuGradientPanel1.Location = new System.Drawing.Point(-1, 0);
+            this.bunifuGradientPanel1.Location = new System.Drawing.Point(0, 0);
             this.bunifuGradientPanel1.Name = "bunifuGradientPanel1";
             this.bunifuGradientPanel1.Quality = 10;
-            this.bunifuGradientPanel1.Size = new System.Drawing.Size(345, 396);
+            this.bunifuGradientPanel1.Size = new System.Drawing.Size(356, 396);
             this.bunifuGradientPanel1.TabIndex = 47;
             // 
             // cbNumeroGuia
@@ -681,7 +683,7 @@
             this.cbNumeroGuia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.cbNumeroGuia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbNumeroGuia.ForeColor = System.Drawing.Color.White;
-            this.cbNumeroGuia.Location = new System.Drawing.Point(109, 76);
+            this.cbNumeroGuia.Location = new System.Drawing.Point(127, 75);
             this.cbNumeroGuia.Margin = new System.Windows.Forms.Padding(2);
             this.cbNumeroGuia.Name = "cbNumeroGuia";
             this.cbNumeroGuia.Size = new System.Drawing.Size(148, 21);
@@ -713,16 +715,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(344, 396);
+            this.ClientSize = new System.Drawing.Size(356, 396);
             this.ControlBox = false;
             this.Controls.Add(this.chbOtroNumeroGuia);
             this.Controls.Add(this.chbOtroProveedor);
             this.Controls.Add(this.chbOtroOrigen);
             this.Controls.Add(this.chbOtroPortal);
             this.Controls.Add(this.chbOtroPieza);
-            this.Controls.Add(this.txtClaveProducto);
-            this.Controls.Add(this.txtCantidad);
-            this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label1);

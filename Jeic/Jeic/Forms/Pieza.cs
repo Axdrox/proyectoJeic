@@ -1,5 +1,6 @@
 ﻿namespace Refracciones.Forms
 {
+    using DocumentFormat.OpenXml.Office2010.PowerPoint;
     using Refracciones.Properties;
     using System;
     using System.Collections.Generic;
@@ -48,6 +49,58 @@
                     chbOtroNumeroGuia.Visible = true;
                 }
             }
+
+            if (editarPieza == 1)
+            {
+                bunifuGradientPanel1.Size = new Size(385, 396);
+                this.Size = new Size(385, 396);
+                btnAniadirPieza.Text = "Confirmar";
+
+                txtPiezaNombre.Visible = true;
+                txtPiezaNombre.Text = datos[0];
+                txtPiezaNombre.ReadOnly = true;
+                cbPiezaNombre.Visible = false;
+                chbOtroPieza.Text = "Modificar";
+
+                txtCantidad.Text = datos[1];
+
+                txtClaveProducto.Text = datos[2];
+
+                txtNumeroGuia.Visible = true;
+                txtNumeroGuia.Text = datos[3];
+                txtNumeroGuia.ReadOnly = true;
+                cbNumeroGuia.Visible = false;
+                chbOtroNumeroGuia.Text = "Modificar";
+
+                txtPortal.Visible = true;
+                txtPortal.Text = datos[4];
+                txtPortal.ReadOnly = true;
+                cbNumeroGuia.Visible = false;
+                chbOtroPortal.Text = "Modificar";
+
+                txtOrigen.Visible = true;
+                txtOrigen.Text = datos[5];
+                txtOrigen.ReadOnly = true;
+                cbOrigen.Visible = false;
+                chbOtroOrigen.Text = "Modificar";
+
+                txtProveedor.Visible = true;
+                txtProveedor.Text = datos[6];
+                txtProveedor.ReadOnly = true;
+                cbProveedores.Visible = false;
+                chbOtroProveedor.Text = "Modificar";
+
+                dtpFechaCosto.Text = datos[7];
+
+                txtCostoSinIVA.Text = datos[8];
+                txtCostoNeto.Text = datos[9];
+
+                cbCostoEnvio.DropDownStyle = ComboBoxStyle.DropDown;
+                cbCostoEnvio.Text = datos[10];
+
+                txtPrecioReparacion.Text = datos[11];
+                txtPrecioVenta.Text = datos[12];
+            }
         }
 
         private int destinosAgregados = 0;
@@ -59,6 +112,7 @@
         }
 
         private string[] datos;
+        public int editarPieza = 0;
 
         public string[] datosEditar
         {
@@ -100,13 +154,34 @@
         /// <param name="e">The e<see cref="EventArgs"/>.</param>
         private void chbOtroPieza_CheckedChanged(object sender, EventArgs e)
         {
-            if (chbOtroPieza.Checked == true)
+            if (chbOtroPieza.Text == "Modificar" && chbOtroPieza.Checked == true)
+            {
+                txtPiezaNombre.ReadOnly = false;
+                cbPiezaNombre.Visible = true;
+                txtPiezaNombre.Clear();
+                txtPiezaNombre.Visible = false;
+                txtPiezaNombre.Text = "Escriba nombre de pieza";
+                txtPiezaNombre.ForeColor = Color.FromArgb(160, 160, 140);
+                chbOtroPieza.Text = "Otro";
+                chbOtroPieza.Checked = false;
+            }
+            /*
+            else if (chbOtroPieza.Text == "Modificar" && chbOtroPieza.Checked == false)
+            {
+                txtPiezaNombre.Visible = true;
+                txtPiezaNombre.ReadOnly = true;
+                txtPiezaNombre.Text = datos[0];
+                cbPiezaNombre.Visible = false;
+                cbPiezaNombre.SelectedIndex = -1;
+            }*/
+
+            if (chbOtroPieza.Text == "Otro" && chbOtroPieza.Checked == true)
             {
                 txtPiezaNombre.Visible = true;
                 cbPiezaNombre.Visible = false;
                 cbPiezaNombre.SelectedIndex = -1;
             }
-            else
+            else if (chbOtroPieza.Text == "Otro" && chbOtroPieza.Checked == false)
             {
                 cbPiezaNombre.Visible = true;
                 txtPiezaNombre.Clear();
@@ -914,17 +989,17 @@
         {
             string clave = "";
 
-           return clave = modelo + descripcion + "-" + marca.Substring(1,3) + anio.Substring(3,2);
-            
+            return clave = modelo + descripcion + "-" + marca.Substring(1, 3) + anio.Substring(3, 2);
         }
 
         private void txtPiezaNombre_TextChanged(object sender, EventArgs e)
         {
-            
+            //Validar con checkbox
         }
 
         private void cbPiezaNombre_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //Validar con checkbox
             //txtClaveProducto.Text = claveProducto(modelo,cbPiezaNombre.SelectedIndex.ToString(),marca,anio);
         }
     }
