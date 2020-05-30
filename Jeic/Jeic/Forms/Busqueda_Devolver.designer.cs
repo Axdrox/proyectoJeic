@@ -154,11 +154,11 @@
             // 
             // Fecha_in
             // 
-            this.Fecha_in.Font = new System.Drawing.Font("Poppins Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Fecha_in.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Fecha_in.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.Fecha_in.Location = new System.Drawing.Point(24, 28);
             this.Fecha_in.Name = "Fecha_in";
-            this.Fecha_in.Size = new System.Drawing.Size(112, 26);
+            this.Fecha_in.Size = new System.Drawing.Size(128, 20);
             this.Fecha_in.TabIndex = 5;
             this.Fecha_in.ValueChanged += new System.EventHandler(this.BusquedaFecha);
             // 
@@ -534,11 +534,11 @@
             // 
             // Fecha_Fin
             // 
-            this.Fecha_Fin.Font = new System.Drawing.Font("Poppins Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Fecha_Fin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Fecha_Fin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.Fecha_Fin.Location = new System.Drawing.Point(230, 28);
             this.Fecha_Fin.Name = "Fecha_Fin";
-            this.Fecha_Fin.Size = new System.Drawing.Size(112, 26);
+            this.Fecha_Fin.Size = new System.Drawing.Size(112, 20);
             this.Fecha_Fin.TabIndex = 8;
             this.Fecha_Fin.ValueChanged += new System.EventHandler(this.BusquedaFecha);
             // 
@@ -593,11 +593,12 @@
             // 
             this.btnAgregarPedido.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnAgregarPedido.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAgregarPedido.Font = new System.Drawing.Font("Poppins Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregarPedido.ForeColor = System.Drawing.Color.White;
-            this.btnAgregarPedido.Location = new System.Drawing.Point(209, 89);
+            this.btnAgregarPedido.Location = new System.Drawing.Point(246, 117);
             this.btnAgregarPedido.Margin = new System.Windows.Forms.Padding(2);
             this.btnAgregarPedido.Name = "btnAgregarPedido";
-            this.btnAgregarPedido.Size = new System.Drawing.Size(111, 22);
+            this.btnAgregarPedido.Size = new System.Drawing.Size(111, 30);
             this.btnAgregarPedido.TabIndex = 13;
             this.btnAgregarPedido.Text = "Agregar Pedido";
             this.btnAgregarPedido.UseVisualStyleBackColor = false;
@@ -694,6 +695,7 @@
             this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bunifuGradientPanel1.Controls.Add(this.label5);
             this.bunifuGradientPanel1.Controls.Add(this.lblUsuario);
+            this.bunifuGradientPanel1.Controls.Add(this.btnAgregarPedido);
             this.bunifuGradientPanel1.GradientBottomLeft = System.Drawing.Color.Black;
             this.bunifuGradientPanel1.GradientBottomRight = System.Drawing.Color.RoyalBlue;
             this.bunifuGradientPanel1.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
@@ -718,7 +720,6 @@
             this.ClientSize = new System.Drawing.Size(1117, 576);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.txtCveVendedor);
-            this.Controls.Add(this.btnAgregarPedido);
             this.Controls.Add(this.dgvDatos);
             this.Controls.Add(this.PanelFecha);
             this.Controls.Add(this.dvgPedido);

@@ -88,6 +88,7 @@ namespace Refracciones.Forms
                 elec.dato_1.Text = dvgPedido.Rows[fila].Cells[1].Value.ToString();
                 elec.dato_2.Text = dvgPedido.Rows[fila].Cells[0].Value.ToString();
                 elec.lblCve_venta.Text = dvgPedido.Rows[fila].Cells[8].Value.ToString();
+                this.Hide();
                 elec.ShowDialog();
             }
 
@@ -134,12 +135,14 @@ namespace Refracciones.Forms
 
         private void btnAgregarPedido_Click(object sender, EventArgs e)
         {
+            this.Hide();
             Pedido pedido = new Pedido(0);
             DialogResult result = pedido.ShowDialog();
             if (result == DialogResult.OK)
             {
 
             }
+            
         }
 
         private void pbAlertas_Click(object sender, EventArgs e)
@@ -150,7 +153,7 @@ namespace Refracciones.Forms
         private void generarReporteVentasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             exportarExcel reporte = new exportarExcel();
-            reporte.ShowDialog();
+            reporte.Show();
         }
 
 

@@ -498,6 +498,8 @@ namespace Refracciones
 
         private void pbClose_Click(object sender, EventArgs e)
         {
+            Busqueda_Devolver busdev = new Busqueda_Devolver();
+            busdev.Show();
             this.Close();
         }
 

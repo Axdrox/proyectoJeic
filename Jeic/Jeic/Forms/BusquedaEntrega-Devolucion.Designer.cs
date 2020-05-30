@@ -167,6 +167,7 @@
             this.lblcve_venta.Size = new System.Drawing.Size(58, 13);
             this.lblcve_venta.TabIndex = 6;
             this.lblcve_venta.Text = "cve_venta";
+            this.lblcve_venta.Visible = false;
             // 
             // bunifuElipse1
             // 
