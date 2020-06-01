@@ -155,7 +155,7 @@
             this.lblClave_Factura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(36)))), ((int)(((byte)(50)))));
             this.lblClave_Factura.Font = new System.Drawing.Font("Poppins Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblClave_Factura.ForeColor = System.Drawing.Color.White;
-            this.lblClave_Factura.Location = new System.Drawing.Point(16, 61);
+            this.lblClave_Factura.Location = new System.Drawing.Point(11, 59);
             this.lblClave_Factura.Name = "lblClave_Factura";
             this.lblClave_Factura.Size = new System.Drawing.Size(95, 18);
             this.lblClave_Factura.TabIndex = 6;

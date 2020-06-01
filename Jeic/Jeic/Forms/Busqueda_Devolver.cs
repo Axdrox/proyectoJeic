@@ -74,13 +74,13 @@ namespace Refracciones.Forms
 
                 lblFacturaSinIva.Text = lblFacturaSinIva.Text.Substring(0, 16) + " " + dgvDatos.Rows[0].Cells[21].Value.ToString();
                 lblFacturaConIva.Text = lblFacturaConIva.Text.Substring(0, 16) + " " + dgvDatos.Rows[0].Cells[22].Value.ToString();
-                if (dgvDatos.Rows[0].Cells[23].Value.ToString() == "1")
+                /*if (dgvDatos.Rows[0].Cells[23].Value.ToString() == "1")
                     EstadoFact = "PENDIENTE";
                 if (dgvDatos.Rows[0].Cells[23].Value.ToString() == "2")
                     EstadoFact = "PAGADA";
                 if (dgvDatos.Rows[0].Cells[23].Value.ToString() == "3")
-                    EstadoFact = "CANCELADA";
-                lblEstadoFac.Text = lblEstadoFac.Text.Substring(0, 7) + " " + EstadoFact;
+                    EstadoFact = "CANCELADA";*/
+                lblEstadoFac.Text = lblEstadoFac.Text.Substring(0, 7) + " " + dgvDatos.Rows[0].Cells[23].Value.ToString();
             }
             else{
                 Eleccion elec = new Eleccion();
@@ -135,7 +135,7 @@ namespace Refracciones.Forms
 
         private void btnAgregarPedido_Click(object sender, EventArgs e)
         {
-            this.Hide();
+           
             Pedido pedido = new Pedido(0);
             DialogResult result = pedido.ShowDialog();
             if (result == DialogResult.OK)

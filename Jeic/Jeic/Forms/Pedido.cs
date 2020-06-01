@@ -669,14 +669,14 @@ namespace Refracciones.Forms
                         foreach (DataGridViewRow row in dgvPedido.Rows)
                         {
                             totalCosto += Convert.ToInt32(row.Cells["Cantidad"].Value) * Convert.ToDouble(row.Cells["Costo neto"].Value);
-                            subtotalPrecio += (Convert.ToInt32(row.Cells["Cantidad"].Value) * Convert.ToDouble(row.Cells["Precio de venta"].Value) + Convert.ToDouble(row.Cells["Precio de reparación"].Value));
-                            if (!guia.Contains(Convert.ToString(row.Cells["Número de guía"].Value)))
+                            subtotalPrecio += (Convert.ToInt32(row.Cells["Cantidad"].Value) * Convert.ToDouble(row.Cells["Precio de venta"].Value) /*+ Convert.ToDouble(row.Cells["Precio de reparación"].Value)*/);
+                           /*if (!guia.Contains(Convert.ToString(row.Cells["Número de guía"].Value)))
                             {
                                 guia[i] = Convert.ToString(row.Cells["Número de guía"].Value);
                                 //totalCostoEnvio += Convert.ToDouble(row.Cells["Costo de envío"].Value);
                                 subtotalPrecio += Convert.ToDouble(row.Cells["Costo de envío"].Value);
                                 i++;
-                            }
+                            }*/
                         }
                         totalPrecio = (subtotalPrecio * .16) + subtotalPrecio;
                         utilidad = totalPrecio - totalCosto;
