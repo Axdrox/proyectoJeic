@@ -47,6 +47,8 @@ namespace Refracciones.Forms
                 editButton.Name = "dataGridViewEditButton";
                 editButton.HeaderText = "Editar";
                 editButton.Text = "Editar";
+                editButton.FlatStyle = FlatStyle.Popup;
+                editButton.CellTemplate.Style.BackColor = Color.Aquamarine;
                 editButton.UseColumnTextForButtonValue = true;
                 this.dgvPedido.Columns.Add(editButton);
             }
@@ -54,6 +56,8 @@ namespace Refracciones.Forms
             deleteButton.Name = "dataGridViewDeleteButton";
             deleteButton.HeaderText = "Eliminar";
             deleteButton.Text = "Eliminar";
+            deleteButton.FlatStyle = FlatStyle.Popup;
+            deleteButton.CellTemplate.Style.BackColor = Color.Red;
             deleteButton.UseColumnTextForButtonValue = true;
             this.dgvPedido.Columns.Add(deleteButton);
 
@@ -859,12 +863,28 @@ namespace Refracciones.Forms
                 }
                 pieza.datosEditar = datosPieza;
                 pieza.editarPieza = 1;
+                string[] guia = new string[dgvPedido.Rows.Count];
+                int i = 0;
+                pieza.destino = cbDestino.Text.Trim();
+                if (dgvPedido.Rows.Count > 0)
+                {
+                    foreach (DataGridViewRow row in dgvPedido.Rows)
+                    {
+                        if (!guia.Contains(Convert.ToString(row.Cells["Número de guía"].Value)))
+                        {
+                            pieza.cbNumeroGuia.Items.Add(Convert.ToString(row.Cells["Número de guía"].Value));
+                            guia[i] = Convert.ToString(row.Cells["Número de guía"].Value);
+                            i++;
+                        }
+                    }
+                }
                 DialogResult respuesta = pieza.ShowDialog();
                 if (respuesta == DialogResult.OK)
                 {
-                    for (int j = 0; j < pieza.datosMandar.Length; j++)
+                    for (int j = 2; j < pieza.datosMandar.Length; j++)
                     {
-                        dgvPedido[j, index].Value = datosMandar[j];
+                        dgvPedido[j, index].Value = pieza.datosMandar[j-2];
+                        //MessageBox.Show(pieza.datosMandar[j - 2]);
                     }
                 }
             }

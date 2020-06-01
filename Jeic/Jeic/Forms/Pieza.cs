@@ -32,7 +32,7 @@
 
             this.ActiveControl = label1;
 
-            if (destinoLocal == "LOCAL")
+            if (destinoLocal == "LOCAL" || destinoLocal == "CDMX" || destinoLocal == "Ciudad de México")
             {
                 txtNumeroGuia.Visible = false;
                 cbNumeroGuia.Visible = false;
@@ -70,12 +70,13 @@
                 txtNumeroGuia.Text = datos[3];
                 txtNumeroGuia.ReadOnly = true;
                 cbNumeroGuia.Visible = false;
+                cbNumeroGuia.Visible = false;
                 chbOtroNumeroGuia.Text = "Modificar";
 
                 txtPortal.Visible = true;
                 txtPortal.Text = datos[4];
                 txtPortal.ReadOnly = true;
-                cbNumeroGuia.Visible = false;
+                cbPortal.Visible = false;
                 chbOtroPortal.Text = "Modificar";
 
                 txtOrigen.Visible = true;
@@ -210,7 +211,18 @@
         /// <param name="e">The e<see cref="EventArgs"/>.</param>
         private void chbOtroPortal_CheckedChanged(object sender, EventArgs e)
         {
-            if (chbOtroPortal.Checked == true)
+            if (chbOtroPortal.Text == "Modificar" && chbOtroPortal.Checked == true)
+            {
+                txtPortal.ReadOnly = false;
+                cbPortal.Visible = true;
+                txtPortal.Visible = false;
+                txtPortal.Text = "Escriba nombre de pieza";
+                txtPortal.ForeColor = Color.FromArgb(160, 160, 140);
+                chbOtroPortal.Text = "Otro";
+                chbOtroPortal.Checked = false;
+            }
+
+            if (chbOtroPortal.Text == "Otro" && chbOtroPortal.Checked == true)
             {
                 txtPortal.Visible = true;
                 cbPortal.Hide();
@@ -245,7 +257,18 @@
         /// <param name="e">The e<see cref="EventArgs"/>.</param>
         private void chbOtroOrigen_CheckedChanged(object sender, EventArgs e)
         {
-            if (chbOtroOrigen.Checked == true)
+            if (chbOtroOrigen.Text == "Modificar" && chbOtroOrigen.Checked == true)
+            {
+                txtOrigen.ReadOnly = false;
+                cbOrigen.Visible = true;
+                txtOrigen.Visible = false;
+                txtOrigen.Text = "Escriba nombre de pieza";
+                txtOrigen.ForeColor = Color.FromArgb(160, 160, 140);
+                chbOtroOrigen.Text = "Otro";
+                chbOtroOrigen.Checked = false;
+            }
+
+            if (chbOtroOrigen.Text == "Otro" && chbOtroOrigen.Checked == true)
             {
                 txtOrigen.Visible = true;
                 cbOrigen.Hide();
@@ -280,7 +303,18 @@
         /// <param name="e">The e<see cref="EventArgs"/>.</param>
         private void chbOtroProveedor_CheckedChanged(object sender, EventArgs e)
         {
-            if (chbOtroProveedor.Checked == true)
+            if (chbOtroProveedor.Text == "Modificar" && chbOtroProveedor.Checked == true)
+            {
+                txtProveedor.ReadOnly = false;
+                cbProveedores.Visible = true;
+                txtProveedor.Visible = false;
+                txtProveedor.Text = "Escriba nombre de pieza";
+                txtProveedor.ForeColor = Color.FromArgb(160, 160, 140);
+                chbOtroProveedor.Text = "Otro";
+                chbOtroProveedor.Checked = false;
+            }
+
+            if (chbOtroProveedor.Text == "Otro" && chbOtroProveedor.Checked == true)
             {
                 txtProveedor.Visible = true;
                 cbProveedores.Hide();
@@ -490,16 +524,24 @@
 
                 datosPieza[2] = txtClaveProducto.Text.Trim().ToUpper();
 
-                if (destinoLocal != "LOCAL")
+                if (chbOtroNumeroGuia.Checked == false && txtNumeroGuia.Text != "Escriba el número de guía" && (destinoLocal != "LOCAL" || destinoLocal != "CDMX" || destinoLocal != "Ciudad de México"))
                     datosPieza[3] = txtNumeroGuia.Text.Trim().ToUpper();
-                else
+                else if(chbOtroNumeroGuia.Checked == true && destinosAgregados > 0 && (destinoLocal != "LOCAL" || destinoLocal != "CDMX" || destinoLocal != "Ciudad de México"))
+                    datosPieza[3] = txtNumeroGuia.Text.Trim().ToUpper();
+                else if(chbOtroNumeroGuia.Checked == false && destinosAgregados > 0 && (destinoLocal != "LOCAL" || destinoLocal != "CDMX" || destinoLocal != "Ciudad de México"))
+                    datosPieza[3] = cbNumeroGuia.Text.Trim();
+                else if(chbOtroNumeroGuia.Checked == false && txtNumeroGuia.Text == "Escriba el número de guía" && destinosAgregados == 0 && (destinoLocal != "LOCAL" || destinoLocal != "CDMX" || destinoLocal != "Ciudad de México"))
                     datosPieza[3] = "-";
 
                 datosPieza[1] = txtCantidad.Text.Trim();
 
                 int modificacion = 0; int j = 0; //validar
                                                  //contar con el # de chb marcados y con la inserción correcta
-                if (chbOtroPieza.Checked == true)
+                if(editarPieza == 1 && chbOtroPieza.Checked == false && chbOtroPieza.Text == "Modificar")
+                {
+                    datosPieza[0] = txtPiezaNombre.Text.Trim().ToUpper();
+                }
+                else if (chbOtroPieza.Checked == true && chbOtroPieza.Text != "Modificar")
                 {
                     j += 1;
                     //int i = operacion.registrarPieza(txtPiezaNombre.Text.Trim().ToUpper()); PONER EN PEDIDO
@@ -516,16 +558,21 @@
                         chbOtroPieza.Checked = false;
                     }
                 }
-                else
+                else if (chbOtroPieza.Checked == false && chbOtroPieza.Text != "Modificar")
                     datosPieza[0] = cbPiezaNombre.Text.Trim().ToUpper();
 
-                if (chbOtroPortal.Checked == true)
+
+                if (editarPieza == 1 && chbOtroPortal.Checked == false && chbOtroPortal.Text == "Modificar")
+                {
+                    datosPieza[4] = txtPortal.Text.Trim();
+                }
+                else if (chbOtroPortal.Checked == true && chbOtroPortal.Text != "Modificar")
                 {
                     j += 1;
                     //int i = operacion.registrarPortal(txtPortal.Text.Trim());
                     if ((operacion.existePortal(txtPortal.Text.Trim()) == string.Empty) && txtPortal.Text != "Escriba un nuevo portal")
                     {
-                        datosPieza[4] = txtPortal.Text.Trim().ToUpper();
+                        datosPieza[4] = txtPortal.Text.Trim();
                         modificacion += 1;
                     }
                     else
@@ -536,10 +583,15 @@
                         chbOtroPortal.Checked = false;
                     }
                 }
-                else
-                    datosPieza[4] = cbPortal.Text.Trim().ToUpper();
+                else if(chbOtroPortal.Checked == false && chbOtroPortal.Text != "Modificar")
+                    datosPieza[4] = cbPortal.Text.Trim();
 
-                if (chbOtroOrigen.Checked == true)
+
+                if (editarPieza == 1 && chbOtroOrigen.Checked == false && chbOtroOrigen.Text == "Modificar")
+                {
+                    datosPieza[5] = txtOrigen.Text.Trim().ToUpper();
+                }
+                else if (chbOtroOrigen.Checked == true && chbOtroOrigen.Text != "Modificar")
                 {
                     j += 1;
                     //int i = operacion.registrarOrigen(txtOrigen.Text.Trim().ToUpper());
@@ -556,10 +608,15 @@
                         chbOtroOrigen.Checked = false;
                     }
                 }
-                else
+                else if (chbOtroOrigen.Checked == false && chbOtroOrigen.Text != "Modificar")
                     datosPieza[5] = cbOrigen.Text.Trim().ToUpper();
 
-                if (chbOtroProveedor.Checked == true)
+
+                if (editarPieza == 1 && chbOtroProveedor.Checked == false && chbOtroProveedor.Text == "Modificar")
+                {
+                    datosPieza[6] = txtProveedor.Text.Trim().ToUpper();
+                }
+                else if (chbOtroProveedor.Checked == true && chbOtroProveedor.Text != "Modificar")
                 {
                     j += 1;
                     //int i = operacion.registrarProveedor(txtProveedor.Text.Trim().ToUpper());
@@ -576,7 +633,7 @@
                         chbOtroProveedor.Checked = false;
                     }
                 }
-                else
+                else if (chbOtroProveedor.Checked == false && chbOtroProveedor.Text != "Modificar")
                     datosPieza[6] = cbProveedores.Text.Trim().ToUpper();
 
                 if (modificacion == j)
@@ -688,7 +745,18 @@
 
         private void chbOtroNumeroGuia_CheckedChanged(object sender, EventArgs e)
         {
-            if (chbOtroNumeroGuia.Checked == true)
+            if (chbOtroNumeroGuia.Text == "Modificar" && chbOtroNumeroGuia.Checked == true)
+            {
+                txtNumeroGuia.ReadOnly = false;
+                cbNumeroGuia.Visible = true;
+                txtNumeroGuia.Visible = false;
+                txtNumeroGuia.Text = "Escriba el número de guía";
+                txtNumeroGuia.ForeColor = Color.FromArgb(160, 160, 140);
+                chbOtroNumeroGuia.Text = "Otro";
+                chbOtroNumeroGuia.Checked = false;
+            }
+
+            if (chbOtroNumeroGuia.Text == "Otro" && chbOtroNumeroGuia.Checked == true)
             {
                 txtNumeroGuia.Visible = true;
                 cbNumeroGuia.Hide();
@@ -760,7 +828,7 @@
 
         private void txtPiezaNombre_Validating(object sender, CancelEventArgs e)
         {
-            if (chbOtroPieza.Checked == true)
+            if (chbOtroPieza.Checked == true && chbOtroPieza.Text != "Modificar")
             {
                 if (txtPiezaNombre.Text == "Escriba nombre de pieza")// && string.IsNullOrEmpty(txtPiezaNombre.Text)
                 {
@@ -777,7 +845,7 @@
 
         private void cbPiezaNombre_Validating(object sender, CancelEventArgs e)
         {
-            if (chbOtroPieza.Checked == false)
+            if (chbOtroPieza.Checked == false && chbOtroPieza.Text != "Modificar")
             {
                 if (string.IsNullOrEmpty(cbPiezaNombre.Text))
                 {
@@ -829,7 +897,21 @@
 
         private void txtNumeroGuia_Validating(object sender, CancelEventArgs e)
         {
-            if (destinoLocal != "LOCAL" && chbOtroNumeroGuia.Checked == true && destinosAgregados > 0)
+            if (destinoLocal != "LOCAL" && chbOtroNumeroGuia.Checked == false && chbOtroNumeroGuia.Text != "Modificar" && destinosAgregados == 0)
+            {
+                if (txtNumeroGuia.Text == "Escriba el número de guía")// || string.IsNullOrEmpty(txtNumeroGuia.Text)
+                {
+                    e.Cancel = true;
+                    //txtNumeroGuia.Focus();
+                    errorProvider1.SetError(txtNumeroGuia, "Favor de escribir un nuevo número de guía");
+                }
+                else
+                {
+                    e.Cancel = false;
+                    errorProvider1.SetError(txtNumeroGuia, null);
+                }
+            }
+            else if (destinoLocal != "LOCAL" && chbOtroNumeroGuia.Checked == true && chbOtroNumeroGuia.Text != "Modificar" && destinosAgregados > 0)
             {
                 if (txtNumeroGuia.Text == "Escriba el número de guía")// || string.IsNullOrEmpty(txtNumeroGuia.Text)
                 {
@@ -847,7 +929,7 @@
 
         private void cbNumeroGuia_Validating(object sender, CancelEventArgs e)
         {
-            if (destinoLocal != "LOCAL" && chbOtroNumeroGuia.Checked == false && destinosAgregados > 0)
+            if (destinoLocal != "LOCAL" && chbOtroNumeroGuia.Checked == false && chbOtroNumeroGuia.Text != "Modificar" && destinosAgregados > 0)
             {
                 if (string.IsNullOrEmpty(cbNumeroGuia.Text))
                 {
@@ -865,7 +947,7 @@
 
         private void txtPortal_Validating(object sender, CancelEventArgs e)
         {
-            if (chbOtroPortal.Checked == true)
+            if (chbOtroPortal.Checked == true && chbOtroPortal.Text != "Modificar")
             {
                 if (string.IsNullOrEmpty(txtPortal.Text))// || txtPortal.Text == "Escriba un nuevo portal"
                 {
@@ -883,7 +965,7 @@
 
         private void cbPortal_Validating(object sender, CancelEventArgs e)
         {
-            if (chbOtroPortal.Checked == false)
+            if (chbOtroPortal.Checked == false && chbOtroPortal.Text != "Modificar")
             {
                 if (string.IsNullOrEmpty(cbPortal.Text))
                 {
@@ -901,7 +983,7 @@
 
         private void txtOrigen_Validating(object sender, CancelEventArgs e)
         {
-            if (chbOtroOrigen.Checked == true)
+            if (chbOtroOrigen.Checked == true && chbOtroOrigen.Text != "Modificar")
             {
                 if (string.IsNullOrEmpty(txtOrigen.Text))// || txtPortal.Text == "Escriba un nuevo origen"
                 {
@@ -919,7 +1001,7 @@
 
         private void cbOrigen_Validating(object sender, CancelEventArgs e)
         {
-            if (chbOtroOrigen.Checked == false)
+            if (chbOtroOrigen.Checked == false && chbOtroOrigen.Text != "Modificar")
             {
                 if (string.IsNullOrEmpty(cbOrigen.Text))
                 {
@@ -937,7 +1019,7 @@
 
         private void txtProveedor_Validating(object sender, CancelEventArgs e)
         {
-            if (chbOtroProveedor.Checked == true)
+            if (chbOtroProveedor.Checked == true && chbOtroProveedor.Text != "Modificar")
             {
                 if (string.IsNullOrEmpty(txtProveedor.Text))// || txtPortal.Text == "Escriba un nuevo origen"
                 {
@@ -955,7 +1037,7 @@
 
         private void cbProveedores_Validating(object sender, CancelEventArgs e)
         {
-            if (chbOtroProveedor.Checked == false)
+            if (chbOtroProveedor.Checked == false && chbOtroProveedor.Text != "Modificar")
             {
                 if (string.IsNullOrEmpty(cbProveedores.Text))
                 {
@@ -973,15 +1055,18 @@
 
         private void txtPrecioReparacion_Validating(object sender, CancelEventArgs e)
         {
-            if (cbOrigen.Text.Trim() == "USADA" && string.IsNullOrEmpty(cbCostoEnvio.Text.Trim()) == true)
+            if (cbOrigen.Text.Trim() == "USADA")
             {
-                e.Cancel = true;
-                errorProvider1.SetError(txtPrecioReparacion, "Proporcionar costo de reparación debido a tipo de origen");
-            }
-            else
-            {
-                e.Cancel = false;
-                errorProvider1.SetError(txtPrecioReparacion, null);
+                if (string.IsNullOrEmpty(txtPrecioReparacion.Text.Trim()))
+                {
+                    e.Cancel = true;
+                    errorProvider1.SetError(txtPrecioReparacion, "Proporcionar costo de reparación debido a tipo de origen");
+                }
+                else
+                {
+                    e.Cancel = false;
+                    errorProvider1.SetError(txtPrecioReparacion, null);
+                }
             }
         }
 
