@@ -17,7 +17,7 @@ namespace Refracciones
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new exportarExcel());
+            Application.Run(new Busqueda_Devolver());
         }
     }
 }

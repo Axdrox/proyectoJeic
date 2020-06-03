@@ -664,7 +664,7 @@ namespace Refracciones.Forms
                         double totalCosto = 0;
                         double subtotalPrecio = 0;
                         double totalPrecio = 0;
-                        double utilidad;
+                        //double utilidad;
                         //double totalCostoEnvio = 0; Ya no es tan necesaria puesto que se le tiene que sumar a la variable subtotalPrecio
                         foreach (DataGridViewRow row in dgvPedido.Rows)
                         {
@@ -679,10 +679,10 @@ namespace Refracciones.Forms
                             }*/
                         }
                         totalPrecio = (subtotalPrecio * .16) + subtotalPrecio;
-                        utilidad = totalPrecio - totalCosto;
+                        //utilidad = totalPrecio - totalCosto;
 
                         //AGREGANDO DATOS A VENTA
-                        operacion.registrarVenta(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(), taller, Convert.ToInt32(cbVendedor.Text.Trim()), dtFechaBaja, valuador, destino, totalCosto, subtotalPrecio, totalPrecio, utilidad, dtFechaAsignacion, dtFechaPromesa);
+                        operacion.registrarVenta(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(), taller, Convert.ToInt32(cbVendedor.Text.Trim()), dtFechaBaja, valuador, destino, totalCosto, subtotalPrecio, totalPrecio, dtFechaAsignacion, dtFechaPromesa);//, utilidad
 
                         //AGREGANDO DATOS A PEDIDO
                         foreach (DataGridViewRow row in dgvPedido.Rows)
