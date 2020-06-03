@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,7 +33,7 @@ namespace Refracciones.Forms
             string ruta = Application.StartupPath + "\\Plantilla.xlsx";
             if (ruta != "")
             {
-                excel.generarExcel(ruta, Fecha_inicio, Fecha_Final);
+                excel.generarExcel(ruta, Fecha_inicio, Fecha_Final,decimal.Parse(txtcostoOperativo.Text, new CultureInfo("en-US")));
             }
         }
 
@@ -52,6 +53,20 @@ namespace Refracciones.Forms
         private void pbMinimize_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void txtcostoOperativo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // solo 1 punto decimal
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

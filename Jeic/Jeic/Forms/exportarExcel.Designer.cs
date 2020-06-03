@@ -40,6 +40,8 @@
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.pbMinimize = new System.Windows.Forms.PictureBox();
             this.pbClose = new System.Windows.Forms.PictureBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtcostoOperativo = new System.Windows.Forms.TextBox();
             this.bunifuGradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
@@ -101,7 +103,7 @@
             this.btnGenerar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnGenerar.Font = new System.Drawing.Font("Poppins Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGenerar.ForeColor = System.Drawing.Color.White;
-            this.btnGenerar.Location = new System.Drawing.Point(104, 137);
+            this.btnGenerar.Location = new System.Drawing.Point(109, 156);
             this.btnGenerar.Name = "btnGenerar";
             this.btnGenerar.Size = new System.Drawing.Size(75, 23);
             this.btnGenerar.TabIndex = 5;
@@ -119,6 +121,9 @@
             this.bunifuGradientPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
             this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuGradientPanel1.Controls.Add(this.btnGenerar);
+            this.bunifuGradientPanel1.Controls.Add(this.txtcostoOperativo);
+            this.bunifuGradientPanel1.Controls.Add(this.label4);
             this.bunifuGradientPanel1.Controls.Add(this.pbMinimize);
             this.bunifuGradientPanel1.Controls.Add(this.pbClose);
             this.bunifuGradientPanel1.GradientBottomLeft = System.Drawing.Color.Black;
@@ -155,12 +160,30 @@
             this.pbClose.TabStop = false;
             this.pbClose.Click += new System.EventHandler(this.pbClose_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(57)))), ((int)(((byte)(94)))));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(23, 119);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(67, 13);
+            this.label4.TabIndex = 80;
+            this.label4.Text = "COSTO Op.:";
+            // 
+            // txtcostoOperativo
+            // 
+            this.txtcostoOperativo.Location = new System.Drawing.Point(96, 116);
+            this.txtcostoOperativo.Name = "txtcostoOperativo";
+            this.txtcostoOperativo.Size = new System.Drawing.Size(100, 20);
+            this.txtcostoOperativo.TabIndex = 81;
+            this.txtcostoOperativo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtcostoOperativo_KeyPress);
+            // 
             // exportarExcel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(278, 203);
-            this.Controls.Add(this.btnGenerar);
             this.Controls.Add(this.Fecha_Fin);
             this.Controls.Add(this.Fecha_in);
             this.Controls.Add(this.label3);
@@ -174,6 +197,7 @@
             this.Load += new System.EventHandler(this.exportarExcel_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.exportarExcel_KeyDown);
             this.bunifuGradientPanel1.ResumeLayout(false);
+            this.bunifuGradientPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).EndInit();
             this.ResumeLayout(false);
@@ -193,5 +217,7 @@
         private Bunifu.Framework.UI.BunifuGradientPanel bunifuGradientPanel1;
         private System.Windows.Forms.PictureBox pbMinimize;
         private System.Windows.Forms.PictureBox pbClose;
+        private System.Windows.Forms.TextBox txtcostoOperativo;
+        private System.Windows.Forms.Label label4;
     }
 }
