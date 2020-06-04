@@ -1188,6 +1188,48 @@ namespace Refracciones
             return dataSet;
         }
 
+        //---------------- MARCAS VEHICULOS REGISTRADAS
+        public DataSet MarcasRegistradas()
+        {
+            DataSet dataSet = new DataSet();
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT marca FROM MARCA WHERE marca NOT LIKE 'PARTICULAR%'", nuevaConexion);
+                    dataAdapter.Fill(dataSet, "MARCA");
+                    nuevaConexion.Close();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return dataSet;
+        }
+
+        //-------------OBTENER LA CLAVE DE LA MARCA DE ACUERDO AL TEXTO
+        public int claveMarca(string marca)
+        {
+            using (SqlConnection nuevaConexion = Conexion.conexion())
+            {
+                nuevaConexion.Open();
+                int clavePieza = 0;
+                //Obteniendo la clave de nombre pieza
+                Comando = new SqlCommand("SELECT cve_marca FROM PIEZA WHERE marca = @marca", nuevaConexion);
+                Comando.Parameters.AddWithValue("@marca", marca);
+                Lector = Comando.ExecuteReader();
+                if (Lector.Read())
+                {
+                    clavePieza = (int)Lector["cve_marca"];
+                }
+                Lector.Close();
+                nuevaConexion.Close();
+                return clavePieza;
+            }
+        }
+
         //------------- OBTENER VEHICULO EN PARTICULAR DE ACUERDO A CLAVES PEDIDO & SINIESTRO
         public string Vehiculo(string clavePedido, string claveSiniestro)
         {
@@ -2163,25 +2205,27 @@ namespace Refracciones
         }
 
         //-------------INSERTAR DATOS EN VEHICULO
-        public void registroVehiculo(string modelo, string anio)
+        public void registroVehiculo(string modelo, string anio, string marca)
         {
+            int cveMarca = claveMarca(marca);
             int i = 0;
             try
             {
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     nuevaConexion.Open();
-                    Comando = new SqlCommand("INSERT INTO VEHICULO " + "(modelo, anio) " + "VALUES (@modelo, @anio) ", nuevaConexion);
-                    Comando.Parameters.AddWithValue("modelo", modelo);
-                    Comando.Parameters.AddWithValue("anio", anio);
+                    Comando = new SqlCommand("INSERT INTO VEHICULO " + "(modelo, anio, cve_marca) " + "VALUES (@modelo, @anio, @cve_marca) ", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@modelo", modelo);
+                    Comando.Parameters.AddWithValue("@anio", anio);
+                    Comando.Parameters.AddWithValue("@cve_marca", cveMarca);
 
                     //Para saber si la inserción se hizo correctamente
                     i = Comando.ExecuteNonQuery();
                     nuevaConexion.Close();
-                    if (i == 1)
-                        MessageBox.Show("Se registró vehículo correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (i == 1) { }
+                        //MessageBox.Show("Se registró vehículo correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     else
-                        MessageBox.Show("Problemas al registar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Problemas al registar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception EX)
@@ -2201,6 +2245,58 @@ namespace Refracciones
                     nuevaConexion.Open();
                     Comando = new SqlCommand("SELECT cve_vehiculo FROM VEHICULO WHERE modelo = @modelo", nuevaConexion);
                     Comando.Parameters.AddWithValue("@modelo", modelo);
+
+                    //Para saber si en realidad existe, de lo contrario devuelve un string vacío
+                    if (Comando.ExecuteScalar() == null) { }
+                    else
+                        resultado = Comando.ExecuteScalar().ToString();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return resultado;
+        }
+
+        //-------------INSERTAR DATOS EN MARCA
+        public void registroMarca(string marca)
+        {
+            int i = 0;
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("INSERT INTO MARCA " + "(marca) " + "VALUES (@marca) ", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@marca", marca);
+
+                    //Para saber si la inserción se hizo correctamente
+                    i = Comando.ExecuteNonQuery();
+                    nuevaConexion.Close();
+                    if (i == 1) { }
+                    //MessageBox.Show("Se registró vehículo correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    else
+                        MessageBox.Show("Problemas al registar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+        }
+
+        //VALIDAR SI EXISTE UN MISMO REGISTRO DE MARCA PARA EVITAR DUPLICADOS, ETC.
+        public string existeMarca(string marca)
+        {
+            string resultado = "";
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("SELECT cve_marca FROM MARCA WHERE marca = @marca", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@marca", marca);
 
                     //Para saber si en realidad existe, de lo contrario devuelve un string vacío
                     if (Comando.ExecuteScalar() == null) { }
@@ -2598,12 +2694,12 @@ namespace Refracciones
         }
 
         //-------------INSERTAR DATOS DE PEDIDO
-        public int registrarPedido(string clavePedido, string claveSiniestro, string nombrePieza, string portal, string origen, string proveedor, DateTime fechaCosto, string costoSinIVA, string costoNeto, string costoEnvio, string precioVenta, string precioReparacion, string claveProducto, string numeroGuia, int cantidad)
+        public int registrarPedido(string clavePedido, string claveSiniestro, string nombrePieza, string portal, string origen, string proveedor, DateTime fechaCosto/*, string costoSinIVA*/, string costoNeto, string costoEnvio, string precioVenta, string precioReparacion, string claveProducto, string numeroGuia, int cantidad)
         {
             string destino;
             //Variables
             int i = 0;
-            int gasto = 0;
+            double gasto = 0;
 
             int cve_pieza = clavePieza(nombrePieza);
             int cve_origen = claveOrigen(origen);
@@ -2627,8 +2723,8 @@ namespace Refracciones
 
                 nuevaConexion.Open();
                 //Insertando los datos en la tabla PEDIDO
-                Comando = new SqlCommand("INSERT INTO PEDIDO " + "(cve_venta, cve_pieza, cantidad, cve_origen, cve_proveedor, cve_portal, cve_guia, cve_producto, fecha_costo, costo_comprasinIVA, costo_envio, costo_neto, precio_venta, precio_reparacion, gasto) " +
-                    "VALUES (@cve_venta, @cve_pieza, @cantidad, @cve_origen, @cve_proveedor, @cve_portal, @cve_guia, @cve_producto, @fecha_costo, @costo_comprasinIVA, @costo_envio, @costo_neto, @precio_venta, @precio_reparacion, @gasto) ", nuevaConexion);
+                Comando = new SqlCommand("INSERT INTO PEDIDO " + "(cve_venta, cve_pieza, cantidad, cve_origen, cve_proveedor, cve_portal, cve_guia, cve_producto, fecha_costo, costo_envio, costo_neto, precio_venta, precio_reparacion, gasto) " +
+                    "VALUES (@cve_venta, @cve_pieza, @cantidad, @cve_origen, @cve_proveedor, @cve_portal, @cve_guia, @cve_producto, @fecha_costo, @costo_envio, @costo_neto, @precio_venta, @precio_reparacion, @gasto) ", nuevaConexion);//, costo_comprasinIVA    , @costo_comprasinIVA
                 //Añadiendo los parámetros al query
                 Comando.Parameters.AddWithValue("@cve_venta", cve_venta);
                 Comando.Parameters.AddWithValue("@cve_pieza", cve_pieza);
@@ -2639,7 +2735,7 @@ namespace Refracciones
                 Comando.Parameters.AddWithValue("@cve_guia", numeroGuia);
                 Comando.Parameters.AddWithValue("@cve_producto", claveProducto);
                 Comando.Parameters.AddWithValue("@fecha_costo", fechaCosto);
-                Comando.Parameters.AddWithValue("@costo_comprasinIVA", Convert.ToDecimal(costoSinIVA));
+                //Comando.Parameters.AddWithValue("@costo_comprasinIVA", Convert.ToDecimal(costoSinIVA));
                 Comando.Parameters.AddWithValue("@costo_envio", cve_costoEnvio);//cambiar nombre de columna
                 Comando.Parameters.AddWithValue("@costo_neto", Convert.ToDecimal(costoNeto));
                 Comando.Parameters.AddWithValue("@precio_venta", Convert.ToDecimal(precioVenta));

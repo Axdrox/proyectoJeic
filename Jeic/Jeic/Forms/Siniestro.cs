@@ -32,7 +32,6 @@ namespace Refracciones.Forms
             this.cbVehiculo.DropDownStyle = ComboBoxStyle.DropDownList;
 
             //dtpYear.Hide();
-            lblAnioRegistro.Hide();
             lblIngreseNombre.Hide();
             txtNombreVehiculoNuevo.Hide();
 
@@ -45,11 +44,6 @@ namespace Refracciones.Forms
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
-        }
-
-        private void cbVehiculo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //lblAnio.Text = operacion.anioVehiculo(cbVehiculo.Text.Trim());
         }
 
         private void cbEstadoSiniestro_Click(object sender, EventArgs e)
@@ -65,9 +59,6 @@ namespace Refracciones.Forms
                 lblIngreseNombre.Show();
                 txtNombreVehiculoNuevo.Show();
                 dtpYear.Show();
-                lblAnioRegistro.Show();
-                //lblAnio.Hide();
-                lblAnioTexto.Hide();
                 lblVehiculoText.Hide();
                 cbVehiculo.Hide();
             }
@@ -75,62 +66,65 @@ namespace Refracciones.Forms
             {
                 lblIngreseNombre.Hide();
                 txtNombreVehiculoNuevo.Hide();
-                //dtpYear.Hide();
-                lblAnioRegistro.Hide();
-                //lblAnio.Show();
-                lblAnioTexto.Show();
                 lblVehiculoText.Show();
                 cbVehiculo.Show();
                 txtNombreVehiculoNuevo.Clear();
             }
         }
 
-        private string nombreVehiculo = "";
-        private string anioVehiculo = "";
+        private string modelo = "";
+        private string marca = "";
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             Pedido pedido = new Pedido(0);
             try
             {
-                if (txtClaveSiniestro.Text.Trim() == "" || (chbOtroVehiculo.Checked && txtNombreVehiculoNuevo.Text.Trim() == ""))
+                if (txtClaveSiniestro.Text.Trim() == "" || (chbOtroVehiculo.Checked == true && txtNombreVehiculoNuevo.Text.Trim() == "") || (chbMarca.Checked == true && txtMarca.Text.Trim() == ""))
                 {
-                    MessageBox.Show("Favor de llenar todos los campos.", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Favor de llenar todos los campos", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
                 {
                     int i = 0;
                     if (MessageBox.Show("¿Los datos son correctos?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                     {
+                        //anioVehiculo = 
                         if (chbOtroVehiculo.Checked == true)
                         {
                             if (operacion.existeVehiculo(txtNombreVehiculoNuevo.Text.Trim().ToUpper()) == "")
-                            {
-                                nombreVehiculo = txtNombreVehiculoNuevo.Text.Trim().ToUpper();
-                                anioVehiculo = dtpYear.Text.Trim();
-                                this.Close();
-                            }
+                                modelo = txtNombreVehiculoNuevo.Text.Trim().ToUpper();
                             else
                             {
                                 lblIngreseNombre.Hide();
                                 txtNombreVehiculoNuevo.Hide();
                                 txtNombreVehiculoNuevo.Clear();
-                                dtpYear.Hide();
-                                dtpYear.Text = "";
-                                lblAnioRegistro.Hide();
-                                //lblAnio.Show();
-                                lblAnioTexto.Show();
                                 lblVehiculoText.Show();
                                 cbVehiculo.Show();
                                 chbOtroVehiculo.Checked = false;
                                 MessageBox.Show("Modelo ya existente", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             }
                         }
-                        else
+                        if(chbMarca.Checked == true)
                         {
-                            nombreVehiculo = cbVehiculo.Text.Trim();
-                            anioVehiculo = dtpYear.Text.Trim();
-                            this.Close();
+                            if (operacion.existeMarca(txtMarca.Text.Trim().ToUpper()) == "")
+                                marca = txtMarca.Text.Trim().ToUpper();
+                            else
+                            {
+                                lblMarca.Location = new Point(26, 41);
+                                lblMarca.Text = "Marca:";
+                                txtMarca.Hide();
+                                txtMarca.Clear();
+                                cbMarca.Show();
+                                chbMarca.Checked = false;
+                                MessageBox.Show("Marca ya existente", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
                         }
+                        if(chbMarca.Checked == false)
+                            marca = cbMarca.Text.Trim();
+                        if(chbOtroVehiculo.Checked == false)
+                            modelo = cbVehiculo.Text.Trim();
+
+                        this.Close();
                     }
                 }
             }
@@ -147,12 +141,17 @@ namespace Refracciones.Forms
 
         public string vehiculoSiniestro
         {
-            get { return nombreVehiculo; }
+            get { return modelo; }
         }
 
         public string anioSiniestro
         {
-            get { return anioVehiculo; }
+            get { return dtpYear.Text.Trim(); }
+        }
+
+        public string marcaSiniestro
+        {
+            get { return marca; }
         }
 
         public string comentario
@@ -163,6 +162,11 @@ namespace Refracciones.Forms
         public bool otroVehiculo
         {
             get { return chbOtroVehiculo.Checked; }
+        }
+
+        public bool otroMarca
+        {
+            get { return chbMarca.Checked; }
         }
 
         public string estadoSiniestro
@@ -184,6 +188,38 @@ namespace Refracciones.Forms
                 {
                     e.Cancel = true;
                 }
+            }
+        }
+
+        private void cbMarca_Click(object sender, EventArgs e)
+        {
+            cbMarca.DataSource = operacion.MarcasRegistradas().Tables[0].DefaultView;
+            cbMarca.ValueMember = "marca";
+        }
+
+        private void cbVehiculo_Click(object sender, EventArgs e)
+        {
+            cbVehiculo.DataSource = operacion.VehiculosRegistrados().Tables[0].DefaultView;
+            cbVehiculo.ValueMember = "modelo";
+        }
+
+        private void chbMarca_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chbMarca.Checked == true)
+            {
+                cbMarca.Visible = false;
+                cbMarca.SelectedIndex = -1;
+
+                lblMarca.Location = new Point(26, 41);
+                lblMarca.Text = "Ingrese marca:";
+                txtMarca.Visible = true;
+            }
+            else
+            {
+                cbMarca.Visible = true;
+                lblMarca.Location = new Point(70, 41);
+                lblMarca.Text = "Marca:";
+                txtMarca.Visible = false;
             }
         }
     }

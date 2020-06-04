@@ -93,14 +93,14 @@
 
                 dtpFechaCosto.Text = datos[7];
 
-                txtCostoSinIVA.Text = datos[8];
-                txtCostoNeto.Text = datos[9];
+                //txtCostoSinIVA.Text = datos[8];
+                txtCostoNeto.Text = datos[8];
 
                 cbCostoEnvio.DropDownStyle = ComboBoxStyle.DropDown;
-                cbCostoEnvio.Text = datos[10];
+                cbCostoEnvio.Text = datos[9];
 
-                txtPrecioReparacion.Text = datos[11];
-                txtPrecioVenta.Text = datos[12];
+                txtPrecioReparacion.Text = datos[10];
+                txtPrecioVenta.Text = datos[11];
             }
         }
 
@@ -476,7 +476,7 @@
         /// <summary>
         /// Defines the datosPieza.
         /// </summary>
-        internal string[] datosPieza = new string[13];
+        internal string[] datosPieza = new string[12];
 
         /// <summary>
         /// The btnAniadirPieza_Click.
@@ -504,23 +504,23 @@
             if (ValidateChildren(ValidationConstraints.Enabled))
             {
                 datosPieza[7] = dtpFechaCosto.Text.Trim();
-                datosPieza[8] = txtCostoSinIVA.Text.Trim();
-                datosPieza[9] = txtCostoNeto.Text.Trim();
+                //datosPieza[8] = txtCostoSinIVA.Text.Trim();
+                datosPieza[8] = txtCostoNeto.Text.Trim();
 
                 if (!string.IsNullOrEmpty(cbCostoEnvio.Text))
-                    datosPieza[10] = cbCostoEnvio.Text.Trim();
+                    datosPieza[9] = cbCostoEnvio.Text.Trim();
                 else
-                    datosPieza[10] = "0";
+                    datosPieza[9] = "0";
 
-                datosPieza[11] = txtPrecioVenta.Text.Trim();
+                datosPieza[10] = txtPrecioVenta.Text.Trim();
 
                 if (string.IsNullOrEmpty(txtPrecioReparacion.Text.Trim()))
                 {
                     txtPrecioReparacion.Text = "0";
-                    datosPieza[12] = txtPrecioReparacion.Text.Trim();
+                    datosPieza[11] = txtPrecioReparacion.Text.Trim();
                 }
                 else
-                    datosPieza[12] = txtPrecioReparacion.Text.Trim();
+                    datosPieza[11] = txtPrecioReparacion.Text.Trim();
 
                 datosPieza[2] = txtClaveProducto.Text.Trim().ToUpper();
 
@@ -685,8 +685,8 @@
         /// <param name="e">The e<see cref="EventArgs"/>.</param>
         private void txtCostoSinIVA_Leave(object sender, EventArgs e)
         {
-            if (txtCostoSinIVA.Text != string.Empty)
-                txtCostoNeto.Text = ((Convert.ToDouble(txtCostoSinIVA.Text.Trim()) * .16) + Convert.ToDouble(txtCostoSinIVA.Text.Trim())).ToString();
+            /*if (txtCostoSinIVA.Text != string.Empty)
+                txtCostoNeto.Text = ((Convert.ToDouble(txtCostoSinIVA.Text.Trim()) * .16) + Convert.ToDouble(txtCostoSinIVA.Text.Trim())).ToString();*/
         }
 
         private void txtPiezaNombre_Leave(object sender, EventArgs e)

@@ -39,6 +39,11 @@ namespace Refracciones.Forms
             set { lblClaveSiniestro.Text = value; }
         }
 
+        public string labelAnio
+        {
+            set { lblAnio.Text = value; }
+        }
+
         private void Pedido_Load(object sender, EventArgs e)
         {
             if (actualizar != 1)
@@ -70,7 +75,7 @@ namespace Refracciones.Forms
             dt.Columns.Add("Origen");
             dt.Columns.Add("Proveedor");
             dt.Columns.Add("Fecha costo");
-            dt.Columns.Add("Costo sin IVA");
+            //dt.Columns.Add("Costo sin IVA");
             dt.Columns.Add("Costo neto");
             dt.Columns.Add("Costo de envío");
             dt.Columns.Add("Precio de venta");
@@ -182,6 +187,8 @@ namespace Refracciones.Forms
         private string estadoSiniestro = "";
         private bool nuevoVehiculo;
 
+        private bool nuevoMarca;
+
         private void rdbSi_CheckedChanged(object sender, EventArgs e)
         {
             if (rdbSi.Checked == true)
@@ -192,12 +199,13 @@ namespace Refracciones.Forms
                 cbEstadoSiniestro.Hide();
                 Siniestro siniestro = new Siniestro();
                 DialogResult respuesta = siniestro.ShowDialog();
-                //MessageBox.Show(respuesta.ToString());
+
                 if (respuesta == DialogResult.OK)
                 {
                     comentarioSiniestro = siniestro.comentario;
                     estadoSiniestro = siniestro.estadoSiniestro;
                     nuevoVehiculo = siniestro.otroVehiculo;
+                    nuevoMarca = siniestro.otroMarca;
 
                     chbSi.Show();
                     chbSi.Checked = true;
@@ -216,6 +224,10 @@ namespace Refracciones.Forms
                     lblAnioPedido.Show();
                     lblAnio.Show();
                     lblAnio.Text = siniestro.anioSiniestro;
+
+                    lblMarcaPedido.Show();
+                    lblMarca.Show();
+                    lblMarca.Text = siniestro.marcaSiniestro;
                 }
                 else
                     rdbNo.Checked = true;
@@ -250,6 +262,10 @@ namespace Refracciones.Forms
             lblClaveSiniestroPedido.Hide();
             lblClaveSiniestro.Text = "";
             lblClaveSiniestro.Hide();
+
+            lblMarcaPedido.Hide();
+            lblMarca.Text = "";
+            lblMarca.Hide();
             if (rdbNo.Checked == true)
             {
                 lblClaveSiniestroPedido.Show();
@@ -645,17 +661,28 @@ namespace Refracciones.Forms
 
                         if (rdbNo.Checked == false)
                         {
+                            if (nuevoMarca == true)
+                            {
+                                operacion.registroMarca(lblMarca.Text.Trim());
+                            }
                             if (nuevoVehiculo == true)
                             {
-                                operacion.registroVehiculo(lblVehiculo.Text.Trim(), lblAnio.Text.Trim());
+                                operacion.registroVehiculo(lblVehiculo.Text.Trim(), lblAnio.Text.Trim(), lblMarca.Text.Trim());
+                            }
+                            if (string.IsNullOrEmpty(estadoSiniestro))
+                            {
+                                estadoSiniestro = "SIN ESTADO";
                             }
                             operacion.registrarSiniestro(lblVehiculo.Text.Trim(), lblClaveSiniestro.Text.Trim(), comentarioSiniestro, estadoSiniestro);
                         }
                         else
                         {
                             string TotalVehiculo = operacion.TotalVehiculos().ToString();
-                            operacion.registroVehiculo("PARTICULAR" + TotalVehiculo, TotalVehiculo);
-                            operacion.registrarSiniestro("PARTICULAR" + TotalVehiculo, lblClaveSiniestro.Text.Trim(), txtComentarioSiniestro.Text.Trim(), cbEstadoSiniestro.Text.Trim());
+                            operacion.registroVehiculo("PARTICULAR-" + TotalVehiculo, TotalVehiculo, "PARTICULAR-" + TotalVehiculo);
+                            if (string.IsNullOrEmpty(cbEstadoSiniestro.Text.Trim()))
+                                operacion.registrarSiniestro("PARTICULAR-" + TotalVehiculo, lblClaveSiniestro.Text.Trim(), txtComentarioSiniestro.Text.Trim(), "SIN ESTADO");
+                            else
+                                operacion.registrarSiniestro("PARTICULAR-" + TotalVehiculo, lblClaveSiniestro.Text.Trim(), txtComentarioSiniestro.Text.Trim(), cbEstadoSiniestro.Text.Trim());
                         }
 
                         //si numero de guia se encuentra no ese array se añade a ese array y va a ir guardando en otra variable la suma del costo de envio
@@ -695,7 +722,7 @@ namespace Refracciones.Forms
                             operacion.registrarPedido(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(),
                                 Convert.ToString(row.Cells["Pieza"].Value), Convert.ToString(row.Cells["Portal"].Value),
                                 Convert.ToString(row.Cells["Origen"].Value).Trim(), Convert.ToString(row.Cells["Proveedor"].Value),
-                                dtFechaCosto, Convert.ToString(row.Cells["Costo sin IVA"].Value), Convert.ToString(row.Cells["Costo neto"].Value),
+                                dtFechaCosto/*, Convert.ToString(row.Cells["Costo sin IVA"].Value)*/, Convert.ToString(row.Cells["Costo neto"].Value),
                                 Convert.ToString(row.Cells["Costo de envío"].Value), Convert.ToString(row.Cells["Precio de venta"].Value),
                                 Convert.ToString(row.Cells["Precio de reparación"].Value), Convert.ToString(row.Cells["Clave de producto"].Value),
                                 Convert.ToString(row.Cells["Número de guía"].Value), Convert.ToInt32(row.Cells["Cantidad"].Value));
@@ -815,7 +842,7 @@ namespace Refracciones.Forms
             rdbNo.Enabled = true;
         }
 
-        private string[] datosPieza = new string[13];
+        private string[] datosPieza = new string[12];
         public string[] datosMandar
         {
             get
@@ -855,11 +882,11 @@ namespace Refracciones.Forms
                     datosPieza[5] = Convert.ToString(row.Cells["Origen"].Value);
                     datosPieza[6] = Convert.ToString(row.Cells["Proveedor"].Value);
                     datosPieza[7] = Convert.ToString(row.Cells["Fecha costo"].Value);
-                    datosPieza[8] = Convert.ToString(row.Cells["Costo sin IVA"].Value);
-                    datosPieza[9] = Convert.ToString(row.Cells["Costo neto"].Value);
-                    datosPieza[10] = Convert.ToString(row.Cells["Costo de envío"].Value);
-                    datosPieza[11] = Convert.ToString(row.Cells["Precio de reparación"].Value);
-                    datosPieza[12] = Convert.ToString(row.Cells["Precio de venta"].Value);
+                    //datosPieza[8] = Convert.ToString(row.Cells["Costo sin IVA"].Value);
+                    datosPieza[8] = Convert.ToString(row.Cells["Costo neto"].Value);
+                    datosPieza[9] = Convert.ToString(row.Cells["Costo de envío"].Value);
+                    datosPieza[10] = Convert.ToString(row.Cells["Precio de reparación"].Value);
+                    datosPieza[11] = Convert.ToString(row.Cells["Precio de venta"].Value);
                 }
                 pieza.datosEditar = datosPieza;
                 pieza.editarPieza = 1;
