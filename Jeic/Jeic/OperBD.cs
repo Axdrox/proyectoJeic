@@ -1217,7 +1217,7 @@ namespace Refracciones
                 nuevaConexion.Open();
                 int clavePieza = 0;
                 //Obteniendo la clave de nombre pieza
-                Comando = new SqlCommand("SELECT cve_marca FROM PIEZA WHERE marca = @marca", nuevaConexion);
+                Comando = new SqlCommand("SELECT cve_marca FROM MARCA WHERE marca = @marca", nuevaConexion);
                 Comando.Parameters.AddWithValue("@marca", marca);
                 Lector = Comando.ExecuteReader();
                 if (Lector.Read())
