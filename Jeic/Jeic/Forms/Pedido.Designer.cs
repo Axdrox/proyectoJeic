@@ -111,9 +111,10 @@
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(40)))));
             this.label1.Font = new System.Drawing.Font("Poppins Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(15, 103);
+            this.label1.Location = new System.Drawing.Point(11, 84);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(143, 23);
+            this.label1.Size = new System.Drawing.Size(114, 18);
             this.label1.TabIndex = 0;
             this.label1.Text = "¿Agregar siniestro?";
             // 
@@ -122,9 +123,10 @@
             this.lblVehiculoPedido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(45)))), ((int)(((byte)(57)))));
             this.lblVehiculoPedido.Font = new System.Drawing.Font("Poppins Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVehiculoPedido.ForeColor = System.Drawing.Color.White;
-            this.lblVehiculoPedido.Location = new System.Drawing.Point(79, 166);
+            this.lblVehiculoPedido.Location = new System.Drawing.Point(59, 135);
+            this.lblVehiculoPedido.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblVehiculoPedido.Name = "lblVehiculoPedido";
-            this.lblVehiculoPedido.Size = new System.Drawing.Size(68, 20);
+            this.lblVehiculoPedido.Size = new System.Drawing.Size(51, 16);
             this.lblVehiculoPedido.TabIndex = 0;
             this.lblVehiculoPedido.Text = "Modelo:";
             // 
@@ -132,9 +134,10 @@
             // 
             this.lblAnioPedido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(50)))), ((int)(((byte)(64)))));
             this.lblAnioPedido.Font = new System.Drawing.Font("Poppins Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAnioPedido.Location = new System.Drawing.Point(102, 197);
+            this.lblAnioPedido.Location = new System.Drawing.Point(76, 160);
+            this.lblAnioPedido.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblAnioPedido.Name = "lblAnioPedido";
-            this.lblAnioPedido.Size = new System.Drawing.Size(45, 17);
+            this.lblAnioPedido.Size = new System.Drawing.Size(34, 14);
             this.lblAnioPedido.TabIndex = 0;
             this.lblAnioPedido.Text = "Año:";
             // 
@@ -142,18 +145,20 @@
             // 
             this.lblVehiculo.AutoSize = true;
             this.lblVehiculo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(45)))), ((int)(((byte)(57)))));
-            this.lblVehiculo.Location = new System.Drawing.Point(167, 169);
+            this.lblVehiculo.Location = new System.Drawing.Point(125, 137);
+            this.lblVehiculo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblVehiculo.Name = "lblVehiculo";
-            this.lblVehiculo.Size = new System.Drawing.Size(0, 17);
+            this.lblVehiculo.Size = new System.Drawing.Size(0, 13);
             this.lblVehiculo.TabIndex = 2;
             // 
             // lblAnio
             // 
             this.lblAnio.AutoSize = true;
             this.lblAnio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(50)))), ((int)(((byte)(64)))));
-            this.lblAnio.Location = new System.Drawing.Point(167, 200);
+            this.lblAnio.Location = new System.Drawing.Point(125, 162);
+            this.lblAnio.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblAnio.Name = "lblAnio";
-            this.lblAnio.Size = new System.Drawing.Size(0, 17);
+            this.lblAnio.Size = new System.Drawing.Size(0, 13);
             this.lblAnio.TabIndex = 3;
             // 
             // label4
@@ -162,9 +167,10 @@
             this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(45)))), ((int)(((byte)(57)))));
             this.label4.Font = new System.Drawing.Font("Poppins Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(580, 191);
+            this.label4.Location = new System.Drawing.Point(435, 155);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(76, 23);
+            this.label4.Size = new System.Drawing.Size(59, 18);
             this.label4.TabIndex = 4;
             this.label4.Text = "Valuador:";
             // 
@@ -176,10 +182,10 @@
             this.cbAseguradora.Enabled = false;
             this.cbAseguradora.ForeColor = System.Drawing.Color.White;
             this.cbAseguradora.FormattingEnabled = true;
-            this.cbAseguradora.Location = new System.Drawing.Point(663, 81);
-            this.cbAseguradora.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbAseguradora.Location = new System.Drawing.Point(497, 66);
+            this.cbAseguradora.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbAseguradora.Name = "cbAseguradora";
-            this.cbAseguradora.Size = new System.Drawing.Size(392, 24);
+            this.cbAseguradora.Size = new System.Drawing.Size(295, 21);
             this.cbAseguradora.TabIndex = 5;
             this.cbAseguradora.SelectedIndexChanged += new System.EventHandler(this.cbAseguradora_SelectedIndexChanged);
             this.cbAseguradora.Click += new System.EventHandler(this.cbAseguradora_Click);
@@ -190,9 +196,10 @@
             this.lblClientePedido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(35)))), ((int)(((byte)(42)))));
             this.lblClientePedido.Font = new System.Drawing.Font("Poppins Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblClientePedido.ForeColor = System.Drawing.Color.White;
-            this.lblClientePedido.Location = new System.Drawing.Point(580, 113);
+            this.lblClientePedido.Location = new System.Drawing.Point(435, 92);
+            this.lblClientePedido.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblClientePedido.Name = "lblClientePedido";
-            this.lblClientePedido.Size = new System.Drawing.Size(61, 23);
+            this.lblClientePedido.Size = new System.Drawing.Size(49, 18);
             this.lblClientePedido.TabIndex = 6;
             this.lblClientePedido.Text = "Cliente:";
             // 
@@ -202,9 +209,10 @@
             this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(30)))), ((int)(((byte)(33)))));
             this.label6.Font = new System.Drawing.Font("Poppins Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(580, 68);
+            this.label6.Location = new System.Drawing.Point(435, 55);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(80, 23);
+            this.label6.Size = new System.Drawing.Size(64, 18);
             this.label6.TabIndex = 8;
             this.label6.Text = "Vendedor:";
             // 
@@ -216,10 +224,10 @@
             this.cbVendedor.Enabled = false;
             this.cbVendedor.ForeColor = System.Drawing.Color.White;
             this.cbVendedor.FormattingEnabled = true;
-            this.cbVendedor.Location = new System.Drawing.Point(663, 36);
-            this.cbVendedor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbVendedor.Location = new System.Drawing.Point(497, 29);
+            this.cbVendedor.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbVendedor.Name = "cbVendedor";
-            this.cbVendedor.Size = new System.Drawing.Size(392, 24);
+            this.cbVendedor.Size = new System.Drawing.Size(295, 21);
             this.cbVendedor.TabIndex = 9;
             this.cbVendedor.SelectedIndexChanged += new System.EventHandler(this.cbVendedor_SelectedIndexChanged);
             this.cbVendedor.Click += new System.EventHandler(this.cbVendedor_Click);
@@ -230,9 +238,10 @@
             this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(33)))), ((int)(((byte)(39)))));
             this.label7.Font = new System.Drawing.Font("Poppins Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(1213, 95);
+            this.label7.Location = new System.Drawing.Point(910, 77);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(151, 23);
+            this.label7.Size = new System.Drawing.Size(120, 18);
             this.label7.TabIndex = 10;
             this.label7.Text = "Fecha de asignación";
             // 
@@ -244,10 +253,10 @@
             this.dtpFechaAsignacion.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dtpFechaAsignacion.Enabled = false;
             this.dtpFechaAsignacion.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaAsignacion.Location = new System.Drawing.Point(1371, 87);
-            this.dtpFechaAsignacion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtpFechaAsignacion.Location = new System.Drawing.Point(1028, 71);
+            this.dtpFechaAsignacion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dtpFechaAsignacion.Name = "dtpFechaAsignacion";
-            this.dtpFechaAsignacion.Size = new System.Drawing.Size(141, 22);
+            this.dtpFechaAsignacion.Size = new System.Drawing.Size(107, 20);
             this.dtpFechaAsignacion.TabIndex = 11;
             this.dtpFechaAsignacion.ValueChanged += new System.EventHandler(this.dtpFechaAsignacion_ValueChanged);
             // 
@@ -257,9 +266,10 @@
             this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(39)))), ((int)(((byte)(46)))));
             this.label8.Font = new System.Drawing.Font("Poppins Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(1213, 133);
+            this.label8.Location = new System.Drawing.Point(910, 108);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(120, 23);
+            this.label8.Size = new System.Drawing.Size(96, 18);
             this.label8.TabIndex = 12;
             this.label8.Text = "Fecha promesa:";
             // 
@@ -270,10 +280,10 @@
             this.dtpFechaPromesa.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dtpFechaPromesa.Enabled = false;
             this.dtpFechaPromesa.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaPromesa.Location = new System.Drawing.Point(1371, 124);
-            this.dtpFechaPromesa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtpFechaPromesa.Location = new System.Drawing.Point(1028, 101);
+            this.dtpFechaPromesa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dtpFechaPromesa.Name = "dtpFechaPromesa";
-            this.dtpFechaPromesa.Size = new System.Drawing.Size(141, 22);
+            this.dtpFechaPromesa.Size = new System.Drawing.Size(107, 20);
             this.dtpFechaPromesa.TabIndex = 13;
             this.dtpFechaPromesa.ValueChanged += new System.EventHandler(this.dtpFechaPromesa_ValueChanged);
             // 
@@ -283,9 +293,10 @@
             this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(51)))), ((int)(((byte)(66)))));
             this.label9.Font = new System.Drawing.Font("Poppins Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(580, 240);
+            this.label9.Location = new System.Drawing.Point(435, 195);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(49, 23);
+            this.label9.Size = new System.Drawing.Size(39, 18);
             this.label9.TabIndex = 14;
             this.label9.Text = "Taller:";
             // 
@@ -295,9 +306,10 @@
             this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(57)))), ((int)(((byte)(76)))));
             this.label10.Font = new System.Drawing.Font("Poppins Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(580, 288);
+            this.label10.Location = new System.Drawing.Point(435, 234);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(65, 23);
+            this.label10.Size = new System.Drawing.Size(52, 18);
             this.label10.TabIndex = 15;
             this.label10.Text = "Destino:";
             // 
@@ -308,10 +320,10 @@
             this.cbTaller.Enabled = false;
             this.cbTaller.ForeColor = System.Drawing.Color.White;
             this.cbTaller.FormattingEnabled = true;
-            this.cbTaller.Location = new System.Drawing.Point(663, 208);
-            this.cbTaller.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbTaller.Location = new System.Drawing.Point(497, 169);
+            this.cbTaller.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbTaller.Name = "cbTaller";
-            this.cbTaller.Size = new System.Drawing.Size(392, 24);
+            this.cbTaller.Size = new System.Drawing.Size(295, 21);
             this.cbTaller.TabIndex = 16;
             this.cbTaller.Click += new System.EventHandler(this.cbTaller_Click);
             // 
@@ -322,10 +334,10 @@
             this.cbDestino.Enabled = false;
             this.cbDestino.ForeColor = System.Drawing.Color.White;
             this.cbDestino.FormattingEnabled = true;
-            this.cbDestino.Location = new System.Drawing.Point(663, 256);
-            this.cbDestino.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbDestino.Location = new System.Drawing.Point(497, 208);
+            this.cbDestino.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbDestino.Name = "cbDestino";
-            this.cbDestino.Size = new System.Drawing.Size(392, 24);
+            this.cbDestino.Size = new System.Drawing.Size(295, 21);
             this.cbDestino.TabIndex = 17;
             this.cbDestino.Click += new System.EventHandler(this.cbDestino_Click);
             // 
@@ -350,8 +362,8 @@
             this.dgvPedido.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvPedido.EnableHeadersVisualStyles = false;
             this.dgvPedido.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(51)))), ((int)(((byte)(65)))));
-            this.dgvPedido.Location = new System.Drawing.Point(159, 327);
-            this.dgvPedido.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvPedido.Location = new System.Drawing.Point(119, 266);
+            this.dgvPedido.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgvPedido.Name = "dgvPedido";
             this.dgvPedido.ReadOnly = true;
             this.dgvPedido.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -372,7 +384,7 @@
             this.dgvPedido.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvPedido.RowTemplate.Height = 24;
             this.dgvPedido.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPedido.Size = new System.Drawing.Size(1424, 206);
+            this.dgvPedido.Size = new System.Drawing.Size(1068, 167);
             this.dgvPedido.TabIndex = 18;
             this.dgvPedido.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPedido_CellClick);
             // 
@@ -382,10 +394,10 @@
             this.btnFinalizarPedido.Enabled = false;
             this.btnFinalizarPedido.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnFinalizarPedido.Font = new System.Drawing.Font("Poppins Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFinalizarPedido.Location = new System.Drawing.Point(1623, 604);
-            this.btnFinalizarPedido.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnFinalizarPedido.Location = new System.Drawing.Point(1217, 491);
+            this.btnFinalizarPedido.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnFinalizarPedido.Name = "btnFinalizarPedido";
-            this.btnFinalizarPedido.Size = new System.Drawing.Size(143, 31);
+            this.btnFinalizarPedido.Size = new System.Drawing.Size(107, 25);
             this.btnFinalizarPedido.TabIndex = 19;
             this.btnFinalizarPedido.Text = "Finalizar pedido";
             this.btnFinalizarPedido.UseVisualStyleBackColor = false;
@@ -396,10 +408,10 @@
             this.btnCancelar.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCancelar.Font = new System.Drawing.Font("Poppins Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(1520, 604);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCancelar.Location = new System.Drawing.Point(1140, 491);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(83, 31);
+            this.btnCancelar.Size = new System.Drawing.Size(62, 25);
             this.btnCancelar.TabIndex = 20;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
@@ -412,10 +424,10 @@
             this.rdbNo.Enabled = false;
             this.rdbNo.Font = new System.Drawing.Font("Poppins Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdbNo.ForeColor = System.Drawing.Color.White;
-            this.rdbNo.Location = new System.Drawing.Point(242, 101);
-            this.rdbNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.rdbNo.Location = new System.Drawing.Point(182, 82);
+            this.rdbNo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.rdbNo.Name = "rdbNo";
-            this.rdbNo.Size = new System.Drawing.Size(49, 27);
+            this.rdbNo.Size = new System.Drawing.Size(40, 22);
             this.rdbNo.TabIndex = 22;
             this.rdbNo.Text = "No";
             this.rdbNo.UseVisualStyleBackColor = false;
@@ -429,10 +441,10 @@
             this.rdbSi.Enabled = false;
             this.rdbSi.Font = new System.Drawing.Font("Poppins Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdbSi.ForeColor = System.Drawing.Color.White;
-            this.rdbSi.Location = new System.Drawing.Point(178, 101);
-            this.rdbSi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.rdbSi.Location = new System.Drawing.Point(134, 82);
+            this.rdbSi.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.rdbSi.Name = "rdbSi";
-            this.rdbSi.Size = new System.Drawing.Size(42, 27);
+            this.rdbSi.Size = new System.Drawing.Size(34, 22);
             this.rdbSi.TabIndex = 23;
             this.rdbSi.Text = "Sí";
             this.rdbSi.UseVisualStyleBackColor = false;
@@ -443,10 +455,10 @@
             this.chbSi.AutoSize = true;
             this.chbSi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(35)))), ((int)(((byte)(41)))));
             this.chbSi.ForeColor = System.Drawing.Color.White;
-            this.chbSi.Location = new System.Drawing.Point(180, 74);
-            this.chbSi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.chbSi.Location = new System.Drawing.Point(135, 60);
+            this.chbSi.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chbSi.Name = "chbSi";
-            this.chbSi.Size = new System.Drawing.Size(42, 21);
+            this.chbSi.Size = new System.Drawing.Size(37, 17);
             this.chbSi.TabIndex = 24;
             this.chbSi.Text = "Sí";
             this.chbSi.UseVisualStyleBackColor = false;
@@ -459,10 +471,10 @@
             this.chbOtroValuador.Enabled = false;
             this.chbOtroValuador.Font = new System.Drawing.Font("Poppins Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chbOtroValuador.ForeColor = System.Drawing.Color.White;
-            this.chbOtroValuador.Location = new System.Drawing.Point(1060, 193);
-            this.chbOtroValuador.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.chbOtroValuador.Location = new System.Drawing.Point(795, 157);
+            this.chbOtroValuador.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chbOtroValuador.Name = "chbOtroValuador";
-            this.chbOtroValuador.Size = new System.Drawing.Size(62, 27);
+            this.chbOtroValuador.Size = new System.Drawing.Size(51, 22);
             this.chbOtroValuador.TabIndex = 25;
             this.chbOtroValuador.Text = "Otro";
             this.chbOtroValuador.UseVisualStyleBackColor = false;
@@ -473,10 +485,10 @@
             this.txtValuador.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.txtValuador.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtValuador.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.txtValuador.Location = new System.Drawing.Point(661, 164);
-            this.txtValuador.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtValuador.Location = new System.Drawing.Point(496, 133);
+            this.txtValuador.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtValuador.Name = "txtValuador";
-            this.txtValuador.Size = new System.Drawing.Size(395, 22);
+            this.txtValuador.Size = new System.Drawing.Size(297, 20);
             this.txtValuador.TabIndex = 26;
             this.txtValuador.Text = "Escriba nombre del valuador";
             this.txtValuador.Click += new System.EventHandler(this.txtValuador_Click);
@@ -490,10 +502,10 @@
             this.cbValuador.Enabled = false;
             this.cbValuador.ForeColor = System.Drawing.Color.White;
             this.cbValuador.FormattingEnabled = true;
-            this.cbValuador.Location = new System.Drawing.Point(663, 162);
-            this.cbValuador.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbValuador.Location = new System.Drawing.Point(497, 132);
+            this.cbValuador.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbValuador.Name = "cbValuador";
-            this.cbValuador.Size = new System.Drawing.Size(392, 24);
+            this.cbValuador.Size = new System.Drawing.Size(295, 21);
             this.cbValuador.TabIndex = 27;
             this.cbValuador.Click += new System.EventHandler(this.cbValuador_Click);
             // 
@@ -502,10 +514,10 @@
             this.txtAseguradora.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.txtAseguradora.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtAseguradora.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.txtAseguradora.Location = new System.Drawing.Point(663, 82);
-            this.txtAseguradora.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtAseguradora.Location = new System.Drawing.Point(497, 67);
+            this.txtAseguradora.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtAseguradora.Name = "txtAseguradora";
-            this.txtAseguradora.Size = new System.Drawing.Size(394, 22);
+            this.txtAseguradora.Size = new System.Drawing.Size(296, 20);
             this.txtAseguradora.TabIndex = 28;
             this.txtAseguradora.Text = "Escriba el nombre del cliente";
             this.txtAseguradora.Click += new System.EventHandler(this.txtAseguradora_Click);
@@ -519,10 +531,10 @@
             this.chbOtraAseguradora.Enabled = false;
             this.chbOtraAseguradora.Font = new System.Drawing.Font("Poppins Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chbOtraAseguradora.ForeColor = System.Drawing.Color.White;
-            this.chbOtraAseguradora.Location = new System.Drawing.Point(1060, 111);
-            this.chbOtraAseguradora.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.chbOtraAseguradora.Location = new System.Drawing.Point(795, 90);
+            this.chbOtraAseguradora.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chbOtraAseguradora.Name = "chbOtraAseguradora";
-            this.chbOtraAseguradora.Size = new System.Drawing.Size(62, 27);
+            this.chbOtraAseguradora.Size = new System.Drawing.Size(51, 22);
             this.chbOtraAseguradora.TabIndex = 29;
             this.chbOtraAseguradora.Text = "Otro";
             this.chbOtraAseguradora.UseVisualStyleBackColor = false;
@@ -534,9 +546,10 @@
             this.lblClaveSiniestroPedido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(38)))), ((int)(((byte)(45)))));
             this.lblClaveSiniestroPedido.Font = new System.Drawing.Font("Poppins Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblClaveSiniestroPedido.ForeColor = System.Drawing.Color.White;
-            this.lblClaveSiniestroPedido.Location = new System.Drawing.Point(39, 132);
+            this.lblClaveSiniestroPedido.Location = new System.Drawing.Point(29, 107);
+            this.lblClaveSiniestroPedido.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblClaveSiniestroPedido.Name = "lblClaveSiniestroPedido";
-            this.lblClaveSiniestroPedido.Size = new System.Drawing.Size(113, 23);
+            this.lblClaveSiniestroPedido.Size = new System.Drawing.Size(90, 18);
             this.lblClaveSiniestroPedido.TabIndex = 30;
             this.lblClaveSiniestroPedido.Text = "Clave siniestro:";
             // 
@@ -544,9 +557,10 @@
             // 
             this.lblClaveSiniestro.AutoSize = true;
             this.lblClaveSiniestro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(38)))), ((int)(((byte)(46)))));
-            this.lblClaveSiniestro.Location = new System.Drawing.Point(167, 107);
+            this.lblClaveSiniestro.Location = new System.Drawing.Point(125, 87);
+            this.lblClaveSiniestro.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblClaveSiniestro.Name = "lblClaveSiniestro";
-            this.lblClaveSiniestro.Size = new System.Drawing.Size(0, 17);
+            this.lblClaveSiniestro.Size = new System.Drawing.Size(0, 13);
             this.lblClaveSiniestro.TabIndex = 31;
             // 
             // label2
@@ -555,9 +569,10 @@
             this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(30)))), ((int)(((byte)(33)))));
             this.label2.Font = new System.Drawing.Font("Poppins Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(15, 64);
+            this.label2.Location = new System.Drawing.Point(11, 52);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(104, 23);
+            this.label2.Size = new System.Drawing.Size(82, 18);
             this.label2.TabIndex = 32;
             this.label2.Text = "Clave pedido:";
             // 
@@ -566,10 +581,10 @@
             this.txtClavePedido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.txtClavePedido.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtClavePedido.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.txtClavePedido.Location = new System.Drawing.Point(159, 59);
-            this.txtClavePedido.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtClavePedido.Location = new System.Drawing.Point(119, 48);
+            this.txtClavePedido.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtClavePedido.Name = "txtClavePedido";
-            this.txtClavePedido.Size = new System.Drawing.Size(309, 22);
+            this.txtClavePedido.Size = new System.Drawing.Size(232, 20);
             this.txtClavePedido.TabIndex = 33;
             this.txtClavePedido.Text = "Escriba una clave";
             this.txtClavePedido.Click += new System.EventHandler(this.txtClavePedido_Click);
@@ -584,10 +599,10 @@
             this.chbOtroTaller.Enabled = false;
             this.chbOtroTaller.Font = new System.Drawing.Font("Poppins Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chbOtroTaller.ForeColor = System.Drawing.Color.White;
-            this.chbOtroTaller.Location = new System.Drawing.Point(1060, 239);
-            this.chbOtroTaller.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.chbOtroTaller.Location = new System.Drawing.Point(795, 194);
+            this.chbOtroTaller.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chbOtroTaller.Name = "chbOtroTaller";
-            this.chbOtroTaller.Size = new System.Drawing.Size(62, 27);
+            this.chbOtroTaller.Size = new System.Drawing.Size(51, 22);
             this.chbOtroTaller.TabIndex = 34;
             this.chbOtroTaller.Text = "Otro";
             this.chbOtroTaller.UseVisualStyleBackColor = false;
@@ -601,10 +616,10 @@
             this.chbOtroDestino.Enabled = false;
             this.chbOtroDestino.Font = new System.Drawing.Font("Poppins Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chbOtroDestino.ForeColor = System.Drawing.Color.White;
-            this.chbOtroDestino.Location = new System.Drawing.Point(1060, 287);
-            this.chbOtroDestino.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.chbOtroDestino.Location = new System.Drawing.Point(795, 233);
+            this.chbOtroDestino.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chbOtroDestino.Name = "chbOtroDestino";
-            this.chbOtroDestino.Size = new System.Drawing.Size(62, 27);
+            this.chbOtroDestino.Size = new System.Drawing.Size(51, 22);
             this.chbOtroDestino.TabIndex = 35;
             this.chbOtroDestino.Text = "Otro";
             this.chbOtroDestino.UseVisualStyleBackColor = false;
@@ -615,10 +630,10 @@
             this.txtTaller.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.txtTaller.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTaller.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.txtTaller.Location = new System.Drawing.Point(663, 209);
-            this.txtTaller.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtTaller.Location = new System.Drawing.Point(497, 170);
+            this.txtTaller.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtTaller.Name = "txtTaller";
-            this.txtTaller.Size = new System.Drawing.Size(393, 22);
+            this.txtTaller.Size = new System.Drawing.Size(295, 20);
             this.txtTaller.TabIndex = 36;
             this.txtTaller.Text = "Escriba nombre de taller";
             this.txtTaller.Click += new System.EventHandler(this.txtTaller_Click);
@@ -629,10 +644,10 @@
             this.txtDestino.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.txtDestino.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDestino.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.txtDestino.Location = new System.Drawing.Point(663, 257);
-            this.txtDestino.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtDestino.Location = new System.Drawing.Point(497, 209);
+            this.txtDestino.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtDestino.Name = "txtDestino";
-            this.txtDestino.Size = new System.Drawing.Size(394, 22);
+            this.txtDestino.Size = new System.Drawing.Size(296, 20);
             this.txtDestino.TabIndex = 37;
             this.txtDestino.Text = "Escriba el destino";
             this.txtDestino.Click += new System.EventHandler(this.txtDestino_Click);
@@ -643,10 +658,10 @@
             this.btnAgregarPieza.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnAgregarPieza.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAgregarPieza.Font = new System.Drawing.Font("Poppins Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregarPieza.Location = new System.Drawing.Point(165, 545);
-            this.btnAgregarPieza.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAgregarPieza.Location = new System.Drawing.Point(124, 443);
+            this.btnAgregarPieza.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAgregarPieza.Name = "btnAgregarPieza";
-            this.btnAgregarPieza.Size = new System.Drawing.Size(133, 31);
+            this.btnAgregarPieza.Size = new System.Drawing.Size(100, 25);
             this.btnAgregarPieza.TabIndex = 38;
             this.btnAgregarPieza.Text = "Agregar pieza";
             this.btnAgregarPieza.UseVisualStyleBackColor = false;
@@ -658,9 +673,10 @@
             this.lblFechaBaja.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(43)))), ((int)(((byte)(53)))));
             this.lblFechaBaja.Font = new System.Drawing.Font("Poppins Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFechaBaja.ForeColor = System.Drawing.Color.White;
-            this.lblFechaBaja.Location = new System.Drawing.Point(1213, 174);
+            this.lblFechaBaja.Location = new System.Drawing.Point(910, 141);
+            this.lblFechaBaja.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFechaBaja.Name = "lblFechaBaja";
-            this.lblFechaBaja.Size = new System.Drawing.Size(110, 23);
+            this.lblFechaBaja.Size = new System.Drawing.Size(87, 18);
             this.lblFechaBaja.TabIndex = 39;
             this.lblFechaBaja.Text = "Fecha de baja:";
             // 
@@ -671,19 +687,20 @@
             this.dtpFechaBaja.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dtpFechaBaja.Enabled = false;
             this.dtpFechaBaja.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaBaja.Location = new System.Drawing.Point(1371, 166);
-            this.dtpFechaBaja.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtpFechaBaja.Location = new System.Drawing.Point(1028, 135);
+            this.dtpFechaBaja.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dtpFechaBaja.Name = "dtpFechaBaja";
-            this.dtpFechaBaja.Size = new System.Drawing.Size(141, 22);
+            this.dtpFechaBaja.Size = new System.Drawing.Size(107, 20);
             this.dtpFechaBaja.TabIndex = 40;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Poppins Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(1371, 552);
+            this.label5.Location = new System.Drawing.Point(1028, 448);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(51, 23);
+            this.label5.Size = new System.Drawing.Size(42, 18);
             this.label5.TabIndex = 41;
             this.label5.Text = "TOTAL";
             // 
@@ -691,9 +708,10 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Poppins Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(1431, 537);
+            this.label11.Location = new System.Drawing.Point(1073, 436);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(51, 23);
+            this.label11.Size = new System.Drawing.Size(41, 18);
             this.label11.TabIndex = 42;
             this.label11.Text = "Piezas";
             // 
@@ -701,26 +719,29 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Poppins Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(1487, 537);
+            this.label12.Location = new System.Drawing.Point(1115, 436);
+            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(51, 23);
+            this.label12.Size = new System.Drawing.Size(41, 18);
             this.label12.TabIndex = 43;
             this.label12.Text = "Precio";
             // 
             // lblCantidadTotal
             // 
             this.lblCantidadTotal.AutoSize = true;
-            this.lblCantidadTotal.Location = new System.Drawing.Point(1644, 555);
+            this.lblCantidadTotal.Location = new System.Drawing.Point(1233, 451);
+            this.lblCantidadTotal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCantidadTotal.Name = "lblCantidadTotal";
-            this.lblCantidadTotal.Size = new System.Drawing.Size(0, 17);
+            this.lblCantidadTotal.Size = new System.Drawing.Size(0, 13);
             this.lblCantidadTotal.TabIndex = 44;
             // 
             // lblPrecioTotal
             // 
             this.lblPrecioTotal.AutoSize = true;
-            this.lblPrecioTotal.Location = new System.Drawing.Point(1700, 555);
+            this.lblPrecioTotal.Location = new System.Drawing.Point(1275, 451);
+            this.lblPrecioTotal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPrecioTotal.Name = "lblPrecioTotal";
-            this.lblPrecioTotal.Size = new System.Drawing.Size(0, 17);
+            this.lblPrecioTotal.Size = new System.Drawing.Size(0, 13);
             this.lblPrecioTotal.TabIndex = 45;
             // 
             // chbModificarFechaAsignacion
@@ -729,10 +750,10 @@
             this.chbModificarFechaAsignacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(33)))), ((int)(((byte)(38)))));
             this.chbModificarFechaAsignacion.Font = new System.Drawing.Font("Poppins Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chbModificarFechaAsignacion.ForeColor = System.Drawing.Color.White;
-            this.chbModificarFechaAsignacion.Location = new System.Drawing.Point(1533, 62);
-            this.chbModificarFechaAsignacion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.chbModificarFechaAsignacion.Location = new System.Drawing.Point(1150, 50);
+            this.chbModificarFechaAsignacion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chbModificarFechaAsignacion.Name = "chbModificarFechaAsignacion";
-            this.chbModificarFechaAsignacion.Size = new System.Drawing.Size(95, 27);
+            this.chbModificarFechaAsignacion.Size = new System.Drawing.Size(76, 22);
             this.chbModificarFechaAsignacion.TabIndex = 46;
             this.chbModificarFechaAsignacion.Text = "Modificar";
             this.chbModificarFechaAsignacion.UseVisualStyleBackColor = false;
@@ -745,10 +766,10 @@
             this.chbModificarFechaPromesa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(38)))), ((int)(((byte)(45)))));
             this.chbModificarFechaPromesa.Font = new System.Drawing.Font("Poppins Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chbModificarFechaPromesa.ForeColor = System.Drawing.Color.White;
-            this.chbModificarFechaPromesa.Location = new System.Drawing.Point(1533, 98);
-            this.chbModificarFechaPromesa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.chbModificarFechaPromesa.Location = new System.Drawing.Point(1150, 80);
+            this.chbModificarFechaPromesa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chbModificarFechaPromesa.Name = "chbModificarFechaPromesa";
-            this.chbModificarFechaPromesa.Size = new System.Drawing.Size(95, 27);
+            this.chbModificarFechaPromesa.Size = new System.Drawing.Size(76, 22);
             this.chbModificarFechaPromesa.TabIndex = 47;
             this.chbModificarFechaPromesa.Text = "Modificar";
             this.chbModificarFechaPromesa.UseVisualStyleBackColor = false;
@@ -761,10 +782,10 @@
             this.chbModificarFechaBaja.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(42)))), ((int)(((byte)(52)))));
             this.chbModificarFechaBaja.Font = new System.Drawing.Font("Poppins Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chbModificarFechaBaja.ForeColor = System.Drawing.Color.White;
-            this.chbModificarFechaBaja.Location = new System.Drawing.Point(1533, 140);
-            this.chbModificarFechaBaja.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.chbModificarFechaBaja.Location = new System.Drawing.Point(1150, 114);
+            this.chbModificarFechaBaja.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chbModificarFechaBaja.Name = "chbModificarFechaBaja";
-            this.chbModificarFechaBaja.Size = new System.Drawing.Size(95, 27);
+            this.chbModificarFechaBaja.Size = new System.Drawing.Size(76, 22);
             this.chbModificarFechaBaja.TabIndex = 48;
             this.chbModificarFechaBaja.Text = "Modificar";
             this.chbModificarFechaBaja.UseVisualStyleBackColor = false;
@@ -777,10 +798,10 @@
             this.chbModificarVendedor.Cursor = System.Windows.Forms.Cursors.Default;
             this.chbModificarVendedor.Font = new System.Drawing.Font("Poppins Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chbModificarVendedor.ForeColor = System.Drawing.Color.White;
-            this.chbModificarVendedor.Location = new System.Drawing.Point(1060, 66);
-            this.chbModificarVendedor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.chbModificarVendedor.Location = new System.Drawing.Point(795, 54);
+            this.chbModificarVendedor.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chbModificarVendedor.Name = "chbModificarVendedor";
-            this.chbModificarVendedor.Size = new System.Drawing.Size(95, 27);
+            this.chbModificarVendedor.Size = new System.Drawing.Size(76, 22);
             this.chbModificarVendedor.TabIndex = 49;
             this.chbModificarVendedor.Text = "Modificar";
             this.chbModificarVendedor.UseVisualStyleBackColor = false;
@@ -793,10 +814,10 @@
             this.txtVendedor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtVendedor.Enabled = false;
             this.txtVendedor.ForeColor = System.Drawing.Color.White;
-            this.txtVendedor.Location = new System.Drawing.Point(663, 37);
-            this.txtVendedor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtVendedor.Location = new System.Drawing.Point(497, 30);
+            this.txtVendedor.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtVendedor.Name = "txtVendedor";
-            this.txtVendedor.Size = new System.Drawing.Size(394, 22);
+            this.txtVendedor.Size = new System.Drawing.Size(296, 20);
             this.txtVendedor.TabIndex = 50;
             this.txtVendedor.Visible = false;
             // 
@@ -806,9 +827,10 @@
             this.lblComentarioSiniestro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(52)))), ((int)(((byte)(67)))));
             this.lblComentarioSiniestro.Font = new System.Drawing.Font("Poppins Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblComentarioSiniestro.ForeColor = System.Drawing.Color.White;
-            this.lblComentarioSiniestro.Location = new System.Drawing.Point(69, 268);
+            this.lblComentarioSiniestro.Location = new System.Drawing.Point(52, 218);
+            this.lblComentarioSiniestro.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblComentarioSiniestro.Name = "lblComentarioSiniestro";
-            this.lblComentarioSiniestro.Size = new System.Drawing.Size(96, 23);
+            this.lblComentarioSiniestro.Size = new System.Drawing.Size(76, 18);
             this.lblComentarioSiniestro.TabIndex = 51;
             this.lblComentarioSiniestro.Text = "Comentario:";
             this.lblComentarioSiniestro.Visible = false;
@@ -818,11 +840,11 @@
             this.txtComentarioSiniestro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.txtComentarioSiniestro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtComentarioSiniestro.ForeColor = System.Drawing.Color.DarkGray;
-            this.txtComentarioSiniestro.Location = new System.Drawing.Point(166, 265);
-            this.txtComentarioSiniestro.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtComentarioSiniestro.Location = new System.Drawing.Point(124, 215);
+            this.txtComentarioSiniestro.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtComentarioSiniestro.Multiline = true;
             this.txtComentarioSiniestro.Name = "txtComentarioSiniestro";
-            this.txtComentarioSiniestro.Size = new System.Drawing.Size(307, 59);
+            this.txtComentarioSiniestro.Size = new System.Drawing.Size(231, 48);
             this.txtComentarioSiniestro.TabIndex = 52;
             this.txtComentarioSiniestro.Text = "Agregue un comentario";
             this.txtComentarioSiniestro.Visible = false;
@@ -838,10 +860,10 @@
             this.cbEstadoSiniestro.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cbEstadoSiniestro.ForeColor = System.Drawing.Color.White;
             this.cbEstadoSiniestro.FormattingEnabled = true;
-            this.cbEstadoSiniestro.Location = new System.Drawing.Point(166, 227);
-            this.cbEstadoSiniestro.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbEstadoSiniestro.Location = new System.Drawing.Point(124, 184);
+            this.cbEstadoSiniestro.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbEstadoSiniestro.Name = "cbEstadoSiniestro";
-            this.cbEstadoSiniestro.Size = new System.Drawing.Size(308, 24);
+            this.cbEstadoSiniestro.Size = new System.Drawing.Size(232, 21);
             this.cbEstadoSiniestro.TabIndex = 53;
             this.cbEstadoSiniestro.Click += new System.EventHandler(this.cbEstadoSiniestro_Click);
             // 
@@ -851,9 +873,10 @@
             this.lblEstado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(47)))), ((int)(((byte)(59)))));
             this.lblEstado.Font = new System.Drawing.Font("Poppins Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEstado.ForeColor = System.Drawing.Color.White;
-            this.lblEstado.Location = new System.Drawing.Point(70, 232);
+            this.lblEstado.Location = new System.Drawing.Point(52, 188);
+            this.lblEstado.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblEstado.Name = "lblEstado";
-            this.lblEstado.Size = new System.Drawing.Size(60, 23);
+            this.lblEstado.Size = new System.Drawing.Size(47, 18);
             this.lblEstado.TabIndex = 54;
             this.lblEstado.Text = "Estado:";
             // 
@@ -863,10 +886,10 @@
             this.txtEstado.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtEstado.Enabled = false;
             this.txtEstado.ForeColor = System.Drawing.Color.White;
-            this.txtEstado.Location = new System.Drawing.Point(164, 229);
-            this.txtEstado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtEstado.Location = new System.Drawing.Point(123, 186);
+            this.txtEstado.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtEstado.Name = "txtEstado";
-            this.txtEstado.Size = new System.Drawing.Size(309, 22);
+            this.txtEstado.Size = new System.Drawing.Size(232, 20);
             this.txtEstado.TabIndex = 55;
             // 
             // chbModificarEstado
@@ -876,10 +899,10 @@
             this.chbModificarEstado.Cursor = System.Windows.Forms.Cursors.Default;
             this.chbModificarEstado.Font = new System.Drawing.Font("Poppins Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chbModificarEstado.ForeColor = System.Drawing.Color.White;
-            this.chbModificarEstado.Location = new System.Drawing.Point(479, 227);
-            this.chbModificarEstado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.chbModificarEstado.Location = new System.Drawing.Point(359, 184);
+            this.chbModificarEstado.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chbModificarEstado.Name = "chbModificarEstado";
-            this.chbModificarEstado.Size = new System.Drawing.Size(95, 27);
+            this.chbModificarEstado.Size = new System.Drawing.Size(76, 22);
             this.chbModificarEstado.TabIndex = 56;
             this.chbModificarEstado.Text = "Modificar";
             this.chbModificarEstado.UseVisualStyleBackColor = false;
@@ -895,10 +918,9 @@
             this.txtDiasEspera.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.txtDiasEspera.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDiasEspera.ForeColor = System.Drawing.Color.White;
-            this.txtDiasEspera.Location = new System.Drawing.Point(968, 144);
-            this.txtDiasEspera.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDiasEspera.Location = new System.Drawing.Point(726, 117);
             this.txtDiasEspera.Name = "txtDiasEspera";
-            this.txtDiasEspera.Size = new System.Drawing.Size(85, 22);
+            this.txtDiasEspera.Size = new System.Drawing.Size(64, 20);
             this.txtDiasEspera.TabIndex = 58;
             this.txtDiasEspera.Visible = false;
             // 
@@ -908,9 +930,10 @@
             this.lblDiasEspera.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(40)))), ((int)(((byte)(48)))));
             this.lblDiasEspera.Font = new System.Drawing.Font("Poppins Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDiasEspera.ForeColor = System.Drawing.Color.White;
-            this.lblDiasEspera.Location = new System.Drawing.Point(871, 148);
+            this.lblDiasEspera.Location = new System.Drawing.Point(653, 120);
+            this.lblDiasEspera.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDiasEspera.Name = "lblDiasEspera";
-            this.lblDiasEspera.Size = new System.Drawing.Size(93, 23);
+            this.lblDiasEspera.Size = new System.Drawing.Size(75, 18);
             this.lblDiasEspera.TabIndex = 59;
             this.lblDiasEspera.Text = "Días espera:";
             this.lblDiasEspera.Visible = false;
@@ -956,29 +979,30 @@
             this.bunifuGradientPanel1.GradientBottomRight = System.Drawing.Color.CornflowerBlue;
             this.bunifuGradientPanel1.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.bunifuGradientPanel1.GradientTopRight = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.bunifuGradientPanel1.Location = new System.Drawing.Point(0, 28);
-            this.bunifuGradientPanel1.Margin = new System.Windows.Forms.Padding(4);
+            this.bunifuGradientPanel1.Location = new System.Drawing.Point(0, 23);
             this.bunifuGradientPanel1.Name = "bunifuGradientPanel1";
             this.bunifuGradientPanel1.Quality = 10;
-            this.bunifuGradientPanel1.Size = new System.Drawing.Size(2035, 625);
+            this.bunifuGradientPanel1.Size = new System.Drawing.Size(1526, 508);
             this.bunifuGradientPanel1.TabIndex = 60;
             // 
             // lblMarca
             // 
             this.lblMarca.AutoSize = true;
             this.lblMarca.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(42)))), ((int)(((byte)(51)))));
-            this.lblMarca.Location = new System.Drawing.Point(167, 141);
+            this.lblMarca.Location = new System.Drawing.Point(125, 115);
+            this.lblMarca.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMarca.Name = "lblMarca";
-            this.lblMarca.Size = new System.Drawing.Size(0, 17);
+            this.lblMarca.Size = new System.Drawing.Size(0, 13);
             this.lblMarca.TabIndex = 58;
             // 
             // lblMarcaPedido
             // 
             this.lblMarcaPedido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(42)))), ((int)(((byte)(51)))));
             this.lblMarcaPedido.Font = new System.Drawing.Font("Poppins Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMarcaPedido.Location = new System.Drawing.Point(87, 138);
+            this.lblMarcaPedido.Location = new System.Drawing.Point(65, 112);
+            this.lblMarcaPedido.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMarcaPedido.Name = "lblMarcaPedido";
-            this.lblMarcaPedido.Size = new System.Drawing.Size(60, 19);
+            this.lblMarcaPedido.Size = new System.Drawing.Size(45, 15);
             this.lblMarcaPedido.TabIndex = 57;
             this.lblMarcaPedido.Text = "Marca:";
             this.lblMarcaPedido.Visible = false;
@@ -987,9 +1011,8 @@
             // 
             this.moverTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.moverTop.Location = new System.Drawing.Point(0, 0);
-            this.moverTop.Margin = new System.Windows.Forms.Padding(4);
             this.moverTop.Name = "moverTop";
-            this.moverTop.Size = new System.Drawing.Size(1788, 23);
+            this.moverTop.Size = new System.Drawing.Size(1355, 19);
             this.moverTop.TabIndex = 56;
             // 
             // bunifuDragControl1
@@ -1002,10 +1025,10 @@
             // pbMinimize
             // 
             this.pbMinimize.Image = global::Refracciones.Properties.Resources.Minimize_Window_2_48px;
-            this.pbMinimize.Location = new System.Drawing.Point(1733, 2);
-            this.pbMinimize.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pbMinimize.Location = new System.Drawing.Point(1300, 2);
+            this.pbMinimize.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pbMinimize.Name = "pbMinimize";
-            this.pbMinimize.Size = new System.Drawing.Size(20, 20);
+            this.pbMinimize.Size = new System.Drawing.Size(15, 16);
             this.pbMinimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbMinimize.TabIndex = 79;
             this.pbMinimize.TabStop = false;
@@ -1014,10 +1037,10 @@
             // pbClose
             // 
             this.pbClose.Image = global::Refracciones.Properties.Resources.Close_Window__2_48px;
-            this.pbClose.Location = new System.Drawing.Point(1759, 2);
-            this.pbClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pbClose.Location = new System.Drawing.Point(1319, 2);
+            this.pbClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pbClose.Name = "pbClose";
-            this.pbClose.Size = new System.Drawing.Size(20, 20);
+            this.pbClose.Size = new System.Drawing.Size(15, 16);
             this.pbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbClose.TabIndex = 78;
             this.pbClose.TabStop = false;
@@ -1025,10 +1048,10 @@
             // 
             // Pedido
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(28)))), ((int)(((byte)(27)))));
-            this.ClientSize = new System.Drawing.Size(1788, 649);
+            this.ClientSize = new System.Drawing.Size(1355, 527);
             this.Controls.Add(this.pbClose);
             this.Controls.Add(this.pbMinimize);
             this.Controls.Add(this.lblDiasEspera);
@@ -1063,7 +1086,7 @@
             this.Controls.Add(this.moverTop);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Pedido";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pedido";

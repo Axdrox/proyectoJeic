@@ -326,7 +326,7 @@ namespace Refracciones.Forms
         private void entregarTodo()
         {
             oDlgRes = MessageBox.Show("¿Está seguro que desea Registrar la entrega de todo el pedido?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-            if (oDlgRes == DialogResult.OK)
+            if (oDlgRes == DialogResult.Yes)
             {
                 int filas = dgvDevolucion.RowCount;
                 fecha = DateTime.Parse(dtpFecha.Value.ToShortDateString());//Fecha entrega
@@ -348,16 +348,19 @@ namespace Refracciones.Forms
                         MessageBox.Show("NADA! QUE HACER");
                     }
                 }
+                MessageBox.Show("Se registro la entrega de todo el pedido correctamente!");
                 btnAceptar.Text = "ENTREGA";
                 btnAceptar.Enabled = false;
                 dtpFecha.Enabled = false;
-                MessageBox.Show("Se registro la entrega de todo el pedido correctamente!");
+                dgvDevolucion.Enabled = true;
+                btnCancelar.Enabled = false;
+                
             } 
         }
         private void devolverTodo()
         {
             oDlgRes = MessageBox.Show("¿Está seguro que desea Registrar la devolución de las piezas entregadas?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-            if (oDlgRes == DialogResult.OK)
+            if (oDlgRes == DialogResult.Yes)
             {
                 int filas = dgvDevolucion.RowCount;
                 fecha = DateTime.Parse(dtpFecha.Value.ToShortDateString());//Fecha devolución
@@ -391,6 +394,8 @@ namespace Refracciones.Forms
                 btnAceptar.Text = "ENTREGA";
                 btnAceptar.Enabled = false;
                 dtpFecha.Enabled = false;
+                dgvDevolucion.Enabled = true;
+                btnCancelar.Enabled = false;
             }
         }
 

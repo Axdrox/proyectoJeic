@@ -70,9 +70,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.errorP = new System.Windows.Forms.ErrorProvider(this.components);
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
-            this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.pbMinimize = new System.Windows.Forms.PictureBox();
             this.pbClose = new System.Windows.Forms.PictureBox();
+            this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorP)).BeginInit();
             this.bunifuGradientPanel1.SuspendLayout();
@@ -129,6 +129,7 @@
             // 
             this.btnBuscarXml.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnBuscarXml.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnBuscarXml.ForeColor = System.Drawing.Color.White;
             this.btnBuscarXml.Location = new System.Drawing.Point(251, 289);
             this.btnBuscarXml.Name = "btnBuscarXml";
             this.btnBuscarXml.Size = new System.Drawing.Size(45, 20);
@@ -269,6 +270,7 @@
             this.btnGuardar.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnGuardar.Enabled = false;
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnGuardar.ForeColor = System.Drawing.Color.White;
             this.btnGuardar.Location = new System.Drawing.Point(473, 346);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 23);
@@ -281,6 +283,7 @@
             // 
             this.btnBuscarFact.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnBuscarFact.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnBuscarFact.ForeColor = System.Drawing.Color.White;
             this.btnBuscarFact.Location = new System.Drawing.Point(251, 250);
             this.btnBuscarFact.Name = "btnBuscarFact";
             this.btnBuscarFact.Size = new System.Drawing.Size(45, 20);
@@ -506,11 +509,6 @@
             this.bunifuGradientPanel1.Size = new System.Drawing.Size(561, 381);
             this.bunifuGradientPanel1.TabIndex = 67;
             // 
-            // bunifuElipse1
-            // 
-            this.bunifuElipse1.ElipseRadius = 5;
-            this.bunifuElipse1.TargetControl = this;
-            // 
             // pbMinimize
             // 
             this.pbMinimize.Image = global::Refracciones.Properties.Resources.Minimize_Window_2_48px;
@@ -534,6 +532,11 @@
             this.pbClose.TabIndex = 68;
             this.pbClose.TabStop = false;
             this.pbClose.Click += new System.EventHandler(this.pbClose_Click);
+            // 
+            // bunifuElipse1
+            // 
+            this.bunifuElipse1.ElipseRadius = 5;
+            this.bunifuElipse1.TargetControl = this;
             // 
             // registrarRefactura
             // 
