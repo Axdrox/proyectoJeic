@@ -138,6 +138,8 @@
             // 
             // txtcostoOperativo
             // 
+            this.txtcostoOperativo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.txtcostoOperativo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtcostoOperativo.ForeColor = System.Drawing.Color.White;
             this.txtcostoOperativo.Location = new System.Drawing.Point(96, 116);
             this.txtcostoOperativo.Name = "txtcostoOperativo";
