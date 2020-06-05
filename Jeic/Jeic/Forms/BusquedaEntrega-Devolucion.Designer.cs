@@ -54,11 +54,11 @@
             // 
             this.dato3.AutoSize = true;
             this.dato3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(28)))), ((int)(((byte)(31)))));
-            this.dato3.Font = new System.Drawing.Font("Poppins Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dato3.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dato3.ForeColor = System.Drawing.Color.White;
             this.dato3.Location = new System.Drawing.Point(341, 20);
             this.dato3.Name = "dato3";
-            this.dato3.Size = new System.Drawing.Size(61, 18);
+            this.dato3.Size = new System.Drawing.Size(56, 14);
             this.dato3.TabIndex = 0;
             this.dato3.Text = "FACTURA:";
             // 
@@ -110,11 +110,11 @@
             this.rbtnEntregas.AutoSize = true;
             this.rbtnEntregas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(31)))), ((int)(((byte)(38)))));
             this.rbtnEntregas.Checked = true;
-            this.rbtnEntregas.Font = new System.Drawing.Font("Poppins Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbtnEntregas.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbtnEntregas.ForeColor = System.Drawing.Color.White;
             this.rbtnEntregas.Location = new System.Drawing.Point(33, 43);
             this.rbtnEntregas.Name = "rbtnEntregas";
-            this.rbtnEntregas.Size = new System.Drawing.Size(79, 22);
+            this.rbtnEntregas.Size = new System.Drawing.Size(79, 18);
             this.rbtnEntregas.TabIndex = 2;
             this.rbtnEntregas.TabStop = true;
             this.rbtnEntregas.Text = "ENTREGAS";
@@ -125,11 +125,11 @@
             // 
             this.rbtnDev.AutoSize = true;
             this.rbtnDev.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(31)))), ((int)(((byte)(38)))));
-            this.rbtnDev.Font = new System.Drawing.Font("Poppins Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbtnDev.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbtnDev.ForeColor = System.Drawing.Color.White;
             this.rbtnDev.Location = new System.Drawing.Point(141, 43);
             this.rbtnDev.Name = "rbtnDev";
-            this.rbtnDev.Size = new System.Drawing.Size(105, 22);
+            this.rbtnDev.Size = new System.Drawing.Size(105, 18);
             this.rbtnDev.TabIndex = 3;
             this.rbtnDev.Text = "DEVOLUCIONES";
             this.rbtnDev.UseVisualStyleBackColor = false;
@@ -139,11 +139,11 @@
             // 
             this.dato1.AutoSize = true;
             this.dato1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(28)))), ((int)(((byte)(31)))));
-            this.dato1.Font = new System.Drawing.Font("Poppins Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dato1.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dato1.ForeColor = System.Drawing.Color.White;
             this.dato1.Location = new System.Drawing.Point(30, 20);
             this.dato1.Name = "dato1";
-            this.dato1.Size = new System.Drawing.Size(61, 18);
+            this.dato1.Size = new System.Drawing.Size(65, 14);
             this.dato1.TabIndex = 4;
             this.dato1.Text = "SINIESTRO:";
             // 
@@ -151,11 +151,11 @@
             // 
             this.dato2.AutoSize = true;
             this.dato2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(28)))), ((int)(((byte)(31)))));
-            this.dato2.Font = new System.Drawing.Font("Poppins Light", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dato2.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dato2.ForeColor = System.Drawing.Color.White;
             this.dato2.Location = new System.Drawing.Point(199, 20);
             this.dato2.Name = "dato2";
-            this.dato2.Size = new System.Drawing.Size(49, 18);
+            this.dato2.Size = new System.Drawing.Size(50, 14);
             this.dato2.TabIndex = 5;
             this.dato2.Text = "PEDIDO:";
             // 

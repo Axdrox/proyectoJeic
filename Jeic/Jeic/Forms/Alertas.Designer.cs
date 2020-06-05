@@ -37,19 +37,19 @@
             this.rbtnPieza = new System.Windows.Forms.RadioButton();
             this.rbtnFacturas = new System.Windows.Forms.RadioButton();
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.pbMinimize = new System.Windows.Forms.PictureBox();
+            this.pbClose = new System.Windows.Forms.PictureBox();
             this.dgvAlertas = new System.Windows.Forms.DataGridView();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.pbMinimize = new System.Windows.Forms.PictureBox();
-            this.pbClose = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.bunifuGradientPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAlertas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAlertas)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -76,10 +76,11 @@
             // 
             this.rbtnPieza.AutoSize = true;
             this.rbtnPieza.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(30)))), ((int)(((byte)(36)))));
+            this.rbtnPieza.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbtnPieza.ForeColor = System.Drawing.Color.White;
             this.rbtnPieza.Location = new System.Drawing.Point(231, 14);
             this.rbtnPieza.Name = "rbtnPieza";
-            this.rbtnPieza.Size = new System.Drawing.Size(167, 17);
+            this.rbtnPieza.Size = new System.Drawing.Size(186, 18);
             this.rbtnPieza.TabIndex = 1;
             this.rbtnPieza.Text = "Piezas Pendientes de Entrega";
             this.rbtnPieza.UseVisualStyleBackColor = false;
@@ -90,10 +91,11 @@
             this.rbtnFacturas.AutoSize = true;
             this.rbtnFacturas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(30)))), ((int)(((byte)(36)))));
             this.rbtnFacturas.Checked = true;
+            this.rbtnFacturas.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbtnFacturas.ForeColor = System.Drawing.Color.White;
             this.rbtnFacturas.Location = new System.Drawing.Point(13, 13);
             this.rbtnFacturas.Name = "rbtnFacturas";
-            this.rbtnFacturas.Size = new System.Drawing.Size(165, 17);
+            this.rbtnFacturas.Size = new System.Drawing.Size(182, 18);
             this.rbtnFacturas.TabIndex = 0;
             this.rbtnFacturas.TabStop = true;
             this.rbtnFacturas.Text = "Facturas Pendientes de Pago";
@@ -116,6 +118,30 @@
             this.bunifuGradientPanel1.Quality = 10;
             this.bunifuGradientPanel1.Size = new System.Drawing.Size(556, 215);
             this.bunifuGradientPanel1.TabIndex = 1;
+            // 
+            // pbMinimize
+            // 
+            this.pbMinimize.Image = global::Refracciones.Properties.Resources.Minimize_Window_2_48px;
+            this.pbMinimize.Location = new System.Drawing.Point(519, 2);
+            this.pbMinimize.Margin = new System.Windows.Forms.Padding(2);
+            this.pbMinimize.Name = "pbMinimize";
+            this.pbMinimize.Size = new System.Drawing.Size(15, 16);
+            this.pbMinimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbMinimize.TabIndex = 81;
+            this.pbMinimize.TabStop = false;
+            this.pbMinimize.Click += new System.EventHandler(this.pbMinimize_Click);
+            // 
+            // pbClose
+            // 
+            this.pbClose.Image = global::Refracciones.Properties.Resources.Close_Window__2_48px;
+            this.pbClose.Location = new System.Drawing.Point(538, 2);
+            this.pbClose.Margin = new System.Windows.Forms.Padding(2);
+            this.pbClose.Name = "pbClose";
+            this.pbClose.Size = new System.Drawing.Size(15, 16);
+            this.pbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbClose.TabIndex = 80;
+            this.pbClose.TabStop = false;
+            this.pbClose.Click += new System.EventHandler(this.pbClose_Click);
             // 
             // dgvAlertas
             // 
@@ -170,30 +196,6 @@
             this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
-            // pbMinimize
-            // 
-            this.pbMinimize.Image = global::Refracciones.Properties.Resources.Minimize_Window_2_48px;
-            this.pbMinimize.Location = new System.Drawing.Point(519, 2);
-            this.pbMinimize.Margin = new System.Windows.Forms.Padding(2);
-            this.pbMinimize.Name = "pbMinimize";
-            this.pbMinimize.Size = new System.Drawing.Size(15, 16);
-            this.pbMinimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbMinimize.TabIndex = 81;
-            this.pbMinimize.TabStop = false;
-            this.pbMinimize.Click += new System.EventHandler(this.pbMinimize_Click);
-            // 
-            // pbClose
-            // 
-            this.pbClose.Image = global::Refracciones.Properties.Resources.Close_Window__2_48px;
-            this.pbClose.Location = new System.Drawing.Point(538, 2);
-            this.pbClose.Margin = new System.Windows.Forms.Padding(2);
-            this.pbClose.Name = "pbClose";
-            this.pbClose.Size = new System.Drawing.Size(15, 16);
-            this.pbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbClose.TabIndex = 80;
-            this.pbClose.TabStop = false;
-            this.pbClose.Click += new System.EventHandler(this.pbClose_Click);
-            // 
             // Alertas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -213,9 +215,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.bunifuGradientPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAlertas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAlertas)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -82,24 +82,31 @@
             // 
             // cmbEstadoFactura
             // 
+            this.cmbEstadoFactura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.cmbEstadoFactura.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cmbEstadoFactura.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbEstadoFactura.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cmbEstadoFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbEstadoFactura.ForeColor = System.Drawing.Color.White;
             this.cmbEstadoFactura.FormattingEnabled = true;
             this.cmbEstadoFactura.Items.AddRange(new object[] {
             "PENDIENTE",
             "PAGADA",
             "CANCELADA"});
-            this.cmbEstadoFactura.Location = new System.Drawing.Point(124, 318);
+            this.cmbEstadoFactura.Location = new System.Drawing.Point(138, 318);
             this.cmbEstadoFactura.Name = "cmbEstadoFactura";
-            this.cmbEstadoFactura.Size = new System.Drawing.Size(121, 21);
+            this.cmbEstadoFactura.Size = new System.Drawing.Size(121, 23);
             this.cmbEstadoFactura.TabIndex = 52;
             // 
             // lblEstadoFactura
             // 
             this.lblEstadoFactura.AutoSize = true;
             this.lblEstadoFactura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(70)))), ((int)(((byte)(122)))));
+            this.lblEstadoFactura.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEstadoFactura.ForeColor = System.Drawing.Color.White;
             this.lblEstadoFactura.Location = new System.Drawing.Point(14, 321);
             this.lblEstadoFactura.Name = "lblEstadoFactura";
-            this.lblEstadoFactura.Size = new System.Drawing.Size(105, 13);
+            this.lblEstadoFactura.Size = new System.Drawing.Size(118, 14);
             this.lblEstadoFactura.TabIndex = 51;
             this.lblEstadoFactura.Text = "Estado de la Factura";
             // 
@@ -107,10 +114,11 @@
             // 
             this.lblComentarios.AutoSize = true;
             this.lblComentarios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(54)))), ((int)(((byte)(88)))));
+            this.lblComentarios.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblComentarios.ForeColor = System.Drawing.Color.White;
             this.lblComentarios.Location = new System.Drawing.Point(318, 209);
             this.lblComentarios.Name = "lblComentarios";
-            this.lblComentarios.Size = new System.Drawing.Size(65, 13);
+            this.lblComentarios.Size = new System.Drawing.Size(76, 14);
             this.lblComentarios.TabIndex = 50;
             this.lblComentarios.Text = "Comentarios";
             // 
@@ -118,7 +126,7 @@
             // 
             this.txtComentario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.txtComentario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtComentario.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.txtComentario.ForeColor = System.Drawing.Color.White;
             this.txtComentario.Location = new System.Drawing.Point(321, 234);
             this.txtComentario.Multiline = true;
             this.txtComentario.Name = "txtComentario";
@@ -142,7 +150,7 @@
             // 
             this.txtRutaXml.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.txtRutaXml.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtRutaXml.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.txtRutaXml.ForeColor = System.Drawing.Color.White;
             this.txtRutaXml.Location = new System.Drawing.Point(17, 289);
             this.txtRutaXml.Name = "txtRutaXml";
             this.txtRutaXml.ReadOnly = true;
@@ -153,10 +161,11 @@
             // 
             this.lblXml.AutoSize = true;
             this.lblXml.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(64)))), ((int)(((byte)(108)))));
+            this.lblXml.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblXml.ForeColor = System.Drawing.Color.White;
             this.lblXml.Location = new System.Drawing.Point(14, 273);
             this.lblXml.Name = "lblXml";
-            this.lblXml.Size = new System.Drawing.Size(24, 13);
+            this.lblXml.Size = new System.Drawing.Size(27, 14);
             this.lblXml.TabIndex = 43;
             this.lblXml.Text = "Xml";
             // 
@@ -164,10 +173,11 @@
             // 
             this.lblFechaPago.AutoSize = true;
             this.lblFechaPago.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(49)))), ((int)(((byte)(76)))));
+            this.lblFechaPago.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFechaPago.ForeColor = System.Drawing.Color.White;
             this.lblFechaPago.Location = new System.Drawing.Point(222, 166);
             this.lblFechaPago.Name = "lblFechaPago";
-            this.lblFechaPago.Size = new System.Drawing.Size(80, 13);
+            this.lblFechaPago.Size = new System.Drawing.Size(85, 14);
             this.lblFechaPago.TabIndex = 42;
             this.lblFechaPago.Text = "Fecha de Pago";
             // 
@@ -175,24 +185,25 @@
             // 
             this.lblFechaRevision.AutoSize = true;
             this.lblFechaRevision.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(44)))), ((int)(((byte)(65)))));
+            this.lblFechaRevision.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFechaRevision.ForeColor = System.Drawing.Color.White;
             this.lblFechaRevision.Location = new System.Drawing.Point(222, 129);
             this.lblFechaRevision.Name = "lblFechaRevision";
-            this.lblFechaRevision.Size = new System.Drawing.Size(96, 13);
+            this.lblFechaRevision.Size = new System.Drawing.Size(106, 14);
             this.lblFechaRevision.TabIndex = 41;
             this.lblFechaRevision.Text = "Fecha de Revisión";
             // 
             // dtpFechaPago
             // 
             this.dtpFechaPago.Enabled = false;
-            this.dtpFechaPago.Location = new System.Drawing.Point(350, 163);
+            this.dtpFechaPago.Location = new System.Drawing.Point(355, 163);
             this.dtpFechaPago.Name = "dtpFechaPago";
             this.dtpFechaPago.Size = new System.Drawing.Size(200, 20);
             this.dtpFechaPago.TabIndex = 40;
             // 
             // dtpFechaRevision
             // 
-            this.dtpFechaRevision.Location = new System.Drawing.Point(350, 126);
+            this.dtpFechaRevision.Location = new System.Drawing.Point(355, 126);
             this.dtpFechaRevision.Name = "dtpFechaRevision";
             this.dtpFechaRevision.Size = new System.Drawing.Size(200, 20);
             this.dtpFechaRevision.TabIndex = 39;
@@ -201,16 +212,17 @@
             // 
             this.lblFechaIngreso.AutoSize = true;
             this.lblFechaIngreso.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(38)))), ((int)(((byte)(54)))));
+            this.lblFechaIngreso.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFechaIngreso.ForeColor = System.Drawing.Color.White;
             this.lblFechaIngreso.Location = new System.Drawing.Point(222, 91);
             this.lblFechaIngreso.Name = "lblFechaIngreso";
-            this.lblFechaIngreso.Size = new System.Drawing.Size(90, 13);
+            this.lblFechaIngreso.Size = new System.Drawing.Size(100, 14);
             this.lblFechaIngreso.TabIndex = 38;
             this.lblFechaIngreso.Text = "Fecha de Ingreso";
             // 
             // dtpFechaIngreso
             // 
-            this.dtpFechaIngreso.Location = new System.Drawing.Point(350, 88);
+            this.dtpFechaIngreso.Location = new System.Drawing.Point(355, 85);
             this.dtpFechaIngreso.Name = "dtpFechaIngreso";
             this.dtpFechaIngreso.Size = new System.Drawing.Size(200, 20);
             this.dtpFechaIngreso.TabIndex = 37;
@@ -220,10 +232,11 @@
             // 
             this.lblFacturaConIVA.AutoSize = true;
             this.lblFacturaConIVA.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(49)))), ((int)(((byte)(76)))));
+            this.lblFacturaConIVA.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFacturaConIVA.ForeColor = System.Drawing.Color.White;
             this.lblFacturaConIVA.Location = new System.Drawing.Point(14, 166);
             this.lblFacturaConIVA.Name = "lblFacturaConIVA";
-            this.lblFacturaConIVA.Size = new System.Drawing.Size(84, 13);
+            this.lblFacturaConIVA.Size = new System.Drawing.Size(89, 14);
             this.lblFacturaConIVA.TabIndex = 36;
             this.lblFacturaConIVA.Text = "Factura con IVA";
             // 
@@ -231,7 +244,7 @@
             // 
             this.txtFacturasinIVA.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.txtFacturasinIVA.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtFacturasinIVA.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.txtFacturasinIVA.ForeColor = System.Drawing.Color.White;
             this.txtFacturasinIVA.Location = new System.Drawing.Point(109, 126);
             this.txtFacturasinIVA.Name = "txtFacturasinIVA";
             this.txtFacturasinIVA.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -247,7 +260,7 @@
             this.txtRefactura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.txtRefactura.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtRefactura.Enabled = false;
-            this.txtRefactura.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.txtRefactura.ForeColor = System.Drawing.Color.White;
             this.txtRefactura.Location = new System.Drawing.Point(109, 88);
             this.txtRefactura.Name = "txtRefactura";
             this.txtRefactura.Size = new System.Drawing.Size(100, 20);
@@ -258,10 +271,11 @@
             // 
             this.lblClave_FacturaAnterior.AutoSize = true;
             this.lblClave_FacturaAnterior.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(33)))), ((int)(((byte)(43)))));
+            this.lblClave_FacturaAnterior.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblClave_FacturaAnterior.ForeColor = System.Drawing.Color.White;
             this.lblClave_FacturaAnterior.Location = new System.Drawing.Point(14, 55);
             this.lblClave_FacturaAnterior.Name = "lblClave_FacturaAnterior";
-            this.lblClave_FacturaAnterior.Size = new System.Drawing.Size(65, 13);
+            this.lblClave_FacturaAnterior.Size = new System.Drawing.Size(68, 14);
             this.lblClave_FacturaAnterior.TabIndex = 33;
             this.lblClave_FacturaAnterior.Text = "Cve Factura";
             // 
@@ -270,6 +284,7 @@
             this.btnGuardar.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnGuardar.Enabled = false;
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnGuardar.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
             this.btnGuardar.Location = new System.Drawing.Point(473, 346);
             this.btnGuardar.Name = "btnGuardar";
@@ -296,7 +311,7 @@
             // 
             this.txtRutaFactura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.txtRutaFactura.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtRutaFactura.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.txtRutaFactura.ForeColor = System.Drawing.Color.White;
             this.txtRutaFactura.Location = new System.Drawing.Point(17, 250);
             this.txtRutaFactura.Name = "txtRutaFactura";
             this.txtRutaFactura.ReadOnly = true;
@@ -307,7 +322,7 @@
             // 
             this.txtCve_Factura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.txtCve_Factura.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCve_Factura.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.txtCve_Factura.ForeColor = System.Drawing.Color.White;
             this.txtCve_Factura.Location = new System.Drawing.Point(109, 52);
             this.txtCve_Factura.Name = "txtCve_Factura";
             this.txtCve_Factura.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -321,10 +336,11 @@
             // 
             this.lblFacturaSinIVA.AutoSize = true;
             this.lblFacturaSinIVA.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(44)))), ((int)(((byte)(65)))));
+            this.lblFacturaSinIVA.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFacturaSinIVA.ForeColor = System.Drawing.Color.White;
             this.lblFacturaSinIVA.Location = new System.Drawing.Point(13, 129);
             this.lblFacturaSinIVA.Name = "lblFacturaSinIVA";
-            this.lblFacturaSinIVA.Size = new System.Drawing.Size(79, 13);
+            this.lblFacturaSinIVA.Size = new System.Drawing.Size(87, 14);
             this.lblFacturaSinIVA.TabIndex = 28;
             this.lblFacturaSinIVA.Text = "Factura sin IVA";
             // 
@@ -332,10 +348,11 @@
             // 
             this.lblFactura.AutoSize = true;
             this.lblFactura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
+            this.lblFactura.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFactura.ForeColor = System.Drawing.Color.White;
             this.lblFactura.Location = new System.Drawing.Point(14, 234);
             this.lblFactura.Name = "lblFactura";
-            this.lblFactura.Size = new System.Drawing.Size(43, 13);
+            this.lblFactura.Size = new System.Drawing.Size(47, 14);
             this.lblFactura.TabIndex = 27;
             this.lblFactura.Text = "Factura";
             // 
@@ -343,10 +360,11 @@
             // 
             this.lblRefactura.AutoSize = true;
             this.lblRefactura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(38)))), ((int)(((byte)(54)))));
+            this.lblRefactura.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRefactura.ForeColor = System.Drawing.Color.White;
             this.lblRefactura.Location = new System.Drawing.Point(14, 91);
             this.lblRefactura.Name = "lblRefactura";
-            this.lblRefactura.Size = new System.Drawing.Size(88, 13);
+            this.lblRefactura.Size = new System.Drawing.Size(94, 14);
             this.lblRefactura.TabIndex = 53;
             this.lblRefactura.Text = "Cve a Refacturar";
             // 
@@ -354,7 +372,7 @@
             // 
             this.txtFacturaconIVA.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.txtFacturaconIVA.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtFacturaconIVA.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.txtFacturaconIVA.ForeColor = System.Drawing.Color.White;
             this.txtFacturaconIVA.Location = new System.Drawing.Point(109, 163);
             this.txtFacturaconIVA.Name = "txtFacturaconIVA";
             this.txtFacturaconIVA.ReadOnly = true;
@@ -366,10 +384,11 @@
             // 
             this.lblCostoRefactura.AutoSize = true;
             this.lblCostoRefactura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(54)))), ((int)(((byte)(87)))));
+            this.lblCostoRefactura.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCostoRefactura.ForeColor = System.Drawing.Color.White;
             this.lblCostoRefactura.Location = new System.Drawing.Point(14, 205);
             this.lblCostoRefactura.Name = "lblCostoRefactura";
-            this.lblCostoRefactura.Size = new System.Drawing.Size(84, 13);
+            this.lblCostoRefactura.Size = new System.Drawing.Size(92, 14);
             this.lblCostoRefactura.TabIndex = 55;
             this.lblCostoRefactura.Text = "Costo Refactura";
             // 
@@ -377,7 +396,7 @@
             // 
             this.txtCostoRefactura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.txtCostoRefactura.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCostoRefactura.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.txtCostoRefactura.ForeColor = System.Drawing.Color.White;
             this.txtCostoRefactura.Location = new System.Drawing.Point(109, 202);
             this.txtCostoRefactura.Name = "txtCostoRefactura";
             this.txtCostoRefactura.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -391,16 +410,17 @@
             // 
             this.lblFechaRefacturacion.AutoSize = true;
             this.lblFechaRefacturacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(33)))), ((int)(((byte)(43)))));
+            this.lblFechaRefacturacion.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFechaRefacturacion.ForeColor = System.Drawing.Color.White;
             this.lblFechaRefacturacion.Location = new System.Drawing.Point(222, 55);
             this.lblFechaRefacturacion.Name = "lblFechaRefacturacion";
-            this.lblFechaRefacturacion.Size = new System.Drawing.Size(122, 13);
+            this.lblFechaRefacturacion.Size = new System.Drawing.Size(134, 14);
             this.lblFechaRefacturacion.TabIndex = 57;
             this.lblFechaRefacturacion.Text = "Fecha de Refacturación";
             // 
             // dtpFechaRefacturacion
             // 
-            this.dtpFechaRefacturacion.Location = new System.Drawing.Point(350, 52);
+            this.dtpFechaRefacturacion.Location = new System.Drawing.Point(355, 52);
             this.dtpFechaRefacturacion.Name = "dtpFechaRefacturacion";
             this.dtpFechaRefacturacion.Size = new System.Drawing.Size(200, 20);
             this.dtpFechaRefacturacion.TabIndex = 58;
@@ -427,10 +447,11 @@
             // 
             this.dato1.AutoSize = true;
             this.dato1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(27)))), ((int)(((byte)(30)))));
+            this.dato1.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dato1.ForeColor = System.Drawing.Color.White;
             this.dato1.Location = new System.Drawing.Point(141, 9);
             this.dato1.Name = "dato1";
-            this.dato1.Size = new System.Drawing.Size(68, 13);
+            this.dato1.Size = new System.Drawing.Size(65, 14);
             this.dato1.TabIndex = 61;
             this.dato1.Text = "SINIESTRO:";
             // 
@@ -438,10 +459,11 @@
             // 
             this.dato2.AutoSize = true;
             this.dato2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(27)))), ((int)(((byte)(30)))));
+            this.dato2.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dato2.ForeColor = System.Drawing.Color.White;
             this.dato2.Location = new System.Drawing.Point(13, 9);
             this.dato2.Name = "dato2";
-            this.dato2.Size = new System.Drawing.Size(51, 13);
+            this.dato2.Size = new System.Drawing.Size(50, 14);
             this.dato2.TabIndex = 62;
             this.dato2.Text = "PEDIDO:";
             // 
@@ -499,6 +521,10 @@
             this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bunifuGradientPanel1.Controls.Add(this.pbMinimize);
             this.bunifuGradientPanel1.Controls.Add(this.pbClose);
+            this.bunifuGradientPanel1.Controls.Add(this.cmbEstadoFactura);
+            this.bunifuGradientPanel1.Controls.Add(this.dtpFechaIngreso);
+            this.bunifuGradientPanel1.Controls.Add(this.dtpFechaRevision);
+            this.bunifuGradientPanel1.Controls.Add(this.dtpFechaPago);
             this.bunifuGradientPanel1.GradientBottomLeft = System.Drawing.Color.Black;
             this.bunifuGradientPanel1.GradientBottomRight = System.Drawing.Color.RoyalBlue;
             this.bunifuGradientPanel1.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
@@ -556,7 +582,6 @@
             this.Controls.Add(this.lblCostoRefactura);
             this.Controls.Add(this.txtFacturaconIVA);
             this.Controls.Add(this.lblRefactura);
-            this.Controls.Add(this.cmbEstadoFactura);
             this.Controls.Add(this.lblEstadoFactura);
             this.Controls.Add(this.lblComentarios);
             this.Controls.Add(this.txtComentario);
@@ -565,10 +590,7 @@
             this.Controls.Add(this.lblXml);
             this.Controls.Add(this.lblFechaPago);
             this.Controls.Add(this.lblFechaRevision);
-            this.Controls.Add(this.dtpFechaPago);
-            this.Controls.Add(this.dtpFechaRevision);
             this.Controls.Add(this.lblFechaIngreso);
-            this.Controls.Add(this.dtpFechaIngreso);
             this.Controls.Add(this.lblFacturaConIVA);
             this.Controls.Add(this.txtFacturasinIVA);
             this.Controls.Add(this.txtRefactura);
