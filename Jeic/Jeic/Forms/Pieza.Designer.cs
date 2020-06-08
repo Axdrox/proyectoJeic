@@ -666,7 +666,7 @@
             this.bunifuGradientPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.bunifuGradientPanel1.Name = "bunifuGradientPanel1";
             this.bunifuGradientPanel1.Quality = 10;
-            this.bunifuGradientPanel1.Size = new System.Drawing.Size(474, 487);
+            this.bunifuGradientPanel1.Size = new System.Drawing.Size(476, 487);
             this.bunifuGradientPanel1.TabIndex = 47;
             // 
             // chbOtroNumeroGuia
@@ -713,6 +713,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.ClientSize = new System.Drawing.Size(475, 487);
             this.ControlBox = false;
             this.Controls.Add(this.label12);

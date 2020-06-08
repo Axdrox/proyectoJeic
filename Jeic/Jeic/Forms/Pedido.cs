@@ -16,7 +16,7 @@ namespace Refracciones.Forms
     public partial class Pedido : Form
     {
         private OperBD operacion = new OperBD();
-        Busqueda_Devolver busdev = new Busqueda_Devolver();
+        private Busqueda_Devolver busdev = new Busqueda_Devolver();
         private DataTable dt;
         //int totalCantidadPiezas = 0;
 
@@ -48,6 +48,7 @@ namespace Refracciones.Forms
         {
             if (actualizar != 1)
             {
+                chbModificarEstado.Location = new Point(330, 186);
                 var editButton = new DataGridViewButtonColumn();
                 editButton.Name = "dataGridViewEditButton";
                 editButton.HeaderText = "Editar";
@@ -88,7 +89,6 @@ namespace Refracciones.Forms
             if (actualizar == 1)
             {
                 label1.Hide();
-                chbSi.Hide();
                 rdbSi.Hide();
                 rdbNo.Hide();
                 if (lblClaveSiniestro.Text.Length > 6)
@@ -107,7 +107,7 @@ namespace Refracciones.Forms
                 chbModificarEstado.Show();
                 cbEstadoSiniestro.Enabled = false;
                 cbEstadoSiniestro.Hide();
-                txtEstado.Text = operacion.estadoSiniestroClaves(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
+                lblEstadoSiniestro.Text = operacion.estadoSiniestroClaves(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
 
                 txtClavePedido.Enabled = false;
                 btnFinalizarPedido.Text = "Actualizar pedido";
@@ -156,7 +156,6 @@ namespace Refracciones.Forms
                 lblVehiculo.Hide();
                 lblAnioPedido.Hide();
                 lblAnio.Hide();
-                chbSi.Hide();
                 lblClaveSiniestro.Hide();
                 lblClaveSiniestroPedido.Hide();
                 txtAseguradora.Hide();
@@ -170,7 +169,7 @@ namespace Refracciones.Forms
                 lblComentarioSiniestro.Hide();
                 txtComentarioSiniestro.Hide();
 
-                txtEstado.Hide();
+                lblEstadoSiniestro.Hide();
                 cbEstadoSiniestro.Hide();
                 chbModificarEstado.Hide();
                 lblEstado.Hide();
@@ -181,10 +180,7 @@ namespace Refracciones.Forms
             }
         }
 
-        //Comentario de siniestro:
-        private string comentarioSiniestro = "";
-
-        private string estadoSiniestro = "";
+        //Saber si se va a registrar un nuevo modelo de vehículo o marca
         private bool nuevoVehiculo;
 
         private bool nuevoMarca;
@@ -193,29 +189,36 @@ namespace Refracciones.Forms
         {
             if (rdbSi.Checked == true)
             {
-                lblComentarioSiniestro.Hide();
-                txtComentarioSiniestro.Hide();
-                lblEstado.Hide();
-                cbEstadoSiniestro.Hide();
+                btnLimpiarSiniestro.Visible = false;
+                chbModificarEstado.Location = new Point(330, 186);
+                rdbNo.Checked = false;
+                lblClaveSiniestroPedido.Visible = false;
+                lblClaveSiniestro.Visible = false;
+                lblAnioPedido.Visible = false;
+                lblAnio.Visible = false;
+                lblVehiculoPedido.Visible = false;
+                lblVehiculo.Visible = false;
+                lblMarcaPedido.Visible = false;
+                lblMarca.Visible = false;
+                lblEstadoSiniestro.Visible = false;
+                cbEstadoSiniestro.Visible = false;
+                chbModificarEstado.Visible = false;
+                lblEstado.Visible = false;
+                lblComentarioSiniestro.Visible = false;
+                txtComentarioSiniestro.Visible = false;
+
                 Siniestro siniestro = new Siniestro();
                 DialogResult respuesta = siniestro.ShowDialog();
 
                 if (respuesta == DialogResult.OK)
                 {
-                    comentarioSiniestro = siniestro.comentario;
-                    estadoSiniestro = siniestro.estadoSiniestro;
+                    btnLimpiarSiniestro.Visible = true;
                     nuevoVehiculo = siniestro.otroVehiculo;
                     nuevoMarca = siniestro.otroMarca;
-
-                    chbSi.Show();
-                    chbSi.Checked = true;
-                    chbSi.Enabled = false;
 
                     lblClaveSiniestroPedido.Show();
                     lblClaveSiniestro.Show();
                     lblClaveSiniestro.Text = siniestro.claveSiniestro;
-
-                    //rdbSi.Hide(); //se puede omitir
 
                     lblVehiculoPedido.Show();
                     lblVehiculo.Show();
@@ -228,9 +231,21 @@ namespace Refracciones.Forms
                     lblMarcaPedido.Show();
                     lblMarca.Show();
                     lblMarca.Text = siniestro.marcaSiniestro;
+
+                    lblEstado.Show();
+                    lblEstadoSiniestro.Show();
+                    lblEstadoSiniestro.Text = siniestro.estadoSiniestro;
+                    chbModificarEstado.Show();
+
+                    lblComentarioSiniestro.Show();
+                    txtComentarioSiniestro.Show();
+                    if (siniestro.comentario == "Agregue un comentario")
+                        txtComentarioSiniestro.Text = "Sin comentario por el momento";
+                    else
+                        txtComentarioSiniestro.Text = siniestro.comentario;
                 }
                 else
-                    rdbNo.Checked = true;
+                    rdbSi.Checked = false;
             }
         }
 
@@ -245,43 +260,66 @@ namespace Refracciones.Forms
 
         private void rdbNo_CheckedChanged(object sender, EventArgs e)
         {
-            rdbSi.Enabled = true;
-            rdbSi.Show();
-
-            chbSi.Checked = false;
-            chbSi.Hide();
-
-            lblVehiculoPedido.Hide();
-            lblVehiculo.Text = "";
-            lblVehiculo.Hide();
-
-            lblAnioPedido.Hide();
-            lblAnio.Text = "";
-            lblAnio.Hide();
-
-            lblClaveSiniestroPedido.Hide();
-            lblClaveSiniestro.Text = "";
-            lblClaveSiniestro.Hide();
-
-            lblMarcaPedido.Hide();
-            lblMarca.Text = "";
-            lblMarca.Hide();
             if (rdbNo.Checked == true)
             {
-                lblClaveSiniestroPedido.Show();
-                lblClaveSiniestro.Show();
-                lblClaveSiniestro.Text = "JEIC-" + operacion.TotalSiniestro().ToString();
-                lblComentarioSiniestro.Show();
-                txtComentarioSiniestro.Show();
-                lblEstado.Show();
-                cbEstadoSiniestro.Show();
-            }
-            else
-            {
-                txtEstado.Hide();
-                cbEstadoSiniestro.Hide();
-                chbModificarEstado.Hide();
-                lblEstado.Hide();
+                btnLimpiarSiniestro.Visible = false;
+                chbModificarEstado.Location = new Point(330, 186);
+                rdbSi.Checked = false;
+                lblClaveSiniestroPedido.Visible = false;
+                lblClaveSiniestro.Visible = false;
+                lblAnioPedido.Visible = false;
+                lblAnio.Visible = false;
+                lblVehiculoPedido.Visible = false;
+                lblVehiculo.Visible = false;
+                lblMarcaPedido.Visible = false;
+                lblMarca.Visible = false;
+                lblEstadoSiniestro.Visible = false;
+                cbEstadoSiniestro.Visible = false;
+                chbModificarEstado.Visible = false;
+                lblEstado.Visible = false;
+                lblComentarioSiniestro.Visible = false;
+                txtComentarioSiniestro.Visible = false;
+
+                Siniestro siniestro = new Siniestro();
+                siniestro.claveNOSiniestro = "JEIC-" + operacion.TotalSiniestro().ToString();
+                DialogResult respuesta = siniestro.ShowDialog();
+
+                if (respuesta == DialogResult.OK)
+                {
+                    btnLimpiarSiniestro.Visible = true;
+                    nuevoVehiculo = siniestro.otroVehiculo;
+                    nuevoMarca = siniestro.otroMarca;
+
+                    lblClaveSiniestroPedido.Show();
+                    lblClaveSiniestro.Show();
+                    lblClaveSiniestro.Text = siniestro.claveSiniestro;
+
+                    lblVehiculoPedido.Show();
+                    lblVehiculo.Show();
+                    lblVehiculo.Text = siniestro.vehiculoSiniestro;
+
+                    lblAnioPedido.Show();
+                    lblAnio.Show();
+                    lblAnio.Text = siniestro.anioSiniestro;
+
+                    lblMarcaPedido.Show();
+                    lblMarca.Show();
+                    lblMarca.Text = siniestro.marcaSiniestro;
+
+                    lblEstado.Show();
+                    lblEstadoSiniestro.Show();
+                    lblEstadoSiniestro.Text = siniestro.estadoSiniestro;
+                    chbModificarEstado.Show();
+
+                    lblComentarioSiniestro.Show();
+                    txtComentarioSiniestro.Show();
+                    if (siniestro.comentario == "Agregue un comentario")
+                        txtComentarioSiniestro.Text = "Sin comentario por el momento";
+                    else
+                        txtComentarioSiniestro.Text = siniestro.comentario;
+                }
+                else
+                    rdbNo.Checked = false;
             }
         }
 
@@ -659,31 +697,19 @@ namespace Refracciones.Forms
                         DateTime dtFechaPromesa = dtpFechaPromesa.Value.Date;
                         //operacion.registrarFechasVentas(dtFechaAsignacion, dtFechaPromesa);
 
-                        if (rdbNo.Checked == false)
-                        {
-                            if (nuevoMarca == true)
-                            {
-                                operacion.registroMarca(lblMarca.Text.Trim());
-                            }
-                            if (nuevoVehiculo == true)
-                            {
-                                operacion.registroVehiculo(lblVehiculo.Text.Trim(), lblAnio.Text.Trim(), lblMarca.Text.Trim());
-                            }
-                            if (string.IsNullOrEmpty(estadoSiniestro))
-                            {
-                                estadoSiniestro = "SIN ESTADO";
-                            }
-                            operacion.registrarSiniestro(lblVehiculo.Text.Trim(), lblClaveSiniestro.Text.Trim(), comentarioSiniestro, estadoSiniestro);
-                        }
+                        //Registrar lo correspondiente a siniestro
+                        string estadoSiniestro = "";
+                        if (nuevoMarca == true)
+                            operacion.registroMarca(lblMarca.Text.Trim());
+                        if (nuevoVehiculo == true)
+                            operacion.registroVehiculo(lblVehiculo.Text.Trim(), lblAnio.Text.Trim(), lblMarca.Text.Trim());
+
+                        if (chbModificarEstado.Checked == true)
+                            estadoSiniestro = cbEstadoSiniestro.Text;
                         else
-                        {
-                            string TotalVehiculo = operacion.TotalVehiculos().ToString();
-                            operacion.registroVehiculo("PARTICULAR-" + TotalVehiculo, TotalVehiculo, "PARTICULAR-" + TotalVehiculo);
-                            if (string.IsNullOrEmpty(cbEstadoSiniestro.Text.Trim()))
-                                operacion.registrarSiniestro("PARTICULAR-" + TotalVehiculo, lblClaveSiniestro.Text.Trim(), txtComentarioSiniestro.Text.Trim(), "SIN ESTADO");
-                            else
-                                operacion.registrarSiniestro("PARTICULAR-" + TotalVehiculo, lblClaveSiniestro.Text.Trim(), txtComentarioSiniestro.Text.Trim(), cbEstadoSiniestro.Text.Trim());
-                        }
+                            estadoSiniestro = lblEstadoSiniestro.Text;
+
+                        operacion.registrarSiniestro(lblVehiculo.Text.Trim(), lblClaveSiniestro.Text.Trim(), txtComentarioSiniestro.Text.Trim(), estadoSiniestro);
 
                         //si numero de guia se encuentra no ese array se añade a ese array y va a ir guardando en otra variable la suma del costo de envio
                         string[] guia = new string[dgvPedido.Rows.Count];
@@ -697,13 +723,13 @@ namespace Refracciones.Forms
                         {
                             totalCosto += Convert.ToInt32(row.Cells["Cantidad"].Value) * Convert.ToDouble(row.Cells["Costo neto"].Value);
                             subtotalPrecio += (Convert.ToInt32(row.Cells["Cantidad"].Value) * Convert.ToDouble(row.Cells["Precio de venta"].Value) /*+ Convert.ToDouble(row.Cells["Precio de reparación"].Value)*/);
-                           /*if (!guia.Contains(Convert.ToString(row.Cells["Número de guía"].Value)))
-                            {
-                                guia[i] = Convert.ToString(row.Cells["Número de guía"].Value);
-                                //totalCostoEnvio += Convert.ToDouble(row.Cells["Costo de envío"].Value);
-                                subtotalPrecio += Convert.ToDouble(row.Cells["Costo de envío"].Value);
-                                i++;
-                            }*/
+                            /*if (!guia.Contains(Convert.ToString(row.Cells["Número de guía"].Value)))
+                             {
+                                 guia[i] = Convert.ToString(row.Cells["Número de guía"].Value);
+                                 //totalCostoEnvio += Convert.ToDouble(row.Cells["Costo de envío"].Value);
+                                 subtotalPrecio += Convert.ToDouble(row.Cells["Costo de envío"].Value);
+                                 i++;
+                             }*/
                         }
                         totalPrecio = (subtotalPrecio * .16) + subtotalPrecio;
                         //utilidad = totalPrecio - totalCosto;
@@ -843,6 +869,7 @@ namespace Refracciones.Forms
         }
 
         private string[] datosPieza = new string[12];
+
         public string[] datosMandar
         {
             get
@@ -850,6 +877,7 @@ namespace Refracciones.Forms
                 return datosPieza;
             }
         }
+
         private void dgvPedido_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             //if click is on new row or header row
@@ -910,7 +938,7 @@ namespace Refracciones.Forms
                 {
                     for (int j = 2; j < pieza.datosMandar.Length; j++)
                     {
-                        dgvPedido[j, index].Value = pieza.datosMandar[j-2];
+                        dgvPedido[j, index].Value = pieza.datosMandar[j - 2];
                         //MessageBox.Show(pieza.datosMandar[j - 2]);
                     }
                 }
@@ -919,7 +947,6 @@ namespace Refracciones.Forms
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            
             busdev.Show();
             this.DialogResult = DialogResult.Cancel;
         }
@@ -987,13 +1014,15 @@ namespace Refracciones.Forms
         {
             if (chbModificarEstado.Checked == true)
             {
-                txtEstado.Hide();
+                chbModificarEstado.Location = new Point(360, 186);
+                lblEstadoSiniestro.Hide();
                 cbEstadoSiniestro.Enabled = true;
                 cbEstadoSiniestro.Show();
             }
             else
             {
-                txtEstado.Show();
+                chbModificarEstado.Location = new Point(330, 186);
+                lblEstadoSiniestro.Show();
                 cbEstadoSiniestro.Enabled = false;
                 cbEstadoSiniestro.SelectedIndex = -1;
                 cbEstadoSiniestro.Hide();
@@ -1008,11 +1037,13 @@ namespace Refracciones.Forms
 
         private void txtComentarioSiniestro_Click(object sender, EventArgs e)
         {
-            if (txtComentarioSiniestro.Text == "Agregue un comentario")
+            txtComentarioSiniestro.SelectAll();
+            txtComentarioSiniestro.Focus();
+            /*if (txtComentarioSiniestro.Text == "Agregue un comentario")
             {
                 txtComentarioSiniestro.Clear();
                 txtComentarioSiniestro.ForeColor = Color.White;
-            }
+            }*/
         }
 
         private void txtClavePedido_Leave(object sender, EventArgs e)
@@ -1083,6 +1114,28 @@ namespace Refracciones.Forms
         private void pbMinimize_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void btnLimpiarSiniestro_Click(object sender, EventArgs e)
+        {
+            btnLimpiarSiniestro.Visible = false;
+            chbModificarEstado.Location = new Point(330, 186);
+            rdbSi.Checked = false;
+            rdbNo.Checked = false;
+            lblClaveSiniestroPedido.Visible = false;
+            lblClaveSiniestro.Visible = false;
+            lblAnioPedido.Visible = false;
+            lblAnio.Visible = false;
+            lblVehiculoPedido.Visible = false;
+            lblVehiculo.Visible = false;
+            lblMarcaPedido.Visible = false;
+            lblMarca.Visible = false;
+            lblEstadoSiniestro.Visible = false;
+            cbEstadoSiniestro.Visible = false;
+            chbModificarEstado.Visible = false;
+            lblEstado.Visible = false;
+            lblComentarioSiniestro.Visible = false;
+            txtComentarioSiniestro.Visible = false;
         }
     }
 }

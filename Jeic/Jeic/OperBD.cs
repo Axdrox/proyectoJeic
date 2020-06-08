@@ -1132,6 +1132,31 @@ namespace Refracciones
             return count + 1;
         }
 
+        //VALIDAR SI EXISTE CLAVE SINIESTRO
+        public string existeClaveSiniestro(string cveSiniestro)
+        {
+            string resultado = "";
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("SELECT cve_siniestro FROM SINIESTRO WHERE cve_siniestro = @cve_siniestro", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@cve_siniestro", cveSiniestro);
+
+                    //Para saber si en realidad existe, de lo contrario devuelve un string vacío
+                    if (Comando.ExecuteScalar() == null) { }
+                    else
+                        resultado = Comando.ExecuteScalar().ToString();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return resultado;
+        }
+
         //Se ocupará al momento de generar la clave para cuando no haya un siniestro
         public int TotalSiniestro()
         {
