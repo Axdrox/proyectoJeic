@@ -15,7 +15,7 @@ namespace Refracciones.Forms
     {
         OperBD oper = new OperBD();
         DataTable dt = new DataTable();
-        int cve_factura = 0;
+        //string cve_factura = "";
         int cve_venta = 0;
         public BusquedaEntrega_Devolucion()
         {
@@ -32,7 +32,7 @@ namespace Refracciones.Forms
             //cve_factura = oper.Clave_Fact(cve_siniestro,cve_pedido);
             cve_venta = Int32.Parse(lblcve_venta.Text);
             dataGridView1.DataSource = oper.Tabla_Entrega(cve_venta);
-            dato3.Text =dato3.Text + " " + cve_factura.ToString();
+            //dato3.Text =dato3.Text + " " + cve_factura;
         }
 
         private void rbtnEntregas_CheckedChanged(object sender, EventArgs e)

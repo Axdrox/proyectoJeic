@@ -35,7 +35,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.lblPenalizacion = new System.Windows.Forms.Label();
-            this.cmbPenalizacion = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.chkMotivo = new Bunifu.Framework.UI.BunifuCheckbox();
             this.txtMotivo = new System.Windows.Forms.TextBox();
@@ -56,17 +55,20 @@
             this.registrarEntregaDeTodoElPedidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registrarDevoluciónDeTodoElPedidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.txtPenalizacion = new System.Windows.Forms.TextBox();
             this.dgvDevolucion = new System.Windows.Forms.DataGridView();
             this.bunifuGradientPanel2 = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.pbMinimize = new System.Windows.Forms.PictureBox();
             this.pbClose = new System.Windows.Forms.PictureBox();
             this.errorP = new System.Windows.Forms.ErrorProvider(this.components);
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.lblporcentaje = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.menu.SuspendLayout();
+            this.bunifuGradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDevolucion)).BeginInit();
             this.bunifuGradientPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).BeginInit();
@@ -83,7 +85,6 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.lblPenalizacion);
-            this.splitContainer1.Panel1.Controls.Add(this.cmbPenalizacion);
             this.splitContainer1.Panel1.Controls.Add(this.label1);
             this.splitContainer1.Panel1.Controls.Add(this.chkMotivo);
             this.splitContainer1.Panel1.Controls.Add(this.txtMotivo);
@@ -124,19 +125,6 @@
             this.lblPenalizacion.Text = "Porcentaje de Penalización";
             this.lblPenalizacion.Visible = false;
             // 
-            // cmbPenalizacion
-            // 
-            this.cmbPenalizacion.Enabled = false;
-            this.cmbPenalizacion.FormattingEnabled = true;
-            this.cmbPenalizacion.Items.AddRange(new object[] {
-            "0%",
-            "20%",
-            "100%"});
-            this.cmbPenalizacion.Location = new System.Drawing.Point(18, 301);
-            this.cmbPenalizacion.Name = "cmbPenalizacion";
-            this.cmbPenalizacion.Size = new System.Drawing.Size(121, 21);
-            this.cmbPenalizacion.TabIndex = 15;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -166,7 +154,10 @@
             // 
             // txtMotivo
             // 
+            this.txtMotivo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.txtMotivo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMotivo.Enabled = false;
+            this.txtMotivo.ForeColor = System.Drawing.Color.White;
             this.txtMotivo.Location = new System.Drawing.Point(18, 242);
             this.txtMotivo.Name = "txtMotivo";
             this.txtMotivo.Size = new System.Drawing.Size(121, 20);
@@ -374,6 +365,8 @@
             this.bunifuGradientPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
             this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuGradientPanel1.Controls.Add(this.lblporcentaje);
+            this.bunifuGradientPanel1.Controls.Add(this.txtPenalizacion);
             this.bunifuGradientPanel1.GradientBottomLeft = System.Drawing.Color.Black;
             this.bunifuGradientPanel1.GradientBottomRight = System.Drawing.Color.RoyalBlue;
             this.bunifuGradientPanel1.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
@@ -383,6 +376,19 @@
             this.bunifuGradientPanel1.Quality = 10;
             this.bunifuGradientPanel1.Size = new System.Drawing.Size(1370, 450);
             this.bunifuGradientPanel1.TabIndex = 18;
+            // 
+            // txtPenalizacion
+            // 
+            this.txtPenalizacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.txtPenalizacion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPenalizacion.ForeColor = System.Drawing.Color.White;
+            this.txtPenalizacion.Location = new System.Drawing.Point(18, 301);
+            this.txtPenalizacion.Name = "txtPenalizacion";
+            this.txtPenalizacion.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtPenalizacion.Size = new System.Drawing.Size(121, 20);
+            this.txtPenalizacion.TabIndex = 19;
+            this.txtPenalizacion.Text = "0";
+            this.txtPenalizacion.Visible = false;
             // 
             // dgvDevolucion
             // 
@@ -417,7 +423,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvDevolucion.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvDevolucion.RowHeadersVisible = false;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(64)))), ((int)(((byte)(88)))));
@@ -478,6 +484,18 @@
             this.bunifuElipse1.ElipseRadius = 5;
             this.bunifuElipse1.TargetControl = this;
             // 
+            // lblporcentaje
+            // 
+            this.lblporcentaje.AutoSize = true;
+            this.lblporcentaje.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.lblporcentaje.ForeColor = System.Drawing.Color.White;
+            this.lblporcentaje.Location = new System.Drawing.Point(21, 305);
+            this.lblporcentaje.Name = "lblporcentaje";
+            this.lblporcentaje.Size = new System.Drawing.Size(15, 13);
+            this.lblporcentaje.TabIndex = 35;
+            this.lblporcentaje.Text = "%";
+            this.lblporcentaje.Visible = false;
+            // 
             // Devolucion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -497,6 +515,8 @@
             this.splitContainer1.ResumeLayout(false);
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
+            this.bunifuGradientPanel1.ResumeLayout(false);
+            this.bunifuGradientPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDevolucion)).EndInit();
             this.bunifuGradientPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).EndInit();
@@ -526,7 +546,6 @@
         private System.Windows.Forms.TextBox txtMotivo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblPenalizacion;
-        private System.Windows.Forms.ComboBox cmbPenalizacion;
         private System.Windows.Forms.ErrorProvider errorP;
         private System.Windows.Forms.MenuStrip menu;
         private System.Windows.Forms.ToolStripMenuItem opcionesToolStripMenuItem;
@@ -537,5 +556,7 @@
         private Bunifu.Framework.UI.BunifuGradientPanel bunifuGradientPanel2;
         private System.Windows.Forms.PictureBox pbMinimize;
         private System.Windows.Forms.PictureBox pbClose;
+        private System.Windows.Forms.TextBox txtPenalizacion;
+        private System.Windows.Forms.Label lblporcentaje;
     }
 }

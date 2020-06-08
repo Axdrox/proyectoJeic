@@ -19,8 +19,8 @@ namespace Refracciones
 {
     public partial class Eleccion : Form
     {
-        int cve_factura;
-        int cve_refactura;
+        string cve_factura;
+        string cve_refactura;
         OperBD oper = new OperBD();
         public Eleccion()
         {
@@ -33,7 +33,7 @@ namespace Refracciones
             //ABRIR FORMULARIO DE FACTURA
             
             
-            if (cve_factura == 0)
+            if (cve_factura == "0")
             {
                 registroFactura factura = new registroFactura();
                 factura.dato1.Text = factura.dato1.Text + " " + dato_1.Text;
@@ -42,7 +42,7 @@ namespace Refracciones
                 factura.ShowDialog();
 
             }
-            else if(cve_factura != 0 && cve_refactura == 0)
+            else if(cve_factura != "0" && cve_refactura == "0")
             {
                 registroFactura factura = new registroFactura();
                 factura.dato1.Text = factura.dato1.Text + " " + dato_1.Text;
@@ -50,7 +50,7 @@ namespace Refracciones
                 factura.dato3.Text = "0";
                 factura.ShowDialog();
             }
-            else if(cve_factura != 0 && cve_refactura != 0)
+            else if(cve_factura != "0" && cve_refactura != "0")
             {
                 registrarRefactura refactura = new registrarRefactura();
                 refactura.dato1.Text = refactura.dato1.Text + " " + dato_1.Text;
@@ -98,6 +98,7 @@ namespace Refracciones
             bdev.dato1.Text = bdev.dato1.Text + " " + dato_1.Text;
             bdev.dato2.Text = bdev.dato2.Text + " " + dato_2.Text;
             bdev.lblcve_venta.Text = lblCve_venta.Text;
+            bdev.dato3.Text = bdev.dato3.Text + " " + dato_3.Text;
             bdev.ShowDialog();
             
         }
@@ -107,7 +108,7 @@ namespace Refracciones
             //Colocar ICONO
             this.Icon = Resources.iconJeic;
             cve_factura = oper.Clave_Fact(dato_1.Text, dato_2.Text);
-            if(cve_factura != 0)
+            if(cve_factura != "0")
                 cve_refactura = oper.Clave_Refact(cve_factura);
             
             dato_3.Text = cve_factura.ToString();

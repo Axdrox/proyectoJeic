@@ -25,7 +25,7 @@ namespace Refracciones.Forms
         int cantidad = 0;
         int cantidadD = 0;
         int cve_pieza = 0;
-        int penalizacion = 1;
+        decimal penalizacion = 0;
         DateTime fecha = DateTime.MinValue;
         DateTime fecha_asignacion = DateTime.MinValue;
        // DateTime fecha_promesa = DateTime.MinValue;
@@ -85,8 +85,8 @@ namespace Refracciones.Forms
                 btnCancelar.Enabled = true;
                 lbl2.Visible = true;
                 dgvDevolucion.Enabled = false;
-                cmbPenalizacion.Enabled = false;
-                cmbPenalizacion.Visible = false;
+                txtPenalizacion.Enabled = false;
+                txtPenalizacion.Visible = false;
                 pzas_entregadas = oper.Pzas_Entregadas(cve_siniestro, cve_pedido, cve_pieza);
                 pzas_devolucion = oper.Pzas_Devolucion(cve_siniestro, cve_pedido, cve_pieza);
                 rbtnEntrega.Checked = true;
@@ -125,8 +125,9 @@ namespace Refracciones.Forms
                 chkMotivo.Enabled = false;
                 label1.Visible = false;
                 lblPenalizacion.Visible = false;
-                cmbPenalizacion.Enabled = false;
-                cmbPenalizacion.Visible = false;
+                txtPenalizacion.Enabled = false;
+                txtPenalizacion.Visible = false;
+                lblporcentaje.Visible = false;
             }
         }
 
@@ -136,7 +137,7 @@ namespace Refracciones.Forms
             if (rbtnDevolucion.Checked == true)
             {
                 //cmbCantidad.SelectedIndex = 0;
-                cmbPenalizacion.SelectedIndex = 0;
+                //cmbPenalizacion.SelectedIndex = 0;
                 lbl1.Text = "Fecha Devolucion";
                 lbl2.Text = "Cantidad a Devolver";
                 btnAceptar.Text = "DEVOLUCIÓN";
@@ -164,8 +165,9 @@ namespace Refracciones.Forms
                 chkMotivo.Visible = true;
                 label1.Visible = true;
                 lblPenalizacion.Visible = true;
-                cmbPenalizacion.Enabled = true;
-                cmbPenalizacion.Visible = true;
+                txtPenalizacion.Enabled = true;
+                txtPenalizacion.Visible = true;
+                lblporcentaje.Visible = true;
                 
             }
         }
@@ -213,10 +215,8 @@ namespace Refracciones.Forms
                                 motivo = cmbMotivoDev.SelectedItem.ToString();
                             else
                                 motivo = txtMotivo.Text.Trim();
-                            if (cmbPenalizacion.Text.Equals("20%"))
-                                penalizacion = 2;
-                            else if (cmbPenalizacion.Text.Equals("100%"))
-                                penalizacion = 3;
+                            
+                            penalizacion = decimal.Parse(txtPenalizacion.Text.Trim());
                             count = oper.Total_Registros() + 1;//Se calcula el total de registros en la tabla Devolución
                             MessageBox.Show(oper.Registrar_Devolucion(cve_siniestro, cve_pedido, cve_pieza, count, cantidad, fecha, cantidadD, cve_venta, motivo, penalizacion));
                             cmbCantidad.Items.Clear();
@@ -282,7 +282,7 @@ namespace Refracciones.Forms
             dgvDevolucion.Enabled = true;
             cmbMotivoDev.Text = "";
             cmbMotivoDev.Enabled = false;
-            cmbPenalizacion.Enabled = false;
+            txtPenalizacion.Enabled = false;
             errorP.Clear();
         }
 
@@ -317,8 +317,8 @@ namespace Refracciones.Forms
             btnAceptar.Enabled = true;
             btnCancelar.Enabled = true;
             dgvDevolucion.Enabled = false;
-            cmbPenalizacion.Enabled = false;
-            cmbPenalizacion.Visible = false;
+            txtPenalizacion.Enabled = false;
+            txtPenalizacion.Visible = false;
             rbtnEntrega.Checked = true;
             rbtnDevolucion.Enabled = false;
             btnAceptar.Text = "ENTREGAR TODO";
@@ -368,10 +368,11 @@ namespace Refracciones.Forms
                     motivo = cmbMotivoDev.SelectedItem.ToString();
                 else
                     motivo = txtMotivo.Text.Trim();
-                if (cmbPenalizacion.Text.Equals("20%"))
+                /*if (cmbPenalizacion.Text.Equals("20%"))
                     penalizacion = 2;
                 else if (cmbPenalizacion.Text.Equals("100%"))
-                    penalizacion = 3;
+                    penalizacion = 3;*/
+                penalizacion = decimal.Parse(txtPenalizacion.Text.Trim());
                 for (int i = 0; i < filas; i++)
                 {
                     cve_venta = Int32.Parse(dgvDevolucion.Rows[i].Cells[11].Value.ToString());//clave de venta en el pedido
@@ -423,6 +424,25 @@ namespace Refracciones.Forms
         private void pbMinimize_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void chkPenalizacion_OnChange(object sender, EventArgs e)
+        {
+            /*if (chkPenalizacion.Checked == true)
+            {
+                txtPenalizacion.Enabled = true;
+                txtPenalizacion.Visible = true;
+                cmbPenalizacion.Enabled = false;
+                cmbPenalizacion.Visible = false;
+            }
+            else
+            {
+                txtPenalizacion.Enabled = false;
+                txtPenalizacion.Visible = false;
+                cmbPenalizacion.Enabled = true;
+                cmbPenalizacion.Visible = true;
+                cmbPenalizacion.SelectedIndex = 0;
+            }*/
         }
     }
 }

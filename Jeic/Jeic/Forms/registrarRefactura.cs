@@ -79,10 +79,11 @@ namespace Refracciones.Forms
                 int cve_pedido = Int32.Parse(dato2.Text);*/
                 CultureInfo culture = new CultureInfo("en-US");
                 //Variables
-                int cve_factura = Int32.Parse(txtCve_Factura.Text);
-                int cve_refactura = Int32.Parse(txtRefactura.Text);
+                string cve_factura = txtCve_Factura.Text;
+                string cve_refactura = txtRefactura.Text;
                 int cve_estado = 1;
                 decimal fact_sinIVA = decimal.Parse(txtFacturasinIVA.Text, culture);
+                decimal descuento = decimal.Parse(txtDescuento.Text,culture);
                 decimal fact_neto = decimal.Parse(txtFacturaconIVA.Text, culture);
                 decimal costo_refactura = decimal.Parse(txtCostoRefactura.Text, culture);
                 DateTime fecha_ingreso = DateTime.MinValue;
@@ -132,12 +133,12 @@ namespace Refracciones.Forms
                 }
                 if (btnGuardar.Text == "Guardar")
                 {
-                    MessageBox.Show(factura.Registrar_Refactura(cve_siniestro, cve_pedido, cve_factura, cve_estado, cve_refactura, fact_sinIVA, fact_neto, costo_refactura, fecha_refactura, fecha_ingreso, fecha_revision, fecha_pago, nombre_factura, file, nombre_xml, xml_file, comentario));
+                    MessageBox.Show(factura.Registrar_Refactura(cve_siniestro, cve_pedido, cve_factura, cve_estado, cve_refactura, fact_sinIVA, descuento, fact_neto, costo_refactura, fecha_refactura, fecha_ingreso, fecha_revision, fecha_pago, nombre_factura, file, nombre_xml, xml_file, comentario));
                     this.Close();
                 }
                 else if (btnGuardar.Text == "Actualizar")
                 {
-                    MessageBox.Show(factura.Actualizar_Refactura(cve_factura, cve_estado, cve_refactura, fact_sinIVA, fact_neto, costo_refactura, fecha_refactura, fecha_ingreso, fecha_revision, fecha_pago, nombre_factura, file, nombre_xml, xml_file, comentario));
+                    MessageBox.Show(factura.Actualizar_Refactura(cve_factura, cve_estado, cve_refactura, fact_sinIVA, descuento, fact_neto, costo_refactura, fecha_refactura, fecha_ingreso, fecha_revision, fecha_pago, nombre_factura, file, nombre_xml, xml_file, comentario));
                     this.Close();
                 }
             }
@@ -168,13 +169,14 @@ namespace Refracciones.Forms
                 txtCve_Factura.Text = dataGridView1.Rows[0].Cells[0].Value.ToString();
                 txtRefactura.Text = dataGridView1.Rows[0].Cells[2].Value.ToString();
                 txtFacturasinIVA.Text = dataGridView1.Rows[0].Cells[3].Value.ToString();
-                txtFacturaconIVA.Text = dataGridView1.Rows[0].Cells[4].Value.ToString();
-                txtCostoRefactura.Text = dataGridView1.Rows[0].Cells[5].Value.ToString();
-                dtpFechaRefacturacion.Value = DateTime.Parse(dataGridView1.Rows[0].Cells[6].Value.ToString());
-                dtpFechaIngreso.Value = DateTime.Parse(dataGridView1.Rows[0].Cells[7].Value.ToString());
-                dtpFechaRevision.Value = DateTime.Parse(dataGridView1.Rows[0].Cells[8].Value.ToString());
-                dtpFechaPago.Value = DateTime.Parse(dataGridView1.Rows[0].Cells[9].Value.ToString());
-                txtComentario.Text = dataGridView1.Rows[0].Cells[10].Value.ToString();
+                txtDescuento.Text = dataGridView1.Rows[0].Cells[4].Value.ToString();
+                txtFacturaconIVA.Text = dataGridView1.Rows[0].Cells[5].Value.ToString();
+                txtCostoRefactura.Text = dataGridView1.Rows[0].Cells[6].Value.ToString();
+                dtpFechaRefacturacion.Value = DateTime.Parse(dataGridView1.Rows[0].Cells[7].Value.ToString());
+                dtpFechaIngreso.Value = DateTime.Parse(dataGridView1.Rows[0].Cells[8].Value.ToString());
+                dtpFechaRevision.Value = DateTime.Parse(dataGridView1.Rows[0].Cells[9].Value.ToString());
+                dtpFechaPago.Value = DateTime.Parse(dataGridView1.Rows[0].Cells[10].Value.ToString());
+                txtComentario.Text = dataGridView1.Rows[0].Cells[11].Value.ToString();
                 txtCve_Factura.ReadOnly = true;
                 btnGuardar.Text = "Actualizar";
             }
@@ -184,10 +186,10 @@ namespace Refracciones.Forms
 
         private void txtCve_Factura_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            /*if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
-            }
+            }*/
         }
 
         private void txtRefactura_KeyPress(object sender, KeyPressEventArgs e)
@@ -261,7 +263,8 @@ namespace Refracciones.Forms
             if (txtFacturasinIVA.Text != string.Empty)
             {
                 double calculo = double.Parse(txtFacturasinIVA.Text, culture);
-                calculo = calculo * 1.16;
+                double porcentajeDescuento = 1 - (double.Parse(txtDescuento.Text, culture) / 100);
+                calculo = (calculo * porcentajeDescuento) * 1.16;
                 txtFacturaconIVA.Text = calculo.ToString();
             }
             btnGuardar.Enabled = true;
@@ -330,6 +333,21 @@ namespace Refracciones.Forms
         private void pbClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtDescuento_TextChanged(object sender, EventArgs e)
+        {
+            if (txtDescuento.Text.Trim() == "")
+            {
+                txtDescuento.Text = "0";
+            }
+            if (txtFacturasinIVA.Text != string.Empty)
+            {
+                double calculo = double.Parse(txtFacturasinIVA.Text, culture);
+                double porcentajeDescuento = 1 - (double.Parse(txtDescuento.Text, culture) / 100);
+                calculo = (calculo * porcentajeDescuento) * 1.16;
+                txtFacturaconIVA.Text = calculo.ToString();
+            }
         }
     }
 }

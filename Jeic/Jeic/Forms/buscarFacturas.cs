@@ -28,7 +28,7 @@ namespace Refracciones.Forms
         private void dgvFacturas_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int fila = Int32.Parse(e.RowIndex.ToString());
-            int cve_factura = Int32.Parse(dgvFacturas.Rows[fila].Cells[0].Value.ToString());
+            string cve_factura = dgvFacturas.Rows[fila].Cells[0].Value.ToString();
             if (fila == -1) { }
             else if (e.ColumnIndex == -1)
             { 
@@ -62,17 +62,14 @@ namespace Refracciones.Forms
         private void txtFactura_KeyUp(object sender, KeyEventArgs e)
         {
             if (txtFactura.Text != "")
-                dgvFacturas.DataSource = factura.buscarFacturas(Int32.Parse(txtFactura.Text));
+                dgvFacturas.DataSource = factura.buscarFacturas(txtFactura.Text);
             else
                 dgvFacturas.DataSource = factura.buscarFacturas();
         }
 
         private void txtFactura_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
+
         }
 
         private void buscarFacturas_KeyDown(object sender, KeyEventArgs e)
@@ -91,6 +88,25 @@ namespace Refracciones.Forms
         private void pbMinimize_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtFactura_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void BusquedaFecha(object sender, EventArgs e)
+        {
+            string Fecha_inicio = Fecha_in.Value.Year.ToString() + "-" + Fecha_in.Value.Month.ToString() + "-" + Fecha_in.Value.Day.ToString();
+            string Fecha_Final = Fecha_Fin.Value.Year.ToString() + "-" + Fecha_Fin.Value.Month.ToString() + "-" + Fecha_Fin.Value.Day.ToString();
+            dgvFacturas.DataSource = factura.buscarFacturas(Fecha_inicio, Fecha_Final);
+            
+            
+
         }
     }
 }

@@ -65,9 +65,10 @@ namespace Refracciones.Forms
                 errorP.Clear();
                 
                 //Variables
-                int cve_factura = Int32.Parse(txtCve_Factura.Text);
+                string cve_factura = txtCve_Factura.Text;
                 int cve_estado = 1;
                 decimal fact_sinIVA = decimal.Parse(txtFacturasinIVA.Text, culture);
+                decimal descuento = decimal.Parse(txtDescuento.Text,culture) ;
                 decimal fact_neto = decimal.Parse(txtFacturaconIVA.Text, culture);
                 string fecha_ingreso;
                 string fecha_revision;
@@ -116,13 +117,13 @@ namespace Refracciones.Forms
                 }
                 if (btnGuardar.Text == "Guardar")
                 {
-                    MessageBox.Show(oper.Registrar_factura(cve_siniestro, cve_pedido, cve_factura, cve_estado, fact_sinIVA, fact_neto, fecha_ingreso, fecha_revision, fecha_pago, nombre_factura, file, nombre_xml, xml_file, comentario));
+                    MessageBox.Show(oper.Registrar_factura(cve_siniestro, cve_pedido, cve_factura, cve_estado, fact_sinIVA, descuento, fact_neto, fecha_ingreso, fecha_revision, fecha_pago, nombre_factura, file, nombre_xml, xml_file, comentario));
                     this.Close();
 
                 }
                 else if (btnGuardar.Text == "Actualizar")
                 {
-                    MessageBox.Show(oper.Actualizar_Factura(cve_factura, cve_estado, fact_sinIVA, fact_neto, fecha_ingreso, fecha_revision, fecha_pago, nombre_factura, file, nombre_xml, xml_file, comentario));
+                    MessageBox.Show(oper.Actualizar_Factura(cve_factura, cve_estado, fact_sinIVA, descuento, fact_neto, fecha_ingreso, fecha_revision, fecha_pago, nombre_factura, file, nombre_xml, xml_file, comentario));
                     this.Close();
                 }
             }
@@ -139,7 +140,7 @@ namespace Refracciones.Forms
 
             string path = AppDomain.CurrentDomain.BaseDirectory;
             string folder = path + "/temp/";
-            string fullFilePath = folder + factura.Nombre_Factura(Int32.Parse(txtCve_Factura.Text));
+            string fullFilePath = folder + factura.Nombre_Factura(txtCve_Factura.Text);
 
             if (!Directory.Exists(folder))
                 Directory.CreateDirectory(folder);
@@ -147,7 +148,7 @@ namespace Refracciones.Forms
             //if (File.Exists(fullFilePath))
               //  Directory.Delete(fullFilePath);
 
-            File.WriteAllBytes(fullFilePath,factura.Buscar_factura(Int32.Parse(txtCve_Factura.Text)));
+            File.WriteAllBytes(fullFilePath,factura.Buscar_factura(txtCve_Factura.Text));
            // MessageBox.Show(factura.Buscar_factura(Int32.Parse(txtCveFactura.Text)).Length.ToString());
             Process.Start(fullFilePath);
         }
@@ -172,17 +173,18 @@ namespace Refracciones.Forms
                 else if (dataGridView1.Rows[0].Cells[1].Value.ToString() == "3") { cmbEstadoFactura.SelectedIndex = 2; }
                 txtCve_Factura.Text = dataGridView1.Rows[0].Cells[0].Value.ToString();
                 txtFacturasinIVA.Text = dataGridView1.Rows[0].Cells[3].Value.ToString();
-                txtFacturaconIVA.Text = dataGridView1.Rows[0].Cells[4].Value.ToString();
-                if (dataGridView1.Rows[0].Cells[7].Value.ToString() != DateTime.MinValue.ToString())
-                { dtpFechaIngreso.Value = DateTime.Parse(dataGridView1.Rows[0].Cells[7].Value.ToString()); }
-                else { dtpFechaIngreso.Value = DateTime.Now; }
+                txtDescuento.Text = dataGridView1.Rows[0].Cells[4].Value.ToString();
+                txtFacturaconIVA.Text = dataGridView1.Rows[0].Cells[5].Value.ToString();
                 if (dataGridView1.Rows[0].Cells[8].Value.ToString() != DateTime.MinValue.ToString())
-                { dtpFechaRevision.Value = DateTime.Parse(dataGridView1.Rows[0].Cells[8].Value.ToString()); }
+                { dtpFechaIngreso.Value = DateTime.Parse(dataGridView1.Rows[0].Cells[8].Value.ToString()); }
+                else { dtpFechaIngreso.Value = DateTime.Now; }
+                if (dataGridView1.Rows[0].Cells[9].Value.ToString() != DateTime.MinValue.ToString())
+                { dtpFechaRevision.Value = DateTime.Parse(dataGridView1.Rows[0].Cells[9].Value.ToString()); }
                 else { dtpFechaRevision.Value = DateTime.Now; }
-                if(dataGridView1.Rows[0].Cells[9].Value.ToString() != DateTime.MinValue.ToString())
-                { dtpFechaPago.Value = DateTime.Parse(dataGridView1.Rows[0].Cells[9].Value.ToString()); }
+                if(dataGridView1.Rows[0].Cells[10].Value.ToString() != DateTime.MinValue.ToString())
+                { dtpFechaPago.Value = DateTime.Parse(dataGridView1.Rows[0].Cells[10].Value.ToString()); }
                 else { dtpFechaPago.Value = DateTime.Now; }
-                txtComentario.Text = dataGridView1.Rows[0].Cells[10].Value.ToString();
+                txtComentario.Text = dataGridView1.Rows[0].Cells[11].Value.ToString();
                 txtCve_Factura.ReadOnly = true;
                 btnGuardar.Text = "Actualizar";
             }
@@ -222,20 +224,15 @@ namespace Refracciones.Forms
                 e.Handled = true;
             }
 
-            if (e.KeyChar == Convert.ToChar(Keys.Enter))
-            {
-                double calculo = double.Parse(txtFacturasinIVA.Text, culture);
-                calculo = calculo * 1.16;
-                txtFacturaconIVA.Text = calculo.ToString();
-            }
+           
         }
 
         private void txtCve_Factura_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            /*if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
-            }
+            }*/
         }
 
         private void chkFechaIngreso_CheckedChanged(object sender, EventArgs e)
@@ -251,12 +248,7 @@ namespace Refracciones.Forms
 
         private void txtFacturasinIVA_Leave(object sender, EventArgs e)
         {
-            if (txtFacturasinIVA.Text != string.Empty)
-            {
-                double calculo = double.Parse(txtFacturasinIVA.Text, culture);
-                calculo = calculo * 1.16;
-                txtFacturaconIVA.Text = calculo.ToString();
-            }
+            
         }
 
         private void txtFacturasinIVA_TextChanged(object sender, EventArgs e)
@@ -264,7 +256,8 @@ namespace Refracciones.Forms
             if (txtFacturasinIVA.Text != string.Empty)
             {
                 double calculo = double.Parse(txtFacturasinIVA.Text, culture);
-                calculo = calculo * 1.16;
+                double porcentajeDescuento = 1 - (double.Parse(txtDescuento.Text, culture) / 100);
+                calculo = (calculo * porcentajeDescuento) * 1.16;
                 txtFacturaconIVA.Text = calculo.ToString();
             }
             btnGuardar.Enabled = true;
@@ -321,6 +314,26 @@ namespace Refracciones.Forms
         private void pbMinimize_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void txtDescuento_TextChanged(object sender, EventArgs e)
+        {
+            if(txtDescuento.Text.Trim() == "")
+            {
+                txtDescuento.Text = "0";
+            }
+            if (txtFacturasinIVA.Text != string.Empty)
+            {
+                double calculo = double.Parse(txtFacturasinIVA.Text, culture);
+                double porcentajeDescuento = 1 - (double.Parse(txtDescuento.Text, culture) / 100);
+                calculo = (calculo * porcentajeDescuento) * 1.16;
+                txtFacturaconIVA.Text = calculo.ToString();
+            }
+        }
+
+        private void txtDescuento_KeyPress(object sender, KeyPressEventArgs e)
+        {
+           
         }
     }
 }

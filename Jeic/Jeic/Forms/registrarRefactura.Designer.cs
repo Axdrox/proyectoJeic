@@ -73,6 +73,9 @@
             this.pbMinimize = new System.Windows.Forms.PictureBox();
             this.pbClose = new System.Windows.Forms.PictureBox();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.txtDescuento = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblDescuento = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorP)).BeginInit();
             this.bunifuGradientPanel1.SuspendLayout();
@@ -93,7 +96,7 @@
             "PENDIENTE",
             "PAGADA",
             "CANCELADA"});
-            this.cmbEstadoFactura.Location = new System.Drawing.Point(138, 318);
+            this.cmbEstadoFactura.Location = new System.Drawing.Point(138, 351);
             this.cmbEstadoFactura.Name = "cmbEstadoFactura";
             this.cmbEstadoFactura.Size = new System.Drawing.Size(121, 23);
             this.cmbEstadoFactura.TabIndex = 52;
@@ -104,7 +107,7 @@
             this.lblEstadoFactura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(70)))), ((int)(((byte)(122)))));
             this.lblEstadoFactura.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEstadoFactura.ForeColor = System.Drawing.Color.White;
-            this.lblEstadoFactura.Location = new System.Drawing.Point(14, 321);
+            this.lblEstadoFactura.Location = new System.Drawing.Point(14, 354);
             this.lblEstadoFactura.Name = "lblEstadoFactura";
             this.lblEstadoFactura.Size = new System.Drawing.Size(118, 14);
             this.lblEstadoFactura.TabIndex = 51;
@@ -138,7 +141,7 @@
             this.btnBuscarXml.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnBuscarXml.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnBuscarXml.ForeColor = System.Drawing.Color.White;
-            this.btnBuscarXml.Location = new System.Drawing.Point(251, 289);
+            this.btnBuscarXml.Location = new System.Drawing.Point(251, 322);
             this.btnBuscarXml.Name = "btnBuscarXml";
             this.btnBuscarXml.Size = new System.Drawing.Size(45, 20);
             this.btnBuscarXml.TabIndex = 45;
@@ -151,7 +154,7 @@
             this.txtRutaXml.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.txtRutaXml.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtRutaXml.ForeColor = System.Drawing.Color.White;
-            this.txtRutaXml.Location = new System.Drawing.Point(17, 289);
+            this.txtRutaXml.Location = new System.Drawing.Point(17, 322);
             this.txtRutaXml.Name = "txtRutaXml";
             this.txtRutaXml.ReadOnly = true;
             this.txtRutaXml.Size = new System.Drawing.Size(228, 20);
@@ -163,7 +166,7 @@
             this.lblXml.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(64)))), ((int)(((byte)(108)))));
             this.lblXml.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblXml.ForeColor = System.Drawing.Color.White;
-            this.lblXml.Location = new System.Drawing.Point(14, 273);
+            this.lblXml.Location = new System.Drawing.Point(14, 306);
             this.lblXml.Name = "lblXml";
             this.lblXml.Size = new System.Drawing.Size(27, 14);
             this.lblXml.TabIndex = 43;
@@ -234,7 +237,7 @@
             this.lblFacturaConIVA.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(49)))), ((int)(((byte)(76)))));
             this.lblFacturaConIVA.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFacturaConIVA.ForeColor = System.Drawing.Color.White;
-            this.lblFacturaConIVA.Location = new System.Drawing.Point(14, 166);
+            this.lblFacturaConIVA.Location = new System.Drawing.Point(14, 199);
             this.lblFacturaConIVA.Name = "lblFacturaConIVA";
             this.lblFacturaConIVA.Size = new System.Drawing.Size(89, 14);
             this.lblFacturaConIVA.TabIndex = 36;
@@ -299,7 +302,7 @@
             this.btnBuscarFact.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnBuscarFact.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnBuscarFact.ForeColor = System.Drawing.Color.White;
-            this.btnBuscarFact.Location = new System.Drawing.Point(251, 250);
+            this.btnBuscarFact.Location = new System.Drawing.Point(251, 283);
             this.btnBuscarFact.Name = "btnBuscarFact";
             this.btnBuscarFact.Size = new System.Drawing.Size(45, 20);
             this.btnBuscarFact.TabIndex = 31;
@@ -312,7 +315,7 @@
             this.txtRutaFactura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.txtRutaFactura.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtRutaFactura.ForeColor = System.Drawing.Color.White;
-            this.txtRutaFactura.Location = new System.Drawing.Point(17, 250);
+            this.txtRutaFactura.Location = new System.Drawing.Point(17, 283);
             this.txtRutaFactura.Name = "txtRutaFactura";
             this.txtRutaFactura.ReadOnly = true;
             this.txtRutaFactura.Size = new System.Drawing.Size(228, 20);
@@ -350,7 +353,7 @@
             this.lblFactura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
             this.lblFactura.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFactura.ForeColor = System.Drawing.Color.White;
-            this.lblFactura.Location = new System.Drawing.Point(14, 234);
+            this.lblFactura.Location = new System.Drawing.Point(14, 267);
             this.lblFactura.Name = "lblFactura";
             this.lblFactura.Size = new System.Drawing.Size(47, 14);
             this.lblFactura.TabIndex = 27;
@@ -373,7 +376,7 @@
             this.txtFacturaconIVA.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.txtFacturaconIVA.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtFacturaconIVA.ForeColor = System.Drawing.Color.White;
-            this.txtFacturaconIVA.Location = new System.Drawing.Point(109, 163);
+            this.txtFacturaconIVA.Location = new System.Drawing.Point(109, 196);
             this.txtFacturaconIVA.Name = "txtFacturaconIVA";
             this.txtFacturaconIVA.ReadOnly = true;
             this.txtFacturaconIVA.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -386,7 +389,7 @@
             this.lblCostoRefactura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(54)))), ((int)(((byte)(87)))));
             this.lblCostoRefactura.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCostoRefactura.ForeColor = System.Drawing.Color.White;
-            this.lblCostoRefactura.Location = new System.Drawing.Point(14, 205);
+            this.lblCostoRefactura.Location = new System.Drawing.Point(14, 234);
             this.lblCostoRefactura.Name = "lblCostoRefactura";
             this.lblCostoRefactura.Size = new System.Drawing.Size(92, 14);
             this.lblCostoRefactura.TabIndex = 55;
@@ -397,7 +400,7 @@
             this.txtCostoRefactura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.txtCostoRefactura.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCostoRefactura.ForeColor = System.Drawing.Color.White;
-            this.txtCostoRefactura.Location = new System.Drawing.Point(109, 202);
+            this.txtCostoRefactura.Location = new System.Drawing.Point(109, 231);
             this.txtCostoRefactura.Name = "txtCostoRefactura";
             this.txtCostoRefactura.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtCostoRefactura.Size = new System.Drawing.Size(100, 20);
@@ -493,7 +496,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(111, 166);
+            this.label2.Location = new System.Drawing.Point(111, 199);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(13, 13);
             this.label2.TabIndex = 65;
@@ -504,7 +507,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(111, 205);
+            this.label3.Location = new System.Drawing.Point(111, 234);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(13, 13);
             this.label3.TabIndex = 66;
@@ -519,6 +522,9 @@
             this.bunifuGradientPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
             this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuGradientPanel1.Controls.Add(this.label4);
+            this.bunifuGradientPanel1.Controls.Add(this.txtDescuento);
+            this.bunifuGradientPanel1.Controls.Add(this.lblDescuento);
             this.bunifuGradientPanel1.Controls.Add(this.pbMinimize);
             this.bunifuGradientPanel1.Controls.Add(this.pbClose);
             this.bunifuGradientPanel1.Controls.Add(this.cmbEstadoFactura);
@@ -532,7 +538,7 @@
             this.bunifuGradientPanel1.Location = new System.Drawing.Point(0, 0);
             this.bunifuGradientPanel1.Name = "bunifuGradientPanel1";
             this.bunifuGradientPanel1.Quality = 10;
-            this.bunifuGradientPanel1.Size = new System.Drawing.Size(561, 381);
+            this.bunifuGradientPanel1.Size = new System.Drawing.Size(592, 397);
             this.bunifuGradientPanel1.TabIndex = 67;
             // 
             // pbMinimize
@@ -564,11 +570,46 @@
             this.bunifuElipse1.ElipseRadius = 5;
             this.bunifuElipse1.TargetControl = this;
             // 
+            // txtDescuento
+            // 
+            this.txtDescuento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.txtDescuento.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDescuento.ForeColor = System.Drawing.Color.White;
+            this.txtDescuento.Location = new System.Drawing.Point(109, 162);
+            this.txtDescuento.Name = "txtDescuento";
+            this.txtDescuento.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtDescuento.Size = new System.Drawing.Size(100, 20);
+            this.txtDescuento.TabIndex = 73;
+            this.txtDescuento.Text = "0";
+            this.txtDescuento.TextChanged += new System.EventHandler(this.txtDescuento_TextChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(112, 165);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(15, 13);
+            this.label4.TabIndex = 74;
+            this.label4.Text = "%";
+            // 
+            // lblDescuento
+            // 
+            this.lblDescuento.AutoSize = true;
+            this.lblDescuento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(46)))), ((int)(((byte)(69)))));
+            this.lblDescuento.ForeColor = System.Drawing.Color.White;
+            this.lblDescuento.Location = new System.Drawing.Point(14, 165);
+            this.lblDescuento.Name = "lblDescuento";
+            this.lblDescuento.Size = new System.Drawing.Size(62, 13);
+            this.lblDescuento.TabIndex = 75;
+            this.lblDescuento.Text = "Descuento:";
+            // 
             // registrarRefactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(562, 381);
+            this.ClientSize = new System.Drawing.Size(592, 398);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -610,6 +651,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorP)).EndInit();
             this.bunifuGradientPanel1.ResumeLayout(false);
+            this.bunifuGradientPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).EndInit();
             this.ResumeLayout(false);
@@ -662,5 +704,8 @@
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
         private System.Windows.Forms.PictureBox pbMinimize;
         private System.Windows.Forms.PictureBox pbClose;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtDescuento;
+        private System.Windows.Forms.Label lblDescuento;
     }
 }
