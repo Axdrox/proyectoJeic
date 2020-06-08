@@ -91,18 +91,19 @@
             this.txtDiasEspera = new System.Windows.Forms.TextBox();
             this.lblDiasEspera = new System.Windows.Forms.Label();
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.btnLimpiarSiniestro = new System.Windows.Forms.Button();
             this.lblEstadoSiniestro = new System.Windows.Forms.Label();
             this.lblMarca = new System.Windows.Forms.Label();
             this.lblMarcaPedido = new System.Windows.Forms.Label();
-            this.moverTop = new System.Windows.Forms.FlowLayoutPanel();
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.pbMinimize = new System.Windows.Forms.PictureBox();
             this.pbClose = new System.Windows.Forms.PictureBox();
-            this.btnLimpiarSiniestro = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedido)).BeginInit();
             this.bunifuGradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -182,7 +183,6 @@
             this.cbAseguradora.Size = new System.Drawing.Size(392, 24);
             this.cbAseguradora.TabIndex = 5;
             this.cbAseguradora.SelectedIndexChanged += new System.EventHandler(this.cbAseguradora_SelectedIndexChanged);
-            this.cbAseguradora.Click += new System.EventHandler(this.cbAseguradora_Click);
             // 
             // lblClientePedido
             // 
@@ -221,8 +221,6 @@
             this.cbVendedor.Name = "cbVendedor";
             this.cbVendedor.Size = new System.Drawing.Size(392, 24);
             this.cbVendedor.TabIndex = 9;
-            this.cbVendedor.SelectedIndexChanged += new System.EventHandler(this.cbVendedor_SelectedIndexChanged);
-            this.cbVendedor.Click += new System.EventHandler(this.cbVendedor_Click);
             // 
             // label7
             // 
@@ -313,7 +311,6 @@
             this.cbTaller.Name = "cbTaller";
             this.cbTaller.Size = new System.Drawing.Size(392, 24);
             this.cbTaller.TabIndex = 16;
-            this.cbTaller.Click += new System.EventHandler(this.cbTaller_Click);
             // 
             // cbDestino
             // 
@@ -327,7 +324,6 @@
             this.cbDestino.Name = "cbDestino";
             this.cbDestino.Size = new System.Drawing.Size(392, 24);
             this.cbDestino.TabIndex = 17;
-            this.cbDestino.Click += new System.EventHandler(this.cbDestino_Click);
             // 
             // dgvPedido
             // 
@@ -375,6 +371,7 @@
             this.dgvPedido.Size = new System.Drawing.Size(1424, 206);
             this.dgvPedido.TabIndex = 18;
             this.dgvPedido.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPedido_CellClick);
+            this.dgvPedido.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPedido_CellValueChanged);
             // 
             // btnFinalizarPedido
             // 
@@ -382,7 +379,7 @@
             this.btnFinalizarPedido.Enabled = false;
             this.btnFinalizarPedido.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnFinalizarPedido.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFinalizarPedido.Location = new System.Drawing.Point(1623, 604);
+            this.btnFinalizarPedido.Location = new System.Drawing.Point(1629, 607);
             this.btnFinalizarPedido.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnFinalizarPedido.Name = "btnFinalizarPedido";
             this.btnFinalizarPedido.Size = new System.Drawing.Size(143, 31);
@@ -396,7 +393,7 @@
             this.btnCancelar.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCancelar.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(1520, 604);
+            this.btnCancelar.Location = new System.Drawing.Point(1526, 607);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(83, 31);
@@ -558,10 +555,11 @@
             this.txtClavePedido.Name = "txtClavePedido";
             this.txtClavePedido.Size = new System.Drawing.Size(309, 22);
             this.txtClavePedido.TabIndex = 33;
-            this.txtClavePedido.Text = "Escriba una clave";
-            this.txtClavePedido.Click += new System.EventHandler(this.txtClavePedido_Click);
+            this.txtClavePedido.Text = "Escriba clave del pedido";
+            this.txtClavePedido.Enter += new System.EventHandler(this.txtClavePedido_Enter);
             this.txtClavePedido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtClavePedido_KeyPress);
             this.txtClavePedido.Leave += new System.EventHandler(this.txtClavePedido_Leave);
+            this.txtClavePedido.Validating += new System.ComponentModel.CancelEventHandler(this.txtClavePedido_Validating);
             // 
             // chbOtroTaller
             // 
@@ -697,7 +695,8 @@
             // lblCantidadTotal
             // 
             this.lblCantidadTotal.AutoSize = true;
-            this.lblCantidadTotal.Location = new System.Drawing.Point(1644, 555);
+            this.lblCantidadTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(92)))), ((int)(((byte)(131)))));
+            this.lblCantidadTotal.Location = new System.Drawing.Point(1439, 552);
             this.lblCantidadTotal.Name = "lblCantidadTotal";
             this.lblCantidadTotal.Size = new System.Drawing.Size(0, 17);
             this.lblCantidadTotal.TabIndex = 44;
@@ -705,7 +704,8 @@
             // lblPrecioTotal
             // 
             this.lblPrecioTotal.AutoSize = true;
-            this.lblPrecioTotal.Location = new System.Drawing.Point(1700, 555);
+            this.lblPrecioTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(92)))), ((int)(((byte)(131)))));
+            this.lblPrecioTotal.Location = new System.Drawing.Point(1495, 552);
             this.lblPrecioTotal.Name = "lblPrecioTotal";
             this.lblPrecioTotal.Size = new System.Drawing.Size(0, 17);
             this.lblPrecioTotal.TabIndex = 45;
@@ -900,7 +900,9 @@
             this.bunifuGradientPanel1.Controls.Add(this.lblMarca);
             this.bunifuGradientPanel1.Controls.Add(this.lblMarcaPedido);
             this.bunifuGradientPanel1.Controls.Add(this.txtVendedor);
+            this.bunifuGradientPanel1.Controls.Add(this.lblPrecioTotal);
             this.bunifuGradientPanel1.Controls.Add(this.dgvPedido);
+            this.bunifuGradientPanel1.Controls.Add(this.lblCantidadTotal);
             this.bunifuGradientPanel1.Controls.Add(this.txtValuador);
             this.bunifuGradientPanel1.Controls.Add(this.btnAgregarPieza);
             this.bunifuGradientPanel1.Controls.Add(this.chbModificarEstado);
@@ -939,6 +941,21 @@
             this.bunifuGradientPanel1.Size = new System.Drawing.Size(2035, 625);
             this.bunifuGradientPanel1.TabIndex = 60;
             // 
+            // btnLimpiarSiniestro
+            // 
+            this.btnLimpiarSiniestro.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnLimpiarSiniestro.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnLimpiarSiniestro.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpiarSiniestro.Location = new System.Drawing.Point(310, 71);
+            this.btnLimpiarSiniestro.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnLimpiarSiniestro.Name = "btnLimpiarSiniestro";
+            this.btnLimpiarSiniestro.Size = new System.Drawing.Size(80, 24);
+            this.btnLimpiarSiniestro.TabIndex = 80;
+            this.btnLimpiarSiniestro.Text = "Limpiar";
+            this.btnLimpiarSiniestro.UseVisualStyleBackColor = false;
+            this.btnLimpiarSiniestro.Visible = false;
+            this.btnLimpiarSiniestro.Click += new System.EventHandler(this.btnLimpiarSiniestro_Click);
+            // 
             // lblEstadoSiniestro
             // 
             this.lblEstadoSiniestro.AutoSize = true;
@@ -970,20 +987,11 @@
             this.lblMarcaPedido.Text = "Marca:";
             this.lblMarcaPedido.Visible = false;
             // 
-            // moverTop
-            // 
-            this.moverTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.moverTop.Location = new System.Drawing.Point(0, 0);
-            this.moverTop.Margin = new System.Windows.Forms.Padding(4);
-            this.moverTop.Name = "moverTop";
-            this.moverTop.Size = new System.Drawing.Size(1807, 23);
-            this.moverTop.TabIndex = 56;
-            // 
             // bunifuDragControl1
             // 
             this.bunifuDragControl1.Fixed = true;
             this.bunifuDragControl1.Horizontal = true;
-            this.bunifuDragControl1.TargetControl = this.moverTop;
+            this.bunifuDragControl1.TargetControl = this;
             this.bunifuDragControl1.Vertical = true;
             // 
             // pbMinimize
@@ -1010,20 +1018,9 @@
             this.pbClose.TabStop = false;
             this.pbClose.Click += new System.EventHandler(this.pbClose_Click);
             // 
-            // btnLimpiarSiniestro
+            // errorProvider1
             // 
-            this.btnLimpiarSiniestro.BackColor = System.Drawing.Color.RoyalBlue;
-            this.btnLimpiarSiniestro.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnLimpiarSiniestro.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimpiarSiniestro.Location = new System.Drawing.Point(310, 71);
-            this.btnLimpiarSiniestro.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnLimpiarSiniestro.Name = "btnLimpiarSiniestro";
-            this.btnLimpiarSiniestro.Size = new System.Drawing.Size(80, 24);
-            this.btnLimpiarSiniestro.TabIndex = 80;
-            this.btnLimpiarSiniestro.Text = "Limpiar";
-            this.btnLimpiarSiniestro.UseVisualStyleBackColor = false;
-            this.btnLimpiarSiniestro.Visible = false;
-            this.btnLimpiarSiniestro.Click += new System.EventHandler(this.btnLimpiarSiniestro_Click);
+            this.errorProvider1.ContainerControl = this;
             // 
             // Pedido
             // 
@@ -1036,8 +1033,6 @@
             this.Controls.Add(this.lblDiasEspera);
             this.Controls.Add(this.txtDiasEspera);
             this.Controls.Add(this.chbModificarVendedor);
-            this.Controls.Add(this.lblPrecioTotal);
-            this.Controls.Add(this.lblCantidadTotal);
             this.Controls.Add(this.dtpFechaBaja);
             this.Controls.Add(this.lblFechaBaja);
             this.Controls.Add(this.chbOtroDestino);
@@ -1061,7 +1056,6 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.bunifuGradientPanel1);
-            this.Controls.Add(this.moverTop);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1074,6 +1068,7 @@
             this.bunifuGradientPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1139,7 +1134,6 @@
         private System.Windows.Forms.Label lblDiasEspera;
         private System.Windows.Forms.TextBox txtDiasEspera;
         private Bunifu.Framework.UI.BunifuGradientPanel bunifuGradientPanel1;
-        private System.Windows.Forms.FlowLayoutPanel moverTop;
         private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl1;
         private System.Windows.Forms.PictureBox pbClose;
         private System.Windows.Forms.PictureBox pbMinimize;
@@ -1147,5 +1141,6 @@
         private System.Windows.Forms.Label lblMarca;
         private System.Windows.Forms.Label lblEstadoSiniestro;
         private System.Windows.Forms.Button btnLimpiarSiniestro;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

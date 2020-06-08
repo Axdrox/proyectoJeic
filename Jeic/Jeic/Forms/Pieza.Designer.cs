@@ -104,8 +104,6 @@
             this.cbPiezaNombre.Size = new System.Drawing.Size(196, 24);
             this.cbPiezaNombre.TabIndex = 0;
             this.cbPiezaNombre.SelectedIndexChanged += new System.EventHandler(this.cbPiezaNombre_SelectedIndexChanged);
-            this.cbPiezaNombre.Click += new System.EventHandler(this.cbPiezaNombre_Click);
-            this.cbPiezaNombre.Validating += new System.ComponentModel.CancelEventHandler(this.cbPiezaNombre_Validating);
             // 
             // label2
             // 
@@ -263,8 +261,6 @@
             this.cbPortal.Name = "cbPortal";
             this.cbPortal.Size = new System.Drawing.Size(196, 24);
             this.cbPortal.TabIndex = 2;
-            this.cbPortal.Click += new System.EventHandler(this.cbPortal_Click);
-            this.cbPortal.Validating += new System.ComponentModel.CancelEventHandler(this.cbPortal_Validating);
             // 
             // cbOrigen
             // 
@@ -277,8 +273,6 @@
             this.cbOrigen.Name = "cbOrigen";
             this.cbOrigen.Size = new System.Drawing.Size(196, 24);
             this.cbOrigen.TabIndex = 3;
-            this.cbOrigen.Click += new System.EventHandler(this.cbOrigen_Click);
-            this.cbOrigen.Validating += new System.ComponentModel.CancelEventHandler(this.cbOrigen_Validating);
             // 
             // cbProveedores
             // 
@@ -291,8 +285,6 @@
             this.cbProveedores.Name = "cbProveedores";
             this.cbProveedores.Size = new System.Drawing.Size(196, 24);
             this.cbProveedores.TabIndex = 4;
-            this.cbProveedores.Click += new System.EventHandler(this.cbProveedores_Click);
-            this.cbProveedores.Validating += new System.ComponentModel.CancelEventHandler(this.cbProveedores_Validating);
             // 
             // dtpFechaCosto
             // 
@@ -421,12 +413,12 @@
             this.txtClaveProducto.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.txtClaveProducto.Location = new System.Drawing.Point(169, 77);
             this.txtClaveProducto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtClaveProducto.Multiline = true;
             this.txtClaveProducto.Name = "txtClaveProducto";
+            this.txtClaveProducto.ReadOnly = true;
             this.txtClaveProducto.Size = new System.Drawing.Size(197, 22);
             this.txtClaveProducto.TabIndex = 2;
             this.txtClaveProducto.Text = "Escriba clave del producto";
-            this.txtClaveProducto.Enter += new System.EventHandler(this.txtClaveProducto_Enter);
-            this.txtClaveProducto.Leave += new System.EventHandler(this.txtClaveProducto_Leave);
             this.txtClaveProducto.Validating += new System.ComponentModel.CancelEventHandler(this.txtClaveProducto_Validating);
             // 
             // txtNumeroGuia
@@ -608,7 +600,6 @@
             this.cbCostoEnvio.Name = "cbCostoEnvio";
             this.cbCostoEnvio.Size = new System.Drawing.Size(121, 24);
             this.cbCostoEnvio.TabIndex = 8;
-            this.cbCostoEnvio.Click += new System.EventHandler(this.cbCostoEnvio_Click);
             // 
             // bunifuElipse1
             // 
@@ -696,7 +687,6 @@
             this.cbNumeroGuia.Size = new System.Drawing.Size(196, 24);
             this.cbNumeroGuia.TabIndex = 1;
             this.cbNumeroGuia.Visible = false;
-            this.cbNumeroGuia.Validating += new System.ComponentModel.CancelEventHandler(this.cbNumeroGuia_Validating);
             // 
             // errorProvider1
             // 

@@ -1117,6 +1117,32 @@ namespace Refracciones
             return dt;
         }
         //---------------------ALEX--------------------------------------------------------------------
+
+        //VALIDAR SI EXISTE CLAVE PEDIDO
+        public string existeClavePedido(string cvePedido)
+        {
+            string resultado = "";
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("SELECT cve_pedido FROM VENTAS WHERE cve_pedido = @cve_pedido", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@cve_pedido", cvePedido);
+
+                    //Para saber si en realidad existe, de lo contrario devuelve un string vacío
+                    if (Comando.ExecuteScalar() == null) { }
+                    else
+                        resultado = Comando.ExecuteScalar().ToString();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return resultado;
+        }
+
         //--------------------OBTENER NUMERO DE VEHICULOS REGISTRADOS--------------------
         //Se ocupará al momento de poner un vehiculo por default en caso de que no haya siniestro
         public int TotalVehiculos()

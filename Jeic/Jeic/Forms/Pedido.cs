@@ -1,4 +1,5 @@
 ﻿using DocumentFormat.OpenXml.Office.CoverPageProps;
+using DocumentFormat.OpenXml.Office2010.PowerPoint;
 using Refracciones.Properties;
 using System;
 using System.Collections.Generic;
@@ -152,6 +153,22 @@ namespace Refracciones.Forms
             }
             else
             {
+                //Carga los datos registros de vendedores en el combobox
+                cbVendedor.DataSource = operacion.VendedoresRegistrados().Tables[0].DefaultView;
+                cbVendedor.ValueMember = "cve_vendedor";
+
+                //Carga los datos registros de clientes/aseguradoras en el combobox
+                cbAseguradora.DataSource = operacion.AseguradorasRegistradas().Tables[0].DefaultView;
+                cbAseguradora.ValueMember = "cve_nombre";
+
+                //Carga los datos registros de talleres en el combobox
+                cbTaller.DataSource = operacion.TalleresRegistrados().Tables[0].DefaultView;
+                cbTaller.ValueMember = "nombre";
+
+                //Carga los datos registros de destinos en el combobox
+                cbDestino.DataSource = operacion.DestinosRegistrados().Tables[0].DefaultView;
+                cbDestino.ValueMember = "destino";
+
                 lblVehiculoPedido.Hide();
                 lblVehiculo.Hide();
                 lblAnioPedido.Hide();
@@ -194,6 +211,7 @@ namespace Refracciones.Forms
                 rdbNo.Checked = false;
                 lblClaveSiniestroPedido.Visible = false;
                 lblClaveSiniestro.Visible = false;
+                lblClaveSiniestro.Text = "";
                 lblAnioPedido.Visible = false;
                 lblAnio.Visible = false;
                 lblVehiculoPedido.Visible = false;
@@ -267,6 +285,7 @@ namespace Refracciones.Forms
                 rdbSi.Checked = false;
                 lblClaveSiniestroPedido.Visible = false;
                 lblClaveSiniestro.Visible = false;
+                lblClaveSiniestro.Text = "";
                 lblAnioPedido.Visible = false;
                 lblAnio.Visible = false;
                 lblVehiculoPedido.Visible = false;
@@ -508,15 +527,6 @@ namespace Refracciones.Forms
             dtpFechaPromesa.Enabled = true;
             dtpFechaBaja.Enabled = true;
             btnFinalizarPedido.Enabled = true;
-        }
-
-        private void txtClavePedido_Click(object sender, EventArgs e)
-        {
-            if (txtClavePedido.Text == "Escriba una clave")
-            {
-                txtClavePedido.Text = "";
-                txtClavePedido.ForeColor = Color.White;
-            }
         }
 
         private void txtAseguradora_Click(object sender, EventArgs e)
@@ -767,58 +777,59 @@ namespace Refracciones.Forms
 
         private void btnAgregarPieza_Click(object sender, EventArgs e)
         {
-            Pieza pieza = new Pieza();
-            string[] guia = new string[dgvPedido.Rows.Count];
-            int j = 0;
-            pieza.destino = cbDestino.Text.Trim();
-            if (dgvPedido.Rows.Count > 0)
+            if (txtClavePedido.Text != "Escriba clave del pedido" && !string.IsNullOrEmpty(lblClaveSiniestro.Text))
             {
-                foreach (DataGridViewRow row in dgvPedido.Rows)
+                Pieza pieza = new Pieza();
+                string[] guia = new string[dgvPedido.Rows.Count];
+                int j = 0;
+                pieza.destino = cbDestino.Text.Trim();
+                if (dgvPedido.Rows.Count > 0)
                 {
-                    if (!guia.Contains(Convert.ToString(row.Cells["Número de guía"].Value)))
+                    foreach (DataGridViewRow row in dgvPedido.Rows)
                     {
-                        pieza.cbNumeroGuia.Items.Add(Convert.ToString(row.Cells["Número de guía"].Value));
-                        guia[j] = Convert.ToString(row.Cells["Número de guía"].Value);
-                        j++;
+                        if (!guia.Contains(Convert.ToString(row.Cells["Número de guía"].Value)))
+                        {
+                            pieza.cbNumeroGuia.Items.Add(Convert.ToString(row.Cells["Número de guía"].Value));
+                            guia[j] = Convert.ToString(row.Cells["Número de guía"].Value);
+                            j++;
+                        }
                     }
                 }
-            }
 
-            DialogResult respuesta = pieza.ShowDialog();
-            //MessageBox.Show(respuesta.ToString());
-            if (respuesta == DialogResult.OK)
-            {
-                DataRow row = dt.NewRow();
-                for (int i = 0; i < pieza.datosMandar.Length; i++)
+                pieza.marca = lblMarca.Text;
+                pieza.modelo = lblVehiculo.Text;
+                pieza.anio = lblAnio.Text;
+
+                int cantidad = 0;
+                double subtotalPrecio = 0;
+                double totalPrecio = 0;
+                DialogResult respuesta = pieza.ShowDialog();
+                //MessageBox.Show(respuesta.ToString());
+                if (respuesta == DialogResult.OK)
                 {
-                    row[i] = pieza.datosMandar[i];
-                }
-                dt.Rows.Add(row);
-                /*
-                totalCantidadPiezas += Convert.ToInt32(pieza.datosMandar[12]);
-                lblCantidadTotal.Text = totalCantidadPiezas.ToString();*/
-            }
-            //this.Hide();
-        }
+                    DataRow row = dt.NewRow();
+                    for (int i = 0; i < pieza.datosMandar.Length; i++)
+                    {
+                        row[i] = pieza.datosMandar[i];
+                    }
+                    dt.Rows.Add(row);
 
-        private void cbVendedor_Click(object sender, EventArgs e)
-        {
-            if (txtClavePedido.Text.Trim() != string.Empty)
-            {
-                //Carga los datos registros de vendedores en el combobox
-                cbVendedor.DataSource = operacion.VendedoresRegistrados().Tables[0].DefaultView;
-                cbVendedor.ValueMember = "cve_vendedor";
+                    foreach (DataGridViewRow dgvRow in dgvPedido.Rows)
+                    {
+                        cantidad += Convert.ToInt32(dgvRow.Cells["Cantidad"].Value);
+                        subtotalPrecio += (Convert.ToInt32(dgvRow.Cells["Cantidad"].Value) * Convert.ToDouble(dgvRow.Cells["Precio de venta"].Value) /*+ Convert.ToDouble(dgvRow.Cells["Precio de reparación"].Value)*/);
+                    }
+                    totalPrecio = (subtotalPrecio * .16) + subtotalPrecio;
+
+                    lblCantidadTotal.Text = cantidad.ToString();
+                    lblPrecioTotal.Text = "$" + totalPrecio.ToString();
+                }
             }
             else
-                MessageBox.Show("Favor de añadir la clave del pedido.", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        }
-
-        //Cargar los datos de la aseguradora/cliente en el combobox
-        private void cbAseguradora_Click(object sender, EventArgs e)
-        {
-            //Carga los datos registros de clientes/aseguradoras en el combobox
-            cbAseguradora.DataSource = operacion.AseguradorasRegistradas().Tables[0].DefaultView;
-            cbAseguradora.ValueMember = "cve_nombre";
+            {
+                MessageBox.Show("Favor de proporcionar claves de pedido y siniestro", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            //this.Hide();
         }
 
         //Hace que el combobox de los valuadores cambie de acuerdo al cliente/aseguradora que se elija
@@ -848,26 +859,6 @@ namespace Refracciones.Forms
             }
         }
 
-        private void cbTaller_Click(object sender, EventArgs e)
-        {
-            //Carga los datos registros de talleres en el combobox
-            cbTaller.DataSource = operacion.TalleresRegistrados().Tables[0].DefaultView;
-            cbTaller.ValueMember = "nombre";
-        }
-
-        private void cbDestino_Click(object sender, EventArgs e)
-        {
-            //Carga los datos registros de destinos en el combobox
-            cbDestino.DataSource = operacion.DestinosRegistrados().Tables[0].DefaultView;
-            cbDestino.ValueMember = "destino";
-        }
-
-        private void cbVendedor_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            rdbSi.Enabled = true;
-            rdbNo.Enabled = true;
-        }
-
         private string[] datosPieza = new string[12];
 
         public string[] datosMandar
@@ -887,7 +878,13 @@ namespace Refracciones.Forms
             //Check if click is on specific column
             if (e.ColumnIndex == dgvPedido.Columns["dataGridViewDeleteButton"].Index)
             {
+                foreach (DataGridViewRow row in dgvPedido.SelectedRows)
+                {
+                    lblCantidadTotal.Text = (Convert.ToInt32(lblCantidadTotal.Text) - Convert.ToInt32(row.Cells["Cantidad"].Value)).ToString();
+                    lblPrecioTotal.Text = "$" + (Convert.ToDouble(lblPrecioTotal.Text.Substring(1, lblPrecioTotal.Text.Length - 1)) - ((Convert.ToDouble(row.Cells["Precio de venta"].Value) * Convert.ToInt32(row.Cells["Cantidad"].Value) * 0.16) + (Convert.ToDouble(row.Cells["Precio de venta"].Value) * Convert.ToInt32(row.Cells["Cantidad"].Value)))).ToString();
+                }
                 dgvPedido.Rows.RemoveAt(dgvPedido.CurrentRow.Index);
+
                 //Put some logic here, for example to remove row from your binding list.
                 //yourBindingList.RemoveAt(e.RowIndex);
 
@@ -936,10 +933,11 @@ namespace Refracciones.Forms
                 DialogResult respuesta = pieza.ShowDialog();
                 if (respuesta == DialogResult.OK)
                 {
-                    for (int j = 2; j < pieza.datosMandar.Length; j++)
+                    int k = 0;
+                    for (int j = 0; j < pieza.datosMandar.Length; j++)
                     {
-                        dgvPedido[j, index].Value = pieza.datosMandar[j - 2];
-                        //MessageBox.Show(pieza.datosMandar[j - 2]);
+                        dgvPedido[j + 2, index].Value = pieza.datosMandar[k];
+                        k++;
                     }
                 }
             }
@@ -1050,7 +1048,7 @@ namespace Refracciones.Forms
         {
             if (txtClavePedido.Text == "")
             {
-                txtClavePedido.Text = "Escriba una clave";
+                txtClavePedido.Text = "Escriba clave del pedido";
                 txtClavePedido.ForeColor = Color.FromArgb(160, 160, 140);
             }
         }
@@ -1124,6 +1122,7 @@ namespace Refracciones.Forms
             rdbNo.Checked = false;
             lblClaveSiniestroPedido.Visible = false;
             lblClaveSiniestro.Visible = false;
+            lblClaveSiniestro.Text = "";
             lblAnioPedido.Visible = false;
             lblAnio.Visible = false;
             lblVehiculoPedido.Visible = false;
@@ -1136,6 +1135,50 @@ namespace Refracciones.Forms
             lblEstado.Visible = false;
             lblComentarioSiniestro.Visible = false;
             txtComentarioSiniestro.Visible = false;
+        }
+
+        private void txtClavePedido_Validating(object sender, CancelEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(operacion.existeClavePedido(txtClavePedido.Text.Trim().ToUpper())))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txtClavePedido, "Ya existe un pedido con la misma clave");
+            }
+            else if (txtClavePedido.Text.Trim() == "Escriba clave del pedido")
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txtClavePedido, "Favor de llenar este campo");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider1.SetError(txtClavePedido, null);
+            }
+        }
+
+        private void txtClavePedido_Enter(object sender, EventArgs e)
+        {
+            if (txtClavePedido.Text == "Escriba clave del pedido")
+            {
+                txtClavePedido.Text = "";
+                txtClavePedido.ForeColor = Color.White;
+            }
+        }
+
+        private void dgvPedido_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            int cantidad = 0;
+            double subtotalPrecio = 0;
+            double totalPrecio = 0;
+            foreach (DataGridViewRow dgvRow in dgvPedido.Rows)
+            {
+                cantidad += Convert.ToInt32(dgvRow.Cells["Cantidad"].Value);
+                subtotalPrecio += (Convert.ToInt32(dgvRow.Cells["Cantidad"].Value) * Convert.ToDouble(dgvRow.Cells["Precio de venta"].Value) /*+ Convert.ToDouble(dgvRow.Cells["Precio de reparación"].Value)*/);
+            }
+            totalPrecio = (subtotalPrecio * .16) + subtotalPrecio;
+
+            lblCantidadTotal.Text = cantidad.ToString();
+            lblPrecioTotal.Text = "$" + totalPrecio.ToString();
         }
     }
 }
