@@ -201,7 +201,7 @@ namespace Refracciones
                 canvas.BeginText().SetFontAndSize(
                         PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 9)
                         .MoveText(x + 249, y - 41.5)
-                        .ShowText(dgvDatosPDF.Rows[0].Cells[4].Value.ToString())
+                        .ShowText(dgvDatosPDF.Rows[0].Cells[11].Value.ToString()+" "+dgvDatosPDF.Rows[0].Cells[4].Value.ToString())
                         .EndText();
                 //FECHA_ASIGNACION
                 canvas.BeginText().SetFontAndSize(
@@ -309,7 +309,7 @@ namespace Refracciones
                         canvas.BeginText().SetFontAndSize(
                                 PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 9)
                                 .MoveText(x + 249, y - 41.5)
-                                .ShowText(dgvDatosPDF.Rows[0].Cells[4].Value.ToString())
+                                .ShowText(dgvDatosPDF.Rows[0].Cells[11].Value.ToString() + " " + dgvDatosPDF.Rows[0].Cells[4].Value.ToString())
                                 .EndText();
                         //FECHA_ASIGNACION
                         canvas.BeginText().SetFontAndSize(
@@ -345,7 +345,7 @@ namespace Refracciones
                                     .ShowText(dgvDatosPDF.Rows[count].Cells[8].Value.ToString())
                                     .EndText();
                             //COSTO
-                            canvas.BeginText().SetFontAndSize(
+                           /* canvas.BeginText().SetFontAndSize(
                                     PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 10)
                                     .MoveText(x + 295, y - 110.5)
                                     .ShowText(dgvDatosPDF.Rows[count].Cells[9].Value.ToString())
@@ -355,7 +355,7 @@ namespace Refracciones
                                     PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 10)
                                     .MoveText(x + 380, y - 110.5)
                                     .ShowText(dgvDatosPDF.Rows[count].Cells[10].Value.ToString())
-                                    .EndText();
+                                    .EndText();*/
 
                             Items += Int32.Parse(dgvDatosPDF.Rows[count].Cells[8].Value.ToString());
                             y -= 20;
