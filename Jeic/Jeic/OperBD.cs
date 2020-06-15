@@ -1255,7 +1255,7 @@ namespace Refracciones
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     nuevaConexion.Open();
-                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT modelo FROM VEHICULO WHERE modelo NOT LIKE 'PARTICULAR%'", nuevaConexion);
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT modelo FROM VEHICULO", nuevaConexion);// WHERE modelo NOT LIKE 'PARTICULAR%'
                     dataAdapter.Fill(dataSet, "VEHICULO");
                     nuevaConexion.Close();
                 }
@@ -1276,7 +1276,7 @@ namespace Refracciones
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     nuevaConexion.Open();
-                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT marca FROM MARCA WHERE marca NOT LIKE 'PARTICULAR%'", nuevaConexion);
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT marca FROM MARCA", nuevaConexion);//  WHERE marca NOT LIKE 'PARTICULAR%'
                     dataAdapter.Fill(dataSet, "MARCA");
                     nuevaConexion.Close();
                 }
@@ -1309,6 +1309,34 @@ namespace Refracciones
             }
         }
 
+        //------------- OBTENER MARCA EN PARTICULAR DE ACUERDO A CLAVES PEDIDO & SINIESTRO
+        public string Marca(string clavePedido, string claveSiniestro)
+        {
+            string marca = "";
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("SELECT DISTINCT mar.marca FROM VENTAS ven INNER JOIN SINIESTRO sin ON ven.cve_siniestro = sin.cve_siniestro INNER JOIN VEHICULO veh ON sin.cve_vehiculo = veh.cve_vehiculo INNER JOIN MARCA mar ON veh.cve_marca = mar.cve_marca WHERE ven.cve_pedido = @cve_pedido AND ven.cve_siniestro = @cve_siniestro", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@cve_pedido", clavePedido);
+                    Comando.Parameters.AddWithValue("@cve_siniestro", claveSiniestro);
+                    Lector = Comando.ExecuteReader();
+                    if (Lector.Read())
+                    {
+                        marca = Lector["marca"].ToString().Trim();
+                    }
+                    Lector.Close();
+                    nuevaConexion.Close();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return marca;
+        }
+
         //------------- OBTENER VEHICULO EN PARTICULAR DE ACUERDO A CLAVES PEDIDO & SINIESTRO
         public string Vehiculo(string clavePedido, string claveSiniestro)
         {
@@ -1336,6 +1364,105 @@ namespace Refracciones
             }
             return vehiculo;
         }
+
+        //------------- OBTENER AÑO EN PARTICULAR DE ACUERDO A CLAVES PEDIDO & SINIESTRO
+        public string Anio(string clavePedido, string claveSiniestro)
+        {
+            string anio = "";
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("SELECT DISTINCT veh.anio FROM VENTAS ven INNER JOIN SINIESTRO sin ON ven.cve_siniestro = sin.cve_siniestro INNER JOIN VEHICULO veh ON sin.cve_vehiculo = veh.cve_vehiculo WHERE ven.cve_pedido = @cve_pedido AND ven.cve_siniestro = @cve_siniestro", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@cve_pedido", clavePedido);
+                    Comando.Parameters.AddWithValue("@cve_siniestro", claveSiniestro);
+                    Lector = Comando.ExecuteReader();
+                    if (Lector.Read())
+                    {
+                        anio = Lector["anio"].ToString().Trim();
+                    }
+                    Lector.Close();
+                    nuevaConexion.Close();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return anio;
+        }
+
+        //------------- OBTENER COMENTARIO EN PARTICULAR DE ACUERDO A CLAVES PEDIDO & SINIESTRO
+        public string Comentario(string claveSiniestro)
+        {
+            string comentario = "";
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("SELECT comentario FROM SINIESTRO WHERE cve_siniestro = @cve_siniestro", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@cve_siniestro", claveSiniestro);
+                    Lector = Comando.ExecuteReader();
+                    if (Lector.Read())
+                    {
+                        comentario = Lector["comentario"].ToString().Trim();
+                    }
+                    Lector.Close();
+                    nuevaConexion.Close();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return comentario;
+        }
+
+        //-------------------- OBTENER NUMERO DE ARTÍCULOS QUE CORRESPONDEN A UN PEDIDO --------------------
+        //Se ocupará de manera que se haga un ciclo al momento de actualizar el pedido y llenar el DGV
+        public int totalPiezasPedido(string clavePedido, string claveSiniestro)
+        {
+            int count = 0;
+            int cveVenta = claveVenta(clavePedido, claveSiniestro);
+            using (SqlConnection nuevaConexion = Conexion.conexion())
+            {
+                nuevaConexion.Open();
+                Comando = new SqlCommand("SELECT COUNT(*) FROM PEDIDO WHERE cve_venta = @cve_venta", nuevaConexion);
+                Comando.Parameters.AddWithValue("@cve_venta", cveVenta);
+                count = (int)Comando.ExecuteScalar();
+
+
+                nuevaConexion.Close();
+            }
+            return count;
+        }
+
+        //---------------- LLENAR DGV CON PIEZAS DE PEDIDO EN PARTICULAR CON CLAVES PEDIDO Y SINIESTRO
+        public DataTable piezasPedidoActualizar(string clavePedido, string claveSiniestro)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT pie.nombre AS Pieza, ped.cantidad AS Cantidad, ped.cve_producto AS 'Clave de producto', ped.cve_guia AS 'Número de guía', por.nombre AS Portal, ori.origen AS Origen, pro.nombre AS Proveedor, ped.fecha_costo AS 'Fecha costo', ped.costo_neto AS 'Costo neto', coen.costo AS 'Costo de envío', ped.precio_venta AS 'Precio de venta', ped.precio_reparacion AS 'Precio de reparación' FROM VENTAS ven INNER JOIN PEDIDO ped ON ven.cve_venta = ped.cve_venta INNER JOIN PIEZA pie ON ped.cve_pieza = pie.cve_pieza INNER JOIN PORTAL por ON ped.cve_portal = por.cve_portal INNER JOIN ORIGEN_PIEZA ori ON ped.cve_origen = ori.cve_origen INNER JOIN PROVEEDOR pro ON ped.cve_proveedor = pro.cve_proveedor INNER JOIN COSTO_ENVIO coen ON ped.costo_envio = coen.cve_costoEnvio WHERE ven.cve_pedido = @cve_pedido AND ven.cve_siniestro = @cve_siniestro", nuevaConexion);
+                    dataAdapter.SelectCommand.Parameters.AddWithValue("@cve_pedido", clavePedido);
+                    dataAdapter.SelectCommand.Parameters.AddWithValue("@cve_siniestro", claveSiniestro);
+                    dataAdapter.Fill(dt);
+                    nuevaConexion.Close();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return dt;
+        }
+
+
 
         //---------------- VENDEDORES REGISTRADOS
         public DataSet VendedoresRegistrados()
@@ -1991,7 +2118,7 @@ namespace Refracciones
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     nuevaConexion.Open();
-                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT costo FROM COSTO_ENVIO", nuevaConexion);
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT costo FROM COSTO_ENVIO WHERE costo NOT LIKE 0.00", nuevaConexion);
                     dataAdapter.Fill(dataSet, "COSTO_ENVIO");
                     nuevaConexion.Close();
                 }

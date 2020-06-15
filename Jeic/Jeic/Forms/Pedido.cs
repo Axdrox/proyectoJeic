@@ -1,5 +1,6 @@
 ﻿using DocumentFormat.OpenXml.Office.CoverPageProps;
 using DocumentFormat.OpenXml.Office2010.PowerPoint;
+using DocumentFormat.OpenXml.Office2013.Excel;
 using Refracciones.Properties;
 using System;
 using System.Collections.Generic;
@@ -92,6 +93,7 @@ namespace Refracciones.Forms
                 label1.Hide();
                 rdbSi.Hide();
                 rdbNo.Hide();
+                /*
                 if (lblClaveSiniestro.Text.Length > 6)
                 {
                     if (lblClaveSiniestro.Text.Substring(0, 5) == "JEIC-")//funciona
@@ -104,11 +106,32 @@ namespace Refracciones.Forms
                         lblVehiculo.Hide();
                     }
                 }
+                */
+
+                lblClaveSiniestroPedido.Visible = true;
+                lblClaveSiniestro.Visible = true;
+
+                lblMarcaPedido.Visible = true;
+                lblMarca.Visible = true;
+                lblMarca.Text = operacion.Marca(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
+
+                lblVehiculoPedido.Visible = true;
+                lblVehiculo.Visible = true;
                 lblVehiculo.Text = operacion.Vehiculo(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
+
+                lblAnioPedido.Visible = true;
+                lblAnio.Visible = true;
+                lblAnio.Text = operacion.Anio(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
+
                 chbModificarEstado.Show();
                 cbEstadoSiniestro.Enabled = false;
-                cbEstadoSiniestro.Hide();
+                cbEstadoSiniestro.Visible = false;
+                lblEstadoSiniestro.Visible = true;
                 lblEstadoSiniestro.Text = operacion.estadoSiniestroClaves(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
+
+                lblComentarioSiniestro.Visible = true;
+                txtComentarioSiniestro.Visible = true;
+                txtComentarioSiniestro.Text = operacion.Comentario(lblClaveSiniestro.Text.Trim());
 
                 txtClavePedido.Enabled = false;
                 btnFinalizarPedido.Text = "Actualizar pedido";
@@ -150,6 +173,9 @@ namespace Refracciones.Forms
 
                 chbModificarFechaBaja.Visible = true;
                 dtpFechaBaja.Text = operacion.fechaBaja(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
+
+                dgvPedido.DataSource = operacion.piezasPedidoActualizar(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
+                
             }
             else
             {

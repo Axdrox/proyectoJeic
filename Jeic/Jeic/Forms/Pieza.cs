@@ -337,7 +337,7 @@
         {
             if (e.CloseReason == CloseReason.UserClosing)
             {
-                dynamic result = MessageBox.Show("¿Regresar a Pedido?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                dynamic result = MessageBox.Show("¿Los datos son correctos?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if (result == DialogResult.Yes)
                 {
                     this.DialogResult = DialogResult.OK;
@@ -511,7 +511,10 @@
                 if (editarPieza == 1 && chbOtroPieza.Checked == false && chbOtroPieza.Text == "Modificar")
                     datosPieza[0] = txtPiezaNombre.Text.Trim().ToUpper();
                 else if (chbOtroPieza.Checked == true && chbOtroPieza.Text != "Modificar")
+                {
                     datosPieza[0] = txtPiezaNombre.Text.Trim().ToUpper();
+                    operacion.registrarPieza(txtPiezaNombre.Text.Trim().ToUpper());
+                }
                 else if (chbOtroPieza.Checked == false && chbOtroPieza.Text != "Modificar")
                     datosPieza[0] = cbPiezaNombre.Text.Trim().ToUpper();
 
@@ -519,7 +522,10 @@
                 if (editarPieza == 1 && chbOtroPortal.Checked == false && chbOtroPortal.Text == "Modificar")
                     datosPieza[4] = txtPortal.Text.Trim();
                 else if (chbOtroPortal.Checked == true && chbOtroPortal.Text != "Modificar")
+                {
                     datosPieza[4] = txtPortal.Text.Trim();
+                    operacion.registrarPortal(txtPortal.Text.Trim());
+                }
                 else if (chbOtroPortal.Checked == false && chbOtroPortal.Text != "Modificar")
                     datosPieza[4] = cbPortal.Text.Trim();
 
@@ -527,7 +533,10 @@
                 if (editarPieza == 1 && chbOtroOrigen.Checked == false && chbOtroOrigen.Text == "Modificar")
                     datosPieza[5] = txtOrigen.Text.Trim().ToUpper();
                 else if (chbOtroOrigen.Checked == true && chbOtroOrigen.Text != "Modificar")
+                {
                     datosPieza[5] = txtOrigen.Text.Trim().ToUpper();
+                    operacion.registrarOrigen(txtOrigen.Text.Trim().ToUpper());
+                }
                 else if (chbOtroOrigen.Checked == false && chbOtroOrigen.Text != "Modificar")
                     datosPieza[5] = cbOrigen.Text.Trim().ToUpper();
 
@@ -535,7 +544,10 @@
                 if (editarPieza == 1 && chbOtroProveedor.Checked == false && chbOtroProveedor.Text == "Modificar")
                     datosPieza[6] = txtProveedor.Text.Trim().ToUpper();
                 else if (chbOtroProveedor.Checked == true && chbOtroProveedor.Text != "Modificar")
+                {
                     datosPieza[6] = txtProveedor.Text.Trim().ToUpper();
+                    operacion.registrarProveedor(txtProveedor.Text.Trim().ToUpper());
+                }
                 else if (chbOtroProveedor.Checked == false && chbOtroProveedor.Text != "Modificar")
                     datosPieza[6] = cbProveedores.Text.Trim().ToUpper();
 

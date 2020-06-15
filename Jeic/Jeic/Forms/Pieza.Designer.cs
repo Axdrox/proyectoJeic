@@ -413,7 +413,6 @@
             this.txtClaveProducto.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.txtClaveProducto.Location = new System.Drawing.Point(169, 77);
             this.txtClaveProducto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtClaveProducto.Multiline = true;
             this.txtClaveProducto.Name = "txtClaveProducto";
             this.txtClaveProducto.ReadOnly = true;
             this.txtClaveProducto.Size = new System.Drawing.Size(197, 22);
@@ -592,7 +591,6 @@
             // cbCostoEnvio
             // 
             this.cbCostoEnvio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.cbCostoEnvio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCostoEnvio.ForeColor = System.Drawing.Color.White;
             this.cbCostoEnvio.FormattingEnabled = true;
             this.cbCostoEnvio.Location = new System.Drawing.Point(213, 356);
