@@ -175,7 +175,7 @@
             this.btnPDF.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnPDF.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnPDF.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPDF.ForeColor = System.Drawing.Color.White;
+            this.btnPDF.ForeColor = System.Drawing.Color.Linen;
             this.btnPDF.Location = new System.Drawing.Point(12, 281);
             this.btnPDF.Name = "btnPDF";
             this.btnPDF.Size = new System.Drawing.Size(155, 44);

@@ -165,17 +165,18 @@ namespace Refracciones
                     pdfnuevo.Llenartabla(dgvDatosPDF, dato_2.Text);
 
                     int NumeroFila = pdfnuevo.NumeroFilas(dato_2.Text);
-                    int Items = 0;
+      
 
                     for (int i = 0; i < 3; i++){
                 PdfCanvas canvas = new PdfCanvas(pdfdoc.GetPage(i+1));
                 int y = 661;
                 int x = 103;
+                int Items = 0;
 
 
                 //PEDIDO
-                canvas.BeginText().SetFontAndSize(
-                        PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 11)
+                        canvas.BeginText().SetFontAndSize(
+                        PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 18)
                         .MoveText(x, y)
                         .ShowText(dgvDatosPDF.Rows[0].Cells[0].Value.ToString())
                         .EndText();
@@ -201,18 +202,18 @@ namespace Refracciones
                 canvas.BeginText().SetFontAndSize(
                         PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 9)
                         .MoveText(x + 249, y - 41.5)
-                        .ShowText(dgvDatosPDF.Rows[0].Cells[11].Value.ToString()+" "+dgvDatosPDF.Rows[0].Cells[4].Value.ToString())
+                        .ShowText(dgvDatosPDF.Rows[0].Cells[11].Value.ToString()+"  -  "+dgvDatosPDF.Rows[0].Cells[4].Value.ToString())
                         .EndText();
                 //FECHA_ASIGNACION
                 canvas.BeginText().SetFontAndSize(
-                        PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 9)
-                        .MoveText(x-80, y -40)
+                        PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 12)
+                        .MoveText(x-79, y -50)
                         .ShowText(dgvDatosPDF.Rows[0].Cells[5].Value.ToString().Substring(0, 10))
                         .EndText();
                 //FECHA_PROMESA
                 canvas.BeginText().SetFontAndSize(
-                        PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 9)
-                        .MoveText(x +50, y - 40)
+                        PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 12)
+                        .MoveText(x +50, y - 50)
                         .ShowText(dgvDatosPDF.Rows[0].Cells[6].Value.ToString().Substring(0, 10))
                         .EndText();
 
@@ -227,13 +228,13 @@ namespace Refracciones
                     //PIEZAS
                     canvas.BeginText().SetFontAndSize(
                             PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 10)
-                            .MoveText(x+80, y - 110.5)
+                            .MoveText(x-5, y - 110.5)
                             .ShowText( dgvDatosPDF.Rows[count].Cells[7].Value.ToString())
                             .EndText();
                     //CANTIDAD
                     canvas.BeginText().SetFontAndSize(
                             PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 10)
-                            .MoveText(x +234, y - 110.5)
+                            .MoveText(x +237, y - 110.5)
                             .ShowText(dgvDatosPDF.Rows[count].Cells[8].Value.ToString())
                             .EndText();
                     //COSTO
@@ -271,19 +272,19 @@ namespace Refracciones
                     OperBD pdfnuevo = new OperBD();
                     pdfnuevo.Llenartabla(dgvDatosPDF, dato_2.Text);
 
-                    int NumeroFila = pdfnuevo.NumeroFilas(dato_2.Text);
-                    int Items = 0;
+                    int NumeroFila = pdfnuevo.NumeroFilas(dato_2.Text);            
 
                     for (int i = 0; i < 3; i++)
                     {
                         PdfCanvas canvas = new PdfCanvas(pdfdoc.GetPage(i + 1));
                         int y = 661;
                         int x = 103;
+                        int Items = 0;
 
 
                         //PEDIDO
                         canvas.BeginText().SetFontAndSize(
-                                PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 11)
+                                PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 18)
                                 .MoveText(x, y)
                                 .ShowText(dgvDatosPDF.Rows[0].Cells[0].Value.ToString())
                                 .EndText();
@@ -309,18 +310,18 @@ namespace Refracciones
                         canvas.BeginText().SetFontAndSize(
                                 PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 9)
                                 .MoveText(x + 249, y - 41.5)
-                                .ShowText(dgvDatosPDF.Rows[0].Cells[11].Value.ToString() + " " + dgvDatosPDF.Rows[0].Cells[4].Value.ToString())
+                                .ShowText(dgvDatosPDF.Rows[0].Cells[11].Value.ToString() + "  -  " + dgvDatosPDF.Rows[0].Cells[4].Value.ToString())
                                 .EndText();
                         //FECHA_ASIGNACION
                         canvas.BeginText().SetFontAndSize(
-                                PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 9)
-                                .MoveText(x - 80, y - 40)
+                                PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 12)
+                                .MoveText(x - 79, y - 50)
                                 .ShowText(dgvDatosPDF.Rows[0].Cells[5].Value.ToString().Substring(0, 10))
                                 .EndText();
                         //FECHA_PROMESA
                         canvas.BeginText().SetFontAndSize(
-                                PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 9)
-                                .MoveText(x + 50, y - 40)
+                                PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 12)
+                                .MoveText(x + 50, y - 50)
                                 .ShowText(dgvDatosPDF.Rows[0].Cells[6].Value.ToString().Substring(0, 10))
                                 .EndText();
 
@@ -335,13 +336,13 @@ namespace Refracciones
                             //PIEZAS
                             canvas.BeginText().SetFontAndSize(
                                     PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 10)
-                                    .MoveText(x + 80, y - 110.5)
+                                    .MoveText(x-5 , y - 110.5)
                                     .ShowText(dgvDatosPDF.Rows[count].Cells[7].Value.ToString())
                                     .EndText();
                             //CANTIDAD
                             canvas.BeginText().SetFontAndSize(
                                     PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 10)
-                                    .MoveText(x + 234, y - 110.5)
+                                    .MoveText(x + 237, y - 110.5)
                                     .ShowText(dgvDatosPDF.Rows[count].Cells[8].Value.ToString())
                                     .EndText();
                             //COSTO
