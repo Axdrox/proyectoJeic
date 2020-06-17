@@ -267,26 +267,6 @@ namespace Refracciones.Forms
                 calculo = (calculo * porcentajeDescuento) * 1.16;
                 txtFacturaconIVA.Text = calculo.ToString();
             }
-            btnGuardar.Enabled = true;
-        }
-
-        private void txtCve_Factura_Validated(object sender, EventArgs e)
-        {
-            if (txtCve_Factura.Text.Trim() == "")
-            {
-                errorP.SetError(txtCve_Factura, "Introduce un número de factura");
-                txtCve_Factura.Focus();
-                btnGuardar.Enabled = false;
-            }
-            else
-            {
-                errorP.Clear();
-                
-            }
-        }
-
-        private void txtFacturasinIVA_Validated(object sender, EventArgs e)
-        {
             if (txtFacturasinIVA.Text.Trim() == "")
             {
                 errorP.SetError(txtFacturasinIVA, "No se puede dejar este campo vacío");
@@ -296,12 +276,75 @@ namespace Refracciones.Forms
             else
             {
                 errorP.Clear();
-                
+
             }
+            //btnGuardar.Enabled = true;
+        }
+
+        private void txtCve_Factura_Validated(object sender, EventArgs e)
+        {
+            /*if (txtCve_Factura.Text.Trim() == "")
+            {
+                errorP.SetError(txtCve_Factura, "Introduce un número de factura");
+                txtCve_Factura.Focus();
+                btnGuardar.Enabled = false;
+            }
+            else
+            {
+                errorP.Clear();
+                
+            }*/
+        }
+
+        private void txtFacturasinIVA_Validated(object sender, EventArgs e)
+        {
+            /*if (txtFacturasinIVA.Text.Trim() == "")
+            {
+                errorP.SetError(txtFacturasinIVA, "No se puede dejar este campo vacío");
+                txtFacturasinIVA.Focus();
+                btnGuardar.Enabled = false;
+            }
+            else
+            {
+                errorP.Clear();
+                
+            }*/
         }
 
         private void txtCostoRefactura_Validated(object sender, EventArgs e)
         {
+            /*if (txtCostoRefactura.Text.Trim() == "")
+            {
+                errorP.SetError(txtCostoRefactura, "No se puede dejar este campo vacío");
+                txtCostoRefactura.Focus();
+                btnGuardar.Enabled = false;
+            }
+            else
+            {
+                errorP.Clear();
+                btnGuardar.Enabled = true;
+            }*/
+        }
+
+        private void txtCve_Factura_TextChanged(object sender, EventArgs e)
+        {
+            //btnGuardar.Enabled = true;
+            if (txtCve_Factura.Text.Trim() == "")
+            {
+                errorP.SetError(txtCve_Factura, "Introduce un número de factura");
+                txtCve_Factura.Focus();
+                btnGuardar.Enabled = false;
+            }
+            else
+            {
+                errorP.Clear();
+
+            }
+        }
+
+        private void txtCostoRefactura_TextChanged(object sender, EventArgs e)
+        {
+            //btnGuardar.Enabled = true;
             if (txtCostoRefactura.Text.Trim() == "")
             {
                 errorP.SetError(txtCostoRefactura, "No se puede dejar este campo vacío");
@@ -313,16 +356,6 @@ namespace Refracciones.Forms
                 errorP.Clear();
                 btnGuardar.Enabled = true;
             }
-        }
-
-        private void txtCve_Factura_TextChanged(object sender, EventArgs e)
-        {
-            btnGuardar.Enabled = true;
-        }
-
-        private void txtCostoRefactura_TextChanged(object sender, EventArgs e)
-        {
-            btnGuardar.Enabled = true;
         }
 
         private void pbMinimize_Click(object sender, EventArgs e)
@@ -347,6 +380,50 @@ namespace Refracciones.Forms
                 double porcentajeDescuento = 1 - (double.Parse(txtDescuento.Text, culture) / 100);
                 calculo = (calculo * porcentajeDescuento) * 1.16;
                 txtFacturaconIVA.Text = calculo.ToString();
+            }
+        }
+
+        private void txtRutaFactura_TextChanged(object sender, EventArgs e)
+        {
+            if (txtRutaFactura.Text.Trim() != "")
+            {
+                if (txtRutaXml.Text.Trim() == "")
+                {
+                    errorP.SetError(txtRutaXml, "Introduce un archivo XML");
+                    btnGuardar.Enabled = false;
+                }
+                else
+                {
+                    errorP.Clear();
+                    btnGuardar.Enabled = true;
+                }
+            }
+            else
+            {
+                errorP.Clear();
+                btnGuardar.Enabled = true;
+            }
+        }
+
+        private void txtRutaXml_TextChanged(object sender, EventArgs e)
+        {
+            if (txtRutaFactura.Text.Trim() != "")
+            {
+                if (txtRutaXml.Text.Trim() == "")
+                {
+                    errorP.SetError(txtRutaXml, "Introduce un archivo XML");
+                    btnGuardar.Enabled = false;
+                }
+                else
+                {
+                    errorP.Clear();
+                    btnGuardar.Enabled = true;
+                }
+            }
+            else
+            {
+                errorP.Clear();
+                btnGuardar.Enabled = true;
             }
         }
     }

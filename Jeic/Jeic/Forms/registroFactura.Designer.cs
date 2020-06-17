@@ -65,10 +65,10 @@
             this.errorP = new System.Windows.Forms.ErrorProvider(this.components);
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.txtDescuento = new System.Windows.Forms.TextBox();
+            this.lblDescuento = new System.Windows.Forms.Label();
             this.pbMinimize = new System.Windows.Forms.PictureBox();
             this.pbClose = new System.Windows.Forms.PictureBox();
-            this.lblDescuento = new System.Windows.Forms.Label();
-            this.txtDescuento = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorP)).BeginInit();
@@ -124,6 +124,8 @@
             this.txtRutaFactura.ReadOnly = true;
             this.txtRutaFactura.Size = new System.Drawing.Size(228, 20);
             this.txtRutaFactura.TabIndex = 3;
+            this.txtRutaFactura.TextChanged += new System.EventHandler(this.txtRutaFactura_TextChanged);
+            this.txtRutaFactura.Validated += new System.EventHandler(this.txtRutaFactura_Validated);
             // 
             // btnBuscarFact
             // 
@@ -296,6 +298,7 @@
             this.txtRutaXml.ReadOnly = true;
             this.txtRutaXml.Size = new System.Drawing.Size(228, 20);
             this.txtRutaXml.TabIndex = 18;
+            this.txtRutaXml.TextChanged += new System.EventHandler(this.txtRutaXml_TextChanged);
             // 
             // btnBuscarXml
             // 
@@ -468,6 +471,31 @@
             this.bunifuGradientPanel1.Size = new System.Drawing.Size(620, 358);
             this.bunifuGradientPanel1.TabIndex = 33;
             // 
+            // txtDescuento
+            // 
+            this.txtDescuento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.txtDescuento.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDescuento.ForeColor = System.Drawing.Color.White;
+            this.txtDescuento.Location = new System.Drawing.Point(107, 126);
+            this.txtDescuento.Name = "txtDescuento";
+            this.txtDescuento.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtDescuento.Size = new System.Drawing.Size(141, 20);
+            this.txtDescuento.TabIndex = 34;
+            this.txtDescuento.Text = "0";
+            this.txtDescuento.TextChanged += new System.EventHandler(this.txtDescuento_TextChanged);
+            this.txtDescuento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDescuento_KeyPress);
+            // 
+            // lblDescuento
+            // 
+            this.lblDescuento.AutoSize = true;
+            this.lblDescuento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(46)))), ((int)(((byte)(69)))));
+            this.lblDescuento.ForeColor = System.Drawing.Color.White;
+            this.lblDescuento.Location = new System.Drawing.Point(11, 133);
+            this.lblDescuento.Name = "lblDescuento";
+            this.lblDescuento.Size = new System.Drawing.Size(62, 13);
+            this.lblDescuento.TabIndex = 72;
+            this.lblDescuento.Text = "Descuento:";
+            // 
             // pbMinimize
             // 
             this.pbMinimize.Image = global::Refracciones.Properties.Resources.Minimize_Window_2_48px;
@@ -491,31 +519,6 @@
             this.pbClose.TabIndex = 70;
             this.pbClose.TabStop = false;
             this.pbClose.Click += new System.EventHandler(this.pbClose_Click);
-            // 
-            // lblDescuento
-            // 
-            this.lblDescuento.AutoSize = true;
-            this.lblDescuento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(46)))), ((int)(((byte)(69)))));
-            this.lblDescuento.ForeColor = System.Drawing.Color.White;
-            this.lblDescuento.Location = new System.Drawing.Point(11, 133);
-            this.lblDescuento.Name = "lblDescuento";
-            this.lblDescuento.Size = new System.Drawing.Size(62, 13);
-            this.lblDescuento.TabIndex = 72;
-            this.lblDescuento.Text = "Descuento:";
-            // 
-            // txtDescuento
-            // 
-            this.txtDescuento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.txtDescuento.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDescuento.ForeColor = System.Drawing.Color.White;
-            this.txtDescuento.Location = new System.Drawing.Point(107, 126);
-            this.txtDescuento.Name = "txtDescuento";
-            this.txtDescuento.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtDescuento.Size = new System.Drawing.Size(141, 20);
-            this.txtDescuento.TabIndex = 34;
-            this.txtDescuento.Text = "0";
-            this.txtDescuento.TextChanged += new System.EventHandler(this.txtDescuento_TextChanged);
-            this.txtDescuento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDescuento_KeyPress);
             // 
             // label3
             // 

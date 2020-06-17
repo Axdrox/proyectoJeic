@@ -260,26 +260,6 @@ namespace Refracciones.Forms
                 calculo = (calculo * porcentajeDescuento) * 1.16;
                 txtFacturaconIVA.Text = calculo.ToString();
             }
-            btnGuardar.Enabled = true;
-        }
-
-        private void txtCve_Factura_Validated(object sender, EventArgs e)
-        {
-            if(txtCve_Factura.Text.Trim() == "")
-            {
-                errorP.SetError(txtCve_Factura,"Introduce un número de factura");
-                txtCve_Factura.Focus();
-                btnGuardar.Enabled = false;
-            }
-            else
-            {
-                errorP.Clear();
-                btnGuardar.Enabled = true;
-            }
-        }
-
-        private void txtFacturasinIVA_Validated(object sender, EventArgs e)
-        {
             if (txtFacturasinIVA.Text.Trim() == "")
             {
                 errorP.SetError(txtFacturasinIVA, "No se puede dejar este campo vacio");
@@ -291,11 +271,53 @@ namespace Refracciones.Forms
                 errorP.Clear();
                 btnGuardar.Enabled = true;
             }
+            //btnGuardar.Enabled = true;
+        }
+
+        private void txtCve_Factura_Validated(object sender, EventArgs e)
+        {
+            /*if(txtCve_Factura.Text.Trim() == "")
+            {
+                errorP.SetError(txtCve_Factura,"Introduce un número de factura");
+                txtCve_Factura.Focus();
+                btnGuardar.Enabled = false;
+            }
+            else
+            {
+                errorP.Clear();
+                btnGuardar.Enabled = true;
+            }*/
+        }
+
+        private void txtFacturasinIVA_Validated(object sender, EventArgs e)
+        {
+            /*if (txtFacturasinIVA.Text.Trim() == "")
+            {
+                errorP.SetError(txtFacturasinIVA, "No se puede dejar este campo vacio");
+                txtFacturasinIVA.Focus();
+                btnGuardar.Enabled = false;
+            }
+            else
+            {
+                errorP.Clear();
+                btnGuardar.Enabled = true;
+            }*/
         }
 
         private void txtCve_Factura_TextChanged(object sender, EventArgs e)
         {
-            btnGuardar.Enabled = true;
+            //btnGuardar.Enabled = true;
+            if (txtCve_Factura.Text.Trim() == "")
+            {
+                errorP.SetError(txtCve_Factura, "Introduce un número de factura");
+                txtCve_Factura.Focus();
+                btnGuardar.Enabled = false;
+            }
+            else
+            {
+                errorP.Clear();
+                btnGuardar.Enabled = true;
+            }
         }
 
         private void registroFactura_KeyDown(object sender, KeyEventArgs e)
@@ -334,6 +356,55 @@ namespace Refracciones.Forms
         private void txtDescuento_KeyPress(object sender, KeyPressEventArgs e)
         {
            
+        }
+
+        private void txtRutaFactura_Validated(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void txtRutaFactura_TextChanged(object sender, EventArgs e)
+        {
+            if (txtRutaFactura.Text.Trim() != "")
+            {
+                if (txtRutaXml.Text.Trim() == "")
+                {
+                    errorP.SetError(txtRutaXml, "Introduce un archivo XML");
+                    btnGuardar.Enabled = false;
+                }
+                else
+                {
+                    errorP.Clear();
+                    btnGuardar.Enabled = true;
+                }
+            }
+            else
+            {
+                errorP.Clear();
+                btnGuardar.Enabled = true;
+            }
+        }
+
+        private void txtRutaXml_TextChanged(object sender, EventArgs e)
+        {
+            if (txtRutaFactura.Text.Trim() != "")
+            {
+                if (txtRutaXml.Text.Trim() == "")
+                {
+                    errorP.SetError(txtRutaXml, "Introduce un archivo XML");
+                    btnGuardar.Enabled = false;
+                }
+                else
+                {
+                    errorP.Clear();
+                    btnGuardar.Enabled = true;
+                }
+            }
+            else
+            {
+                errorP.Clear();
+                btnGuardar.Enabled = true;
+            }
         }
     }
 }

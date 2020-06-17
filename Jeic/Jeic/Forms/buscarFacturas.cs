@@ -28,13 +28,14 @@ namespace Refracciones.Forms
         private void dgvFacturas_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int fila = Int32.Parse(e.RowIndex.ToString());
-            string cve_factura = dgvFacturas.Rows[fila].Cells[0].Value.ToString();
+            
             if (fila == -1) { }
             else if (e.ColumnIndex == -1)
             { 
             }
             else
             {
+                string cve_factura = dgvFacturas.Rows[fila].Cells[0].Value.ToString();
                 string path = AppDomain.CurrentDomain.BaseDirectory;
                 string folder = path + "/temp/";
                 string fullFilePath = folder + factura.Nombre_Factura(cve_factura);
