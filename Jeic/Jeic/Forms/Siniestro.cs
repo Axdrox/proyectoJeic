@@ -25,9 +25,6 @@ namespace Refracciones.Forms
             this.ActiveControl = label1;
             //Colocar ICONO
             this.Icon = Resources.iconJeic;
-            //Carga los datos de los modelos de vehículos en el combobox
-            cbVehiculo.DataSource = operacion.VehiculosRegistrados().Tables[0].DefaultView;
-            cbVehiculo.ValueMember = "modelo";
 
             //Carga los datos de las marcas de vehículos en el combobox
             cbMarca.DataSource = operacion.MarcasRegistradas().Tables[0].DefaultView;
@@ -74,7 +71,8 @@ namespace Refracciones.Forms
                 txtNombreVehiculoNuevo.Hide();
                 lblVehiculoText.Show();
                 cbVehiculo.Show();
-                txtNombreVehiculoNuevo.Clear();
+                txtNombreVehiculoNuevo.Text = "Escriba un nuevo modelo";
+                txtNombreVehiculoNuevo.ForeColor = Color.FromArgb(160, 160, 140);
             }
         }
 
@@ -189,6 +187,8 @@ namespace Refracciones.Forms
                 lblMarca.Location = new Point(26, 41);
                 lblMarca.Text = "Ingrese marca:";
                 txtMarca.Visible = true;
+                chbOtroVehiculo.Checked = true;
+                chbOtroVehiculo.Enabled = false;
             }
             else
             {
@@ -196,6 +196,10 @@ namespace Refracciones.Forms
                 lblMarca.Location = new Point(70, 41);
                 lblMarca.Text = "Marca:";
                 txtMarca.Visible = false;
+                txtMarca.Text = "Escriba una nueva marca";
+                txtMarca.ForeColor = Color.FromArgb(160, 160, 140);
+                chbOtroVehiculo.Checked = false;
+                chbOtroVehiculo.Enabled = true;
             }
         }
 
@@ -314,6 +318,31 @@ namespace Refracciones.Forms
                 txtComentario.Text = "Agregue un comentario";
                 txtComentario.ForeColor = Color.FromArgb(160, 160, 140);
             }
+        }
+
+        private void txtNombreVehiculoNuevo_Enter(object sender, EventArgs e)
+        {
+            if (txtNombreVehiculoNuevo.Text.Trim() == "Escriba un nuevo modelo")
+            {
+                txtNombreVehiculoNuevo.Clear();
+                txtNombreVehiculoNuevo.ForeColor = Color.White;
+            }
+        }
+
+        private void txtNombreVehiculoNuevo_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtNombreVehiculoNuevo.Text.Trim()))
+            {
+                txtNombreVehiculoNuevo.Text = "Escriba un nuevo modelo";
+                txtNombreVehiculoNuevo.ForeColor = Color.FromArgb(160, 160, 140);
+            }
+        }
+
+        private void cbMarca_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Carga los datos de los modelos de vehículos en el combobox
+            cbVehiculo.DataSource = operacion.VehiculosRegistrados(cbMarca.Text.Trim()).Tables[0].DefaultView;
+            cbVehiculo.ValueMember = "modelo";
         }
     }
 }

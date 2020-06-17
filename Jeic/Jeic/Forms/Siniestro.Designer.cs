@@ -212,6 +212,8 @@
             this.txtNombreVehiculoNuevo.Size = new System.Drawing.Size(169, 22);
             this.txtNombreVehiculoNuevo.TabIndex = 12;
             this.txtNombreVehiculoNuevo.Text = "Escriba un nuevo modelo";
+            this.txtNombreVehiculoNuevo.Enter += new System.EventHandler(this.txtNombreVehiculoNuevo_Enter);
+            this.txtNombreVehiculoNuevo.Leave += new System.EventHandler(this.txtNombreVehiculoNuevo_Leave);
             this.txtNombreVehiculoNuevo.Validating += new System.ComponentModel.CancelEventHandler(this.txtNombreVehiculoNuevo_Validating);
             // 
             // chbOtroVehiculo
@@ -320,6 +322,7 @@
             this.cbMarca.Name = "cbMarca";
             this.cbMarca.Size = new System.Drawing.Size(168, 24);
             this.cbMarca.TabIndex = 22;
+            this.cbMarca.SelectedIndexChanged += new System.EventHandler(this.cbMarca_SelectedIndexChanged);
             // 
             // chbMarca
             // 
