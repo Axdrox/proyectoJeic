@@ -117,6 +117,7 @@
 
                 //txtCostoSinIVA.Text = datos[8];
                 txtCostoNeto.Text = datos[8];
+                txtCostoNeto.Enabled = true;
 
                 cbCostoEnvio.DropDownStyle = ComboBoxStyle.DropDown;
                 cbCostoEnvio.Text = datos[9];

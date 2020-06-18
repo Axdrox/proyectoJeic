@@ -48,18 +48,16 @@ namespace Refracciones.Forms
 
         private void Pedido_Load(object sender, EventArgs e)
         {
-            if (actualizar != 1)
-            {
-                chbModificarEstado.Location = new Point(330, 186);
-                var editButton = new DataGridViewButtonColumn();
-                editButton.Name = "dataGridViewEditButton";
-                editButton.HeaderText = "Editar";
-                editButton.Text = "Editar";
-                editButton.FlatStyle = FlatStyle.Popup;
-                editButton.CellTemplate.Style.BackColor = Color.Aquamarine;
-                editButton.UseColumnTextForButtonValue = true;
-                this.dgvPedido.Columns.Add(editButton);
-            }
+            chbModificarEstado.Location = new Point(330, 186);
+            var editButton = new DataGridViewButtonColumn();
+            editButton.Name = "dataGridViewEditButton";
+            editButton.HeaderText = "Editar";
+            editButton.Text = "Editar";
+            editButton.FlatStyle = FlatStyle.Popup;
+            editButton.CellTemplate.Style.BackColor = Color.DarkCyan;
+            editButton.UseColumnTextForButtonValue = true;
+            this.dgvPedido.Columns.Add(editButton);
+
             var deleteButton = new DataGridViewButtonColumn();
             deleteButton.Name = "dataGridViewDeleteButton";
             deleteButton.HeaderText = "Eliminar";
@@ -84,6 +82,22 @@ namespace Refracciones.Forms
             dt.Columns.Add("Precio de venta");
             dt.Columns.Add("Precio de reparación");
             dgvPedido.DataSource = dt;
+
+            //Carga los datos registros de vendedores en el combobox
+            cbVendedor.DataSource = operacion.VendedoresRegistrados().Tables[0].DefaultView;
+            cbVendedor.ValueMember = "nombre";
+
+            //Carga los datos registros de clientes/aseguradoras en el combobox
+            cbAseguradora.DataSource = operacion.AseguradorasRegistradas().Tables[0].DefaultView;
+            cbAseguradora.ValueMember = "cve_nombre";
+
+            //Carga los datos registros de talleres en el combobox
+            cbTaller.DataSource = operacion.TalleresRegistrados().Tables[0].DefaultView;
+            cbTaller.ValueMember = "nombre";
+
+            //Carga los datos registros de destinos en el combobox
+            cbDestino.DataSource = operacion.DestinosRegistrados().Tables[0].DefaultView;
+            cbDestino.ValueMember = "destino";
 
             //Colocar ICONO
             this.Icon = Resources.iconJeic;
@@ -141,11 +155,17 @@ namespace Refracciones.Forms
                 cbVendedor.Hide();
                 txtVendedor.Text = operacion.Vendedor(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
 
+                chbModificarVendedor.Text = "Modificar";
+
                 chbOtraAseguradora.Enabled = true;
                 chbOtraAseguradora.Text = "Modificar";
                 cbAseguradora.Hide();
                 txtAseguradora.Text = operacion.Cliente(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
                 txtAseguradora.Enabled = false;
+
+                //Carga los datos registros de valuadores en el combobox
+                cbValuador.DataSource = operacion.ValuadoresRegistrados(txtAseguradora.Text.Trim()).Tables[0].DefaultView;
+                cbValuador.ValueMember = "nombre";
 
                 chbOtroValuador.Enabled = true;
                 chbOtroValuador.Text = "Modificar";
@@ -172,28 +192,20 @@ namespace Refracciones.Forms
                 dtpFechaPromesa.Text = operacion.fechaPromesa(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
 
                 chbModificarFechaBaja.Visible = true;
-                dtpFechaBaja.Text = operacion.fechaBaja(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
+                //dtpFechaBaja.Text = operacion.fechaBaja(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
 
                 dgvPedido.DataSource = operacion.piezasPedidoActualizar(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
+                double precioTotal = 0; int piezasTotal = 0;
+                foreach (DataGridViewRow row in dgvPedido.Rows)
+                {
+                    precioTotal += Convert.ToDouble(row.Cells["Precio de venta"].Value);
+                    piezasTotal += Convert.ToInt32(row.Cells["Cantidad"].Value);
+                }
+                lblPrecioTotal.Text = "$" + precioTotal.ToString();
+                lblCantidadTotal.Text = piezasTotal.ToString();
             }
             else
             {
-                //Carga los datos registros de vendedores en el combobox
-                cbVendedor.DataSource = operacion.VendedoresRegistrados().Tables[0].DefaultView;
-                cbVendedor.ValueMember = "nombre";
-
-                //Carga los datos registros de clientes/aseguradoras en el combobox
-                cbAseguradora.DataSource = operacion.AseguradorasRegistradas().Tables[0].DefaultView;
-                cbAseguradora.ValueMember = "cve_nombre";
-
-                //Carga los datos registros de talleres en el combobox
-                cbTaller.DataSource = operacion.TalleresRegistrados().Tables[0].DefaultView;
-                cbTaller.ValueMember = "nombre";
-
-                //Carga los datos registros de destinos en el combobox
-                cbDestino.DataSource = operacion.DestinosRegistrados().Tables[0].DefaultView;
-                cbDestino.ValueMember = "destino";
-
                 lblVehiculoPedido.Hide();
                 lblVehiculo.Hide();
                 lblAnioPedido.Hide();
@@ -219,6 +231,10 @@ namespace Refracciones.Forms
                 dtpFechaBaja.Hide();
                 chbModificarFechaBaja.Hide();
                 lblFechaBaja.Hide();
+
+                //Carga los datos registros de valuadores en el combobox
+                cbValuador.DataSource = operacion.ValuadoresRegistrados(cbAseguradora.Text.Trim()).Tables[0].DefaultView;
+                cbValuador.ValueMember = "nombre";
             }
         }
 
@@ -369,6 +385,50 @@ namespace Refracciones.Forms
 
         private void chbOtraAseguradora_CheckedChanged(object sender, EventArgs e)
         {
+            if (chbOtraAseguradora.Text == "Modificar" && chbOtraAseguradora.Checked == true)
+            {
+                cbAseguradora.Visible = true;
+                cbAseguradora.Enabled = true;
+                txtAseguradora.Enabled = true;
+                txtAseguradora.Clear();
+                txtAseguradora.Visible = false;
+                txtAseguradora.Text = "Escriba el nombre del cliente";
+                txtAseguradora.ForeColor = Color.FromArgb(160, 160, 140);
+                chbOtraAseguradora.Text = "Otro";
+                chbOtraAseguradora.Checked = false;
+                chbOtroValuador.Checked = true;
+                //Carga los datos registros de valuadores en el combobox
+                cbValuador.DataSource = operacion.ValuadoresRegistrados(cbAseguradora.Text.Trim()).Tables[0].DefaultView;
+                cbValuador.ValueMember = "nombre";
+            }
+
+            if (chbOtraAseguradora.Text == "Otro" && chbOtraAseguradora.Checked == true)
+            {
+                txtAseguradora.Show();
+                cbAseguradora.Hide();
+                //cbAseguradora.SelectedIndex = -1;
+
+                chbOtroValuador.Checked = true;
+                chbOtroValuador.Text = "Otro";
+                chbOtroValuador.Enabled = false;
+
+                lblDiasEspera.Visible = true;
+                txtDiasEspera.Visible = true;
+            }
+            else if (chbOtraAseguradora.Text == "Otro" && chbOtraAseguradora.Checked == false)
+            {
+                txtAseguradora.Hide();
+                txtAseguradora.Text = "Escriba el nombre del cliente";
+                txtAseguradora.ForeColor = Color.FromArgb(160, 160, 140);
+                cbAseguradora.Show();
+
+                chbOtroValuador.Checked = false;
+                chbOtroValuador.Enabled = true;
+
+                lblDiasEspera.Visible = false;
+                txtDiasEspera.Visible = false;
+            }
+            /*
             if (actualizar == 1)
             {
                 if (chbOtraAseguradora.Checked == true)
@@ -424,11 +484,37 @@ namespace Refracciones.Forms
                     lblDiasEspera.Visible = false;
                     txtDiasEspera.Visible = false;
                 }
-            }
+            }*/
         }
 
         private void chbOtroValuador_CheckedChanged(object sender, EventArgs e)
         {
+            if (chbOtroValuador.Text == "Modificar" && chbOtroValuador.Checked == true)
+            {
+                cbValuador.Visible = true;
+                cbValuador.Enabled = true;
+                txtValuador.Enabled = true;
+                txtValuador.Clear();
+                txtValuador.Visible = false;
+                txtValuador.Text = "Escriba nombre del valuador";
+                txtValuador.ForeColor = Color.FromArgb(160, 160, 140);
+                chbOtroValuador.Text = "Otro";
+                chbOtroValuador.Checked = false;
+            }
+
+            if (chbOtroValuador.Text == "Otro" && chbOtroValuador.Checked == true)
+            {
+                txtValuador.Show();
+                cbValuador.Hide();
+            }
+            else if (chbOtroValuador.Text == "Otro" && chbOtroValuador.Checked == false)
+            {
+                txtValuador.Hide();
+                txtValuador.Text = "Escriba nombre del valuador";
+                txtValuador.ForeColor = Color.FromArgb(160, 160, 140);
+                cbValuador.Show();
+            }
+            /*
             if (actualizar == 1)
             {
                 if (chbOtroValuador.Checked == true)
@@ -459,11 +545,38 @@ namespace Refracciones.Forms
                     txtValuador.ForeColor = Color.FromArgb(160, 160, 140);
                     cbValuador.Show();
                 }
-            }
+            }*/
         }
 
         private void chbOtroTaller_CheckedChanged(object sender, EventArgs e)
         {
+            if (chbOtroTaller.Text == "Modificar" && chbOtroTaller.Checked == true)
+            {
+                cbTaller.Visible = true;
+                cbTaller.Enabled = true;
+                txtTaller.Enabled = true;
+                txtTaller.Clear();
+                txtTaller.Visible = false;
+                txtTaller.Text = "Escriba nombre de taller";
+                txtTaller.ForeColor = Color.FromArgb(160, 160, 140);
+                chbOtroTaller.Text = "Otro";
+                chbOtroTaller.Checked = false;
+            }
+
+            if (chbOtroTaller.Text == "Otro" && chbOtroTaller.Checked == true)
+            {
+                txtTaller.Show();
+                cbTaller.Hide();
+                //cbTaller.SelectedIndex = -1;
+            }
+            else if (chbOtroTaller.Text == "Otro" && chbOtroTaller.Checked == false)
+            {
+                txtTaller.Hide();
+                txtTaller.Text = "Escriba nombre de taller";
+                txtTaller.ForeColor = Color.FromArgb(160, 160, 140);
+                cbTaller.Show();
+            }
+            /*
             if (actualizar == 1)
             {
                 if (chbOtroTaller.Checked == true)
@@ -485,7 +598,7 @@ namespace Refracciones.Forms
                 {
                     txtTaller.Show();
                     cbTaller.Hide();
-                    cbTaller.SelectedIndex = -1;
+                    //cbTaller.SelectedIndex = -1;
                 }
                 else
                 {
@@ -494,11 +607,38 @@ namespace Refracciones.Forms
                     txtTaller.ForeColor = Color.FromArgb(160, 160, 140);
                     cbTaller.Show();
                 }
-            }
+            }*/
         }
 
         private void chbOtroDestino_CheckedChanged(object sender, EventArgs e)
         {
+            if (chbOtroDestino.Text == "Modificar" && chbOtroDestino.Checked == true)
+            {
+                cbDestino.Visible = true;
+                cbDestino.Enabled = true;
+                txtDestino.Enabled = true;
+                txtDestino.Clear();
+                txtDestino.Visible = false;
+                txtDestino.Text = "Escriba nombre del valuador";
+                txtDestino.ForeColor = Color.FromArgb(160, 160, 140);
+                chbOtroDestino.Text = "Otro";
+                chbOtroDestino.Checked = false;
+            }
+
+            if (chbOtroDestino.Text == "Otro" && chbOtroDestino.Checked == true)
+            {
+                txtDestino.Show();
+                cbDestino.Hide();
+                //cbDestino.SelectedIndex = -1;
+            }
+            else if (chbOtroDestino.Text == "Otro" && chbOtroDestino.Checked == false)
+            {
+                txtDestino.Hide();
+                txtDestino.Text = "Escriba el destino";
+                txtDestino.ForeColor = Color.FromArgb(160, 160, 140);
+                cbDestino.Show();
+            }
+            /*
             if (actualizar == 1)
             {
                 if (chbOtroDestino.Checked == true)
@@ -520,7 +660,7 @@ namespace Refracciones.Forms
                 {
                     txtDestino.Show();
                     cbDestino.Hide();
-                    cbDestino.SelectedIndex = -1;
+                    //cbDestino.SelectedIndex = -1;
                 }
                 else
                 {
@@ -529,7 +669,7 @@ namespace Refracciones.Forms
                     txtDestino.ForeColor = Color.FromArgb(160, 160, 140);
                     cbDestino.Show();
                 }
-            }
+            }*/
         }
 
         private void txtClavePedido_KeyPress(object sender, KeyPressEventArgs e)
@@ -609,7 +749,6 @@ namespace Refracciones.Forms
                     }
                     else
                         valuador = cbValuador.Text.Trim();
-                        
 
                     if (chbOtraAseguradora.Checked == true)
                     {
@@ -618,7 +757,6 @@ namespace Refracciones.Forms
                     }
                     else
                         aseguradora = cbAseguradora.Text.Trim();
-
 
                     if (chbOtroTaller.Checked == true)
                     {
@@ -679,8 +817,8 @@ namespace Refracciones.Forms
                         //double totalCostoEnvio = 0; Ya no es tan necesaria puesto que se le tiene que sumar a la variable subtotalPrecio
                         foreach (DataGridViewRow row in dgvPedido.Rows)
                         {
-                            totalCosto += Convert.ToInt32(row.Cells["Cantidad"].Value) * Convert.ToDouble(row.Cells["Costo neto"].Value);
-                            subtotalPrecio += (Convert.ToInt32(row.Cells["Cantidad"].Value) * Convert.ToDouble(row.Cells["Precio de venta"].Value) /*+ Convert.ToDouble(row.Cells["Precio de reparación"].Value)*/);
+                            totalCosto += /*Convert.ToInt32(row.Cells["Cantidad"].Value) **/ Convert.ToDouble(row.Cells["Costo neto"].Value);
+                            subtotalPrecio += /*(Convert.ToInt32(row.Cells["Cantidad"].Value) **/ Convert.ToDouble(row.Cells["Precio de venta"].Value) /*+ Convert.ToDouble(row.Cells["Precio de reparación"].Value)*/;
                             /*if (!guia.Contains(Convert.ToString(row.Cells["Número de guía"].Value)))
                              {
                                  guia[i] = Convert.ToString(row.Cells["Número de guía"].Value);
@@ -689,7 +827,8 @@ namespace Refracciones.Forms
                                  i++;
                              }*/
                         }
-                        totalPrecio = (subtotalPrecio * .16) + subtotalPrecio;
+                        //totalPrecio = (subtotalPrecio * .16) + subtotalPrecio;
+                        totalPrecio = Convert.ToDouble(lblPrecioTotal.Text.Substring(1, lblPrecioTotal.Text.Length - 1));
                         utilidad = totalPrecio - totalCosto;
 
                         //AGREGANDO DATOS A VENTA
@@ -790,22 +929,6 @@ namespace Refracciones.Forms
             cbValuador.ValueMember = "nombre";
         }
 
-        private void cbValuador_Click(object sender, EventArgs e)
-        {
-            //Carga los datos registros de valuadores en el combobox
-
-            if (actualizar == 1 && chbOtroValuador.Checked == true && chbOtroValuador.Text == "Modificar" && chbOtraAseguradora.Checked == false)
-            {
-                cbValuador.DataSource = operacion.ValuadoresRegistrados(txtAseguradora.Text.Trim()).Tables[0].DefaultView;
-                cbValuador.ValueMember = "nombre";
-            }
-            else
-            {
-                cbValuador.DataSource = operacion.ValuadoresRegistrados(cbAseguradora.Text.Trim()).Tables[0].DefaultView;
-                cbValuador.ValueMember = "nombre";
-            }
-        }
-
         private string[] datosPieza = new string[12];
 
         public string[] datosMandar
@@ -863,6 +986,9 @@ namespace Refracciones.Forms
                 }
                 pieza.datosEditar = datosPieza;
                 pieza.editarPieza = 1;
+                pieza.marca = lblMarca.Text;
+                pieza.modelo = lblVehiculo.Text;
+                pieza.anio = lblAnio.Text;
                 string[] guia = new string[dgvPedido.Rows.Count];
                 int i = 0;
                 pieza.destino = cbDestino.Text.Trim();
@@ -919,22 +1045,60 @@ namespace Refracciones.Forms
             }
         }
 
+
         private void chbModificarFechaBaja_CheckedChanged(object sender, EventArgs e)
         {
-            //CHECAR
-            /*
             if (chbModificarFechaBaja.Checked == true)
                 dtpFechaBaja.Enabled = true;
             else
             {
-                dtpFechaBaja.Text = operacion.fechaBaja(txtClavePedido.Text, lblClaveSiniestro.Text);
+                //dtpFechaBaja.Text = operacion.fechaBaja(txtClavePedido.Text, lblClaveSiniestro.Text);
                 dtpFechaBaja.Enabled = false;
             }
-            */
         }
 
         private void chbModificarVendedor_CheckedChanged(object sender, EventArgs e)
         {
+            if (chbModificarVendedor.Text == "Modificar" && chbModificarVendedor.Checked == true)
+            {
+                cbVendedor.Visible = true;
+                txtVendedor.ReadOnly = false;
+                txtVendedor.Clear();
+                txtVendedor.Visible = false;
+                txtVendedor.Text = "Escriba nombre del nuevo vendedor";
+                txtVendedor.ForeColor = Color.FromArgb(160, 160, 140);
+                chbModificarVendedor.Text = "Otro";
+                chbModificarVendedor.Checked = false;
+            }
+
+            if (chbModificarVendedor.Text == "Otro" && chbModificarVendedor.Checked == true)
+            {
+                txtVendedor.Show();
+                txtVendedor.Enabled = true;
+                lblNumeroEmpleado.Visible = true;
+                txtNumeroEmpleado.Visible = true;
+                cbVendedor.Hide();
+                //cbPiezaNombre.SelectedIndex = -1;
+            }
+            else if (chbModificarVendedor.Text == "Otro" && chbModificarVendedor.Checked == false)
+            {
+                lblNumeroEmpleado.Hide();
+                txtNumeroEmpleado.Hide();
+                txtNumeroEmpleado.Clear();
+                txtVendedor.Hide();
+                txtVendedor.Text = "Escriba nombre del nuevo vendedor";
+                txtVendedor.ForeColor = Color.FromArgb(160, 160, 140);
+                cbVendedor.Show();
+                cbVendedor.Enabled = true;
+
+                chbOtroValuador.Checked = false;
+                chbOtroValuador.Enabled = true;
+
+                lblDiasEspera.Visible = false;
+                txtDiasEspera.Visible = false;
+            }
+
+            /*
             if (actualizar == 1)
             {
                 if (chbModificarVendedor.Checked == true)
@@ -977,7 +1141,7 @@ namespace Refracciones.Forms
                     lblDiasEspera.Visible = false;
                     txtDiasEspera.Visible = false;
                 }
-            }
+            }*/
         }
 
         private void cbEstadoSiniestro_Click(object sender, EventArgs e)
@@ -1151,9 +1315,10 @@ namespace Refracciones.Forms
             foreach (DataGridViewRow dgvRow in dgvPedido.Rows)
             {
                 cantidad += Convert.ToInt32(dgvRow.Cells["Cantidad"].Value);
-                subtotalPrecio += (Convert.ToInt32(dgvRow.Cells["Cantidad"].Value) * Convert.ToDouble(dgvRow.Cells["Precio de venta"].Value) /*+ Convert.ToDouble(dgvRow.Cells["Precio de reparación"].Value)*/);
+                //subtotalPrecio += (Convert.ToInt32(dgvRow.Cells["Cantidad"].Value) * Convert.ToDouble(dgvRow.Cells["Precio de venta"].Value) /*+ Convert.ToDouble(dgvRow.Cells["Precio de reparación"].Value)*/);
+                totalPrecio += Convert.ToDouble(dgvRow.Cells["Precio de venta"].Value);
             }
-            totalPrecio = (subtotalPrecio * .16) + subtotalPrecio;
+            //totalPrecio = (subtotalPrecio * .16) + subtotalPrecio;
 
             lblCantidadTotal.Text = cantidad.ToString();
             lblPrecioTotal.Text = "$" + totalPrecio.ToString();

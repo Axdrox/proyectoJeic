@@ -410,7 +410,7 @@
             // 
             this.txtClaveProducto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.txtClaveProducto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtClaveProducto.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.txtClaveProducto.ForeColor = System.Drawing.Color.White;
             this.txtClaveProducto.Location = new System.Drawing.Point(169, 77);
             this.txtClaveProducto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtClaveProducto.Name = "txtClaveProducto";
