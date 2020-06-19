@@ -1000,13 +1000,13 @@ namespace Refracciones
             {
                 SLDocument sl = new SLDocument(ruta);
                 DateTime hoy = DateTime.Today;
-                sl.SetCellValue("L2", hoy.ToString("dd-MM-yyyy"));//Se agrega la fecha al excel
+                sl.SetCellValue("M2", hoy.ToString("dd-MM-yyyy"));//Se agrega la fecha al excel
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     nuevaConexion.Open();
                     int celdaContenido = 9;
                     //Comando = new SqlCommand("SELECT ven.cve_pedido AS 'PEDIDO', ven.cve_siniestro AS 'SINIESTRO',  c.cve_nombre AS 'CLIENTE', val.nombre AS 'VALUADOR', t.nombre AS 'TALLER', vh.modelo AS 'VHEICULO MODELO', vh.anio 'AÑO', pro.nombre AS 'PROVEEDOR', pie.nombre AS 'PIEZA', ped.cve_producto AS 'CLAVE PRODUCTO', ped.cantidad AS 'TOTAL DE PIEZAS', ped.cve_guia AS 'GUÍA DE SEGUIMIENTO', opie.origen AS 'ORIGEN PIEZA', por.nombre 'PORTAL', cosen.costo AS 'COSTO ENVÍO', ped.costo_comprasinIVA AS 'COSTO SIN IVA', ped.costo_neto AS 'COSTO CON IVA', ped.precio_venta AS 'PRECIO VENTA', dest.destino AS 'DESTINO', ven.cve_vendedor AS 'VENDEDOR', ven.fecha_asignacion AS 'FECHA DE ASIGNACIÓN', ven.fecha_promesa AS 'FECHA PROMESA', ent.fecha AS 'FECHA DE ENTREGA', ped.pzas_entregadas AS 'PIEZAS ENTREGADAS', ped.entrega_enTiempo AS 'ENTREGA EN TIEMPO', ped.dias_entrega AS 'DÍAS DE ENTREGA', ven.fecha_baja AS 'FECHA DE BAJA', dev.fecha AS 'FECHA DEVOLUCIÓN', dev.motivo AS 'MOTIVO DE DEVOLUCIÓN', dev.cantidad AS 'CANTIDAD DE PIEZAS DEVUELTAS', pen.porcentaje AS 'PENALIZACIÓN POR DEVOLUCIÓN', ven.cve_factura AS 'FACTURA ACTUAL', fact.cve_refactura AS 'FACTURA ANTERIOR', fact.fecha_ingreso AS 'FECHA INGRESO FACTURA', estfact.estado AS 'ESTADO DE LA FACTURA', fact.fecha_revision AS 'FECHA DE REVISIÓN FACTURA', fact.fecha_pago AS 'FECHA DE PAGO FACTURA', fact.fact_sinIVA AS 'FACTURA SIN IVA', fact.fact_neto AS 'FACTURA NETO', si.comentario AS 'COMENTARIOS SINIESTRO', fact.comentario AS 'COMENTARIOS FACTURA',ven.sub_total AS 'SUB TOTAL', ven.total AS 'TOTAL', ven.utilidad AS 'UTILIDAD BRUTA' FROM VENTAS ven FULL JOIN VALUADOR val ON ven.cve_valuador = val.cve_valuador FULL JOIN CLIENTE c ON c.cve_valuador = val.cve_valuador FULL JOIN TALLER t ON ven.cve_taller = t.cve_taller FULL JOIN SINIESTRO si ON ven.cve_siniestro = si.cve_siniestro FULL JOIN VEHICULO vh ON si.cve_vehiculo = vh.cve_vehiculo FULL JOIN PEDIDO ped ON ven.cve_venta = ped.cve_venta FULL JOIN PROVEEDOR pro ON ped.cve_proveedor = pro.cve_proveedor FULL JOIN PIEZA pie ON ped.cve_pieza = pie.cve_pieza FULL JOIN ORIGEN_PIEZA opie ON ped.cve_origen = opie.cve_origen FULL JOIN PORTAL por ON ped.cve_portal = por.cve_portal FULL JOIN COSTO_ENVIO cosen ON ped.costo_envio = cosen.cve_costoEnvio FULL JOIN DESTINO dest ON ven.cve_destino = dest.cve_destino FULL JOIN ENTREGA ent ON ped.cve_entrega = ent.cve_entrega FULL JOIN DEVOLUCION dev ON ped.cve_devolucion = dev.cve_devolucion FULL JOIN PENALIZACION pen ON dev.cve_penalizacion = pen.cve_penalizacion FULL JOIN FACTURA fact ON ven.cve_factura = fact.cve_factura FULL JOIN ESTADO_FACTURA estfact ON fact.cve_estado = estfact.cve_estado WHERE ven.cve_siniestro != '' AND ven.fecha_asignacion BETWEEN  @fecha1 AND @fecha2", nuevaConexion);
-                    Comando = new SqlCommand("SELECT ven.cve_pedido AS 'PEDIDO', ven.cve_siniestro AS 'SINIESTRO', c.cve_nombre AS 'CLIENTE', val.nombre AS 'VALUADOR', t.nombre AS 'TALLER', vh.modelo AS 'VHEICULO MODELO',marca.marca AS 'MARCA', vh.anio 'AÑO', pro.nombre AS 'PROVEEDOR', pie.nombre AS 'PIEZA', ped.cve_producto AS 'CLAVE PRODUCTO', ped.cantidad AS 'TOTAL DE PIEZAS', ped.cve_guia AS 'GUÍA DE ENVIO', opie.origen AS 'ORIGEN PIEZA', por.nombre 'PORTAL', cosen.costo AS 'COSTO ENVÍO', ped.costo_neto AS 'COSTO', ped.precio_venta AS 'PRECIO VENTA', dest.destino AS 'DESTINO', vendedor.nombre AS 'VENDEDOR', CONVERT(varchar, ven.fecha_asignacion, 6)  AS 'FECHA DE ASIGNACIÓN', CONVERT(varchar, ven.fecha_promesa, 6)  AS 'FECHA PROMESA', CONVERT(varchar, ent.fecha, 6)  AS 'FECHA DE ENTREGA', ped.pzas_entregadas AS 'PIEZAS ENTREGADAS', ped.entrega_enTiempo AS 'ENTREGA EN TIEMPO', ped.dias_entrega AS 'DÍAS DE ENTREGA', CONVERT(varchar, ven.fecha_baja, 6)  AS 'FECHA DE BAJA', CONVERT(varchar, dev.fecha, 6)  AS 'FECHA DEVOLUCIÓN', dev.motivo AS 'MOTIVO DE DEVOLUCIÓN', dev.cantidad AS 'CANTIDAD DE PIEZAS DEVUELTAS', dev.penalizacion AS 'PENALIZACIÓN POR DEVOLUCIÓN', ven.cve_factura AS 'FACTURA ACTUAL', fact.cve_refactura AS 'FACTURA ANTERIOR', CONVERT(varchar, fact.fecha_ingreso, 6)  AS 'FECHA INGRESO FACTURA', estfact.estado AS 'ESTADO DE LA FACTURA', CONVERT(varchar, fact.fecha_revision, 6)  AS 'FECHA DE REVISIÓN FACTURA', CONVERT(varchar, fact.fecha_pago, 6)  AS 'FECHA DE PAGO FACTURA', ped.precio_venta AS 'FACTURA SIN IVA', (ped.precio_venta * 1.16) AS 'FACTURA NETO', si.comentario AS 'COMENTARIOS SINIESTRO', fact.comentario AS 'COMENTARIOS FACTURA',(cosen.costo + ped.costo_neto) AS 'COSTO ADQUISICION', ((ped.precio_venta)-(cosen.costo + ped.costo_neto)) AS 'UTILIDAD ADQUISICION', (@costoOperativo) AS 'COSTO OPERATIVO',ped.gasto AS 'GASTO',(((ped.precio_venta)-(cosen.costo + ped.costo_neto))-(@costoOperativo)-(ped.gasto)) AS 'UTILIDAD FINAL' FROM VENTAS ven FULL JOIN VALUADOR val ON ven.cve_valuador = val.cve_valuador FULL JOIN CLIENTE c ON c.cve_valuador = val.cve_valuador FULL JOIN TALLER t ON ven.cve_taller = t.cve_taller FULL JOIN SINIESTRO si ON ven.cve_siniestro = si.cve_siniestro FULL JOIN VEHICULO vh ON si.cve_vehiculo = vh.cve_vehiculo FULL JOIN PEDIDO ped ON ven.cve_venta = ped.cve_venta FULL JOIN PROVEEDOR pro ON ped.cve_proveedor = pro.cve_proveedor FULL JOIN PIEZA pie ON ped.cve_pieza = pie.cve_pieza FULL JOIN ORIGEN_PIEZA opie ON ped.cve_origen = opie.cve_origen FULL JOIN PORTAL por ON ped.cve_portal = por.cve_portal FULL JOIN COSTO_ENVIO cosen ON ped.costo_envio = cosen.cve_costoEnvio FULL JOIN DESTINO dest ON ven.cve_destino = dest.cve_destino FULL JOIN ENTREGA ent ON ped.cve_entrega = ent.cve_entrega FULL JOIN DEVOLUCION dev ON ped.cve_devolucion = dev.cve_devolucion  FULL JOIN FACTURA fact ON ven.cve_factura = fact.cve_factura FULL JOIN ESTADO_FACTURA estfact ON fact.cve_estado = estfact.cve_estado FULL JOIN VENDEDOR vendedor ON ven.cve_vendedor = vendedor.cve_vendedor FULL JOIN MARCA marca ON vh.cve_marca = marca.cve_marca WHERE ven.cve_siniestro != '' AND ven.fecha_asignacion BETWEEN  @fecha1 AND @fecha2", nuevaConexion);
+                    Comando = new SqlCommand("SELECT ven.cve_pedido AS 'PEDIDO', ven.cve_siniestro AS 'SINIESTRO', c.cve_nombre AS 'CLIENTE', val.nombre AS 'VALUADOR', t.nombre AS 'TALLER', vh.modelo AS 'VHEICULO MODELO',marca.marca AS 'MARCA', vh.anio 'AÑO', pro.nombre AS 'PROVEEDOR', pie.nombre AS 'PIEZA', ped.cve_producto AS 'CLAVE PRODUCTO', ped.cantidad AS 'TOTAL DE PIEZAS', ped.cve_guia AS 'GUÍA DE ENVIO', opie.origen AS 'ORIGEN PIEZA', por.nombre 'PORTAL', cosen.costo AS 'COSTO ENVÍO', ped.costo_neto AS 'COSTO', ped.precio_venta AS 'PRECIO VENTA', dest.destino AS 'DESTINO',vendedor.cve_vendedor AS 'NUMERO DE VENDEDOR', vendedor.nombre AS 'VENDEDOR', CONVERT(varchar, ven.fecha_asignacion, 6)  AS 'FECHA DE ASIGNACIÓN', CONVERT(varchar, ven.fecha_promesa, 6)  AS 'FECHA PROMESA', CONVERT(varchar, ent.fecha, 6)  AS 'FECHA DE ENTREGA', ped.pzas_entregadas AS 'PIEZAS ENTREGADAS', ped.entrega_enTiempo AS 'ENTREGA EN TIEMPO', ped.dias_entrega AS 'DÍAS DE ENTREGA', CONVERT(varchar, ven.fecha_baja, 6)  AS 'FECHA DE BAJA', CONVERT(varchar, dev.fecha, 6)  AS 'FECHA DEVOLUCIÓN', dev.motivo AS 'MOTIVO DE DEVOLUCIÓN', dev.cantidad AS 'CANTIDAD DE PIEZAS DEVUELTAS', dev.penalizacion AS 'PENALIZACIÓN POR DEVOLUCIÓN', ven.cve_factura AS 'FACTURA ACTUAL', fact.cve_refactura AS 'FACTURA ANTERIOR', CONVERT(varchar, fact.fecha_ingreso, 6)  AS 'FECHA INGRESO FACTURA', estfact.estado AS 'ESTADO DE LA FACTURA', CONVERT(varchar, fact.fecha_revision, 6)  AS 'FECHA DE REVISIÓN FACTURA', CONVERT(varchar, fact.fecha_pago, 6)  AS 'FECHA DE PAGO FACTURA', ped.precio_venta AS 'FACTURA SIN IVA', (ped.precio_venta * 1.16) AS 'FACTURA NETO', si.comentario AS 'COMENTARIOS SINIESTRO', fact.comentario AS 'COMENTARIOS FACTURA',(cosen.costo + ped.costo_neto) AS 'COSTO ADQUISICION', ((ped.precio_venta)-(cosen.costo + ped.costo_neto)) AS 'UTILIDAD ADQUISICION', (350) AS 'COSTO OPERATIVO',ped.gasto AS 'GASTO',(((ped.precio_venta)-(cosen.costo + ped.costo_neto))-(350)-(ped.gasto)) AS 'UTILIDAD FINAL' FROM VENTAS ven FULL JOIN VALUADOR val ON ven.cve_valuador = val.cve_valuador FULL JOIN CLIENTE c ON c.cve_valuador = val.cve_valuador FULL JOIN TALLER t ON ven.cve_taller = t.cve_taller FULL JOIN SINIESTRO si ON ven.cve_siniestro = si.cve_siniestro FULL JOIN VEHICULO vh ON si.cve_vehiculo = vh.cve_vehiculo FULL JOIN PEDIDO ped ON ven.cve_venta = ped.cve_venta FULL JOIN PROVEEDOR pro ON ped.cve_proveedor = pro.cve_proveedor FULL JOIN PIEZA pie ON ped.cve_pieza = pie.cve_pieza FULL JOIN ORIGEN_PIEZA opie ON ped.cve_origen = opie.cve_origen FULL JOIN PORTAL por ON ped.cve_portal = por.cve_portal FULL JOIN COSTO_ENVIO cosen ON ped.costo_envio = cosen.cve_costoEnvio FULL JOIN DESTINO dest ON ven.cve_destino = dest.cve_destino FULL JOIN ENTREGA ent ON ped.cve_entrega = ent.cve_entrega FULL JOIN DEVOLUCION dev ON ped.cve_devolucion = dev.cve_devolucion  FULL JOIN FACTURA fact ON ven.cve_factura = fact.cve_factura FULL JOIN ESTADO_FACTURA estfact ON fact.cve_estado = estfact.cve_estado FULL JOIN VENDEDOR vendedor ON ven.cve_vendedor = vendedor.cve_vendedor FULL JOIN MARCA marca ON vh.cve_marca = marca.cve_marca WHERE ven.cve_siniestro != '' AND ven.fecha_asignacion BETWEEN  @fecha1 AND @fecha2", nuevaConexion);
                     Comando.Parameters.AddWithValue("@fecha1", fecha1);
                     Comando.Parameters.AddWithValue("@fecha2", fecha2);
                     Comando.Parameters.AddWithValue("@costoOperativo", costoOperativo);
@@ -1034,33 +1034,34 @@ namespace Refracciones
                         sl.SetCellValue("Q" + celdaContenido, Lector["COSTO"].ToString());
                         sl.SetCellValue("R" + celdaContenido, Lector["PRECIO VENTA"].ToString());
                         sl.SetCellValue("S" + celdaContenido, Lector["DESTINO"].ToString());
-                        sl.SetCellValue("T" + celdaContenido, Lector["VENDEDOR"].ToString());
-                        sl.SetCellValue("U" + celdaContenido, Lector["FECHA DE ASIGNACIÓN"].ToString());
-                        sl.SetCellValue("V" + celdaContenido, Lector["FECHA PROMESA"].ToString());
-                        sl.SetCellValue("W" + celdaContenido, Lector["FECHA DE ENTREGA"].ToString());
-                        sl.SetCellValue("X" + celdaContenido, Lector["PIEZAS ENTREGADAS"].ToString());
-                        sl.SetCellValue("Y" + celdaContenido, Lector["ENTREGA EN TIEMPO"].ToString());
-                        sl.SetCellValue("Z" + celdaContenido, Lector["DÍAS DE ENTREGA"].ToString());
-                        sl.SetCellValue("AA" + celdaContenido, Lector["FECHA DE BAJA"].ToString());
-                        sl.SetCellValue("AB" + celdaContenido, Lector["FECHA DEVOLUCIÓN"].ToString());
-                        sl.SetCellValue("AC" + celdaContenido, Lector["MOTIVO DE DEVOLUCIÓN"].ToString());
-                        sl.SetCellValue("AD" + celdaContenido, Lector["CANTIDAD DE PIEZAS DEVUELTAS"].ToString());
-                        sl.SetCellValue("AE" + celdaContenido, Lector["PENALIZACIÓN POR DEVOLUCIÓN"].ToString());
-                        sl.SetCellValue("AF" + celdaContenido, Lector["FACTURA ACTUAL"].ToString());
-                        sl.SetCellValue("AG" + celdaContenido, Lector["FACTURA ANTERIOR"].ToString());
-                        sl.SetCellValue("AH" + celdaContenido, Lector["FECHA INGRESO FACTURA"].ToString());
-                        sl.SetCellValue("AI" + celdaContenido, Lector["ESTADO DE LA FACTURA"].ToString());
-                        sl.SetCellValue("AJ" + celdaContenido, Lector["FECHA DE REVISIÓN FACTURA"].ToString());
-                        sl.SetCellValue("AK" + celdaContenido, Lector["FECHA DE PAGO FACTURA"].ToString());
-                        sl.SetCellValue("AL" + celdaContenido, Lector["FACTURA SIN IVA"].ToString());
-                        sl.SetCellValue("AM" + celdaContenido, Lector["FACTURA NETO"].ToString());
-                        sl.SetCellValue("AN" + celdaContenido, Lector["COMENTARIOS SINIESTRO"].ToString());
-                        sl.SetCellValue("AO" + celdaContenido, Lector["COMENTARIOS FACTURA"].ToString());
-                        sl.SetCellValue("AP" + celdaContenido, Lector["COSTO ADQUISICION"].ToString());
-                        sl.SetCellValue("AQ" + celdaContenido, Lector["UTILIDAD ADQUISICION"].ToString());
-                        sl.SetCellValue("AR" + celdaContenido, Lector["COSTO OPERATIVO"].ToString());
-                        sl.SetCellValue("AS" + celdaContenido, Lector["GASTO"].ToString());
-                        sl.SetCellValue("AT" + celdaContenido, Lector["UTILIDAD FINAL"].ToString());
+                        sl.SetCellValue("T" + celdaContenido, Lector["NUMERO DE VENDEDOR"].ToString());
+                        sl.SetCellValue("U" + celdaContenido, Lector["VENDEDOR"].ToString());
+                        sl.SetCellValue("V" + celdaContenido, Lector["FECHA DE ASIGNACIÓN"].ToString());
+                        sl.SetCellValue("W" + celdaContenido, Lector["FECHA PROMESA"].ToString());
+                        sl.SetCellValue("X" + celdaContenido, Lector["FECHA DE ENTREGA"].ToString());
+                        sl.SetCellValue("Y" + celdaContenido, Lector["PIEZAS ENTREGADAS"].ToString());
+                        sl.SetCellValue("Z" + celdaContenido, Lector["ENTREGA EN TIEMPO"].ToString());
+                        sl.SetCellValue("AA" + celdaContenido, Lector["DÍAS DE ENTREGA"].ToString());
+                        sl.SetCellValue("AB" + celdaContenido, Lector["FECHA DE BAJA"].ToString());
+                        sl.SetCellValue("AC" + celdaContenido, Lector["FECHA DEVOLUCIÓN"].ToString());
+                        sl.SetCellValue("AD" + celdaContenido, Lector["MOTIVO DE DEVOLUCIÓN"].ToString());
+                        sl.SetCellValue("AE" + celdaContenido, Lector["CANTIDAD DE PIEZAS DEVUELTAS"].ToString());
+                        sl.SetCellValue("AF" + celdaContenido, Lector["PENALIZACIÓN POR DEVOLUCIÓN"].ToString());
+                        sl.SetCellValue("AG" + celdaContenido, Lector["FACTURA ACTUAL"].ToString());
+                        sl.SetCellValue("AH" + celdaContenido, Lector["FACTURA ANTERIOR"].ToString());
+                        sl.SetCellValue("AI" + celdaContenido, Lector["FECHA INGRESO FACTURA"].ToString());
+                        sl.SetCellValue("AJ" + celdaContenido, Lector["ESTADO DE LA FACTURA"].ToString());
+                        sl.SetCellValue("AK" + celdaContenido, Lector["FECHA DE REVISIÓN FACTURA"].ToString());
+                        sl.SetCellValue("AL" + celdaContenido, Lector["FECHA DE PAGO FACTURA"].ToString());
+                        sl.SetCellValue("AM" + celdaContenido, Lector["FACTURA SIN IVA"].ToString());
+                        sl.SetCellValue("AN" + celdaContenido, Lector["FACTURA NETO"].ToString());
+                        sl.SetCellValue("AO" + celdaContenido, Lector["COMENTARIOS SINIESTRO"].ToString());
+                        sl.SetCellValue("AP" + celdaContenido, Lector["COMENTARIOS FACTURA"].ToString());
+                        sl.SetCellValue("AQ" + celdaContenido, Lector["COSTO ADQUISICION"].ToString());
+                        sl.SetCellValue("AR" + celdaContenido, Lector["UTILIDAD ADQUISICION"].ToString());
+                        sl.SetCellValue("AS" + celdaContenido, Lector["COSTO OPERATIVO"].ToString());
+                        sl.SetCellValue("AT" + celdaContenido, Lector["GASTO"].ToString());
+                        sl.SetCellValue("AU" + celdaContenido, Lector["UTILIDAD FINAL"].ToString());
                         /*sl.SetCellValue("AP" + celdaContenido, Lector["SUB TOTAL"].ToString());
                         sl.SetCellValue("AQ" + celdaContenido, Lector["TOTAL"].ToString());
                         sl.SetCellValue("AR" + celdaContenido, Lector["UTILIDAD BRUTA"].ToString());*/
@@ -1074,8 +1075,8 @@ namespace Refracciones
                     estiloContenido.Border.RightBorder.BorderStyle = DocumentFormat.OpenXml.Spreadsheet.BorderStyleValues.Thin;
                     estiloContenido.Border.BottomBorder.BorderStyle = DocumentFormat.OpenXml.Spreadsheet.BorderStyleValues.Thin;
                    
-                    sl.SetCellStyle("A9", "AT" + celdaContenido, estiloContenido);
-                    sl.AutoFitColumn("A", "AT");
+                    sl.SetCellStyle("A8", "AU" + celdaContenido, estiloContenido);
+                    sl.AutoFitColumn("A", "AU");
                     
                     SaveFileDialog guarda = new SaveFileDialog();
                     guarda.Filter = "Libro de Excel|*.xlsx";

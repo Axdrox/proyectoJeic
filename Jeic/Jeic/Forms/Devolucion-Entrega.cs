@@ -258,12 +258,26 @@ namespace Refracciones.Forms
             }
             if (btnAceptar.Text.Equals("ENTREGAR TODO"))
             {
-                entregarTodo();
+               if(entregarTodo() == 1)
+                {
+                    MessageBox.Show("Se registro la entrega de todo el pedido correctamente!");
+                }
+                else
+                {
+                    MessageBox.Show("No se realizó ninguna operación");
+                }
                 errorP.Clear();
             }
             else if (btnAceptar.Text.Equals("DEVOLVER TODO"))
             {
-                devolverTodo();
+                if(devolverTodo() == 1)
+                {
+                    MessageBox.Show("Se registro la devolución de todo el pedido correctamente!");
+                }
+                else
+                {
+                    MessageBox.Show("No se realizó ninguna operación");
+                }
                 errorP.Clear();
             }
             refresh();
@@ -323,8 +337,9 @@ namespace Refracciones.Forms
             rbtnDevolucion.Enabled = false;
             btnAceptar.Text = "ENTREGAR TODO";
         }
-        private void entregarTodo()
+        private int entregarTodo()
         {
+            int x = 0;
             oDlgRes = MessageBox.Show("¿Está seguro que desea Registrar la entrega de todo el pedido?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
             if (oDlgRes == DialogResult.Yes)
             {
@@ -342,23 +357,27 @@ namespace Refracciones.Forms
                     if (pzas_entregadas != cantidad)
                     {
                         oper.Registrar_Entrega(cve_siniestro, cve_pedido, cve_pieza, count2, cantidad, fecha, (cantidad - pzas_entregadas), cve_venta, fecha_asignacion);
+                        x = 1;
                     }
                     else
                     {
-                        MessageBox.Show("NADA! QUE HACER");
+                        //MessageBox.Show("NADA! QUE HACER");
+                        x = 0;
                     }
                 }
-                MessageBox.Show("Se registro la entrega de todo el pedido correctamente!");
+                //MessageBox.Show("Se registro la entrega de todo el pedido correctamente!");
                 btnAceptar.Text = "ENTREGA";
                 btnAceptar.Enabled = false;
                 dtpFecha.Enabled = false;
                 dgvDevolucion.Enabled = true;
                 btnCancelar.Enabled = false;
                 
-            } 
+            }
+            return x;
         }
-        private void devolverTodo()
+        private int devolverTodo()
         {
+            int x = 0;
             oDlgRes = MessageBox.Show("¿Está seguro que desea Registrar la devolución de las piezas entregadas?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
             if (oDlgRes == DialogResult.Yes)
             {
@@ -384,20 +403,24 @@ namespace Refracciones.Forms
                     if (pzas_devolucion != pzas_entregadas)
                     {
                         oper.Registrar_Devolucion(cve_siniestro, cve_pedido, cve_pieza, count, pzas_entregadas, fecha, pzas_entregadas, cve_venta, motivo, penalizacion);
-
+                        x = 1;
                     }
                     else
                     {
-                        MessageBox.Show("NADA! QUE HACER");
+                        //MessageBox.Show("NADA! QUE HACER");
+                        x = 0;
                     }
                 }
-                MessageBox.Show("Se registro la devolución de todo el pedido correctamente!");
+                //MessageBox.Show("Se registro la devolución de todo el pedido correctamente!");
                 btnAceptar.Text = "ENTREGA";
                 btnAceptar.Enabled = false;
                 dtpFecha.Enabled = false;
                 dgvDevolucion.Enabled = true;
                 btnCancelar.Enabled = false;
+                txtPenalizacion.Visible = false;
+                
             }
+            return x;
         }
 
         private void registrarDevoluciónDeTodoElPedidoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -413,6 +436,7 @@ namespace Refracciones.Forms
             cmbMotivoDev.SelectedIndex = 0;
             chkMotivo.Enabled = true;
             btnAceptar.Enabled = true;
+            txtPenalizacion.Visible = true;
             btnAceptar.Text = "DEVOLVER TODO";
         }
 

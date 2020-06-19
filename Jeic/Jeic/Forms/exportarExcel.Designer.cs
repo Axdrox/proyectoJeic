@@ -42,9 +42,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.pbMinimize = new System.Windows.Forms.PictureBox();
             this.pbClose = new System.Windows.Forms.PictureBox();
+            this.errorP = new System.Windows.Forms.ErrorProvider(this.components);
             this.bunifuGradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorP)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -100,6 +102,7 @@
             // btnGenerar
             // 
             this.btnGenerar.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnGenerar.Enabled = false;
             this.btnGenerar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnGenerar.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGenerar.ForeColor = System.Drawing.Color.White;
@@ -141,10 +144,11 @@
             this.txtcostoOperativo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.txtcostoOperativo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtcostoOperativo.ForeColor = System.Drawing.Color.White;
-            this.txtcostoOperativo.Location = new System.Drawing.Point(96, 116);
+            this.txtcostoOperativo.Location = new System.Drawing.Point(97, 127);
             this.txtcostoOperativo.Name = "txtcostoOperativo";
             this.txtcostoOperativo.Size = new System.Drawing.Size(100, 20);
             this.txtcostoOperativo.TabIndex = 81;
+            this.txtcostoOperativo.TextChanged += new System.EventHandler(this.txtcostoOperativo_TextChanged);
             this.txtcostoOperativo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtcostoOperativo_KeyPress);
             // 
             // label4
@@ -155,9 +159,9 @@
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(23, 119);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(65, 14);
+            this.label4.Size = new System.Drawing.Size(68, 28);
             this.label4.TabIndex = 80;
-            this.label4.Text = "COSTO Op.:";
+            this.label4.Text = "COSTO \r\nOPERATIVO:\r\n";
             // 
             // pbMinimize
             // 
@@ -183,6 +187,10 @@
             this.pbClose.TabStop = false;
             this.pbClose.Click += new System.EventHandler(this.pbClose_Click);
             // 
+            // errorP
+            // 
+            this.errorP.ContainerControl = this;
+            // 
             // exportarExcel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -204,6 +212,7 @@
             this.bunifuGradientPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorP)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -223,5 +232,6 @@
         private System.Windows.Forms.PictureBox pbClose;
         private System.Windows.Forms.TextBox txtcostoOperativo;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ErrorProvider errorP;
     }
 }

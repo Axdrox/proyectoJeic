@@ -68,5 +68,20 @@ namespace Refracciones.Forms
                 e.Handled = true;
             }
         }
+
+        private void txtcostoOperativo_TextChanged(object sender, EventArgs e)
+        {
+            if (txtcostoOperativo.Text.Trim() == "")
+            {
+                errorP.SetError(txtcostoOperativo, "No se puede dejar este campo vacio");
+                txtcostoOperativo.Focus();
+                btnGenerar.Enabled = false;
+            }
+            else
+            {
+                errorP.Clear();
+                btnGenerar.Enabled = true;
+            }
+        }
     }
 }
