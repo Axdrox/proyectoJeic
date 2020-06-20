@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
@@ -49,6 +50,19 @@ namespace Refracciones.Forms
         private void Pedido_Load(object sender, EventArgs e)
         {
             chbModificarEstado.Location = new Point(330, 186);
+
+            if (actualizar == 1)
+            {
+                var penaltyButton = new DataGridViewButtonColumn();
+                penaltyButton.Name = "dataGridViewPenaltyButton";
+                penaltyButton.HeaderText = "Penalizar";
+                penaltyButton.Text = "Penalizar";
+                penaltyButton.FlatStyle = FlatStyle.Popup;
+                penaltyButton.CellTemplate.Style.BackColor = Color.DarkViolet;
+                penaltyButton.UseColumnTextForButtonValue = true;
+                this.dgvPedido.Columns.Add(penaltyButton);
+            }
+
             var editButton = new DataGridViewButtonColumn();
             editButton.Name = "dataGridViewEditButton";
             editButton.HeaderText = "Editar";
@@ -57,6 +71,7 @@ namespace Refracciones.Forms
             editButton.CellTemplate.Style.BackColor = Color.DarkCyan;
             editButton.UseColumnTextForButtonValue = true;
             this.dgvPedido.Columns.Add(editButton);
+
 
             var deleteButton = new DataGridViewButtonColumn();
             deleteButton.Name = "dataGridViewDeleteButton";
@@ -963,6 +978,22 @@ namespace Refracciones.Forms
                 // var data = (Product)dataGridView1.Rows[e.RowIndex].DataBoundItem;
                 // do something
             }
+
+            if (e.ColumnIndex == dgvPedido.Columns["dataGridViewPenaltyButton"].Index)
+            {
+                Penalizaciones penalizaciones = new Penalizaciones();
+                foreach (DataGridViewRow row in dgvPedido.SelectedRows)
+                {
+                    penalizaciones.cvePieza = operacion.clavePieza(Convert.ToString(row.Cells["Pieza"].Value));
+                    penalizaciones.cveVenta = operacion.claveVenta(txtClavePedido.Text, lblClaveSiniestro.Text);
+                    penalizaciones.cantidad = Convert.ToInt32(row.Cells["Cantidad"].Value);
+                }
+                DialogResult respuesta = penalizaciones.ShowDialog();
+                //Para que se actualice la cantidad que se penalizó
+                if(respuesta == DialogResult.OK)
+                    dgvPedido.DataSource = operacion.piezasPedidoActualizar(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
+            }
+
             if (e.ColumnIndex == dgvPedido.Columns["dataGridViewEditButton"].Index)
             {
                 int index = dgvPedido.CurrentCell.RowIndex;
@@ -1044,7 +1075,6 @@ namespace Refracciones.Forms
                 dtpFechaPromesa.Enabled = false;
             }
         }
-
 
         private void chbModificarFechaBaja_CheckedChanged(object sender, EventArgs e)
         {
