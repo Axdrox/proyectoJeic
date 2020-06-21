@@ -50,7 +50,6 @@ namespace Refracciones.Forms
         private void Pedido_Load(object sender, EventArgs e)
         {
             chbModificarEstado.Location = new Point(330, 186);
-
             if (actualizar == 1)
             {
                 var penaltyButton = new DataGridViewButtonColumn();
@@ -71,7 +70,6 @@ namespace Refracciones.Forms
             editButton.CellTemplate.Style.BackColor = Color.DarkCyan;
             editButton.UseColumnTextForButtonValue = true;
             this.dgvPedido.Columns.Add(editButton);
-
 
             var deleteButton = new DataGridViewButtonColumn();
             deleteButton.Name = "dataGridViewDeleteButton";
@@ -97,6 +95,12 @@ namespace Refracciones.Forms
             dt.Columns.Add("Precio de venta");
             dt.Columns.Add("Precio de reparación");
             dgvPedido.DataSource = dt;
+
+            //Impedir que se ordenen de otra forma (podría alterar) comprobar si se necesita
+            foreach (DataGridViewColumn column in dgvPedido.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
 
             //Carga los datos registros de vendedores en el combobox
             cbVendedor.DataSource = operacion.VendedoresRegistrados().Tables[0].DefaultView;
@@ -210,11 +214,12 @@ namespace Refracciones.Forms
                 //dtpFechaBaja.Text = operacion.fechaBaja(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
 
                 dgvPedido.DataSource = operacion.piezasPedidoActualizar(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
-                double precioTotal = 0; int piezasTotal = 0;
+                double precioTotal = 0; int piezasTotal = 0; nombrePieza = new string[Convert.ToInt32(dgvPedido.Rows.Count)]; int i = 0; filasIniciales = dgvPedido.Rows.Count;
                 foreach (DataGridViewRow row in dgvPedido.Rows)
                 {
                     precioTotal += Convert.ToDouble(row.Cells["Precio de venta"].Value);
                     piezasTotal += Convert.ToInt32(row.Cells["Cantidad"].Value);
+                    nombrePieza[i] = Convert.ToString(row.Cells["Pieza"].Value);
                 }
                 lblPrecioTotal.Text = "$" + precioTotal.ToString();
                 lblCantidadTotal.Text = piezasTotal.ToString();
@@ -252,6 +257,11 @@ namespace Refracciones.Forms
                 cbValuador.ValueMember = "nombre";
             }
         }
+
+        //Parámetros que sirven al momento de actualizar formulario
+        private string[] nombrePieza;
+
+        private int filasIniciales;
 
         //Saber si se va a registrar un nuevo modelo de vehículo o marca
         private bool nuevoVehiculo;
@@ -736,76 +746,181 @@ namespace Refracciones.Forms
             }
         }
 
+        //Variables
+        private string vendedor = "";
+
+        private string aseguradora = "";
+        private string valuador = "";
+        private string taller = "";
+        private string destino = "";
+
+        private void aniadirNuevosRegistros()
+        {
+            if (chbModificarVendedor.Checked == true)
+            {
+                vendedor = txtVendedor.Text.Trim().ToUpper();
+                operacion.registrarVendedor(Convert.ToInt32(txtNumeroEmpleado.Text.Trim()), vendedor);
+            }
+            else
+                vendedor = cbVendedor.Text.Trim();
+
+            if (chbOtroValuador.Checked == true)
+            {
+                valuador = txtValuador.Text.Trim().ToUpper();
+                operacion.registrarValuador(valuador);
+            }
+            else
+                valuador = cbValuador.Text.Trim();
+
+            if (chbOtraAseguradora.Checked == true)
+            {
+                aseguradora = txtAseguradora.Text.Trim().ToUpper();
+                operacion.registrarCliente(aseguradora, valuador, Convert.ToInt32(txtDiasEspera.Text.Trim()));
+            }
+            else
+                aseguradora = cbAseguradora.Text.Trim();
+
+            if (chbOtroTaller.Checked == true)
+            {
+                taller = txtTaller.Text.Trim().ToUpper();
+                operacion.registrarTaller(taller);
+            }
+            else
+                taller = cbTaller.Text.Trim();
+
+            if (chbOtroDestino.Checked == true)
+            {
+                destino = txtDestino.Text.Trim().ToUpper();
+                operacion.registrarDestino(destino);
+            }
+            else
+                destino = cbDestino.Text.Trim();
+        }
+
+        //Variables
+        private double totalCosto = 0;
+
+        private double subtotalPrecio = 0;
+        private double totalPrecio = 0;
+        private double utilidad = 0;
+
+        private void calcularDGV()
+        {
+            //si numero de guia se encuentra no ese array se añade a ese array y va a ir guardando en otra variable la suma del costo de envio
+            string[] guia = new string[dgvPedido.Rows.Count];
+            int i = 0;
+
+            //double totalCostoEnvio = 0; Ya no es tan necesaria puesto que se le tiene que sumar a la variable subtotalPrecio
+            foreach (DataGridViewRow row in dgvPedido.Rows)
+            {
+                totalCosto += /*Convert.ToInt32(row.Cells["Cantidad"].Value) **/ Convert.ToDouble(row.Cells["Costo neto"].Value);
+                subtotalPrecio += /*(Convert.ToInt32(row.Cells["Cantidad"].Value) **/ Convert.ToDouble(row.Cells["Precio de venta"].Value) /*+ Convert.ToDouble(row.Cells["Precio de reparación"].Value)*/;
+                /*if (!guia.Contains(Convert.ToString(row.Cells["Número de guía"].Value)))
+                 {
+                     guia[i] = Convert.ToString(row.Cells["Número de guía"].Value);
+                     //totalCostoEnvio += Convert.ToDouble(row.Cells["Costo de envío"].Value);
+                     subtotalPrecio += Convert.ToDouble(row.Cells["Costo de envío"].Value);
+                     i++;
+                 }*/
+            }
+            //totalPrecio = (subtotalPrecio * .16) + subtotalPrecio;
+            totalPrecio = Convert.ToDouble(lblPrecioTotal.Text.Substring(1, lblPrecioTotal.Text.Length - 1));
+            utilidad = totalPrecio - totalCosto;
+        }
+
+        private void registrarPedido()
+        {
+            //AGREGANDO DATOS A PEDIDO
+            foreach (DataGridViewRow row in dgvPedido.Rows)
+            {
+                DateTime dtFechaCosto = new DateTime();
+                //if(row.Cells["Fecha costo"].Value != null || row.Cells["Fecha costo"].Value != DBNull.Value || row.Cells["Fecha costo"].Value.ToString() != string.Empty)
+                dtFechaCosto = DateTime.Parse(row.Cells["Fecha costo"].Value.ToString());
+
+                operacion = new OperBD();
+                operacion.registrarPedido(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(),
+                    Convert.ToString(row.Cells["Pieza"].Value), Convert.ToString(row.Cells["Portal"].Value),
+                    Convert.ToString(row.Cells["Origen"].Value).Trim(), Convert.ToString(row.Cells["Proveedor"].Value),
+                    dtFechaCosto/*, Convert.ToString(row.Cells["Costo sin IVA"].Value)*/, Convert.ToString(row.Cells["Costo neto"].Value),
+                    Convert.ToString(row.Cells["Costo de envío"].Value), Convert.ToString(row.Cells["Precio de venta"].Value),
+                    Convert.ToString(row.Cells["Precio de reparación"].Value), Convert.ToString(row.Cells["Clave de producto"].Value),
+                    Convert.ToString(row.Cells["Número de guía"].Value), Convert.ToInt32(row.Cells["Cantidad"].Value));
+            }
+        }
+
+        private void actualizarPedido()
+        {
+            if (filasIniciales > 0)
+            {
+                int i = 1;
+                foreach (DataGridViewRow row in dgvPedido.Rows)
+                {
+                    DateTime dtFechaCosto = new DateTime();
+                    //if(row.Cells["Fecha costo"].Value != null || row.Cells["Fecha costo"].Value != DBNull.Value || row.Cells["Fecha costo"].Value.ToString() != string.Empty)
+                    dtFechaCosto = DateTime.Parse(row.Cells["Fecha costo"].Value.ToString());
+
+                    operacion = new OperBD();
+                    operacion.actualizarPedido(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(),
+                        Convert.ToString(row.Cells["Pieza"].Value), Convert.ToString(row.Cells["Portal"].Value),
+                        Convert.ToString(row.Cells["Origen"].Value).Trim(), Convert.ToString(row.Cells["Proveedor"].Value),
+                        dtFechaCosto/*, Convert.ToString(row.Cells["Costo sin IVA"].Value)*/, Convert.ToString(row.Cells["Costo neto"].Value),
+                        Convert.ToString(row.Cells["Costo de envío"].Value), Convert.ToString(row.Cells["Precio de venta"].Value),
+                        Convert.ToString(row.Cells["Precio de reparación"].Value), Convert.ToString(row.Cells["Clave de producto"].Value),
+                        Convert.ToString(row.Cells["Número de guía"].Value), Convert.ToInt32(row.Cells["Cantidad"].Value), nombrePieza[i]);
+                    i++;
+                    if (i == filasIniciales)
+                        break;
+                }
+                if((dgvPedido.Rows.Count - filasIniciales) > 0)
+                {
+                    if (filasIniciales == 0)
+                    {
+                        //cuando se eliminaron todas las piezas que se tenían registradas
+                        for (int j = 0; j < dgvPedido.Rows.Count; j++)
+                        {/*
+                            operacion.registrarPedido(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(),
+                            Convert.ToString(row.Cells["Pieza"].Value), Convert.ToString(row.Cells["Portal"].Value),
+                            Convert.ToString(row.Cells["Origen"].Value).Trim(), Convert.ToString(row.Cells["Proveedor"].Value),
+                            dtFechaCosto, Convert.ToString(row.Cells["Costo neto"].Value),
+                            Convert.ToString(row.Cells["Costo de envío"].Value), Convert.ToString(row.Cells["Precio de venta"].Value),
+                            Convert.ToString(row.Cells["Precio de reparación"].Value), Convert.ToString(row.Cells["Clave de producto"].Value),
+                            Convert.ToString(row.Cells["Número de guía"].Value), Convert.ToInt32(row.Cells["Cantidad"].Value));*/
+                        }
+                    }
+                    else
+                    {
+                        //cuando hay filas ya registradas y que se registren las nuevas
+                        for (int j = filasIniciales + 1; j < dgvPedido.Rows.Count - filasIniciales; j++)
+                        {/*
+                            operacion.registrarPedido(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(),
+                            Convert.ToString(row.Cells["Pieza"].Value), Convert.ToString(row.Cells["Portal"].Value),
+                            Convert.ToString(row.Cells["Origen"].Value).Trim(), Convert.ToString(row.Cells["Proveedor"].Value),
+                            dtFechaCosto, Convert.ToString(row.Cells["Costo neto"].Value),
+                            Convert.ToString(row.Cells["Costo de envío"].Value), Convert.ToString(row.Cells["Precio de venta"].Value),
+                            Convert.ToString(row.Cells["Precio de reparación"].Value), Convert.ToString(row.Cells["Clave de producto"].Value),
+                            Convert.ToString(row.Cells["Número de guía"].Value), Convert.ToInt32(row.Cells["Cantidad"].Value));*/
+                        }
+                    }
+                }
+            }
+            else
+                registrarPedido();
+        }
+
         private void btnFinalizarPedido_Click(object sender, EventArgs e)
         {
             try
             {
                 if (ValidateChildren(ValidationConstraints.Enabled))
                 {
-                    //Variables
-                    string vendedor = "";
-                    string aseguradora = "";
-                    string valuador = "";
-                    string taller = "";
-                    string destino = "";
+                    aniadirNuevosRegistros();
 
-                    if (chbModificarVendedor.Checked == true)
+                    DateTime dtFechaBaja;
+                    DateTime dtFechaAsignacion = dtpFechaAsignacion.Value.Date;
+                    DateTime dtFechaPromesa = dtpFechaPromesa.Value.Date;
+                    if (btnFinalizarPedido.Text != "Actualizar pedido")
                     {
-                        vendedor = txtVendedor.Text.Trim().ToUpper();
-                        operacion.registrarVendedor(Convert.ToInt32(txtNumeroEmpleado.Text.Trim()), vendedor);
-                    }
-                    else
-                        vendedor = cbVendedor.Text.Trim();
-
-                    if (chbOtroValuador.Checked == true)
-                    {
-                        valuador = txtValuador.Text.Trim().ToUpper();
-                        operacion.registrarValuador(valuador);
-                    }
-                    else
-                        valuador = cbValuador.Text.Trim();
-
-                    if (chbOtraAseguradora.Checked == true)
-                    {
-                        aseguradora = txtAseguradora.Text.Trim().ToUpper();
-                        operacion.registrarCliente(aseguradora, valuador, Convert.ToInt32(txtDiasEspera.Text.Trim()));
-                    }
-                    else
-                        aseguradora = cbAseguradora.Text.Trim();
-
-                    if (chbOtroTaller.Checked == true)
-                    {
-                        taller = txtTaller.Text.Trim().ToUpper();
-                        operacion.registrarTaller(taller);
-                    }
-                    else
-                        taller = cbTaller.Text.Trim();
-
-                    if (chbOtroDestino.Checked == true)
-                    {
-                        destino = txtDestino.Text.Trim().ToUpper();
-                        operacion.registrarDestino(destino);
-                    }
-                    else
-                        destino = cbDestino.Text.Trim();
-
-                    if (txtClavePedido.Text.Trim() == string.Empty)
-                    {
-                        MessageBox.Show("Añada clave del pedido", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                    else
-                    {
-                        int cantidadTotal = 0;
-
-                        //VALIDAR CUANDO SEA ACTUALIZACIÓN ANTES, POR LO MIENTRAS LO DEJARÉ ASÍ
-                        DateTime dtFechaBaja;
-                        if (actualizar == 1)
-                            dtFechaBaja = dtpFechaBaja.Value.Date;
-                        else
-                            dtFechaBaja = DateTime.Parse("1753/01/01");
-
-                        DateTime dtFechaAsignacion = dtpFechaAsignacion.Value.Date;
-                        DateTime dtFechaPromesa = dtpFechaPromesa.Value.Date;
+                        dtFechaBaja = DateTime.Parse("1753/01/01");
                         //operacion.registrarFechasVentas(dtFechaAsignacion, dtFechaPromesa);
 
                         //Registrar lo correspondiente a siniestro
@@ -822,50 +937,36 @@ namespace Refracciones.Forms
 
                         operacion.registrarSiniestro(lblVehiculo.Text.Trim(), lblClaveSiniestro.Text.Trim(), txtComentarioSiniestro.Text.Trim(), estadoSiniestro);
 
-                        //si numero de guia se encuentra no ese array se añade a ese array y va a ir guardando en otra variable la suma del costo de envio
-                        string[] guia = new string[dgvPedido.Rows.Count];
-                        int i = 0;
-                        double totalCosto = 0;
-                        double subtotalPrecio = 0;
-                        double totalPrecio = 0;
-                        double utilidad;
-                        //double totalCostoEnvio = 0; Ya no es tan necesaria puesto que se le tiene que sumar a la variable subtotalPrecio
-                        foreach (DataGridViewRow row in dgvPedido.Rows)
-                        {
-                            totalCosto += /*Convert.ToInt32(row.Cells["Cantidad"].Value) **/ Convert.ToDouble(row.Cells["Costo neto"].Value);
-                            subtotalPrecio += /*(Convert.ToInt32(row.Cells["Cantidad"].Value) **/ Convert.ToDouble(row.Cells["Precio de venta"].Value) /*+ Convert.ToDouble(row.Cells["Precio de reparación"].Value)*/;
-                            /*if (!guia.Contains(Convert.ToString(row.Cells["Número de guía"].Value)))
-                             {
-                                 guia[i] = Convert.ToString(row.Cells["Número de guía"].Value);
-                                 //totalCostoEnvio += Convert.ToDouble(row.Cells["Costo de envío"].Value);
-                                 subtotalPrecio += Convert.ToDouble(row.Cells["Costo de envío"].Value);
-                                 i++;
-                             }*/
-                        }
-                        //totalPrecio = (subtotalPrecio * .16) + subtotalPrecio;
-                        totalPrecio = Convert.ToDouble(lblPrecioTotal.Text.Substring(1, lblPrecioTotal.Text.Length - 1));
-                        utilidad = totalPrecio - totalCosto;
+                        calcularDGV();
 
                         //AGREGANDO DATOS A VENTA
                         operacion.registrarVenta(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(), taller, vendedor, dtFechaBaja, valuador, destino, totalCosto, subtotalPrecio, totalPrecio, dtFechaAsignacion, dtFechaPromesa, utilidad);//, utilidad
 
-                        //AGREGANDO DATOS A PEDIDO
-                        foreach (DataGridViewRow row in dgvPedido.Rows)
-                        {
-                            DateTime dtFechaCosto = new DateTime();
-                            //if(row.Cells["Fecha costo"].Value != null || row.Cells["Fecha costo"].Value != DBNull.Value || row.Cells["Fecha costo"].Value.ToString() != string.Empty)
-                            dtFechaCosto = DateTime.Parse(row.Cells["Fecha costo"].Value.ToString());
+                        //REGISTRANDO PEDIDO
+                        registrarPedido();
+                        this.DialogResult = DialogResult.OK;
+                    }
+                    else // ACTUALIZAR PEDIDO
+                    {
+                        if (chbModificarFechaBaja.Checked == true)
+                            dtFechaBaja = dtpFechaBaja.Value.Date;
+                        else
+                            dtFechaBaja = DateTime.Parse("1753/01/01");
 
-                            operacion = new OperBD();
-                            operacion.registrarPedido(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(),
-                                Convert.ToString(row.Cells["Pieza"].Value), Convert.ToString(row.Cells["Portal"].Value),
-                                Convert.ToString(row.Cells["Origen"].Value).Trim(), Convert.ToString(row.Cells["Proveedor"].Value),
-                                dtFechaCosto/*, Convert.ToString(row.Cells["Costo sin IVA"].Value)*/, Convert.ToString(row.Cells["Costo neto"].Value),
-                                Convert.ToString(row.Cells["Costo de envío"].Value), Convert.ToString(row.Cells["Precio de venta"].Value),
-                                Convert.ToString(row.Cells["Precio de reparación"].Value), Convert.ToString(row.Cells["Clave de producto"].Value),
-                                Convert.ToString(row.Cells["Número de guía"].Value), Convert.ToInt32(row.Cells["Cantidad"].Value));
-                            this.DialogResult = DialogResult.OK;
-                        }
+                        string estadoSiniestro = "";
+                        if (chbModificarEstado.Checked == true)
+                            estadoSiniestro = cbEstadoSiniestro.Text;
+                        else
+                            estadoSiniestro = lblEstadoSiniestro.Text;
+
+                        operacion.actualizarSiniestro(lblVehiculo.Text.Trim(), lblClaveSiniestro.Text.Trim(), txtComentarioSiniestro.Text.Trim(), estadoSiniestro);
+
+                        calcularDGV();
+
+                        //AGREGANDO DATOS A VENTA
+                        operacion.actualizarVenta(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(), taller, vendedor, dtFechaBaja, valuador, destino, totalCosto, subtotalPrecio, totalPrecio, dtFechaAsignacion, dtFechaPromesa, utilidad);//, utilidad
+
+                        actualizarPedido();
                     }
                 }
             }
@@ -963,13 +1064,39 @@ namespace Refracciones.Forms
             //Check if click is on specific column
             if (e.ColumnIndex == dgvPedido.Columns["dataGridViewDeleteButton"].Index)
             {
+                string pieza = "";
                 foreach (DataGridViewRow row in dgvPedido.SelectedRows)
                 {
                     lblCantidadTotal.Text = (Convert.ToInt32(lblCantidadTotal.Text) - Convert.ToInt32(row.Cells["Cantidad"].Value)).ToString();
                     //lblPrecioTotal.Text = "$" + (Convert.ToDouble(lblPrecioTotal.Text.Substring(1, lblPrecioTotal.Text.Length - 1)) - ((Convert.ToDouble(row.Cells["Precio de venta"].Value) * Convert.ToInt32(row.Cells["Cantidad"].Value) * 0.16) + (Convert.ToDouble(row.Cells["Precio de venta"].Value) * Convert.ToInt32(row.Cells["Cantidad"].Value)))).ToString();
                     lblPrecioTotal.Text = "$" + ((Convert.ToDouble(lblPrecioTotal.Text.Substring(1, lblPrecioTotal.Text.Length - 1)) - Convert.ToDouble(row.Cells["Precio de venta"].Value)).ToString());
+                    pieza = row.Cells["Pieza"].Value.ToString();
                 }
-                dgvPedido.Rows.RemoveAt(dgvPedido.CurrentRow.Index);
+                if(actualizar == 1)
+                {
+                    if(filasIniciales != 0)
+                    {
+                        if (string.IsNullOrEmpty(operacion.existePiezaEntrega(pieza)) == true)
+                        {
+                            if (!string.IsNullOrEmpty(operacion.existePiezaRegistradaPedido(txtClavePedido.Text, lblClaveSiniestro.Text, pieza)))
+                            {
+                                if (MessageBox.Show("¿Está seguro de eliminar este registro de la base?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                                {
+                                    operacion.eliminarPiezaRegistradaPedido(txtClavePedido.Text, lblClaveSiniestro.Text, pieza);
+                                    filasIniciales -= 1;
+                                    dgvPedido.Rows.RemoveAt(dgvPedido.CurrentRow.Index);
+                                }
+                            }
+                        }
+                        else
+                            MessageBox.Show("No es posible eliminar pieza debido a que existen entregas");
+                    }
+                    else
+                        dgvPedido.Rows.RemoveAt(dgvPedido.CurrentRow.Index);
+                }
+                else
+                    dgvPedido.Rows.RemoveAt(dgvPedido.CurrentRow.Index);
+
 
                 //Put some logic here, for example to remove row from your binding list.
                 //yourBindingList.RemoveAt(e.RowIndex);
@@ -978,20 +1105,22 @@ namespace Refracciones.Forms
                 // var data = (Product)dataGridView1.Rows[e.RowIndex].DataBoundItem;
                 // do something
             }
-
-            if (e.ColumnIndex == dgvPedido.Columns["dataGridViewPenaltyButton"].Index)
+            if (actualizar == 1)
             {
-                Penalizaciones penalizaciones = new Penalizaciones();
-                foreach (DataGridViewRow row in dgvPedido.SelectedRows)
+                if (e.ColumnIndex == dgvPedido.Columns["dataGridViewPenaltyButton"].Index)
                 {
-                    penalizaciones.cvePieza = operacion.clavePieza(Convert.ToString(row.Cells["Pieza"].Value));
-                    penalizaciones.cveVenta = operacion.claveVenta(txtClavePedido.Text, lblClaveSiniestro.Text);
-                    penalizaciones.cantidad = Convert.ToInt32(row.Cells["Cantidad"].Value);
+                    Penalizaciones penalizaciones = new Penalizaciones();
+                    foreach (DataGridViewRow row in dgvPedido.SelectedRows)
+                    {
+                        penalizaciones.cvePieza = operacion.clavePieza(Convert.ToString(row.Cells["Pieza"].Value));
+                        penalizaciones.cveVenta = operacion.claveVenta(txtClavePedido.Text, lblClaveSiniestro.Text);
+                        penalizaciones.cantidad = Convert.ToInt32(row.Cells["Cantidad"].Value);
+                    }
+                    DialogResult respuesta = penalizaciones.ShowDialog();
+                    //Para que se actualice la cantidad que se penalizó
+                    if (respuesta == DialogResult.OK)
+                        dgvPedido.DataSource = operacion.piezasPedidoActualizar(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
                 }
-                DialogResult respuesta = penalizaciones.ShowDialog();
-                //Para que se actualice la cantidad que se penalizó
-                if(respuesta == DialogResult.OK)
-                    dgvPedido.DataSource = operacion.piezasPedidoActualizar(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
             }
 
             if (e.ColumnIndex == dgvPedido.Columns["dataGridViewEditButton"].Index)
@@ -1038,6 +1167,7 @@ namespace Refracciones.Forms
                 DialogResult respuesta = pieza.ShowDialog();
                 if (respuesta == DialogResult.OK)
                 {
+                    //probar llenando dgv de otra forma con arreglo (datasource?)
                     int k = 0;
                     for (int j = 0; j < pieza.datosMandar.Length; j++)
                     {

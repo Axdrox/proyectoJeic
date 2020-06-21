@@ -433,7 +433,7 @@ namespace Refracciones
                 Comando.Parameters.AddWithValue("@fecha_asignacion", fecha_asigancion);
                 Comando.Parameters.AddWithValue("@fecha", fecha);
                 dias_entrega = Int32.Parse(Comando.ExecuteScalar().ToString()) + 1;
-                //SE ACTUALIZAN LOS DATOS SIGUIENTES 
+                //SE ACTUALIZAN LOS DATOS SIGUIENTES
                 SqlCommand cmd = new SqlCommand("UPDATE p SET p.cve_entrega = @cve_entrega, p.pzas_entregadas = @pzas_entregadas, p.fecha_entrega = @fecha_entrega, p.dias_entrega = @dias_entrega FROM PEDIDO p INNER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta WHERE ven.cve_siniestro = @cve_siniestro AND ven.cve_pedido = @cve_pedido AND cve_pieza = @cve_pieza", nuevaConexion);
                 cmd.Parameters.Add("@cve_entrega", SqlDbType.Int);
                 cmd.Parameters.Add("@pzas_entregadas", SqlDbType.Int);
@@ -711,7 +711,6 @@ namespace Refracciones
             {
                 using (SqlConnection nuevacon = Conexion.conexion())
                 {
-
                     da = new SqlDataAdapter(string.Format("SELECT ven.cve_pedido AS PEDIDO, ven.cve_siniestro AS SINIESTRO, ven.cve_vendedor AS VENDEDOR, c.cve_nombre AS CLIENTE, k.nombre AS PIEZA, p.cantidad AS CANTIDAD, ven.fecha_asignacion AS 'FECHA DE ASIGNACIÓN', ven.fecha_promesa AS 'FECHA PROMESA', ven.cve_venta AS 'VENTA' FROM VENTAS ven LEFT OUTER JOIN PEDIDO p ON ven.cve_venta = p.cve_venta LEFT OUTER JOIN PIEZA k ON p.cve_pieza = k.cve_pieza LEFT OUTER JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE c ON c.cve_valuador = v.cve_valuador where ven.cve_siniestro like '%{0}%' and CAST(ven.cve_pedido AS nvarchar) like '%{1}%' and ven.cve_vendedor like '%{2}%'", cve_Siniestro, cve_Pedido, cve_vendedor), nuevacon);
 
                     nuevacon.Open();
@@ -952,6 +951,7 @@ namespace Refracciones
 
             return dt;
         }
+
         //---------------------------TABLA ALERTAS POR PIEZA--------------------
         public DataTable Alertas()
         {
@@ -967,6 +967,7 @@ namespace Refracciones
 
             return dt;
         }
+
         public double venta_total(string pedido, string siniestro)
         {
             double ventaTotal = 0;
@@ -992,10 +993,10 @@ namespace Refracciones
                 return ventaTotal;
             }
         }
+
         //------------- GENERAR EXCEL
         public void generarExcel(string ruta, string fecha1, string fecha2, decimal costoOperativo)
         {
-
             try
             {
                 SLDocument sl = new SLDocument(ruta);
@@ -1095,8 +1096,8 @@ namespace Refracciones
             {
                 MessageBox.Show("Error: " + EX.Message);
             }
-
         }
+
         //--------------------LLENAR DATAGRID BUSCAR FACTURAS--------------------
         public DataTable buscarFacturas()
         {
@@ -1113,6 +1114,7 @@ namespace Refracciones
             }
             return dt;
         }
+
         //--------------------LLENAR DATAGRID BUSCAR FACTURAS CON TEXBOX--------------------
         public DataTable buscarFacturas(string cve_factura)
         {
@@ -1129,6 +1131,7 @@ namespace Refracciones
             }
             return dt;
         }
+
         //--------------------LLENAR DATAGRID BUSCAR FACTURAS CON FECHAS--------------------
         public DataTable buscarFacturas(string Fecha_inicio, string fecha_fin)
         {
@@ -1145,6 +1148,7 @@ namespace Refracciones
             }
             return dt;
         }
+
         //---------------------ALEX--------------------------------------------------------------------
 
         //VALIDAR SI EXISTE CLAVE PEDIDO
@@ -1435,7 +1439,6 @@ namespace Refracciones
                 Comando.Parameters.AddWithValue("@cve_venta", cveVenta);
                 count = (int)Comando.ExecuteScalar();
 
-
                 nuevaConexion.Close();
             }
             return count;
@@ -1463,8 +1466,6 @@ namespace Refracciones
             }
             return dt;
         }
-
-
 
         //---------------- VENDEDORES REGISTRADOS
         public DataSet VendedoresRegistrados()
@@ -2651,6 +2652,61 @@ namespace Refracciones
             return i;
         }
 
+        //--------------- ACTUALIZAR SINIESTRO
+        public int actualizarSiniestro(string modelo, string claveSiniestro, string comentario, string estado)
+        {
+            int i = 0;
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    int claveVehiculo = 0;
+                    int claveEstado = 0;
+
+                    nuevaConexion.Open();
+                    //Obteniendo la clave del vehículo
+                    Comando = new SqlCommand("SELECT cve_vehiculo FROM VEHICULO WHERE modelo = @modelo", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@modelo", modelo.Trim());
+                    Lector = Comando.ExecuteReader();
+                    if (Lector.Read())
+                    {
+                        claveVehiculo = (int)Lector["cve_vehiculo"];
+                    }
+                    Lector.Close();
+
+                    //Obteniendo la clave del estado
+                    Comando = new SqlCommand("SELECT cve_estado FROM ESTADO_SINIESTRO WHERE estado = @estado", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@estado", estado.Trim());
+                    Lector = Comando.ExecuteReader();
+                    if (Lector.Read())
+                    {
+                        claveEstado = (int)Lector["cve_estado"];
+                    }
+                    Lector.Close();
+
+                    //Insertando los datos en la tabla SINIESTRO
+                    Comando = new SqlCommand("UPDATE SINIESTRO SET comentario = @comentario, estado = @estado WHERE cve_siniestro = @cve_siniestro AND cve_vehiculo = @cve_vehiculo", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@cve_siniestro", claveSiniestro.Trim());
+                    Comando.Parameters.AddWithValue("@cve_vehiculo", claveVehiculo);
+                    Comando.Parameters.AddWithValue("@comentario", comentario.Trim());
+                    Comando.Parameters.AddWithValue("@estado", claveEstado);
+
+                    //Para saber si la inserción se hizo correctamente
+                    i = Comando.ExecuteNonQuery();
+                    nuevaConexion.Close();
+                    if (i == 1)
+                        MessageBox.Show("Siniestro actualizado correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    else
+                        MessageBox.Show("Problemas al actualizar siniestro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return i;
+        }
+
         //-------------OBTENER LA CLAVE DE LA PIEZA DE ACUERDO AL TEXTO
         public int clavePieza(string pieza)
         {
@@ -2941,43 +2997,174 @@ namespace Refracciones
             int cve_valuador = claveValuador(valuador);
             int cve_destino = claveDestino(destino);
             int cve_vendedor = claveVendedor(vendedor);
-
-            using (SqlConnection nuevaConexion = Conexion.conexion())
+            try
             {
-                nuevaConexion.Open();
-                //Insertando los datos en la relación VENTAS
-                Comando = new SqlCommand("INSERT INTO VENTAS " + "(cve_pedido, cve_siniestro, cve_vendedor, cve_taller, cve_valuador, fecha_baja, cve_destino, costo_total, sub_total, total, fecha_asignacion, fecha_promesa, utilidad) " +
-                    "VALUES (@cve_pedido, @cve_siniestro, @cve_vendedor, @cve_taller, @cve_valuador, @fecha_baja, @cve_destino, @costo_total, @sub_total, @total, @fecha_asignacion, @fecha_promesa, @utilidad) ", nuevaConexion);//utilidad    , @utilidad
-                Comando.Parameters.AddWithValue("@cve_pedido", clavePedido);
-                Comando.Parameters.AddWithValue("@cve_siniestro", claveSiniestro);
-                Comando.Parameters.AddWithValue("@cve_vendedor", cve_vendedor);
-                Comando.Parameters.AddWithValue("@cve_taller", cve_taller);
-                Comando.Parameters.AddWithValue("@cve_valuador", cve_valuador);
-                Comando.Parameters.AddWithValue("@fecha_baja", fechaBaja);
-                Comando.Parameters.AddWithValue("@cve_destino", cve_destino);
-                Comando.Parameters.AddWithValue("@costo_total", costoTotal);
-                Comando.Parameters.AddWithValue("@sub_total", subtotalPrecio);
-                Comando.Parameters.AddWithValue("@total", totalPrecio);
-                Comando.Parameters.AddWithValue("@utilidad", utilidad);
-                Comando.Parameters.AddWithValue("@fecha_asignacion", fechaAsignacion);
-                Comando.Parameters.AddWithValue("@fecha_promesa", fechaPromesa);
-
-                //Para saber si la inserción se hizo correctamente
-                i = Comando.ExecuteNonQuery();
-                nuevaConexion.Close();
-                if (i == 1)
+                using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
+                    nuevaConexion.Open();
+                    //Insertando los datos en la relación VENTAS
+                    Comando = new SqlCommand("INSERT INTO VENTAS " + "(cve_pedido, cve_siniestro, cve_vendedor, cve_taller, cve_valuador, fecha_baja, cve_destino, costo_total, sub_total, total, fecha_asignacion, fecha_promesa, utilidad) " +
+                        "VALUES (@cve_pedido, @cve_siniestro, @cve_vendedor, @cve_taller, @cve_valuador, @fecha_baja, @cve_destino, @costo_total, @sub_total, @total, @fecha_asignacion, @fecha_promesa, @utilidad) ", nuevaConexion);//utilidad    , @utilidad
+                    Comando.Parameters.AddWithValue("@cve_pedido", clavePedido);
+                    Comando.Parameters.AddWithValue("@cve_siniestro", claveSiniestro);
+                    Comando.Parameters.AddWithValue("@cve_vendedor", cve_vendedor);
+                    Comando.Parameters.AddWithValue("@cve_taller", cve_taller);
+                    Comando.Parameters.AddWithValue("@cve_valuador", cve_valuador);
+                    Comando.Parameters.AddWithValue("@fecha_baja", fechaBaja);
+                    Comando.Parameters.AddWithValue("@cve_destino", cve_destino);
+                    Comando.Parameters.AddWithValue("@costo_total", costoTotal);
+                    Comando.Parameters.AddWithValue("@sub_total", subtotalPrecio);
+                    Comando.Parameters.AddWithValue("@total", totalPrecio);
+                    Comando.Parameters.AddWithValue("@utilidad", utilidad);
+                    Comando.Parameters.AddWithValue("@fecha_asignacion", fechaAsignacion);
+                    Comando.Parameters.AddWithValue("@fecha_promesa", fechaPromesa);
+
+                    //Para saber si la inserción se hizo correctamente
+                    i = Comando.ExecuteNonQuery();
+                    nuevaConexion.Close();
+                    if (i == 1)
+                    {
+                    }
+                    else
+                        MessageBox.Show("Problemas al registrar venta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                else
-                    MessageBox.Show("Problemas al registrar venta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            /*}
             catch (Exception EX)
             {
                 MessageBox.Show("Error: " + EX.Message);
-            }*/
+            }
             return i;
         }
+
+        //-------------ACTUALIZANDO EL REGISTRO DE VENTA
+        public void actualizarVenta(string clavePedido, string claveSiniestro, string taller, string vendedor, DateTime fechaBaja, string valuador, string destino, double costoTotal, double subtotalPrecio, double totalPrecio, DateTime fechaAsignacion, DateTime fechaPromesa, double utilidad)//, double utilidad
+        {
+            //Variables
+            int i = 0;
+            int cve_taller = claveTaller(taller);
+            int cve_valuador = claveValuador(valuador);
+            int cve_destino = claveDestino(destino);
+            int cve_vendedor = claveVendedor(vendedor);
+
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    //Insertando los datos en la relación VENTAS
+                    Comando = new SqlCommand("UPDATE VENTAS SET " + "(cve_vendedor = @cve_vendedor, cve_taller = @cve_taller, cve_valuador = @cve_valuador, fecha_baja = @fecha_baja, cve_destino = @cve_destino, costo_total = @costo_total, sub_total = @sub_total, total = @total, fecha_asignacion = @fecha_asignacion, fecha_promesa = @fecha_promesa, utilidad = @utilidad) " +
+                        "WHERE cve_pedido = @cve_pedido AND cve_siniestro = @cve_siniestro", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@cve_pedido", clavePedido);
+                    Comando.Parameters.AddWithValue("@cve_siniestro", claveSiniestro);
+                    Comando.Parameters.AddWithValue("@cve_vendedor", cve_vendedor);
+                    Comando.Parameters.AddWithValue("@cve_taller", cve_taller);
+                    Comando.Parameters.AddWithValue("@cve_valuador", cve_valuador);
+                    Comando.Parameters.AddWithValue("@fecha_baja", fechaBaja);
+                    Comando.Parameters.AddWithValue("@cve_destino", cve_destino);
+                    Comando.Parameters.AddWithValue("@costo_total", costoTotal);
+                    Comando.Parameters.AddWithValue("@sub_total", subtotalPrecio);
+                    Comando.Parameters.AddWithValue("@total", totalPrecio);
+                    Comando.Parameters.AddWithValue("@utilidad", utilidad);
+                    Comando.Parameters.AddWithValue("@fecha_asignacion", fechaAsignacion);
+                    Comando.Parameters.AddWithValue("@fecha_promesa", fechaPromesa);
+
+                    //Para saber si la inserción se hizo correctamente
+                    i = Comando.ExecuteNonQuery();
+                    nuevaConexion.Close();
+                    if (i == 1)
+                    {
+                    }
+                    else
+                        MessageBox.Show("Problemas al actualizar venta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+        }
+
+        //-------------EXISTE PIEZA REGISTRADA EN PEDIDO
+        public string existePiezaRegistradaPedido(string cvePedido, string cveSiniestro, string pieza)
+        {
+            string resultado = "";
+            int cveVenta = claveVenta(cvePedido, cveSiniestro);
+            int cvePieza = clavePieza(pieza);
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("SELECT cve_venta  FROM PEDIDO WHERE cve_venta  = @cve_venta AND cve_pieza = @cve_pieza", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@cve_venta", cveVenta);
+                    Comando.Parameters.AddWithValue("@cve_pieza", cvePieza);
+
+                    //Para saber si en realidad existe, de lo contrario devuelve un string vacío
+                    if (Comando.ExecuteScalar() == null) { }
+                    else
+                        resultado = Comando.ExecuteScalar().ToString();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return resultado;
+        }
+
+        //------------- ELIMINAR PIEZA REGISTRADA
+        public void eliminarPiezaRegistradaPedido(string cvePedido, string cveSiniestro, string pieza)
+        {
+            int cveVenta = claveVenta(cvePedido, cveSiniestro);
+            int cvePieza = clavePieza(pieza);
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("DELETE FROM PEDIDO WHERE cve_venta  = @cve_venta AND cve_pieza = @cve_pieza", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@cve_venta", cveVenta);
+                    Comando.Parameters.AddWithValue("@cve_pieza", cvePieza);
+                    int i = Comando.ExecuteNonQuery();
+                    //Para saber se eliminó correctamente el registro
+                    if (i == 1)
+                        MessageBox.Show("Pieza eliminada correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    else
+                        MessageBox.Show("Problemas al eliminar pieza", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+        }
+
+        //-------------EXISTE ENTREGA DE PIEZA
+        public string existePiezaEntrega(string pieza)
+        {
+            string resultado = "";
+            int cvePieza = clavePieza(pieza);
+            try
+            {   
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("SELECT cve_pieza FROM ENTREGA WHERE cve_pieza  = @cve_pieza", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@cve_pieza", cvePieza);
+
+                    //Para saber si en realidad existe, de lo contrario devuelve un string vacío
+                    if (Comando.ExecuteScalar() == null) { }
+                    else
+                        resultado = Comando.ExecuteScalar().ToString();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return resultado;
+        }
+
 
         //-------------INSERTAR DATOS DE PEDIDO
         public int registrarPedido(string clavePedido, string claveSiniestro, string nombrePieza, string portal, string origen, string proveedor, DateTime fechaCosto/*, string costoSinIVA*/, string costoNeto, string costoEnvio, string precioVenta, string precioReparacion, string claveProducto, string numeroGuia, int cantidad)
@@ -3044,7 +3231,75 @@ namespace Refracciones
             return i;
         }
 
-        public void registrarPenalizacion(int clavePieza, int claveVenta, int cantidad, string motivo, double porcentaje){
+        //-------------ACTUALIZAR DATOS DE PEDIDO
+        public int actualizarPedido(string clavePedido, string claveSiniestro, string nombrePiezaPasada, string portal, string origen, string proveedor, DateTime fechaCosto/*, string costoSinIVA*/, string costoNeto, string costoEnvio, string precioVenta, string precioReparacion, string claveProducto, string numeroGuia, int cantidad, string nombrePiezaActual)
+        {
+            string destino;
+            //Variables
+            int i = 0;
+            double gasto = 0;
+
+            int cve_piezaPasada = clavePieza(nombrePiezaPasada);
+            int cve_piezaActual = clavePieza(nombrePiezaActual);
+            int cve_origen = claveOrigen(origen);
+            int cve_proveedor = claveProveedor(proveedor);
+            int cve_portal = clavePortal(portal);
+            int cve_costoEnvio = claveCostoEnvio(costoEnvio);
+            int cve_venta = claveVenta(clavePedido, claveSiniestro);
+
+            //Añadir el gasto en caso de que la pieza sea usada
+            if (origen == "USADA")
+                gasto = 500;
+            else
+                gasto = 0;
+
+            using (SqlConnection nuevaConexion = Conexion.conexion())
+            {
+                //Obteniendo la clave del vendedor
+                //Obtener del combobox
+
+                //cve_guia & cve_producto:  obtener del DGV
+
+                nuevaConexion.Open();
+                //Insertando los datos en la tabla PEDIDO
+                Comando = new SqlCommand("UPDATE INTO PEDIDO SET " + "(cve_pieza = @cve_piezaActual, cantidad = @cantidad, cve_origen = @cve_origen, cve_proveedor = @cve_proveedor, cve_portal = @cve_portal, cve_guia = @cve_guia, cve_producto = @cve_producto, fecha_costo = @fecha_costo, costo_envio = @costo_envio, costo_neto = @costo_neto, precio_venta = @precio_venta, precio_reparacion = @precio_reparacion, gasto = @gasto) " +
+                    "WHERE  cve_venta = @cve_venta AND cve_pieza = @cve_piezaPasada", nuevaConexion);//, costo_comprasinIVA    , @costo_comprasinIVA
+                //Añadiendo los parámetros al query
+                Comando.Parameters.AddWithValue("@cve_venta", cve_venta);
+                Comando.Parameters.AddWithValue("@cve_piezaPasada", cve_piezaPasada);
+                Comando.Parameters.AddWithValue("@cve_piezaActual", cve_piezaActual);
+                Comando.Parameters.AddWithValue("@cantidad", cantidad);
+                Comando.Parameters.AddWithValue("@cve_origen", cve_origen);
+                Comando.Parameters.AddWithValue("@cve_proveedor", cve_proveedor);
+                Comando.Parameters.AddWithValue("@cve_portal", cve_portal);
+                Comando.Parameters.AddWithValue("@cve_guia", numeroGuia);
+                Comando.Parameters.AddWithValue("@cve_producto", claveProducto);
+                Comando.Parameters.AddWithValue("@fecha_costo", fechaCosto);
+                //Comando.Parameters.AddWithValue("@costo_comprasinIVA", Convert.ToDecimal(costoSinIVA));
+                Comando.Parameters.AddWithValue("@costo_envio", cve_costoEnvio);//cambiar nombre de columna
+                Comando.Parameters.AddWithValue("@costo_neto", Convert.ToDecimal(costoNeto));
+                Comando.Parameters.AddWithValue("@precio_venta", Convert.ToDecimal(precioVenta));
+                Comando.Parameters.AddWithValue("@precio_reparacion", Convert.ToDecimal(precioReparacion));
+                Comando.Parameters.AddWithValue("@gasto", gasto);
+
+                //Para saber si la inserción se hizo correctamente
+                i = Comando.ExecuteNonQuery();
+                nuevaConexion.Close();
+                if (i == 1)
+                    MessageBox.Show("Se registró pedido correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else
+                    MessageBox.Show("Problemas al registar pedido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            /*}
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }*/
+            return i;
+        }
+
+        public void registrarPenalizacion(int clavePieza, int claveVenta, int cantidad, string motivo, double porcentaje)
+        {
             try
             {
                 using (SqlConnection nuevaConexion = Conexion.conexion())
