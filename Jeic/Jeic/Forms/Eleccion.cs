@@ -376,7 +376,7 @@ namespace Refracciones
 
         private void pbClose_Click(object sender, EventArgs e)
         {
-            Busqueda_Devolver busdev = new Busqueda_Devolver();
+            Busqueda busdev = new Busqueda();
             busdev.Show();
             this.Close();
         }
@@ -384,6 +384,11 @@ namespace Refracciones
         private void pbMinimize_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void bunifuGradientPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

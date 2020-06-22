@@ -33,7 +33,7 @@ namespace Refracciones
             {
                 using (SqlConnection nuevacon = Conexion.conexion())
                 {
-                    this.Comando = new SqlCommand(string.Format("SELECT usuario,contrasenia FROM administrador WHERE usuario='{0}' AND dbo.fnDescifraClave(contrasenia) COLLATE SQL_Latin1_General_CP1_CS_AS = '{1}';", us, pass), nuevacon);
+                    this.Comando = new SqlCommand(string.Format("SELECT usuario,contrasenia FROM usuarios WHERE usuario='{0}' AND dbo.fnDescifraClave(contrasenia) COLLATE SQL_Latin1_General_CP1_CS_AS = '{1}';", us, pass), nuevacon);
                     nuevacon.Open();
                     Lector = Comando.ExecuteReader();
                     while (Lector.Read()) { contador++; }
@@ -819,6 +819,26 @@ namespace Refracciones
                 return fila;
             }
         }
+
+        //--------------------------ROL----------------------------------------------
+        public int Rol(string usuario) {
+
+            try {
+                using (SqlConnection nuevacon = Conexion.conexion()) {
+                    Comando = new SqlCommand(string.Format("SELECT rol from USUARIOS where usuario='{0}'", usuario), nuevacon);
+                    nuevacon.Open();
+                    Lector = Comando.ExecuteReader();
+                    Lector.Read();
+                    return Lector.GetInt32(0);
+                    nuevacon.Close();
+                }              
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+                return 0; }
+        }
+
+        //---------------------------------------------------------------------------
 
         //---------------------------LLENAR DATOS EN DGV POR DEFAULT--------------------
         public void defaultDGV(DataGridView dgv)

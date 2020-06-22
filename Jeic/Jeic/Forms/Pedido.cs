@@ -19,7 +19,7 @@ namespace Refracciones.Forms
     public partial class Pedido : Form
     {
         private OperBD operacion = new OperBD();
-        private Busqueda_Devolver busdev = new Busqueda_Devolver();
+        private Busqueda busdev = new Busqueda();
         private DataTable dt;
         //int totalCantidadPiezas = 0;
 

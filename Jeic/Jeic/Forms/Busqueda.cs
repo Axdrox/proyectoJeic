@@ -14,10 +14,10 @@ using System.Windows.Forms;
 
 namespace Refracciones.Forms
 {
-    public partial class Busqueda_Devolver : Form
+    public partial class Busqueda : Form
     {
         string cve_factura = "";
-        public Busqueda_Devolver()
+        public Busqueda()
         {
             InitializeComponent();
         }
@@ -33,6 +33,8 @@ namespace Refracciones.Forms
         }
 
         OperBD llenar = new OperBD();
+        OperBD ObtenerRol = new OperBD();
+
         private void BusquedaPedido(object sender, KeyEventArgs e)
         {
             llenar.Llenartabla1(dvgPedido, TxtClaveSin.Text.ToString(), TxtClavePed.Text.ToString(), txtCveVendedor.Text.ToString());
@@ -84,7 +86,7 @@ namespace Refracciones.Forms
             }
             else{
                 Eleccion elec = new Eleccion();
-                elec.lblUsuario.Text = lblUsuario.Text;
+                elec.lblUsuario.Text = Usuario.Text;
                 elec.dato_1.Text = dvgPedido.Rows[fila].Cells[1].Value.ToString();
                 elec.dato_2.Text = dvgPedido.Rows[fila].Cells[0].Value.ToString();
                 elec.lblCve_venta.Text = dvgPedido.Rows[fila].Cells[8].Value.ToString();
@@ -135,30 +137,30 @@ namespace Refracciones.Forms
 
         private void btnAgregarPedido_Click(object sender, EventArgs e)
         {
-           
-            Pedido pedido = new Pedido(0);
-            DialogResult result = pedido.ShowDialog();
-            if (result == DialogResult.OK)
+          
+            if (ObtenerRol.Rol(Usuario.Text.Substring(9, Usuario.Text.Length - 9)) == 3 || ObtenerRol.Rol(Usuario.Text.Substring(9, Usuario.Text.Length - 9)) == 0)
             {
-
+                Pedido pedido = new Pedido(0);
+                DialogResult result = pedido.ShowDialog();
+            }
+            else {
+                MessageBox.Show("Sin permisos para entrar en este apartado");
             }
             
-        }
-
-        private void pbAlertas_Click(object sender, EventArgs e)
-        {
             
         }
 
         private void generarReporteVentasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            exportarExcel reporte = new exportarExcel();
-            reporte.Show();
+            if (ObtenerRol.Rol(Usuario.Text.Substring(9, Usuario.Text.Length - 9)) == 2 || ObtenerRol.Rol(Usuario.Text.Substring(9, Usuario.Text.Length - 9)) == 0)
+            {
+                exportarExcel reporte = new exportarExcel();
+                reporte.Show();
+            }
+            else {
+                MessageBox.Show("Sin permisos para entrar en este apartado");
+            }    
         }
-
-
-
-
 
         private void notificacionesToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -176,10 +178,20 @@ namespace Refracciones.Forms
 
         private void buscarFacturasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            buscarFacturas bfact = new buscarFacturas();
-            bfact.Show();
+
+            if (ObtenerRol.Rol(Usuario.Text.Substring(9, Usuario.Text.Length - 9)) == 1 || ObtenerRol.Rol(Usuario.Text.Substring(9, Usuario.Text.Length - 9)) == 0)
+            {
+                buscarFacturas bfact = new buscarFacturas();
+                bfact.Show();
+            }
+            else {
+                MessageBox.Show("Sin permisos para entrar en este apartado");
+            }
         }
 
+        private void usuarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }

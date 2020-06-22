@@ -59,11 +59,11 @@ namespace Refracciones
                 {
                     Alertas alert = new Alertas();
                     MessageBox.Show("Bienvenido");
-                    Forms.Busqueda_Devolver bus = new Forms.Busqueda_Devolver();
+                    Forms.Busqueda bus = new Forms.Busqueda();
                     bus.Show();
                     alert.Show();
 
-                    bus.lblUsuario.Text = "Usuario : " + txtUsuario.Text;
+                   bus.Usuario.Text = "Usuario: " + txtUsuario.Text;
                     txtUsuario.Text = "";
                     txtContrasenia.Text = "";
                     this.Hide();
@@ -86,8 +86,8 @@ namespace Refracciones
             {
                 Alertas alert = new Alertas();
                 MessageBox.Show("Bienvenido");
-                Forms.Busqueda_Devolver bus = new Forms.Busqueda_Devolver();
-                bus.lblUsuario.Text = "Usuario : " + txtUsuario.Text;
+                Forms.Busqueda bus = new Forms.Busqueda();
+                bus.Usuario.Text= "Usuario: " + txtUsuario.Text;
                 bus.Show();
                 alert.Show();
 
@@ -129,11 +129,11 @@ namespace Refracciones
                     
                     Alertas alert = new Alertas();
                     MessageBox.Show("Bienvenido");
-                    Forms.Busqueda_Devolver bus = new Forms.Busqueda_Devolver();
+                    Forms.Busqueda bus = new Forms.Busqueda();
                     bus.Show();
                     alert.Show();
 
-                    bus.lblUsuario.Text = "Usuario : " + txtUsuario.Text;
+                    bus.Usuario.Text = "Usuario : " + txtUsuario.Text;
                     txtUsuario.Text = "";
                     txtContrasenia.Text = "";
                     this.Hide();

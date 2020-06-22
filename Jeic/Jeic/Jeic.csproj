@@ -143,11 +143,11 @@
     <Compile Include="Forms\Eleccion.designer.cs">
       <DependentUpon>Eleccion.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Busqueda_Devolver.cs">
+    <Compile Include="Forms\Busqueda.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Busqueda_Devolver.designer.cs">
-      <DependentUpon>Busqueda_Devolver.cs</DependentUpon>
+    <Compile Include="Forms\Busqueda.designer.cs">
+      <DependentUpon>Busqueda.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\BusquedaEntrega-Devolucion.cs">
       <SubType>Form</SubType>
@@ -233,8 +233,8 @@
     <EmbeddedResource Include="Forms\Eleccion.resx">
       <DependentUpon>Eleccion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Busqueda_Devolver.resx">
-      <DependentUpon>Busqueda_Devolver.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Busqueda.resx">
+      <DependentUpon>Busqueda.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\BusquedaEntrega-Devolucion.resx">
       <DependentUpon>BusquedaEntrega-Devolucion.cs</DependentUpon>
