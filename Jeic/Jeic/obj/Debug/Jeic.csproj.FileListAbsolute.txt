@@ -348,3 +348,4 @@ C:\Users\gears\Desktop\Ramas\Jeic\Jeic\obj\Debug\Refracciones.Forms.Busqueda.res
 C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Busqueda.resources
 C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Penalizaciones.resources
 C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Administrar.resources
+C:\Users\gears\Desktop\Ramas\Jeic\Jeic\obj\Debug\Refracciones.Forms.Administrar.resources
