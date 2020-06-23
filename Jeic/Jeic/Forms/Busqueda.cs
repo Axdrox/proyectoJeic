@@ -189,9 +189,18 @@ namespace Refracciones.Forms
             }
         }
 
-        private void usuarioToolStripMenuItem_Click(object sender, EventArgs e)
+        private void administrarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            if (ObtenerRol.Rol(Usuario.Text.Substring(9, Usuario.Text.Length - 9)) == 0)
+            {
+                //Pedido pedido = new Pedido(0);
+                //DialogResult result = pedido.ShowDialog();
+                MessageBox.Show("ADMIN");
+            }
+            else
+            {
+                MessageBox.Show("Sin permisos para entrar en este apartado");
+            }
         }
     }
 }

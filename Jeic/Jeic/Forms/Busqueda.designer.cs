@@ -87,10 +87,11 @@
             this.notificacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buscarFacturasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarSesionToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.Usuario = new System.Windows.Forms.ToolStripMenuItem();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.moverFormulario = new Bunifu.Framework.UI.BunifuDragControl(this.components);
-            this.Usuario = new System.Windows.Forms.ToolStripMenuItem();
+            this.administrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Panelinfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFactura)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dvgPedido)).BeginInit();
@@ -705,6 +706,7 @@
             this.generarReporteVentasToolStripMenuItem,
             this.notificacionesToolStripMenuItem,
             this.buscarFacturasToolStripMenuItem,
+            this.administrarToolStripMenuItem,
             this.cerrarSesionToolStripMenuItem1});
             this.otrasOpcionesToolStripMenuItem.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.otrasOpcionesToolStripMenuItem.Name = "otrasOpcionesToolStripMenuItem";
@@ -743,6 +745,21 @@
             this.cerrarSesionToolStripMenuItem1.Text = "Cerrar Sesión";
             this.cerrarSesionToolStripMenuItem1.Click += new System.EventHandler(this.cerrarSesionToolStripMenuItem1_Click);
             // 
+            // Usuario
+            // 
+            this.Usuario.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.Usuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(43)))), ((int)(((byte)(45)))));
+            this.Usuario.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.Usuario.Enabled = false;
+            this.Usuario.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Usuario.ForeColor = System.Drawing.Color.White;
+            this.Usuario.ImageTransparentColor = System.Drawing.Color.White;
+            this.Usuario.Name = "Usuario";
+            this.Usuario.ShowShortcutKeys = false;
+            this.Usuario.Size = new System.Drawing.Size(68, 22);
+            this.Usuario.Text = "Usuario";
+            this.Usuario.ToolTipText = "Usuario";
+            // 
             // bunifuElipse1
             // 
             this.bunifuElipse1.ElipseRadius = 5;
@@ -780,20 +797,13 @@
             this.moverFormulario.TargetControl = this.bunifuGradientPanel1;
             this.moverFormulario.Vertical = true;
             // 
-            // Usuario
+            // administrarToolStripMenuItem
             // 
-            this.Usuario.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.Usuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(43)))), ((int)(((byte)(45)))));
-            this.Usuario.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.Usuario.Enabled = false;
-            this.Usuario.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Usuario.ForeColor = System.Drawing.Color.White;
-            this.Usuario.ImageTransparentColor = System.Drawing.Color.White;
-            this.Usuario.Name = "Usuario";
-            this.Usuario.ShowShortcutKeys = false;
-            this.Usuario.Size = new System.Drawing.Size(68, 22);
-            this.Usuario.Text = "Usuario";
-            this.Usuario.ToolTipText = "Usuario";
+            this.administrarToolStripMenuItem.Name = "administrarToolStripMenuItem";
+            this.administrarToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
+            this.administrarToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
+            this.administrarToolStripMenuItem.Text = "Administrar";
+            this.administrarToolStripMenuItem.Click += new System.EventHandler(this.administrarToolStripMenuItem_Click);
             // 
             // Busqueda
             // 
@@ -883,5 +893,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         public System.Windows.Forms.ToolStripMenuItem Usuario;
+        private System.Windows.Forms.ToolStripMenuItem administrarToolStripMenuItem;
     }
 }
