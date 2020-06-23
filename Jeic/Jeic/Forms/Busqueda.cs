@@ -22,18 +22,46 @@ namespace Refracciones.Forms
             InitializeComponent();
         }
 
-        private void Busqueda_Devolver_Load(object sender, EventArgs e)
-        {
-            //Colocar ICONO
-            this.Icon = Resources.iconJeic;
-            //DAR FORMATO
-            OperBD llenarDefaultDGV = new OperBD();
-            llenarDefaultDGV.defaultDGV(dvgPedido);
-            menuStrip1.ForeColor = Color.White;
-        }
 
         OperBD llenar = new OperBD();
         OperBD ObtenerRol = new OperBD();
+      
+
+        private void Busqueda_Devolver_Load(object sender, EventArgs e)
+        {
+
+            this.Icon = Resources.iconJeic;
+            OperBD llenarDefaultDGV = new OperBD();
+            llenarDefaultDGV.defaultDGV(dvgPedido);
+            menuStrip1.ForeColor = Color.White;
+
+           int rol = ObtenerRol.Rol(Usuario.Text.Substring(9, Usuario.Text.Length - 9));
+
+            switch (rol)
+            {
+                case 1:
+                    btnAgregarPedido.Visible = false;
+                    generarReporteVentasToolStripMenuItem.Enabled = false;
+                    administrarToolStripMenuItem.Enabled = false;
+                    break;
+                case 2:
+                    btnAgregarPedido.Visible = false;
+                    administrarToolStripMenuItem.Enabled = false;
+                    buscarFacturasToolStripMenuItem.Enabled = false;
+                    break;
+                case 3:
+                    generarReporteVentasToolStripMenuItem.Enabled = false;
+                    notificacionesToolStripMenuItem.Enabled = false;
+                    administrarToolStripMenuItem.Enabled = false;
+                    buscarFacturasToolStripMenuItem.Enabled = false;
+                    break;
+                default:
+                    break;
+            }
+
+        }
+
+ 
 
         private void BusquedaPedido(object sender, KeyEventArgs e)
         {
@@ -65,7 +93,6 @@ namespace Refracciones.Forms
                 lblAsignacion.Text = lblAsignacion.Text.Substring(0, 15) + " " + dgvDatos.Rows[0].Cells[12].Value.ToString();
                 lblPromesa.Text = lblPromesa.Text.Substring(0, 14) + " " + dgvDatos.Rows[0].Cells[13].Value.ToString();
                 lblFechaEntreg.Text = lblFechaEntreg.Text.Substring(0, 14) + " " + dgvDatos.Rows[0].Cells[14].Value.ToString();
-                //lblCostoSinIva.Text = lblCostoSinIva.Text.Substring(0, 14) + " " + dgvDatos.Rows[0].Cells[15].Value.ToString();
                 lblCostoEnvio.Text = lblCostoEnvio.Text.Substring(0, 15) + " " + dgvDatos.Rows[0].Cells[15].Value.ToString();
                 lblCostoNeto.Text = lblCostoNeto.Text.Substring(0, 11) + " " + dgvDatos.Rows[0].Cells[16].Value.ToString();
                 lblPrecioVenta.Text = lblPrecioVenta.Text.Substring(0, 16) + " " + dgvDatos.Rows[0].Cells[17].Value.ToString();
@@ -76,12 +103,6 @@ namespace Refracciones.Forms
 
                 lblFacturaSinIva.Text = lblFacturaSinIva.Text.Substring(0, 16) + " " + dgvDatos.Rows[0].Cells[20].Value.ToString();
                 lblFacturaConIva.Text = lblFacturaConIva.Text.Substring(0, 16) + " " + dgvDatos.Rows[0].Cells[21].Value.ToString();
-                /*if (dgvDatos.Rows[0].Cells[23].Value.ToString() == "1")
-                    EstadoFact = "PENDIENTE";
-                if (dgvDatos.Rows[0].Cells[23].Value.ToString() == "2")
-                    EstadoFact = "PAGADA";
-                if (dgvDatos.Rows[0].Cells[23].Value.ToString() == "3")
-                    EstadoFact = "CANCELADA";*/
                 lblEstadoFac.Text = lblEstadoFac.Text.Substring(0, 7) + " " + dgvDatos.Rows[0].Cells[22].Value.ToString();
             }
             else{
@@ -90,7 +111,6 @@ namespace Refracciones.Forms
                 elec.dato_1.Text = dvgPedido.Rows[fila].Cells[1].Value.ToString();
                 elec.dato_2.Text = dvgPedido.Rows[fila].Cells[0].Value.ToString();
                 elec.lblCve_venta.Text = dvgPedido.Rows[fila].Cells[8].Value.ToString();
-                this.Hide();
                 elec.ShowDialog();
             }
 
@@ -137,35 +157,20 @@ namespace Refracciones.Forms
 
         private void btnAgregarPedido_Click(object sender, EventArgs e)
         {
-          
-            if (ObtenerRol.Rol(Usuario.Text.Substring(9, Usuario.Text.Length - 9)) == 3 || ObtenerRol.Rol(Usuario.Text.Substring(9, Usuario.Text.Length - 9)) == 0)
-            {
                 Pedido pedido = new Pedido(0);
-                DialogResult result = pedido.ShowDialog();
-            }
-            else {
-                MessageBox.Show("Sin permisos para entrar en este apartado");
-            }
-            
-            
+                DialogResult result = pedido.ShowDialog(); 
         }
 
         private void generarReporteVentasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (ObtenerRol.Rol(Usuario.Text.Substring(9, Usuario.Text.Length - 9)) == 2 || ObtenerRol.Rol(Usuario.Text.Substring(9, Usuario.Text.Length - 9)) == 0)
-            {
                 exportarExcel reporte = new exportarExcel();
-                reporte.Show();
-            }
-            else {
-                MessageBox.Show("Sin permisos para entrar en este apartado");
-            }    
+                reporte.Show();  
         }
 
         private void notificacionesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Alertas alert = new Alertas();
-            alert.Show();
+                Alertas alerta = new Alertas();
+                alerta.Show();
         }
 
         private void cerrarSesionToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -178,29 +183,21 @@ namespace Refracciones.Forms
 
         private void buscarFacturasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-            if (ObtenerRol.Rol(Usuario.Text.Substring(9, Usuario.Text.Length - 9)) == 1 || ObtenerRol.Rol(Usuario.Text.Substring(9, Usuario.Text.Length - 9)) == 0)
-            {
                 buscarFacturas bfact = new buscarFacturas();
                 bfact.Show();
-            }
-            else {
-                MessageBox.Show("Sin permisos para entrar en este apartado");
-            }
         }
 
         private void administrarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (ObtenerRol.Rol(Usuario.Text.Substring(9, Usuario.Text.Length - 9)) == 0)
-            {
                 Administrar admon = new Administrar();
-                DialogResult result = admon.ShowDialog();
-                
-            }
-            else
-            {
-                MessageBox.Show("Sin permisos para entrar en este apartado");
-            }
+                DialogResult result = admon.ShowDialog();           
         }
+
+        private void pbFactura_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }

@@ -35,21 +35,19 @@ namespace Refracciones.Forms
             }
         }
 
-        private void rbtnFacturas_CheckedChanged(object sender, EventArgs e)
-        {
-            if(rbtnFacturas.Checked == true)
+
+        private void RBTNChangeD(object sender, EventArgs e) {
+
+            if (rbtnFacturas.Checked)
             {
                 DateTime fecha_sys = DateTime.Parse((DateTime.Now.ToShortDateString()));
                 dgvAlertas.DataSource = oper.Alertas(fecha_sys);
             }
-        }
-
-        private void rbtnPieza_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rbtnPieza.Checked == true)
-            {
+            else {
                 dgvAlertas.DataSource = oper.Alertas();
             }
+        
+        
         }
 
         private void pbClose_Click(object sender, EventArgs e)

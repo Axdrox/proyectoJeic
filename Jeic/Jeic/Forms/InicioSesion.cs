@@ -82,14 +82,21 @@ namespace Refracciones
         private void btnEntrar_Click_1(object sender, EventArgs e)
         {
             OperBD Operacion = new OperBD();
+            OperBD ObtenerRol = new OperBD();
+
             if (Operacion.logeo(txtUsuario.Text, txtContrasenia.Text) == 1)
             {
-                Alertas alert = new Alertas();
                 MessageBox.Show("Bienvenido");
                 Forms.Busqueda bus = new Forms.Busqueda();
                 bus.Usuario.Text= "Usuario: " + txtUsuario.Text;
                 bus.Show();
-                alert.Show();
+
+                int rol = ObtenerRol.Rol(txtUsuario.Text);
+                if ( rol== 1 || rol==2 || rol == 0 )
+                {
+                    Alertas alerta = new Alertas();
+                    alerta.Show();
+                }
 
                 txtUsuario.Text = "";
                 txtContrasenia.Text = "";

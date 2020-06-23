@@ -86,12 +86,12 @@
             this.generarReporteVentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notificacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buscarFacturasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.administrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarSesionToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.Usuario = new System.Windows.Forms.ToolStripMenuItem();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.moverFormulario = new Bunifu.Framework.UI.BunifuDragControl(this.components);
-            this.administrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Panelinfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFactura)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dvgPedido)).BeginInit();
@@ -286,6 +286,7 @@
             this.pbFactura.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbFactura.TabIndex = 32;
             this.pbFactura.TabStop = false;
+            this.pbFactura.Click += new System.EventHandler(this.pbFactura_Click);
             this.pbFactura.DoubleClick += new System.EventHandler(this.pictureBox1_DoubleClick);
             // 
             // lblEstadoFac
@@ -738,6 +739,14 @@
             this.buscarFacturasToolStripMenuItem.Text = "Buscar Facturas";
             this.buscarFacturasToolStripMenuItem.Click += new System.EventHandler(this.buscarFacturasToolStripMenuItem_Click);
             // 
+            // administrarToolStripMenuItem
+            // 
+            this.administrarToolStripMenuItem.Name = "administrarToolStripMenuItem";
+            this.administrarToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
+            this.administrarToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
+            this.administrarToolStripMenuItem.Text = "Administrar";
+            this.administrarToolStripMenuItem.Click += new System.EventHandler(this.administrarToolStripMenuItem_Click);
+            // 
             // cerrarSesionToolStripMenuItem1
             // 
             this.cerrarSesionToolStripMenuItem1.Name = "cerrarSesionToolStripMenuItem1";
@@ -796,14 +805,6 @@
             this.moverFormulario.Horizontal = true;
             this.moverFormulario.TargetControl = this.bunifuGradientPanel1;
             this.moverFormulario.Vertical = true;
-            // 
-            // administrarToolStripMenuItem
-            // 
-            this.administrarToolStripMenuItem.Name = "administrarToolStripMenuItem";
-            this.administrarToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-            this.administrarToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
-            this.administrarToolStripMenuItem.Text = "Administrar";
-            this.administrarToolStripMenuItem.Click += new System.EventHandler(this.administrarToolStripMenuItem_Click);
             // 
             // Busqueda
             // 

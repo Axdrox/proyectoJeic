@@ -35,7 +35,7 @@
             this.btnDevolucionEntrega = new System.Windows.Forms.Button();
             this.lblUsuario = new System.Windows.Forms.Label();
             this.btnRefactura = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnChecarPedDev = new System.Windows.Forms.Button();
             this.dato_1 = new System.Windows.Forms.Label();
             this.dato_2 = new System.Windows.Forms.Label();
             this.dato_3 = new System.Windows.Forms.Label();
@@ -48,6 +48,7 @@
             this.pbMinimize = new System.Windows.Forms.PictureBox();
             this.pbClose = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatosPDF)).BeginInit();
+            this.bunifuGradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
             this.SuspendLayout();
@@ -98,11 +99,11 @@
             // 
             this.lblUsuario.AutoSize = true;
             this.lblUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(28)))), ((int)(((byte)(32)))));
-            this.lblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsuario.ForeColor = System.Drawing.Color.White;
-            this.lblUsuario.Location = new System.Drawing.Point(12, 9);
+            this.lblUsuario.Location = new System.Drawing.Point(3, 10);
             this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(57, 18);
+            this.lblUsuario.Size = new System.Drawing.Size(52, 16);
             this.lblUsuario.TabIndex = 3;
             this.lblUsuario.Text = "usuario";
             // 
@@ -120,19 +121,19 @@
             this.btnRefactura.UseVisualStyleBackColor = false;
             this.btnRefactura.Click += new System.EventHandler(this.btnRefactura_Click);
             // 
-            // button1
+            // btnChecarPedDev
             // 
-            this.button1.BackColor = System.Drawing.Color.RoyalBlue;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(12, 231);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(155, 44);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Checar pedidos Devueltos/Entregados";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.btnChecarPedDev.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnChecarPedDev.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnChecarPedDev.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChecarPedDev.ForeColor = System.Drawing.Color.White;
+            this.btnChecarPedDev.Location = new System.Drawing.Point(12, 231);
+            this.btnChecarPedDev.Name = "btnChecarPedDev";
+            this.btnChecarPedDev.Size = new System.Drawing.Size(155, 44);
+            this.btnChecarPedDev.TabIndex = 5;
+            this.btnChecarPedDev.Text = "Checar pedidos Devueltos/Entregados";
+            this.btnChecarPedDev.UseVisualStyleBackColor = false;
+            this.btnChecarPedDev.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // dato_1
             // 
@@ -217,6 +218,7 @@
             this.bunifuGradientPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
             this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuGradientPanel1.Controls.Add(this.lblUsuario);
             this.bunifuGradientPanel1.GradientBottomLeft = System.Drawing.Color.Black;
             this.bunifuGradientPanel1.GradientBottomRight = System.Drawing.Color.RoyalBlue;
             this.bunifuGradientPanel1.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
@@ -267,9 +269,8 @@
             this.Controls.Add(this.dato_3);
             this.Controls.Add(this.dato_2);
             this.Controls.Add(this.dato_1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnChecarPedDev);
             this.Controls.Add(this.btnRefactura);
-            this.Controls.Add(this.lblUsuario);
             this.Controls.Add(this.btnDevolucionEntrega);
             this.Controls.Add(this.btnFactura);
             this.Controls.Add(this.btnModificarDatosPedido);
@@ -280,6 +281,8 @@
             this.Text = "Eleccion";
             this.Load += new System.EventHandler(this.Eleccion_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatosPDF)).EndInit();
+            this.bunifuGradientPanel1.ResumeLayout(false);
+            this.bunifuGradientPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).EndInit();
             this.ResumeLayout(false);
@@ -294,7 +297,7 @@
         private System.Windows.Forms.Button btnDevolucionEntrega;
         public System.Windows.Forms.Label lblUsuario;
         private System.Windows.Forms.Button btnRefactura;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnChecarPedDev;
         public System.Windows.Forms.Label dato_1;
         public System.Windows.Forms.Label dato_2;
         public System.Windows.Forms.Label dato_3;

@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -22,6 +23,7 @@ namespace Refracciones
         string cve_factura;
         string cve_refactura;
         OperBD oper = new OperBD();
+
         public Eleccion()
         {
             InitializeComponent();
@@ -30,37 +32,33 @@ namespace Refracciones
 
         private void btnFactura_Click(object sender, EventArgs e)
         {
-            //ABRIR FORMULARIO DE FACTURA
-            
-            
-            if (cve_factura == "0")
-            {
-                registroFactura factura = new registroFactura();
-                factura.dato1.Text = factura.dato1.Text + " " + dato_1.Text;
-                factura.dato2.Text = factura.dato2.Text + " " + dato_2.Text;
-                factura.dato3.Text = "1";
-                factura.ShowDialog();
+            //ABRIR FORMULARIO DE FACTURA  
+                if (cve_factura == "0")
+                {
+                    registroFactura factura = new registroFactura();
+                    factura.dato1.Text = factura.dato1.Text + " " + dato_1.Text;
+                    factura.dato2.Text = factura.dato2.Text + " " + dato_2.Text;
+                    factura.dato3.Text = "1";
+                    factura.ShowDialog();
+                }
+                else if (cve_factura != "0" && cve_refactura == "0")
+                {
+                    registroFactura factura = new registroFactura();
+                    factura.dato1.Text = factura.dato1.Text + " " + dato_1.Text;
+                    factura.dato2.Text = factura.dato2.Text + " " + dato_2.Text;
+                    factura.dato3.Text = "0";
+                    factura.ShowDialog();
+                }
+                else if (cve_factura != "0" && cve_refactura != "0")
+                {
+                    registrarRefactura refactura = new registrarRefactura();
+                    refactura.dato1.Text = refactura.dato1.Text + " " + dato_1.Text;
+                    refactura.dato2.Text = refactura.dato2.Text + " " + dato_2.Text;
+                    refactura.dato3.Text = "0";
+                    refactura.ShowDialog();
+                }
+            }
 
-            }
-            else if(cve_factura != "0" && cve_refactura == "0")
-            {
-                registroFactura factura = new registroFactura();
-                factura.dato1.Text = factura.dato1.Text + " " + dato_1.Text;
-                factura.dato2.Text = factura.dato2.Text + " " + dato_2.Text;
-                factura.dato3.Text = "0";
-                factura.ShowDialog();
-            }
-            else if(cve_factura != "0" && cve_refactura != "0")
-            {
-                registrarRefactura refactura = new registrarRefactura();
-                refactura.dato1.Text = refactura.dato1.Text + " " + dato_1.Text;
-                refactura.dato2.Text = refactura.dato2.Text + " " + dato_2.Text;
-                refactura.dato3.Text = "0";
-                refactura.ShowDialog();
-               
-            }
-          
-        }
 
         private void btnRefactura_Click(object sender, EventArgs e)
         {
@@ -69,14 +67,6 @@ namespace Refracciones
             refactura.dato1.Text = refactura.dato1.Text +" "+ dato_1.Text;
             refactura.dato2.Text = refactura.dato2.Text +" "+ dato_2.Text;
             refactura.txtRefactura.Text = dato_3.Text;
-            /*if (dato_3.Text == "0")
-            {
-                refactura.dato3.Text = "1";
-            }
-            else
-            {
-                refactura.dato3.Text = "0";
-            }*/
             refactura.ShowDialog();
             
         }
@@ -119,10 +109,34 @@ namespace Refracciones
             else
             {
                 btnFactura.Text = "Agregar factura";
-                btnRefactura.Enabled = false;
-                //btnDevolucionEntrega.Enabled = false;
-                
+                btnRefactura.Enabled = false; 
             }
+
+            //PERMISOS
+            int rol = oper.Rol(lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9));
+
+            switch (rol) {
+                case 1:
+                    btnModificarDatosPedido.Enabled = false;
+                    btnDevolucionEntrega.Enabled = false;
+                    btnChecarPedDev.Enabled = false;
+                    break;
+                case 2:
+                    btnFactura.Enabled = false;
+                    btnRefactura.Enabled = false;
+                    btnModificarDatosPedido.Enabled = false;
+                    break;
+                case 3:
+                    btnFactura.Enabled = false;
+                    btnRefactura.Enabled = false;
+                    btnDevolucionEntrega.Enabled = false;
+                    btnChecarPedDev.Enabled = false;
+                    break;
+                default:
+                    break;
+            }
+
+
         }
 
         public string clavePedido
@@ -376,8 +390,6 @@ namespace Refracciones
 
         private void pbClose_Click(object sender, EventArgs e)
         {
-            Busqueda busdev = new Busqueda();
-            busdev.Show();
             this.Close();
         }
 

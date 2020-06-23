@@ -84,7 +84,7 @@
             this.rbtnPieza.TabIndex = 1;
             this.rbtnPieza.Text = "Piezas Pendientes de Entrega";
             this.rbtnPieza.UseVisualStyleBackColor = false;
-            this.rbtnPieza.CheckedChanged += new System.EventHandler(this.rbtnPieza_CheckedChanged);
+            this.rbtnPieza.CheckedChanged += new System.EventHandler(this.RBTNChangeD);
             // 
             // rbtnFacturas
             // 
@@ -100,7 +100,7 @@
             this.rbtnFacturas.TabStop = true;
             this.rbtnFacturas.Text = "Facturas Pendientes de Pago";
             this.rbtnFacturas.UseVisualStyleBackColor = false;
-            this.rbtnFacturas.CheckedChanged += new System.EventHandler(this.rbtnFacturas_CheckedChanged);
+            this.rbtnFacturas.CheckedChanged += new System.EventHandler(this.RBTNChangeD);
             // 
             // bunifuGradientPanel1
             // 
@@ -146,7 +146,7 @@
             // dgvAlertas
             // 
             this.dgvAlertas.AllowUserToAddRows = false;
-            this.dgvAlertas.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.dgvAlertas.BackgroundColor = System.Drawing.Color.Silver;
             this.dgvAlertas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvAlertas.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvAlertas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
