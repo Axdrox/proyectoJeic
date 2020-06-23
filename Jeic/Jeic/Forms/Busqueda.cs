@@ -193,9 +193,9 @@ namespace Refracciones.Forms
         {
             if (ObtenerRol.Rol(Usuario.Text.Substring(9, Usuario.Text.Length - 9)) == 0)
             {
-                //Pedido pedido = new Pedido(0);
-                //DialogResult result = pedido.ShowDialog();
-                MessageBox.Show("ADMIN");
+                Administrar admon = new Administrar();
+                DialogResult result = admon.ShowDialog();
+                
             }
             else
             {
