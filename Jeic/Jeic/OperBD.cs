@@ -104,7 +104,7 @@ namespace Refracciones
                     this.Comando.Parameters.AddWithValue("@estado", estado);
                     this.Comando.ExecuteNonQuery();
                     MessageBox.Show("Se actualizaron los datos correctamente");
-                    MessageBox.Show(us+pass+rol+estado);
+             
                     nuevacon.Close();
                 }
                 
@@ -1390,6 +1390,73 @@ namespace Refracciones
                     MessageBox.Show("Error: " + EX.Message);
                 }
             }
+        //---------------- VENDEDORES REGISTRADOS
+        public DataSet VendedoresRegistradosClaves()
+        {
+            DataSet dataSet = new DataSet();
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT cve_vendedor FROM VENDEDOR", nuevaConexion);
+                    dataAdapter.Fill(dataSet, "VENDEDOR");
+                    nuevaConexion.Close();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return dataSet;
+        }
+        //---------------- OBTENER NOMBRE VENDEDOR MEDIANTE CLAVE
+        public string NombreVendedor(int clave)
+        {
+            string nombreVal = "";
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("SELECT nombre FROM VENDEDOR WHERE cve_vendedor = @cve_vendedor", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@cve_vendedor", clave);
+                    nombreVal = Comando.ExecuteScalar() as string;
+                    nuevaConexion.Close();
+
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return nombreVal;
+        }
+        
+        //---------------- ACTUALIZAR DATOS DEL VENDEDOR MEDIANTE CLAVE
+        public void ActualizarDatosVendedor(int clave, int estado)
+        {
+            
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("UPDATE VENDEDOR SET estado = @estado WHERE cve_vendedor = @cve_vendedor", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@cve_vendedor", clave);
+                    Comando.Parameters.AddWithValue("@estado",estado);
+                    Comando.ExecuteNonQuery();
+                    MessageBox.Show("Se actualizaron los datos correctamente");
+                    nuevaConexion.Close();
+
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            
+        }
         //---------------------ALEX--------------------------------------------------------------------
 
         //VALIDAR SI EXISTE CLAVE PEDIDO

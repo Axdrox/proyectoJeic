@@ -32,6 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Administrar));
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.btnVendedor = new Bunifu.Framework.UI.BunifuImageButton();
+            this.label7 = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
             this.bunifuGradientPanel2 = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.cmb4 = new System.Windows.Forms.ComboBox();
@@ -62,7 +64,10 @@
             this.btnUsuario = new Bunifu.Framework.UI.BunifuImageButton();
             this.pbMinimize = new System.Windows.Forms.PictureBox();
             this.pbClose = new System.Windows.Forms.PictureBox();
+            this.errorP = new System.Windows.Forms.ErrorProvider(this.components);
+            this.lbl5 = new System.Windows.Forms.Label();
             this.bunifuGradientPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnVendedor)).BeginInit();
             this.bunifuGradientPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnPieza)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVehiculo)).BeginInit();
@@ -72,6 +77,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnUsuario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorP)).BeginInit();
             this.SuspendLayout();
             // 
             // bunifuElipse1
@@ -84,6 +90,8 @@
             this.bunifuGradientPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
             this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuGradientPanel1.Controls.Add(this.btnVendedor);
+            this.bunifuGradientPanel1.Controls.Add(this.label7);
             this.bunifuGradientPanel1.Controls.Add(this.lblTitle);
             this.bunifuGradientPanel1.Controls.Add(this.bunifuGradientPanel2);
             this.bunifuGradientPanel1.Controls.Add(this.label6);
@@ -110,6 +118,31 @@
             this.bunifuGradientPanel1.Size = new System.Drawing.Size(643, 451);
             this.bunifuGradientPanel1.TabIndex = 2;
             // 
+            // btnVendedor
+            // 
+            this.btnVendedor.BackColor = System.Drawing.Color.Transparent;
+            this.btnVendedor.Image = global::Refracciones.Properties.Resources.seller;
+            this.btnVendedor.ImageActive = null;
+            this.btnVendedor.Location = new System.Drawing.Point(13, 352);
+            this.btnVendedor.Name = "btnVendedor";
+            this.btnVendedor.Size = new System.Drawing.Size(67, 26);
+            this.btnVendedor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnVendedor.TabIndex = 93;
+            this.btnVendedor.TabStop = false;
+            this.btnVendedor.Zoom = 10;
+            this.btnVendedor.Click += new System.EventHandler(this.btnVendedor_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(72)))), ((int)(((byte)(125)))));
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(86, 359);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(118, 13);
+            this.label7.TabIndex = 92;
+            this.label7.Text = "Administrar Vendedores";
+            // 
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
@@ -126,6 +159,7 @@
             // 
             this.bunifuGradientPanel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel2.BackgroundImage")));
             this.bunifuGradientPanel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuGradientPanel2.Controls.Add(this.lbl5);
             this.bunifuGradientPanel2.Controls.Add(this.cmb4);
             this.bunifuGradientPanel2.Controls.Add(this.txt3);
             this.bunifuGradientPanel2.Controls.Add(this.cmb3);
@@ -153,6 +187,7 @@
             // 
             // cmb4
             // 
+            this.cmb4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb4.FormattingEnabled = true;
             this.cmb4.Items.AddRange(new object[] {
             "ACTIVO",
@@ -171,14 +206,17 @@
             // 
             // cmb3
             // 
+            this.cmb3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb3.FormattingEnabled = true;
             this.cmb3.Location = new System.Drawing.Point(108, 61);
             this.cmb3.Name = "cmb3";
             this.cmb3.Size = new System.Drawing.Size(121, 21);
             this.cmb3.TabIndex = 84;
+            this.cmb3.SelectedIndexChanged += new System.EventHandler(this.cmb3_SelectedIndexChanged);
             // 
             // cmb2
             // 
+            this.cmb2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb2.FormattingEnabled = true;
             this.cmb2.Items.AddRange(new object[] {
             "ACTIVO",
@@ -216,6 +254,7 @@
             // 
             // cmb1
             // 
+            this.cmb1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb1.FormattingEnabled = true;
             this.cmb1.Location = new System.Drawing.Point(108, 131);
             this.cmb1.Name = "cmb1";
@@ -304,7 +343,7 @@
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(72)))), ((int)(((byte)(125)))));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(71, 396);
+            this.label6.Location = new System.Drawing.Point(86, 311);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(92, 13);
             this.label6.TabIndex = 89;
@@ -315,7 +354,7 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(64)))), ((int)(((byte)(109)))));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(71, 331);
+            this.label5.Location = new System.Drawing.Point(86, 259);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(107, 13);
             this.label5.TabIndex = 88;
@@ -326,7 +365,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(56)))), ((int)(((byte)(92)))));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(72, 266);
+            this.label4.Location = new System.Drawing.Point(86, 208);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(98, 13);
             this.label4.TabIndex = 87;
@@ -337,7 +376,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(49)))), ((int)(((byte)(78)))));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(72, 205);
+            this.label3.Location = new System.Drawing.Point(86, 162);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(121, 13);
             this.label3.TabIndex = 86;
@@ -348,7 +387,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(42)))), ((int)(((byte)(61)))));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(72, 139);
+            this.label2.Location = new System.Drawing.Point(86, 112);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(98, 13);
             this.label2.TabIndex = 85;
@@ -359,7 +398,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(34)))), ((int)(((byte)(44)))));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(72, 70);
+            this.label1.Location = new System.Drawing.Point(86, 63);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(102, 13);
             this.label1.TabIndex = 84;
@@ -370,9 +409,9 @@
             this.btnPieza.BackColor = System.Drawing.Color.Transparent;
             this.btnPieza.Image = global::Refracciones.Properties.Resources.carPart;
             this.btnPieza.ImageActive = null;
-            this.btnPieza.Location = new System.Drawing.Point(13, 380);
+            this.btnPieza.Location = new System.Drawing.Point(13, 302);
             this.btnPieza.Name = "btnPieza";
-            this.btnPieza.Size = new System.Drawing.Size(52, 47);
+            this.btnPieza.Size = new System.Drawing.Size(67, 26);
             this.btnPieza.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnPieza.TabIndex = 83;
             this.btnPieza.TabStop = false;
@@ -384,9 +423,9 @@
             this.btnVehiculo.BackColor = System.Drawing.Color.Transparent;
             this.btnVehiculo.Image = global::Refracciones.Properties.Resources.car;
             this.btnVehiculo.ImageActive = null;
-            this.btnVehiculo.Location = new System.Drawing.Point(13, 317);
+            this.btnVehiculo.Location = new System.Drawing.Point(13, 250);
             this.btnVehiculo.Name = "btnVehiculo";
-            this.btnVehiculo.Size = new System.Drawing.Size(52, 47);
+            this.btnVehiculo.Size = new System.Drawing.Size(67, 26);
             this.btnVehiculo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnVehiculo.TabIndex = 82;
             this.btnVehiculo.TabStop = false;
@@ -398,9 +437,9 @@
             this.btnTaller.BackColor = System.Drawing.Color.Transparent;
             this.btnTaller.Image = global::Refracciones.Properties.Resources.Workshop;
             this.btnTaller.ImageActive = null;
-            this.btnTaller.Location = new System.Drawing.Point(13, 251);
+            this.btnTaller.Location = new System.Drawing.Point(13, 202);
             this.btnTaller.Name = "btnTaller";
-            this.btnTaller.Size = new System.Drawing.Size(52, 47);
+            this.btnTaller.Size = new System.Drawing.Size(67, 26);
             this.btnTaller.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnTaller.TabIndex = 81;
             this.btnTaller.TabStop = false;
@@ -412,9 +451,9 @@
             this.btnProveedor.BackColor = System.Drawing.Color.Transparent;
             this.btnProveedor.Image = global::Refracciones.Properties.Resources.provider;
             this.btnProveedor.ImageActive = null;
-            this.btnProveedor.Location = new System.Drawing.Point(13, 187);
+            this.btnProveedor.Location = new System.Drawing.Point(13, 154);
             this.btnProveedor.Name = "btnProveedor";
-            this.btnProveedor.Size = new System.Drawing.Size(52, 47);
+            this.btnProveedor.Size = new System.Drawing.Size(67, 26);
             this.btnProveedor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnProveedor.TabIndex = 80;
             this.btnProveedor.TabStop = false;
@@ -426,9 +465,9 @@
             this.btnClientes.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnClientes.Image = global::Refracciones.Properties.Resources.customer;
             this.btnClientes.ImageActive = null;
-            this.btnClientes.Location = new System.Drawing.Point(13, 120);
+            this.btnClientes.Location = new System.Drawing.Point(13, 107);
             this.btnClientes.Name = "btnClientes";
-            this.btnClientes.Size = new System.Drawing.Size(52, 47);
+            this.btnClientes.Size = new System.Drawing.Size(67, 26);
             this.btnClientes.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnClientes.TabIndex = 79;
             this.btnClientes.TabStop = false;
@@ -442,7 +481,7 @@
             this.btnUsuario.ImageActive = null;
             this.btnUsuario.Location = new System.Drawing.Point(13, 56);
             this.btnUsuario.Name = "btnUsuario";
-            this.btnUsuario.Size = new System.Drawing.Size(52, 47);
+            this.btnUsuario.Size = new System.Drawing.Size(67, 26);
             this.btnUsuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnUsuario.TabIndex = 78;
             this.btnUsuario.TabStop = false;
@@ -459,6 +498,7 @@
             this.pbMinimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbMinimize.TabIndex = 77;
             this.pbMinimize.TabStop = false;
+            this.pbMinimize.Click += new System.EventHandler(this.pbMinimize_Click);
             // 
             // pbClose
             // 
@@ -470,6 +510,21 @@
             this.pbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbClose.TabIndex = 76;
             this.pbClose.TabStop = false;
+            this.pbClose.Click += new System.EventHandler(this.pbClose_Click);
+            // 
+            // errorP
+            // 
+            this.errorP.ContainerControl = this;
+            // 
+            // lbl5
+            // 
+            this.lbl5.AutoSize = true;
+            this.lbl5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(45)))));
+            this.lbl5.ForeColor = System.Drawing.Color.White;
+            this.lbl5.Location = new System.Drawing.Point(235, 64);
+            this.lbl5.Name = "lbl5";
+            this.lbl5.Size = new System.Drawing.Size(0, 13);
+            this.lbl5.TabIndex = 87;
             // 
             // Administrar
             // 
@@ -483,6 +538,7 @@
             this.Load += new System.EventHandler(this.Administrar_Load);
             this.bunifuGradientPanel1.ResumeLayout(false);
             this.bunifuGradientPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnVendedor)).EndInit();
             this.bunifuGradientPanel2.ResumeLayout(false);
             this.bunifuGradientPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnPieza)).EndInit();
@@ -493,6 +549,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnUsuario)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorP)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -531,5 +588,9 @@
         private System.Windows.Forms.TextBox txt3;
         private System.Windows.Forms.ComboBox cmb4;
         private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.ErrorProvider errorP;
+        private Bunifu.Framework.UI.BunifuImageButton btnVendedor;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lbl5;
     }
 }
