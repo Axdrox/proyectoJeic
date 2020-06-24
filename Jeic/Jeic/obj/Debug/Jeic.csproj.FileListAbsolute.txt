@@ -348,3 +348,4 @@ C:\Users\gears\Desktop\Ramas\Jeic\Jeic\obj\Debug\Jeic.csproj.CoreCompileInputs.c
 C:\Users\gears\Desktop\Ramas\Jeic\Jeic\obj\Debug\Jeic.csproj.CopyComplete
 C:\Users\gears\Desktop\Ramas\Jeic\Jeic\obj\Debug\Refracciones.exe
 C:\Users\gears\Desktop\Ramas\Jeic\Jeic\obj\Debug\Refracciones.pdb
+C:\Users\gears\Desktop\Ramas\Jeic\Jeic\obj\Debug\Jeic.csprojAssemblyReference.cache

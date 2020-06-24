@@ -19,7 +19,6 @@ namespace Refracciones.Forms
     public partial class Pedido : Form
     {
         private OperBD operacion = new OperBD();
-        private Busqueda busdev = new Busqueda();
         private DataTable dt;
         //int totalCantidadPiezas = 0;
 
@@ -1180,7 +1179,6 @@ namespace Refracciones.Forms
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            busdev.Show();
             this.DialogResult = DialogResult.Cancel;
         }
 
@@ -1407,7 +1405,6 @@ namespace Refracciones.Forms
 
         private void pbClose_Click(object sender, EventArgs e)
         {
-            busdev.Show();
             this.Close();
         }
 
@@ -1691,5 +1688,6 @@ namespace Refracciones.Forms
                 }
             }
         }
+
     }
 }

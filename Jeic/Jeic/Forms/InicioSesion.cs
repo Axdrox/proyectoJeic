@@ -128,19 +128,29 @@ namespace Refracciones
 
         private void btnEntrar_KeyPress(object sender, KeyPressEventArgs e)
         {
+            MessageBox.Show(txtUsuario.Text);
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
                 OperBD Operacion = new OperBD();
+                OperBD ObtenerRol = new OperBD();
+               
+
                 if (Operacion.logeo(txtUsuario.Text, txtContrasenia.Text) == 1)
                 {
-                    
-                    Alertas alert = new Alertas();
+                   
                     MessageBox.Show("Bienvenido");
                     Forms.Busqueda bus = new Forms.Busqueda();
+                    MessageBox.Show(txtUsuario.Text);
+                    bus.Usuario.Text = "Usuario: " + txtUsuario.Text;
                     bus.Show();
-                    alert.Show();
 
-                    bus.Usuario.Text = "Usuario : " + txtUsuario.Text;
+                    int rol = ObtenerRol.Rol(txtUsuario.Text);
+                    if (rol == 1 || rol == 2 || rol == 0)
+                    {
+                        Alertas alerta = new Alertas();
+                        alerta.Show();
+                    }
+
                     txtUsuario.Text = "";
                     txtContrasenia.Text = "";
                     this.Hide();
