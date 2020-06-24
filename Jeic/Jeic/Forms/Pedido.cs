@@ -212,7 +212,8 @@ namespace Refracciones.Forms
                 chbModificarFechaBaja.Visible = true;
                 //dtpFechaBaja.Text = operacion.fechaBaja(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
 
-                dgvPedido.DataSource = operacion.piezasPedidoActualizar(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
+                dt = operacion.piezasPedidoActualizar(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
+                dgvPedido.DataSource = dt;
                 double precioTotal = 0; int piezasTotal = 0; nombrePieza = new string[Convert.ToInt32(dgvPedido.Rows.Count)]; int i = 0; filasIniciales = dgvPedido.Rows.Count;
                 foreach (DataGridViewRow row in dgvPedido.Rows)
                 {
@@ -982,10 +983,22 @@ namespace Refracciones.Forms
                 Pieza pieza = new Pieza();
                 string[] guia = new string[dgvPedido.Rows.Count];
                 int j = 0;
-                if (chbOtroDestino.Checked == true)
-                    pieza.destino = txtDestino.Text.Trim();
+                if(actualizar == 1)
+                {
+                    if (chbOtroDestino.Checked == true && chbOtroDestino.Text == "Otro")
+                        pieza.destino = txtDestino.Text.Trim();
+                    else if(chbOtroDestino.Checked == false && chbOtroDestino.Text == "Otro")
+                        pieza.destino = cbDestino.Text.Trim();
+                    else
+                        pieza.destino = txtDestino.Text.Trim();
+                }
                 else
-                    pieza.destino = cbDestino.Text.Trim();
+                {
+                    if (chbOtroDestino.Checked == true)
+                        pieza.destino = txtDestino.Text.Trim();
+                    else
+                        pieza.destino = cbDestino.Text.Trim();
+                }
                 if (dgvPedido.Rows.Count > 0)
                 {
                     foreach (DataGridViewRow row in dgvPedido.Rows)
@@ -1016,6 +1029,8 @@ namespace Refracciones.Forms
                         row[i] = pieza.datosMandar[i];
                     }
                     dt.Rows.Add(row);
+                    
+                    MessageBox.Show(filasIniciales.ToString());
 
                     foreach (DataGridViewRow dgvRow in dgvPedido.Rows)
                     {
@@ -1075,7 +1090,7 @@ namespace Refracciones.Forms
                 {
                     if(filasIniciales != 0)
                     {
-                        if (string.IsNullOrEmpty(operacion.existePiezaEntrega(pieza)) == true)
+                        if (!string.IsNullOrEmpty(operacion.existePiezaEntrega(pieza)))
                         {
                             if (!string.IsNullOrEmpty(operacion.existePiezaRegistradaPedido(txtClavePedido.Text, lblClaveSiniestro.Text, pieza)))
                             {

@@ -207,7 +207,6 @@ C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\bin\Debug\Microsoft.Id
 C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\bin\Debug\SpreadsheetLight.xml
 C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Alertas.resources
 C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Eleccion.resources
-C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Busqueda_Devolver.resources
 C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.BusquedaEntrega_Devolucion.resources
 C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.BusquedaPedidos.resources
 C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Devolucion.resources
@@ -349,3 +348,5 @@ C:\Users\gears\Desktop\Ramas\Jeic\Jeic\obj\Debug\Jeic.csproj.CopyComplete
 C:\Users\gears\Desktop\Ramas\Jeic\Jeic\obj\Debug\Refracciones.exe
 C:\Users\gears\Desktop\Ramas\Jeic\Jeic\obj\Debug\Refracciones.pdb
 C:\Users\gears\Desktop\Ramas\Jeic\Jeic\obj\Debug\Jeic.csprojAssemblyReference.cache
+C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Administrar.resources
+C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Busqueda.resources

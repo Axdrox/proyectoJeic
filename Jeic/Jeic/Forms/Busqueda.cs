@@ -36,7 +36,7 @@ namespace Refracciones.Forms
             menuStrip1.ForeColor = Color.White;
 
             MessageBox.Show(Usuario.Text);
-           int rol = ObtenerRol.Rol(Usuario.Text.Substring(9, Usuario.Text.Length - 9));
+            int rol = ObtenerRol.Rol(Usuario.Text.Substring(9, Usuario.Text.Length - 9));
             MessageBox.Show(rol.ToString());
             switch (rol)
             {
