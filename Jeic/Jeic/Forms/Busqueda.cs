@@ -35,8 +35,9 @@ namespace Refracciones.Forms
             llenarDefaultDGV.defaultDGV(dvgPedido);
             menuStrip1.ForeColor = Color.White;
 
+            MessageBox.Show(Usuario.Text);
            int rol = ObtenerRol.Rol(Usuario.Text.Substring(9, Usuario.Text.Length - 9));
-
+            MessageBox.Show(rol.ToString());
             switch (rol)
             {
                 case 1:
