@@ -102,7 +102,7 @@ namespace Refracciones.Forms
             }
 
             //Carga los datos registros de vendedores en el combobox
-            cbVendedor.DataSource = operacion.VendedoresRegistrados().Tables[0].DefaultView;
+            cbVendedor.DataSource = operacion.VendedoresRegistrados(1).Tables[0].DefaultView;
             cbVendedor.ValueMember = "nombre";
 
             //Carga los datos registros de clientes/aseguradoras en el combobox

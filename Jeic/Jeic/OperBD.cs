@@ -1845,7 +1845,7 @@ namespace Refracciones
         }
 
         //---------------- VENDEDORES REGISTRADOS
-        public DataSet VendedoresRegistrados()
+        public DataSet VendedoresRegistrados(int x)
         {
             DataSet dataSet = new DataSet();
             try
@@ -1853,8 +1853,17 @@ namespace Refracciones
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     nuevaConexion.Open();
-                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT nombre FROM VENDEDOR", nuevaConexion);
-                    dataAdapter.Fill(dataSet, "VENDEDOR");
+                    if (x == 0)
+                    {
+                        SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT nombre FROM VENDEDOR", nuevaConexion);
+                        dataAdapter.Fill(dataSet, "VENDEDOR");
+                    }
+                    else if (x == 1)
+                    {
+                        SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT nombre FROM VENDEDOR WHERE estado = 1", nuevaConexion);
+                        dataAdapter.Fill(dataSet, "VENDEDOR");
+                    }
+                    
                     nuevaConexion.Close();
                 }
             }
