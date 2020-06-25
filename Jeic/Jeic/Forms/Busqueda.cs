@@ -34,10 +34,7 @@ namespace Refracciones.Forms
             OperBD llenarDefaultDGV = new OperBD();
             llenarDefaultDGV.defaultDGV(dvgPedido);
             menuStrip1.ForeColor = Color.White;
-
-            MessageBox.Show(Usuario.Text);
             int rol = ObtenerRol.Rol(Usuario.Text.Substring(9, Usuario.Text.Length - 9));
-            MessageBox.Show(rol.ToString());
             switch (rol)
             {
                 case 1:
@@ -194,10 +191,6 @@ namespace Refracciones.Forms
                 DialogResult result = admon.ShowDialog();           
         }
 
-        private void pbFactura_Click(object sender, EventArgs e)
-        {
-
-        }
 
 
     }

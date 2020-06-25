@@ -55,6 +55,7 @@
             this.registrarEntregaDeTodoElPedidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registrarDevoluciónDeTodoElPedidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.lblporcentaje = new System.Windows.Forms.Label();
             this.txtPenalizacion = new System.Windows.Forms.TextBox();
             this.dgvDevolucion = new System.Windows.Forms.DataGridView();
             this.bunifuGradientPanel2 = new Bunifu.Framework.UI.BunifuGradientPanel();
@@ -62,7 +63,7 @@
             this.pbClose = new System.Windows.Forms.PictureBox();
             this.errorP = new System.Windows.Forms.ErrorProvider(this.components);
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.lblporcentaje = new System.Windows.Forms.Label();
+            this.moverFormulario = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -377,6 +378,18 @@
             this.bunifuGradientPanel1.Size = new System.Drawing.Size(1370, 450);
             this.bunifuGradientPanel1.TabIndex = 18;
             // 
+            // lblporcentaje
+            // 
+            this.lblporcentaje.AutoSize = true;
+            this.lblporcentaje.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.lblporcentaje.ForeColor = System.Drawing.Color.White;
+            this.lblporcentaje.Location = new System.Drawing.Point(21, 305);
+            this.lblporcentaje.Name = "lblporcentaje";
+            this.lblporcentaje.Size = new System.Drawing.Size(15, 13);
+            this.lblporcentaje.TabIndex = 35;
+            this.lblporcentaje.Text = "%";
+            this.lblporcentaje.Visible = false;
+            // 
             // txtPenalizacion
             // 
             this.txtPenalizacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
@@ -484,17 +497,12 @@
             this.bunifuElipse1.ElipseRadius = 5;
             this.bunifuElipse1.TargetControl = this;
             // 
-            // lblporcentaje
+            // moverFormulario
             // 
-            this.lblporcentaje.AutoSize = true;
-            this.lblporcentaje.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.lblporcentaje.ForeColor = System.Drawing.Color.White;
-            this.lblporcentaje.Location = new System.Drawing.Point(21, 305);
-            this.lblporcentaje.Name = "lblporcentaje";
-            this.lblporcentaje.Size = new System.Drawing.Size(15, 13);
-            this.lblporcentaje.TabIndex = 35;
-            this.lblporcentaje.Text = "%";
-            this.lblporcentaje.Visible = false;
+            this.moverFormulario.Fixed = true;
+            this.moverFormulario.Horizontal = true;
+            this.moverFormulario.TargetControl = this.bunifuGradientPanel1;
+            this.moverFormulario.Vertical = true;
             // 
             // Devolucion
             // 
@@ -558,5 +566,6 @@
         private System.Windows.Forms.PictureBox pbClose;
         private System.Windows.Forms.TextBox txtPenalizacion;
         private System.Windows.Forms.Label lblporcentaje;
+        private Bunifu.Framework.UI.BunifuDragControl moverFormulario;
     }
 }

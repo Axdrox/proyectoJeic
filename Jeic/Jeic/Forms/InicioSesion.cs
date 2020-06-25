@@ -17,6 +17,8 @@ namespace Refracciones
     public partial class InicioSesion : Form
     {
         //CONSTRUCTOR DEL FORM
+        OperBD Operacion = new OperBD();
+        OperBD ObtenerRol = new OperBD();
         public InicioSesion()
         {
             InitializeComponent();
@@ -54,16 +56,21 @@ namespace Refracciones
             txtContrasenia.ForeColor = Color.White;
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
-                OperBD Operacion = new OperBD();
+                
                 if (Operacion.logeo(txtUsuario.Text, txtContrasenia.Text) == 1)
                 {
-                    Alertas alert = new Alertas();
                     MessageBox.Show("Bienvenido");
                     Forms.Busqueda bus = new Forms.Busqueda();
+                    bus.Usuario.Text = "Usuario: " + txtUsuario.Text;
                     bus.Show();
-                    alert.Show();
 
-                   bus.Usuario.Text = "Usuario: " + txtUsuario.Text;
+                    int rol = ObtenerRol.Rol(txtUsuario.Text);
+                    if (rol == 1 || rol == 2 || rol == 0)
+                    {
+                        Alertas alerta = new Alertas();
+                        alerta.Show();
+                    }
+
                     txtUsuario.Text = "";
                     txtContrasenia.Text = "";
                     this.Hide();
@@ -81,8 +88,6 @@ namespace Refracciones
 
         private void btnEntrar_Click_1(object sender, EventArgs e)
         {
-            OperBD Operacion = new OperBD();
-            OperBD ObtenerRol = new OperBD();
 
             if (Operacion.logeo(txtUsuario.Text, txtContrasenia.Text) == 1)
             {
@@ -124,46 +129,6 @@ namespace Refracciones
                 txtContrasenia.Text = "Default";
 
             txtContrasenia.isPassword = true;
-        }
-
-        private void btnEntrar_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            MessageBox.Show(txtUsuario.Text);
-            if (e.KeyChar == Convert.ToChar(Keys.Enter))
-            {
-                OperBD Operacion = new OperBD();
-                OperBD ObtenerRol = new OperBD();
-               
-
-                if (Operacion.logeo(txtUsuario.Text, txtContrasenia.Text) == 1)
-                {
-                   
-                    MessageBox.Show("Bienvenido");
-                    Forms.Busqueda bus = new Forms.Busqueda();
-                    MessageBox.Show(txtUsuario.Text);
-                    bus.Usuario.Text = "Usuario: " + txtUsuario.Text;
-                    bus.Show();
-
-                    int rol = ObtenerRol.Rol(txtUsuario.Text);
-                    if (rol == 1 || rol == 2 || rol == 0)
-                    {
-                        Alertas alerta = new Alertas();
-                        alerta.Show();
-                    }
-
-                    txtUsuario.Text = "";
-                    txtContrasenia.Text = "";
-                    this.Hide();
-                }
-                else
-                {
-                    MessageBox.Show("Usuario y/o contraseña incorrectos");
-                    txtUsuario.Text = "Nombre de usuario";
-                    txtContrasenia.Text = "Default";
-                    txtUsuario.ForeColor = Color.White;
-                    txtContrasenia.ForeColor = Color.White;
-                }
-            }
         }
 
         private void pbClose_Click(object sender, EventArgs e)

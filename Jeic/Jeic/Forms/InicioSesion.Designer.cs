@@ -42,6 +42,7 @@
             this.bunifuCustomLabel2 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.moverFormulario = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).BeginInit();
@@ -170,13 +171,12 @@
             this.btnEntrar.IdleForecolor = System.Drawing.Color.White;
             this.btnEntrar.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnEntrar.Location = new System.Drawing.Point(75, 158);
-            this.btnEntrar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEntrar.Margin = new System.Windows.Forms.Padding(4);
             this.btnEntrar.Name = "btnEntrar";
             this.btnEntrar.Size = new System.Drawing.Size(103, 28);
             this.btnEntrar.TabIndex = 9;
             this.btnEntrar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnEntrar.Click += new System.EventHandler(this.btnEntrar_Click_1);
-            this.btnEntrar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnEntrar_KeyPress);
             // 
             // bunifuCustomLabel1
             // 
@@ -237,6 +237,13 @@
             this.bunifuGradientPanel1.Size = new System.Drawing.Size(242, 197);
             this.bunifuGradientPanel1.TabIndex = 17;
             // 
+            // moverFormulario
+            // 
+            this.moverFormulario.Fixed = true;
+            this.moverFormulario.Horizontal = true;
+            this.moverFormulario.TargetControl = this.bunifuGradientPanel1;
+            this.moverFormulario.Vertical = true;
+            // 
             // InicioSesion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -277,6 +284,7 @@
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private Bunifu.Framework.UI.BunifuGradientPanel bunifuGradientPanel1;
+        private Bunifu.Framework.UI.BunifuDragControl moverFormulario;
     }
 }
 

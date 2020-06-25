@@ -775,7 +775,7 @@ namespace Refracciones
             {
                 using (SqlConnection nuevacon = Conexion.conexion())
                 {
-                    da = new SqlDataAdapter(string.Format("SELECT ven.cve_pedido AS PEDIDO, ven.cve_siniestro AS SINIESTRO, ven.cve_vendedor AS VENDEDOR, c.cve_nombre AS CLIENTE, k.nombre AS PIEZA, p.cantidad AS CANTIDAD, ven.fecha_asignacion AS 'FECHA DE ASIGNACIÓN', ven.fecha_promesa AS 'FECHA PROMESA', ven.cve_venta AS 'VENTA' FROM VENTAS ven LEFT OUTER JOIN PEDIDO p ON ven.cve_venta = p.cve_venta LEFT OUTER JOIN PIEZA k ON p.cve_pieza = k.cve_pieza LEFT OUTER JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE c ON c.cve_valuador = v.cve_valuador where ven.cve_siniestro like '%{0}%' and CAST(ven.cve_pedido AS nvarchar) like '%{1}%' and ven.cve_vendedor like '%{2}%'", cve_Siniestro, cve_Pedido, cve_vendedor), nuevacon);
+                    da = new SqlDataAdapter(string.Format("SELECT ven.cve_pedido AS PEDIDO, ven.cve_siniestro AS SINIESTRO, ven.cve_vendedor AS VENDEDOR, c.cve_nombre AS CLIENTE, k.nombre AS PIEZA, p.cantidad AS CANTIDAD, ven.fecha_asignacion AS 'FECHA DE ASIGNACIÓN', ven.fecha_promesa AS 'FECHA PROMESA', ven.cve_venta AS 'VENTA' FROM VENTAS ven LEFT OUTER JOIN PEDIDO p ON ven.cve_venta = p.cve_venta LEFT OUTER JOIN PIEZA k ON p.cve_pieza = k.cve_pieza LEFT OUTER JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE c ON c.cve_valuador = v.cve_valuador WHERE k.nombre != '' AND ven.cve_siniestro like '%{0}%' and CAST(ven.cve_pedido AS nvarchar) like '%{1}%' and ven.cve_vendedor like '%{2}%'", cve_Siniestro, cve_Pedido, cve_vendedor), nuevacon);
 
                     nuevacon.Open();
                     dt = new DataTable();
@@ -799,7 +799,7 @@ namespace Refracciones
             {
                 using (SqlConnection nuevacon = Conexion.conexion())
                 {
-                    da = new SqlDataAdapter(string.Format("SELECT ven.cve_pedido AS PEDIDO, ven.cve_siniestro AS SINIESTRO, ven.cve_vendedor AS VENDEDOR, c.cve_nombre AS CLIENTE, k.nombre AS PIEZA, p.cantidad AS CANTIDAD, ven.fecha_asignacion AS 'FECHA DE ASIGNACIÓN', ven.fecha_promesa AS 'FECHA PROMESA', ven.cve_venta AS 'VENTA' FROM VENTAS ven LEFT OUTER JOIN PEDIDO p ON p.cve_venta = ven.cve_venta LEFT OUTER JOIN PIEZA k ON p.cve_pieza = k.cve_pieza  LEFT OUTER JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE c ON c.cve_valuador = v.cve_valuador where fecha_asignacion between '{0}' and '{1}' order by ven.fecha_asignacion desc", Fecha_inicio, fecha_fin), nuevacon);
+                    da = new SqlDataAdapter(string.Format("SELECT ven.cve_pedido AS PEDIDO, ven.cve_siniestro AS SINIESTRO, ven.cve_vendedor AS VENDEDOR, c.cve_nombre AS CLIENTE, k.nombre AS PIEZA, p.cantidad AS CANTIDAD, ven.fecha_asignacion AS 'FECHA DE ASIGNACIÓN', ven.fecha_promesa AS 'FECHA PROMESA', ven.cve_venta AS 'VENTA' FROM VENTAS ven LEFT OUTER JOIN PEDIDO p ON p.cve_venta = ven.cve_venta LEFT OUTER JOIN PIEZA k ON p.cve_pieza = k.cve_pieza  LEFT OUTER JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE c ON c.cve_valuador = v.cve_valuador WHERE k.nombre != '' AND fecha_asignacion between '{0}' and '{1}' order by ven.fecha_asignacion desc", Fecha_inicio, fecha_fin), nuevacon);
                     nuevacon.Open();
                     dt = new DataTable();
                     da.Fill(dt);
@@ -912,7 +912,7 @@ namespace Refracciones
             {
                 using (SqlConnection nuevacon = Conexion.conexion())
                 {
-                    da = new SqlDataAdapter(string.Format("SELECT TOP 10 ven.cve_pedido AS PEDIDO, ven.cve_siniestro AS 'SINIESTRO', ven.cve_vendedor AS VENDEDOR, c.cve_nombre AS CLIENTE, k.nombre AS PIEZA, p.cantidad AS CANTIDAD, ven.fecha_asignacion AS 'FECHA DE ASIGNACIÓN', ven.fecha_promesa AS 'FECHA PROMESA', ven.cve_venta AS 'VENTA' FROM VENTAS ven LEFT OUTER JOIN PEDIDO p ON ven.cve_venta = p.cve_venta LEFT OUTER JOIN PIEZA k ON p.cve_pieza = k.cve_pieza LEFT OUTER JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE c ON c.cve_valuador = v.cve_valuador order by ven.fecha_asignacion desc"), nuevacon);
+                    da = new SqlDataAdapter(string.Format("SELECT TOP 100 ven.cve_pedido AS PEDIDO, ven.cve_siniestro AS 'SINIESTRO', ven.cve_vendedor AS VENDEDOR, c.cve_nombre AS CLIENTE, k.nombre AS PIEZA, p.cantidad AS CANTIDAD, ven.fecha_asignacion AS 'FECHA DE ASIGNACIÓN', ven.fecha_promesa AS 'FECHA PROMESA', ven.cve_venta AS 'VENTA' FROM VENTAS ven LEFT OUTER JOIN PEDIDO p ON ven.cve_venta = p.cve_venta LEFT OUTER JOIN PIEZA k ON p.cve_pieza = k.cve_pieza LEFT OUTER JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE c ON c.cve_valuador = v.cve_valuador WHERE k.nombre != '' order by ven.fecha_asignacion desc"), nuevacon);
                     nuevacon.Open();
                     dt = new DataTable();
                     da.Fill(dt);
@@ -1391,7 +1391,7 @@ namespace Refracciones
                 }
             }
         //---------------- VENDEDORES REGISTRADOS
-        public DataSet VendedoresRegistradosClaves()
+        public DataSet VendedoresRegistradosClaves(int x)
         {
             DataSet dataSet = new DataSet();
             try
@@ -1399,8 +1399,17 @@ namespace Refracciones
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     nuevaConexion.Open();
-                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT cve_vendedor FROM VENDEDOR", nuevaConexion);
-                    dataAdapter.Fill(dataSet, "VENDEDOR");
+                    if (x == 0)
+                    {
+                        SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT cve_vendedor FROM VENDEDOR", nuevaConexion);
+                        dataAdapter.Fill(dataSet, "VENDEDOR");
+                    }
+                    else if (x == 1)
+                    {
+                        SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT cve_vendedor FROM VENDEDOR", nuevaConexion);
+                        dataAdapter.Fill(dataSet, "VENDEDOR");
+                    }
+                    
                     nuevaConexion.Close();
                 }
             }
@@ -1456,6 +1465,57 @@ namespace Refracciones
                 MessageBox.Show("Error: " + EX.Message);
             }
             
+        }
+        //-------------OBTENER  DIRECCIÓN A PARTIR DEL NOMBRE TALLER
+        public string direccionTaller(string nombre)
+        {
+            string anio = "";
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("SELECT direccion FROM TALLER WHERE nombre = @nombre", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@nombre", nombre.Trim());
+                    Lector = Comando.ExecuteReader();
+                    if (Lector.Read())
+                    {
+                        anio = Lector["direccion"].ToString().Trim();
+                    }
+                    Lector.Close();
+                    nuevaConexion.Close();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return anio;
+        }
+        
+        //---------------- ACTUALIZAR DATOS DEL PORTAL
+        public void ActualizarDatosPortal(string nombre, int estado)
+        {
+
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("UPDATE PORTAL SET estado = @estado WHERE nombre = @nombre", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@nombre", nombre);
+                    Comando.Parameters.AddWithValue("@estado", estado);
+                    Comando.ExecuteNonQuery();
+                    MessageBox.Show("Se actualizaron los datos correctamente");
+                    nuevaConexion.Close();
+
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+
         }
         //---------------------ALEX--------------------------------------------------------------------
 
@@ -1568,7 +1628,7 @@ namespace Refracciones
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     nuevaConexion.Open();
-                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT veh.modelo FROM VEHICULO veh INNER JOIN MARCA mar ON veh.cve_marca = mar.cve_marca WHERE mar.marca = @marca", nuevaConexion);// WHERE modelo NOT LIKE 'PARTICULAR%'
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT DISTINCT veh.modelo FROM VEHICULO veh INNER JOIN MARCA mar ON veh.cve_marca = mar.cve_marca WHERE mar.marca = @marca", nuevaConexion);// WHERE modelo NOT LIKE 'PARTICULAR%'
                     dataAdapter.SelectCommand.Parameters.AddWithValue("@marca", marca);
                     dataAdapter.Fill(dataSet, "VEHICULO");
                     nuevaConexion.Close();
@@ -1582,7 +1642,7 @@ namespace Refracciones
         }
 
         //---------------- MARCAS VEHICULOS REGISTRADAS
-        public DataSet MarcasRegistradas()
+        public DataSet MarcasRegistradas(int x)
         {
             DataSet dataSet = new DataSet();
             try
@@ -1590,8 +1650,17 @@ namespace Refracciones
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     nuevaConexion.Open();
-                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT marca FROM MARCA", nuevaConexion);//  WHERE marca NOT LIKE 'PARTICULAR%'
-                    dataAdapter.Fill(dataSet, "MARCA");
+                    if (x == 0)
+                    {
+                        SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT marca FROM MARCA", nuevaConexion);//  WHERE marca NOT LIKE 'PARTICULAR%'
+                        dataAdapter.Fill(dataSet, "MARCA");
+                    }
+                    else if (x == 1)
+                    {
+                        SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT marca FROM MARCA WHERE estado = 1", nuevaConexion);//  WHERE marca NOT LIKE 'PARTICULAR%'
+                        dataAdapter.Fill(dataSet, "MARCA");
+                    }
+                    
                     nuevaConexion.Close();
                 }
             }
@@ -1852,7 +1921,7 @@ namespace Refracciones
         }
 
         //---------------- ASEGURADORAS/CLIENTES REGISTRADAS
-        public DataSet AseguradorasRegistradas()
+        public DataSet AseguradorasRegistradas(int x)
         {
             DataSet dataSet = new DataSet();
             try
@@ -1860,8 +1929,17 @@ namespace Refracciones
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     nuevaConexion.Open();
-                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT cve_nombre FROM CLIENTE", nuevaConexion);
-                    dataAdapter.Fill(dataSet, "CLIENTE");
+                    if (x == 0)
+                    {
+                        SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT cve_nombre FROM CLIENTE", nuevaConexion);
+                        dataAdapter.Fill(dataSet, "CLIENTE");
+                    }
+                    else if (x == 1)
+                    {
+                        SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT cve_nombre FROM CLIENTE WHERE estado = 1", nuevaConexion);
+                        dataAdapter.Fill(dataSet, "CLIENTE");
+                    }
+                    
                     nuevaConexion.Close();
                 }
             }
@@ -2026,7 +2104,7 @@ namespace Refracciones
         }
 
         //---------------- TALLERES REGISTRADOS
-        public DataSet TalleresRegistrados()
+        public DataSet TalleresRegistrados(int x)
         {
             DataSet dataSet = new DataSet();
             try
@@ -2034,8 +2112,17 @@ namespace Refracciones
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     nuevaConexion.Open();
-                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT nombre FROM TALLER", nuevaConexion);
-                    dataAdapter.Fill(dataSet, "TALLER");
+                    if (x == 0)
+                    {
+                        SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT nombre FROM TALLER", nuevaConexion);
+                        dataAdapter.Fill(dataSet, "TALLER");
+                    }
+                    else if (x == 1)
+                    {
+                        SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT nombre FROM TALLER WHERE estado = 1", nuevaConexion);
+                        dataAdapter.Fill(dataSet, "TALLER");
+                    }
+                    
                     nuevaConexion.Close();
                 }
             }
@@ -2047,7 +2134,7 @@ namespace Refracciones
         }
 
         //---------------- INSERTAR UN NUEVO TALLER
-        public int registrarTaller(string nombre)
+        public int registrarTaller(string nombre, string direccion)
         {
             int i = 0;
             try
@@ -2055,8 +2142,9 @@ namespace Refracciones
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     nuevaConexion.Open();
-                    Comando = new SqlCommand("INSERT INTO TALLER " + "(nombre) " + "VALUES (@nombre) ", nuevaConexion);
+                    Comando = new SqlCommand("INSERT INTO TALLER " + "(nombre,direccion) " + "VALUES (@nombre,@direccion) ", nuevaConexion);
                     Comando.Parameters.AddWithValue("@nombre", nombre);
+                    Comando.Parameters.AddWithValue("@direccion", direccion);
 
                     //Para saber si la inserción se hizo correctamente
                     i = Comando.ExecuteNonQuery();
@@ -2176,7 +2264,7 @@ namespace Refracciones
         }
 
         //---------------- NOMBRES DE PIEZAS REGISTRADOS
-        public DataSet NombrePiezasRegistrados()
+        public DataSet NombrePiezasRegistrados(int x)
         {
             DataSet dataSet = new DataSet();
             try
@@ -2184,8 +2272,17 @@ namespace Refracciones
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     nuevaConexion.Open();
-                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT nombre FROM PIEZA", nuevaConexion);
-                    dataAdapter.Fill(dataSet, "PIEZA");
+                    if (x == 0)
+                    {
+                        SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT nombre FROM PIEZA", nuevaConexion);
+                        dataAdapter.Fill(dataSet, "PIEZA");
+                    }
+                    else if (x == 1)
+                    {
+                        SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT nombre FROM PIEZA WHERE estado = 1", nuevaConexion);
+                        dataAdapter.Fill(dataSet, "PIEZA");
+                    }
+                    
                     nuevaConexion.Close();
                 }
             }
@@ -2251,7 +2348,7 @@ namespace Refracciones
         }
 
         //---------------- PORTALES REGISTRADOS
-        public DataSet PortalesRegistrados()
+        public DataSet PortalesRegistrados(int x)
         {
             DataSet dataSet = new DataSet();
             try
@@ -2259,8 +2356,16 @@ namespace Refracciones
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     nuevaConexion.Open();
-                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT nombre FROM PORTAL", nuevaConexion);
-                    dataAdapter.Fill(dataSet, "PORTAL");
+                    if (x == 0)
+                    {
+                        SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT nombre FROM PORTAL", nuevaConexion);
+                        dataAdapter.Fill(dataSet, "PORTAL");
+                    }
+                    else if (x==1)
+                    {
+                        SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT nombre FROM PORTAL WHERE estado = 1", nuevaConexion);
+                        dataAdapter.Fill(dataSet, "PORTAL");
+                    }
                     nuevaConexion.Close();
                 }
             }
@@ -2401,7 +2506,7 @@ namespace Refracciones
         }
 
         //---------------- PROVEEDORES REGISTRADOS
-        public DataSet ProveedoresRegistrados()
+        public DataSet ProveedoresRegistrados(int x)
         {
             DataSet dataSet = new DataSet();
             try
@@ -2409,8 +2514,17 @@ namespace Refracciones
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     nuevaConexion.Open();
-                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT nombre FROM PROVEEDOR", nuevaConexion);
-                    dataAdapter.Fill(dataSet, "PROVEEDOR");
+                    if (x==0)
+                    {
+                        SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT nombre FROM PROVEEDOR", nuevaConexion);
+                        dataAdapter.Fill(dataSet, "PROVEEDOR");
+                    }
+                    else if (x==1)
+                    {
+                        SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT nombre FROM PROVEEDOR WHERE estado = 1", nuevaConexion);
+                        dataAdapter.Fill(dataSet, "PROVEEDOR");
+                    }
+                    
                     nuevaConexion.Close();
                 }
             }

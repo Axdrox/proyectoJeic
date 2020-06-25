@@ -286,7 +286,6 @@
             this.pbFactura.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbFactura.TabIndex = 32;
             this.pbFactura.TabStop = false;
-            this.pbFactura.Click += new System.EventHandler(this.pbFactura_Click);
             this.pbFactura.DoubleClick += new System.EventHandler(this.pictureBox1_DoubleClick);
             // 
             // lblEstadoFac

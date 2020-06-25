@@ -27,7 +27,7 @@ namespace Refracciones.Forms
             this.Icon = Resources.iconJeic;
 
             //Carga los datos de las marcas de vehículos en el combobox
-            cbMarca.DataSource = operacion.MarcasRegistradas().Tables[0].DefaultView;
+            cbMarca.DataSource = operacion.MarcasRegistradas(1).Tables[0].DefaultView;
             cbMarca.ValueMember = "marca";
 
             //Carga los datos de las marcas de vehículos en el combobox

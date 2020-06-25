@@ -43,6 +43,7 @@
             this.pbMinimize = new System.Windows.Forms.PictureBox();
             this.pbClose = new System.Windows.Forms.PictureBox();
             this.errorP = new System.Windows.Forms.ErrorProvider(this.components);
+            this.moverFormulario = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.bunifuGradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
@@ -191,6 +192,13 @@
             // 
             this.errorP.ContainerControl = this;
             // 
+            // moverFormulario
+            // 
+            this.moverFormulario.Fixed = true;
+            this.moverFormulario.Horizontal = true;
+            this.moverFormulario.TargetControl = this.bunifuGradientPanel1;
+            this.moverFormulario.Vertical = true;
+            // 
             // exportarExcel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -233,5 +241,6 @@
         private System.Windows.Forms.TextBox txtcostoOperativo;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ErrorProvider errorP;
+        private Bunifu.Framework.UI.BunifuDragControl moverFormulario;
     }
 }

@@ -37,24 +37,25 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtFactura = new System.Windows.Forms.TextBox();
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
-            this.pbMinimize = new System.Windows.Forms.PictureBox();
-            this.pbClose = new System.Windows.Forms.PictureBox();
-            this.dgvFacturas = new System.Windows.Forms.DataGridView();
-            this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.PanelFecha = new System.Windows.Forms.Panel();
             this.Fecha_in = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.Fecha_Fin = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
+            this.pbMinimize = new System.Windows.Forms.PictureBox();
+            this.pbClose = new System.Windows.Forms.PictureBox();
+            this.dgvFacturas = new System.Windows.Forms.DataGridView();
+            this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.moverFormulario = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.bunifuGradientPanel1.SuspendLayout();
+            this.PanelFecha.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacturas)).BeginInit();
-            this.PanelFecha.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -120,6 +121,59 @@
             this.bunifuGradientPanel1.Quality = 10;
             this.bunifuGradientPanel1.Size = new System.Drawing.Size(496, 389);
             this.bunifuGradientPanel1.TabIndex = 1;
+            // 
+            // PanelFecha
+            // 
+            this.PanelFecha.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.PanelFecha.Controls.Add(this.Fecha_in);
+            this.PanelFecha.Controls.Add(this.label3);
+            this.PanelFecha.Controls.Add(this.Fecha_Fin);
+            this.PanelFecha.Controls.Add(this.label4);
+            this.PanelFecha.ForeColor = System.Drawing.Color.White;
+            this.PanelFecha.Location = new System.Drawing.Point(70, 55);
+            this.PanelFecha.Name = "PanelFecha";
+            this.PanelFecha.Size = new System.Drawing.Size(356, 65);
+            this.PanelFecha.TabIndex = 78;
+            // 
+            // Fecha_in
+            // 
+            this.Fecha_in.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Fecha_in.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.Fecha_in.Location = new System.Drawing.Point(24, 28);
+            this.Fecha_in.Name = "Fecha_in";
+            this.Fecha_in.Size = new System.Drawing.Size(128, 20);
+            this.Fecha_in.TabIndex = 5;
+            this.Fecha_in.ValueChanged += new System.EventHandler(this.BusquedaFecha);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(30, 8);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(78, 14);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "De la fecha : ";
+            // 
+            // Fecha_Fin
+            // 
+            this.Fecha_Fin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Fecha_Fin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.Fecha_Fin.Location = new System.Drawing.Point(230, 28);
+            this.Fecha_Fin.Name = "Fecha_Fin";
+            this.Fecha_Fin.Size = new System.Drawing.Size(112, 20);
+            this.Fecha_Fin.TabIndex = 8;
+            this.Fecha_Fin.ValueChanged += new System.EventHandler(this.BusquedaFecha);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(177, 30);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(23, 14);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "a : ";
             // 
             // pbMinimize
             // 
@@ -195,58 +249,12 @@
             this.bunifuElipse1.ElipseRadius = 5;
             this.bunifuElipse1.TargetControl = this;
             // 
-            // PanelFecha
+            // moverFormulario
             // 
-            this.PanelFecha.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.PanelFecha.Controls.Add(this.Fecha_in);
-            this.PanelFecha.Controls.Add(this.label3);
-            this.PanelFecha.Controls.Add(this.Fecha_Fin);
-            this.PanelFecha.Controls.Add(this.label4);
-            this.PanelFecha.ForeColor = System.Drawing.Color.White;
-            this.PanelFecha.Location = new System.Drawing.Point(70, 55);
-            this.PanelFecha.Name = "PanelFecha";
-            this.PanelFecha.Size = new System.Drawing.Size(356, 65);
-            this.PanelFecha.TabIndex = 78;
-            // 
-            // Fecha_in
-            // 
-            this.Fecha_in.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Fecha_in.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.Fecha_in.Location = new System.Drawing.Point(24, 28);
-            this.Fecha_in.Name = "Fecha_in";
-            this.Fecha_in.Size = new System.Drawing.Size(128, 20);
-            this.Fecha_in.TabIndex = 5;
-            this.Fecha_in.ValueChanged += new System.EventHandler(this.BusquedaFecha);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(30, 8);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(78, 14);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "De la fecha : ";
-            // 
-            // Fecha_Fin
-            // 
-            this.Fecha_Fin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Fecha_Fin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.Fecha_Fin.Location = new System.Drawing.Point(230, 28);
-            this.Fecha_Fin.Name = "Fecha_Fin";
-            this.Fecha_Fin.Size = new System.Drawing.Size(112, 20);
-            this.Fecha_Fin.TabIndex = 8;
-            this.Fecha_Fin.ValueChanged += new System.EventHandler(this.BusquedaFecha);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(177, 30);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(23, 14);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "a : ";
+            this.moverFormulario.Fixed = true;
+            this.moverFormulario.Horizontal = true;
+            this.moverFormulario.TargetControl = this.bunifuGradientPanel1;
+            this.moverFormulario.Vertical = true;
             // 
             // buscarFacturas
             // 
@@ -266,11 +274,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.bunifuGradientPanel1.ResumeLayout(false);
+            this.PanelFecha.ResumeLayout(false);
+            this.PanelFecha.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacturas)).EndInit();
-            this.PanelFecha.ResumeLayout(false);
-            this.PanelFecha.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -290,5 +298,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker Fecha_Fin;
         private System.Windows.Forms.Label label4;
+        private Bunifu.Framework.UI.BunifuDragControl moverFormulario;
     }
 }

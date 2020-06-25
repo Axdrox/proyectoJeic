@@ -70,6 +70,7 @@
             this.pbMinimize = new System.Windows.Forms.PictureBox();
             this.pbClose = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.moverFormulario = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorP)).BeginInit();
             this.bunifuGradientPanel1.SuspendLayout();
@@ -499,7 +500,7 @@
             // pbMinimize
             // 
             this.pbMinimize.Image = global::Refracciones.Properties.Resources.Minimize_Window_2_48px;
-            this.pbMinimize.Location = new System.Drawing.Point(540, 2);
+            this.pbMinimize.Location = new System.Drawing.Point(584, 2);
             this.pbMinimize.Margin = new System.Windows.Forms.Padding(2);
             this.pbMinimize.Name = "pbMinimize";
             this.pbMinimize.Size = new System.Drawing.Size(15, 16);
@@ -511,7 +512,7 @@
             // pbClose
             // 
             this.pbClose.Image = global::Refracciones.Properties.Resources.Close_Window__2_48px;
-            this.pbClose.Location = new System.Drawing.Point(559, 2);
+            this.pbClose.Location = new System.Drawing.Point(603, 2);
             this.pbClose.Margin = new System.Windows.Forms.Padding(2);
             this.pbClose.Name = "pbClose";
             this.pbClose.Size = new System.Drawing.Size(15, 16);
@@ -530,6 +531,13 @@
             this.label3.Size = new System.Drawing.Size(15, 13);
             this.label3.TabIndex = 34;
             this.label3.Text = "%";
+            // 
+            // moverFormulario
+            // 
+            this.moverFormulario.Fixed = true;
+            this.moverFormulario.Horizontal = true;
+            this.moverFormulario.TargetControl = this.bunifuGradientPanel1;
+            this.moverFormulario.Vertical = true;
             // 
             // registroFactura
             // 
@@ -620,5 +628,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtDescuento;
         private System.Windows.Forms.Label lblDescuento;
+        private Bunifu.Framework.UI.BunifuDragControl moverFormulario;
     }
 }

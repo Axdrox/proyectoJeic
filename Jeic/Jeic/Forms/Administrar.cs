@@ -86,6 +86,14 @@ namespace Refracciones.Forms
             rbtnRegistrar.Checked = false; rbtnRegistrar.Checked = true;
             lblTitle.Text = "VENDEDOR";
         }
+        private void btnPortal_Click(object sender, EventArgs e)
+        {
+            x = 7;
+            errorP.Clear();
+            rbtnModificar.Visible = true;
+            rbtnRegistrar.Checked = false; rbtnRegistrar.Checked = true;
+            lblTitle.Text = "PORTAL";
+        }
 
         private void rbtnRegistrar_CheckedChanged(object sender, EventArgs e)
         {
@@ -94,6 +102,7 @@ namespace Refracciones.Forms
                 switch(x)
                 {
                     case 0:
+                        chk1.Enabled = false; chk1.Visible = false;
                         lbl1.Visible = true;
                         lbl2.Visible = true;
                         lbl3.Visible = true;
@@ -114,6 +123,7 @@ namespace Refracciones.Forms
                         lbl3.Text = "Tipo de Usuario:";
                         break;
                     case 1:
+                        chk1.Enabled = false; chk1.Visible = false;
                         lbl1.Visible = true;
                         lbl2.Visible = true;
                         lbl3.Visible = true;
@@ -132,6 +142,7 @@ namespace Refracciones.Forms
                         lbl3.Text = "Valuador:";
                         break;
                     case 2:
+                        chk1.Enabled = false; chk1.Visible = false;
                         lbl1.Visible = true;
                         lbl2.Visible = false;
                         lbl3.Visible = false;
@@ -150,6 +161,7 @@ namespace Refracciones.Forms
                         lbl3.Text = "";
                         break;
                     case 3:
+                        chk1.Enabled = false; chk1.Visible = false;
                         lbl1.Visible = true;
                         lbl2.Visible = true;
                         lbl3.Visible = false;
@@ -168,26 +180,28 @@ namespace Refracciones.Forms
                         lbl3.Text = "";
                         break;
                     case 4:
+                        chk1.Enabled = true; chk1.Visible = true;
                         lbl1.Visible = true;
                         lbl2.Visible = true;
                         lbl3.Visible = true;
                         lbl4.Visible = false;
                         lbl5.Visible = false;
-                        txt1.Enabled = true; txt1.Visible = true;
-                        txt2.Enabled = false; txt2.Visible = false;
+                        txt1.Enabled = false; txt1.Visible = false;
+                        txt2.Enabled = true; txt2.Visible = true;
                         txt3.Enabled = true; txt3.Visible = true;
                         cmb1.Enabled = false; cmb1.Visible = false;
                         cmb2.Enabled = false; cmb2.Visible = false;
-                        cmb3.Enabled = false; cmb3.Visible = false;
-                        cmb4.Enabled = true; cmb4.Visible = true;
-                        cmb4.DataSource = oper.MarcasRegistradas().Tables[0].DefaultView;
-                        cmb4.ValueMember = "marca";
+                        cmb3.Enabled = true; cmb3.Visible = true;
+                        cmb3.DataSource = oper.MarcasRegistradas(0).Tables[0].DefaultView;
+                        cmb3.ValueMember = "marca";
+                        cmb4.Enabled = false; cmb4.Visible = false;
                         txt1.Text = ""; txt2.Text = "";
-                        lbl1.Text = "Modelo:";
-                        lbl2.Text = "Marca:";
+                        lbl1.Text = "Marca:";
+                        lbl2.Text = "Modelo:";
                         lbl3.Text = "Año:";
                         break;
                     case 5:
+                        chk1.Enabled = false; chk1.Visible = false;
                         lbl1.Visible = true;
                         lbl2.Visible = false;
                         lbl3.Visible = false;
@@ -206,6 +220,7 @@ namespace Refracciones.Forms
                         lbl3.Text = "";
                         break;
                     case 6:
+                        chk1.Enabled = false; chk1.Visible = false;
                         lbl1.Visible = true;
                         lbl2.Visible = true;
                         lbl3.Visible = false;
@@ -223,6 +238,25 @@ namespace Refracciones.Forms
                         lbl2.Text = "Nombre:";
                         lbl3.Text = "";
                         break;
+                    case 7:
+                        chk1.Enabled = false; chk1.Visible = false;
+                        lbl1.Visible = true;
+                        lbl2.Visible = false;
+                        lbl3.Visible = false;
+                        lbl4.Visible = false;
+                        lbl5.Visible = false;
+                        txt1.Enabled = true; txt1.Visible = true;
+                        txt2.Enabled = false; txt2.Visible = false;
+                        txt3.Enabled = false; txt3.Visible = false;
+                        cmb1.Enabled = false; cmb1.Visible = false;
+                        cmb2.Enabled = false; cmb2.Visible = false;
+                        cmb3.Enabled = false; cmb3.Visible = false;
+                        cmb4.Enabled = false; cmb4.Visible = false;
+                        txt1.Text = ""; txt2.Text = "";
+                        lbl1.Text = "Nombre:";
+                        lbl2.Text = "";
+                        lbl3.Text = "";
+                        break;
                 }
                 y = 0;
             }
@@ -235,6 +269,7 @@ namespace Refracciones.Forms
                 switch (x)
                 {
                     case 0:
+                        chk1.Enabled = false; chk1.Visible = false;
                         lbl1.Visible = true;
                         lbl2.Visible = true;
                         lbl3.Visible = true;
@@ -260,6 +295,7 @@ namespace Refracciones.Forms
                         lbl4.Text = "Estado:";
                         break;
                     case 1:
+                        chk1.Enabled = false; chk1.Visible = false;
                         lbl1.Visible = true;
                         lbl2.Visible = true;
                         lbl3.Visible = true;
@@ -274,13 +310,14 @@ namespace Refracciones.Forms
                         cmb3.Enabled = true; cmb3.Visible = true;
                         cmb4.Enabled = false; cmb4.Visible = false;
                         txt1.Text = ""; txt2.Text = "";
-                        cmb3.DataSource = oper.AseguradorasRegistradas().Tables[0].DefaultView;
+                        cmb3.DataSource = oper.AseguradorasRegistradas(0).Tables[0].DefaultView;
                         cmb3.ValueMember = "cve_nombre";
                         lbl1.Text = "Nombre:";
                         lbl2.Text = "Días de espera:";
                         lbl3.Text = "Valuador:";
                         break;
                     case 2:
+                        chk1.Enabled = false; chk1.Visible = false;
                         lbl1.Visible = true;
                         lbl2.Visible = true;
                         lbl3.Visible = false;
@@ -292,7 +329,7 @@ namespace Refracciones.Forms
                         cmb1.Enabled = false; cmb1.Visible = false;
                         cmb2.Enabled = false; cmb2.Visible = false;
                         cmb3.Enabled = true; cmb3.Visible = true;
-                        cmb3.DataSource = oper.ProveedoresRegistrados().Tables[0].DefaultView;
+                        cmb3.DataSource = oper.ProveedoresRegistrados(0).Tables[0].DefaultView;
                         cmb3.ValueMember = "nombre";
                         cmb4.Enabled = true;  cmb4.Visible = true;
                         cmb4.DataSource = null; cmb4.Items.Clear(); cmb4.Items.Add("ACTIVO"); cmb4.Items.Add("SUSPENDIDO");
@@ -304,6 +341,7 @@ namespace Refracciones.Forms
                         lbl3.Text = "";
                         break;
                     case 3:
+                        chk1.Enabled = false; chk1.Visible = false;
                         lbl1.Visible = true;
                         lbl2.Visible = true;
                         lbl3.Visible = true;
@@ -317,7 +355,7 @@ namespace Refracciones.Forms
                         cmb1.Items.Add("ACTIVO"); cmb1.Items.Add("SUSPENDIDO"); cmb1.SelectedIndex = 0;
                         cmb2.Enabled = false; cmb2.Visible = false;
                         cmb3.Enabled = true; cmb3.Visible = true;
-                        cmb3.DataSource = oper.TalleresRegistrados().Tables[0].DefaultView;
+                        cmb3.DataSource = oper.TalleresRegistrados(0).Tables[0].DefaultView;
                         cmb3.ValueMember = "nombre";
                         cmb4.Enabled = false; cmb4.Visible = false;
                         txt1.Text = ""; txt2.Text = "";
@@ -326,6 +364,7 @@ namespace Refracciones.Forms
                         lbl3.Text = "Estado:";
                         break;
                     case 4:
+                        chk1.Enabled = false; chk1.Visible = false;
                         lbl1.Visible = true;
                         lbl2.Visible = true;
                         lbl3.Visible = true;
@@ -339,18 +378,18 @@ namespace Refracciones.Forms
                         cmb2.DataSource = null;
                         cmb2.Items.Clear(); cmb2.Items.Add("ACTIVO"); cmb2.Items.Add("SUSPENDIDO"); cmb2.SelectedIndex = 0;
                         cmb3.Enabled = true; cmb3.Visible = true;
-                        cmb3.DataSource = oper.VehiculosRegistrados().Tables[0].DefaultView;
-                        cmb3.ValueMember = "modelo";
+                        cmb3.DataSource = oper.MarcasRegistradas(0).Tables[0].DefaultView; 
+                        cmb3.ValueMember = "marca";
                         cmb4.Enabled = true; cmb4.Visible = true;
-                        cmb4.DataSource = oper.MarcasRegistradas().Tables[0].DefaultView;
-                        cmb4.ValueMember = "marca";
+                        cmb4.DataSource = null; cmb4.Items.Clear();
                         txt1.Text = ""; txt2.Text = "";
-                        lbl1.Text = "Modelo:";
-                        lbl2.Text = "Marca:";
+                        lbl1.Text = "Marca:";
+                        lbl2.Text = "Modelo:";
                         lbl3.Text = "Año:";
                         lbl4.Text = "Estado:";
                         break;
                     case 5:
+                        chk1.Enabled = false; chk1.Visible = false;
                         lbl1.Visible = true;
                         lbl2.Visible = true;
                         lbl3.Visible = false;
@@ -362,7 +401,7 @@ namespace Refracciones.Forms
                         cmb1.Enabled = false; cmb1.Visible = false;
                         cmb2.Enabled = false; cmb2.Visible = false;
                         cmb3.Enabled = true; cmb3.Visible = true;
-                        cmb3.DataSource = oper.NombrePiezasRegistrados().Tables[0].DefaultView;
+                        cmb3.DataSource = oper.NombrePiezasRegistrados(0).Tables[0].DefaultView;
                         cmb3.ValueMember = "nombre";
                         cmb4.Enabled = true; cmb4.Visible = true;
                         cmb4.DataSource = null; cmb4.Items.Clear(); cmb4.Items.Add("ACTIVO"); cmb4.Items.Add("SUSPENDIDO");
@@ -374,6 +413,7 @@ namespace Refracciones.Forms
                         lbl3.Text = "";
                         break;
                     case 6:
+                        chk1.Enabled = false; chk1.Visible = false;
                         lbl1.Visible = true;
                         lbl2.Visible = true;
                         lbl3.Visible = false;
@@ -385,12 +425,36 @@ namespace Refracciones.Forms
                         cmb1.Enabled = false; cmb1.Visible = false;
                         cmb2.Enabled = false; cmb2.Visible = false;
                         cmb3.Enabled = true; cmb3.Visible = true;
-                        cmb3.DataSource = oper.VendedoresRegistradosClaves().Tables[0].DefaultView;
+                        cmb3.DataSource = oper.VendedoresRegistradosClaves(0).Tables[0].DefaultView;
                         cmb3.ValueMember = "cve_vendedor";
                         cmb4.Enabled = true; cmb4.Visible = true;
                         cmb4.DataSource = null; cmb4.Items.Clear(); cmb4.Items.Add("ACTIVO"); cmb4.Items.Add("SUSPENDIDO"); cmb4.SelectedIndex = 0;
                         txt1.Text = ""; txt2.Text = "";
                         lbl1.Text = "Vendedor:";
+                        lbl2.Text = "Estado:";
+                        lbl3.Text = "";
+                        break;
+                    case 7:
+                        chk1.Enabled = false; chk1.Visible = false;
+                        lbl1.Visible = true;
+                        lbl2.Visible = true;
+                        lbl3.Visible = false;
+                        lbl4.Visible = false;
+                        lbl5.Visible = false;
+                        txt1.Enabled = false; txt1.Visible = false;
+                        txt2.Enabled = false; txt2.Visible = false;
+                        txt3.Enabled = false; txt3.Visible = false;
+                        cmb1.Enabled = false; cmb1.Visible = false;
+                        cmb2.Enabled = false; cmb2.Visible = false;
+                        cmb3.Enabled = true; cmb3.Visible = true;
+                        cmb3.DataSource = oper.PortalesRegistrados(0).Tables[0].DefaultView;
+                        cmb3.ValueMember = "nombre";
+                        cmb4.Enabled = true; cmb4.Visible = true;
+                        cmb4.DataSource = null; cmb4.Items.Clear(); cmb4.Items.Add("ACTIVO"); cmb4.Items.Add("SUSPENDIDO");
+                        cmb4.SelectedIndex = 0;
+                        cmb4.SelectedIndex = 0;
+                        txt1.Text = ""; txt2.Text = "";
+                        lbl1.Text = "Nombre:";
                         lbl2.Text = "Estado:";
                         lbl3.Text = "";
                         break;
@@ -415,12 +479,12 @@ namespace Refracciones.Forms
                     switch (x)
                     {
                         case 0:
-                            if (txt1.Text.Trim() == "")
+                            if (txt1.Text.Trim() == "" || txt1.Text.Trim() == "System.Data.DataRowView")
                             {
                                 errorP.SetError(txt1, "No se puede dejar este campo sin llenar");
                                 txt1.Focus();  
                             }
-                            else if (txt2.Text.Trim() == "")
+                            else if (txt2.Text.Trim() == "" || txt2.Text.Trim() == "System.Data.DataRowView")
                             {
                                 errorP.SetError(txt2, "No se puede dejar este campo sin llenar");
                                 txt2.Focus();
@@ -435,7 +499,7 @@ namespace Refracciones.Forms
                             
                             break;
                         case 1:
-                            if(txt1.Text.Trim() == "")
+                            if(txt1.Text.Trim() == "" )
                             {
                                 errorP.SetError(txt1, "No se puede dejar este campo sin llenar");
                                 txt1.Focus();
@@ -494,7 +558,7 @@ namespace Refracciones.Forms
                             else if (oper.existeTaller(txt1.Text.Trim()) == "")
                             {
                                 errorP.Clear();
-                                oper.registrarTaller(txt1.Text.Trim()/*,txt2.text.Trim()*/);
+                                oper.registrarTaller(txt1.Text.Trim(),txt2.Text.Trim());
                                 txt1.Text = ""; txt2.Text = "";
                             }
                             else
@@ -504,7 +568,7 @@ namespace Refracciones.Forms
                             
                             break;
                         case 4:
-                            if (txt1.Text.Trim() == "")
+                            if (txt1.Text.Trim() == "" && cmb3.Enabled == false)
                             {
                                 errorP.SetError(txt1, "No se puede dejar este campo sin llenar");
                                 txt1.Focus();
@@ -514,13 +578,37 @@ namespace Refracciones.Forms
                                 errorP.SetError(txt3, "No se puede dejar este campo sin llenar");
                                 txt2.Focus();
                             }
-                            else if (oper.existeVehiculo(txt1.Text.Trim()) == "")
+                            else if (chk1.Checked == true)
                             {
-                                errorP.Clear();
-                                oper.registroMarca(cmb4.Text.Trim());
-                                oper.registroVehiculo(txt1.Text.Trim(), txt3.Text.Trim(), cmb4.Text.Trim());
-                                txt1.Text = ""; txt3.Text = "";
-                                MessageBox.Show("Se registro correctamente");
+                                if (oper.existeVehiculo(txt2.Text.Trim()) == "")
+                                {
+                                    errorP.Clear();
+                                    oper.registroMarca(txt1.Text.Trim());
+                                    oper.registroVehiculo(txt2.Text.Trim(), txt3.Text.Trim(), txt1.Text.Trim());
+                                    txt1.Text = ""; txt2.Text = ""; txt3.Text = "";
+                                    MessageBox.Show("Se registro correctamente");
+                                }
+                                else
+                                {
+                                    txt1.Text = ""; txt2.Text = ""; txt3.Text = "";
+                                    MessageBox.Show("Ya existe ese vehiculo");
+                                }
+                            }
+                            else if (chk1.Checked == false)
+                            {
+                                if (oper.existeVehiculo(txt2.Text.Trim()) == "")
+                                {
+                                    errorP.Clear();
+                                    oper.registroVehiculo(txt2.Text.Trim(), txt3.Text.Trim(), cmb3.Text.Trim());
+                                    txt1.Text = ""; txt2.Text = ""; txt3.Text = "";
+                                    MessageBox.Show("Se registro correctamente");
+                                }
+                                else
+                                {
+                                    txt1.Text = ""; txt2.Text = ""; txt3.Text = "";
+                                    MessageBox.Show("Ya existe ese vehiculo");
+                                }
+
                             }
                             else
                             {
@@ -564,6 +652,23 @@ namespace Refracciones.Forms
                             else
                             {
                                 MessageBox.Show("Ya existe ese vendedor");
+                            }
+                            break;
+                        case 7:
+                            if (txt1.Text.Trim() == "")
+                            {
+                                errorP.SetError(txt1, "No se puede dejar este campo sin llenar");
+                                txt1.Focus();
+                            }
+                            else if (oper.existePortal(txt1.Text.Trim()) == "")
+                            {
+                                errorP.Clear();
+                                oper.registrarPortal(txt1.Text.Trim());
+                                txt1.Text = "";
+                            }
+                            else
+                            {
+                                MessageBox.Show("Ya existe ese portal");
                             }
                             break;
 
@@ -621,14 +726,19 @@ namespace Refracciones.Forms
                             else
                                 estado = 0;
                             if(txt3.Text.Trim() == "")
-                            {
+                            { 
                                 errorP.SetError(txt3, "No se puede dejar este campo sin llenar");
                                 txt3.Focus();
+                            }
+                            else if (cmb4.Text.Trim() == "" || cmb4.Text.Trim() == "System.Data.DataRowView")
+                            {
+                                errorP.SetError(cmb4, "Selecciona una opción valida");
+                                cmb4.Focus();
                             }
                             else
                             {
                                 errorP.Clear();
-                                oper.ActualizarDatosVehiculo(cmb3.Text.Trim(), cmb4.Text.Trim(), txt3.Text.Trim(), estado);
+                                oper.ActualizarDatosVehiculo(cmb4.Text.Trim(), cmb3.Text.Trim(), txt3.Text.Trim(), estado);
                                 txt3.Text = "";
                             }
                             break;
@@ -646,6 +756,13 @@ namespace Refracciones.Forms
                                 estado = 0;
                             oper.ActualizarDatosVendedor(Int32.Parse(cmb3.Text.Trim()),estado);
                             break;
+                        case 7:
+                            if (cmb4.Text.Trim() == "ACTIVO")
+                                estado = 1;
+                            else
+                                estado = 0;
+                            oper.ActualizarDatosPortal(cmb3.Text.Trim(), estado);
+                            break;
                     }
                     break;
             }
@@ -656,6 +773,15 @@ namespace Refracciones.Forms
             if (x == 6 && y == 1)
             {
                 lbl5.Text = oper.NombreVendedor(Int32.Parse(cmb3.Text.Trim()));
+            }
+            else if(x == 4 && y == 1)
+            {
+                cmb4.DataSource = oper.VehiculosRegistrados(cmb3.Text.Trim()).Tables[0].DefaultView;
+                cmb4.ValueMember = "modelo";
+            }
+            else if (x == 3 && y == 1)
+            {
+                txt2.Text = oper.direccionTaller(cmb3.Text.Trim());
             }
         }
 
@@ -668,5 +794,29 @@ namespace Refracciones.Forms
         {
             this.Close();
         }
+
+        private void chk1_CheckedChanged(object sender, EventArgs e)
+        {
+            if(chk1.Checked == true)
+            {
+                cmb3.Enabled = false; cmb3.Visible = false;
+                txt1.Enabled = true; txt1.Visible = true;
+            }
+            else if(chk1.Checked == false)
+            {
+                cmb3.Enabled = true; cmb3.Visible = true;
+                txt1.Enabled = false; txt1.Visible = false;
+            }
+        }
+
+        private void cmb4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (x == 4 && y == 1)
+            {
+                txt3.Text = oper.anioVehiculo(cmb4.Text.Trim());
+            }
+        }
+
+       
     }
 }

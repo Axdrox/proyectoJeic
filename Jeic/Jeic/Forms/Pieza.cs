@@ -34,11 +34,11 @@
             this.ActiveControl = label1;
 
             //Carga los datos de los nombres de las piezas registrados
-            cbPiezaNombre.DataSource = operacion.NombrePiezasRegistrados().Tables[0].DefaultView;
+            cbPiezaNombre.DataSource = operacion.NombrePiezasRegistrados(1).Tables[0].DefaultView;
             cbPiezaNombre.ValueMember = "nombre";
 
             //Carga los datos de los nombres de los portales registrados
-            cbPortal.DataSource = operacion.PortalesRegistrados().Tables[0].DefaultView;
+            cbPortal.DataSource = operacion.PortalesRegistrados(1).Tables[0].DefaultView;
             cbPortal.ValueMember = "nombre";
 
             //Carga los datos de los nombres de los origenes registrados
@@ -46,7 +46,7 @@
             cbOrigen.ValueMember = "origen";
 
             //Carga los datos de los nombres de los proveedores registrados
-            cbProveedores.DataSource = operacion.ProveedoresRegistrados().Tables[0].DefaultView;
+            cbProveedores.DataSource = operacion.ProveedoresRegistrados(1).Tables[0].DefaultView;
             cbProveedores.ValueMember = "nombre";
 
             //Carga los datos de los costos registrados

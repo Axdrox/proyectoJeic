@@ -106,11 +106,11 @@ namespace Refracciones.Forms
             cbVendedor.ValueMember = "nombre";
 
             //Carga los datos registros de clientes/aseguradoras en el combobox
-            cbAseguradora.DataSource = operacion.AseguradorasRegistradas().Tables[0].DefaultView;
+            cbAseguradora.DataSource = operacion.AseguradorasRegistradas(1).Tables[0].DefaultView;
             cbAseguradora.ValueMember = "cve_nombre";
 
             //Carga los datos registros de talleres en el combobox
-            cbTaller.DataSource = operacion.TalleresRegistrados().Tables[0].DefaultView;
+            cbTaller.DataSource = operacion.TalleresRegistrados(1).Tables[0].DefaultView;
             cbTaller.ValueMember = "nombre";
 
             //Carga los datos registros de destinos en el combobox
@@ -782,8 +782,9 @@ namespace Refracciones.Forms
 
             if (chbOtroTaller.Checked == true)
             {
+                string direccion = "";
                 taller = txtTaller.Text.Trim().ToUpper();
-                operacion.registrarTaller(taller);
+                operacion.registrarTaller(taller,direccion);
             }
             else
                 taller = cbTaller.Text.Trim();
