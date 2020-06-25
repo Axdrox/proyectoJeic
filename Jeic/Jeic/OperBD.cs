@@ -3571,17 +3571,19 @@ namespace Refracciones
         }
 
         //-------------EXISTE ENTREGA DE PIEZA
-        public string existePiezaEntrega(string pieza)
+        public string existePiezaEntrega(string pieza, string clavePedido, string claveSiniestro)
         {
             string resultado = "";
             int cvePieza = clavePieza(pieza);
+            int cveVenta = claveVenta(clavePedido, claveSiniestro);
             try
             {   
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     nuevaConexion.Open();
-                    Comando = new SqlCommand("SELECT cve_pieza FROM ENTREGA WHERE cve_pieza  = @cve_pieza", nuevaConexion);
+                    Comando = new SqlCommand("SELECT cve_entrega FROM ENTREGA WHERE cve_pieza = @cve_pieza AND cve_venta = @cve_venta", nuevaConexion);
                     Comando.Parameters.AddWithValue("@cve_pieza", cvePieza);
+                    Comando.Parameters.AddWithValue("@cve_venta", cveVenta);
 
                     //Para saber si en realidad existe, de lo contrario devuelve un string vacío
                     if (Comando.ExecuteScalar() == null) { }
@@ -3729,19 +3731,20 @@ namespace Refracciones
             return i;
         }
 
-        public void registrarPenalizacion(int clavePieza, int claveVenta, int cantidad, string motivo, double porcentaje)
+        public void registrarPenalizacion(int clavePieza, int claveVenta, int cantidad, string motivo, double porcentaje, DateTime fecha)
         {
             try
             {
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     nuevaConexion.Open();
-                    Comando = new SqlCommand("INSERT INTO PENALIZACION " + "(cve_pieza, cve_venta, cantidad, motivo, porcentaje) " + "VALUES (@cve_pieza , @cve_venta, @cantidad, @motivo, @porcentaje) ", nuevaConexion);
+                    Comando = new SqlCommand("INSERT INTO PENALIZACION " + "(cve_pieza, cve_venta, cantidad, motivo, porcentaje, fecha) " + "VALUES (@cve_pieza , @cve_venta, @cantidad, @motivo, @porcentaje, @fecha) ", nuevaConexion);
                     Comando.Parameters.AddWithValue("@cve_pieza", clavePieza);
                     Comando.Parameters.AddWithValue("@cve_venta", claveVenta);
                     Comando.Parameters.AddWithValue("@cantidad", cantidad);
                     Comando.Parameters.AddWithValue("@motivo", motivo);
                     Comando.Parameters.AddWithValue("@porcentaje", porcentaje);
+                    Comando.Parameters.AddWithValue("@fecha", fecha);
 
                     //Para saber si la inserción se hizo correctamente
                     int i = Comando.ExecuteNonQuery();

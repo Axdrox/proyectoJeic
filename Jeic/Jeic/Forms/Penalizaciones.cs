@@ -20,14 +20,22 @@ namespace Refracciones.Forms
 
         private void Penalizaciones_Load(object sender, EventArgs e)
         {
-            for (int i = 1; i <= cantidad; i++)
+            if(penalizarPedido == 1)
             {
-                this.cbCantidad.Items.Add(i);
+                label1.Visible = false;
+                cbCantidad.Visible = false;
             }
-            cbCantidad.SelectedIndex = 0;
-
-            MessageBox.Show(cvePieza.ToString() + cveVenta.ToString() + cantidad.ToString());
+            else
+            {
+                for (int i = 1; i <= cantidad; i++)
+                {
+                    this.cbCantidad.Items.Add(i);
+                }
+                cbCantidad.SelectedIndex = 0;
+            }
+            //MessageBox.Show(cvePieza.ToString() + cveVenta.ToString() + cantidad.ToString());
         }
+        public int penalizarPedido;
 
         public int cvePieza;
         public int cveVenta;
@@ -92,6 +100,16 @@ namespace Refracciones.Forms
             }
         }
 
+        public double porcentaje
+        {
+            get { return Convert.ToDouble(txtPorcentaje.Text.Trim()); }
+        }
+
+        public string motivo
+        {
+            get { return txtMotivo.Text.Trim(); }
+        }
+
         private void Penalizaciones_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (e.CloseReason == CloseReason.UserClosing)
@@ -99,16 +117,22 @@ namespace Refracciones.Forms
                 dynamic result = MessageBox.Show("¿Los datos son correctos?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if (result == DialogResult.Yes)
                 {
-                    this.DialogResult = DialogResult.OK;
-
                     OperBD operacion = new OperBD();
+                    Pedido pedido = new Pedido(1);
                     string motivo = "";
                     if (txtMotivo.Text.Trim() == "Escriba motivo de la penalización")
                         motivo = "Sin motivo";
                     else
                         motivo = txtMotivo.Text.Trim();
-
-                    operacion.registrarPenalizacion(cvePieza, cveVenta, Convert.ToInt32(cbCantidad.Text.Trim()), motivo, Convert.ToDouble(txtPorcentaje.Text.Trim()));
+                    if (penalizarPedido == 1)
+                    {
+                    }
+                    else
+                    {
+                        DateTime hoy = DateTime.Today;
+                        operacion.registrarPenalizacion(cvePieza, cveVenta, Convert.ToInt32(cbCantidad.Text.Trim()), motivo, Convert.ToDouble(txtPorcentaje.Text.Trim()), hoy);
+                    }
+                    this.DialogResult = DialogResult.OK;
                 }
 
                 if (result == DialogResult.No)

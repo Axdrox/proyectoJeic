@@ -140,6 +140,9 @@ namespace Refracciones.Forms
                 }
                 */
 
+                btnPenalizarPedido.Visible = true;
+                btnPenalizarPedido.Enabled = true;
+
                 lblClaveSiniestroPedido.Visible = true;
                 lblClaveSiniestro.Visible = true;
 
@@ -784,7 +787,7 @@ namespace Refracciones.Forms
             {
                 string direccion = "";
                 taller = txtTaller.Text.Trim().ToUpper();
-                operacion.registrarTaller(taller,direccion);
+                operacion.registrarTaller(taller, direccion);
             }
             else
                 taller = cbTaller.Text.Trim();
@@ -824,7 +827,7 @@ namespace Refracciones.Forms
                      i++;
                  }*/
             }
-            //totalPrecio = (subtotalPrecio * .16) + subtotalPrecio;
+            subtotalPrecio = subtotalPrecio / (1 + 0.16);
             totalPrecio = Convert.ToDouble(lblPrecioTotal.Text.Substring(1, lblPrecioTotal.Text.Length - 1));
             utilidad = totalPrecio - totalCosto;
         }
@@ -853,7 +856,7 @@ namespace Refracciones.Forms
         {
             if (filasIniciales > 0)
             {
-                int i = 1;
+                int i = 0;
                 foreach (DataGridViewRow row in dgvPedido.Rows)
                 {
                     DateTime dtFechaCosto = new DateTime();
@@ -872,7 +875,7 @@ namespace Refracciones.Forms
                     if (i == filasIniciales)
                         break;
                 }
-                if((dgvPedido.Rows.Count - filasIniciales) > 0)
+                if ((dgvPedido.Rows.Count - filasIniciales) > 0)
                 {
                     if (filasIniciales == 0)
                     {
@@ -984,11 +987,11 @@ namespace Refracciones.Forms
                 Pieza pieza = new Pieza();
                 string[] guia = new string[dgvPedido.Rows.Count];
                 int j = 0;
-                if(actualizar == 1)
+                if (actualizar == 1)
                 {
                     if (chbOtroDestino.Checked == true && chbOtroDestino.Text == "Otro")
                         pieza.destino = txtDestino.Text.Trim();
-                    else if(chbOtroDestino.Checked == false && chbOtroDestino.Text == "Otro")
+                    else if (chbOtroDestino.Checked == false && chbOtroDestino.Text == "Otro")
                         pieza.destino = cbDestino.Text.Trim();
                     else
                         pieza.destino = txtDestino.Text.Trim();
@@ -1030,7 +1033,7 @@ namespace Refracciones.Forms
                         row[i] = pieza.datosMandar[i];
                     }
                     dt.Rows.Add(row);
-                    
+
                     MessageBox.Show(filasIniciales.ToString());
 
                     foreach (DataGridViewRow dgvRow in dgvPedido.Rows)
@@ -1087,11 +1090,11 @@ namespace Refracciones.Forms
                     lblPrecioTotal.Text = "$" + ((Convert.ToDouble(lblPrecioTotal.Text.Substring(1, lblPrecioTotal.Text.Length - 1)) - Convert.ToDouble(row.Cells["Precio de venta"].Value)).ToString());
                     pieza = row.Cells["Pieza"].Value.ToString();
                 }
-                if(actualizar == 1)
+                if (actualizar == 1)
                 {
-                    if(filasIniciales != 0)
+                    if (filasIniciales != 0)
                     {
-                        if (!string.IsNullOrEmpty(operacion.existePiezaEntrega(pieza)))
+                        if (string.IsNullOrEmpty(operacion.existePiezaEntrega(pieza, txtClavePedido.Text, lblClaveSiniestro.Text)))
                         {
                             if (!string.IsNullOrEmpty(operacion.existePiezaRegistradaPedido(txtClavePedido.Text, lblClaveSiniestro.Text, pieza)))
                             {
@@ -1102,6 +1105,8 @@ namespace Refracciones.Forms
                                     dgvPedido.Rows.RemoveAt(dgvPedido.CurrentRow.Index);
                                 }
                             }
+                            else
+                                dgvPedido.Rows.RemoveAt(dgvPedido.CurrentRow.Index);
                         }
                         else
                             MessageBox.Show("No es posible eliminar pieza debido a que existen entregas");
@@ -1111,7 +1116,6 @@ namespace Refracciones.Forms
                 }
                 else
                     dgvPedido.Rows.RemoveAt(dgvPedido.CurrentRow.Index);
-
 
                 //Put some logic here, for example to remove row from your binding list.
                 //yourBindingList.RemoveAt(e.RowIndex);
@@ -1134,7 +1138,10 @@ namespace Refracciones.Forms
                     DialogResult respuesta = penalizaciones.ShowDialog();
                     //Para que se actualice la cantidad que se penalizó
                     if (respuesta == DialogResult.OK)
-                        dgvPedido.DataSource = operacion.piezasPedidoActualizar(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
+                    {
+                        dt = operacion.piezasPedidoActualizar(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
+                        dgvPedido.DataSource = dt;
+                    }
                 }
             }
 
@@ -1182,12 +1189,23 @@ namespace Refracciones.Forms
                 DialogResult respuesta = pieza.ShowDialog();
                 if (respuesta == DialogResult.OK)
                 {
-                    //probar llenando dgv de otra forma con arreglo (datasource?)
                     int k = 0;
-                    for (int j = 0; j < pieza.datosMandar.Length; j++)
+                    //probar llenando dgv de otra forma con arreglo (datasource?)
+                    if (actualizar == 1)
                     {
-                        dgvPedido[j + 2, index].Value = pieza.datosMandar[k];
-                        k++;
+                        for (int j = 0; j < pieza.datosMandar.Length; j++)
+                        {
+                            dgvPedido[j + 3, index].Value = pieza.datosMandar[k];
+                            k++;
+                        }
+                    }
+                    else
+                    {
+                        for (int j = 0; j < pieza.datosMandar.Length; j++)
+                        {
+                            dgvPedido[j + 2, index].Value = pieza.datosMandar[k];
+                            k++;
+                        }
                     }
                 }
             }
@@ -1705,5 +1723,31 @@ namespace Refracciones.Forms
             }
         }
 
+        private void btnPenalizarPedido_Click(object sender, EventArgs e)
+        {
+            Penalizaciones penalizar = new Penalizaciones();
+            penalizar.penalizarPedido = 1;
+            DialogResult respuesta = penalizar.ShowDialog();
+
+            if (filasIniciales > 0)
+            {
+                int i = 0;
+                DateTime hoy = DateTime.Today;
+                if (respuesta == DialogResult.OK)
+                {
+                    foreach (DataGridViewRow row in dgvPedido.Rows)
+                    {
+                        operacion.registrarPenalizacion(operacion.clavePieza(Convert.ToString(row.Cells["Pieza"].Value)), operacion.claveVenta(txtClavePedido.Text, lblClaveSiniestro.Text), Convert.ToInt32(row.Cells["Cantidad"].Value), penalizar.motivo, penalizar.porcentaje, hoy);
+                        i++;
+                        if (i == filasIniciales)
+                            break;
+                    }
+                    dt = operacion.piezasPedidoActualizar(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
+                    dgvPedido.DataSource = dt;
+                }
+            }
+            else
+                MessageBox.Show("No es posible penalizar el pedido si aún no se ha hecho el registro de piezas correspondiente al pedido actual", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }
