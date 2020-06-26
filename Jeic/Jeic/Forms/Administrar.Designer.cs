@@ -267,6 +267,7 @@
             this.txt3.Name = "txt3";
             this.txt3.Size = new System.Drawing.Size(121, 20);
             this.txt3.TabIndex = 85;
+            this.txt3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt3_KeyPress);
             // 
             // cmb3
             // 
@@ -353,6 +354,7 @@
             this.txt2.Name = "txt2";
             this.txt2.Size = new System.Drawing.Size(121, 20);
             this.txt2.TabIndex = 5;
+            this.txt2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt2_KeyPress);
             // 
             // txt1
             // 
@@ -363,6 +365,7 @@
             this.txt1.Name = "txt1";
             this.txt1.Size = new System.Drawing.Size(121, 20);
             this.txt1.TabIndex = 4;
+            this.txt1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt1_KeyPress);
             // 
             // lbl2
             // 

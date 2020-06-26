@@ -592,7 +592,20 @@ namespace Refracciones
             }
             return dt;
         }
-
+        //--------------------OBTENER DATOS DE LA TABLA PENALIZACIONES--------------------
+        public DataTable Tabla_Penalizacion(int cve_venta)
+        {
+            dt = new DataTable();
+            using (SqlConnection nuevaConexion = Conexion.conexion())
+            {
+                nuevaConexion.Open();
+                Comando = new SqlCommand(string.Format("SELECT pie.nombre AS PIEZA, pena.cantidad AS CANTIDAD, c.cve_nombre AS CLIENTE, pena.motivo AS MOTIVO, pena.porcentaje AS 'PORCENTAJE PENALIZACIÓN (%)', pena.fecha AS FECHA FROM PENALIZACION pena INNER JOIN VENTAS ven ON ven.cve_venta = pena.cve_venta INNER JOIN VALUADOR val ON val.cve_valuador = ven.cve_valuador INNER JOIN CLIENTE c ON c.cve_valuador = val.cve_valuador INNER JOIN PIEZA pie ON pie.cve_pieza = pena.cve_pieza WHERE pena.cve_venta = {0}", cve_venta), nuevaConexion);
+                da = new SqlDataAdapter(Comando);
+                da.Fill(dt);
+                nuevaConexion.Close();
+            }
+            return dt;
+        }
         //--------------------------------------------------------------------------------------------------
 
         //--------------------ACTUALIZAR FACTURA (OBTENER DATOS.)--------------------
@@ -1505,6 +1518,82 @@ namespace Refracciones
                     nuevaConexion.Open();
                     Comando = new SqlCommand("UPDATE PORTAL SET estado = @estado WHERE nombre = @nombre", nuevaConexion);
                     Comando.Parameters.AddWithValue("@nombre", nombre);
+                    Comando.Parameters.AddWithValue("@estado", estado);
+                    Comando.ExecuteNonQuery();
+                    MessageBox.Show("Se actualizaron los datos correctamente");
+                    nuevaConexion.Close();
+
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+
+        }
+        //---------------- OBTENER NOMBRE VALUADOR POR EL NOMBRE DEL CLIENTE 
+        public string NombreValuador(string nombre)
+        {
+            string nombreVal = "";
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("SELECT val.nombre FROM CLIENTE c RIGHT OUTER JOIN VALUADOR val ON c.cve_valuador = val.cve_valuador WHERE c.cve_nombre = @nombre", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@nombre", nombre);
+                    nombreVal = Comando.ExecuteScalar() as string;
+                    nuevaConexion.Close();
+
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return nombreVal;
+        }
+        //---------------- OBTENER DIAS DE ENTREGA POR EL NOMBRE DEL CLIENTE 
+        public string dias_espera(string nombre)
+        {
+            string dias = "";
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("SELECT c.dias_espera FROM CLIENTE c RIGHT OUTER JOIN VALUADOR val ON c.cve_valuador = val.cve_valuador WHERE c.cve_nombre = @nombre", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@nombre",nombre);
+                    dias = Comando.ExecuteScalar() as string;
+                    nuevaConexion.Close();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return dias;
+        }
+        //---------------- ACTUALIZAR DATOS DEL VENDEDOR MEDIANTE CLAVE
+        public void ActualizarDatosCliente(string cliente, string valuador, int estado, int dias)
+        {
+
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("UPDATE val SET val.nombre = @valuador FROM VALUADOR val INNER JOIN CLIENTE c ON c.cve_valuador = val.cve_valuador WHERE c.cve_nombre = @cliente", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@valuador", valuador);
+                    Comando.Parameters.AddWithValue("@cliente", cliente);
+                    Comando.ExecuteNonQuery();
+                    Comando = new SqlCommand("UPDATE CLIENTE SET estado = @estado, dias_espera = @dias WHERE cve_nombre = @cliente", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@cliente", cliente);
+                    Comando.Parameters.AddWithValue("@estado", estado);
+                    Comando.Parameters.AddWithValue("@dias", dias);
+                    Comando.ExecuteNonQuery();
+                    Comando = new SqlCommand("UPDATE val SET val.estado = @estado FROM VALUADOR val INNER JOIN CLIENTE c ON c.cve_valuador = val.cve_valuador WHERE c.cve_nombre = @cliente", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@cliente", cliente);
                     Comando.Parameters.AddWithValue("@estado", estado);
                     Comando.ExecuteNonQuery();
                     MessageBox.Show("Se actualizaron los datos correctamente");

@@ -38,7 +38,7 @@ namespace Refracciones.Forms
         {
             x = 1;
             errorP.Clear();
-            rbtnModificar.Visible = false;
+            //rbtnModificar.Visible = false;
             rbtnRegistrar.Checked = false; rbtnRegistrar.Checked = true;
             lblTitle.Text = "CLIENTES";
         }
@@ -234,7 +234,7 @@ namespace Refracciones.Forms
                         cmb3.Enabled = false; cmb3.Visible = false;
                         cmb4.Enabled = false; cmb4.Visible = false;
                         txt1.Text = ""; txt2.Text = "";
-                        lbl1.Text = "Vendedor:";
+                        lbl1.Text = "Vendedor:"+"\n"+"(Clave)";
                         lbl2.Text = "Nombre:";
                         lbl3.Text = "";
                         break;
@@ -295,6 +295,7 @@ namespace Refracciones.Forms
                         lbl4.Text = "Estado:";
                         break;
                     case 1:
+                        
                         chk1.Enabled = false; chk1.Visible = false;
                         lbl1.Visible = true;
                         lbl2.Visible = true;
@@ -309,12 +310,14 @@ namespace Refracciones.Forms
                         cmb2.SelectedIndex = 0;
                         cmb3.Enabled = true; cmb3.Visible = true;
                         cmb4.Enabled = false; cmb4.Visible = false;
-                        txt1.Text = ""; txt2.Text = "";
+                        txt1.Text = ""; 
                         cmb3.DataSource = oper.AseguradorasRegistradas(0).Tables[0].DefaultView;
                         cmb3.ValueMember = "cve_nombre";
                         lbl1.Text = "Nombre:";
                         lbl2.Text = "Días de espera:";
                         lbl3.Text = "Valuador:";
+                        txt3.Text = oper.NombreValuador(cmb3.Text.Trim());
+                        txt2.Text = oper.dias_espera(cmb3.Text.Trim());
                         break;
                     case 2:
                         chk1.Enabled = false; chk1.Visible = false;
@@ -359,6 +362,7 @@ namespace Refracciones.Forms
                         cmb3.ValueMember = "nombre";
                         cmb4.Enabled = false; cmb4.Visible = false;
                         txt1.Text = ""; txt2.Text = "";
+                        txt2.Text = oper.direccionTaller(cmb3.Text.Trim());
                         lbl1.Text = "Nombre:";
                         lbl2.Text = "Dirección:";
                         lbl3.Text = "Estado:";
@@ -381,8 +385,11 @@ namespace Refracciones.Forms
                         cmb3.DataSource = oper.MarcasRegistradas(0).Tables[0].DefaultView; 
                         cmb3.ValueMember = "marca";
                         cmb4.Enabled = true; cmb4.Visible = true;
-                        cmb4.DataSource = null; cmb4.Items.Clear();
+                        /*cmb4.DataSource = null; cmb4.Items.Clear();*/
+                        cmb4.DataSource = oper.VehiculosRegistrados(cmb3.Text.Trim()).Tables["VEHICULO"].DefaultView;
+                        cmb4.ValueMember = "modelo";
                         txt1.Text = ""; txt2.Text = "";
+                        txt3.Text = oper.anioVehiculo(cmb4.Text.Trim());
                         lbl1.Text = "Marca:";
                         lbl2.Text = "Modelo:";
                         lbl3.Text = "Año:";
@@ -430,9 +437,10 @@ namespace Refracciones.Forms
                         cmb4.Enabled = true; cmb4.Visible = true;
                         cmb4.DataSource = null; cmb4.Items.Clear(); cmb4.Items.Add("ACTIVO"); cmb4.Items.Add("SUSPENDIDO"); cmb4.SelectedIndex = 0;
                         txt1.Text = ""; txt2.Text = "";
-                        lbl1.Text = "Vendedor:";
+                        lbl1.Text = "Vendedor:" + "\n" + "(Clave)";
                         lbl2.Text = "Estado:";
                         lbl3.Text = "";
+                        lbl5.Text = oper.NombreVendedor(Int32.Parse(cmb3.Text.Trim()));
                         break;
                     case 7:
                         chk1.Enabled = false; chk1.Visible = false;
@@ -681,7 +689,7 @@ namespace Refracciones.Forms
                         case 0:
                             if (cmb2.Text.Trim() == "ACTIVO")
                                 estado = 1;
-                            else
+                            else 
                                 estado = 0;
                             if (txt2.Text.Trim() == "")
                             {
@@ -693,6 +701,26 @@ namespace Refracciones.Forms
                                 errorP.Clear();
                                 oper.ActualizarDatosUsuario(cmb3.Text.Trim(), txt2.Text.Trim(), cmb1.Text.Trim(), estado);
                                 txt2.Text = "";
+                            }
+                            break;
+                        case 1:
+                            if (cmb2.Text.Trim() == "ACTIVO")
+                                estado = 1;
+                            else 
+                                estado = 0;
+
+                            if(txt2.Text.Trim() == "")
+                            {
+                                errorP.SetError(txt2,"No se puede dejar este campo sin llenar");
+                            }
+                            else if (txt3.Text.Trim() == "")
+                            {
+                                errorP.SetError(txt3, "No se puede dejar este campo sin llenar");
+                            }
+                            else
+                            {
+                                errorP.Clear();
+                                oper.ActualizarDatosCliente(cmb3.Text.Trim(),txt3.Text.Trim(),estado,Int32.Parse(txt2.Text.Trim()));
                             }
                             break;
                         case 2:
@@ -755,6 +783,7 @@ namespace Refracciones.Forms
                             else
                                 estado = 0;
                             oper.ActualizarDatosVendedor(Int32.Parse(cmb3.Text.Trim()),estado);
+                            
                             break;
                         case 7:
                             if (cmb4.Text.Trim() == "ACTIVO")
@@ -782,6 +811,11 @@ namespace Refracciones.Forms
             else if (x == 3 && y == 1)
             {
                 txt2.Text = oper.direccionTaller(cmb3.Text.Trim());
+            }
+            else if (x == 1 && y == 1)
+            {
+                txt3.Text = oper.NombreValuador(cmb3.Text.Trim());
+                txt2.Text = oper.dias_espera(cmb3.Text.Trim());
             }
         }
 
@@ -817,6 +851,62 @@ namespace Refracciones.Forms
             }
         }
 
-       
+        private void txt2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(x == 1 && y == 1 || x == 1 && y ==0)
+            {
+                if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+                {
+                    MessageBox.Show("Solo se permiten numeros", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    e.Handled = true;
+                    return;
+                }
+            }
+
+        }
+
+        private void txt1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            /*if(x==1 && y==0 || x==1 && y == 1 || x==2 || x==3)
+            {
+                if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+                {
+                    MessageBox.Show("Solo se permiten letras", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    e.Handled = true;
+                    return;
+                }
+            }*/
+            if (x == 6)
+            {
+                if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+                {
+                    MessageBox.Show("Solo se permiten numeros", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    e.Handled = true;
+                    return;
+                }
+            }
+        }
+
+        private void txt3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            /*if (x == 1 && y == 0 || x == 1 && y == 1)
+            {
+                if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+                {
+                    MessageBox.Show("Solo se permiten letras", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    e.Handled = true;
+                    return;
+                }
+            }*/
+            if (x == 4)
+            {
+                if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+                {
+                    MessageBox.Show("Solo se permiten numeros", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    e.Handled = true;
+                    return;
+                }
+            }
+        }
     }
 }

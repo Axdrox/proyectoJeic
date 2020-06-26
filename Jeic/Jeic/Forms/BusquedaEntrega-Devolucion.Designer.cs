@@ -43,6 +43,7 @@
             this.lblcve_venta = new System.Windows.Forms.Label();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.rbtnPenalizacion = new System.Windows.Forms.RadioButton();
             this.pbMinimize = new System.Windows.Forms.PictureBox();
             this.pbClose = new System.Windows.Forms.PictureBox();
             this.moverFormulario = new Bunifu.Framework.UI.BunifuDragControl(this.components);
@@ -189,6 +190,7 @@
             this.bunifuGradientPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
             this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuGradientPanel1.Controls.Add(this.rbtnPenalizacion);
             this.bunifuGradientPanel1.Controls.Add(this.pbMinimize);
             this.bunifuGradientPanel1.Controls.Add(this.pbClose);
             this.bunifuGradientPanel1.GradientBottomLeft = System.Drawing.Color.Black;
@@ -200,6 +202,21 @@
             this.bunifuGradientPanel1.Quality = 10;
             this.bunifuGradientPanel1.Size = new System.Drawing.Size(464, 450);
             this.bunifuGradientPanel1.TabIndex = 7;
+            // 
+            // rbtnPenalizacion
+            // 
+            this.rbtnPenalizacion.AutoSize = true;
+            this.rbtnPenalizacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(31)))), ((int)(((byte)(38)))));
+            this.rbtnPenalizacion.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbtnPenalizacion.ForeColor = System.Drawing.Color.White;
+            this.rbtnPenalizacion.Location = new System.Drawing.Point(254, 43);
+            this.rbtnPenalizacion.Name = "rbtnPenalizacion";
+            this.rbtnPenalizacion.Size = new System.Drawing.Size(149, 18);
+            this.rbtnPenalizacion.TabIndex = 76;
+            this.rbtnPenalizacion.TabStop = true;
+            this.rbtnPenalizacion.Text = "OTRAS PENALIZACIONES";
+            this.rbtnPenalizacion.UseVisualStyleBackColor = false;
+            this.rbtnPenalizacion.CheckedChanged += new System.EventHandler(this.rbtnPenalizacion_CheckedChanged);
             // 
             // pbMinimize
             // 
@@ -252,6 +269,7 @@
             this.Load += new System.EventHandler(this.BusquedaEntrega_Devolucion_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.bunifuGradientPanel1.ResumeLayout(false);
+            this.bunifuGradientPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).EndInit();
             this.ResumeLayout(false);
@@ -272,5 +290,6 @@
         private System.Windows.Forms.PictureBox pbMinimize;
         private System.Windows.Forms.PictureBox pbClose;
         private Bunifu.Framework.UI.BunifuDragControl moverFormulario;
+        private System.Windows.Forms.RadioButton rbtnPenalizacion;
     }
 }

@@ -41,6 +41,7 @@ namespace Refracciones.Forms
             {
                 dataGridView1.DataSource = dt;
                 dataGridView1.DataSource = oper.Tabla_Entrega(cve_venta);
+                rbtnPenalizacion.Checked = false;
             }
         }
 
@@ -52,9 +53,18 @@ namespace Refracciones.Forms
             {
                 dataGridView1.DataSource = dt;
                 dataGridView1.DataSource = oper.Tabla_Devolucion(cve_venta);
+                rbtnPenalizacion.Checked = false;
             }
         }
-
+        private void rbtnPenalizacion_CheckedChanged(object sender, EventArgs e)
+        {
+            if(rbtnPenalizacion.Checked == true)
+            {
+                dataGridView1.DataSource = dt;
+                dataGridView1.DataSource = oper.Tabla_Penalizacion(cve_venta);
+                rbtnDev.Checked = false; rbtnEntregas.Checked = false;
+            }
+        }
         private void pbClose_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -64,5 +74,7 @@ namespace Refracciones.Forms
         {
             this.WindowState = FormWindowState.Minimized;
         }
+
+        
     }
 }
