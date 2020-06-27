@@ -3573,7 +3573,7 @@ namespace Refracciones
                 {
                     nuevaConexion.Open();
                     //Insertando los datos en la relación VENTAS
-                    Comando = new SqlCommand("UPDATE VENTAS SET " + "(cve_vendedor = @cve_vendedor, cve_taller = @cve_taller, cve_valuador = @cve_valuador, fecha_baja = @fecha_baja, cve_destino = @cve_destino, costo_total = @costo_total, sub_total = @sub_total, total = @total, fecha_asignacion = @fecha_asignacion, fecha_promesa = @fecha_promesa, utilidad = @utilidad) " +
+                    Comando = new SqlCommand("UPDATE VENTAS SET " + "cve_vendedor = @cve_vendedor, cve_taller = @cve_taller, cve_valuador = @cve_valuador, fecha_baja = @fecha_baja, cve_destino = @cve_destino, costo_total = @costo_total, sub_total = @sub_total, total = @total, fecha_asignacion = @fecha_asignacion, fecha_promesa = @fecha_promesa, utilidad = @utilidad " +
                         "WHERE cve_pedido = @cve_pedido AND cve_siniestro = @cve_siniestro", nuevaConexion);
                     Comando.Parameters.AddWithValue("@cve_pedido", clavePedido);
                     Comando.Parameters.AddWithValue("@cve_siniestro", claveSiniestro);
@@ -3594,6 +3594,7 @@ namespace Refracciones
                     nuevaConexion.Close();
                     if (i == 1)
                     {
+                        MessageBox.Show("Venta actualizada correctamente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                         MessageBox.Show("Problemas al actualizar venta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -3755,7 +3756,7 @@ namespace Refracciones
         }
 
         //-------------ACTUALIZAR DATOS DE PEDIDO
-        public int actualizarPedido(string clavePedido, string claveSiniestro, string nombrePiezaPasada, string portal, string origen, string proveedor, DateTime fechaCosto/*, string costoSinIVA*/, string costoNeto, string costoEnvio, string precioVenta, string precioReparacion, string claveProducto, string numeroGuia, int cantidad, string nombrePiezaActual)
+        public int actualizarPedido(string clavePedido, string claveSiniestro, string nombrePiezaActual, string portal, string origen, string proveedor, DateTime fechaCosto/*, string costoSinIVA*/, string costoNeto, string costoEnvio, string precioVenta, string precioReparacion, string claveProducto, string numeroGuia, int cantidad, string nombrePiezaPasada)
         {
             string destino;
             //Variables
@@ -3785,8 +3786,8 @@ namespace Refracciones
 
                 nuevaConexion.Open();
                 //Insertando los datos en la tabla PEDIDO
-                Comando = new SqlCommand("UPDATE INTO PEDIDO SET " + "(cve_pieza = @cve_piezaActual, cantidad = @cantidad, cve_origen = @cve_origen, cve_proveedor = @cve_proveedor, cve_portal = @cve_portal, cve_guia = @cve_guia, cve_producto = @cve_producto, fecha_costo = @fecha_costo, costo_envio = @costo_envio, costo_neto = @costo_neto, precio_venta = @precio_venta, precio_reparacion = @precio_reparacion, gasto = @gasto) " +
-                    "WHERE  cve_venta = @cve_venta AND cve_pieza = @cve_piezaPasada", nuevaConexion);//, costo_comprasinIVA    , @costo_comprasinIVA
+                Comando = new SqlCommand("UPDATE PEDIDO SET " + "cve_pieza = @cve_piezaActual, cantidad = @cantidad, cve_origen = @cve_origen, cve_proveedor = @cve_proveedor, cve_portal = @cve_portal, cve_guia = @cve_guia, cve_producto = @cve_producto, fecha_costo = @fecha_costo, costo_envio = @costo_envio, costo_neto = @costo_neto, precio_venta = @precio_venta, precio_reparacion = @precio_reparacion, gasto = @gasto " +
+                    "WHERE cve_venta = @cve_venta AND cve_pieza = @cve_piezaPasada", nuevaConexion);//, costo_comprasinIVA    , @costo_comprasinIVA
                 //Añadiendo los parámetros al query
                 Comando.Parameters.AddWithValue("@cve_venta", cve_venta);
                 Comando.Parameters.AddWithValue("@cve_piezaPasada", cve_piezaPasada);
@@ -3809,9 +3810,9 @@ namespace Refracciones
                 i = Comando.ExecuteNonQuery();
                 nuevaConexion.Close();
                 if (i == 1)
-                    MessageBox.Show("Se registró pedido correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Se actualizó pedido correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 else
-                    MessageBox.Show("Problemas al registar pedido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Problemas al actualizar pedido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             /*}
             catch (Exception EX)

@@ -1107,7 +1107,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(28)))), ((int)(((byte)(27)))));
-            this.ClientSize = new System.Drawing.Size(1792, 656);
+            this.ClientSize = new System.Drawing.Size(1792, 641);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pbClose);
             this.Controls.Add(this.pbMinimize);

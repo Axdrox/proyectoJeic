@@ -170,6 +170,7 @@ namespace Refracciones.Forms
 
                 txtClavePedido.Enabled = false;
                 btnFinalizarPedido.Text = "Actualizar pedido";
+                btnFinalizarPedido.Enabled = true;
 
                 chbModificarVendedor.Visible = true;
                 txtVendedor.Show();
@@ -222,7 +223,9 @@ namespace Refracciones.Forms
                 {
                     precioTotal += Convert.ToDouble(row.Cells["Precio de venta"].Value);
                     piezasTotal += Convert.ToInt32(row.Cells["Cantidad"].Value);
-                    nombrePieza[i] = Convert.ToString(row.Cells["Pieza"].Value);
+                    nombresPiezas.Add(row.Cells["Pieza"].Value.ToString());
+                    //nombrePieza[i] = Convert.ToString(row.Cells["Pieza"].Value);
+                    //i++;
                 }
                 lblPrecioTotal.Text = "$" + precioTotal.ToString();
                 lblCantidadTotal.Text = piezasTotal.ToString();
@@ -263,6 +266,7 @@ namespace Refracciones.Forms
 
         //Parámetros que sirven al momento de actualizar formulario
         private string[] nombrePieza;
+        List<string> nombresPiezas = new List<string>();
 
         private int filasIniciales;
 
@@ -854,9 +858,10 @@ namespace Refracciones.Forms
 
         private void actualizarPedido()
         {
-            if (filasIniciales > 0)
+            if (filasIniciales != 0)
             {
                 int i = 0;
+                //actualizar las piezas que ya se tenían registradas
                 foreach (DataGridViewRow row in dgvPedido.Rows)
                 {
                     DateTime dtFechaCosto = new DateTime();
@@ -870,40 +875,23 @@ namespace Refracciones.Forms
                         dtFechaCosto/*, Convert.ToString(row.Cells["Costo sin IVA"].Value)*/, Convert.ToString(row.Cells["Costo neto"].Value),
                         Convert.ToString(row.Cells["Costo de envío"].Value), Convert.ToString(row.Cells["Precio de venta"].Value),
                         Convert.ToString(row.Cells["Precio de reparación"].Value), Convert.ToString(row.Cells["Clave de producto"].Value),
-                        Convert.ToString(row.Cells["Número de guía"].Value), Convert.ToInt32(row.Cells["Cantidad"].Value), nombrePieza[i]);
+                        Convert.ToString(row.Cells["Número de guía"].Value), Convert.ToInt32(row.Cells["Cantidad"].Value), nombresPiezas[i]);
                     i++;
                     if (i == filasIniciales)
                         break;
                 }
-                if ((dgvPedido.Rows.Count - filasIniciales) > 0)
+                //cuando hay filas ya registradas se registren las nuevas
+                if ((dgvPedido.Rows.Count - filasIniciales) != 0)
                 {
-                    if (filasIniciales == 0)
+                    for (int j = filasIniciales; j < dgvPedido.Rows.Count; j++)
                     {
-                        //cuando se eliminaron todas las piezas que se tenían registradas
-                        for (int j = 0; j < dgvPedido.Rows.Count; j++)
-                        {/*
-                            operacion.registrarPedido(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(),
-                            Convert.ToString(row.Cells["Pieza"].Value), Convert.ToString(row.Cells["Portal"].Value),
-                            Convert.ToString(row.Cells["Origen"].Value).Trim(), Convert.ToString(row.Cells["Proveedor"].Value),
-                            dtFechaCosto, Convert.ToString(row.Cells["Costo neto"].Value),
-                            Convert.ToString(row.Cells["Costo de envío"].Value), Convert.ToString(row.Cells["Precio de venta"].Value),
-                            Convert.ToString(row.Cells["Precio de reparación"].Value), Convert.ToString(row.Cells["Clave de producto"].Value),
-                            Convert.ToString(row.Cells["Número de guía"].Value), Convert.ToInt32(row.Cells["Cantidad"].Value));*/
-                        }
-                    }
-                    else
-                    {
-                        //cuando hay filas ya registradas y que se registren las nuevas
-                        for (int j = filasIniciales + 1; j < dgvPedido.Rows.Count - filasIniciales; j++)
-                        {/*
-                            operacion.registrarPedido(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(),
-                            Convert.ToString(row.Cells["Pieza"].Value), Convert.ToString(row.Cells["Portal"].Value),
-                            Convert.ToString(row.Cells["Origen"].Value).Trim(), Convert.ToString(row.Cells["Proveedor"].Value),
-                            dtFechaCosto, Convert.ToString(row.Cells["Costo neto"].Value),
-                            Convert.ToString(row.Cells["Costo de envío"].Value), Convert.ToString(row.Cells["Precio de venta"].Value),
-                            Convert.ToString(row.Cells["Precio de reparación"].Value), Convert.ToString(row.Cells["Clave de producto"].Value),
-                            Convert.ToString(row.Cells["Número de guía"].Value), Convert.ToInt32(row.Cells["Cantidad"].Value));*/
-                        }
+                       operacion.registrarPedido(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(),
+                            dgvPedido.Rows[j].Cells[3].Value.ToString(), dgvPedido.Rows[j].Cells[7].Value.ToString(),
+                            dgvPedido.Rows[j].Cells[8].Value.ToString(), dgvPedido.Rows[j].Cells[9].Value.ToString(),
+                            Convert.ToDateTime(dgvPedido.Rows[j].Cells[10].Value), dgvPedido.Rows[j].Cells[11].Value.ToString(),
+                            dgvPedido.Rows[j].Cells[12].Value.ToString(), dgvPedido.Rows[j].Cells[13].Value.ToString(),
+                            dgvPedido.Rows[j].Cells[14].Value.ToString(), dgvPedido.Rows[j].Cells[5].Value.ToString(),
+                            dgvPedido.Rows[j].Cells[6].Value.ToString(), Convert.ToInt32(dgvPedido.Rows[j].Cells[4].Value));
                     }
                 }
             }
@@ -1034,7 +1022,7 @@ namespace Refracciones.Forms
                     }
                     dt.Rows.Add(row);
 
-                    MessageBox.Show(filasIniciales.ToString());
+                    //MessageBox.Show(filasIniciales.ToString());
 
                     foreach (DataGridViewRow dgvRow in dgvPedido.Rows)
                     {
@@ -1102,6 +1090,7 @@ namespace Refracciones.Forms
                                 {
                                     operacion.eliminarPiezaRegistradaPedido(txtClavePedido.Text, lblClaveSiniestro.Text, pieza);
                                     filasIniciales -= 1;
+                                    nombresPiezas.Remove(pieza);
                                     dgvPedido.Rows.RemoveAt(dgvPedido.CurrentRow.Index);
                                 }
                             }
@@ -1128,14 +1117,24 @@ namespace Refracciones.Forms
             {
                 if (e.ColumnIndex == dgvPedido.Columns["dataGridViewPenaltyButton"].Index)
                 {
+                    DialogResult respuesta = DialogResult.Cancel;
+                    int cantidad = 0;
                     Penalizaciones penalizaciones = new Penalizaciones();
                     foreach (DataGridViewRow row in dgvPedido.SelectedRows)
                     {
                         penalizaciones.cvePieza = operacion.clavePieza(Convert.ToString(row.Cells["Pieza"].Value));
                         penalizaciones.cveVenta = operacion.claveVenta(txtClavePedido.Text, lblClaveSiniestro.Text);
-                        penalizaciones.cantidad = Convert.ToInt32(row.Cells["Cantidad"].Value);
+                        cantidad = Convert.ToInt32(row.Cells["Cantidad"].Value);
                     }
-                    DialogResult respuesta = penalizaciones.ShowDialog();
+                    if (cantidad == 0)
+                    {
+                        MessageBox.Show("No es posible penalizar debido a que no hay cantidad suficiente");
+                    }
+                    else
+                    {
+                        penalizaciones.cantidad = cantidad;
+                        respuesta = penalizaciones.ShowDialog();
+                    }
                     //Para que se actualice la cantidad que se penalizó
                     if (respuesta == DialogResult.OK)
                     {
