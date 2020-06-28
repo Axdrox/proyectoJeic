@@ -1203,7 +1203,7 @@ namespace Refracciones
             using (SqlConnection nuevaConexion = Conexion.conexion())
             {
                 nuevaConexion.Open();
-                Comando = new SqlCommand("SELECT fact.cve_factura AS 'FACTURA',ven.cve_siniestro AS 'SINIESTRO', ven.cve_pedido AS 'PEDIDO', fact.fact_sinIVA AS 'FACTURA SIN IVA',fact.descuento AS 'DESCUENTO',fact.fact_neto AS 'FACTURA NETO', fact.costo_refactura AS 'COSTO DE REFACTURA', fact.fecha_refactura AS 'FECHA DE REFACTURA',fact.fecha_ingreso AS 'FECHA DE INGRESO', fact.fecha_revision AS 'FECHA DE REVISIÓN',fact.fecha_pago AS 'FECHA DE PAGO', fact.comentario AS 'COMENTARIO' FROM FACTURA fact LEFT OUTER JOIN VENTAS ven ON fact.cve_factura = ven.cve_factura", nuevaConexion);
+                Comando = new SqlCommand("SELECT fact.cve_factura AS 'FACTURA',ven.cve_siniestro AS 'SINIESTRO', ven.cve_pedido AS 'PEDIDO', fact.fact_sinIVA AS 'FACTURA SIN IVA',fact.descuento AS 'DESCUENTO',fact.fact_neto AS 'FACTURA NETO', fact.costo_refactura AS 'COSTO DE REFACTURA', fact.fecha_refactura AS 'FECHA DE REFACTURA',fact.fecha_ingreso AS 'FECHA DE INGRESO', fact.fecha_revision AS 'FECHA DE REVISIÓN',fact.fecha_pago AS 'FECHA DE PAGO', fact.comentario AS 'COMENTARIO', fact.cve_refactura AS 'FACTURA ASOCIADA' FROM FACTURA fact LEFT OUTER JOIN VENTAS ven ON fact.cve_factura = ven.cve_factura", nuevaConexion);
                 da = new SqlDataAdapter(Comando);
 
                 da.Fill(dt);
@@ -1554,17 +1554,22 @@ namespace Refracciones
             return nombreVal;
         }
         //---------------- OBTENER DIAS DE ENTREGA POR EL NOMBRE DEL CLIENTE 
-        public string dias_espera(string nombre)
+        public string Dias_Espera(string nombre)
         {
-            string dias = "";
+            string anio = "";
             try
             {
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     nuevaConexion.Open();
                     Comando = new SqlCommand("SELECT c.dias_espera FROM CLIENTE c RIGHT OUTER JOIN VALUADOR val ON c.cve_valuador = val.cve_valuador WHERE c.cve_nombre = @nombre", nuevaConexion);
-                    Comando.Parameters.AddWithValue("@nombre",nombre);
-                    dias = Comando.ExecuteScalar() as string;
+                    Comando.Parameters.AddWithValue("@nombre", nombre.Trim());
+                    Lector = Comando.ExecuteReader();
+                    if (Lector.Read())
+                    {
+                        anio = Lector["dias_espera"].ToString().Trim();
+                    }
+                    Lector.Close();
                     nuevaConexion.Close();
                 }
             }
@@ -1572,7 +1577,7 @@ namespace Refracciones
             {
                 MessageBox.Show("Error: " + EX.Message);
             }
-            return dias;
+            return anio;
         }
         //---------------- ACTUALIZAR DATOS DEL VENDEDOR MEDIANTE CLAVE
         public void ActualizarDatosCliente(string cliente, string valuador, int estado, int dias)

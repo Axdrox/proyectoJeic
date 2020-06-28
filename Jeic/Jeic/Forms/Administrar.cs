@@ -295,7 +295,6 @@ namespace Refracciones.Forms
                         lbl4.Text = "Estado:";
                         break;
                     case 1:
-                        
                         chk1.Enabled = false; chk1.Visible = false;
                         lbl1.Visible = true;
                         lbl2.Visible = true;
@@ -317,7 +316,7 @@ namespace Refracciones.Forms
                         lbl2.Text = "Días de espera:";
                         lbl3.Text = "Valuador:";
                         txt3.Text = oper.NombreValuador(cmb3.Text.Trim());
-                        txt2.Text = oper.dias_espera(cmb3.Text.Trim());
+                        txt2.Text = oper.Dias_Espera(cmb3.Text.Trim());
                         break;
                     case 2:
                         chk1.Enabled = false; chk1.Visible = false;
@@ -815,7 +814,7 @@ namespace Refracciones.Forms
             else if (x == 1 && y == 1)
             {
                 txt3.Text = oper.NombreValuador(cmb3.Text.Trim());
-                txt2.Text = oper.dias_espera(cmb3.Text.Trim());
+                txt2.Text = oper.Dias_Espera(cmb3.Text.Trim());
             }
         }
 

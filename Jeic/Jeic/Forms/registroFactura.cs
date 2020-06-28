@@ -158,38 +158,39 @@ namespace Refracciones.Forms
             //Colocar ICONO
             this.Icon = Resources.iconJeic;
 
-            /*cve_siniestro = dato1.Text;
-            cve_pedido = Int32.Parse(dato2.Text);*/
-            cve_pedido = dato2.Text.Substring(8, (dato2.Text.Length - 8));
-            cve_siniestro = dato1.Text.Substring(11, dato1.Text.Length - 11);
-           txtFacturasinIVA.Text = (oper.venta_total(cve_pedido,cve_siniestro)).ToString();
-            cmbEstadoFactura.SelectedIndex = 0;
-            dtpFechaPago.Value = dtpFechaIngreso.Value.AddDays(oper.Dias_Espera(cve_siniestro, cve_pedido));
-            if (dato3.Text == "0")
-            {
-                dataGridView1.DataSource = oper.Actualizar_Factura(oper.Clave_Fact(cve_siniestro,cve_pedido));
-                if (dataGridView1.Rows[0].Cells[1].Value.ToString() == "1") { cmbEstadoFactura.SelectedIndex = 0; }
-                else if (dataGridView1.Rows[0].Cells[1].Value.ToString() == "2") { cmbEstadoFactura.SelectedIndex = 1; }
-                else if (dataGridView1.Rows[0].Cells[1].Value.ToString() == "3") { cmbEstadoFactura.SelectedIndex = 2; }
-                txtCve_Factura.Text = dataGridView1.Rows[0].Cells[0].Value.ToString();
-                txtFacturasinIVA.Text = dataGridView1.Rows[0].Cells[3].Value.ToString();
-                txtDescuento.Text = dataGridView1.Rows[0].Cells[4].Value.ToString();
-                txtFacturaconIVA.Text = dataGridView1.Rows[0].Cells[5].Value.ToString();
-                if (dataGridView1.Rows[0].Cells[8].Value.ToString() != DateTime.MinValue.ToString())
-                { dtpFechaIngreso.Value = DateTime.Parse(dataGridView1.Rows[0].Cells[8].Value.ToString()); }
-                else { dtpFechaIngreso.Value = DateTime.Now; }
-                if (dataGridView1.Rows[0].Cells[9].Value.ToString() != DateTime.MinValue.ToString())
-                { dtpFechaRevision.Value = DateTime.Parse(dataGridView1.Rows[0].Cells[9].Value.ToString()); }
-                else { dtpFechaRevision.Value = DateTime.Now; }
-                if(dataGridView1.Rows[0].Cells[10].Value.ToString() != DateTime.MinValue.ToString())
-                { dtpFechaPago.Value = DateTime.Parse(dataGridView1.Rows[0].Cells[10].Value.ToString()); }
-                else { dtpFechaPago.Value = DateTime.Now; }
-                txtComentario.Text = dataGridView1.Rows[0].Cells[11].Value.ToString();
-                txtCve_Factura.ReadOnly = true;
-                btnGuardar.Text = "Actualizar";
-            }
-            else
-            { }
+
+                
+                cve_pedido = dato2.Text.Substring(8, (dato2.Text.Length - 8));
+                cve_siniestro = dato1.Text.Substring(11, dato1.Text.Length - 11);
+                txtFacturasinIVA.Text = (oper.venta_total(cve_pedido, cve_siniestro)).ToString();
+                cmbEstadoFactura.SelectedIndex = 0;
+                dtpFechaPago.Value = dtpFechaIngreso.Value.AddDays(oper.Dias_Espera(cve_siniestro, cve_pedido));
+                if (dato3.Text == "0")
+                {
+                    dataGridView1.DataSource = oper.Actualizar_Factura(oper.Clave_Fact(cve_siniestro, cve_pedido));
+                    if (dataGridView1.Rows[0].Cells[1].Value.ToString() == "1") { cmbEstadoFactura.SelectedIndex = 0; }
+                    else if (dataGridView1.Rows[0].Cells[1].Value.ToString() == "2") { cmbEstadoFactura.SelectedIndex = 1; }
+                    else if (dataGridView1.Rows[0].Cells[1].Value.ToString() == "3") { cmbEstadoFactura.SelectedIndex = 2; }
+                    txtCve_Factura.Text = dataGridView1.Rows[0].Cells[0].Value.ToString();
+                    txtFacturasinIVA.Text = dataGridView1.Rows[0].Cells[3].Value.ToString();
+                    txtDescuento.Text = dataGridView1.Rows[0].Cells[4].Value.ToString();
+                    txtFacturaconIVA.Text = dataGridView1.Rows[0].Cells[5].Value.ToString();
+                    if (dataGridView1.Rows[0].Cells[8].Value.ToString() != DateTime.MinValue.ToString())
+                    { dtpFechaIngreso.Value = DateTime.Parse(dataGridView1.Rows[0].Cells[8].Value.ToString()); }
+                    else { dtpFechaIngreso.Value = DateTime.Now; }
+                    if (dataGridView1.Rows[0].Cells[9].Value.ToString() != DateTime.MinValue.ToString())
+                    { dtpFechaRevision.Value = DateTime.Parse(dataGridView1.Rows[0].Cells[9].Value.ToString()); }
+                    else { dtpFechaRevision.Value = DateTime.Now; }
+                    if (dataGridView1.Rows[0].Cells[10].Value.ToString() != DateTime.MinValue.ToString())
+                    { dtpFechaPago.Value = DateTime.Parse(dataGridView1.Rows[0].Cells[10].Value.ToString()); }
+                    else { dtpFechaPago.Value = DateTime.Now; }
+                    txtComentario.Text = dataGridView1.Rows[0].Cells[11].Value.ToString();
+                    txtCve_Factura.ReadOnly = true;
+                    btnGuardar.Text = "Actualizar";
+                }
+                else
+                { }
+            
         }
 
         private void label1_Click_1(object sender, EventArgs e)

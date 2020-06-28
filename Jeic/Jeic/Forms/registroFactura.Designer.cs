@@ -71,6 +71,7 @@
             this.pbClose = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.moverFormulario = new Bunifu.Framework.UI.BunifuDragControl(this.components);
+            this.dato4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorP)).BeginInit();
             this.bunifuGradientPanel1.SuspendLayout();
@@ -451,6 +452,7 @@
             this.bunifuGradientPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
             this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuGradientPanel1.Controls.Add(this.dato4);
             this.bunifuGradientPanel1.Controls.Add(this.txtDescuento);
             this.bunifuGradientPanel1.Controls.Add(this.lblDescuento);
             this.bunifuGradientPanel1.Controls.Add(this.pbMinimize);
@@ -538,6 +540,14 @@
             this.moverFormulario.Horizontal = true;
             this.moverFormulario.TargetControl = this.bunifuGradientPanel1;
             this.moverFormulario.Vertical = true;
+            // 
+            // dato4
+            // 
+            this.dato4.AutoSize = true;
+            this.dato4.Location = new System.Drawing.Point(581, 33);
+            this.dato4.Name = "dato4";
+            this.dato4.Size = new System.Drawing.Size(0, 13);
+            this.dato4.TabIndex = 73;
             // 
             // registroFactura
             // 
@@ -629,5 +639,6 @@
         private System.Windows.Forms.TextBox txtDescuento;
         private System.Windows.Forms.Label lblDescuento;
         private Bunifu.Framework.UI.BunifuDragControl moverFormulario;
+        private System.Windows.Forms.Label dato4;
     }
 }

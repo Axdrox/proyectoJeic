@@ -15,6 +15,8 @@ namespace Refracciones.Forms
     public partial class buscarFacturas : Form
     {
         OperBD factura = new OperBD();
+        registroFactura rfactura = new registroFactura();
+        registrarRefactura refactura = new registrarRefactura();
         public buscarFacturas()
         {
             InitializeComponent();
@@ -57,6 +59,31 @@ namespace Refracciones.Forms
                 }
                 else
                 {  }
+
+                if(dgvFacturas.Rows[fila].Cells[1].Value.ToString() == "")
+                {
+
+                }
+                else
+                {
+                    if (dgvFacturas.Rows[fila].Cells[12].Value.ToString() != "")
+                    {
+                        
+                        refactura.dato1.Text = "SINIESTRO:" + " " + dgvFacturas.Rows[fila].Cells[1].Value.ToString();
+                        refactura.dato2.Text = "PEDIDO:" + " " + dgvFacturas.Rows[fila].Cells[2].Value.ToString();
+                        refactura.dato3.Text = "0";
+                        refactura.ShowDialog();
+                    }
+                    else
+                    {
+                        rfactura.dato1.Text = "SINIESTRO:" + " " + dgvFacturas.Rows[fila].Cells[1].Value.ToString();
+                        rfactura.dato2.Text = "PEDIDO:" + " " + dgvFacturas.Rows[fila].Cells[2].Value.ToString();
+                        rfactura.dato3.Text = "0";
+                        rfactura.ShowDialog();
+                    }
+                    
+                }
+                
             }
         }
 
