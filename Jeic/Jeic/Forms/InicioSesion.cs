@@ -59,7 +59,7 @@ namespace Refracciones
                 
                 if (Operacion.logeo(txtUsuario.Text, txtContrasenia.Text) == 1)
                 {
-                    MessageBox.Show("Bienvenido");
+                    MessageBOX.SHowDialog("Bienvenido");
                     Forms.Busqueda bus = new Forms.Busqueda();
                     bus.Usuario.Text = "Usuario: " + txtUsuario.Text;
                     bus.Show();
@@ -91,7 +91,7 @@ namespace Refracciones
 
             if (Operacion.logeo(txtUsuario.Text, txtContrasenia.Text) == 1)
             {
-                MessageBox.Show("Bienvenido");
+                MessageBOX.SHowDialog("Bienvenido");
                 Forms.Busqueda bus = new Forms.Busqueda();
                 bus.Usuario.Text= "Usuario: " + txtUsuario.Text;
                 bus.Show();
@@ -106,6 +106,7 @@ namespace Refracciones
                 txtUsuario.Text = "";
                 txtContrasenia.Text = "";
                 this.Hide();
+                
             }
             else
             {

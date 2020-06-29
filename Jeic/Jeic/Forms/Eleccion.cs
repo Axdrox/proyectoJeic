@@ -275,8 +275,9 @@ namespace Refracciones
                             .EndText();
                     }
                     pdfdoc.Close();
-                    MessageBox.Show("PDF CREADO");
-                 }
+                    MessageBOX.SHowDialog("PDF creado exitosamente");
+                    this.Close();
+                }
                 else
                 {
                     PdfWriter pdfWriter = new PdfWriter(saveFileDialog1.FileName);
@@ -383,7 +384,8 @@ namespace Refracciones
                                     .EndText();
                     }
                     pdfdoc.Close();
-                    MessageBox.Show("PDF CREADO");
+                    MessageBOX.SHowDialog("PDF creado exitosamente");
+                    this.Close();
                 }               
              }    
         }

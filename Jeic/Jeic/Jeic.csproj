@@ -186,6 +186,12 @@
     <Compile Include="Forms\InicioSesion.Designer.cs">
       <DependentUpon>InicioSesion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\MessageBOX.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MessageBOX.Designer.cs">
+      <DependentUpon>MessageBOX.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Pedido.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -259,6 +265,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\InicioSesion.resx">
       <DependentUpon>InicioSesion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MessageBOX.resx">
+      <DependentUpon>MessageBOX.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Pedido.resx">
       <DependentUpon>Pedido.cs</DependentUpon>
@@ -347,6 +356,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Portal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GiftHECHO.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cargando.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

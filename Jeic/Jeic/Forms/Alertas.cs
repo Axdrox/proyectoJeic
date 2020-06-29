@@ -36,8 +36,8 @@ namespace Refracciones.Forms
         }
 
 
-        private void RBTNChangeD(object sender, EventArgs e) {
-
+        private void RBTNChangeD(object sender, EventArgs e) 
+        {
             if (rbtnFacturas.Checked)
             {
                 DateTime fecha_sys = DateTime.Parse((DateTime.Now.ToShortDateString()));
@@ -45,9 +45,7 @@ namespace Refracciones.Forms
             }
             else {
                 dgvAlertas.DataSource = oper.Alertas();
-            }
-        
-        
+            }    
         }
 
         private void pbClose_Click(object sender, EventArgs e)

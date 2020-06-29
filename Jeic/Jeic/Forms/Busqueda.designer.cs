@@ -206,9 +206,9 @@
             this.Panelinfo.Controls.Add(this.lblCvePed);
             this.Panelinfo.Controls.Add(this.lblcvePedido);
             this.Panelinfo.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.Panelinfo.Location = new System.Drawing.Point(0, 152);
+            this.Panelinfo.Location = new System.Drawing.Point(0, 150);
             this.Panelinfo.Name = "Panelinfo";
-            this.Panelinfo.Size = new System.Drawing.Size(320, 478);
+            this.Panelinfo.Size = new System.Drawing.Size(320, 479);
             this.Panelinfo.TabIndex = 6;
             // 
             // label11
@@ -579,7 +579,7 @@
             this.dvgPedido.DefaultCellStyle = dataGridViewCellStyle2;
             this.dvgPedido.EnableHeadersVisualStyles = false;
             this.dvgPedido.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(51)))), ((int)(((byte)(65)))));
-            this.dvgPedido.Location = new System.Drawing.Point(326, 150);
+            this.dvgPedido.Location = new System.Drawing.Point(318, 150);
             this.dvgPedido.Name = "dvgPedido";
             this.dvgPedido.ReadOnly = true;
             this.dvgPedido.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -599,7 +599,7 @@
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
             this.dvgPedido.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dvgPedido.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dvgPedido.Size = new System.Drawing.Size(797, 480);
+            this.dvgPedido.Size = new System.Drawing.Size(798, 480);
             this.dvgPedido.TabIndex = 7;
             this.dvgPedido.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgPedido_CellContentClick);
             // 
