@@ -65,13 +65,13 @@
             this.errorP = new System.Windows.Forms.ErrorProvider(this.components);
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.dato4 = new System.Windows.Forms.Label();
             this.txtDescuento = new System.Windows.Forms.TextBox();
             this.lblDescuento = new System.Windows.Forms.Label();
             this.pbMinimize = new System.Windows.Forms.PictureBox();
             this.pbClose = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.moverFormulario = new Bunifu.Framework.UI.BunifuDragControl(this.components);
-            this.dato4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorP)).BeginInit();
             this.bunifuGradientPanel1.SuspendLayout();
@@ -127,7 +127,6 @@
             this.txtRutaFactura.Size = new System.Drawing.Size(228, 20);
             this.txtRutaFactura.TabIndex = 3;
             this.txtRutaFactura.TextChanged += new System.EventHandler(this.txtRutaFactura_TextChanged);
-            this.txtRutaFactura.Validated += new System.EventHandler(this.txtRutaFactura_Validated);
             // 
             // btnBuscarFact
             // 
@@ -168,7 +167,6 @@
             this.lblClave_Factura.Size = new System.Drawing.Size(93, 14);
             this.lblClave_Factura.TabIndex = 6;
             this.lblClave_Factura.Text = "Número Factura";
-            this.lblClave_Factura.Click += new System.EventHandler(this.label1_Click);
             // 
             // txtFacturasinIVA
             // 
@@ -353,7 +351,6 @@
             this.lblEstadoFactura.Size = new System.Drawing.Size(118, 14);
             this.lblEstadoFactura.TabIndex = 25;
             this.lblEstadoFactura.Text = "Estado de la Factura";
-            this.lblEstadoFactura.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // cmbEstadoFactura
             // 
@@ -474,6 +471,14 @@
             this.bunifuGradientPanel1.Size = new System.Drawing.Size(620, 358);
             this.bunifuGradientPanel1.TabIndex = 33;
             // 
+            // dato4
+            // 
+            this.dato4.AutoSize = true;
+            this.dato4.Location = new System.Drawing.Point(581, 33);
+            this.dato4.Name = "dato4";
+            this.dato4.Size = new System.Drawing.Size(0, 13);
+            this.dato4.TabIndex = 73;
+            // 
             // txtDescuento
             // 
             this.txtDescuento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
@@ -486,7 +491,6 @@
             this.txtDescuento.TabIndex = 34;
             this.txtDescuento.Text = "0";
             this.txtDescuento.TextChanged += new System.EventHandler(this.txtDescuento_TextChanged);
-            this.txtDescuento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDescuento_KeyPress);
             // 
             // lblDescuento
             // 
@@ -501,11 +505,12 @@
             // 
             // pbMinimize
             // 
+            this.pbMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbMinimize.Image = global::Refracciones.Properties.Resources.Minimize_Window_2_48px;
-            this.pbMinimize.Location = new System.Drawing.Point(584, 2);
+            this.pbMinimize.Location = new System.Drawing.Point(580, 2);
             this.pbMinimize.Margin = new System.Windows.Forms.Padding(2);
             this.pbMinimize.Name = "pbMinimize";
-            this.pbMinimize.Size = new System.Drawing.Size(15, 16);
+            this.pbMinimize.Size = new System.Drawing.Size(17, 17);
             this.pbMinimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbMinimize.TabIndex = 71;
             this.pbMinimize.TabStop = false;
@@ -513,11 +518,12 @@
             // 
             // pbClose
             // 
+            this.pbClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbClose.Image = global::Refracciones.Properties.Resources.Close_Window__2_48px;
-            this.pbClose.Location = new System.Drawing.Point(603, 2);
+            this.pbClose.Location = new System.Drawing.Point(600, 2);
             this.pbClose.Margin = new System.Windows.Forms.Padding(2);
             this.pbClose.Name = "pbClose";
-            this.pbClose.Size = new System.Drawing.Size(15, 16);
+            this.pbClose.Size = new System.Drawing.Size(17, 17);
             this.pbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbClose.TabIndex = 70;
             this.pbClose.TabStop = false;
@@ -540,14 +546,6 @@
             this.moverFormulario.Horizontal = true;
             this.moverFormulario.TargetControl = this.bunifuGradientPanel1;
             this.moverFormulario.Vertical = true;
-            // 
-            // dato4
-            // 
-            this.dato4.AutoSize = true;
-            this.dato4.Location = new System.Drawing.Point(581, 33);
-            this.dato4.Name = "dato4";
-            this.dato4.Size = new System.Drawing.Size(0, 13);
-            this.dato4.TabIndex = 73;
             // 
             // registroFactura
             // 

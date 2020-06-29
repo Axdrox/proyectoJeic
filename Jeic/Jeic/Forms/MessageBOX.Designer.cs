@@ -36,6 +36,7 @@
             this.Retraso_icono = new System.Windows.Forms.Timer(this.components);
             this.btnOK = new Bunifu.Framework.UI.BunifuFlatButton();
             this.lblTexto = new System.Windows.Forms.Label();
+            this.btnNO = new Bunifu.Framework.UI.BunifuFlatButton();
             ((System.ComponentModel.ISupportInitialize)(this.GifHecho)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,6 +67,7 @@
             this.GifHecho.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.GifHecho.TabIndex = 0;
             this.GifHecho.TabStop = false;
+            this.GifHecho.Click += new System.EventHandler(this.GifHecho_Click);
             // 
             // Retraso_icono
             // 
@@ -122,12 +124,51 @@
             this.lblTexto.Text = "Bienvenido";
             this.lblTexto.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // btnNO
+            // 
+            this.btnNO.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
+            this.btnNO.BackColor = System.Drawing.Color.Transparent;
+            this.btnNO.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnNO.BorderRadius = 5;
+            this.btnNO.ButtonText = "NO";
+            this.btnNO.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNO.DisabledColor = System.Drawing.Color.Gray;
+            this.btnNO.Enabled = false;
+            this.btnNO.ForeColor = System.Drawing.Color.Transparent;
+            this.btnNO.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnNO.Iconimage = null;
+            this.btnNO.Iconimage_right = null;
+            this.btnNO.Iconimage_right_Selected = null;
+            this.btnNO.Iconimage_Selected = null;
+            this.btnNO.IconMarginLeft = 0;
+            this.btnNO.IconMarginRight = 0;
+            this.btnNO.IconRightVisible = true;
+            this.btnNO.IconRightZoom = 0D;
+            this.btnNO.IconVisible = true;
+            this.btnNO.IconZoom = 90D;
+            this.btnNO.IsTab = false;
+            this.btnNO.Location = new System.Drawing.Point(201, 79);
+            this.btnNO.Name = "btnNO";
+            this.btnNO.Normalcolor = System.Drawing.Color.Transparent;
+            this.btnNO.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(135)))), ((int)(((byte)(135)))));
+            this.btnNO.OnHoverTextColor = System.Drawing.Color.Transparent;
+            this.btnNO.selected = false;
+            this.btnNO.Size = new System.Drawing.Size(87, 27);
+            this.btnNO.TabIndex = 3;
+            this.btnNO.Text = "NO";
+            this.btnNO.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnNO.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(76)))), ((int)(((byte)(75)))));
+            this.btnNO.TextFont = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNO.Visible = false;
+            this.btnNO.Click += new System.EventHandler(this.btnNO_Click);
+            // 
             // MessageBOX
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(231, 193);
+            this.Controls.Add(this.btnNO);
             this.Controls.Add(this.lblTexto);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.GifHecho);
@@ -151,5 +192,6 @@
         private System.Windows.Forms.Timer Retraso_icono;
         private Bunifu.Framework.UI.BunifuFlatButton btnOK;
         private System.Windows.Forms.Label lblTexto;
+        private Bunifu.Framework.UI.BunifuFlatButton btnNO;
     }
 }

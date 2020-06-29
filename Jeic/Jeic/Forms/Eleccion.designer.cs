@@ -234,11 +234,12 @@
             // pbMinimize
             // 
             this.pbMinimize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.pbMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbMinimize.Image = global::Refracciones.Properties.Resources.Minimize_Window_2_48px;
             this.pbMinimize.Location = new System.Drawing.Point(137, 3);
             this.pbMinimize.Margin = new System.Windows.Forms.Padding(2);
             this.pbMinimize.Name = "pbMinimize";
-            this.pbMinimize.Size = new System.Drawing.Size(15, 16);
+            this.pbMinimize.Size = new System.Drawing.Size(17, 17);
             this.pbMinimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbMinimize.TabIndex = 81;
             this.pbMinimize.TabStop = false;
@@ -247,11 +248,12 @@
             // pbClose
             // 
             this.pbClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.pbClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbClose.Image = global::Refracciones.Properties.Resources.Close_Window__2_48px;
             this.pbClose.Location = new System.Drawing.Point(156, 3);
             this.pbClose.Margin = new System.Windows.Forms.Padding(2);
             this.pbClose.Name = "pbClose";
-            this.pbClose.Size = new System.Drawing.Size(15, 16);
+            this.pbClose.Size = new System.Drawing.Size(17, 17);
             this.pbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbClose.TabIndex = 80;
             this.pbClose.TabStop = false;

@@ -125,20 +125,6 @@ namespace Refracciones.Forms
                 label1.Hide();
                 rdbSi.Hide();
                 rdbNo.Hide();
-                /*
-                if (lblClaveSiniestro.Text.Length > 6)
-                {
-                    if (lblClaveSiniestro.Text.Substring(0, 5) == "JEIC-")//funciona
-                    {
-                        lblClaveSiniestroPedido.Show();
-                        lblClaveSiniestro.Show();
-                        lblAnioPedido.Hide();
-                        lblAnio.Hide();
-                        lblVehiculoPedido.Hide();
-                        lblVehiculo.Hide();
-                    }
-                }
-                */
 
                 btnPenalizarPedido.Visible = true;
                 btnPenalizarPedido.Enabled = true;
@@ -340,14 +326,6 @@ namespace Refracciones.Forms
             }
         }
 
-        //Genera la clave aleatoria
-        /*
-        private static Random random = new Random();
-        public static string RandomString(int length)
-        {
-            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            return new string(Enumerable.Range(1, length).Select(_ => chars[random.Next(chars.Length)]).ToArray());
-        }*/
 
         private void rdbNo_CheckedChanged(object sender, EventArgs e)
         {
@@ -460,63 +438,6 @@ namespace Refracciones.Forms
                 lblDiasEspera.Visible = false;
                 txtDiasEspera.Visible = false;
             }
-            /*
-            if (actualizar == 1)
-            {
-                if (chbOtraAseguradora.Checked == true)
-                {
-                    cbAseguradora.SelectedIndex = -1;
-                    cbValuador.SelectedIndex = -1;
-                    chbOtroValuador.Enabled = false;
-
-                    chbOtroValuador.Checked = true;
-                    txtAseguradora.Hide();
-                    cbAseguradora.Show();
-                    cbAseguradora.Enabled = true;
-                    cbValuador.Show();
-                    cbValuador.Enabled = true;
-                }
-                else
-                {
-                    cbAseguradora.SelectedIndex = -1;
-                    cbValuador.SelectedIndex = -1;
-                    chbOtroValuador.Enabled = true;
-
-                    chbOtroValuador.Checked = false;
-                    txtAseguradora.Show();
-                    cbAseguradora.Hide();
-                    txtValuador.Show();
-                    cbValuador.Hide();
-                }
-            }
-            else
-            {
-                if (chbOtraAseguradora.Checked == true)
-                {
-                    txtAseguradora.Show();
-                    cbAseguradora.Hide();
-                    //cbAseguradora.SelectedIndex = -1;
-
-                    chbOtroValuador.Checked = true;
-                    chbOtroValuador.Enabled = false;
-
-                    lblDiasEspera.Visible = true;
-                    txtDiasEspera.Visible = true;
-                }
-                else
-                {
-                    txtAseguradora.Hide();
-                    txtAseguradora.Text = "Escriba el nombre del cliente";
-                    txtAseguradora.ForeColor = Color.FromArgb(160, 160, 140);
-                    cbAseguradora.Show();
-
-                    chbOtroValuador.Checked = false;
-                    chbOtroValuador.Enabled = true;
-
-                    lblDiasEspera.Visible = false;
-                    txtDiasEspera.Visible = false;
-                }
-            }*/
         }
 
         private void chbOtroValuador_CheckedChanged(object sender, EventArgs e)
@@ -546,38 +467,6 @@ namespace Refracciones.Forms
                 txtValuador.ForeColor = Color.FromArgb(160, 160, 140);
                 cbValuador.Show();
             }
-            /*
-            if (actualizar == 1)
-            {
-                if (chbOtroValuador.Checked == true)
-                {
-                    txtValuador.Hide();
-                    cbValuador.Show();
-                    cbValuador.Enabled = true;
-                }
-                else
-                {
-                    txtValuador.Show();
-                    cbValuador.Hide();
-                    cbValuador.SelectedIndex = -1;
-                }
-            }
-            else
-            {
-                if (chbOtroValuador.Checked == true)
-                {
-                    txtValuador.Show();
-                    cbValuador.Hide();
-                    //cbValuador.SelectedIndex = -1;
-                }
-                else
-                {
-                    txtValuador.Hide();
-                    txtValuador.Text = "Escriba nombre del valuador";
-                    txtValuador.ForeColor = Color.FromArgb(160, 160, 140);
-                    cbValuador.Show();
-                }
-            }*/
         }
 
         private void chbOtroTaller_CheckedChanged(object sender, EventArgs e)
@@ -608,38 +497,6 @@ namespace Refracciones.Forms
                 txtTaller.ForeColor = Color.FromArgb(160, 160, 140);
                 cbTaller.Show();
             }
-            /*
-            if (actualizar == 1)
-            {
-                if (chbOtroTaller.Checked == true)
-                {
-                    txtTaller.Hide();
-                    cbTaller.Show();
-                    cbTaller.Enabled = true;
-                }
-                else
-                {
-                    txtTaller.Show();
-                    cbTaller.Hide();
-                    cbTaller.SelectedIndex = -1;
-                }
-            }
-            else
-            {
-                if (chbOtroTaller.Checked == true)
-                {
-                    txtTaller.Show();
-                    cbTaller.Hide();
-                    //cbTaller.SelectedIndex = -1;
-                }
-                else
-                {
-                    txtTaller.Hide();
-                    txtTaller.Text = "Escriba nombre de taller";
-                    txtTaller.ForeColor = Color.FromArgb(160, 160, 140);
-                    cbTaller.Show();
-                }
-            }*/
         }
 
         private void chbOtroDestino_CheckedChanged(object sender, EventArgs e)
@@ -739,7 +596,7 @@ namespace Refracciones.Forms
             {
                 if (resta > 0)
                 {
-                    MessageBox.Show("No es posible elegir esa fecha.", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBOX.SHowDialog(2,"No es posible elegir esta fecha");
                     dtpFechaPromesa.Text = operacion.fechaPromesa(txtClavePedido.Text, lblClaveSiniestro.Text);
                 }
             }
@@ -747,7 +604,7 @@ namespace Refracciones.Forms
             {
                 if (resta > 0)
                 {
-                    MessageBox.Show("No es posible elegir esa fecha.", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBOX.SHowDialog(2, "No es posible elegir esta fecha");
                     dtpFechaPromesa.Text = dtpFechaAsignacion.Text;
                 }
             }
@@ -1038,7 +895,7 @@ namespace Refracciones.Forms
             }
             else
             {
-                MessageBox.Show("Favor de proporcionar claves de pedido y siniestro", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBOX.SHowDialog(2, "Favor de proporcionar claves de pedido y siniestro");
             }
             //this.Hide();
         }
@@ -1086,7 +943,8 @@ namespace Refracciones.Forms
                         {
                             if (!string.IsNullOrEmpty(operacion.existePiezaRegistradaPedido(txtClavePedido.Text, lblClaveSiniestro.Text, pieza)))
                             {
-                                if (MessageBox.Show("¿Está seguro de eliminar este registro de la base?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                                MessageBOX mes = new MessageBOX(4, "¿Esta seguro de eliminar esta pieza?");
+                                if (mes.ShowDialog() == DialogResult.OK)
                                 {
                                     operacion.eliminarPiezaRegistradaPedido(txtClavePedido.Text, lblClaveSiniestro.Text, pieza);
                                     filasIniciales -= 1;
@@ -1098,7 +956,7 @@ namespace Refracciones.Forms
                                 dgvPedido.Rows.RemoveAt(dgvPedido.CurrentRow.Index);
                         }
                         else
-                            MessageBox.Show("No es posible eliminar pieza debido a que existen entregas");
+                            MessageBOX.SHowDialog(2,"No es posible eliminar pieza debido a que existen entregas");
                     }
                     else
                         dgvPedido.Rows.RemoveAt(dgvPedido.CurrentRow.Index);
@@ -1128,7 +986,7 @@ namespace Refracciones.Forms
                     }
                     if (cantidad == 0)
                     {
-                        MessageBox.Show("No es posible penalizar debido a que no hay cantidad suficiente");
+                        MessageBOX.SHowDialog(2, "No es posible penalizar debido a que no hay cantidad suficiente");
                     }
                     else
                     {
@@ -1208,11 +1066,6 @@ namespace Refracciones.Forms
                     }
                 }
             }
-        }
-
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.Cancel;
         }
 
         private void chbModificarFechaAsignacion_CheckedChanged(object sender, EventArgs e)
@@ -1746,7 +1599,12 @@ namespace Refracciones.Forms
                 }
             }
             else
-                MessageBox.Show("No es posible penalizar el pedido si aún no se ha hecho el registro de piezas correspondiente al pedido actual", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBOX.SHowDialog(2, "No es posible penalizar el pedido si aún no se ha hecho el registro de piezas correspondiente al pedido actual");
+        }
+
+        private void dgvPedido_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

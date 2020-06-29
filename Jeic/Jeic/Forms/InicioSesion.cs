@@ -59,7 +59,7 @@ namespace Refracciones
                 
                 if (Operacion.logeo(txtUsuario.Text, txtContrasenia.Text) == 1)
                 {
-                    MessageBOX.SHowDialog("Bienvenido");
+                    MessageBOX.SHowDialog(1,"Bienvenido");
                     Forms.Busqueda bus = new Forms.Busqueda();
                     bus.Usuario.Text = "Usuario: " + txtUsuario.Text;
                     bus.Show();
@@ -77,7 +77,7 @@ namespace Refracciones
                 }
                 else
                 {
-                    MessageBox.Show("Usuario y/o contraseña incorrectos");
+                    MessageBOX.SHowDialog(2,"Usuario y/o contraseña incorrectos");
                     txtUsuario.Text = "Nombre de usuario";
                     txtContrasenia.Text = "Default";
                     txtUsuario.ForeColor = Color.White;
@@ -91,7 +91,7 @@ namespace Refracciones
 
             if (Operacion.logeo(txtUsuario.Text, txtContrasenia.Text) == 1)
             {
-                MessageBOX.SHowDialog("Bienvenido");
+                MessageBOX.SHowDialog(1,"Bienvenido");
                 Forms.Busqueda bus = new Forms.Busqueda();
                 bus.Usuario.Text= "Usuario: " + txtUsuario.Text;
                 bus.Show();
@@ -110,7 +110,7 @@ namespace Refracciones
             }
             else
             {
-                MessageBox.Show("Usuario y/o contraseña incorrectos");
+                MessageBOX.SHowDialog(2, "Usuario y/o contraseña incorrectos");
                 txtUsuario.Text = "Nombre de usuario";
                 txtContrasenia.Text = "Default";
                 txtUsuario.ForeColor = Color.White;

@@ -43,11 +43,6 @@ namespace Refracciones.Forms
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            //Eleccion elec = new Eleccion();
-            //Busqueda_Devolver elec = new Busqueda_Devolver();
-            //MessageBox.Show(elec.cve_siniestro);
-            /*string cve_siniestro = "1F";//dato1.Text;
-            int cve_pedido = 1;//Int32.Parse(dato2.Text);*/
             if (txtCve_Factura.Text.Trim() == "")
             {
                 errorP.SetError(txtCve_Factura, "Introduce un número de factura");
@@ -89,8 +84,6 @@ namespace Refracciones.Forms
 
                 fecha_ingreso = dtpFechaIngreso.Value.ToString("dd/MM/yyyy");
                 
-
-
                 fecha_revision = dtpFechaRevision.Value.ToString("dd/MM/yyyy");
 
                 fecha_pago = dtpFechaPago.Value.ToString("dd/MM/yyyy");
@@ -117,21 +110,15 @@ namespace Refracciones.Forms
                 }
                 if (btnGuardar.Text == "Guardar")
                 {
-                    MessageBox.Show(oper.Registrar_factura(cve_siniestro, cve_pedido, cve_factura, cve_estado, fact_sinIVA, descuento, fact_neto, fecha_ingreso, fecha_revision, fecha_pago, nombre_factura, file, nombre_xml, xml_file, comentario));
+                    MessageBOX.SHowDialog(1, oper.Registrar_factura(cve_siniestro, cve_pedido, cve_factura, cve_estado, fact_sinIVA, descuento, fact_neto, fecha_ingreso, fecha_revision, fecha_pago, nombre_factura, file, nombre_xml, xml_file, comentario));
                     this.Close();
-
                 }
                 else if (btnGuardar.Text == "Actualizar")
                 {
-                    MessageBox.Show(oper.Actualizar_Factura(cve_factura, cve_estado, fact_sinIVA, descuento, fact_neto, fecha_ingreso, fecha_revision, fecha_pago, nombre_factura, file, nombre_xml, xml_file, comentario));
+                    MessageBOX.SHowDialog(3, oper.Actualizar_Factura(cve_factura, cve_estado, fact_sinIVA, descuento, fact_neto, fecha_ingreso, fecha_revision, fecha_pago, nombre_factura, file, nombre_xml, xml_file, comentario));
                     this.Close();
                 }
             }
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnAbrir_Click(object sender, EventArgs e)
@@ -157,9 +144,7 @@ namespace Refracciones.Forms
         {
             //Colocar ICONO
             this.Icon = Resources.iconJeic;
-
-
-                
+            
                 cve_pedido = dato2.Text.Substring(8, (dato2.Text.Length - 8));
                 cve_siniestro = dato1.Text.Substring(11, dato1.Text.Length - 11);
                 txtFacturasinIVA.Text = (oper.venta_total(cve_pedido, cve_siniestro)).ToString();
@@ -193,11 +178,6 @@ namespace Refracciones.Forms
             
         }
 
-        private void label1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnBuscarXml_Click(object sender, EventArgs e)
         {
             //configuraciones del openfiledialog 2
@@ -215,17 +195,11 @@ namespace Refracciones.Forms
         private void txtFacturasinIVA_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            {
                 e.Handled = true;
-            }
 
             // solo 1 punto decimal
             if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
-            {
-                e.Handled = true;
-            }
-
-           
+                e.Handled = true;     
         }
 
         private void txtCve_Factura_KeyPress(object sender, KeyPressEventArgs e)
@@ -354,15 +328,6 @@ namespace Refracciones.Forms
             }
         }
 
-        private void txtDescuento_KeyPress(object sender, KeyPressEventArgs e)
-        {
-           
-        }
-
-        private void txtRutaFactura_Validated(object sender, EventArgs e)
-        {
-            
-        }
 
         private void txtRutaFactura_TextChanged(object sender, EventArgs e)
         {

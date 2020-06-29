@@ -133,12 +133,12 @@ namespace Refracciones.Forms
                 }
                 if (btnGuardar.Text == "Guardar")
                 {
-                    MessageBox.Show(factura.Registrar_Refactura(cve_siniestro, cve_pedido, cve_factura, cve_estado, cve_refactura, fact_sinIVA, descuento, fact_neto, costo_refactura, fecha_refactura, fecha_ingreso, fecha_revision, fecha_pago, nombre_factura, file, nombre_xml, xml_file, comentario));
+                    MessageBOX.SHowDialog(1, factura.Registrar_Refactura(cve_siniestro, cve_pedido, cve_factura, cve_estado, cve_refactura, fact_sinIVA, descuento, fact_neto, costo_refactura, fecha_refactura, fecha_ingreso, fecha_revision, fecha_pago, nombre_factura, file, nombre_xml, xml_file, comentario));
                     this.Close();
                 }
                 else if (btnGuardar.Text == "Actualizar")
                 {
-                    MessageBox.Show(factura.Actualizar_Refactura(cve_factura, cve_estado, cve_refactura, fact_sinIVA, descuento, fact_neto, costo_refactura, fecha_refactura, fecha_ingreso, fecha_revision, fecha_pago, nombre_factura, file, nombre_xml, xml_file, comentario));
+                    MessageBOX.SHowDialog(3,factura.Actualizar_Refactura(cve_factura, cve_estado, cve_refactura, fact_sinIVA, descuento, fact_neto, costo_refactura, fecha_refactura, fecha_ingreso, fecha_revision, fecha_pago, nombre_factura, file, nombre_xml, xml_file, comentario));
                     this.Close();
                 }
             }

@@ -88,12 +88,15 @@ namespace Refracciones.Forms
                 {
                     if (txtClaveSiniestro.Text.Trim() == "" || (chbOtroVehiculo.Checked == true && txtNombreVehiculoNuevo.Text.Trim() == "") || (chbMarca.Checked == true && txtMarca.Text.Trim() == ""))
                     {
-                        MessageBox.Show("Favor de llenar todos los campos", "Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBOX.SHowDialog(2, "Favor de llenar todos los campos");
                     }
                     else
                     {
                         int i = 0;
-                        if (MessageBox.Show("¿Los datos son correctos?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+
+                        MessageBOX mes = new MessageBOX(4, "¿Los datos son correctos?");
+
+                        if (mes.ShowDialog() == DialogResult.OK)
                         {
                             if (chbOtroVehiculo.Checked == true)
                                 modelo = txtNombreVehiculoNuevo.Text.Trim().ToUpper();
@@ -105,6 +108,7 @@ namespace Refracciones.Forms
                             else
                                 marca = cbMarca.Text.Trim();
 
+                            this.DialogResult = DialogResult.OK;
                             this.Close();
                         }
                     }
@@ -161,22 +165,6 @@ namespace Refracciones.Forms
             get { return cbEstadoSiniestro.Text.Trim(); }
         }
 
-        private void Siniestro_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (e.CloseReason == CloseReason.UserClosing)
-            {
-                dynamic result = MessageBox.Show("¿Regresar a Pedido?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                if (result == DialogResult.Yes)
-                {
-                    this.DialogResult = DialogResult.OK;
-                }
-
-                if (result == DialogResult.No)
-                {
-                    e.Cancel = true;
-                }
-            }
-        }
 
         private void chbMarca_CheckedChanged(object sender, EventArgs e)
         {
@@ -344,5 +332,7 @@ namespace Refracciones.Forms
             cbVehiculo.DataSource = operacion.VehiculosRegistrados(cbMarca.Text.Trim()).Tables[0].DefaultView;
             cbVehiculo.ValueMember = "modelo";
         }
+
+
     }
 }

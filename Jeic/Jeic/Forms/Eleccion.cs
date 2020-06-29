@@ -275,7 +275,7 @@ namespace Refracciones
                             .EndText();
                     }
                     pdfdoc.Close();
-                    MessageBOX.SHowDialog("PDF creado exitosamente");
+                    MessageBOX.SHowDialog(1,"PDF creado exitosamente");
                     this.Close();
                 }
                 else
@@ -384,7 +384,7 @@ namespace Refracciones
                                     .EndText();
                     }
                     pdfdoc.Close();
-                    MessageBOX.SHowDialog("PDF creado exitosamente");
+                    MessageBOX.SHowDialog(1,"PDF creado exitosamente");
                     this.Close();
                 }               
              }    

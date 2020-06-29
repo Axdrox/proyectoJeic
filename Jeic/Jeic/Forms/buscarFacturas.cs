@@ -50,7 +50,7 @@ namespace Refracciones.Forms
                     File.WriteAllBytes(fullFilePath, factura.Buscar_factura(cve_factura));
                     Process.Start(fullFilePath);
                 }
-                else { MessageBox.Show("No se encontro un PDF"); }
+                else { MessageBOX.SHowDialog(2, "No se encontro un PDF"); ; }
                 if (factura.Buscar_factura_xml(cve_factura) != null)
                 {
                     File.WriteAllBytes(fullFilePath2, factura.Buscar_factura_xml(cve_factura));
@@ -132,9 +132,8 @@ namespace Refracciones.Forms
             string Fecha_inicio = Fecha_in.Value.Year.ToString() + "-" + Fecha_in.Value.Month.ToString() + "-" + Fecha_in.Value.Day.ToString();
             string Fecha_Final = Fecha_Fin.Value.Year.ToString() + "-" + Fecha_Fin.Value.Month.ToString() + "-" + Fecha_Fin.Value.Day.ToString();
             dgvFacturas.DataSource = factura.buscarFacturas(Fecha_inicio, Fecha_Final);
-            
-            
-
+           
         }
+
     }
 }

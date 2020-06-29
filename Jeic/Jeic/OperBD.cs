@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using Refracciones.Forms;
 using SpreadsheetLight;
 using System;
 using System.Collections.Generic;
@@ -1184,7 +1185,7 @@ namespace Refracciones
                     if (guarda.ShowDialog() == DialogResult.OK)
                     {
                         sl.SaveAs(guarda.FileName);
-                        MessageBox.Show("Archivo Guardado");
+                        MessageBOX.SHowDialog(1, "Archivo Guardado");
                     }
                     Lector.Close();
                     nuevaConexion.Close();
@@ -3748,9 +3749,9 @@ namespace Refracciones
                 i = Comando.ExecuteNonQuery();
                 nuevaConexion.Close();
                 if (i == 1)
-                    MessageBox.Show("Se registró pedido correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBOX.SHowDialog(1, "Se registró pedido correctamente");
                 else
-                    MessageBox.Show("Problemas al registar pedido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBOX.SHowDialog(2, "Problemas al registar pedido");
             }
             /*}
             catch (Exception EX)

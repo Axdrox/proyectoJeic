@@ -76,7 +76,7 @@ namespace Refracciones.Forms
                 string EstadoFact = "";
                 OperBD llenardatos = new OperBD();
                 llenardatos.Llenartabla(dgvDatos, dvgPedido.Rows[fila].Cells[1].Value.ToString(),dvgPedido.Rows[fila].Cells[0].Value.ToString(), dvgPedido.Rows[fila].Cells[4].Value.ToString());
-                lblcvePedido.Text = lblcvePedido.Text.Substring(0, 8) + " " + dgvDatos.Rows[0].Cells[0].Value.ToString();
+                lblcvePedido.Text = lblcvePedido.Text.Substring(0, 9) + " " + dgvDatos.Rows[0].Cells[0].Value.ToString();
                 lblcveSiniestro.Text = lblcveSiniestro.Text.Substring(0, 12) + " " + dgvDatos.Rows[0].Cells[1].Value.ToString();
                 lblPieza.Text = lblPieza.Text.Substring(0, 6) + " " + dgvDatos.Rows[0].Cells[2].Value.ToString();
                 lblCantidad.Text = lblCantidad.Text.Substring(0, 9) + " " + dgvDatos.Rows[0].Cells[3].Value.ToString();
@@ -190,8 +190,5 @@ namespace Refracciones.Forms
                 Administrar admon = new Administrar();
                 DialogResult result = admon.ShowDialog();           
         }
-
-
-
     }
 }

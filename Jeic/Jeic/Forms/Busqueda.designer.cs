@@ -502,7 +502,7 @@
             this.lblCantidad.AutoSize = true;
             this.lblCantidad.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCantidad.ForeColor = System.Drawing.Color.White;
-            this.lblCantidad.Location = new System.Drawing.Point(146, 43);
+            this.lblCantidad.Location = new System.Drawing.Point(184, 43);
             this.lblCantidad.Name = "lblCantidad";
             this.lblCantidad.Size = new System.Drawing.Size(58, 14);
             this.lblCantidad.TabIndex = 6;
@@ -513,7 +513,7 @@
             this.lblPieza.AutoSize = true;
             this.lblPieza.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPieza.ForeColor = System.Drawing.Color.White;
-            this.lblPieza.Location = new System.Drawing.Point(146, 27);
+            this.lblPieza.Location = new System.Drawing.Point(173, 27);
             this.lblPieza.Name = "lblPieza";
             this.lblPieza.Size = new System.Drawing.Size(39, 14);
             this.lblPieza.TabIndex = 4;
@@ -522,11 +522,11 @@
             // lblcveSiniestro
             // 
             this.lblcveSiniestro.AutoSize = true;
-            this.lblcveSiniestro.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblcveSiniestro.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblcveSiniestro.ForeColor = System.Drawing.Color.White;
             this.lblcveSiniestro.Location = new System.Drawing.Point(1, 43);
             this.lblcveSiniestro.Name = "lblcveSiniestro";
-            this.lblcveSiniestro.Size = new System.Drawing.Size(68, 14);
+            this.lblcveSiniestro.Size = new System.Drawing.Size(68, 15);
             this.lblcveSiniestro.TabIndex = 2;
             this.lblcveSiniestro.Text = "# Siniestro:";
             // 
@@ -541,11 +541,11 @@
             // lblcvePedido
             // 
             this.lblcvePedido.AutoSize = true;
-            this.lblcvePedido.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblcvePedido.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblcvePedido.ForeColor = System.Drawing.Color.White;
             this.lblcvePedido.Location = new System.Drawing.Point(1, 27);
             this.lblcvePedido.Name = "lblcvePedido";
-            this.lblcvePedido.Size = new System.Drawing.Size(57, 14);
+            this.lblcvePedido.Size = new System.Drawing.Size(58, 15);
             this.lblcvePedido.TabIndex = 0;
             this.lblcvePedido.Text = "# Pedido:";
             // 
@@ -599,7 +599,7 @@
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
             this.dvgPedido.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dvgPedido.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dvgPedido.Size = new System.Drawing.Size(798, 480);
+            this.dvgPedido.Size = new System.Drawing.Size(944, 480);
             this.dvgPedido.TabIndex = 7;
             this.dvgPedido.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgPedido_CellContentClick);
             // 
@@ -631,7 +631,7 @@
             this.PanelFecha.Controls.Add(this.Fecha_Fin);
             this.PanelFecha.Controls.Add(this.label4);
             this.PanelFecha.ForeColor = System.Drawing.Color.White;
-            this.PanelFecha.Location = new System.Drawing.Point(623, 72);
+            this.PanelFecha.Location = new System.Drawing.Point(623, 49);
             this.PanelFecha.Name = "PanelFecha";
             this.PanelFecha.Size = new System.Drawing.Size(356, 65);
             this.PanelFecha.TabIndex = 11;
@@ -696,7 +696,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.menuStrip1.Size = new System.Drawing.Size(1117, 26);
+            this.menuStrip1.Size = new System.Drawing.Size(1264, 26);
             this.menuStrip1.TabIndex = 17;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -795,7 +795,7 @@
             this.bunifuGradientPanel1.Location = new System.Drawing.Point(0, -16);
             this.bunifuGradientPanel1.Name = "bunifuGradientPanel1";
             this.bunifuGradientPanel1.Quality = 10;
-            this.bunifuGradientPanel1.Size = new System.Drawing.Size(1117, 643);
+            this.bunifuGradientPanel1.Size = new System.Drawing.Size(1264, 633);
             this.bunifuGradientPanel1.TabIndex = 18;
             // 
             // moverFormulario
@@ -809,7 +809,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1117, 615);
+            this.ClientSize = new System.Drawing.Size(1264, 615);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.dgvDatos);
             this.Controls.Add(this.bunifuGradientPanel1);
