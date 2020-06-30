@@ -60,9 +60,10 @@
             this.btnModificarDatosPedido.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnModificarDatosPedido.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModificarDatosPedido.ForeColor = System.Drawing.Color.White;
-            this.btnModificarDatosPedido.Location = new System.Drawing.Point(12, 48);
+            this.btnModificarDatosPedido.Location = new System.Drawing.Point(16, 59);
+            this.btnModificarDatosPedido.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnModificarDatosPedido.Name = "btnModificarDatosPedido";
-            this.btnModificarDatosPedido.Size = new System.Drawing.Size(155, 40);
+            this.btnModificarDatosPedido.Size = new System.Drawing.Size(207, 49);
             this.btnModificarDatosPedido.TabIndex = 0;
             this.btnModificarDatosPedido.Text = "Modificar datos de pedido";
             this.btnModificarDatosPedido.UseVisualStyleBackColor = false;
@@ -74,9 +75,10 @@
             this.btnFactura.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnFactura.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFactura.ForeColor = System.Drawing.Color.White;
-            this.btnFactura.Location = new System.Drawing.Point(12, 94);
+            this.btnFactura.Location = new System.Drawing.Point(16, 116);
+            this.btnFactura.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnFactura.Name = "btnFactura";
-            this.btnFactura.Size = new System.Drawing.Size(155, 35);
+            this.btnFactura.Size = new System.Drawing.Size(207, 43);
             this.btnFactura.TabIndex = 1;
             this.btnFactura.Text = "Agregar factura ";
             this.btnFactura.UseVisualStyleBackColor = false;
@@ -88,9 +90,10 @@
             this.btnDevolucionEntrega.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnDevolucionEntrega.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDevolucionEntrega.ForeColor = System.Drawing.Color.White;
-            this.btnDevolucionEntrega.Location = new System.Drawing.Point(12, 179);
+            this.btnDevolucionEntrega.Location = new System.Drawing.Point(16, 220);
+            this.btnDevolucionEntrega.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDevolucionEntrega.Name = "btnDevolucionEntrega";
-            this.btnDevolucionEntrega.Size = new System.Drawing.Size(155, 44);
+            this.btnDevolucionEntrega.Size = new System.Drawing.Size(207, 54);
             this.btnDevolucionEntrega.TabIndex = 2;
             this.btnDevolucionEntrega.Text = "Registrar Devolucion/Entrega";
             this.btnDevolucionEntrega.UseVisualStyleBackColor = false;
@@ -102,9 +105,10 @@
             this.lblUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(28)))), ((int)(((byte)(32)))));
             this.lblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsuario.ForeColor = System.Drawing.Color.White;
-            this.lblUsuario.Location = new System.Drawing.Point(3, 10);
+            this.lblUsuario.Location = new System.Drawing.Point(4, 12);
+            this.lblUsuario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(52, 16);
+            this.lblUsuario.Size = new System.Drawing.Size(64, 20);
             this.lblUsuario.TabIndex = 3;
             this.lblUsuario.Text = "usuario";
             // 
@@ -114,9 +118,10 @@
             this.btnRefactura.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRefactura.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRefactura.ForeColor = System.Drawing.Color.White;
-            this.btnRefactura.Location = new System.Drawing.Point(12, 135);
+            this.btnRefactura.Location = new System.Drawing.Point(16, 166);
+            this.btnRefactura.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnRefactura.Name = "btnRefactura";
-            this.btnRefactura.Size = new System.Drawing.Size(155, 38);
+            this.btnRefactura.Size = new System.Drawing.Size(207, 47);
             this.btnRefactura.TabIndex = 4;
             this.btnRefactura.Text = "Refacturar";
             this.btnRefactura.UseVisualStyleBackColor = false;
@@ -128,9 +133,10 @@
             this.btnChecarPedDev.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnChecarPedDev.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnChecarPedDev.ForeColor = System.Drawing.Color.White;
-            this.btnChecarPedDev.Location = new System.Drawing.Point(12, 231);
+            this.btnChecarPedDev.Location = new System.Drawing.Point(16, 284);
+            this.btnChecarPedDev.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnChecarPedDev.Name = "btnChecarPedDev";
-            this.btnChecarPedDev.Size = new System.Drawing.Size(155, 44);
+            this.btnChecarPedDev.Size = new System.Drawing.Size(207, 54);
             this.btnChecarPedDev.TabIndex = 5;
             this.btnChecarPedDev.Text = "Checar pedidos Devueltos/Entregados";
             this.btnChecarPedDev.UseVisualStyleBackColor = false;
@@ -141,9 +147,10 @@
             this.dato_1.AutoSize = true;
             this.dato_1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(27)))), ((int)(((byte)(30)))));
             this.dato_1.ForeColor = System.Drawing.Color.White;
-            this.dato_1.Location = new System.Drawing.Point(102, 9);
+            this.dato_1.Location = new System.Drawing.Point(136, 11);
+            this.dato_1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.dato_1.Name = "dato_1";
-            this.dato_1.Size = new System.Drawing.Size(69, 13);
+            this.dato_1.Size = new System.Drawing.Size(91, 17);
             this.dato_1.TabIndex = 6;
             this.dato_1.Text = "cve_siniestro";
             this.dato_1.Visible = false;
@@ -153,9 +160,10 @@
             this.dato_2.AutoSize = true;
             this.dato_2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(30)))), ((int)(((byte)(37)))));
             this.dato_2.ForeColor = System.Drawing.Color.White;
-            this.dato_2.Location = new System.Drawing.Point(105, 29);
+            this.dato_2.Location = new System.Drawing.Point(140, 36);
+            this.dato_2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.dato_2.Name = "dato_2";
-            this.dato_2.Size = new System.Drawing.Size(63, 13);
+            this.dato_2.Size = new System.Drawing.Size(81, 17);
             this.dato_2.TabIndex = 7;
             this.dato_2.Text = "cve_pedido";
             this.dato_2.Visible = false;
@@ -165,9 +173,10 @@
             this.dato_3.AutoSize = true;
             this.dato_3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(30)))), ((int)(((byte)(37)))));
             this.dato_3.ForeColor = System.Drawing.Color.White;
-            this.dato_3.Location = new System.Drawing.Point(41, 29);
+            this.dato_3.Location = new System.Drawing.Point(55, 36);
+            this.dato_3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.dato_3.Name = "dato_3";
-            this.dato_3.Size = new System.Drawing.Size(64, 13);
+            this.dato_3.Size = new System.Drawing.Size(82, 17);
             this.dato_3.TabIndex = 8;
             this.dato_3.Text = "cve_factura";
             this.dato_3.Visible = false;
@@ -178,9 +187,10 @@
             this.btnPDF.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnPDF.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPDF.ForeColor = System.Drawing.Color.Linen;
-            this.btnPDF.Location = new System.Drawing.Point(12, 281);
+            this.btnPDF.Location = new System.Drawing.Point(16, 346);
+            this.btnPDF.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnPDF.Name = "btnPDF";
-            this.btnPDF.Size = new System.Drawing.Size(155, 44);
+            this.btnPDF.Size = new System.Drawing.Size(207, 54);
             this.btnPDF.TabIndex = 9;
             this.btnPDF.Text = "Generar PDF";
             this.btnPDF.UseVisualStyleBackColor = false;
@@ -192,19 +202,22 @@
             this.dgvDatosPDF.AllowUserToDeleteRows = false;
             this.dgvDatosPDF.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDatosPDF.Enabled = false;
-            this.dgvDatosPDF.Location = new System.Drawing.Point(68, 335);
+            this.dgvDatosPDF.Location = new System.Drawing.Point(91, 412);
+            this.dgvDatosPDF.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvDatosPDF.Name = "dgvDatosPDF";
             this.dgvDatosPDF.ReadOnly = true;
-            this.dgvDatosPDF.Size = new System.Drawing.Size(40, 8);
+            this.dgvDatosPDF.RowHeadersWidth = 51;
+            this.dgvDatosPDF.Size = new System.Drawing.Size(53, 10);
             this.dgvDatosPDF.TabIndex = 10;
             this.dgvDatosPDF.Visible = false;
             // 
             // lblCve_venta
             // 
             this.lblCve_venta.AutoSize = true;
-            this.lblCve_venta.Location = new System.Drawing.Point(15, 332);
+            this.lblCve_venta.Location = new System.Drawing.Point(20, 409);
+            this.lblCve_venta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCve_venta.Name = "lblCve_venta";
-            this.lblCve_venta.Size = new System.Drawing.Size(58, 13);
+            this.lblCve_venta.Size = new System.Drawing.Size(73, 17);
             this.lblCve_venta.TabIndex = 11;
             this.lblCve_venta.Text = "cve_venta";
             this.lblCve_venta.Visible = false;
@@ -225,9 +238,10 @@
             this.bunifuGradientPanel1.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.bunifuGradientPanel1.GradientTopRight = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.bunifuGradientPanel1.Location = new System.Drawing.Point(0, -1);
+            this.bunifuGradientPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bunifuGradientPanel1.Name = "bunifuGradientPanel1";
             this.bunifuGradientPanel1.Quality = 10;
-            this.bunifuGradientPanel1.Size = new System.Drawing.Size(181, 346);
+            this.bunifuGradientPanel1.Size = new System.Drawing.Size(241, 426);
             this.bunifuGradientPanel1.TabIndex = 12;
             this.bunifuGradientPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.bunifuGradientPanel1_Paint);
             // 
@@ -236,10 +250,10 @@
             this.pbMinimize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.pbMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbMinimize.Image = global::Refracciones.Properties.Resources.Minimize_Window_2_48px;
-            this.pbMinimize.Location = new System.Drawing.Point(137, 3);
-            this.pbMinimize.Margin = new System.Windows.Forms.Padding(2);
+            this.pbMinimize.Location = new System.Drawing.Point(183, 4);
+            this.pbMinimize.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pbMinimize.Name = "pbMinimize";
-            this.pbMinimize.Size = new System.Drawing.Size(17, 17);
+            this.pbMinimize.Size = new System.Drawing.Size(23, 21);
             this.pbMinimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbMinimize.TabIndex = 81;
             this.pbMinimize.TabStop = false;
@@ -250,10 +264,10 @@
             this.pbClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.pbClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbClose.Image = global::Refracciones.Properties.Resources.Close_Window__2_48px;
-            this.pbClose.Location = new System.Drawing.Point(156, 3);
-            this.pbClose.Margin = new System.Windows.Forms.Padding(2);
+            this.pbClose.Location = new System.Drawing.Point(208, 4);
+            this.pbClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pbClose.Name = "pbClose";
-            this.pbClose.Size = new System.Drawing.Size(17, 17);
+            this.pbClose.Size = new System.Drawing.Size(23, 21);
             this.pbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbClose.TabIndex = 80;
             this.pbClose.TabStop = false;
@@ -268,9 +282,9 @@
             // 
             // Eleccion
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(177, 346);
+            this.ClientSize = new System.Drawing.Size(236, 426);
             this.Controls.Add(this.pbMinimize);
             this.Controls.Add(this.pbClose);
             this.Controls.Add(this.lblCve_venta);
@@ -286,9 +300,11 @@
             this.Controls.Add(this.btnModificarDatosPedido);
             this.Controls.Add(this.bunifuGradientPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Eleccion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Eleccion";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Eleccion_FormClosing);
             this.Load += new System.EventHandler(this.Eleccion_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatosPDF)).EndInit();
             this.bunifuGradientPanel1.ResumeLayout(false);
