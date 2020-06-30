@@ -816,6 +816,7 @@ namespace Refracciones.Forms
                         operacion.actualizarVenta(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(), taller, vendedor, dtFechaBaja, valuador, destino, totalCosto, subtotalPrecio, totalPrecio, dtFechaAsignacion, dtFechaPromesa, utilidad);//, utilidad
 
                         actualizarPedido();
+                        this.DialogResult = DialogResult.OK;
                     }
                 }
             }
