@@ -25,13 +25,12 @@ namespace Refracciones.Forms
 
         OperBD llenar = new OperBD();
         OperBD ObtenerRol = new OperBD();
-      
+        OperBD llenarDefaultDGV = new OperBD();
 
         private void Busqueda_Devolver_Load(object sender, EventArgs e)
         {
 
             this.Icon = Resources.iconJeic;
-            OperBD llenarDefaultDGV = new OperBD();
             llenarDefaultDGV.defaultDGV(dvgPedido);
             menuStrip1.ForeColor = Color.White;
             int rol = ObtenerRol.Rol(Usuario.Text.Substring(9, Usuario.Text.Length - 9));
@@ -138,8 +137,15 @@ namespace Refracciones.Forms
                     Directory.CreateDirectory(folder);
 
             if (factura.Buscar_factura(cve_factura) != null)
-            { File.WriteAllBytes(fullFilePath, factura.Buscar_factura(cve_factura));
-                Process.Start(fullFilePath);
+            {
+                try
+                {
+                    File.WriteAllBytes(fullFilePath, factura.Buscar_factura(cve_factura));
+                    Process.Start(fullFilePath);
+                }
+                catch (Exception ex)
+                { MessageBox.Show("Ya tienes abierto el archivo"); }
+
             }
             else { MessageBox.Show("No hay una factura registrada para este pedido"); }
             if(factura.Buscar_factura_xml(cve_factura) != null)
@@ -189,6 +195,11 @@ namespace Refracciones.Forms
         {
                 Administrar admon = new Administrar();
                 DialogResult result = admon.ShowDialog();           
+        }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            llenarDefaultDGV.defaultDGV(dvgPedido);
         }
     }
 }

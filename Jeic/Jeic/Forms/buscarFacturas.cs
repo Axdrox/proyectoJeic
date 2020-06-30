@@ -47,8 +47,13 @@ namespace Refracciones.Forms
 
                 if (factura.Buscar_factura(cve_factura) != null)
                 {
-                    File.WriteAllBytes(fullFilePath, factura.Buscar_factura(cve_factura));
-                    Process.Start(fullFilePath);
+                    try
+                    {
+                        File.WriteAllBytes(fullFilePath, factura.Buscar_factura(cve_factura));
+                        Process.Start(fullFilePath);
+                    }
+                    catch (Exception ex)
+                    { MessageBox.Show("Ya tienes abierto el archivo"); }
                 }
                 else { MessageBOX.SHowDialog(2, "No se encontro un PDF"); ; }
                 if (factura.Buscar_factura_xml(cve_factura) != null)
