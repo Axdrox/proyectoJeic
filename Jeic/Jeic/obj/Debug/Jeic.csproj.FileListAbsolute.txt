@@ -270,7 +270,6 @@ C:\Users\gears\Desktop\Ramas\Jeic\Jeic\obj\Debug\Refracciones.Forms.buscarFactur
 C:\Users\gears\Desktop\Ramas\Jeic\Jeic\obj\Debug\Refracciones.Eleccion.resources
 C:\Users\gears\Desktop\Ramas\Jeic\Jeic\obj\Debug\Refracciones.Forms.Busqueda.resources
 C:\Users\gears\Desktop\Ramas\Jeic\Jeic\obj\Debug\Refracciones.Forms.BusquedaEntrega_Devolucion.resources
-C:\Users\gears\Desktop\Ramas\Jeic\Jeic\obj\Debug\Refracciones.BusquedaPedidos.resources
 C:\Users\gears\Desktop\Ramas\Jeic\Jeic\obj\Debug\Refracciones.Forms.Devolucion.resources
 C:\Users\gears\Desktop\Ramas\Jeic\Jeic\obj\Debug\Refracciones.Forms.exportarExcel.resources
 C:\Users\gears\Desktop\Ramas\Jeic\Jeic\obj\Debug\Refracciones.InicioSesion.resources

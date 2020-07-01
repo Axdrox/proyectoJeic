@@ -31,12 +31,12 @@
             this.components = new System.ComponentModel.Container();
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.FadeTransition = new Bunifu.Framework.UI.BunifuFormFadeTransition(this.components);
             this.GifHecho = new System.Windows.Forms.PictureBox();
             this.Retraso_icono = new System.Windows.Forms.Timer(this.components);
             this.btnOK = new Bunifu.Framework.UI.BunifuFlatButton();
             this.lblTexto = new System.Windows.Forms.Label();
             this.btnNO = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.Timer_Close = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.GifHecho)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,11 +52,6 @@
             this.bunifuElipse1.ElipseRadius = 20;
             this.bunifuElipse1.TargetControl = this;
             // 
-            // FadeTransition
-            // 
-            this.FadeTransition.Delay = 1;
-            this.FadeTransition.TransitionEnd += new System.EventHandler(this.FadeTransition_TransitionEnd);
-            // 
             // GifHecho
             // 
             this.GifHecho.Image = global::Refracciones.Properties.Resources.GiftHECHO;
@@ -67,7 +62,6 @@
             this.GifHecho.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.GifHecho.TabIndex = 0;
             this.GifHecho.TabStop = false;
-            this.GifHecho.Click += new System.EventHandler(this.GifHecho_Click);
             // 
             // Retraso_icono
             // 
@@ -162,6 +156,11 @@
             this.btnNO.Visible = false;
             this.btnNO.Click += new System.EventHandler(this.btnNO_Click);
             // 
+            // Timer_Close
+            // 
+            this.Timer_Close.Interval = 4500;
+            this.Timer_Close.Tick += new System.EventHandler(this.Timer_Close_Tick);
+            // 
             // MessageBOX
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -174,7 +173,6 @@
             this.Controls.Add(this.GifHecho);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MessageBOX";
-            this.Opacity = 0D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dialog";
             this.Load += new System.EventHandler(this.MessageBOX_Load);
@@ -187,11 +185,11 @@
 
         private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl1;
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
-        private Bunifu.Framework.UI.BunifuFormFadeTransition FadeTransition;
         private System.Windows.Forms.PictureBox GifHecho;
         private System.Windows.Forms.Timer Retraso_icono;
         private Bunifu.Framework.UI.BunifuFlatButton btnOK;
         private System.Windows.Forms.Label lblTexto;
         private Bunifu.Framework.UI.BunifuFlatButton btnNO;
+        private System.Windows.Forms.Timer Timer_Close;
     }
 }

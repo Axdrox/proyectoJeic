@@ -202,28 +202,9 @@ namespace Refracciones.Forms
                 e.Handled = true;     
         }
 
-        private void txtCve_Factura_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            /*if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }*/
-        }
-
-        private void chkFechaIngreso_CheckedChanged(object sender, EventArgs e)
-        {
-            //if (chkFechaIngreso.Checked == true)
-                
-        }
-
         private void dtpFechaIngreso_ValueChanged(object sender, EventArgs e)
         {
             dtpFechaPago.Value = dtpFechaIngreso.Value.AddDays(oper.Dias_Espera(cve_siniestro, cve_pedido));
-        }
-
-        private void txtFacturasinIVA_Leave(object sender, EventArgs e)
-        {
-            
         }
 
         private void txtFacturasinIVA_TextChanged(object sender, EventArgs e)
@@ -247,36 +228,6 @@ namespace Refracciones.Forms
                 btnGuardar.Enabled = true;
             }
             //btnGuardar.Enabled = true;
-        }
-
-        private void txtCve_Factura_Validated(object sender, EventArgs e)
-        {
-            /*if(txtCve_Factura.Text.Trim() == "")
-            {
-                errorP.SetError(txtCve_Factura,"Introduce un número de factura");
-                txtCve_Factura.Focus();
-                btnGuardar.Enabled = false;
-            }
-            else
-            {
-                errorP.Clear();
-                btnGuardar.Enabled = true;
-            }*/
-        }
-
-        private void txtFacturasinIVA_Validated(object sender, EventArgs e)
-        {
-            /*if (txtFacturasinIVA.Text.Trim() == "")
-            {
-                errorP.SetError(txtFacturasinIVA, "No se puede dejar este campo vacio");
-                txtFacturasinIVA.Focus();
-                btnGuardar.Enabled = false;
-            }
-            else
-            {
-                errorP.Clear();
-                btnGuardar.Enabled = true;
-            }*/
         }
 
         private void txtCve_Factura_TextChanged(object sender, EventArgs e)

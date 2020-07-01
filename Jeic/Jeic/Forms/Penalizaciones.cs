@@ -114,8 +114,9 @@ namespace Refracciones.Forms
         {
             if (e.CloseReason == CloseReason.UserClosing)
             {
-                dynamic result = MessageBox.Show("¿Los datos son correctos?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                if (result == DialogResult.Yes)
+                MessageBOX pregunta = new MessageBOX(4, "¿Los datos son correctos?");
+                dynamic result = pregunta.ShowDialog();
+                if (result == DialogResult.OK)
                 {
                     OperBD operacion = new OperBD();
                     Pedido pedido = new Pedido(1);

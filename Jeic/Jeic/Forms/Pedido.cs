@@ -289,6 +289,8 @@ namespace Refracciones.Forms
 
                 if (respuesta == DialogResult.OK)
                 {
+                    rdbNo.Enabled = false;
+                    rdbSi.Enabled = false;
                     btnLimpiarSiniestro.Visible = true;
                     nuevoVehiculo = siniestro.otroVehiculo;
                     nuevoMarca = siniestro.otroMarca;
@@ -571,8 +573,6 @@ namespace Refracciones.Forms
             cbVendedor.Enabled = true;
 
             //CAMBIAR PARA VALIDACION
-            rdbSi.Enabled = true;
-            rdbNo.Enabled = true;
             cbAseguradora.Enabled = true;
             chbOtraAseguradora.Enabled = true;
             cbValuador.Enabled = true;
@@ -1302,6 +1302,8 @@ namespace Refracciones.Forms
 
         private void btnLimpiarSiniestro_Click(object sender, EventArgs e)
         {
+            rdbSi.Enabled = true;
+            rdbNo.Enabled = true;
             btnLimpiarSiniestro.Visible = false;
             chbModificarEstado.Location = new Point(330, 186);
             rdbSi.Checked = false;
@@ -1325,30 +1327,33 @@ namespace Refracciones.Forms
 
         private void txtClavePedido_Validating(object sender, CancelEventArgs e)
         {
-            if (!string.IsNullOrEmpty(operacion.existeClavePedido(txtClavePedido.Text.Trim().ToUpper())))
+         /*   if (!string.IsNullOrEmpty(operacion.existeClavePedido(txtClavePedido.Text.Trim().ToUpper())))
             {
                 e.Cancel = true;
                 errorProvider1.SetError(txtClavePedido, "Ya existe un pedido con la misma clave");
+                panelSiniestro.Visible = false;
             }
             else if (txtClavePedido.Text.Trim() == "Escriba clave del pedido")
             {
                 e.Cancel = true;
                 errorProvider1.SetError(txtClavePedido, "Favor de llenar este campo");
+                panelSiniestro.Visible = false;
             }
             else
             {
                 e.Cancel = false;
                 errorProvider1.SetError(txtClavePedido, null);
-            }
+                panelSiniestro.Visible = true;
+            }*/
         }
 
         private void txtClavePedido_Enter(object sender, EventArgs e)
         {
-            if (txtClavePedido.Text == "Escriba clave del pedido")
+            /*if (txtClavePedido.Text == "Escriba clave del pedido")
             {
                 txtClavePedido.Text = "";
                 txtClavePedido.ForeColor = Color.White;
-            }
+            }*/
         }
 
         private void dgvPedido_CellValueChanged(object sender, DataGridViewCellEventArgs e)
@@ -1433,8 +1438,16 @@ namespace Refracciones.Forms
             }
             else
             {
-                e.Cancel = false;
-                errorProvider1.SetError(txtNumeroEmpleado, null);
+                OperBD val = new OperBD();
+                if (val.existeClaveVendedor(Int32.Parse(txtNumeroEmpleado.Text)) == "")
+                {
+                    e.Cancel = false;
+                    errorProvider1.SetError(txtNumeroEmpleado, null);
+                }
+                else {
+                    e.Cancel = true;
+                    errorProvider1.SetError(txtNumeroEmpleado, "Ya existe ese numero de empleado");
+                }
             }
         }
 
@@ -1607,5 +1620,33 @@ namespace Refracciones.Forms
         {
 
         }
+
+        private void txtClavePedido_TextChanged(object sender, EventArgs e)
+        {
+            if (txtClavePedido.Text != "" || txtClavePedido.Text != "Escriba clave del pedido")
+            {
+                if (!string.IsNullOrEmpty(operacion.existeClavePedido(txtClavePedido.Text.Trim().ToUpper())))
+                {
+                    errorProvider1.SetError(txtClavePedido, "Ya existe un pedido con la misma clave");
+                    panelSiniestro.Visible = false;
+                }
+                else if (txtClavePedido.Text.Trim() == "Escriba clave del pedido")
+                {
+                    errorProvider1.SetError(txtClavePedido, "Favor de llenar este campo");
+                    panelSiniestro.Visible = false;
+                }
+                else
+                {
+                    errorProvider1.SetError(txtClavePedido, null);
+                    panelSiniestro.Visible = true;
+                }
+            }
+            else {
+                panelSiniestro.Visible = false;
+            }
+        }
+
+
+
     }
 }

@@ -161,12 +161,6 @@
     <Compile Include="Forms\BusquedaEntrega-Devolucion.Designer.cs">
       <DependentUpon>BusquedaEntrega-Devolucion.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\BusquedaPedidos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\BusquedaPedidos.Designer.cs">
-      <DependentUpon>BusquedaPedidos.cs</DependentUpon>
-    </Compile>
     <Compile Include="Conexion.cs" />
     <Compile Include="Forms\Devolucion-Entrega.cs">
       <SubType>Form</SubType>
@@ -253,9 +247,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\BusquedaEntrega-Devolucion.resx">
       <DependentUpon>BusquedaEntrega-Devolucion.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\BusquedaPedidos.resx">
-      <DependentUpon>BusquedaPedidos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Devolucion-Entrega.resx">
       <DependentUpon>Devolucion-Entrega.cs</DependentUpon>

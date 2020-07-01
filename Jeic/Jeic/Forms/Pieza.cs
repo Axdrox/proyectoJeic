@@ -338,8 +338,9 @@
         {
             if (e.CloseReason == CloseReason.UserClosing)
             {
-                dynamic result = MessageBox.Show("¿Los datos son correctos?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                if (result == DialogResult.Yes)
+                MessageBOX pregunta = new MessageBOX(4, "¿Los datos son correctos?");
+                dynamic result = pregunta.ShowDialog();
+                if (result == DialogResult.OK)
                 {
                     this.DialogResult = DialogResult.OK;
                 }
@@ -459,21 +460,7 @@
         private void btnAniadirPieza_Click(object sender, EventArgs e)
         {
             OperBD operacion = new OperBD();
-            /*
-            if (chbOtroPieza.Checked != true && chbOtroPortal.Checked != true && chbOtroOrigen.Checked != true && chbOtroProveedor.Checked != true)
-            {
-                datosPieza[0] = cbPiezaNombre.Text.Trim().ToUpper();
-                datosPieza[1] = cbPortal.Text.Trim().ToUpper();
-                datosPieza[2] = cbOrigen.Text.Trim().ToUpper();
-                datosPieza[3] = cbProveedores.Text.Trim().ToUpper();
-            }
-            else
-            {
-                datosPieza[0] = txtPiezaNombre.Text.Trim().ToUpper();
-                datosPieza[1] = txtPortal.Text.Trim().ToUpper();
-                datosPieza[2] = txtOrigen.Text.Trim().ToUpper();
-                datosPieza[3] = txtProveedor.Text.Trim().ToUpper();
-            }*/
+
             if (ValidateChildren(ValidationConstraints.Enabled))
             {
                 datosPieza[7] = dtpFechaCosto.Text.Trim();
@@ -572,11 +559,7 @@
         /// </summary>
         /// <param name="sender">The sender<see cref="object"/>.</param>
         /// <param name="e">The e<see cref="EventArgs"/>.</param>
-        private void txtCostoSinIVA_Leave(object sender, EventArgs e)
-        {
-            /*if (txtCostoSinIVA.Text != string.Empty)
-                txtCostoNeto.Text = ((Convert.ToDouble(txtCostoSinIVA.Text.Trim()) * .16) + Convert.ToDouble(txtCostoSinIVA.Text.Trim())).ToString();*/
-        }
+
 
         private void txtPiezaNombre_Leave(object sender, EventArgs e)
         {
@@ -587,15 +570,6 @@
             }
         }
 
-        /*
-        private void txtClaveProducto_Leave(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtClaveProducto.Text.Trim()))
-            {
-                txtClaveProducto.Text = "Escriba clave del producto";
-                txtClaveProducto.ForeColor = Color.FromArgb(160, 160, 140);
-            }
-        }*/
 
         private void txtNumeroGuia_Leave(object sender, EventArgs e)
         {
@@ -670,15 +644,6 @@
                 txtPiezaNombre.ForeColor = Color.White;
             }
         }
-        /*
-        private void txtClaveProducto_Enter(object sender, EventArgs e)
-        {
-            if (txtClaveProducto.Text == "Escriba clave del producto")
-            {
-                txtClaveProducto.Text = "";
-                txtClaveProducto.ForeColor = Color.White;
-            }
-        }*/
 
         private void txtNumeroGuia_Enter(object sender, EventArgs e)
         {

@@ -93,9 +93,7 @@ namespace Refracciones.Forms
                     else
                     {
                         int i = 0;
-
                         MessageBOX mes = new MessageBOX(4, "¿Los datos son correctos?");
-
                         if (mes.ShowDialog() == DialogResult.OK)
                         {
                             if (chbOtroVehiculo.Checked == true)

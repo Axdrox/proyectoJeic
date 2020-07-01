@@ -118,7 +118,7 @@
             this.dtpYear.Margin = new System.Windows.Forms.Padding(2);
             this.dtpYear.Name = "dtpYear";
             this.dtpYear.Size = new System.Drawing.Size(63, 20);
-            this.dtpYear.TabIndex = 5;
+            this.dtpYear.TabIndex = 4;
             // 
             // txtClaveSiniestro
             // 
@@ -129,7 +129,7 @@
             this.txtClaveSiniestro.Margin = new System.Windows.Forms.Padding(2);
             this.txtClaveSiniestro.Name = "txtClaveSiniestro";
             this.txtClaveSiniestro.Size = new System.Drawing.Size(127, 20);
-            this.txtClaveSiniestro.TabIndex = 6;
+            this.txtClaveSiniestro.TabIndex = 1;
             this.txtClaveSiniestro.Text = "Escriba clave del siniestro";
             this.txtClaveSiniestro.Enter += new System.EventHandler(this.txtClaveSiniestro_Enter);
             this.txtClaveSiniestro.Leave += new System.EventHandler(this.txtClaveSiniestro_Leave);
@@ -158,7 +158,7 @@
             this.txtComentario.Multiline = true;
             this.txtComentario.Name = "txtComentario";
             this.txtComentario.Size = new System.Drawing.Size(306, 67);
-            this.txtComentario.TabIndex = 8;
+            this.txtComentario.TabIndex = 6;
             this.txtComentario.Text = "Agregue un comentario";
             this.txtComentario.Enter += new System.EventHandler(this.txtComentario_Enter);
             this.txtComentario.Leave += new System.EventHandler(this.txtComentario_Leave);
@@ -173,7 +173,7 @@
             this.btnAceptar.Margin = new System.Windows.Forms.Padding(2);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(63, 22);
-            this.btnAceptar.TabIndex = 9;
+            this.btnAceptar.TabIndex = 7;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = false;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
@@ -215,7 +215,7 @@
             this.txtNombreVehiculoNuevo.Margin = new System.Windows.Forms.Padding(2);
             this.txtNombreVehiculoNuevo.Name = "txtNombreVehiculoNuevo";
             this.txtNombreVehiculoNuevo.Size = new System.Drawing.Size(127, 20);
-            this.txtNombreVehiculoNuevo.TabIndex = 12;
+            this.txtNombreVehiculoNuevo.TabIndex = 3;
             this.txtNombreVehiculoNuevo.Text = "Escriba un nuevo modelo";
             this.txtNombreVehiculoNuevo.Enter += new System.EventHandler(this.txtNombreVehiculoNuevo_Enter);
             this.txtNombreVehiculoNuevo.Leave += new System.EventHandler(this.txtNombreVehiculoNuevo_Leave);
@@ -231,7 +231,7 @@
             this.chbOtroVehiculo.Margin = new System.Windows.Forms.Padding(2);
             this.chbOtroVehiculo.Name = "chbOtroVehiculo";
             this.chbOtroVehiculo.Size = new System.Drawing.Size(49, 18);
-            this.chbOtroVehiculo.TabIndex = 13;
+            this.chbOtroVehiculo.TabIndex = 9;
             this.chbOtroVehiculo.Text = "Otro";
             this.chbOtroVehiculo.UseVisualStyleBackColor = false;
             this.chbOtroVehiculo.CheckedChanged += new System.EventHandler(this.chbOtroVehiculo_CheckedChanged);
@@ -260,7 +260,7 @@
             this.cbEstadoSiniestro.Margin = new System.Windows.Forms.Padding(2);
             this.cbEstadoSiniestro.Name = "cbEstadoSiniestro";
             this.cbEstadoSiniestro.Size = new System.Drawing.Size(258, 21);
-            this.cbEstadoSiniestro.TabIndex = 17;
+            this.cbEstadoSiniestro.TabIndex = 5;
             // 
             // bunifuElipse1
             // 
@@ -309,7 +309,7 @@
             this.txtMarca.Margin = new System.Windows.Forms.Padding(2);
             this.txtMarca.Name = "txtMarca";
             this.txtMarca.Size = new System.Drawing.Size(127, 20);
-            this.txtMarca.TabIndex = 20;
+            this.txtMarca.TabIndex = 2;
             this.txtMarca.Text = "Escriba una nueva marca";
             this.txtMarca.Visible = false;
             this.txtMarca.Enter += new System.EventHandler(this.txtMarca_Enter);
@@ -340,7 +340,7 @@
             this.chbMarca.Margin = new System.Windows.Forms.Padding(2);
             this.chbMarca.Name = "chbMarca";
             this.chbMarca.Size = new System.Drawing.Size(49, 18);
-            this.chbMarca.TabIndex = 19;
+            this.chbMarca.TabIndex = 8;
             this.chbMarca.Text = "Otro";
             this.chbMarca.UseVisualStyleBackColor = false;
             this.chbMarca.CheckedChanged += new System.EventHandler(this.chbMarca_CheckedChanged);

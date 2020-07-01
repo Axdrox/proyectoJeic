@@ -55,11 +55,10 @@ namespace Refracciones
         {
             txtContrasenia.ForeColor = Color.White;
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
-            {
-                
+            {             
                 if (Operacion.logeo(txtUsuario.Text, txtContrasenia.Text) == 1)
                 {
-                    MessageBOX.SHowDialog(1,"Bienvenido");
+                    MessageBOX.SHowDialog(1, "Bienvenido " + txtUsuario.Text);
                     Forms.Busqueda bus = new Forms.Busqueda();
                     bus.Usuario.Text = "Usuario: " + txtUsuario.Text;
                     bus.Show();
@@ -91,7 +90,7 @@ namespace Refracciones
 
             if (Operacion.logeo(txtUsuario.Text, txtContrasenia.Text) == 1)
             {
-                MessageBOX.SHowDialog(1,"Bienvenido");
+                MessageBOX.SHowDialog(1,"Bienvenido "+ txtUsuario.Text);
                 Forms.Busqueda bus = new Forms.Busqueda();
                 bus.Usuario.Text= "Usuario: " + txtUsuario.Text;
                 bus.Show();

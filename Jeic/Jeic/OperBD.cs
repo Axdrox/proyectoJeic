@@ -1627,7 +1627,6 @@ namespace Refracciones
                     Comando = new SqlCommand("SELECT cve_pedido FROM VENTAS WHERE cve_pedido = @cve_pedido", nuevaConexion);
                     Comando.Parameters.AddWithValue("@cve_pedido", cvePedido);
 
-                    //Para saber si en realidad existe, de lo contrario devuelve un string vacío
                     if (Comando.ExecuteScalar() == null) { }
                     else
                         resultado = Comando.ExecuteScalar().ToString();
@@ -2414,9 +2413,9 @@ namespace Refracciones
                     i = Comando.ExecuteNonQuery();
                     nuevaConexion.Close();
                     if (i == 1)
-                        MessageBox.Show("Se registró nueva pieza correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBOX.SHowDialog(3, "Se registró nueva pieza correctamente");
                     else
-                        MessageBox.Show("Problemas al registar nueva pieza", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBOX.SHowDialog(2, "Problemas al registar nueva pieza");
                     nuevaConexion.Close();
                 }
             }
@@ -3068,7 +3067,7 @@ namespace Refracciones
                     if (i == 1) { }
                     //MessageBox.Show("Se registró vehículo correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     else
-                        MessageBox.Show("Problemas al registar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBOX.SHowDialog(2,"Problemas al registar");
                 }
             }
             catch (Exception EX)
@@ -3167,9 +3166,9 @@ namespace Refracciones
                     i = Comando.ExecuteNonQuery();
                     nuevaConexion.Close();
                     if (i == 1)
-                        MessageBox.Show("Se registró siniestro correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBOX.SHowDialog(3, "Se registró siniestro correctamente.");
                     else
-                        MessageBox.Show("Problemas al registar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBOX.SHowDialog(2,"Problemas al registar.");
                 }
             }
             catch (Exception EX)
@@ -3457,25 +3456,47 @@ namespace Refracciones
         //-------------OBTENER LA CLAVE DEL VENDEDOR DE ACUERDO AL TEXTO
         public int claveVendedor(string vendedor)
         {
-            using (SqlConnection nuevaConexion = Conexion.conexion())
-            {
-                nuevaConexion.Open();
-                int claveVendedor = 0;
-                //Obteniendo la clave del valuador
-                //Combobox de destino
-                Comando = new SqlCommand("SELECT cve_vendedor FROM VENDEDOR WHERE nombre = @nombre", nuevaConexion);
-                Comando.Parameters.AddWithValue("@nombre", vendedor);
-                Lector = Comando.ExecuteReader();
-                if (Lector.Read())
+                using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
-                    claveVendedor = (int)Lector["cve_vendedor"];
-                }
-                Lector.Close();
-                nuevaConexion.Close();
-                return claveVendedor;
-            }
+                    nuevaConexion.Open();
+                    int claveVendedor = 0;
+                    //Obteniendo la clave del valuador
+                    //Combobox de destino
+                    Comando = new SqlCommand("SELECT cve_vendedor FROM VENDEDOR WHERE nombre = @nombre", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@nombre", vendedor);
+                    Lector = Comando.ExecuteReader();
+                    if (Lector.Read())
+                    {
+                        claveVendedor = (int)Lector["cve_vendedor"];
+                    }
+                    Lector.Close();
+                    nuevaConexion.Close();
+                    return claveVendedor;
+                }         
         }
 
+        public string existeClaveVendedor(int cve)
+        {
+            string claveVendedor = "";
+            try {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                   
+                    Comando = new SqlCommand("SELECT nombre FROM VENDEDOR WHERE cve_vendedor = @cve", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@cve", cve);
+                    Lector = Comando.ExecuteReader();
+                    Lector.Read();
+                    claveVendedor = Lector.GetString(0);
+                    Lector.Close();
+                    nuevaConexion.Close();
+                    return claveVendedor;
+                }
+            } catch (Exception e) {
+                return claveVendedor;
+            }
+           
+        }
         /*
         //Se quitará
         //-------------OBTENER EL PRECIO TOTAL DEL PEDIDO
@@ -3848,7 +3869,7 @@ namespace Refracciones
                     nuevaConexion.Close();
                     if (i == 1)
                     {
-                        MessageBox.Show("Se registró penalización correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBOX.SHowDialog(3, "Se registró penalización correctamente");
                         nuevaConexion.Open();
                         Comando = new SqlCommand("UPDATE PEDIDO SET cantidad = cantidad - @cantidad WHERE cve_venta = @cve_venta AND cve_pieza = @cve_pieza", nuevaConexion);
                         Comando.Parameters.AddWithValue("@cve_pieza", clavePieza);
@@ -3856,13 +3877,11 @@ namespace Refracciones
                         Comando.Parameters.AddWithValue("@cantidad", cantidad);
                         int j = Comando.ExecuteNonQuery();
                         nuevaConexion.Close();
-                        if (j == 1)
-                            MessageBox.Show("Se ha actualizado la cantidad de pieza seleccionada", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        else
-                            MessageBox.Show("Problemas al actualizar cantidad de pieza", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        if (j != 1)
+                            MessageBOX.SHowDialog(2, "Problemas al actualizar cantidad de pieza");
                     }
                     else
-                        MessageBox.Show("Problemas al registar penalización", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBOX.SHowDialog(2, "Problemas al registar penalización");
                     nuevaConexion.Close();
                 }
             }
