@@ -127,6 +127,7 @@ namespace Refracciones.Forms
                 lblPenalizacion.Visible = false;
                 txtPenalizacion.Enabled = false;
                 txtPenalizacion.Visible = false;
+                txtMotivo.Visible = false;
                 lblporcentaje.Visible = false;
             }
         }
@@ -198,34 +199,38 @@ namespace Refracciones.Forms
 
                     if (rbtnDevolucion.Checked == true)
                     {
-                        cantidad = pzas_devolucion + cantidadD;
-                        MessageBOX pregunta = new MessageBOX(4, "¿Está seguro que desea Registrar la devolución del registro seleccionado?");
-                        oDlgRes = pregunta.ShowDialog();
-                        if (oDlgRes == DialogResult.OK)
-                        {
-                            rbtnEntrega.Enabled = false;
-                            rbtnDevolucion.Enabled = false;
-                            dtpFecha.Enabled = false;
-                            cmbCantidad.Enabled = false;
-                            btnAceptar.Enabled = false;
-                            btnCancelar.Enabled = false;
-                            dgvDevolucion.Enabled = true;
-                            cmbMotivoDev.Text = "";
-                            cmbMotivoDev.Enabled = false;
-                            if (chkMotivo.Checked != true)
-                                motivo = cmbMotivoDev.SelectedItem.ToString();
+
+                            cantidad = pzas_devolucion + cantidadD;
+                            MessageBOX pregunta = new MessageBOX(4, "¿Está seguro que desea Registrar la devolución del registro seleccionado?");
+                            oDlgRes = pregunta.ShowDialog();
+                            if (oDlgRes == DialogResult.OK)
+                            {
+                                rbtnEntrega.Enabled = false;
+                                rbtnDevolucion.Enabled = false;
+                                dtpFecha.Enabled = false;
+                                cmbCantidad.Enabled = false;
+                                btnAceptar.Enabled = false;
+                                btnCancelar.Enabled = false;
+                                dgvDevolucion.Enabled = true;
+                                cmbMotivoDev.Text = "";
+                                cmbMotivoDev.Enabled = false;
+                                if (chkMotivo.Checked != true)
+                                    motivo = cmbMotivoDev.SelectedItem.ToString();
+                                else
+                                    motivo = txtMotivo.Text.Trim();
+
+                                penalizacion = decimal.Parse(txtPenalizacion.Text.Trim());
+                                count = oper.Total_Registros() + 1;//Se calcula el total de registros en la tabla Devolución
+                                MessageBOX.SHowDialog(1, oper.Registrar_Devolucion(cve_siniestro, cve_pedido, cve_pieza, count, cantidad, fecha, cantidadD, cve_venta, motivo, penalizacion));
+                                cmbCantidad.Items.Clear();
+                                txtMotivo.Text = "";
+                                txtPenalizacion.Text = "";
+                            }
                             else
-                                motivo = txtMotivo.Text.Trim();
-                            
-                            penalizacion = decimal.Parse(txtPenalizacion.Text.Trim());
-                            count = oper.Total_Registros() + 1;//Se calcula el total de registros en la tabla Devolución
-                            MessageBOX.SHowDialog(1, oper.Registrar_Devolucion(cve_siniestro, cve_pedido, cve_pieza, count, cantidad, fecha, cantidadD, cve_venta, motivo, penalizacion));
-                            cmbCantidad.Items.Clear();
-                        }
-                        else
-                        {
-                            MessageBOX.SHowDialog(2, "No se realizó ninguna operación");
-                        }
+                            {
+                                MessageBOX.SHowDialog(2, "No se realizó ninguna operación");
+                            }
+                        
                     }
                     else if (rbtnEntrega.Checked == true)
                     {
@@ -281,6 +286,8 @@ namespace Refracciones.Forms
                     MessageBOX.SHowDialog(2, "No se realizó ninguna operación");
                 }
                 errorP.Clear();
+                txtMotivo.Text = "";
+                txtPenalizacion.Text = "";
             }
             refresh();
         }
@@ -471,6 +478,25 @@ namespace Refracciones.Forms
                 cmbPenalizacion.Visible = true;
                 cmbPenalizacion.SelectedIndex = 0;
             }*/
+        }
+
+        private void txtPenalizacion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+                    e.Handled = true;
+
+                // solo 1 punto decimal
+                if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+                 e.Handled = true; 
+            
+        }
+
+
+        private void txtPenalizacion_TextChanged(object sender, EventArgs e)
+        {
+            if (txtPenalizacion.Text.Trim() == "")
+                txtPenalizacion.Text = "0";
         }
     }
 }
