@@ -100,7 +100,7 @@
             this.cbPiezaNombre.ForeColor = System.Drawing.Color.White;
             this.cbPiezaNombre.FormattingEnabled = true;
             this.cbPiezaNombre.Location = new System.Drawing.Point(127, 15);
-            this.cbPiezaNombre.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbPiezaNombre.Margin = new System.Windows.Forms.Padding(2);
             this.cbPiezaNombre.Name = "cbPiezaNombre";
             this.cbPiezaNombre.Size = new System.Drawing.Size(148, 21);
             this.cbPiezaNombre.TabIndex = 0;
@@ -270,7 +270,7 @@
             this.cbPortal.ForeColor = System.Drawing.Color.White;
             this.cbPortal.FormattingEnabled = true;
             this.cbPortal.Location = new System.Drawing.Point(127, 115);
-            this.cbPortal.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbPortal.Margin = new System.Windows.Forms.Padding(2);
             this.cbPortal.Name = "cbPortal";
             this.cbPortal.Size = new System.Drawing.Size(148, 21);
             this.cbPortal.TabIndex = 2;
@@ -282,7 +282,7 @@
             this.cbOrigen.ForeColor = System.Drawing.Color.White;
             this.cbOrigen.FormattingEnabled = true;
             this.cbOrigen.Location = new System.Drawing.Point(126, 145);
-            this.cbOrigen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbOrigen.Margin = new System.Windows.Forms.Padding(2);
             this.cbOrigen.Name = "cbOrigen";
             this.cbOrigen.Size = new System.Drawing.Size(148, 21);
             this.cbOrigen.TabIndex = 3;
@@ -294,16 +294,16 @@
             this.cbProveedores.ForeColor = System.Drawing.Color.White;
             this.cbProveedores.FormattingEnabled = true;
             this.cbProveedores.Location = new System.Drawing.Point(126, 176);
-            this.cbProveedores.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbProveedores.Margin = new System.Windows.Forms.Padding(2);
             this.cbProveedores.Name = "cbProveedores";
             this.cbProveedores.Size = new System.Drawing.Size(148, 21);
             this.cbProveedores.TabIndex = 4;
             // 
             // dtpFechaCosto
             // 
-            this.dtpFechaCosto.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dtpFechaCosto.Cursor = System.Windows.Forms.Cursors.Default;
             this.dtpFechaCosto.Location = new System.Drawing.Point(114, 210);
-            this.dtpFechaCosto.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpFechaCosto.Margin = new System.Windows.Forms.Padding(2);
             this.dtpFechaCosto.Name = "dtpFechaCosto";
             this.dtpFechaCosto.Size = new System.Drawing.Size(200, 20);
             this.dtpFechaCosto.TabIndex = 5;
@@ -314,7 +314,7 @@
             this.txtCostoSinIVA.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCostoSinIVA.ForeColor = System.Drawing.Color.White;
             this.txtCostoSinIVA.Location = new System.Drawing.Point(160, 248);
-            this.txtCostoSinIVA.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCostoSinIVA.Margin = new System.Windows.Forms.Padding(2);
             this.txtCostoSinIVA.Name = "txtCostoSinIVA";
             this.txtCostoSinIVA.Size = new System.Drawing.Size(92, 20);
             this.txtCostoSinIVA.TabIndex = 7;
@@ -341,7 +341,7 @@
             this.txtCostoNeto.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtCostoNeto.ForeColor = System.Drawing.Color.White;
             this.txtCostoNeto.Location = new System.Drawing.Point(160, 267);
-            this.txtCostoNeto.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCostoNeto.Margin = new System.Windows.Forms.Padding(2);
             this.txtCostoNeto.Name = "txtCostoNeto";
             this.txtCostoNeto.Size = new System.Drawing.Size(92, 20);
             this.txtCostoNeto.TabIndex = 8;
@@ -365,7 +365,7 @@
             this.txtPrecioVenta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPrecioVenta.ForeColor = System.Drawing.Color.White;
             this.txtPrecioVenta.Location = new System.Drawing.Point(160, 332);
-            this.txtPrecioVenta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPrecioVenta.Margin = new System.Windows.Forms.Padding(2);
             this.txtPrecioVenta.Name = "txtPrecioVenta";
             this.txtPrecioVenta.Size = new System.Drawing.Size(92, 20);
             this.txtPrecioVenta.TabIndex = 11;
@@ -389,7 +389,7 @@
             this.txtPrecioReparacion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPrecioReparacion.ForeColor = System.Drawing.Color.White;
             this.txtPrecioReparacion.Location = new System.Drawing.Point(160, 311);
-            this.txtPrecioReparacion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPrecioReparacion.Margin = new System.Windows.Forms.Padding(2);
             this.txtPrecioReparacion.Name = "txtPrecioReparacion";
             this.txtPrecioReparacion.Size = new System.Drawing.Size(92, 20);
             this.txtPrecioReparacion.TabIndex = 10;
@@ -414,7 +414,7 @@
             this.txtCantidad.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCantidad.ForeColor = System.Drawing.Color.White;
             this.txtCantidad.Location = new System.Drawing.Point(127, 38);
-            this.txtCantidad.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCantidad.Margin = new System.Windows.Forms.Padding(2);
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(38, 20);
             this.txtCantidad.TabIndex = 1;
@@ -428,7 +428,7 @@
             this.txtClaveProducto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtClaveProducto.ForeColor = System.Drawing.Color.White;
             this.txtClaveProducto.Location = new System.Drawing.Point(127, 63);
-            this.txtClaveProducto.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtClaveProducto.Margin = new System.Windows.Forms.Padding(2);
             this.txtClaveProducto.Name = "txtClaveProducto";
             this.txtClaveProducto.ReadOnly = true;
             this.txtClaveProducto.Size = new System.Drawing.Size(148, 20);
@@ -442,7 +442,7 @@
             this.txtNumeroGuia.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNumeroGuia.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.txtNumeroGuia.Location = new System.Drawing.Point(126, 89);
-            this.txtNumeroGuia.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNumeroGuia.Margin = new System.Windows.Forms.Padding(2);
             this.txtNumeroGuia.Name = "txtNumeroGuia";
             this.txtNumeroGuia.Size = new System.Drawing.Size(148, 20);
             this.txtNumeroGuia.TabIndex = 3;
@@ -454,10 +454,11 @@
             // btnAniadirPieza
             // 
             this.btnAniadirPieza.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnAniadirPieza.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAniadirPieza.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAniadirPieza.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAniadirPieza.Location = new System.Drawing.Point(267, 364);
-            this.btnAniadirPieza.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAniadirPieza.Margin = new System.Windows.Forms.Padding(2);
             this.btnAniadirPieza.Name = "btnAniadirPieza";
             this.btnAniadirPieza.Size = new System.Drawing.Size(74, 23);
             this.btnAniadirPieza.TabIndex = 12;
@@ -468,10 +469,11 @@
             // btnCancelar
             // 
             this.btnCancelar.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.Location = new System.Drawing.Point(178, 364);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(74, 23);
             this.btnCancelar.TabIndex = 13;
@@ -483,10 +485,11 @@
             // 
             this.chbOtroPieza.AutoSize = true;
             this.chbOtroPieza.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(28)))), ((int)(((byte)(32)))));
+            this.chbOtroPieza.Cursor = System.Windows.Forms.Cursors.Hand;
             this.chbOtroPieza.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chbOtroPieza.ForeColor = System.Drawing.Color.White;
             this.chbOtroPieza.Location = new System.Drawing.Point(288, 15);
-            this.chbOtroPieza.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chbOtroPieza.Margin = new System.Windows.Forms.Padding(2);
             this.chbOtroPieza.Name = "chbOtroPieza";
             this.chbOtroPieza.Size = new System.Drawing.Size(46, 17);
             this.chbOtroPieza.TabIndex = 14;
@@ -498,10 +501,11 @@
             // 
             this.chbOtroPortal.AutoSize = true;
             this.chbOtroPortal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(42)))), ((int)(((byte)(61)))));
+            this.chbOtroPortal.Cursor = System.Windows.Forms.Cursors.Hand;
             this.chbOtroPortal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chbOtroPortal.ForeColor = System.Drawing.Color.White;
             this.chbOtroPortal.Location = new System.Drawing.Point(288, 116);
-            this.chbOtroPortal.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chbOtroPortal.Margin = new System.Windows.Forms.Padding(2);
             this.chbOtroPortal.Name = "chbOtroPortal";
             this.chbOtroPortal.Size = new System.Drawing.Size(46, 17);
             this.chbOtroPortal.TabIndex = 16;
@@ -513,10 +517,11 @@
             // 
             this.chbOtroOrigen.AutoSize = true;
             this.chbOtroOrigen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(45)))), ((int)(((byte)(69)))));
+            this.chbOtroOrigen.Cursor = System.Windows.Forms.Cursors.Hand;
             this.chbOtroOrigen.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chbOtroOrigen.ForeColor = System.Drawing.Color.White;
             this.chbOtroOrigen.Location = new System.Drawing.Point(288, 145);
-            this.chbOtroOrigen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chbOtroOrigen.Margin = new System.Windows.Forms.Padding(2);
             this.chbOtroOrigen.Name = "chbOtroOrigen";
             this.chbOtroOrigen.Size = new System.Drawing.Size(46, 17);
             this.chbOtroOrigen.TabIndex = 18;
@@ -528,10 +533,11 @@
             // 
             this.chbOtroProveedor.AutoSize = true;
             this.chbOtroProveedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(49)))), ((int)(((byte)(77)))));
+            this.chbOtroProveedor.Cursor = System.Windows.Forms.Cursors.Hand;
             this.chbOtroProveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chbOtroProveedor.ForeColor = System.Drawing.Color.White;
             this.chbOtroProveedor.Location = new System.Drawing.Point(288, 178);
-            this.chbOtroProveedor.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chbOtroProveedor.Margin = new System.Windows.Forms.Padding(2);
             this.chbOtroProveedor.Name = "chbOtroProveedor";
             this.chbOtroProveedor.Size = new System.Drawing.Size(46, 17);
             this.chbOtroProveedor.TabIndex = 19;
@@ -545,7 +551,7 @@
             this.txtPiezaNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPiezaNombre.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.txtPiezaNombre.Location = new System.Drawing.Point(127, 15);
-            this.txtPiezaNombre.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPiezaNombre.Margin = new System.Windows.Forms.Padding(2);
             this.txtPiezaNombre.Name = "txtPiezaNombre";
             this.txtPiezaNombre.Size = new System.Drawing.Size(148, 20);
             this.txtPiezaNombre.TabIndex = 0;
@@ -562,7 +568,7 @@
             this.txtPortal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPortal.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.txtPortal.Location = new System.Drawing.Point(127, 115);
-            this.txtPortal.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPortal.Margin = new System.Windows.Forms.Padding(2);
             this.txtPortal.Name = "txtPortal";
             this.txtPortal.Size = new System.Drawing.Size(148, 20);
             this.txtPortal.TabIndex = 4;
@@ -578,7 +584,7 @@
             this.txtOrigen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtOrigen.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.txtOrigen.Location = new System.Drawing.Point(127, 145);
-            this.txtOrigen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtOrigen.Margin = new System.Windows.Forms.Padding(2);
             this.txtOrigen.Name = "txtOrigen";
             this.txtOrigen.Size = new System.Drawing.Size(148, 20);
             this.txtOrigen.TabIndex = 5;
@@ -594,7 +600,7 @@
             this.txtProveedor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtProveedor.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.txtProveedor.Location = new System.Drawing.Point(126, 178);
-            this.txtProveedor.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtProveedor.Margin = new System.Windows.Forms.Padding(2);
             this.txtProveedor.Name = "txtProveedor";
             this.txtProveedor.Size = new System.Drawing.Size(148, 20);
             this.txtProveedor.TabIndex = 6;
@@ -607,10 +613,12 @@
             // cbCostoEnvio
             // 
             this.cbCostoEnvio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.cbCostoEnvio.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cbCostoEnvio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCostoEnvio.ForeColor = System.Drawing.Color.White;
             this.cbCostoEnvio.FormattingEnabled = true;
             this.cbCostoEnvio.Location = new System.Drawing.Point(160, 289);
-            this.cbCostoEnvio.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbCostoEnvio.Margin = new System.Windows.Forms.Padding(2);
             this.cbCostoEnvio.Name = "cbCostoEnvio";
             this.cbCostoEnvio.Size = new System.Drawing.Size(92, 21);
             this.cbCostoEnvio.TabIndex = 9;
@@ -677,10 +685,11 @@
             // 
             this.chbOtroNumeroGuia.AutoSize = true;
             this.chbOtroNumeroGuia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(37)))), ((int)(((byte)(51)))));
+            this.chbOtroNumeroGuia.Cursor = System.Windows.Forms.Cursors.Hand;
             this.chbOtroNumeroGuia.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chbOtroNumeroGuia.ForeColor = System.Drawing.Color.White;
             this.chbOtroNumeroGuia.Location = new System.Drawing.Point(288, 87);
-            this.chbOtroNumeroGuia.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chbOtroNumeroGuia.Margin = new System.Windows.Forms.Padding(2);
             this.chbOtroNumeroGuia.Name = "chbOtroNumeroGuia";
             this.chbOtroNumeroGuia.Size = new System.Drawing.Size(46, 17);
             this.chbOtroNumeroGuia.TabIndex = 15;
@@ -695,7 +704,7 @@
             this.cbNumeroGuia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbNumeroGuia.ForeColor = System.Drawing.Color.White;
             this.cbNumeroGuia.Location = new System.Drawing.Point(127, 88);
-            this.cbNumeroGuia.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbNumeroGuia.Margin = new System.Windows.Forms.Padding(2);
             this.cbNumeroGuia.Name = "cbNumeroGuia";
             this.cbNumeroGuia.Size = new System.Drawing.Size(148, 21);
             this.cbNumeroGuia.TabIndex = 1;
@@ -725,7 +734,7 @@
             this.Controls.Add(this.bunifuGradientPanel1);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Pieza";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pieza";

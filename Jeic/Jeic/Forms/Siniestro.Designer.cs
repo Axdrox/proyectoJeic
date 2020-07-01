@@ -166,6 +166,7 @@
             // btnAceptar
             // 
             this.btnAceptar.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnAceptar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAceptar.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAceptar.ForeColor = System.Drawing.Color.White;
@@ -181,6 +182,7 @@
             // btnCancelar
             // 
             this.btnCancelar.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCancelar.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
@@ -225,6 +227,7 @@
             // 
             this.chbOtroVehiculo.AutoSize = true;
             this.chbOtroVehiculo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(38)))), ((int)(((byte)(53)))));
+            this.chbOtroVehiculo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.chbOtroVehiculo.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chbOtroVehiculo.ForeColor = System.Drawing.Color.White;
             this.chbOtroVehiculo.Location = new System.Drawing.Point(262, 67);
@@ -334,6 +337,7 @@
             // 
             this.chbMarca.AutoSize = true;
             this.chbMarca.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(34)))), ((int)(((byte)(44)))));
+            this.chbMarca.Cursor = System.Windows.Forms.Cursors.Hand;
             this.chbMarca.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chbMarca.ForeColor = System.Drawing.Color.White;
             this.chbMarca.Location = new System.Drawing.Point(262, 41);

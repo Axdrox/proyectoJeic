@@ -121,6 +121,7 @@
             this.rbtnEntregas.AutoSize = true;
             this.rbtnEntregas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(31)))), ((int)(((byte)(38)))));
             this.rbtnEntregas.Checked = true;
+            this.rbtnEntregas.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rbtnEntregas.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbtnEntregas.ForeColor = System.Drawing.Color.White;
             this.rbtnEntregas.Location = new System.Drawing.Point(33, 43);
@@ -136,6 +137,7 @@
             // 
             this.rbtnDev.AutoSize = true;
             this.rbtnDev.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(31)))), ((int)(((byte)(38)))));
+            this.rbtnDev.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rbtnDev.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbtnDev.ForeColor = System.Drawing.Color.White;
             this.rbtnDev.Location = new System.Drawing.Point(141, 43);
@@ -207,6 +209,7 @@
             // 
             this.rbtnPenalizacion.AutoSize = true;
             this.rbtnPenalizacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(31)))), ((int)(((byte)(38)))));
+            this.rbtnPenalizacion.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rbtnPenalizacion.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbtnPenalizacion.ForeColor = System.Drawing.Color.White;
             this.rbtnPenalizacion.Location = new System.Drawing.Point(254, 43);
@@ -220,11 +223,12 @@
             // 
             // pbMinimize
             // 
+            this.pbMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbMinimize.Image = global::Refracciones.Properties.Resources.Minimize_Window_2_48px;
             this.pbMinimize.Location = new System.Drawing.Point(428, 2);
             this.pbMinimize.Margin = new System.Windows.Forms.Padding(2);
             this.pbMinimize.Name = "pbMinimize";
-            this.pbMinimize.Size = new System.Drawing.Size(15, 16);
+            this.pbMinimize.Size = new System.Drawing.Size(17, 17);
             this.pbMinimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbMinimize.TabIndex = 75;
             this.pbMinimize.TabStop = false;
@@ -232,6 +236,7 @@
             // 
             // pbClose
             // 
+            this.pbClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbClose.Image = global::Refracciones.Properties.Resources.Close_Window__2_48px;
             this.pbClose.Location = new System.Drawing.Point(447, 2);
             this.pbClose.Margin = new System.Windows.Forms.Padding(2);

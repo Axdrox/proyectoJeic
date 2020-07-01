@@ -528,7 +528,7 @@ namespace Refracciones
                     cmd.Parameters.Add("@cve_pieza", SqlDbType.Int);
                     cmd.Parameters["@cve_venta"].Value = cve_venta;
                     cmd.Parameters["@cve_pieza"].Value = cve_pieza;
-                    MessageBox.Show("Entregado a Tiempo!");
+                    MessageBOX.SHowDialog(3, "Entregado a Tiempo!");
                 }
 
                 cmd.ExecuteNonQuery();
@@ -1035,17 +1035,20 @@ namespace Refracciones
         public DataTable Alertas(DateTime fecha_sys)
         {
             dt = new DataTable();
-            using (SqlConnection nuevaConexion = Conexion.conexion())
+            try
             {
-                nuevaConexion.Open();
-                Comando = new SqlCommand("SELECT DISTINCT ven.cve_siniestro AS Siniestro, fact.cve_factura AS Factura, fact.fact_sinIVA AS 'Factura sin IVA', fact.fact_neto AS 'Factura Neto', fact.fecha_pago AS 'Fecha de Pago' FROM VENTAS ven INNER JOIN FACTURA fact ON ven.cve_factura = fact.cve_factura WHERE DATEDIFF(DAY, @fecha_sys, fact.fecha_pago) < 7 AND fact.cve_estado = 1", nuevaConexion);
-                Comando.Parameters.Add("@fecha_sys", SqlDbType.Date);
-                Comando.Parameters["@fecha_sys"].Value = fecha_sys;
-                da = new SqlDataAdapter(Comando);
-                da.Fill(dt);
-                nuevaConexion.Close();
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("SELECT DISTINCT ven.cve_siniestro AS Siniestro, fact.cve_factura AS Factura, fact.fact_sinIVA AS 'Factura sin IVA', fact.fact_neto AS 'Factura Neto', fact.fecha_pago AS 'Fecha de Pago' FROM VENTAS ven INNER JOIN FACTURA fact ON ven.cve_factura = fact.cve_factura WHERE DATEDIFF(DAY, @fecha_sys, fact.fecha_pago) < 7 AND fact.cve_estado = 1", nuevaConexion);
+                    Comando.Parameters.Add("@fecha_sys", SqlDbType.Date);
+                    Comando.Parameters["@fecha_sys"].Value = fecha_sys;
+                    da = new SqlDataAdapter(Comando);
+                    da.Fill(dt);
+                    nuevaConexion.Close();
+                }
             }
-
+            catch (Exception e) { MessageBox.Show(e.Message); }
             return dt;
         }
 
@@ -1053,14 +1056,18 @@ namespace Refracciones
         public DataTable Alertas()
         {
             dt = new DataTable();
-            using (SqlConnection nuevaConexion = Conexion.conexion())
+            try
             {
-                nuevaConexion.Open();
-                Comando = new SqlCommand("SELECT ven.cve_pedido AS 'PEDIDO', ven.cve_siniestro AS 'SINIESTRO',ven.fecha_promesa AS 'FECHA PROMESA',pie.nombre AS 'PIEZA', p.cantidad AS 'TOTAL DE PIEZAS', p.pzas_entregadas AS 'PIEZAS ENTREGADAS', p.fecha_entrega AS 'ULTIMA FECHA DE ENTREGA', p.entrega_enTiempo AS 'ENTREGA EN TIEMPO' FROM PEDIDO p INNER JOIN VENTAS ven ON p.cve_venta = ven.cve_venta INNER JOIN PIEZA pie ON p.cve_pieza = pie.cve_pieza  WHERE p.pzas_entregadas != p.cantidad ", nuevaConexion);
-                da = new SqlDataAdapter(Comando);
-                da.Fill(dt);
-                nuevaConexion.Close();
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("SELECT ven.cve_pedido AS 'Pedido', ven.cve_siniestro AS 'Siniestro',ven.fecha_promesa AS 'Fecha promesa',pie.nombre AS 'Pieza', p.cantidad AS 'Total de piezas', p.pzas_entregadas AS 'Piezas entregadas', p.fecha_entrega AS 'Ultima Fecha de entrega', p.entrega_enTiempo AS 'Eentrega a tiempo' FROM PEDIDO p INNER JOIN VENTAS ven ON p.cve_venta = ven.cve_venta INNER JOIN PIEZA pie ON p.cve_pieza = pie.cve_pieza  WHERE p.pzas_entregadas != p.cantidad ", nuevaConexion);
+                    da = new SqlDataAdapter(Comando);
+                    da.Fill(dt);
+                    nuevaConexion.Close();
+                }
             }
+            catch (Exception e) { MessageBox.Show(e.Message); }
 
             return dt;
         }
@@ -2011,7 +2018,7 @@ namespace Refracciones
                     i = Comando.ExecuteNonQuery();
                     nuevaConexion.Close();
                     if (i == 1)
-                        MessageBOX.SHowDialog(1, "Se registró nuevo vendedor correctamente");
+                        MessageBOX.SHowDialog(3, "Se registró nuevo vendedor correctamente");
                     else
                         MessageBOX.SHowDialog(2, "Problemas al registar nuevo vendedor");
                     nuevaConexion.Close();
@@ -2081,7 +2088,7 @@ namespace Refracciones
                 i = Comando.ExecuteNonQuery();
                 nuevaConexion.Close();
                 if (i == 1)
-                    MessageBOX.SHowDialog(1, "Se registró nuevo cliente correctamente");
+                    MessageBOX.SHowDialog(3, "Se registró nuevo cliente correctamente");
                 else
                     MessageBOX.SHowDialog(2, "Problemas al registar nuevo cliente");
                 nuevaConexion.Close();
@@ -2168,10 +2175,11 @@ namespace Refracciones
                     //Para saber si la inserción se hizo correctamente
                     i = Comando.ExecuteNonQuery();
                     nuevaConexion.Close();
-                    if (i == 1) { }
-                    //MessageBOX.SHowDialog(1, "Se registró nuevo valuador correctamente");
+                    if (i == 1)
+                        MessageBOX.SHowDialog(3, "Se registró nuevo valuador correctamente");
                     else
                         MessageBOX.SHowDialog(2, "Problemas al registar nuevo valuador");
+
                     nuevaConexion.Close();
                 }
             }
@@ -2254,7 +2262,7 @@ namespace Refracciones
                     i = Comando.ExecuteNonQuery();
                     nuevaConexion.Close();
                     if (i == 1)
-                        MessageBOX.SHowDialog(1, "Se registró nuevo taller correctamente");
+                        MessageBOX.SHowDialog(3, "Se registró nuevo taller correctamente");
                     else
                         MessageBOX.SHowDialog(2, "Problemas al registar nuevo taller");
                     nuevaConexion.Close();
@@ -2329,9 +2337,9 @@ namespace Refracciones
                     i = Comando.ExecuteNonQuery();
                     nuevaConexion.Close();
                     if (i == 1)
-                        MessageBox.Show("Se registró nuevo destino correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBOX.SHowDialog(3, "Se registró nuevo destino correctamente");
                     else
-                        MessageBox.Show("Problemas al registar nuevo destino", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBOX.SHowDialog(2, "Problemas al registar nuevo destino");
                     nuevaConexion.Close();
                 }
             }
@@ -2413,7 +2421,7 @@ namespace Refracciones
                     i = Comando.ExecuteNonQuery();
                     nuevaConexion.Close();
                     if (i == 1)
-                        MessageBOX.SHowDialog(1, "Se registró nueva pieza correctamente");
+                        MessageBOX.SHowDialog(3, "Se registró nueva pieza correctamente");
                     else
                         MessageBOX.SHowDialog(2, "Problemas al registar nueva pieza");
                     nuevaConexion.Close();
@@ -2421,7 +2429,7 @@ namespace Refracciones
             }
             catch (Exception EX)
             {
-                MessageBox.Show("Error: " + EX.Message);
+                MessageBox.Show("Error pieza: " + EX.Message);
             }
             return i;
         }
@@ -2496,7 +2504,7 @@ namespace Refracciones
                     i = Comando.ExecuteNonQuery();
                     nuevaConexion.Close();
                     if (i == 1)
-                        MessageBOX.SHowDialog(1, "Se registró nuevo portal correctamente");
+                        MessageBOX.SHowDialog(3, "Se registró nuevo portal correctamente");
                     else
                         MessageBOX.SHowDialog(2, "Problemas al registar nueva portal");
                     nuevaConexion.Close();
@@ -2571,15 +2579,15 @@ namespace Refracciones
                     i = Comando.ExecuteNonQuery();
                     nuevaConexion.Close();
                     if (i == 1)
-                        MessageBox.Show("Se registró nuevo origen correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBOX.SHowDialog(3, "Se registró nuevo origen correctamente");
                     else
-                        MessageBox.Show("Problemas al registar nueva origen", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBOX.SHowDialog(2, "Problemas al registar nueva origen");
                     nuevaConexion.Close();
                 }
             }
             catch (Exception EX)
             {
-                MessageBox.Show("Error: " + EX.Message);
+                MessageBox.Show("Error origen: " + EX.Message);
             }
             return i;
         }
@@ -2655,15 +2663,15 @@ namespace Refracciones
                     i = Comando.ExecuteNonQuery();
                     nuevaConexion.Close();
                     if (i == 1)
-                        MessageBOX.SHowDialog(1, "Se registró nuevo proveedor correctamente");
+                        MessageBOX.SHowDialog(3, "Se registró nuevo proveedor correctamente");
                     else
-                        MessageBOX.SHowDialog(1, "Problemas al registar nueva proveedor");
+                        MessageBOX.SHowDialog(2, "Problemas al registar nueva proveedor");
                     nuevaConexion.Close();
                 }
             }
             catch (Exception EX)
             {
-                MessageBox.Show("Error: " + EX.Message);
+                MessageBox.Show("Error proveedor: " + EX.Message);
             }
             return i;
         }
@@ -3014,7 +3022,7 @@ namespace Refracciones
                     nuevaConexion.Close();
                     if (i == 1) 
                     {
-                        MessageBOX.SHowDialog(1, "Se registró vehículo correctamente");
+                        MessageBOX.SHowDialog(3, "Se registró vehículo correctamente");
                     }
                     else
                         MessageBOX.SHowDialog(2, "Problemas al registar");
@@ -3068,7 +3076,7 @@ namespace Refracciones
                     nuevaConexion.Close();
                     if (i == 1) 
                     {
-                        MessageBOX.SHowDialog(1, "Se registró vehículo correctamente");
+                        MessageBOX.SHowDialog(3, "Se registró vehículo correctamente");
                     }
                     else
                     MessageBOX.SHowDialog(2,"Problemas al registar");
@@ -3225,9 +3233,9 @@ namespace Refracciones
                     i = Comando.ExecuteNonQuery();
                     nuevaConexion.Close();
                     if (i == 1)
-                        MessageBox.Show("Siniestro actualizado correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBOX.SHowDialog(3, "Siniestro actualizado correctamente");
                     else
-                        MessageBox.Show("Problemas al actualizar siniestro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBOX.SHowDialog(2, "Problemas al actualizar siniestro");
                 }
             }
             catch (Exception EX)
@@ -3576,9 +3584,10 @@ namespace Refracciones
                     nuevaConexion.Close();
                     if (i == 1)
                     {
+                        MessageBOX.SHowDialog(3,"Se registro la venta correctamente");
                     }
                     else
-                        MessageBox.Show("Problemas al registrar venta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBOX.SHowDialog(2, "Problemas al registrar venta");
                 }
             }
             catch (Exception EX)
@@ -3625,10 +3634,10 @@ namespace Refracciones
                     nuevaConexion.Close();
                     if (i == 1)
                     {
-                        MessageBox.Show("Venta actualizada correctamente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBOX.SHowDialog(3, "Venta actualizada correctamente");
                     }
                     else
-                        MessageBox.Show("Problemas al actualizar venta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBOX.SHowDialog(2, "Problemas al actualizar venta");
                 }
             }
             catch (Exception EX)
@@ -3742,47 +3751,47 @@ namespace Refracciones
             else
                 gasto = 0;
 
-            using (SqlConnection nuevaConexion = Conexion.conexion())
+            try {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    //Obteniendo la clave del vendedor
+                    //Obtener del combobox
+
+                    //cve_guia & cve_producto:  obtener del DGV
+
+                    nuevaConexion.Open();
+                    //Insertando los datos en la tabla PEDIDO
+                    Comando = new SqlCommand("INSERT INTO PEDIDO " + "(cve_venta, cve_pieza, cantidad, cve_origen, cve_proveedor, cve_portal, cve_guia, cve_producto, fecha_costo, costo_envio, costo_neto, precio_venta, precio_reparacion, gasto) " +
+                        "VALUES (@cve_venta, @cve_pieza, @cantidad, @cve_origen, @cve_proveedor, @cve_portal, @cve_guia, @cve_producto, @fecha_costo, @costo_envio, @costo_neto, @precio_venta, @precio_reparacion, @gasto) ", nuevaConexion);//, costo_comprasinIVA    , @costo_comprasinIVA
+                                                                                                                                                                                                                                              //Añadiendo los parámetros al query
+                    Comando.Parameters.AddWithValue("@cve_venta", cve_venta);
+                    Comando.Parameters.AddWithValue("@cve_pieza", cve_pieza);
+                    Comando.Parameters.AddWithValue("@cantidad", cantidad);
+                    Comando.Parameters.AddWithValue("@cve_origen", cve_origen);
+                    Comando.Parameters.AddWithValue("@cve_proveedor", cve_proveedor);
+                    Comando.Parameters.AddWithValue("@cve_portal", cve_portal);
+                    Comando.Parameters.AddWithValue("@cve_guia", numeroGuia);
+                    Comando.Parameters.AddWithValue("@cve_producto", claveProducto);
+                    Comando.Parameters.AddWithValue("@fecha_costo", fechaCosto);
+                    //Comando.Parameters.AddWithValue("@costo_comprasinIVA", Convert.ToDecimal(costoSinIVA));
+                    Comando.Parameters.AddWithValue("@costo_envio", cve_costoEnvio);//cambiar nombre de columna
+                    Comando.Parameters.AddWithValue("@costo_neto", Convert.ToDecimal(costoNeto));
+                    Comando.Parameters.AddWithValue("@precio_venta", Convert.ToDecimal(precioVenta));
+                    Comando.Parameters.AddWithValue("@precio_reparacion", Convert.ToDecimal(precioReparacion));
+                    Comando.Parameters.AddWithValue("@gasto", gasto);
+
+                    //Para saber si la inserción se hizo correctamente
+                    i = Comando.ExecuteNonQuery();
+                    nuevaConexion.Close();
+                    if (i == 1)
+                        MessageBOX.SHowDialog(1, "Se registró pedido correctamente");
+                    else
+                        MessageBOX.SHowDialog(2, "Problemas al registar pedido");
+                }
+            } catch (Exception EX)
             {
-                //Obteniendo la clave del vendedor
-                //Obtener del combobox
-
-                //cve_guia & cve_producto:  obtener del DGV
-
-                nuevaConexion.Open();
-                //Insertando los datos en la tabla PEDIDO
-                Comando = new SqlCommand("INSERT INTO PEDIDO " + "(cve_venta, cve_pieza, cantidad, cve_origen, cve_proveedor, cve_portal, cve_guia, cve_producto, fecha_costo, costo_envio, costo_neto, precio_venta, precio_reparacion, gasto) " +
-                    "VALUES (@cve_venta, @cve_pieza, @cantidad, @cve_origen, @cve_proveedor, @cve_portal, @cve_guia, @cve_producto, @fecha_costo, @costo_envio, @costo_neto, @precio_venta, @precio_reparacion, @gasto) ", nuevaConexion);//, costo_comprasinIVA    , @costo_comprasinIVA
-                //Añadiendo los parámetros al query
-                Comando.Parameters.AddWithValue("@cve_venta", cve_venta);
-                Comando.Parameters.AddWithValue("@cve_pieza", cve_pieza);
-                Comando.Parameters.AddWithValue("@cantidad", cantidad);
-                Comando.Parameters.AddWithValue("@cve_origen", cve_origen);
-                Comando.Parameters.AddWithValue("@cve_proveedor", cve_proveedor);
-                Comando.Parameters.AddWithValue("@cve_portal", cve_portal);
-                Comando.Parameters.AddWithValue("@cve_guia", numeroGuia);
-                Comando.Parameters.AddWithValue("@cve_producto", claveProducto);
-                Comando.Parameters.AddWithValue("@fecha_costo", fechaCosto);
-                //Comando.Parameters.AddWithValue("@costo_comprasinIVA", Convert.ToDecimal(costoSinIVA));
-                Comando.Parameters.AddWithValue("@costo_envio", cve_costoEnvio);//cambiar nombre de columna
-                Comando.Parameters.AddWithValue("@costo_neto", Convert.ToDecimal(costoNeto));
-                Comando.Parameters.AddWithValue("@precio_venta", Convert.ToDecimal(precioVenta));
-                Comando.Parameters.AddWithValue("@precio_reparacion", Convert.ToDecimal(precioReparacion));
-                Comando.Parameters.AddWithValue("@gasto", gasto);
-
-                //Para saber si la inserción se hizo correctamente
-                i = Comando.ExecuteNonQuery();
-                nuevaConexion.Close();
-                if (i == 1)
-                    MessageBOX.SHowDialog(1, "Se registró pedido correctamente");
-                else
-                    MessageBOX.SHowDialog(2, "Problemas al registar pedido");
-            }
-            /*}
-            catch (Exception EX)
-            {
-                MessageBox.Show("Error: " + EX.Message);
-            }*/
+                MessageBox.Show("Error registrar pedido: " + EX.Message);
+            } 
             return i;
         }
 
@@ -3807,7 +3816,7 @@ namespace Refracciones
                 gasto = 500;
             else
                 gasto = 0;
-
+            try { 
             using (SqlConnection nuevaConexion = Conexion.conexion())
             {
                 //Obteniendo la clave del vendedor
@@ -3841,15 +3850,15 @@ namespace Refracciones
                 i = Comando.ExecuteNonQuery();
                 nuevaConexion.Close();
                 if (i == 1)
-                    MessageBox.Show("Se actualizó pedido correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBOX.SHowDialog(1, "Se actualizó pedido correctamente");
                 else
-                    MessageBox.Show("Problemas al actualizar pedido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBOX.SHowDialog(2, "Problemas al actualizar pedido");
             }
-            /*}
+           }
             catch (Exception EX)
             {
-                MessageBox.Show("Error: " + EX.Message);
-            }*/
+                MessageBox.Show("Error actualizar pedido: " + EX.Message);
+            }
             return i;
         }
 

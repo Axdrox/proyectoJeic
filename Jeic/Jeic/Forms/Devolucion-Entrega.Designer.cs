@@ -145,6 +145,7 @@
             this.chkMotivo.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.chkMotivo.Checked = false;
             this.chkMotivo.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(205)))), ((int)(((byte)(117)))));
+            this.chkMotivo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.chkMotivo.ForeColor = System.Drawing.Color.White;
             this.chkMotivo.Location = new System.Drawing.Point(145, 243);
             this.chkMotivo.Name = "chkMotivo";
@@ -200,6 +201,7 @@
             // btnCancelar
             // 
             this.btnCancelar.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancelar.Enabled = false;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCancelar.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -215,6 +217,7 @@
             // btnAceptar
             // 
             this.btnAceptar.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnAceptar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAceptar.Enabled = false;
             this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAceptar.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -231,6 +234,7 @@
             // 
             this.rbtnDevolucion.AutoSize = true;
             this.rbtnDevolucion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.rbtnDevolucion.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rbtnDevolucion.Enabled = false;
             this.rbtnDevolucion.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbtnDevolucion.ForeColor = System.Drawing.Color.White;
@@ -247,6 +251,7 @@
             this.rbtnEntrega.AutoSize = true;
             this.rbtnEntrega.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
             this.rbtnEntrega.Checked = true;
+            this.rbtnEntrega.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rbtnEntrega.Enabled = false;
             this.rbtnEntrega.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbtnEntrega.ForeColor = System.Drawing.Color.White;
@@ -261,6 +266,7 @@
             // 
             // cmbCantidad
             // 
+            this.cmbCantidad.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cmbCantidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCantidad.Enabled = false;
             this.cmbCantidad.FormattingEnabled = true;
@@ -283,6 +289,7 @@
             // 
             // dtpFecha
             // 
+            this.dtpFecha.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dtpFecha.Enabled = false;
             this.dtpFecha.Location = new System.Drawing.Point(15, 115);
             this.dtpFecha.Name = "dtpFecha";
@@ -466,11 +473,12 @@
             // 
             // pbMinimize
             // 
+            this.pbMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbMinimize.Image = global::Refracciones.Properties.Resources.Minimize_Window_2_48px;
-            this.pbMinimize.Location = new System.Drawing.Point(973, 2);
+            this.pbMinimize.Location = new System.Drawing.Point(970, 2);
             this.pbMinimize.Margin = new System.Windows.Forms.Padding(2);
             this.pbMinimize.Name = "pbMinimize";
-            this.pbMinimize.Size = new System.Drawing.Size(15, 16);
+            this.pbMinimize.Size = new System.Drawing.Size(17, 17);
             this.pbMinimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbMinimize.TabIndex = 73;
             this.pbMinimize.TabStop = false;
@@ -478,11 +486,12 @@
             // 
             // pbClose
             // 
+            this.pbClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbClose.Image = global::Refracciones.Properties.Resources.Close_Window__2_48px;
-            this.pbClose.Location = new System.Drawing.Point(992, 2);
+            this.pbClose.Location = new System.Drawing.Point(990, 2);
             this.pbClose.Margin = new System.Windows.Forms.Padding(2);
             this.pbClose.Name = "pbClose";
-            this.pbClose.Size = new System.Drawing.Size(15, 16);
+            this.pbClose.Size = new System.Drawing.Size(17, 17);
             this.pbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbClose.TabIndex = 72;
             this.pbClose.TabStop = false;

@@ -140,6 +140,7 @@
             // btnBuscarXml
             // 
             this.btnBuscarXml.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnBuscarXml.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBuscarXml.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnBuscarXml.ForeColor = System.Drawing.Color.White;
             this.btnBuscarXml.Location = new System.Drawing.Point(251, 322);
@@ -200,6 +201,7 @@
             // 
             // dtpFechaPago
             // 
+            this.dtpFechaPago.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dtpFechaPago.Enabled = false;
             this.dtpFechaPago.Location = new System.Drawing.Point(355, 163);
             this.dtpFechaPago.Name = "dtpFechaPago";
@@ -208,6 +210,7 @@
             // 
             // dtpFechaRevision
             // 
+            this.dtpFechaRevision.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dtpFechaRevision.Location = new System.Drawing.Point(355, 126);
             this.dtpFechaRevision.Name = "dtpFechaRevision";
             this.dtpFechaRevision.Size = new System.Drawing.Size(200, 20);
@@ -227,6 +230,7 @@
             // 
             // dtpFechaIngreso
             // 
+            this.dtpFechaIngreso.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dtpFechaIngreso.Location = new System.Drawing.Point(355, 85);
             this.dtpFechaIngreso.Name = "dtpFechaIngreso";
             this.dtpFechaIngreso.Size = new System.Drawing.Size(200, 20);
@@ -286,6 +290,7 @@
             // btnGuardar
             // 
             this.btnGuardar.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnGuardar.Enabled = false;
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnGuardar.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -301,6 +306,7 @@
             // btnBuscarFact
             // 
             this.btnBuscarFact.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnBuscarFact.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBuscarFact.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnBuscarFact.ForeColor = System.Drawing.Color.White;
             this.btnBuscarFact.Location = new System.Drawing.Point(251, 283);
@@ -422,6 +428,7 @@
             // 
             // dtpFechaRefacturacion
             // 
+            this.dtpFechaRefacturacion.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dtpFechaRefacturacion.Location = new System.Drawing.Point(355, 52);
             this.dtpFechaRefacturacion.Name = "dtpFechaRefacturacion";
             this.dtpFechaRefacturacion.Size = new System.Drawing.Size(200, 20);
@@ -577,11 +584,12 @@
             // 
             // pbMinimize
             // 
+            this.pbMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbMinimize.Image = global::Refracciones.Properties.Resources.Minimize_Window_2_48px;
-            this.pbMinimize.Location = new System.Drawing.Point(556, 2);
+            this.pbMinimize.Location = new System.Drawing.Point(551, 2);
             this.pbMinimize.Margin = new System.Windows.Forms.Padding(2);
             this.pbMinimize.Name = "pbMinimize";
-            this.pbMinimize.Size = new System.Drawing.Size(15, 16);
+            this.pbMinimize.Size = new System.Drawing.Size(17, 17);
             this.pbMinimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbMinimize.TabIndex = 69;
             this.pbMinimize.TabStop = false;
@@ -589,11 +597,12 @@
             // 
             // pbClose
             // 
+            this.pbClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbClose.Image = global::Refracciones.Properties.Resources.Close_Window__2_48px;
-            this.pbClose.Location = new System.Drawing.Point(575, 2);
+            this.pbClose.Location = new System.Drawing.Point(572, 2);
             this.pbClose.Margin = new System.Windows.Forms.Padding(2);
             this.pbClose.Name = "pbClose";
-            this.pbClose.Size = new System.Drawing.Size(15, 16);
+            this.pbClose.Size = new System.Drawing.Size(17, 17);
             this.pbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbClose.TabIndex = 68;
             this.pbClose.TabStop = false;

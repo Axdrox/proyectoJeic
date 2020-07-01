@@ -164,6 +164,7 @@ namespace Refracciones.Forms
                 txtVendedor.Text = operacion.Vendedor(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
 
                 chbModificarVendedor.Text = "Modificar";
+                chbModificarVendedor.Enabled = true;
 
                 chbOtraAseguradora.Enabled = true;
                 chbOtraAseguradora.Text = "Modificar";
