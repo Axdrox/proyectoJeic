@@ -145,14 +145,14 @@ namespace Refracciones.Forms
                 catch (Exception ex)
                 { MessageBox.Show("Ya tienes abierto el archivo"); }
             }
-            else { MessageBox.Show("No hay una factura registrada para este pedido"); }
+            else { MessageBOX.SHowDialog(2, "No se encontro un PDF"); }
             if (factura.Buscar_factura_xml(cve_factura) != null)
             {
                 File.WriteAllBytes(fullFilePath2, factura.Buscar_factura_xml(cve_factura));
                 Process.Start(fullFilePath2);
             }
             else
-            { MessageBox.Show("No hay un XML registrada para este pedido"); }
+            {  }
         }
 
         private void btnAgregarPedido_Click(object sender, EventArgs e)

@@ -332,7 +332,6 @@ C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\D
 C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Eleccion.resources
 C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Busqueda.resources
 C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.BusquedaEntrega_Devolucion.resources
-C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.BusquedaPedidos.resources
 C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Devolucion.resources
 C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.exportarExcel.resources
 C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.InicioSesion.resources
