@@ -570,11 +570,13 @@ namespace Refracciones.Forms
             {
                 e.Handled = true;
             }*/
-            cbVendedor.Enabled = true;
+
 
             //CAMBIAR PARA VALIDACION
+           /* cbVendedor.Enabled = true;
             cbAseguradora.Enabled = true;
             chbOtraAseguradora.Enabled = true;
+            chbModificarVendedor.Enabled = true;
             cbValuador.Enabled = true;
             chbOtroValuador.Enabled = true;
             cbTaller.Enabled = true;
@@ -584,7 +586,7 @@ namespace Refracciones.Forms
             dtpFechaAsignacion.Enabled = true;
             dtpFechaPromesa.Enabled = true;
             dtpFechaBaja.Enabled = true;
-            btnFinalizarPedido.Enabled = true;
+            btnFinalizarPedido.Enabled = true;*/
         }
 
         private void dtpFechaPromesa_ValueChanged(object sender, EventArgs e)
@@ -822,7 +824,7 @@ namespace Refracciones.Forms
             }
             catch (Exception EX)
             {
-                MessageBox.Show("Error: " + EX.Message);
+                MessageBox.Show("Error en el evento btnFinalizarPedido_Click: " + EX.Message);
             }
         }
 
@@ -1327,33 +1329,69 @@ namespace Refracciones.Forms
 
         private void txtClavePedido_Validating(object sender, CancelEventArgs e)
         {
-         /*   if (!string.IsNullOrEmpty(operacion.existeClavePedido(txtClavePedido.Text.Trim().ToUpper())))
+            if (txtClavePedido.Text == "" || txtClavePedido.Text == "Escriba clave del pedido")
             {
-                e.Cancel = true;
-                errorProvider1.SetError(txtClavePedido, "Ya existe un pedido con la misma clave");
-                panelSiniestro.Visible = false;
-            }
-            else if (txtClavePedido.Text.Trim() == "Escriba clave del pedido")
-            {
-                e.Cancel = true;
                 errorProvider1.SetError(txtClavePedido, "Favor de llenar este campo");
-                panelSiniestro.Visible = false;
+                e.Cancel = true;
             }
             else
             {
-                e.Cancel = false;
-                errorProvider1.SetError(txtClavePedido, null);
-                panelSiniestro.Visible = true;
-            }*/
+
+                if (!string.IsNullOrEmpty(operacion.existeClavePedido(txtClavePedido.Text.Trim().ToUpper())))
+                {
+                    errorProvider1.SetError(txtClavePedido, "Ya existe un pedido con la misma clave");
+                    e.Cancel = true;
+                }
+                else
+                {
+                    errorProvider1.SetError(txtClavePedido, null);
+                    e.Cancel = false;
+
+                    cbVendedor.Enabled = true;
+                    cbAseguradora.Enabled = true;
+                    chbOtraAseguradora.Enabled = true;
+                    chbModificarVendedor.Enabled = true;
+                    cbValuador.Enabled = true;
+                    chbOtroValuador.Enabled = true;
+                    cbTaller.Enabled = true;
+                    chbOtroTaller.Enabled = true;
+                    cbDestino.Enabled = true;
+                    chbOtroDestino.Enabled = true;
+                    dtpFechaAsignacion.Enabled = true;
+                    dtpFechaPromesa.Enabled = true;
+                    dtpFechaBaja.Enabled = true;
+                    btnFinalizarPedido.Enabled = true;
+                }
+
+                /*
+                if (!string.IsNullOrEmpty(operacion.existeClavePedido(txtClavePedido.Text.Trim().ToUpper())))
+                {
+                    e.Cancel = true;
+                    errorProvider1.SetError(txtClavePedido, "Ya existe un pedido con la misma clave");
+                    panelSiniestro.Visible = false;
+                }
+                else if (txtClavePedido.Text.Trim() == "Escriba clave del pedido")
+                {
+                    e.Cancel = true;
+                    errorProvider1.SetError(txtClavePedido, "Favor de llenar este campo");
+                    panelSiniestro.Visible = false;
+                }
+                else
+                {
+                    e.Cancel = false;
+                    errorProvider1.SetError(txtClavePedido, null);
+                    panelSiniestro.Visible = true;
+                }*/
+            }
         }
 
         private void txtClavePedido_Enter(object sender, EventArgs e)
         {
-            /*if (txtClavePedido.Text == "Escriba clave del pedido")
+            if (txtClavePedido.Text == "Escriba clave del pedido")
             {
                 txtClavePedido.Text = "";
                 txtClavePedido.ForeColor = Color.White;
-            }*/
+            }
         }
 
         private void dgvPedido_CellValueChanged(object sender, DataGridViewCellEventArgs e)
@@ -1616,35 +1654,45 @@ namespace Refracciones.Forms
                 MessageBOX.SHowDialog(2, "No es posible penalizar el pedido si aún no se ha hecho el registro de piezas correspondiente al pedido actual");
         }
 
-        private void dgvPedido_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
-        }
-
-        private void txtClavePedido_TextChanged(object sender, EventArgs e)
+      /*  private void txtClavePedido_TextChanged(object sender, EventArgs e)
         {
-            if (txtClavePedido.Text != "" || txtClavePedido.Text != "Escriba clave del pedido")
+            if (txtClavePedido.Text == "" || txtClavePedido.Text == "Escriba clave del pedido")
             {
+                errorProvider1.SetError(txtClavePedido, "Favor de llenar este campo");
+                panelSiniestro.Visible = false;
+            }
+            else {
+
                 if (!string.IsNullOrEmpty(operacion.existeClavePedido(txtClavePedido.Text.Trim().ToUpper())))
                 {
                     errorProvider1.SetError(txtClavePedido, "Ya existe un pedido con la misma clave");
-                    panelSiniestro.Visible = false;
-                }
-                else if (txtClavePedido.Text.Trim() == "Escriba clave del pedido")
-                {
-                    errorProvider1.SetError(txtClavePedido, "Favor de llenar este campo");
                     panelSiniestro.Visible = false;
                 }
                 else
                 {
                     errorProvider1.SetError(txtClavePedido, null);
                     panelSiniestro.Visible = true;
+
+                    cbVendedor.Enabled = true;
+                    cbAseguradora.Enabled = true;
+                    chbOtraAseguradora.Enabled = true;
+                    chbModificarVendedor.Enabled = true;
+                    cbValuador.Enabled = true;
+                    chbOtroValuador.Enabled = true;
+                    cbTaller.Enabled = true;
+                    chbOtroTaller.Enabled = true;
+                    cbDestino.Enabled = true;
+                    chbOtroDestino.Enabled = true;
+                    dtpFechaAsignacion.Enabled = true;
+                    dtpFechaPromesa.Enabled = true;
+                    dtpFechaBaja.Enabled = true;
+                    btnFinalizarPedido.Enabled = true;
                 }
+
             }
-            else {
-                panelSiniestro.Visible = false;
-            }
-        }
+
+        }*/
 
 
 

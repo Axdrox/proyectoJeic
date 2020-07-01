@@ -2019,7 +2019,7 @@ namespace Refracciones
             }
             catch (Exception EX)
             {
-                MessageBox.Show("Error: " + EX.Message);
+                MessageBox.Show("Error registrarvendedor: " + EX.Message);
             }
             return i;
         }
@@ -2177,7 +2177,7 @@ namespace Refracciones
             }
             catch (Exception EX)
             {
-                MessageBox.Show("Error: " + EX.Message);
+                MessageBox.Show("Error registrarvaluador: " + EX.Message);
             }
             return i;
         }
@@ -2262,7 +2262,7 @@ namespace Refracciones
             }
             catch (Exception EX)
             {
-                MessageBox.Show("Error: " + EX.Message);
+                MessageBox.Show("Error registrarr¿taleer: " + EX.Message);
             }
             return i;
         }
@@ -2337,7 +2337,7 @@ namespace Refracciones
             }
             catch (Exception EX)
             {
-                MessageBox.Show("Error: " + EX.Message);
+                MessageBox.Show("Error registrardestino: " + EX.Message);
             }
             return i;
         }
@@ -3020,7 +3020,7 @@ namespace Refracciones
             }
             catch (Exception EX)
             {
-                MessageBox.Show("Error: " + EX.Message);
+                MessageBox.Show("Error vehiculo: " + EX.Message);
             }
         }
 
@@ -3072,7 +3072,7 @@ namespace Refracciones
             }
             catch (Exception EX)
             {
-                MessageBox.Show("Error: " + EX.Message);
+                MessageBox.Show("Error marca: " + EX.Message);
             }
         }
 
@@ -3173,7 +3173,7 @@ namespace Refracciones
             }
             catch (Exception EX)
             {
-                MessageBox.Show("Error: " + EX.Message);
+                MessageBox.Show("Error sinisestro: " + EX.Message);
             }
             return i;
         }
@@ -3228,7 +3228,7 @@ namespace Refracciones
             }
             catch (Exception EX)
             {
-                MessageBox.Show("Error: " + EX.Message);
+                MessageBox.Show("Error actualizarsin: " + EX.Message);
             }
             return i;
         }
@@ -3579,7 +3579,7 @@ namespace Refracciones
             }
             catch (Exception EX)
             {
-                MessageBox.Show("Error: " + EX.Message);
+                MessageBox.Show("Error venta: " + EX.Message);
             }
             return i;
         }
@@ -3629,7 +3629,7 @@ namespace Refracciones
             }
             catch (Exception EX)
             {
-                MessageBox.Show("Error: " + EX.Message);
+                MessageBox.Show("Error actualizarventa: " + EX.Message);
             }
         }
 
