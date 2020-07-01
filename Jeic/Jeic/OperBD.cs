@@ -69,11 +69,11 @@ namespace Refracciones
                         Lector.Close();
                         this.Comando = new SqlCommand(string.Format("INSERT INTO USUARIOS (usuario,contrasenia,rol) VALUES ('{0}',dbo.fnColocaClave('{1}'),{2});", us,pass,x), nuevacon);
                         this.Comando.ExecuteNonQuery();
-                        MessageBox.Show("Se registro correctamente");
+                        MessageBOX.SHowDialog(1, "Se registro correctamente!");
                     }
                     else
                     {
-                        MessageBox.Show("Ya existe ese nombre de usuario");
+                        MessageBOX.SHowDialog(2, "Ya existe ese nombre de usuario");
                     }
                     nuevacon.Close();
                 }
@@ -104,8 +104,7 @@ namespace Refracciones
                     this.Comando.Parameters.AddWithValue("@usuario",us);
                     this.Comando.Parameters.AddWithValue("@estado", estado);
                     this.Comando.ExecuteNonQuery();
-                    MessageBox.Show("Se actualizaron los datos correctamente");
-             
+                    MessageBOX.SHowDialog(3,"Se actualizaron los datos correctamente");
                     nuevacon.Close();
                 }
                 
@@ -1303,7 +1302,7 @@ namespace Refracciones
                     Comando.Parameters.AddWithValue("@nombre", nombre);
                     Comando.ExecuteNonQuery();
                     nuevaConexion.Close();
-                    MessageBox.Show("Se actualizaron los datos correctamente");
+                    MessageBOX.SHowDialog(3, "Se actualizaron los datos correctamente");
                 }
             }
             catch (Exception EX)
@@ -1312,7 +1311,7 @@ namespace Refracciones
             }
         }
             //---------------- ACTUALIZAR DATOS DE PROVEEDOR
-            public void ActualizarDatosTaller(string nombre, int estado/*string direccion*/)
+            public void ActualizarDatosTaller(string nombre, int estado,string direccion)
             {
 
                 try
@@ -1320,13 +1319,14 @@ namespace Refracciones
                     using (SqlConnection nuevaConexion = Conexion.conexion())
                     {
                         nuevaConexion.Open();
-                        Comando = new SqlCommand("UPDATE TALLER SET  estado = @estado WHERE nombre = @nombre", nuevaConexion);
+                        Comando = new SqlCommand("UPDATE TALLER SET  estado = @estado, direccion =@direccion WHERE nombre = @nombre", nuevaConexion);
                         Comando.Parameters.AddWithValue("@estado", estado);
                         Comando.Parameters.AddWithValue("@nombre", nombre);
-                        Comando.ExecuteNonQuery();
+                    Comando.Parameters.AddWithValue("@direccion", direccion);
+                    Comando.ExecuteNonQuery();
                         nuevaConexion.Close();
-                        MessageBox.Show("Se actualizaron los datos correctamente");
-                    }
+                    MessageBOX.SHowDialog(3, "Se actualizaron los datos correctamente");
+                }
                 }
                 catch (Exception EX)
                 {
@@ -1374,7 +1374,7 @@ namespace Refracciones
                     Comando.Parameters.AddWithValue("@estado", estado);
                     Comando.ExecuteNonQuery();
                     nuevaConexion.Close();
-                    MessageBox.Show("Se actualizaron los datos correctamente");
+                    MessageBOX.SHowDialog(3, "Se actualizaron los datos correctamente");
                 }
             }
             catch (Exception EX)
@@ -1397,8 +1397,8 @@ namespace Refracciones
                         Comando.Parameters.AddWithValue("@estado", estado);
                         Comando.ExecuteNonQuery();
                         nuevaConexion.Close();
-                        MessageBox.Show("Se actualizaron los datos correctamente");
-                    }
+                    MessageBOX.SHowDialog(3, "Se actualizaron los datos correctamente");
+                }
                 }
                 catch (Exception EX)
                 {
@@ -1470,7 +1470,7 @@ namespace Refracciones
                     Comando.Parameters.AddWithValue("@cve_vendedor", clave);
                     Comando.Parameters.AddWithValue("@estado",estado);
                     Comando.ExecuteNonQuery();
-                    MessageBox.Show("Se actualizaron los datos correctamente");
+                    MessageBOX.SHowDialog(3, "Se actualizaron los datos correctamente");
                     nuevaConexion.Close();
 
                 }
@@ -1521,7 +1521,7 @@ namespace Refracciones
                     Comando.Parameters.AddWithValue("@nombre", nombre);
                     Comando.Parameters.AddWithValue("@estado", estado);
                     Comando.ExecuteNonQuery();
-                    MessageBox.Show("Se actualizaron los datos correctamente");
+                    MessageBOX.SHowDialog(3, "Se actualizaron los datos correctamente");
                     nuevaConexion.Close();
 
                 }
@@ -1602,7 +1602,7 @@ namespace Refracciones
                     Comando.Parameters.AddWithValue("@cliente", cliente);
                     Comando.Parameters.AddWithValue("@estado", estado);
                     Comando.ExecuteNonQuery();
-                    MessageBox.Show("Se actualizaron los datos correctamente");
+                    MessageBOX.SHowDialog(3, "Se actualizaron los datos correctamente");
                     nuevaConexion.Close();
 
                 }
@@ -2011,9 +2011,9 @@ namespace Refracciones
                     i = Comando.ExecuteNonQuery();
                     nuevaConexion.Close();
                     if (i == 1)
-                        MessageBox.Show("Se registró nuevo vendedor correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBOX.SHowDialog(1, "Se registró nuevo vendedor correctamente");
                     else
-                        MessageBox.Show("Problemas al registar nuevo vendedor", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBOX.SHowDialog(2, "Problemas al registar nuevo vendedor");
                     nuevaConexion.Close();
                 }
             }
@@ -2081,9 +2081,9 @@ namespace Refracciones
                 i = Comando.ExecuteNonQuery();
                 nuevaConexion.Close();
                 if (i == 1)
-                    MessageBox.Show("Se registró nuevo cliente correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBOX.SHowDialog(1, "Se registró nuevo cliente correctamente");
                 else
-                    MessageBox.Show("Problemas al registar nuevo cliente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBOX.SHowDialog(2, "Problemas al registar nuevo cliente");
                 nuevaConexion.Close();
             }
             /*}
@@ -2168,10 +2168,10 @@ namespace Refracciones
                     //Para saber si la inserción se hizo correctamente
                     i = Comando.ExecuteNonQuery();
                     nuevaConexion.Close();
-                    if (i == 1)
-                        MessageBox.Show("Se registró nuevo valuador correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (i == 1) { }
+                    //MessageBOX.SHowDialog(1, "Se registró nuevo valuador correctamente");
                     else
-                        MessageBox.Show("Problemas al registar nuevo valuador", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBOX.SHowDialog(2, "Problemas al registar nuevo valuador");
                     nuevaConexion.Close();
                 }
             }
@@ -2254,9 +2254,9 @@ namespace Refracciones
                     i = Comando.ExecuteNonQuery();
                     nuevaConexion.Close();
                     if (i == 1)
-                        MessageBox.Show("Se registró nuevo taller correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBOX.SHowDialog(1, "Se registró nuevo taller correctamente");
                     else
-                        MessageBox.Show("Problemas al registar nuevo taller", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBOX.SHowDialog(2, "Problemas al registar nuevo taller");
                     nuevaConexion.Close();
                 }
             }
@@ -2413,7 +2413,7 @@ namespace Refracciones
                     i = Comando.ExecuteNonQuery();
                     nuevaConexion.Close();
                     if (i == 1)
-                        MessageBOX.SHowDialog(3, "Se registró nueva pieza correctamente");
+                        MessageBOX.SHowDialog(1, "Se registró nueva pieza correctamente");
                     else
                         MessageBOX.SHowDialog(2, "Problemas al registar nueva pieza");
                     nuevaConexion.Close();
@@ -2496,9 +2496,9 @@ namespace Refracciones
                     i = Comando.ExecuteNonQuery();
                     nuevaConexion.Close();
                     if (i == 1)
-                        MessageBox.Show("Se registró nuevo portal correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBOX.SHowDialog(1, "Se registró nuevo portal correctamente");
                     else
-                        MessageBox.Show("Problemas al registar nueva portal", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBOX.SHowDialog(2, "Problemas al registar nueva portal");
                     nuevaConexion.Close();
                 }
             }
@@ -2655,9 +2655,9 @@ namespace Refracciones
                     i = Comando.ExecuteNonQuery();
                     nuevaConexion.Close();
                     if (i == 1)
-                        MessageBox.Show("Se registró nuevo proveedor correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBOX.SHowDialog(1, "Se registró nuevo proveedor correctamente");
                     else
-                        MessageBox.Show("Problemas al registar nueva proveedor", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBOX.SHowDialog(1, "Problemas al registar nueva proveedor");
                     nuevaConexion.Close();
                 }
             }
@@ -3012,10 +3012,12 @@ namespace Refracciones
                     //Para saber si la inserción se hizo correctamente
                     i = Comando.ExecuteNonQuery();
                     nuevaConexion.Close();
-                    if (i == 1) { }
-                    //MessageBox.Show("Se registró vehículo correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (i == 1) 
+                    {
+                        MessageBOX.SHowDialog(1, "Se registró vehículo correctamente");
+                    }
                     else
-                        MessageBox.Show("Problemas al registar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBOX.SHowDialog(2, "Problemas al registar");
                 }
             }
             catch (Exception EX)
@@ -3064,10 +3066,12 @@ namespace Refracciones
                     //Para saber si la inserción se hizo correctamente
                     i = Comando.ExecuteNonQuery();
                     nuevaConexion.Close();
-                    if (i == 1) { }
-                    //MessageBox.Show("Se registró vehículo correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (i == 1) 
+                    {
+                        MessageBOX.SHowDialog(1, "Se registró vehículo correctamente");
+                    }
                     else
-                        MessageBOX.SHowDialog(2,"Problemas al registar");
+                    MessageBOX.SHowDialog(2,"Problemas al registar");
                 }
             }
             catch (Exception EX)

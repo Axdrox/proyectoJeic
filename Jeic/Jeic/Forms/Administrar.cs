@@ -500,6 +500,7 @@ namespace Refracciones.Forms
                             {
                                 errorP.Clear();
                                 oper.singUp(txt1.Text.Trim(), txt2.Text.Trim(), cmb1.Text.Trim());
+                                
                                 txt1.Text = ""; txt2.Text = "";
                             }
 
@@ -530,7 +531,7 @@ namespace Refracciones.Forms
                             }
                             else
                             {
-                                MessageBox.Show("Ya existe ese cliente");
+                                MessageBOX.SHowDialog(2, "Ya existe ese cliente");
                             }
                             
                             break;
@@ -548,7 +549,7 @@ namespace Refracciones.Forms
                             }
                             else
                             {
-                                MessageBox.Show("Ya existe ese proveedor");
+                                MessageBOX.SHowDialog(2, "Ya existe ese proveedor");
                             }
                             break;
                         case 3:
@@ -566,11 +567,12 @@ namespace Refracciones.Forms
                             {
                                 errorP.Clear();
                                 oper.registrarTaller(txt1.Text.Trim(),txt2.Text.Trim());
+                                
                                 txt1.Text = ""; txt2.Text = "";
                             }
                             else
                             {
-                                MessageBox.Show("Ya existe ese taller");
+                                MessageBOX.SHowDialog(2, "Ya existe ese taller");
                             }
                             
                             break;
@@ -593,12 +595,12 @@ namespace Refracciones.Forms
                                     oper.registroMarca(txt1.Text.Trim());
                                     oper.registroVehiculo(txt2.Text.Trim(), txt3.Text.Trim(), txt1.Text.Trim());
                                     txt1.Text = ""; txt2.Text = ""; txt3.Text = "";
-                                    MessageBox.Show("Se registro correctamente");
+                                    
                                 }
                                 else
                                 {
                                     txt1.Text = ""; txt2.Text = ""; txt3.Text = "";
-                                    MessageBox.Show("Ya existe ese vehiculo");
+                                    MessageBOX.SHowDialog(2, "Ya existe ese vehiculo");
                                 }
                             }
                             else if (chk1.Checked == false)
@@ -608,18 +610,18 @@ namespace Refracciones.Forms
                                     errorP.Clear();
                                     oper.registroVehiculo(txt2.Text.Trim(), txt3.Text.Trim(), cmb3.Text.Trim());
                                     txt1.Text = ""; txt2.Text = ""; txt3.Text = "";
-                                    MessageBox.Show("Se registro correctamente");
+                                    
                                 }
                                 else
                                 {
                                     txt1.Text = ""; txt2.Text = ""; txt3.Text = "";
-                                    MessageBox.Show("Ya existe ese vehiculo");
+                                    MessageBOX.SHowDialog(2, "Ya existe ese vehículo");
                                 }
 
                             }
                             else
                             {
-                                MessageBox.Show("Ya existe ese vehículo");
+                                MessageBOX.SHowDialog(2, "Ya existe ese vehículo");
                             }
                             break;
                         case 5:
@@ -636,7 +638,7 @@ namespace Refracciones.Forms
                             }
                             else
                             {
-                                MessageBox.Show("Ya existe esa pieza");
+                                MessageBOX.SHowDialog(2, "Ya existe esa pieza");
                             }
                             break;
                         case 6:
@@ -658,7 +660,7 @@ namespace Refracciones.Forms
                             }
                             else
                             {
-                                MessageBox.Show("Ya existe ese vendedor");
+                                MessageBOX.SHowDialog(2, "Ya existe ese vendedor");
                             }
                             break;
                         case 7:
@@ -675,7 +677,7 @@ namespace Refracciones.Forms
                             }
                             else
                             {
-                                MessageBox.Show("Ya existe ese portal");
+                                MessageBOX.SHowDialog(2, "Ya existe ese portal");
                             }
                             break;
 
@@ -742,7 +744,7 @@ namespace Refracciones.Forms
                             else 
                             {
                                 errorP.Clear();
-                                oper.ActualizarDatosTaller(cmb3.Text.Trim(), estado);
+                                oper.ActualizarDatosTaller(cmb3.Text.Trim(), estado,txt2.Text.Trim());
                                 txt2.Text = "";
                             }
                             
