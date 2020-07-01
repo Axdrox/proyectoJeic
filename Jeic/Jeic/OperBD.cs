@@ -2246,7 +2246,7 @@ namespace Refracciones
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     nuevaConexion.Open();
-                    Comando = new SqlCommand("INSERT INTO TALLER " + "(nombre,direccion) " + "VALUES (@nombre,@direccion) ", nuevaConexion);
+                    Comando = new SqlCommand("INSERT INTO TALLER " + "(nombre, direccion) " + "VALUES (@nombre, @direccion) ", nuevaConexion);
                     Comando.Parameters.AddWithValue("@nombre", nombre);
                     Comando.Parameters.AddWithValue("@direccion", direccion);
 
@@ -2262,7 +2262,7 @@ namespace Refracciones
             }
             catch (Exception EX)
             {
-                MessageBox.Show("Error registrarr¿taleer: " + EX.Message);
+                MessageBox.Show("Error registrar taller: " + EX.Message);
             }
             return i;
         }

@@ -252,7 +252,8 @@ namespace Refracciones.Forms
 
         //Parámetros que sirven al momento de actualizar formulario
         private string[] nombrePieza;
-        List<string> nombresPiezas = new List<string>();
+
+        private List<string> nombresPiezas = new List<string>();
 
         private int filasIniciales;
 
@@ -263,135 +264,140 @@ namespace Refracciones.Forms
 
         private void rdbSi_CheckedChanged(object sender, EventArgs e)
         {
-            if (rdbSi.Checked == true)
+            if (ValidateChildren(ValidationConstraints.Enabled))
             {
-                btnLimpiarSiniestro.Visible = false;
-                chbModificarEstado.Location = new Point(330, 186);
-                rdbNo.Checked = false;
-                lblClaveSiniestroPedido.Visible = false;
-                lblClaveSiniestro.Visible = false;
-                lblClaveSiniestro.Text = "";
-                lblAnioPedido.Visible = false;
-                lblAnio.Visible = false;
-                lblVehiculoPedido.Visible = false;
-                lblVehiculo.Visible = false;
-                lblMarcaPedido.Visible = false;
-                lblMarca.Visible = false;
-                lblEstadoSiniestro.Visible = false;
-                cbEstadoSiniestro.Visible = false;
-                chbModificarEstado.Visible = false;
-                lblEstado.Visible = false;
-                lblComentarioSiniestro.Visible = false;
-                txtComentarioSiniestro.Visible = false;
-
-                Siniestro siniestro = new Siniestro();
-                DialogResult respuesta = siniestro.ShowDialog();
-
-                if (respuesta == DialogResult.OK)
+                if (rdbSi.Checked == true)
                 {
-                    rdbNo.Enabled = false;
-                    rdbSi.Enabled = false;
-                    btnLimpiarSiniestro.Visible = true;
-                    nuevoVehiculo = siniestro.otroVehiculo;
-                    nuevoMarca = siniestro.otroMarca;
+                    btnLimpiarSiniestro.Visible = false;
+                    chbModificarEstado.Location = new Point(330, 186);
+                    rdbNo.Checked = false;
+                    lblClaveSiniestroPedido.Visible = false;
+                    lblClaveSiniestro.Visible = false;
+                    lblClaveSiniestro.Text = "";
+                    lblAnioPedido.Visible = false;
+                    lblAnio.Visible = false;
+                    lblVehiculoPedido.Visible = false;
+                    lblVehiculo.Visible = false;
+                    lblMarcaPedido.Visible = false;
+                    lblMarca.Visible = false;
+                    lblEstadoSiniestro.Visible = false;
+                    cbEstadoSiniestro.Visible = false;
+                    chbModificarEstado.Visible = false;
+                    lblEstado.Visible = false;
+                    lblComentarioSiniestro.Visible = false;
+                    txtComentarioSiniestro.Visible = false;
 
-                    lblClaveSiniestroPedido.Show();
-                    lblClaveSiniestro.Show();
-                    lblClaveSiniestro.Text = siniestro.claveSiniestro;
+                    Siniestro siniestro = new Siniestro();
+                    DialogResult respuesta = siniestro.ShowDialog();
 
-                    lblVehiculoPedido.Show();
-                    lblVehiculo.Show();
-                    lblVehiculo.Text = siniestro.vehiculoSiniestro;
+                    if (respuesta == DialogResult.OK)
+                    {
+                        rdbNo.Enabled = false;
+                        rdbSi.Enabled = false;
+                        btnLimpiarSiniestro.Visible = true;
+                        nuevoVehiculo = siniestro.otroVehiculo;
+                        nuevoMarca = siniestro.otroMarca;
 
-                    lblAnioPedido.Show();
-                    lblAnio.Show();
-                    lblAnio.Text = siniestro.anioSiniestro;
+                        lblClaveSiniestroPedido.Show();
+                        lblClaveSiniestro.Show();
+                        lblClaveSiniestro.Text = siniestro.claveSiniestro;
 
-                    lblMarcaPedido.Show();
-                    lblMarca.Show();
-                    lblMarca.Text = siniestro.marcaSiniestro;
+                        lblVehiculoPedido.Show();
+                        lblVehiculo.Show();
+                        lblVehiculo.Text = siniestro.vehiculoSiniestro;
 
-                    lblEstado.Show();
-                    lblEstadoSiniestro.Show();
-                    lblEstadoSiniestro.Text = siniestro.estadoSiniestro;
-                    chbModificarEstado.Show();
+                        lblAnioPedido.Show();
+                        lblAnio.Show();
+                        lblAnio.Text = siniestro.anioSiniestro;
 
-                    lblComentarioSiniestro.Show();
-                    txtComentarioSiniestro.Show();
-                    if (siniestro.comentario == "Agregue un comentario")
-                        txtComentarioSiniestro.Text = "Sin comentario por el momento";
+                        lblMarcaPedido.Show();
+                        lblMarca.Show();
+                        lblMarca.Text = siniestro.marcaSiniestro;
+
+                        lblEstado.Show();
+                        lblEstadoSiniestro.Show();
+                        lblEstadoSiniestro.Text = siniestro.estadoSiniestro;
+                        chbModificarEstado.Show();
+
+                        lblComentarioSiniestro.Show();
+                        txtComentarioSiniestro.Show();
+                        if (siniestro.comentario == "Agregue un comentario")
+                            txtComentarioSiniestro.Text = "Sin comentario por el momento";
+                        else
+                            txtComentarioSiniestro.Text = siniestro.comentario;
+                    }
                     else
-                        txtComentarioSiniestro.Text = siniestro.comentario;
+                        rdbSi.Checked = false;
                 }
-                else
-                    rdbSi.Checked = false;
             }
         }
 
-
         private void rdbNo_CheckedChanged(object sender, EventArgs e)
         {
-            if (rdbNo.Checked == true)
+            if (ValidateChildren(ValidationConstraints.Enabled))
             {
-                btnLimpiarSiniestro.Visible = false;
-                chbModificarEstado.Location = new Point(330, 186);
-                rdbSi.Checked = false;
-                lblClaveSiniestroPedido.Visible = false;
-                lblClaveSiniestro.Visible = false;
-                lblClaveSiniestro.Text = "";
-                lblAnioPedido.Visible = false;
-                lblAnio.Visible = false;
-                lblVehiculoPedido.Visible = false;
-                lblVehiculo.Visible = false;
-                lblMarcaPedido.Visible = false;
-                lblMarca.Visible = false;
-                lblEstadoSiniestro.Visible = false;
-                cbEstadoSiniestro.Visible = false;
-                chbModificarEstado.Visible = false;
-                lblEstado.Visible = false;
-                lblComentarioSiniestro.Visible = false;
-                txtComentarioSiniestro.Visible = false;
-
-                Siniestro siniestro = new Siniestro();
-                siniestro.claveNOSiniestro = "JEIC-" + operacion.TotalSiniestro().ToString();
-                DialogResult respuesta = siniestro.ShowDialog();
-
-                if (respuesta == DialogResult.OK)
+                if (rdbNo.Checked == true)
                 {
-                    btnLimpiarSiniestro.Visible = true;
-                    nuevoVehiculo = siniestro.otroVehiculo;
-                    nuevoMarca = siniestro.otroMarca;
+                    btnLimpiarSiniestro.Visible = false;
+                    chbModificarEstado.Location = new Point(330, 186);
+                    rdbSi.Checked = false;
+                    lblClaveSiniestroPedido.Visible = false;
+                    lblClaveSiniestro.Visible = false;
+                    lblClaveSiniestro.Text = "";
+                    lblAnioPedido.Visible = false;
+                    lblAnio.Visible = false;
+                    lblVehiculoPedido.Visible = false;
+                    lblVehiculo.Visible = false;
+                    lblMarcaPedido.Visible = false;
+                    lblMarca.Visible = false;
+                    lblEstadoSiniestro.Visible = false;
+                    cbEstadoSiniestro.Visible = false;
+                    chbModificarEstado.Visible = false;
+                    lblEstado.Visible = false;
+                    lblComentarioSiniestro.Visible = false;
+                    txtComentarioSiniestro.Visible = false;
 
-                    lblClaveSiniestroPedido.Show();
-                    lblClaveSiniestro.Show();
-                    lblClaveSiniestro.Text = siniestro.claveSiniestro;
+                    Siniestro siniestro = new Siniestro();
+                    siniestro.claveNOSiniestro = "JEIC-" + operacion.TotalSiniestro().ToString();
+                    DialogResult respuesta = siniestro.ShowDialog();
 
-                    lblVehiculoPedido.Show();
-                    lblVehiculo.Show();
-                    lblVehiculo.Text = siniestro.vehiculoSiniestro;
+                    if (respuesta == DialogResult.OK)
+                    {
+                        btnLimpiarSiniestro.Visible = true;
+                        nuevoVehiculo = siniestro.otroVehiculo;
+                        nuevoMarca = siniestro.otroMarca;
 
-                    lblAnioPedido.Show();
-                    lblAnio.Show();
-                    lblAnio.Text = siniestro.anioSiniestro;
+                        lblClaveSiniestroPedido.Show();
+                        lblClaveSiniestro.Show();
+                        lblClaveSiniestro.Text = siniestro.claveSiniestro;
 
-                    lblMarcaPedido.Show();
-                    lblMarca.Show();
-                    lblMarca.Text = siniestro.marcaSiniestro;
+                        lblVehiculoPedido.Show();
+                        lblVehiculo.Show();
+                        lblVehiculo.Text = siniestro.vehiculoSiniestro;
 
-                    lblEstado.Show();
-                    lblEstadoSiniestro.Show();
-                    lblEstadoSiniestro.Text = siniestro.estadoSiniestro;
-                    chbModificarEstado.Show();
+                        lblAnioPedido.Show();
+                        lblAnio.Show();
+                        lblAnio.Text = siniestro.anioSiniestro;
 
-                    lblComentarioSiniestro.Show();
-                    txtComentarioSiniestro.Show();
-                    if (siniestro.comentario == "Agregue un comentario")
-                        txtComentarioSiniestro.Text = "Sin comentario por el momento";
+                        lblMarcaPedido.Show();
+                        lblMarca.Show();
+                        lblMarca.Text = siniestro.marcaSiniestro;
+
+                        lblEstado.Show();
+                        lblEstadoSiniestro.Show();
+                        lblEstadoSiniestro.Text = siniestro.estadoSiniestro;
+                        chbModificarEstado.Show();
+
+                        lblComentarioSiniestro.Show();
+                        txtComentarioSiniestro.Show();
+                        if (siniestro.comentario == "Agregue un comentario")
+                            txtComentarioSiniestro.Text = "Sin comentario por el momento";
+                        else
+                            txtComentarioSiniestro.Text = siniestro.comentario;
+                    }
                     else
-                        txtComentarioSiniestro.Text = siniestro.comentario;
+                        rdbNo.Checked = false;
                 }
-                else
-                    rdbNo.Checked = false;
             }
         }
 
@@ -482,6 +488,8 @@ namespace Refracciones.Forms
                 txtTaller.Visible = false;
                 txtTaller.Text = "Escriba nombre de taller";
                 txtTaller.ForeColor = Color.FromArgb(160, 160, 140);
+                txtDireccion.Text = "Escriba dirección del taller";
+                txtDireccion.ForeColor = Color.FromArgb(160, 160, 140);
                 chbOtroTaller.Text = "Otro";
                 chbOtroTaller.Checked = false;
             }
@@ -490,6 +498,8 @@ namespace Refracciones.Forms
             {
                 txtTaller.Show();
                 cbTaller.Hide();
+                txtDireccion.Show();
+                lblDireccion.Show();
                 //cbTaller.SelectedIndex = -1;
             }
             else if (chbOtroTaller.Text == "Otro" && chbOtroTaller.Checked == false)
@@ -497,6 +507,11 @@ namespace Refracciones.Forms
                 txtTaller.Hide();
                 txtTaller.Text = "Escriba nombre de taller";
                 txtTaller.ForeColor = Color.FromArgb(160, 160, 140);
+                txtDireccion.Hide();
+                txtDireccion.Text = "Escriba dirección del taller";
+                txtDireccion.ForeColor = Color.FromArgb(160, 160, 140);
+                txtDireccion.Hide();
+                lblDireccion.Hide();
                 cbTaller.Show();
             }
         }
@@ -510,7 +525,7 @@ namespace Refracciones.Forms
                 txtDestino.Enabled = true;
                 txtDestino.Clear();
                 txtDestino.Visible = false;
-                txtDestino.Text = "Escriba nombre del valuador";
+                txtDestino.Text = "Escriba el destino";
                 txtDestino.ForeColor = Color.FromArgb(160, 160, 140);
                 chbOtroDestino.Text = "Otro";
                 chbOtroDestino.Checked = false;
@@ -528,6 +543,7 @@ namespace Refracciones.Forms
                 txtDestino.Text = "Escriba el destino";
                 txtDestino.ForeColor = Color.FromArgb(160, 160, 140);
                 cbDestino.Show();
+                lblDireccion.Hide();
             }
             /*
             if (actualizar == 1)
@@ -571,22 +587,21 @@ namespace Refracciones.Forms
                 e.Handled = true;
             }*/
 
-
             //CAMBIAR PARA VALIDACION
-           /* cbVendedor.Enabled = true;
-            cbAseguradora.Enabled = true;
-            chbOtraAseguradora.Enabled = true;
-            chbModificarVendedor.Enabled = true;
-            cbValuador.Enabled = true;
-            chbOtroValuador.Enabled = true;
-            cbTaller.Enabled = true;
-            chbOtroTaller.Enabled = true;
-            cbDestino.Enabled = true;
-            chbOtroDestino.Enabled = true;
-            dtpFechaAsignacion.Enabled = true;
-            dtpFechaPromesa.Enabled = true;
-            dtpFechaBaja.Enabled = true;
-            btnFinalizarPedido.Enabled = true;*/
+            /* cbVendedor.Enabled = true;
+             cbAseguradora.Enabled = true;
+             chbOtraAseguradora.Enabled = true;
+             chbModificarVendedor.Enabled = true;
+             cbValuador.Enabled = true;
+             chbOtroValuador.Enabled = true;
+             cbTaller.Enabled = true;
+             chbOtroTaller.Enabled = true;
+             cbDestino.Enabled = true;
+             chbOtroDestino.Enabled = true;
+             dtpFechaAsignacion.Enabled = true;
+             dtpFechaPromesa.Enabled = true;
+             dtpFechaBaja.Enabled = true;
+             btnFinalizarPedido.Enabled = true;*/
         }
 
         private void dtpFechaPromesa_ValueChanged(object sender, EventArgs e)
@@ -598,7 +613,7 @@ namespace Refracciones.Forms
             {
                 if (resta > 0)
                 {
-                    MessageBOX.SHowDialog(2,"No es posible elegir esta fecha");
+                    MessageBOX.SHowDialog(2, "No es posible elegir esta fecha");
                     dtpFechaPromesa.Text = operacion.fechaPromesa(txtClavePedido.Text, lblClaveSiniestro.Text);
                 }
             }
@@ -648,9 +663,8 @@ namespace Refracciones.Forms
 
             if (chbOtroTaller.Checked == true)
             {
-                string direccion = "";
                 taller = txtTaller.Text.Trim().ToUpper();
-                operacion.registrarTaller(taller, direccion);
+                operacion.registrarTaller(taller, txtDireccion.Text.Trim());
             }
             else
                 taller = cbTaller.Text.Trim();
@@ -744,13 +758,13 @@ namespace Refracciones.Forms
                 {
                     for (int j = filasIniciales; j < dgvPedido.Rows.Count; j++)
                     {
-                       operacion.registrarPedido(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(),
-                            dgvPedido.Rows[j].Cells[3].Value.ToString(), dgvPedido.Rows[j].Cells[7].Value.ToString(),
-                            dgvPedido.Rows[j].Cells[8].Value.ToString(), dgvPedido.Rows[j].Cells[9].Value.ToString(),
-                            Convert.ToDateTime(dgvPedido.Rows[j].Cells[10].Value), dgvPedido.Rows[j].Cells[11].Value.ToString(),
-                            dgvPedido.Rows[j].Cells[12].Value.ToString(), dgvPedido.Rows[j].Cells[13].Value.ToString(),
-                            dgvPedido.Rows[j].Cells[14].Value.ToString(), dgvPedido.Rows[j].Cells[5].Value.ToString(),
-                            dgvPedido.Rows[j].Cells[6].Value.ToString(), Convert.ToInt32(dgvPedido.Rows[j].Cells[4].Value));
+                        operacion.registrarPedido(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(),
+                             dgvPedido.Rows[j].Cells[3].Value.ToString(), dgvPedido.Rows[j].Cells[7].Value.ToString(),
+                             dgvPedido.Rows[j].Cells[8].Value.ToString(), dgvPedido.Rows[j].Cells[9].Value.ToString(),
+                             Convert.ToDateTime(dgvPedido.Rows[j].Cells[10].Value), dgvPedido.Rows[j].Cells[11].Value.ToString(),
+                             dgvPedido.Rows[j].Cells[12].Value.ToString(), dgvPedido.Rows[j].Cells[13].Value.ToString(),
+                             dgvPedido.Rows[j].Cells[14].Value.ToString(), dgvPedido.Rows[j].Cells[5].Value.ToString(),
+                             dgvPedido.Rows[j].Cells[6].Value.ToString(), Convert.ToInt32(dgvPedido.Rows[j].Cells[4].Value));
                     }
                 }
             }
@@ -769,7 +783,7 @@ namespace Refracciones.Forms
                     DateTime dtFechaBaja;
                     DateTime dtFechaAsignacion = dtpFechaAsignacion.Value.Date;
                     DateTime dtFechaPromesa = dtpFechaPromesa.Value.Date;
-                    if (btnFinalizarPedido.Text != "Actualizar pedido")
+                    if (actualizar != 1)
                     {
                         dtFechaBaja = DateTime.Parse("1753/01/01");
                         //operacion.registrarFechasVentas(dtFechaAsignacion, dtFechaPromesa);
@@ -959,7 +973,7 @@ namespace Refracciones.Forms
                                 dgvPedido.Rows.RemoveAt(dgvPedido.CurrentRow.Index);
                         }
                         else
-                            MessageBOX.SHowDialog(2,"No es posible eliminar pieza debido a que existen entregas");
+                            MessageBOX.SHowDialog(2, "No es posible eliminar pieza debido a que existen entregas");
                     }
                     else
                         dgvPedido.Rows.RemoveAt(dgvPedido.CurrentRow.Index);
@@ -1332,14 +1346,17 @@ namespace Refracciones.Forms
             if (txtClavePedido.Text == "" || txtClavePedido.Text == "Escriba clave del pedido")
             {
                 errorProvider1.SetError(txtClavePedido, "Favor de llenar este campo");
+                rdbSi.Checked = false;
+                rdbNo.Checked = false;
                 e.Cancel = true;
             }
             else
             {
-
                 if (!string.IsNullOrEmpty(operacion.existeClavePedido(txtClavePedido.Text.Trim().ToUpper())))
                 {
                     errorProvider1.SetError(txtClavePedido, "Ya existe un pedido con la misma clave");
+                    rdbSi.Checked = false;
+                    rdbNo.Checked = false;
                     e.Cancel = true;
                 }
                 else
@@ -1469,22 +1486,22 @@ namespace Refracciones.Forms
 
         private void txtNumeroEmpleado_Validating(object sender, CancelEventArgs e)
         {
-            if (chbModificarVendedor.Checked == true && string.IsNullOrEmpty(txtNumeroEmpleado.Text.Trim()))
+            if (chbModificarVendedor.Checked == true && chbModificarVendedor.Text != "Modificar")
             {
-                e.Cancel = true;
-                errorProvider1.SetError(txtNumeroEmpleado, "Favor de llenar este campo");
-            }
-            else
-            {
-                OperBD val = new OperBD();
-                if (val.existeClaveVendedor(Int32.Parse(txtNumeroEmpleado.Text)) == "")
+                if (!string.IsNullOrEmpty(operacion.existeClaveVendedor(Convert.ToInt32(txtNumeroEmpleado.Text.Trim()))))
+                {
+                    e.Cancel = true;
+                    errorProvider1.SetError(txtNumeroEmpleado, "Número de empleado ya existente");
+                }
+                else if (string.IsNullOrEmpty(txtNumeroEmpleado.Text.Trim()))
+                {
+                    e.Cancel = true;
+                    errorProvider1.SetError(txtNumeroEmpleado, "Favor de llenar este campo");
+                }
+                else
                 {
                     e.Cancel = false;
                     errorProvider1.SetError(txtNumeroEmpleado, null);
-                }
-                else {
-                    e.Cancel = true;
-                    errorProvider1.SetError(txtNumeroEmpleado, "Ya existe ese numero de empleado");
                 }
             }
         }
@@ -1654,47 +1671,80 @@ namespace Refracciones.Forms
                 MessageBOX.SHowDialog(2, "No es posible penalizar el pedido si aún no se ha hecho el registro de piezas correspondiente al pedido actual");
         }
 
-
-      /*  private void txtClavePedido_TextChanged(object sender, EventArgs e)
+        private void txtDireccion_Enter(object sender, EventArgs e)
         {
-            if (txtClavePedido.Text == "" || txtClavePedido.Text == "Escriba clave del pedido")
+            if (txtDireccion.Text == "Escriba dirección del taller")
             {
-                errorProvider1.SetError(txtClavePedido, "Favor de llenar este campo");
-                panelSiniestro.Visible = false;
+                txtDireccion.Text = "";
+                txtDireccion.ForeColor = Color.White;
             }
-            else {
+        }
 
-                if (!string.IsNullOrEmpty(operacion.existeClavePedido(txtClavePedido.Text.Trim().ToUpper())))
+        private void txtDireccion_Leave(object sender, EventArgs e)
+        {
+            if (txtDireccion.Text == "")
+            {
+                txtDireccion.Text = "Escriba dirección del taller";
+                txtDireccion.ForeColor = Color.FromArgb(160, 160, 140);
+            }
+        }
+
+        private void txtDireccion_Validating(object sender, CancelEventArgs e)
+        {
+            if (chbOtroTaller.Checked == true && chbOtroTaller.Text != "Modificar")
+            {
+                if (string.IsNullOrEmpty(txtDireccion.Text.Trim()))
                 {
-                    errorProvider1.SetError(txtClavePedido, "Ya existe un pedido con la misma clave");
-                    panelSiniestro.Visible = false;
+                    e.Cancel = true;
+                    errorProvider1.SetError(txtDireccion, "Favor de llenar este campo");
+                }
+                else if (txtDireccion.Text.Trim() == "Escriba dirección del taller")
+                {
+                    e.Cancel = true;
+                    errorProvider1.SetError(txtDireccion, "Favor de llenar este campo");
                 }
                 else
                 {
-                    errorProvider1.SetError(txtClavePedido, null);
-                    panelSiniestro.Visible = true;
-
-                    cbVendedor.Enabled = true;
-                    cbAseguradora.Enabled = true;
-                    chbOtraAseguradora.Enabled = true;
-                    chbModificarVendedor.Enabled = true;
-                    cbValuador.Enabled = true;
-                    chbOtroValuador.Enabled = true;
-                    cbTaller.Enabled = true;
-                    chbOtroTaller.Enabled = true;
-                    cbDestino.Enabled = true;
-                    chbOtroDestino.Enabled = true;
-                    dtpFechaAsignacion.Enabled = true;
-                    dtpFechaPromesa.Enabled = true;
-                    dtpFechaBaja.Enabled = true;
-                    btnFinalizarPedido.Enabled = true;
+                    e.Cancel = false;
+                    errorProvider1.SetError(txtDireccion, null);
                 }
-
             }
+        }
 
-        }*/
+        /*  private void txtClavePedido_TextChanged(object sender, EventArgs e)
+          {
+              if (txtClavePedido.Text == "" || txtClavePedido.Text == "Escriba clave del pedido")
+              {
+                  errorProvider1.SetError(txtClavePedido, "Favor de llenar este campo");
+                  panelSiniestro.Visible = false;
+              }
+              else {
+                  if (!string.IsNullOrEmpty(operacion.existeClavePedido(txtClavePedido.Text.Trim().ToUpper())))
+                  {
+                      errorProvider1.SetError(txtClavePedido, "Ya existe un pedido con la misma clave");
+                      panelSiniestro.Visible = false;
+                  }
+                  else
+                  {
+                      errorProvider1.SetError(txtClavePedido, null);
+                      panelSiniestro.Visible = true;
 
-
-
+                      cbVendedor.Enabled = true;
+                      cbAseguradora.Enabled = true;
+                      chbOtraAseguradora.Enabled = true;
+                      chbModificarVendedor.Enabled = true;
+                      cbValuador.Enabled = true;
+                      chbOtroValuador.Enabled = true;
+                      cbTaller.Enabled = true;
+                      chbOtroTaller.Enabled = true;
+                      cbDestino.Enabled = true;
+                      chbOtroDestino.Enabled = true;
+                      dtpFechaAsignacion.Enabled = true;
+                      dtpFechaPromesa.Enabled = true;
+                      dtpFechaBaja.Enabled = true;
+                      btnFinalizarPedido.Enabled = true;
+                  }
+              }
+          }*/
     }
 }
