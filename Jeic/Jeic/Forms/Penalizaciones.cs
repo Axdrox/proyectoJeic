@@ -110,6 +110,11 @@ namespace Refracciones.Forms
             get { return txtMotivo.Text.Trim(); }
         }
 
+        public int cantidadPenalizada
+        {
+            get { return Convert.ToInt32(cbCantidad.Text.Trim()); }
+        }
+
         private void Penalizaciones_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (e.CloseReason == CloseReason.UserClosing)

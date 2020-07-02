@@ -936,6 +936,7 @@ namespace Refracciones.Forms
             }
         }
 
+        public int cantidadPenalizada = 0;
         private void dgvPedido_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             //if click is on new row or header row
@@ -1016,6 +1017,8 @@ namespace Refracciones.Forms
                     {
                         dt = operacion.piezasPedidoActualizar(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
                         dgvPedido.DataSource = dt;
+                        cantidadPenalizada = penalizaciones.cantidadPenalizada;
+                        lblCantidadTotal.Text = (Convert.ToInt32(lblCantidadTotal.Text) - cantidadPenalizada).ToString();
                     }
                 }
             }

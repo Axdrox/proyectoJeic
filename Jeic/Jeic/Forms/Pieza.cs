@@ -49,10 +49,6 @@
             cbProveedores.DataSource = operacion.ProveedoresRegistrados(1).Tables[0].DefaultView;
             cbProveedores.ValueMember = "nombre";
 
-            //Carga los datos de los costos registrados
-            cbCostoEnvio.DataSource = operacion.CostoEnvioRegistrados().Tables[0].DefaultView;
-            cbCostoEnvio.ValueMember = "costo";
-
             if (destinoLocal == "LOCAL" || destinoLocal == "CDMX" || destinoLocal == "Ciudad de México")
             {
                 txtNumeroGuia.Visible = false;
@@ -881,6 +877,44 @@
         {
             //Validar con checkbox
             txtClaveProducto.Text = claveProducto(modelo,cbPiezaNombre.Text,marca,anio);
+        }
+
+        private void cbCostoEnvio_Click(object sender, EventArgs e)
+        {
+            OperBD operacion = new OperBD();
+            //Carga los datos de los costos registrados
+            cbCostoEnvio.DataSource = operacion.CostoEnvioRegistrados().Tables[0].DefaultView;
+            cbCostoEnvio.ValueMember = "costo";
+        }
+
+        private void txtCostoNeto_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtCostoNeto.Text.Trim()))
+            {
+                e.Cancel = true;
+                //txtCantidad.Focus();
+                errorProvider1.SetError(txtCostoNeto, "Favor de ingresar cantidad");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider1.SetError(txtCostoNeto, null);
+            }
+        }
+
+        private void txtPrecioVenta_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtPrecioVenta.Text.Trim()))
+            {
+                e.Cancel = true;
+                //txtCantidad.Focus();
+                errorProvider1.SetError(txtPrecioVenta, "Favor de ingresar cantidad");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider1.SetError(txtPrecioVenta, null);
+            }
         }
     }
 }
