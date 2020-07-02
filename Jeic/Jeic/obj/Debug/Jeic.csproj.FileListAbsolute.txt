@@ -287,6 +287,8 @@ C:\Users\gears\Desktop\Ramas\Jeic\Jeic\obj\Debug\Refracciones.pdb
 C:\Users\gears\Desktop\Ramas\Jeic\Jeic\obj\Debug\Jeic.csprojAssemblyReference.cache
 C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Administrar.resources
 C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Busqueda.resources
+C:\Users\gears\Desktop\Ramas\Jeic\Jeic\obj\Debug\Refracciones.Forms.MessageBOX.resources
+C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.MessageBOX.resources
 C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\Refracciones.exe.config
 C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\Refracciones.exe
 C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\Refracciones.pdb
@@ -325,6 +327,7 @@ C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\bin\D
 C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\Microsoft.IdentityModel.Protocols.xml
 C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\Microsoft.IdentityModel.Tokens.xml
 C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\SpreadsheetLight.xml
+C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csprojAssemblyReference.cache
 C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Administrar.resources
 C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Alertas.resources
 C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.buscarFacturas.resources
@@ -334,6 +337,7 @@ C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\D
 C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Devolucion.resources
 C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.exportarExcel.resources
 C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.InicioSesion.resources
+C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.MessageBOX.resources
 C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Pedido.resources
 C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Penalizaciones.resources
 C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Pieza.resources
@@ -346,7 +350,3 @@ C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\D
 C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.CopyComplete
 C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.exe
 C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.pdb
-C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csprojAssemblyReference.cache
-C:\Users\gears\Desktop\Ramas\Jeic\Jeic\obj\Debug\Refracciones.Forms.MessageBOX.resources
-C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.MessageBOX.resources
-C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.MessageBOX.resources

@@ -116,7 +116,7 @@ namespace Refracciones
             }
         }
         //--------------------INGRESAR FACTURA--------------------
-        public string Registrar_factura(string cve_siniestro, string cve_pedido, string cve_factura, int cve_estado, decimal fact_sinIVA, decimal descuento, decimal fact_neto, string fecha_ingreso, string fecha_revision, string fecha_pago, string nombre_factura, byte[] archivo, string nombre_xml, byte[] archivo_xml, string comentario)
+        public string Registrar_factura(string cve_siniestro, string cve_pedido, string cve_factura, int cve_estado, decimal fact_sinIVA, decimal descuento, decimal fact_neto, DateTime fecha_ingreso, DateTime fecha_revision, DateTime fecha_pago, string nombre_factura, byte[] archivo, string nombre_xml, byte[] archivo_xml, string comentario)
         {
             string mensaje = "Se inserto la factura";
             // try
@@ -627,7 +627,7 @@ namespace Refracciones
         //-----------------------------------------------------------------------------------------------------
 
         //--------------------ACTUALIZAR FACTURA (UPDATE)--------------------
-        public string Actualizar_Factura(string cve_factura, int cve_estado, decimal fact_sinIVA, decimal descuento, decimal fact_neto, string fecha_ingreso, string fecha_revision, string fecha_pago, string nombre_factura, byte[] archivo, string nombre_xml, byte[] archivo_xml, string comentario)
+        public string Actualizar_Factura(string cve_factura, int cve_estado, decimal fact_sinIVA, decimal descuento, decimal fact_neto, DateTime fecha_ingreso, DateTime fecha_revision, DateTime fecha_pago, string nombre_factura, byte[] archivo, string nombre_xml, byte[] archivo_xml, string comentario)
         {
             string mensaje = "Se Actualizo Correctamente";
             using (SqlConnection nuevaConexion = Conexion.conexion())

@@ -65,9 +65,9 @@ namespace Refracciones.Forms
                 decimal fact_sinIVA = decimal.Parse(txtFacturasinIVA.Text, culture);
                 decimal descuento = decimal.Parse(txtDescuento.Text,culture) ;
                 decimal fact_neto = decimal.Parse(txtFacturaconIVA.Text, culture);
-                string fecha_ingreso;
-                string fecha_revision;
-                string fecha_pago;
+                DateTime fecha_ingreso;
+                DateTime fecha_revision;
+                DateTime fecha_pago;
                 string nombre_factura = string.Empty;
                 byte[] file = null;
                 string nombre_xml = string.Empty;
@@ -82,11 +82,12 @@ namespace Refracciones.Forms
                     cve_estado = 3;
 
 
-                fecha_ingreso = dtpFechaIngreso.Value.ToString("dd/MM/yyyy");
-                
-                fecha_revision = dtpFechaRevision.Value.ToString("dd/MM/yyyy");
-
-                fecha_pago = dtpFechaPago.Value.ToString("dd/MM/yyyy");
+                //fecha_ingreso = dtpFechaIngreso.Value.ToString("dd/MM/yyyy");
+                fecha_ingreso = dtpFechaIngreso.Value.Date;
+                //fecha_revision = dtpFechaRevision.Value.ToString("dd/MM/yyyy");
+                fecha_revision = dtpFechaRevision.Value.Date;
+                //fecha_pago = dtpFechaPago.Value.ToString("dd/MM/yyyy");
+                fecha_pago = dtpFechaPago.Value.Date;
                 //obtenemos el arreglo de bytes de factura
                 if (txtRutaFactura.Text == string.Empty && txtRutaXml.Text == string.Empty)
                 { }
