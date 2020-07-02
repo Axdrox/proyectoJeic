@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Refracciones.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,7 +25,8 @@ namespace Refracciones.Forms
 
         private void buscarFacturas_Load(object sender, EventArgs e)
         {
-           dgvFacturas.DataSource =  factura.buscarFacturas();
+            this.Icon = Resources.iconJeic;
+            dgvFacturas.DataSource =  factura.buscarFacturas();
         }
 
         private void dgvFacturas_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
