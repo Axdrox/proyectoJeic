@@ -1,4 +1,4 @@
-﻿using Refracciones.Properties;
+﻿using Jeic.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

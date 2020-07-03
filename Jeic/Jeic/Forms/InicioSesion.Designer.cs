@@ -107,7 +107,7 @@
             // pictureBox5
             // 
             this.pictureBox5.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox5.Image = global::Refracciones.Properties.Resources.herramientas_y_utensilios;
+            this.pictureBox5.Image = global::Jeic.Properties.Resources.herramientas_y_utensilios;
             this.pictureBox5.Location = new System.Drawing.Point(25, 183);
             this.pictureBox5.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox5.Name = "pictureBox5";
@@ -119,7 +119,7 @@
             // pictureBox4
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox4.Image = global::Refracciones.Properties.Resources.Businessman_48px;
+            this.pictureBox4.Image = global::Jeic.Properties.Resources.Businessman_48px;
             this.pictureBox4.Location = new System.Drawing.Point(25, 131);
             this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox4.Name = "pictureBox4";
@@ -131,7 +131,7 @@
             // pbMinimize
             // 
             this.pbMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbMinimize.Image = global::Refracciones.Properties.Resources.Minimize_Window_2_48px;
+            this.pbMinimize.Image = global::Jeic.Properties.Resources.Minimize_Window_2_48px;
             this.pbMinimize.Location = new System.Drawing.Point(220, 2);
             this.pbMinimize.Margin = new System.Windows.Forms.Padding(2);
             this.pbMinimize.Name = "pbMinimize";
@@ -144,7 +144,7 @@
             // pbClose
             // 
             this.pbClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbClose.Image = global::Refracciones.Properties.Resources.Close_Window__2_48px;
+            this.pbClose.Image = global::Jeic.Properties.Resources.Close_Window__2_48px;
             this.pbClose.Location = new System.Drawing.Point(243, 2);
             this.pbClose.Margin = new System.Windows.Forms.Padding(2);
             this.pbClose.Name = "pbClose";
@@ -208,7 +208,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Refracciones.Properties.Resources.user;
+            this.pictureBox1.Image = global::Jeic.Properties.Resources.user;
             this.pictureBox1.Location = new System.Drawing.Point(87, 12);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";

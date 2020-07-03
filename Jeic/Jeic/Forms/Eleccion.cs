@@ -3,7 +3,7 @@ using iText.Kernel.Font;
 using iText.Kernel.Pdf;
 using iText.Kernel.Pdf.Canvas;
 using Refracciones.Forms;
-using Refracciones.Properties;
+using Jeic.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

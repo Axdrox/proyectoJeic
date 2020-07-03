@@ -128,7 +128,7 @@
             // btnPortal
             // 
             this.btnPortal.BackColor = System.Drawing.Color.Transparent;
-            this.btnPortal.Image = global::Refracciones.Properties.Resources.Portal;
+            this.btnPortal.Image = global::Jeic.Properties.Resources.Portal;
             this.btnPortal.ImageActive = null;
             this.btnPortal.Location = new System.Drawing.Point(13, 396);
             this.btnPortal.Name = "btnPortal";
@@ -154,7 +154,7 @@
             // btnVendedor
             // 
             this.btnVendedor.BackColor = System.Drawing.Color.Transparent;
-            this.btnVendedor.Image = global::Refracciones.Properties.Resources.seller;
+            this.btnVendedor.Image = global::Jeic.Properties.Resources.seller;
             this.btnVendedor.ImageActive = null;
             this.btnVendedor.Location = new System.Drawing.Point(13, 352);
             this.btnVendedor.Name = "btnVendedor";
@@ -498,7 +498,7 @@
             // btnPieza
             // 
             this.btnPieza.BackColor = System.Drawing.Color.Transparent;
-            this.btnPieza.Image = global::Refracciones.Properties.Resources.carPart;
+            this.btnPieza.Image = global::Jeic.Properties.Resources.carPart;
             this.btnPieza.ImageActive = null;
             this.btnPieza.Location = new System.Drawing.Point(13, 302);
             this.btnPieza.Name = "btnPieza";
@@ -512,7 +512,7 @@
             // btnVehiculo
             // 
             this.btnVehiculo.BackColor = System.Drawing.Color.Transparent;
-            this.btnVehiculo.Image = global::Refracciones.Properties.Resources.car;
+            this.btnVehiculo.Image = global::Jeic.Properties.Resources.car;
             this.btnVehiculo.ImageActive = null;
             this.btnVehiculo.Location = new System.Drawing.Point(13, 250);
             this.btnVehiculo.Name = "btnVehiculo";
@@ -526,7 +526,7 @@
             // btnTaller
             // 
             this.btnTaller.BackColor = System.Drawing.Color.Transparent;
-            this.btnTaller.Image = global::Refracciones.Properties.Resources.Workshop;
+            this.btnTaller.Image = global::Jeic.Properties.Resources.Workshop;
             this.btnTaller.ImageActive = null;
             this.btnTaller.Location = new System.Drawing.Point(13, 202);
             this.btnTaller.Name = "btnTaller";
@@ -540,7 +540,7 @@
             // btnProveedor
             // 
             this.btnProveedor.BackColor = System.Drawing.Color.Transparent;
-            this.btnProveedor.Image = global::Refracciones.Properties.Resources.provider;
+            this.btnProveedor.Image = global::Jeic.Properties.Resources.provider;
             this.btnProveedor.ImageActive = null;
             this.btnProveedor.Location = new System.Drawing.Point(13, 154);
             this.btnProveedor.Name = "btnProveedor";
@@ -554,7 +554,7 @@
             // btnClientes
             // 
             this.btnClientes.BackColor = System.Drawing.Color.RoyalBlue;
-            this.btnClientes.Image = global::Refracciones.Properties.Resources.customer;
+            this.btnClientes.Image = global::Jeic.Properties.Resources.customer;
             this.btnClientes.ImageActive = null;
             this.btnClientes.Location = new System.Drawing.Point(13, 107);
             this.btnClientes.Name = "btnClientes";
@@ -568,7 +568,7 @@
             // btnUsuario
             // 
             this.btnUsuario.BackColor = System.Drawing.Color.Transparent;
-            this.btnUsuario.Image = global::Refracciones.Properties.Resources.user;
+            this.btnUsuario.Image = global::Jeic.Properties.Resources.user;
             this.btnUsuario.ImageActive = null;
             this.btnUsuario.Location = new System.Drawing.Point(13, 56);
             this.btnUsuario.Name = "btnUsuario";
@@ -581,7 +581,7 @@
             // 
             // pbMinimize
             // 
-            this.pbMinimize.Image = global::Refracciones.Properties.Resources.Minimize_Window_2_48px;
+            this.pbMinimize.Image = global::Jeic.Properties.Resources.Minimize_Window_2_48px;
             this.pbMinimize.Location = new System.Drawing.Point(607, 2);
             this.pbMinimize.Margin = new System.Windows.Forms.Padding(2);
             this.pbMinimize.Name = "pbMinimize";
@@ -593,7 +593,7 @@
             // 
             // pbClose
             // 
-            this.pbClose.Image = global::Refracciones.Properties.Resources.Close_Window__2_48px;
+            this.pbClose.Image = global::Jeic.Properties.Resources.Close_Window__2_48px;
             this.pbClose.Location = new System.Drawing.Point(626, 2);
             this.pbClose.Margin = new System.Windows.Forms.Padding(2);
             this.pbClose.Name = "pbClose";

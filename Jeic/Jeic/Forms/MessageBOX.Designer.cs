@@ -54,7 +54,7 @@
             // 
             // GifHecho
             // 
-            this.GifHecho.Image = global::Refracciones.Properties.Resources.GiftHECHO;
+            this.GifHecho.Image = global::Jeic.Properties.Resources.GiftHECHO;
             this.GifHecho.InitialImage = null;
             this.GifHecho.Location = new System.Drawing.Point(45, 12);
             this.GifHecho.Name = "GifHecho";

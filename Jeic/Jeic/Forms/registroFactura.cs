@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
 using System.Globalization;
-using Refracciones.Properties;
+using Jeic.Properties;
 
 namespace Refracciones.Forms
 {

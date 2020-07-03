@@ -1,7 +1,7 @@
 ﻿using DocumentFormat.OpenXml.Office.CoverPageProps;
 using DocumentFormat.OpenXml.Office2010.PowerPoint;
 using DocumentFormat.OpenXml.Office2013.Excel;
-using Refracciones.Properties;
+using Jeic.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

@@ -280,7 +280,7 @@
             // pbFactura
             // 
             this.pbFactura.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbFactura.Image = global::Refracciones.Properties.Resources.file;
+            this.pbFactura.Image = global::Jeic.Properties.Resources.file;
             this.pbFactura.Location = new System.Drawing.Point(277, 439);
             this.pbFactura.Name = "pbFactura";
             this.pbFactura.Size = new System.Drawing.Size(33, 28);

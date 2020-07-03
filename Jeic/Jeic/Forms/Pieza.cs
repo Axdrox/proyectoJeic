@@ -1,7 +1,7 @@
 ﻿namespace Refracciones.Forms
 {
     using DocumentFormat.OpenXml.Office2010.PowerPoint;
-    using Refracciones.Properties;
+    using Jeic.Properties;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;

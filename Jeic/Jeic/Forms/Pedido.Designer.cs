@@ -1150,7 +1150,7 @@
             // pbMinimize
             // 
             this.pbMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbMinimize.Image = global::Refracciones.Properties.Resources.Minimize_Window_2_48px;
+            this.pbMinimize.Image = global::Jeic.Properties.Resources.Minimize_Window_2_48px;
             this.pbMinimize.Location = new System.Drawing.Point(1300, 2);
             this.pbMinimize.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pbMinimize.Name = "pbMinimize";
@@ -1163,7 +1163,7 @@
             // pbClose
             // 
             this.pbClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbClose.Image = global::Refracciones.Properties.Resources.Close_Window__2_48px;
+            this.pbClose.Image = global::Jeic.Properties.Resources.Close_Window__2_48px;
             this.pbClose.Location = new System.Drawing.Point(1319, 2);
             this.pbClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pbClose.Name = "pbClose";
