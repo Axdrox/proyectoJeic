@@ -1103,6 +1103,7 @@ namespace Refracciones
         {
             try
             {
+                int temp = 0;
                 SLDocument sl = new SLDocument(ruta);
                 DateTime hoy = DateTime.Today;
                 sl.SetCellValue("M2", hoy.ToString("dd-MM-yyyy"));//Se agrega la fecha al excel
@@ -1155,13 +1156,19 @@ namespace Refracciones
                         sl.SetCellValue("AB" + celdaContenido, Lector["FECHA DE BAJA"].ToString());
                         sl.SetCellValue("AC" + celdaContenido, Lector["FECHA DEVOLUCIÓN"].ToString());
                         sl.SetCellValue("AD" + celdaContenido, Lector["MOTIVO DE DEVOLUCIÓN"].ToString());
-                        sl.SetCellValue("AE" + celdaContenido, Int32.Parse(Lector["CANTIDAD DE PIEZAS DEVUELTAS"].ToString()));
+                        sl.SetCellValue("AE" + celdaContenido,Int32.Parse( Lector["CANTIDAD DE PIEZAS DEVUELTAS"].ToString()));
                         if (Lector["PENALIZACIÓN POR DEVOLUCIÓN"].ToString() == "")
                         { sl.SetCellValue("AF" + celdaContenido, ""); }
                         else
-                        { sl.SetCellValue("AF" + celdaContenido, Double.Parse(Lector["PENALIZACIÓN POR DEVOLUCIÓN"].ToString())); }
-                        sl.SetCellValue("AG" + celdaContenido, Lector["FACTURA ACTUAL"].ToString());
-                        sl.SetCellValue("AH" + celdaContenido, Lector["FACTURA ANTERIOR"].ToString());
+                        { sl.SetCellValue("AF" + celdaContenido, Double.Parse(Lector["PENALIZACIÓN POR DEVOLUCIÓN"].ToString())/100); }
+                        if(int.TryParse(Lector["FACTURA ACTUAL"].ToString(),out temp))
+                        {sl.SetCellValue("AG" + celdaContenido,Int32.Parse(Lector["FACTURA ACTUAL"].ToString()));}
+                        else
+                        { sl.SetCellValue("AG" + celdaContenido, Lector["FACTURA ACTUAL"].ToString()); }
+                        if(int.TryParse(Lector["FACTURA ANTERIOR"].ToString(),out temp))
+                        {sl.SetCellValue("AH" + celdaContenido,Int32.Parse(Lector["FACTURA ANTERIOR"].ToString()));}
+                        else
+                        {sl.SetCellValue("AH" + celdaContenido, Lector["FACTURA ANTERIOR"].ToString());}
                         sl.SetCellValue("AI" + celdaContenido, Lector["FECHA INGRESO FACTURA"].ToString());
                         sl.SetCellValue("AJ" + celdaContenido, Lector["ESTADO DE LA FACTURA"].ToString());
                         sl.SetCellValue("AK" + celdaContenido, Lector["FECHA DE REVISIÓN FACTURA"].ToString());
@@ -1194,7 +1201,7 @@ namespace Refracciones
                     sl.SetCellStyle("AM9", "AN9" + celdaContenido, estiloContenido);
                     sl.SetCellStyle("AQ9", "AU9" + celdaContenido, estiloContenido);
                     estiloContenido.FormatCode = "0.00%";
-                    sl.SetCellStyle("AF", estiloContenido);
+                    sl.SetCellStyle("AF9","AF9" + celdaContenido, estiloContenido);
                     /*estiloContenido.FormatCode = "d mmm yyyy";
                     sl.SetCellStyle("V9", estiloContenido);*/
                     sl.AutoFitColumn("A", "AU");
