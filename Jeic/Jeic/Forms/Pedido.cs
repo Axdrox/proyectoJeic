@@ -48,6 +48,7 @@ namespace Refracciones.Forms
 
         private void Pedido_Load(object sender, EventArgs e)
         {
+            this.ActiveControl = label1;
             chbModificarEstado.Location = new Point(330, 186);
             if (actualizar == 1)
             {
@@ -777,65 +778,70 @@ namespace Refracciones.Forms
         {
             try
             {
-                if (ValidateChildren(ValidationConstraints.Enabled))
+                if(dgvPedido.Rows.Count != 0)
                 {
-                    aniadirNuevosRegistros();
-
-                    DateTime dtFechaBaja;
-                    DateTime dtFechaAsignacion = dtpFechaAsignacion.Value.Date;
-                    DateTime dtFechaPromesa = dtpFechaPromesa.Value.Date;
-                    if (actualizar != 1)
+                    if (ValidateChildren(ValidationConstraints.Enabled))
                     {
-                        dtFechaBaja = DateTime.Parse("1753/01/01");
-                        //operacion.registrarFechasVentas(dtFechaAsignacion, dtFechaPromesa);
+                        aniadirNuevosRegistros();
 
-                        //Registrar lo correspondiente a siniestro
-                        string estadoSiniestro = "";
-                        if (nuevoMarca == true)
-                            operacion.registroMarca(lblMarca.Text.Trim());
-                        if (nuevoVehiculo == true)
-                            operacion.registroVehiculo(lblVehiculo.Text.Trim(), lblAnio.Text.Trim(), lblMarca.Text.Trim());
-
-                        if (chbModificarEstado.Checked == true)
-                            estadoSiniestro = cbEstadoSiniestro.Text;
-                        else
-                            estadoSiniestro = lblEstadoSiniestro.Text;
-
-                        operacion.registrarSiniestro(lblVehiculo.Text.Trim(), lblClaveSiniestro.Text.Trim(), txtComentarioSiniestro.Text.Trim(), estadoSiniestro);
-
-                        calcularDGV();
-
-                        //AGREGANDO DATOS A VENTA
-                        operacion.registrarVenta(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(), taller, vendedor, dtFechaBaja, valuador, destino, totalCosto, subtotalPrecio, totalPrecio, dtFechaAsignacion, dtFechaPromesa, utilidad);//, utilidad
-
-                        //REGISTRANDO PEDIDO
-                        registrarPedido();
-                        this.DialogResult = DialogResult.OK;
-                    }
-                    else // ACTUALIZAR PEDIDO
-                    {
-                        if (chbModificarFechaBaja.Checked == true)
-                            dtFechaBaja = dtpFechaBaja.Value.Date;
-                        else
+                        DateTime dtFechaBaja;
+                        DateTime dtFechaAsignacion = dtpFechaAsignacion.Value.Date;
+                        DateTime dtFechaPromesa = dtpFechaPromesa.Value.Date;
+                        if (actualizar != 1)
+                        {
                             dtFechaBaja = DateTime.Parse("1753/01/01");
+                            //operacion.registrarFechasVentas(dtFechaAsignacion, dtFechaPromesa);
 
-                        string estadoSiniestro = "";
-                        if (chbModificarEstado.Checked == true)
-                            estadoSiniestro = cbEstadoSiniestro.Text;
-                        else
-                            estadoSiniestro = lblEstadoSiniestro.Text;
+                            //Registrar lo correspondiente a siniestro
+                            string estadoSiniestro = "";
+                            if (nuevoMarca == true)
+                                operacion.registroMarca(lblMarca.Text.Trim());
+                            if (nuevoVehiculo == true)
+                                operacion.registroVehiculo(lblVehiculo.Text.Trim(), lblAnio.Text.Trim(), lblMarca.Text.Trim());
 
-                        operacion.actualizarSiniestro(lblVehiculo.Text.Trim(), lblClaveSiniestro.Text.Trim(), txtComentarioSiniestro.Text.Trim(), estadoSiniestro);
+                            if (chbModificarEstado.Checked == true)
+                                estadoSiniestro = cbEstadoSiniestro.Text;
+                            else
+                                estadoSiniestro = lblEstadoSiniestro.Text;
 
-                        calcularDGV();
+                            operacion.registrarSiniestro(lblVehiculo.Text.Trim(), lblClaveSiniestro.Text.Trim(), txtComentarioSiniestro.Text.Trim(), estadoSiniestro);
 
-                        //AGREGANDO DATOS A VENTA
-                        operacion.actualizarVenta(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(), taller, vendedor, dtFechaBaja, valuador, destino, totalCosto, subtotalPrecio, totalPrecio, dtFechaAsignacion, dtFechaPromesa, utilidad);//, utilidad
+                            calcularDGV();
 
-                        actualizarPedido();
-                        this.DialogResult = DialogResult.OK;
+                            //AGREGANDO DATOS A VENTA
+                            operacion.registrarVenta(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(), taller, vendedor, dtFechaBaja, valuador, destino, totalCosto, subtotalPrecio, totalPrecio, dtFechaAsignacion, dtFechaPromesa, utilidad);//, utilidad
+
+                            //REGISTRANDO PEDIDO
+                            registrarPedido();
+                            this.DialogResult = DialogResult.OK;
+                        }
+                        else // ACTUALIZAR PEDIDO
+                        {
+                            if (chbModificarFechaBaja.Checked == true)
+                                dtFechaBaja = dtpFechaBaja.Value.Date;
+                            else
+                                dtFechaBaja = DateTime.Parse("1753/01/01");
+
+                            string estadoSiniestro = "";
+                            if (chbModificarEstado.Checked == true)
+                                estadoSiniestro = cbEstadoSiniestro.Text;
+                            else
+                                estadoSiniestro = lblEstadoSiniestro.Text;
+
+                            operacion.actualizarSiniestro(lblVehiculo.Text.Trim(), lblClaveSiniestro.Text.Trim(), txtComentarioSiniestro.Text.Trim(), estadoSiniestro);
+
+                            calcularDGV();
+
+                            //AGREGANDO DATOS A VENTA
+                            operacion.actualizarVenta(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(), taller, vendedor, dtFechaBaja, valuador, destino, totalCosto, subtotalPrecio, totalPrecio, dtFechaAsignacion, dtFechaPromesa, utilidad);//, utilidad
+
+                            actualizarPedido();
+                            this.DialogResult = DialogResult.OK;
+                        }
                     }
                 }
+                else
+                    MessageBOX.SHowDialog(2, "Favor de agregar al menos una pieza");
             }
             catch (Exception EX)
             {

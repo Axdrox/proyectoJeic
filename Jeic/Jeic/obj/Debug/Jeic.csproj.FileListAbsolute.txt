@@ -167,9 +167,6 @@ C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.1\GitHub\proyectoJeic\Jeic\Jeic\obj\De
 C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.1\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.CopyComplete
 C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.1\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.exe
 C:\Users\BuGsBunNy\Desktop\JEIC\VERSION 3.1\GitHub\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.pdb
-C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\bin\Debug\Refracciones.exe.config
-C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\bin\Debug\Refracciones.exe
-C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\bin\Debug\Refracciones.pdb
 C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\bin\Debug\BouncyCastle.Crypto.dll
 C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\bin\Debug\Common.Logging.Core.dll
 C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\bin\Debug\Common.Logging.dll
@@ -216,12 +213,9 @@ C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones
 C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.registrarRefactura.resources
 C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.registroFactura.resources
 C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Siniestro.resources
-C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Properties.Resources.resources
 C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.GenerateResource.cache
 C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.CoreCompileInputs.cache
 C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.CopyComplete
-C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.exe
-C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.pdb
 C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csprojAssemblyReference.cache
 C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.buscarFacturas.resources
 C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Penalizaciones.resources
@@ -350,3 +344,9 @@ C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\D
 C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.exe
 C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.pdb
 C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csprojAssemblyReference.cache
+C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\bin\Debug\Jeic.exe.config
+C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\bin\Debug\Jeic.exe
+C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\bin\Debug\Jeic.pdb
+C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.Properties.Resources.resources
+C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.exe
+C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.pdb
