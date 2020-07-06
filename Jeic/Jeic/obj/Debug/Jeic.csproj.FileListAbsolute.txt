@@ -219,9 +219,6 @@ C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.
 C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csprojAssemblyReference.cache
 C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.buscarFacturas.resources
 C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Penalizaciones.resources
-C:\Users\gears\Desktop\Ramas\Jeic\Jeic\bin\Debug\Refracciones.exe.config
-C:\Users\gears\Desktop\Ramas\Jeic\Jeic\bin\Debug\Refracciones.exe
-C:\Users\gears\Desktop\Ramas\Jeic\Jeic\bin\Debug\Refracciones.pdb
 C:\Users\gears\Desktop\Ramas\Jeic\Jeic\bin\Debug\BouncyCastle.Crypto.dll
 C:\Users\gears\Desktop\Ramas\Jeic\Jeic\bin\Debug\Common.Logging.Core.dll
 C:\Users\gears\Desktop\Ramas\Jeic\Jeic\bin\Debug\Common.Logging.dll
@@ -272,12 +269,9 @@ C:\Users\gears\Desktop\Ramas\Jeic\Jeic\obj\Debug\Refracciones.Forms.Pieza.resour
 C:\Users\gears\Desktop\Ramas\Jeic\Jeic\obj\Debug\Refracciones.Forms.registrarRefactura.resources
 C:\Users\gears\Desktop\Ramas\Jeic\Jeic\obj\Debug\Refracciones.Forms.registroFactura.resources
 C:\Users\gears\Desktop\Ramas\Jeic\Jeic\obj\Debug\Refracciones.Forms.Siniestro.resources
-C:\Users\gears\Desktop\Ramas\Jeic\Jeic\obj\Debug\Refracciones.Properties.Resources.resources
 C:\Users\gears\Desktop\Ramas\Jeic\Jeic\obj\Debug\Jeic.csproj.GenerateResource.cache
 C:\Users\gears\Desktop\Ramas\Jeic\Jeic\obj\Debug\Jeic.csproj.CoreCompileInputs.cache
 C:\Users\gears\Desktop\Ramas\Jeic\Jeic\obj\Debug\Jeic.csproj.CopyComplete
-C:\Users\gears\Desktop\Ramas\Jeic\Jeic\obj\Debug\Refracciones.exe
-C:\Users\gears\Desktop\Ramas\Jeic\Jeic\obj\Debug\Refracciones.pdb
 C:\Users\gears\Desktop\Ramas\Jeic\Jeic\obj\Debug\Jeic.csprojAssemblyReference.cache
 C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Administrar.resources
 C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Busqueda.resources
@@ -350,3 +344,9 @@ C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\bin\Debug\Jeic.pdb
 C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.Properties.Resources.resources
 C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.exe
 C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.pdb
+C:\Users\gears\Desktop\Ramas\Jeic\Jeic\bin\Debug\Jeic.exe.config
+C:\Users\gears\Desktop\Ramas\Jeic\Jeic\bin\Debug\Jeic.exe
+C:\Users\gears\Desktop\Ramas\Jeic\Jeic\bin\Debug\Jeic.pdb
+C:\Users\gears\Desktop\Ramas\Jeic\Jeic\obj\Debug\Jeic.Properties.Resources.resources
+C:\Users\gears\Desktop\Ramas\Jeic\Jeic\obj\Debug\Jeic.exe
+C:\Users\gears\Desktop\Ramas\Jeic\Jeic\obj\Debug\Jeic.pdb

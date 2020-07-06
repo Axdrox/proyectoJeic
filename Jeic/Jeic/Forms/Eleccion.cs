@@ -15,6 +15,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using iText.Kernel.Colors;
+using DocumentFormat.OpenXml.Presentation;
 
 namespace Refracciones
 {
@@ -155,20 +157,23 @@ namespace Refracciones
 
         private void btnPDF_Click(object sender, EventArgs e)
         {
-            saveFileDialog1.InitialDirectory = @"C:\";
-            saveFileDialog1.Title = "PEDIDO";
-            saveFileDialog1.CheckPathExists = true;
-            saveFileDialog1.DefaultExt = "pdf";
-            saveFileDialog1.Filter = "PDF files (*.pdf)|*.pdf";
-            saveFileDialog1.FilterIndex = 2;
-            saveFileDialog1.RestoreDirectory = true;
-            saveFileDialog1.FileName = "Ped_" + dato_2.Text;
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                if (File.Exists(saveFileDialog1.FileName))
-                {
-                    PdfWriter pdfWriter = new PdfWriter(saveFileDialog1.FileName);
-                    PdfReader pdfReader = new PdfReader(Application.StartupPath + "\\VALE JEIC.pdf");
+            /*   saveFileDialog1.InitialDirectory = @"C:\";
+               saveFileDialog1.Title = "PEDIDO";
+               saveFileDialog1.CheckPathExists = true;
+               saveFileDialog1.DefaultExt = "pdf";
+               saveFileDialog1.Filter = "PDF files (*.pdf)|*.pdf";
+               saveFileDialog1.FilterIndex = 2;
+               saveFileDialog1.RestoreDirectory = true;
+               saveFileDialog1.FileName = "Ped_" + dato_2.Text;
+               if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+               {
+                   if (File.Exists(saveFileDialog1.FileName))
+                   {*/
+            // PdfWriter pdfWriter = new PdfWriter(saveFileDialog1.FileName);
+            PdfWriter pdfWriter = new PdfWriter("D:\\Escuela\\VALE.pdf");
+            // PdfReader pdfReader = new PdfReader(Application.StartupPath + "\\VALE JEIC.pdf");
+            PdfReader pdfReader = new PdfReader("D:\\Escuela\\PDFJEIC.pdf");
+
                     PdfDocument pdfdoc = new PdfDocument(pdfReader, pdfWriter);
 
                     OperBD pdfnuevo = new OperBD();
@@ -179,71 +184,68 @@ namespace Refracciones
                     for (int i = 0; i < 3; i++)
                     {
                         PdfCanvas canvas = new PdfCanvas(pdfdoc.GetPage(i + 1));
-                        int y = 661;
-                        int x = 103;
+                        PdfFont font = PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD);
+                        PdfCanvas colores = new PdfCanvas(pdfdoc.GetPage(i + 1));
+                      //  iText.Kernel.Colors rojo = new RgbColor();
+                        int y = 659;
+                        int x = 109;
                         int Items = 0;
 
+
+
                         //PEDIDO
-                        canvas.BeginText().SetFontAndSize(
-                        PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 18)
+                        canvas.BeginText().SetFontAndSize(font, 18)
                         .MoveText(x, y)
                         .ShowText(dgvDatosPDF.Rows[0].Cells[0].Value.ToString())
                         .EndText();
                         //CLIENTE
-                        canvas.BeginText().SetFontAndSize(
-                                PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 9)
-                                .MoveText(x + 242, y - 4.5)
+                        canvas.BeginText().SetFontAndSize(font, 9)
+                                .MoveText(x + 245, y - 2.5)
                                 .ShowText(dgvDatosPDF.Rows[0].Cells[1].Value.ToString())
                                 .EndText();
                         //TALLER
-                        canvas.BeginText().SetFontAndSize(
-                                PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 9)
-                                .MoveText(x + 240, y - 16.5)
+                        canvas.BeginText().SetFontAndSize(font, 9)
+                                .MoveText(x + 243, y - 14.5)
                                 .ShowText(dgvDatosPDF.Rows[0].Cells[2].Value.ToString())
                                 .EndText();
                         //COTIZADOR
-                        canvas.BeginText().SetFontAndSize(
-                                PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 9)
-                                .MoveText(x + 254, y - 29)
+                        canvas.BeginText().SetFontAndSize(font, 9)
+                                .MoveText(x + 257, y - 27)
                                 .ShowText(dgvDatosPDF.Rows[0].Cells[3].Value.ToString())
                                 .EndText();
                         //VEHICULO
-                        canvas.BeginText().SetFontAndSize(
-                                PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 9)
-                                .MoveText(x + 249, y - 41.5)
+                        canvas.BeginText().SetFontAndSize(font, 9)
+                                .MoveText(x + 252, y - 39.5)
                                 .ShowText(dgvDatosPDF.Rows[0].Cells[11].Value.ToString() + "  -  " + dgvDatosPDF.Rows[0].Cells[4].Value.ToString())
                                 .EndText();
                         //FECHA_ASIGNACION
-                        canvas.BeginText().SetFontAndSize(
-                                PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 12)
-                                .MoveText(x - 79, y - 50)
+                        canvas.BeginText().SetFontAndSize(font, 14)
+                                .MoveText(x - 77, y - 50)
                                 .ShowText(dgvDatosPDF.Rows[0].Cells[5].Value.ToString().Substring(0, 10))
                                 .EndText();
                         //FECHA_PROMESA
-                        canvas.BeginText().SetFontAndSize(
-                                PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 12)
+                        colores.BeginText().SetFontAndSize(font, 14)
                                 .MoveText(x + 50, y - 50)
                                 .ShowText(dgvDatosPDF.Rows[0].Cells[6].Value.ToString().Substring(0, 10))
+                                //.SetFillColor()
+                                .ClosePath()
                                 .EndText();
 
                         for (int count = 0; count < NumeroFila; count++)
                         {
                             //NUMERO
-                            canvas.BeginText().SetFontAndSize(
-                                    PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 10)
-                                    .MoveText(x - 50.5, y - 110.5)
+                            canvas.BeginText().SetFontAndSize(font, 10)
+                                    .MoveText(x - 49.5, y - 106.5)
                                     .ShowText((count + 1).ToString())
                                     .EndText();
                             //PIEZAS
-                            canvas.BeginText().SetFontAndSize(
-                                    PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 10)
-                                    .MoveText(x - 5, y - 110.5)
+                            canvas.BeginText().SetFontAndSize(font, 10)
+                                    .MoveText(x - 5, y - 106.5)
                                     .ShowText(dgvDatosPDF.Rows[count].Cells[7].Value.ToString())
                                     .EndText();
                             //CANTIDAD
-                            canvas.BeginText().SetFontAndSize(
-                                    PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 10)
-                                    .MoveText(x + 237, y - 110.5)
+                            canvas.BeginText().SetFontAndSize(font, 10)
+                                    .MoveText(x + 239, y - 106.5)
                                     .ShowText(dgvDatosPDF.Rows[count].Cells[8].Value.ToString())
                                     .EndText();
                             //COSTO
@@ -263,17 +265,16 @@ namespace Refracciones
                             y -= 20;
                         }
                         //NUMERO DE ITEMS
-                        canvas.BeginText().SetFontAndSize(
-                                    PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 9)
-                                    .MoveText(x - 19, 47.5)
+                        canvas.BeginText().SetFontAndSize(font, 9)
+                                    .MoveText(x - 16, 51.5)
                                     .ShowText(Items.ToString())
                                     .EndText();
                     }
                     pdfdoc.Close();
-                    MessageBOX.SHowDialog(1, "PDF creado exitosamente");
+                    MessageBOX.SHowDialog(3, "PDF creado exitosamente");
                     this.Close();
-                }
-                else
+               // }
+               /* else
                 {
                     PdfWriter pdfWriter = new PdfWriter(saveFileDialog1.FileName);
                     PdfReader pdfReader = new PdfReader(Application.StartupPath + "\\VALE JEIC.pdf");
@@ -365,7 +366,7 @@ namespace Refracciones
                                      PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD), 10)
                                      .MoveText(x + 380, y - 110.5)
                                      .ShowText(dgvDatosPDF.Rows[count].Cells[10].Value.ToString())
-                                     .EndText();*/
+                                     .EndText();
 
                             Items += Int32.Parse(dgvDatosPDF.Rows[count].Cells[8].Value.ToString());
                             y -= 20;
@@ -381,7 +382,7 @@ namespace Refracciones
                     MessageBOX.SHowDialog(1, "PDF creado exitosamente");
                     this.Close();
                 }
-            }
+            }*/
         }
 
         private void pbClose_Click(object sender, EventArgs e)
