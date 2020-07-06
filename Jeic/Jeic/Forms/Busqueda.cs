@@ -88,16 +88,16 @@ namespace Refracciones.Forms
                 lblAsignacion.Text = lblAsignacion.Text.Substring(0, 15) + " " + dgvDatos.Rows[0].Cells[12].Value.ToString();
                 lblPromesa.Text = lblPromesa.Text.Substring(0, 14) + " " + dgvDatos.Rows[0].Cells[13].Value.ToString();
                 lblFechaEntreg.Text = lblFechaEntreg.Text.Substring(0, 14) + " " + dgvDatos.Rows[0].Cells[14].Value.ToString();
-                lblCostoEnvio.Text = lblCostoEnvio.Text.Substring(0, 15) + " " + dgvDatos.Rows[0].Cells[15].Value.ToString();
-                lblCostoNeto.Text = lblCostoNeto.Text.Substring(0, 11) + " " + dgvDatos.Rows[0].Cells[16].Value.ToString();
-                lblPrecioVenta.Text = lblPrecioVenta.Text.Substring(0, 16) + " " + dgvDatos.Rows[0].Cells[17].Value.ToString();
-                lblPrecioReparacion.Text = lblPrecioReparacion.Text.Substring(0, 21) + " " + dgvDatos.Rows[0].Cells[18].Value.ToString();
+                lblCostoEnvio.Text = lblCostoEnvio.Text.Substring(0, 15) + " $" + dgvDatos.Rows[0].Cells[15].Value.ToString();
+                lblCostoNeto.Text = lblCostoNeto.Text.Substring(0, 11) + " $" + dgvDatos.Rows[0].Cells[16].Value.ToString();
+                lblPrecioVenta.Text = lblPrecioVenta.Text.Substring(0, 16) + " $" + dgvDatos.Rows[0].Cells[17].Value.ToString();
+                lblPrecioReparacion.Text = lblPrecioReparacion.Text.Substring(0, 21) + " $" + dgvDatos.Rows[0].Cells[18].Value.ToString();
                 lblCveFactura.Text = lblCveFactura.Text.Substring(0, 10) + " " + dgvDatos.Rows[0].Cells[19].Value.ToString();
                 if (dgvDatos.Rows[0].Cells[19].Value.ToString() != string.Empty)
                     cve_factura = dgvDatos.Rows[0].Cells[19].Value.ToString();
 
-                lblFacturaSinIva.Text = lblFacturaSinIva.Text.Substring(0, 16) + " " + dgvDatos.Rows[0].Cells[20].Value.ToString();
-                lblFacturaConIva.Text = lblFacturaConIva.Text.Substring(0, 16) + " " + dgvDatos.Rows[0].Cells[21].Value.ToString();
+                lblFacturaSinIva.Text = lblFacturaSinIva.Text.Substring(0, 16) + " $" + dgvDatos.Rows[0].Cells[20].Value.ToString();
+                lblFacturaConIva.Text = lblFacturaConIva.Text.Substring(0, 16) + " $" + dgvDatos.Rows[0].Cells[21].Value.ToString();
                 lblEstadoFac.Text = lblEstadoFac.Text.Substring(0, 7) + " " + dgvDatos.Rows[0].Cells[22].Value.ToString();
             }
             else
@@ -192,6 +192,11 @@ namespace Refracciones.Forms
         {
             Administrar admon = new Administrar();
             DialogResult result = admon.ShowDialog();
+        }
+
+        private void minimizarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

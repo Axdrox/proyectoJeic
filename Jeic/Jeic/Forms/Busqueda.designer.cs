@@ -87,6 +87,7 @@
             this.notificacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buscarFacturasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.administrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.minimizarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarSesionToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.Usuario = new System.Windows.Forms.ToolStripMenuItem();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
@@ -360,7 +361,7 @@
             this.lblPrecioReparacion.AutoSize = true;
             this.lblPrecioReparacion.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPrecioReparacion.ForeColor = System.Drawing.Color.White;
-            this.lblPrecioReparacion.Location = new System.Drawing.Point(137, 356);
+            this.lblPrecioReparacion.Location = new System.Drawing.Point(140, 356);
             this.lblPrecioReparacion.Name = "lblPrecioReparacion";
             this.lblPrecioReparacion.Size = new System.Drawing.Size(122, 14);
             this.lblPrecioReparacion.TabIndex = 25;
@@ -371,7 +372,7 @@
             this.lblPrecioVenta.AutoSize = true;
             this.lblPrecioVenta.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPrecioVenta.ForeColor = System.Drawing.Color.White;
-            this.lblPrecioVenta.Location = new System.Drawing.Point(138, 337);
+            this.lblPrecioVenta.Location = new System.Drawing.Point(141, 337);
             this.lblPrecioVenta.Name = "lblPrecioVenta";
             this.lblPrecioVenta.Size = new System.Drawing.Size(93, 14);
             this.lblPrecioVenta.TabIndex = 24;
@@ -415,7 +416,7 @@
             this.lblCostoNeto.AutoSize = true;
             this.lblCostoNeto.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCostoNeto.ForeColor = System.Drawing.Color.White;
-            this.lblCostoNeto.Location = new System.Drawing.Point(5, 356);
+            this.lblCostoNeto.Location = new System.Drawing.Point(6, 337);
             this.lblCostoNeto.Name = "lblCostoNeto";
             this.lblCostoNeto.Size = new System.Drawing.Size(69, 14);
             this.lblCostoNeto.TabIndex = 20;
@@ -426,7 +427,7 @@
             this.lblCostoEnvio.AutoSize = true;
             this.lblCostoEnvio.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCostoEnvio.ForeColor = System.Drawing.Color.White;
-            this.lblCostoEnvio.Location = new System.Drawing.Point(5, 375);
+            this.lblCostoEnvio.Location = new System.Drawing.Point(6, 356);
             this.lblCostoEnvio.Name = "lblCostoEnvio";
             this.lblCostoEnvio.Size = new System.Drawing.Size(90, 14);
             this.lblCostoEnvio.TabIndex = 19;
@@ -442,6 +443,7 @@
             this.lblCostoSinIva.Size = new System.Drawing.Size(80, 14);
             this.lblCostoSinIva.TabIndex = 18;
             this.lblCostoSinIva.Text = "Costo sin IVA:";
+            this.lblCostoSinIva.Visible = false;
             // 
             // lblPromesa
             // 
@@ -656,7 +658,7 @@
             this.btnAgregarPedido.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregarPedido.ForeColor = System.Drawing.Color.White;
             this.btnAgregarPedido.Location = new System.Drawing.Point(49, 107);
-            this.btnAgregarPedido.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAgregarPedido.Margin = new System.Windows.Forms.Padding(2);
             this.btnAgregarPedido.Name = "btnAgregarPedido";
             this.btnAgregarPedido.Size = new System.Drawing.Size(111, 30);
             this.btnAgregarPedido.TabIndex = 13;
@@ -709,6 +711,7 @@
             this.notificacionesToolStripMenuItem,
             this.buscarFacturasToolStripMenuItem,
             this.administrarToolStripMenuItem,
+            this.minimizarToolStripMenuItem,
             this.cerrarSesionToolStripMenuItem1});
             this.otrasOpcionesToolStripMenuItem.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.otrasOpcionesToolStripMenuItem.Name = "otrasOpcionesToolStripMenuItem";
@@ -747,6 +750,14 @@
             this.administrarToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
             this.administrarToolStripMenuItem.Text = "Administrar";
             this.administrarToolStripMenuItem.Click += new System.EventHandler(this.administrarToolStripMenuItem_Click);
+            // 
+            // minimizarToolStripMenuItem
+            // 
+            this.minimizarToolStripMenuItem.Name = "minimizarToolStripMenuItem";
+            this.minimizarToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
+            this.minimizarToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
+            this.minimizarToolStripMenuItem.Text = "Minimizar";
+            this.minimizarToolStripMenuItem.Click += new System.EventHandler(this.minimizarToolStripMenuItem_Click);
             // 
             // cerrarSesionToolStripMenuItem1
             // 
@@ -896,5 +907,6 @@
         private System.Windows.Forms.Label label11;
         public System.Windows.Forms.ToolStripMenuItem Usuario;
         private System.Windows.Forms.ToolStripMenuItem administrarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem minimizarToolStripMenuItem;
     }
 }
