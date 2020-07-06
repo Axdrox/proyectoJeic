@@ -90,10 +90,10 @@ namespace Refracciones.Forms
             dt.Columns.Add("Proveedor");
             dt.Columns.Add("Fecha costo");
             //dt.Columns.Add("Costo sin IVA");
-            dt.Columns.Add("Costo neto");
-            dt.Columns.Add("Costo de envío");
-            dt.Columns.Add("Precio de venta");
-            dt.Columns.Add("Precio de reparación");
+            dt.Columns.Add("Costo neto\n($)");
+            dt.Columns.Add("Costo de envío\n($)");
+            dt.Columns.Add("Precio de venta\n($)");
+            dt.Columns.Add("Precio de reparación\n($)");
             dgvPedido.DataSource = dt;
 
             //Impedir que se ordenen de otra forma (podría alterar) comprobar si se necesita
@@ -209,7 +209,7 @@ namespace Refracciones.Forms
                 double precioTotal = 0; int piezasTotal = 0; nombrePieza = new string[Convert.ToInt32(dgvPedido.Rows.Count)]; int i = 0; filasIniciales = dgvPedido.Rows.Count;
                 foreach (DataGridViewRow row in dgvPedido.Rows)
                 {
-                    precioTotal += Convert.ToDouble(row.Cells["Precio de venta"].Value);
+                    precioTotal += Convert.ToDouble(row.Cells["Precio de venta\n($)"].Value);
                     piezasTotal += Convert.ToInt32(row.Cells["Cantidad"].Value);
                     nombresPiezas.Add(row.Cells["Pieza"].Value.ToString());
                     //nombrePieza[i] = Convert.ToString(row.Cells["Pieza"].Value);
@@ -696,8 +696,8 @@ namespace Refracciones.Forms
             //double totalCostoEnvio = 0; Ya no es tan necesaria puesto que se le tiene que sumar a la variable subtotalPrecio
             foreach (DataGridViewRow row in dgvPedido.Rows)
             {
-                totalCosto += /*Convert.ToInt32(row.Cells["Cantidad"].Value) **/ Convert.ToDouble(row.Cells["Costo neto"].Value);
-                subtotalPrecio += /*(Convert.ToInt32(row.Cells["Cantidad"].Value) **/ Convert.ToDouble(row.Cells["Precio de venta"].Value) /*+ Convert.ToDouble(row.Cells["Precio de reparación"].Value)*/;
+                totalCosto += /*Convert.ToInt32(row.Cells["Cantidad"].Value) **/ Convert.ToDouble(row.Cells["Costo neto\n($)"].Value);
+                subtotalPrecio += /*(Convert.ToInt32(row.Cells["Cantidad"].Value) **/ Convert.ToDouble(row.Cells["Precio de venta\n($)"].Value) /*+ Convert.ToDouble(row.Cells["Precio de reparación"].Value)*/;
                 /*if (!guia.Contains(Convert.ToString(row.Cells["Número de guía"].Value)))
                  {
                      guia[i] = Convert.ToString(row.Cells["Número de guía"].Value);
@@ -724,9 +724,9 @@ namespace Refracciones.Forms
                 operacion.registrarPedido(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(),
                     Convert.ToString(row.Cells["Pieza"].Value), Convert.ToString(row.Cells["Portal"].Value),
                     Convert.ToString(row.Cells["Origen"].Value).Trim(), Convert.ToString(row.Cells["Proveedor"].Value),
-                    dtFechaCosto/*, Convert.ToString(row.Cells["Costo sin IVA"].Value)*/, Convert.ToString(row.Cells["Costo neto"].Value),
-                    Convert.ToString(row.Cells["Costo de envío"].Value), Convert.ToString(row.Cells["Precio de venta"].Value),
-                    Convert.ToString(row.Cells["Precio de reparación"].Value), Convert.ToString(row.Cells["Clave de producto"].Value),
+                    dtFechaCosto/*, Convert.ToString(row.Cells["Costo sin IVA"].Value)*/, Convert.ToString(row.Cells["Costo neto\n($)"].Value),
+                    Convert.ToString(row.Cells["Costo de envío\n($)"].Value), Convert.ToString(row.Cells["Precio de venta\n($)"].Value),
+                    Convert.ToString(row.Cells["Precio de reparación\n($)"].Value), Convert.ToString(row.Cells["Clave de producto"].Value),
                     Convert.ToString(row.Cells["Número de guía"].Value), Convert.ToInt32(row.Cells["Cantidad"].Value));
             }
         }
@@ -747,9 +747,9 @@ namespace Refracciones.Forms
                     operacion.actualizarPedido(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(),
                         Convert.ToString(row.Cells["Pieza"].Value), Convert.ToString(row.Cells["Portal"].Value),
                         Convert.ToString(row.Cells["Origen"].Value).Trim(), Convert.ToString(row.Cells["Proveedor"].Value),
-                        dtFechaCosto/*, Convert.ToString(row.Cells["Costo sin IVA"].Value)*/, Convert.ToString(row.Cells["Costo neto"].Value),
-                        Convert.ToString(row.Cells["Costo de envío"].Value), Convert.ToString(row.Cells["Precio de venta"].Value),
-                        Convert.ToString(row.Cells["Precio de reparación"].Value), Convert.ToString(row.Cells["Clave de producto"].Value),
+                        dtFechaCosto/*, Convert.ToString(row.Cells["Costo sin IVA"].Value)*/, Convert.ToString(row.Cells["Costo neto\n($)"].Value),
+                        Convert.ToString(row.Cells["Costo de envío\n($)"].Value), Convert.ToString(row.Cells["Precio de venta\n($)"].Value),
+                        Convert.ToString(row.Cells["Precio de reparación\n($)"].Value), Convert.ToString(row.Cells["Clave de producto"].Value),
                         Convert.ToString(row.Cells["Número de guía"].Value), Convert.ToInt32(row.Cells["Cantidad"].Value), nombresPiezas[i]);
                     i++;
                     if (i == filasIniciales)
@@ -909,7 +909,7 @@ namespace Refracciones.Forms
                     {
                         cantidad += Convert.ToInt32(dgvRow.Cells["Cantidad"].Value);
                         //subtotalPrecio += (Convert.ToInt32(dgvRow.Cells["Cantidad"].Value) * Convert.ToDouble(dgvRow.Cells["Precio de venta"].Value) /*+ Convert.ToDouble(dgvRow.Cells["Precio de reparación"].Value)*/);
-                        totalPrecio += Convert.ToDouble(dgvRow.Cells["Precio de venta"].Value);
+                        totalPrecio += Convert.ToDouble(dgvRow.Cells["Precio de venta\n($)"].Value);
                     }
                     //totalPrecio = (subtotalPrecio * .16) + subtotalPrecio;
 
@@ -957,7 +957,7 @@ namespace Refracciones.Forms
                 {
                     lblCantidadTotal.Text = (Convert.ToInt32(lblCantidadTotal.Text) - Convert.ToInt32(row.Cells["Cantidad"].Value)).ToString();
                     //lblPrecioTotal.Text = "$" + (Convert.ToDouble(lblPrecioTotal.Text.Substring(1, lblPrecioTotal.Text.Length - 1)) - ((Convert.ToDouble(row.Cells["Precio de venta"].Value) * Convert.ToInt32(row.Cells["Cantidad"].Value) * 0.16) + (Convert.ToDouble(row.Cells["Precio de venta"].Value) * Convert.ToInt32(row.Cells["Cantidad"].Value)))).ToString();
-                    lblPrecioTotal.Text = "$" + ((Convert.ToDouble(lblPrecioTotal.Text.Substring(1, lblPrecioTotal.Text.Length - 1)) - Convert.ToDouble(row.Cells["Precio de venta"].Value)).ToString());
+                    lblPrecioTotal.Text = "$" + ((Convert.ToDouble(lblPrecioTotal.Text.Substring(1, lblPrecioTotal.Text.Length - 1)) - Convert.ToDouble(row.Cells["Precio de venta\n($)"].Value)).ToString());
                     pieza = row.Cells["Pieza"].Value.ToString();
                 }
                 if (actualizar == 1)
@@ -1045,10 +1045,10 @@ namespace Refracciones.Forms
                     datosPieza[6] = Convert.ToString(row.Cells["Proveedor"].Value);
                     datosPieza[7] = Convert.ToString(row.Cells["Fecha costo"].Value);
                     //datosPieza[8] = Convert.ToString(row.Cells["Costo sin IVA"].Value);
-                    datosPieza[8] = Convert.ToString(row.Cells["Costo neto"].Value);
-                    datosPieza[9] = Convert.ToString(row.Cells["Costo de envío"].Value);
-                    datosPieza[10] = Convert.ToString(row.Cells["Precio de reparación"].Value);
-                    datosPieza[11] = Convert.ToString(row.Cells["Precio de venta"].Value);
+                    datosPieza[8] = Convert.ToString(row.Cells["Costo neto\n($)"].Value);
+                    datosPieza[9] = Convert.ToString(row.Cells["Costo de envío\n($)"].Value);
+                    datosPieza[10] = Convert.ToString(row.Cells["Precio de reparación\n($)"].Value);
+                    datosPieza[11] = Convert.ToString(row.Cells["Precio de venta\n($)"].Value);
                 }
                 pieza.datosEditar = datosPieza;
                 pieza.editarPieza = 1;
@@ -1430,7 +1430,7 @@ namespace Refracciones.Forms
             {
                 cantidad += Convert.ToInt32(dgvRow.Cells["Cantidad"].Value);
                 //subtotalPrecio += (Convert.ToInt32(dgvRow.Cells["Cantidad"].Value) * Convert.ToDouble(dgvRow.Cells["Precio de venta"].Value) /*+ Convert.ToDouble(dgvRow.Cells["Precio de reparación"].Value)*/);
-                totalPrecio += Convert.ToDouble(dgvRow.Cells["Precio de venta"].Value);
+                totalPrecio += Convert.ToDouble(dgvRow.Cells["Precio de venta\n($)"].Value);
             }
             //totalPrecio = (subtotalPrecio * .16) + subtotalPrecio;
 
