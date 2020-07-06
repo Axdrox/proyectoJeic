@@ -266,140 +266,154 @@ namespace Refracciones.Forms
 
         private void rdbSi_CheckedChanged(object sender, EventArgs e)
         {
-            if (ValidateChildren(ValidationConstraints.Enabled))
+            try
             {
-                if (rdbSi.Checked == true)
+                if (ValidateChildren(ValidationConstraints.Enabled))
                 {
-                    btnLimpiarSiniestro.Visible = false;
-                    chbModificarEstado.Location = new Point(330, 186);
-                    rdbNo.Checked = false;
-                    lblClaveSiniestroPedido.Visible = false;
-                    lblClaveSiniestro.Visible = false;
-                    lblClaveSiniestro.Text = "";
-                    lblAnioPedido.Visible = false;
-                    lblAnio.Visible = false;
-                    lblVehiculoPedido.Visible = false;
-                    lblVehiculo.Visible = false;
-                    lblMarcaPedido.Visible = false;
-                    lblMarca.Visible = false;
-                    lblEstadoSiniestro.Visible = false;
-                    cbEstadoSiniestro.Visible = false;
-                    chbModificarEstado.Visible = false;
-                    lblEstado.Visible = false;
-                    lblComentarioSiniestro.Visible = false;
-                    txtComentarioSiniestro.Visible = false;
-
-                    Siniestro siniestro = new Siniestro();
-                    DialogResult respuesta = siniestro.ShowDialog();
-
-                    if (respuesta == DialogResult.OK)
+                    if (rdbSi.Checked == true)
                     {
-                        rdbNo.Enabled = false;
-                        rdbSi.Enabled = false;
-                        btnLimpiarSiniestro.Visible = true;
-                        nuevoVehiculo = siniestro.otroVehiculo;
-                        nuevoMarca = siniestro.otroMarca;
+                        btnLimpiarSiniestro.Visible = false;
+                        chbModificarEstado.Location = new Point(330, 186);
+                        rdbNo.Checked = false;
+                        lblClaveSiniestroPedido.Visible = false;
+                        lblClaveSiniestro.Visible = false;
+                        lblClaveSiniestro.Text = "";
+                        lblAnioPedido.Visible = false;
+                        lblAnio.Visible = false;
+                        lblVehiculoPedido.Visible = false;
+                        lblVehiculo.Visible = false;
+                        lblMarcaPedido.Visible = false;
+                        lblMarca.Visible = false;
+                        lblEstadoSiniestro.Visible = false;
+                        cbEstadoSiniestro.Visible = false;
+                        chbModificarEstado.Visible = false;
+                        lblEstado.Visible = false;
+                        lblComentarioSiniestro.Visible = false;
+                        txtComentarioSiniestro.Visible = false;
 
-                        lblClaveSiniestroPedido.Show();
-                        lblClaveSiniestro.Show();
-                        lblClaveSiniestro.Text = siniestro.claveSiniestro;
+                        Siniestro siniestro = new Siniestro();
+                        DialogResult respuesta = siniestro.ShowDialog();
 
-                        lblVehiculoPedido.Show();
-                        lblVehiculo.Show();
-                        lblVehiculo.Text = siniestro.vehiculoSiniestro;
+                        if (respuesta == DialogResult.OK)
+                        {
+                            rdbNo.Enabled = false;
+                            rdbSi.Enabled = false;
+                            btnLimpiarSiniestro.Visible = true;
+                            nuevoVehiculo = siniestro.otroVehiculo;
+                            nuevoMarca = siniestro.otroMarca;
 
-                        lblAnioPedido.Show();
-                        lblAnio.Show();
-                        lblAnio.Text = siniestro.anioSiniestro;
+                            lblClaveSiniestroPedido.Show();
+                            lblClaveSiniestro.Show();
+                            lblClaveSiniestro.Text = siniestro.claveSiniestro;
 
-                        lblMarcaPedido.Show();
-                        lblMarca.Show();
-                        lblMarca.Text = siniestro.marcaSiniestro;
+                            lblVehiculoPedido.Show();
+                            lblVehiculo.Show();
+                            lblVehiculo.Text = siniestro.vehiculoSiniestro;
 
-                        lblEstado.Show();
-                        lblEstadoSiniestro.Show();
-                        lblEstadoSiniestro.Text = siniestro.estadoSiniestro;
-                        chbModificarEstado.Show();
+                            lblAnioPedido.Show();
+                            lblAnio.Show();
+                            lblAnio.Text = siniestro.anioSiniestro;
 
-                        lblComentarioSiniestro.Show();
-                        txtComentarioSiniestro.Show();
-                        if (siniestro.comentario == "Agregue un comentario")
-                            txtComentarioSiniestro.Text = "Sin comentario por el momento";
+                            lblMarcaPedido.Show();
+                            lblMarca.Show();
+                            lblMarca.Text = siniestro.marcaSiniestro;
+
+                            lblEstado.Show();
+                            lblEstadoSiniestro.Show();
+                            lblEstadoSiniestro.Text = siniestro.estadoSiniestro;
+                            chbModificarEstado.Show();
+
+                            lblComentarioSiniestro.Show();
+                            txtComentarioSiniestro.Show();
+                            if (siniestro.comentario == "Agregue un comentario")
+                                txtComentarioSiniestro.Text = "Sin comentario por el momento";
+                            else
+                                txtComentarioSiniestro.Text = siniestro.comentario;
+                        }
                         else
-                            txtComentarioSiniestro.Text = siniestro.comentario;
+                            rdbSi.Checked = false;
                     }
-                    else
-                        rdbSi.Checked = false;
                 }
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show("Error en el evento rdbSi_CheckedChanged: " + Ex.Message);
             }
         }
 
         private void rdbNo_CheckedChanged(object sender, EventArgs e)
         {
-            if (ValidateChildren(ValidationConstraints.Enabled))
+            try
             {
-                if (rdbNo.Checked == true)
+                if (ValidateChildren(ValidationConstraints.Enabled))
                 {
-                    btnLimpiarSiniestro.Visible = false;
-                    chbModificarEstado.Location = new Point(330, 186);
-                    rdbSi.Checked = false;
-                    lblClaveSiniestroPedido.Visible = false;
-                    lblClaveSiniestro.Visible = false;
-                    lblClaveSiniestro.Text = "";
-                    lblAnioPedido.Visible = false;
-                    lblAnio.Visible = false;
-                    lblVehiculoPedido.Visible = false;
-                    lblVehiculo.Visible = false;
-                    lblMarcaPedido.Visible = false;
-                    lblMarca.Visible = false;
-                    lblEstadoSiniestro.Visible = false;
-                    cbEstadoSiniestro.Visible = false;
-                    chbModificarEstado.Visible = false;
-                    lblEstado.Visible = false;
-                    lblComentarioSiniestro.Visible = false;
-                    txtComentarioSiniestro.Visible = false;
-
-                    Siniestro siniestro = new Siniestro();
-                    siniestro.claveNOSiniestro = "JEIC-" + operacion.TotalSiniestro().ToString();
-                    DialogResult respuesta = siniestro.ShowDialog();
-
-                    if (respuesta == DialogResult.OK)
+                    if (rdbNo.Checked == true)
                     {
-                        btnLimpiarSiniestro.Visible = true;
-                        nuevoVehiculo = siniestro.otroVehiculo;
-                        nuevoMarca = siniestro.otroMarca;
+                        btnLimpiarSiniestro.Visible = false;
+                        chbModificarEstado.Location = new Point(330, 186);
+                        rdbSi.Checked = false;
+                        lblClaveSiniestroPedido.Visible = false;
+                        lblClaveSiniestro.Visible = false;
+                        lblClaveSiniestro.Text = "";
+                        lblAnioPedido.Visible = false;
+                        lblAnio.Visible = false;
+                        lblVehiculoPedido.Visible = false;
+                        lblVehiculo.Visible = false;
+                        lblMarcaPedido.Visible = false;
+                        lblMarca.Visible = false;
+                        lblEstadoSiniestro.Visible = false;
+                        cbEstadoSiniestro.Visible = false;
+                        chbModificarEstado.Visible = false;
+                        lblEstado.Visible = false;
+                        lblComentarioSiniestro.Visible = false;
+                        txtComentarioSiniestro.Visible = false;
 
-                        lblClaveSiniestroPedido.Show();
-                        lblClaveSiniestro.Show();
-                        lblClaveSiniestro.Text = siniestro.claveSiniestro;
+                        Siniestro siniestro = new Siniestro();
+                        siniestro.claveNOSiniestro = "JEIC-" + operacion.TotalSiniestro().ToString();
+                        DialogResult respuesta = siniestro.ShowDialog();
 
-                        lblVehiculoPedido.Show();
-                        lblVehiculo.Show();
-                        lblVehiculo.Text = siniestro.vehiculoSiniestro;
+                        if (respuesta == DialogResult.OK)
+                        {
+                            btnLimpiarSiniestro.Visible = true;
+                            nuevoVehiculo = siniestro.otroVehiculo;
+                            nuevoMarca = siniestro.otroMarca;
 
-                        lblAnioPedido.Show();
-                        lblAnio.Show();
-                        lblAnio.Text = siniestro.anioSiniestro;
+                            lblClaveSiniestroPedido.Show();
+                            lblClaveSiniestro.Show();
+                            lblClaveSiniestro.Text = siniestro.claveSiniestro;
 
-                        lblMarcaPedido.Show();
-                        lblMarca.Show();
-                        lblMarca.Text = siniestro.marcaSiniestro;
+                            lblVehiculoPedido.Show();
+                            lblVehiculo.Show();
+                            lblVehiculo.Text = siniestro.vehiculoSiniestro;
 
-                        lblEstado.Show();
-                        lblEstadoSiniestro.Show();
-                        lblEstadoSiniestro.Text = siniestro.estadoSiniestro;
-                        chbModificarEstado.Show();
+                            lblAnioPedido.Show();
+                            lblAnio.Show();
+                            lblAnio.Text = siniestro.anioSiniestro;
 
-                        lblComentarioSiniestro.Show();
-                        txtComentarioSiniestro.Show();
-                        if (siniestro.comentario == "Agregue un comentario")
-                            txtComentarioSiniestro.Text = "Sin comentario por el momento";
+                            lblMarcaPedido.Show();
+                            lblMarca.Show();
+                            lblMarca.Text = siniestro.marcaSiniestro;
+
+                            lblEstado.Show();
+                            lblEstadoSiniestro.Show();
+                            lblEstadoSiniestro.Text = siniestro.estadoSiniestro;
+                            chbModificarEstado.Show();
+
+                            lblComentarioSiniestro.Show();
+                            txtComentarioSiniestro.Show();
+                            if (siniestro.comentario == "Agregue un comentario")
+                                txtComentarioSiniestro.Text = "Sin comentario por el momento";
+                            else
+                                txtComentarioSiniestro.Text = siniestro.comentario;
+                        }
                         else
-                            txtComentarioSiniestro.Text = siniestro.comentario;
+                            rdbNo.Checked = false;
                     }
-                    else
-                        rdbNo.Checked = false;
                 }
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show("Error en el evento rdbNo_CheckedChanged: " + Ex.Message);
             }
         }
 
@@ -547,63 +561,6 @@ namespace Refracciones.Forms
                 cbDestino.Show();
                 lblDireccion.Hide();
             }
-            /*
-            if (actualizar == 1)
-            {
-                if (chbOtroDestino.Checked == true)
-                {
-                    txtDestino.Hide();
-                    cbDestino.Show();
-                    cbDestino.Enabled = true;
-                }
-                else
-                {
-                    txtDestino.Show();
-                    cbDestino.Hide();
-                    cbDestino.SelectedIndex = -1;
-                }
-            }
-            else
-            {
-                if (chbOtroDestino.Checked == true)
-                {
-                    txtDestino.Show();
-                    cbDestino.Hide();
-                    //cbDestino.SelectedIndex = -1;
-                }
-                else
-                {
-                    txtDestino.Hide();
-                    txtDestino.Text = "Escriba el destino";
-                    txtDestino.ForeColor = Color.FromArgb(160, 160, 140);
-                    cbDestino.Show();
-                }
-            }*/
-        }
-
-        private void txtClavePedido_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            /*
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }*/
-
-            //CAMBIAR PARA VALIDACION
-            /* cbVendedor.Enabled = true;
-             cbAseguradora.Enabled = true;
-             chbOtraAseguradora.Enabled = true;
-             chbModificarVendedor.Enabled = true;
-             cbValuador.Enabled = true;
-             chbOtroValuador.Enabled = true;
-             cbTaller.Enabled = true;
-             chbOtroTaller.Enabled = true;
-             cbDestino.Enabled = true;
-             chbOtroDestino.Enabled = true;
-             dtpFechaAsignacion.Enabled = true;
-             dtpFechaPromesa.Enabled = true;
-             dtpFechaBaja.Enabled = true;
-             btnFinalizarPedido.Enabled = true;*/
         }
 
         private void dtpFechaPromesa_ValueChanged(object sender, EventArgs e)
@@ -689,54 +646,40 @@ namespace Refracciones.Forms
 
         private void calcularDGV()
         {
-            //si numero de guia se encuentra no ese array se añade a ese array y va a ir guardando en otra variable la suma del costo de envio
-            string[] guia = new string[dgvPedido.Rows.Count];
-            int i = 0;
-
-            //double totalCostoEnvio = 0; Ya no es tan necesaria puesto que se le tiene que sumar a la variable subtotalPrecio
-            foreach (DataGridViewRow row in dgvPedido.Rows)
+            try
             {
-                totalCosto += /*Convert.ToInt32(row.Cells["Cantidad"].Value) **/ Convert.ToDouble(row.Cells["Costo neto\n($)"].Value);
-                subtotalPrecio += /*(Convert.ToInt32(row.Cells["Cantidad"].Value) **/ Convert.ToDouble(row.Cells["Precio de venta\n($)"].Value) /*+ Convert.ToDouble(row.Cells["Precio de reparación"].Value)*/;
-                /*if (!guia.Contains(Convert.ToString(row.Cells["Número de guía"].Value)))
-                 {
-                     guia[i] = Convert.ToString(row.Cells["Número de guía"].Value);
-                     //totalCostoEnvio += Convert.ToDouble(row.Cells["Costo de envío"].Value);
-                     subtotalPrecio += Convert.ToDouble(row.Cells["Costo de envío"].Value);
-                     i++;
-                 }*/
+                //si numero de guia se encuentra no ese array se añade a ese array y va a ir guardando en otra variable la suma del costo de envio
+                string[] guia = new string[dgvPedido.Rows.Count];
+                int i = 0;
+
+                //double totalCostoEnvio = 0; Ya no es tan necesaria puesto que se le tiene que sumar a la variable subtotalPrecio
+                foreach (DataGridViewRow row in dgvPedido.Rows)
+                {
+                    totalCosto += /*Convert.ToInt32(row.Cells["Cantidad"].Value) **/ Convert.ToDouble(row.Cells["Costo neto\n($)"].Value);
+                    subtotalPrecio += /*(Convert.ToInt32(row.Cells["Cantidad"].Value) **/ Convert.ToDouble(row.Cells["Precio de venta\n($)"].Value) /*+ Convert.ToDouble(row.Cells["Precio de reparación"].Value)*/;
+                    /*if (!guia.Contains(Convert.ToString(row.Cells["Número de guía"].Value)))
+                     {
+                         guia[i] = Convert.ToString(row.Cells["Número de guía"].Value);
+                         //totalCostoEnvio += Convert.ToDouble(row.Cells["Costo de envío"].Value);
+                         subtotalPrecio += Convert.ToDouble(row.Cells["Costo de envío"].Value);
+                         i++;
+                     }*/
+                }
+                subtotalPrecio = subtotalPrecio / (1 + 0.16);
+                totalPrecio = Convert.ToDouble(lblPrecioTotal.Text.Substring(1, lblPrecioTotal.Text.Length - 1));
+                utilidad = totalPrecio - totalCosto;
             }
-            subtotalPrecio = subtotalPrecio / (1 + 0.16);
-            totalPrecio = Convert.ToDouble(lblPrecioTotal.Text.Substring(1, lblPrecioTotal.Text.Length - 1));
-            utilidad = totalPrecio - totalCosto;
+            catch (Exception Ex)
+            {
+                MessageBox.Show("Error al calcular dgv: " + Ex.Message);
+            }
         }
 
         private void registrarPedido()
         {
-            //AGREGANDO DATOS A PEDIDO
-            foreach (DataGridViewRow row in dgvPedido.Rows)
+            try
             {
-                DateTime dtFechaCosto = new DateTime();
-                //if(row.Cells["Fecha costo"].Value != null || row.Cells["Fecha costo"].Value != DBNull.Value || row.Cells["Fecha costo"].Value.ToString() != string.Empty)
-                dtFechaCosto = DateTime.Parse(row.Cells["Fecha costo"].Value.ToString());
-
-                operacion = new OperBD();
-                operacion.registrarPedido(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(),
-                    Convert.ToString(row.Cells["Pieza"].Value), Convert.ToString(row.Cells["Portal"].Value),
-                    Convert.ToString(row.Cells["Origen"].Value).Trim(), Convert.ToString(row.Cells["Proveedor"].Value),
-                    dtFechaCosto/*, Convert.ToString(row.Cells["Costo sin IVA"].Value)*/, Convert.ToString(row.Cells["Costo neto\n($)"].Value),
-                    Convert.ToString(row.Cells["Costo de envío\n($)"].Value), Convert.ToString(row.Cells["Precio de venta\n($)"].Value),
-                    Convert.ToString(row.Cells["Precio de reparación\n($)"].Value), Convert.ToString(row.Cells["Clave de producto"].Value),
-                    Convert.ToString(row.Cells["Número de guía"].Value), Convert.ToInt32(row.Cells["Cantidad"].Value));
-            }
-        }
-
-        private void actualizarPedido()
-        {
-            if (filasIniciales != 0)
-            {
-                int i = 0;
-                //actualizar las piezas que ya se tenían registradas
+                //AGREGANDO DATOS A PEDIDO
                 foreach (DataGridViewRow row in dgvPedido.Rows)
                 {
                     DateTime dtFechaCosto = new DateTime();
@@ -744,41 +687,81 @@ namespace Refracciones.Forms
                     dtFechaCosto = DateTime.Parse(row.Cells["Fecha costo"].Value.ToString());
 
                     operacion = new OperBD();
-                    operacion.actualizarPedido(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(),
+                    operacion.registrarPedido(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(),
                         Convert.ToString(row.Cells["Pieza"].Value), Convert.ToString(row.Cells["Portal"].Value),
                         Convert.ToString(row.Cells["Origen"].Value).Trim(), Convert.ToString(row.Cells["Proveedor"].Value),
                         dtFechaCosto/*, Convert.ToString(row.Cells["Costo sin IVA"].Value)*/, Convert.ToString(row.Cells["Costo neto\n($)"].Value),
                         Convert.ToString(row.Cells["Costo de envío\n($)"].Value), Convert.ToString(row.Cells["Precio de venta\n($)"].Value),
                         Convert.ToString(row.Cells["Precio de reparación\n($)"].Value), Convert.ToString(row.Cells["Clave de producto"].Value),
-                        Convert.ToString(row.Cells["Número de guía"].Value), Convert.ToInt32(row.Cells["Cantidad"].Value), nombresPiezas[i]);
-                    i++;
-                    if (i == filasIniciales)
-                        break;
+                        Convert.ToString(row.Cells["Número de guía"].Value), Convert.ToInt32(row.Cells["Cantidad"].Value));
                 }
-                //cuando hay filas ya registradas se registren las nuevas
-                if ((dgvPedido.Rows.Count - filasIniciales) != 0)
+                MessageBOX.SHowDialog(1, "Se registró pedido correctamente");
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show("Error en método registrar pedido: " + Ex.Message);
+            }
+        }
+
+        private void actualizarPedido()
+        {
+            try
+            {
+                if (filasIniciales != 0)
                 {
-                    for (int j = filasIniciales; j < dgvPedido.Rows.Count; j++)
+                    int i = 0;
+                    //actualizar las piezas que ya se tenían registradas
+                    foreach (DataGridViewRow row in dgvPedido.Rows)
                     {
-                        operacion.registrarPedido(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(),
-                             dgvPedido.Rows[j].Cells[3].Value.ToString(), dgvPedido.Rows[j].Cells[7].Value.ToString(),
-                             dgvPedido.Rows[j].Cells[8].Value.ToString(), dgvPedido.Rows[j].Cells[9].Value.ToString(),
-                             Convert.ToDateTime(dgvPedido.Rows[j].Cells[10].Value), dgvPedido.Rows[j].Cells[11].Value.ToString(),
-                             dgvPedido.Rows[j].Cells[12].Value.ToString(), dgvPedido.Rows[j].Cells[13].Value.ToString(),
-                             dgvPedido.Rows[j].Cells[14].Value.ToString(), dgvPedido.Rows[j].Cells[5].Value.ToString(),
-                             dgvPedido.Rows[j].Cells[6].Value.ToString(), Convert.ToInt32(dgvPedido.Rows[j].Cells[4].Value));
+                        DateTime dtFechaCosto = new DateTime();
+                        //if(row.Cells["Fecha costo"].Value != null || row.Cells["Fecha costo"].Value != DBNull.Value || row.Cells["Fecha costo"].Value.ToString() != string.Empty)
+                        dtFechaCosto = DateTime.Parse(row.Cells["Fecha costo"].Value.ToString());
+
+                        operacion = new OperBD();
+                        operacion.actualizarPedido(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(),
+                            Convert.ToString(row.Cells["Pieza"].Value), Convert.ToString(row.Cells["Portal"].Value),
+                            Convert.ToString(row.Cells["Origen"].Value).Trim(), Convert.ToString(row.Cells["Proveedor"].Value),
+                            dtFechaCosto/*, Convert.ToString(row.Cells["Costo sin IVA"].Value)*/, Convert.ToString(row.Cells["Costo neto\n($)"].Value),
+                            Convert.ToString(row.Cells["Costo de envío\n($)"].Value), Convert.ToString(row.Cells["Precio de venta\n($)"].Value),
+                            Convert.ToString(row.Cells["Precio de reparación\n($)"].Value), Convert.ToString(row.Cells["Clave de producto"].Value),
+                            Convert.ToString(row.Cells["Número de guía"].Value), Convert.ToInt32(row.Cells["Cantidad"].Value), nombresPiezas[i]);
+                        i++;
+                        if (i == filasIniciales)
+                        {
+                            MessageBOX.SHowDialog(1, "Se actualizó pedido correctamente");
+                            break;
+                        }
+                    }
+                    //cuando hay filas ya registradas se registren las nuevas
+                    if ((dgvPedido.Rows.Count - filasIniciales) != 0)
+                    {
+                        for (int j = filasIniciales; j < dgvPedido.Rows.Count; j++)
+                        {
+                            operacion.registrarPedido(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(),
+                                 dgvPedido.Rows[j].Cells[3].Value.ToString(), dgvPedido.Rows[j].Cells[7].Value.ToString(),
+                                 dgvPedido.Rows[j].Cells[8].Value.ToString(), dgvPedido.Rows[j].Cells[9].Value.ToString(),
+                                 Convert.ToDateTime(dgvPedido.Rows[j].Cells[10].Value), dgvPedido.Rows[j].Cells[11].Value.ToString(),
+                                 dgvPedido.Rows[j].Cells[12].Value.ToString(), dgvPedido.Rows[j].Cells[13].Value.ToString(),
+                                 dgvPedido.Rows[j].Cells[14].Value.ToString(), dgvPedido.Rows[j].Cells[5].Value.ToString(),
+                                 dgvPedido.Rows[j].Cells[6].Value.ToString(), Convert.ToInt32(dgvPedido.Rows[j].Cells[4].Value));
+                        }
+                        MessageBOX.SHowDialog(1, "Se registró pedido correctamente");
                     }
                 }
+                else
+                    registrarPedido();
             }
-            else
-                registrarPedido();
+            catch (Exception Ex)
+            {
+                MessageBox.Show("Error en método actualizar pedido: " + Ex.Message);
+            }
         }
 
         private void btnFinalizarPedido_Click(object sender, EventArgs e)
         {
             try
             {
-                if(dgvPedido.Rows.Count != 0)
+                if (dgvPedido.Rows.Count != 0)
                 {
                     if (ValidateChildren(ValidationConstraints.Enabled))
                     {
@@ -790,7 +773,6 @@ namespace Refracciones.Forms
                         if (actualizar != 1)
                         {
                             dtFechaBaja = DateTime.Parse("1753/01/01");
-                            //operacion.registrarFechasVentas(dtFechaAsignacion, dtFechaPromesa);
 
                             //Registrar lo correspondiente a siniestro
                             string estadoSiniestro = "";
@@ -851,77 +833,83 @@ namespace Refracciones.Forms
 
         private void btnAgregarPieza_Click(object sender, EventArgs e)
         {
-            if (txtClavePedido.Text != "Escriba clave del pedido" && !string.IsNullOrEmpty(lblClaveSiniestro.Text))
+            try
             {
-                Pieza pieza = new Pieza();
-                string[] guia = new string[dgvPedido.Rows.Count];
-                int j = 0;
-                if (actualizar == 1)
+                if (txtClavePedido.Text != "Escriba clave del pedido" && !string.IsNullOrEmpty(lblClaveSiniestro.Text))
                 {
-                    if (chbOtroDestino.Checked == true && chbOtroDestino.Text == "Otro")
-                        pieza.destino = txtDestino.Text.Trim();
-                    else if (chbOtroDestino.Checked == false && chbOtroDestino.Text == "Otro")
-                        pieza.destino = cbDestino.Text.Trim();
+                    Pieza pieza = new Pieza();
+                    string[] guia = new string[dgvPedido.Rows.Count];
+                    int j = 0;
+                    if (actualizar == 1)
+                    {
+                        if (chbOtroDestino.Checked == true && chbOtroDestino.Text == "Otro")
+                            pieza.destino = txtDestino.Text.Trim();
+                        else if (chbOtroDestino.Checked == false && chbOtroDestino.Text == "Otro")
+                            pieza.destino = cbDestino.Text.Trim();
+                        else
+                            pieza.destino = txtDestino.Text.Trim();
+                    }
                     else
-                        pieza.destino = txtDestino.Text.Trim();
+                    {
+                        if (chbOtroDestino.Checked == true)
+                            pieza.destino = txtDestino.Text.Trim();
+                        else
+                            pieza.destino = cbDestino.Text.Trim();
+                    }
+                    if (dgvPedido.Rows.Count > 0)
+                    {
+                        foreach (DataGridViewRow row in dgvPedido.Rows)
+                        {
+                            if (!guia.Contains(Convert.ToString(row.Cells["Número de guía"].Value)))
+                            {
+                                pieza.cbNumeroGuia.Items.Add(Convert.ToString(row.Cells["Número de guía"].Value));
+                                guia[j] = Convert.ToString(row.Cells["Número de guía"].Value);
+                                j++;
+                            }
+                        }
+                    }
+
+                    pieza.marca = lblMarca.Text;
+                    pieza.modelo = lblVehiculo.Text;
+                    pieza.anio = lblAnio.Text;
+
+                    int cantidad = 0;
+                    //double subtotalPrecio = 0;
+                    double totalPrecio = 0;
+                    DialogResult respuesta = pieza.ShowDialog();
+                    //MessageBox.Show(respuesta.ToString());
+                    if (respuesta == DialogResult.OK)
+                    {
+                        DataRow row = dt.NewRow();
+                        for (int i = 0; i < pieza.datosMandar.Length; i++)
+                        {
+                            row[i] = pieza.datosMandar[i];
+                        }
+                        dt.Rows.Add(row);
+
+                        //MessageBox.Show(filasIniciales.ToString());
+
+                        foreach (DataGridViewRow dgvRow in dgvPedido.Rows)
+                        {
+                            cantidad += Convert.ToInt32(dgvRow.Cells["Cantidad"].Value);
+                            //subtotalPrecio += (Convert.ToInt32(dgvRow.Cells["Cantidad"].Value) * Convert.ToDouble(dgvRow.Cells["Precio de venta"].Value) /*+ Convert.ToDouble(dgvRow.Cells["Precio de reparación"].Value)*/);
+                            totalPrecio += Convert.ToDouble(dgvRow.Cells["Precio de venta\n($)"].Value);
+                        }
+                        //totalPrecio = (subtotalPrecio * .16) + subtotalPrecio;
+
+                        lblCantidadTotal.Text = cantidad.ToString();
+                        lblPrecioTotal.Text = "$" + totalPrecio.ToString();
+                    }
                 }
                 else
                 {
-                    if (chbOtroDestino.Checked == true)
-                        pieza.destino = txtDestino.Text.Trim();
-                    else
-                        pieza.destino = cbDestino.Text.Trim();
-                }
-                if (dgvPedido.Rows.Count > 0)
-                {
-                    foreach (DataGridViewRow row in dgvPedido.Rows)
-                    {
-                        if (!guia.Contains(Convert.ToString(row.Cells["Número de guía"].Value)))
-                        {
-                            pieza.cbNumeroGuia.Items.Add(Convert.ToString(row.Cells["Número de guía"].Value));
-                            guia[j] = Convert.ToString(row.Cells["Número de guía"].Value);
-                            j++;
-                        }
-                    }
-                }
-
-                pieza.marca = lblMarca.Text;
-                pieza.modelo = lblVehiculo.Text;
-                pieza.anio = lblAnio.Text;
-
-                int cantidad = 0;
-                //double subtotalPrecio = 0;
-                double totalPrecio = 0;
-                DialogResult respuesta = pieza.ShowDialog();
-                //MessageBox.Show(respuesta.ToString());
-                if (respuesta == DialogResult.OK)
-                {
-                    DataRow row = dt.NewRow();
-                    for (int i = 0; i < pieza.datosMandar.Length; i++)
-                    {
-                        row[i] = pieza.datosMandar[i];
-                    }
-                    dt.Rows.Add(row);
-
-                    //MessageBox.Show(filasIniciales.ToString());
-
-                    foreach (DataGridViewRow dgvRow in dgvPedido.Rows)
-                    {
-                        cantidad += Convert.ToInt32(dgvRow.Cells["Cantidad"].Value);
-                        //subtotalPrecio += (Convert.ToInt32(dgvRow.Cells["Cantidad"].Value) * Convert.ToDouble(dgvRow.Cells["Precio de venta"].Value) /*+ Convert.ToDouble(dgvRow.Cells["Precio de reparación"].Value)*/);
-                        totalPrecio += Convert.ToDouble(dgvRow.Cells["Precio de venta\n($)"].Value);
-                    }
-                    //totalPrecio = (subtotalPrecio * .16) + subtotalPrecio;
-
-                    lblCantidadTotal.Text = cantidad.ToString();
-                    lblPrecioTotal.Text = "$" + totalPrecio.ToString();
+                    MessageBOX.SHowDialog(2, "Favor de proporcionar claves de pedido y siniestro");
                 }
             }
-            else
+            catch (Exception EX)
             {
-                MessageBOX.SHowDialog(2, "Favor de proporcionar claves de pedido y siniestro");
+                MessageBox.Show("Error en el evento btnAgregarPieza_Click: " + EX.Message);
             }
-            //this.Hide();
         }
 
         //Hace que el combobox de los valuadores cambie de acuerdo al cliente/aseguradora que se elija
@@ -943,155 +931,156 @@ namespace Refracciones.Forms
         }
 
         public int cantidadPenalizada = 0;
+
         private void dgvPedido_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //if click is on new row or header row
-            if (e.RowIndex == dgvPedido.NewRowIndex || e.RowIndex < 0)
-                return;
-
-            //Check if click is on specific column
-            if (e.ColumnIndex == dgvPedido.Columns["dataGridViewDeleteButton"].Index)
+            try
             {
-                string pieza = "";
-                foreach (DataGridViewRow row in dgvPedido.SelectedRows)
+                //if click is on new row or header row
+                if (e.RowIndex == dgvPedido.NewRowIndex || e.RowIndex < 0)
+                    return;
+
+                //Check if click is on specific column
+                if (e.ColumnIndex == dgvPedido.Columns["dataGridViewDeleteButton"].Index)
                 {
-                    lblCantidadTotal.Text = (Convert.ToInt32(lblCantidadTotal.Text) - Convert.ToInt32(row.Cells["Cantidad"].Value)).ToString();
-                    //lblPrecioTotal.Text = "$" + (Convert.ToDouble(lblPrecioTotal.Text.Substring(1, lblPrecioTotal.Text.Length - 1)) - ((Convert.ToDouble(row.Cells["Precio de venta"].Value) * Convert.ToInt32(row.Cells["Cantidad"].Value) * 0.16) + (Convert.ToDouble(row.Cells["Precio de venta"].Value) * Convert.ToInt32(row.Cells["Cantidad"].Value)))).ToString();
-                    lblPrecioTotal.Text = "$" + ((Convert.ToDouble(lblPrecioTotal.Text.Substring(1, lblPrecioTotal.Text.Length - 1)) - Convert.ToDouble(row.Cells["Precio de venta\n($)"].Value)).ToString());
-                    pieza = row.Cells["Pieza"].Value.ToString();
-                }
-                if (actualizar == 1)
-                {
-                    if (filasIniciales != 0)
+                    string pieza = "";
+                    foreach (DataGridViewRow row in dgvPedido.SelectedRows)
                     {
-                        if (string.IsNullOrEmpty(operacion.existePiezaEntrega(pieza, txtClavePedido.Text, lblClaveSiniestro.Text)))
+                        lblCantidadTotal.Text = (Convert.ToInt32(lblCantidadTotal.Text) - Convert.ToInt32(row.Cells["Cantidad"].Value)).ToString();
+                        //lblPrecioTotal.Text = "$" + (Convert.ToDouble(lblPrecioTotal.Text.Substring(1, lblPrecioTotal.Text.Length - 1)) - ((Convert.ToDouble(row.Cells["Precio de venta"].Value) * Convert.ToInt32(row.Cells["Cantidad"].Value) * 0.16) + (Convert.ToDouble(row.Cells["Precio de venta"].Value) * Convert.ToInt32(row.Cells["Cantidad"].Value)))).ToString();
+                        lblPrecioTotal.Text = "$" + ((Convert.ToDouble(lblPrecioTotal.Text.Substring(1, lblPrecioTotal.Text.Length - 1)) - Convert.ToDouble(row.Cells["Precio de venta\n($)"].Value)).ToString());
+                        pieza = row.Cells["Pieza"].Value.ToString();
+                    }
+                    if (actualizar == 1)
+                    {
+                        if (filasIniciales != 0)
                         {
-                            if (!string.IsNullOrEmpty(operacion.existePiezaRegistradaPedido(txtClavePedido.Text, lblClaveSiniestro.Text, pieza)))
+                            if (string.IsNullOrEmpty(operacion.existePiezaEntrega(pieza, txtClavePedido.Text, lblClaveSiniestro.Text)))
                             {
-                                MessageBOX mes = new MessageBOX(4, "¿Esta seguro de eliminar esta pieza?");
-                                if (mes.ShowDialog() == DialogResult.OK)
+                                if (!string.IsNullOrEmpty(operacion.existePiezaRegistradaPedido(txtClavePedido.Text, lblClaveSiniestro.Text, pieza)))
                                 {
-                                    operacion.eliminarPiezaRegistradaPedido(txtClavePedido.Text, lblClaveSiniestro.Text, pieza);
-                                    filasIniciales -= 1;
-                                    nombresPiezas.Remove(pieza);
-                                    dgvPedido.Rows.RemoveAt(dgvPedido.CurrentRow.Index);
+                                    MessageBOX mes = new MessageBOX(4, "¿Esta seguro de eliminar esta pieza?");
+                                    if (mes.ShowDialog() == DialogResult.OK)
+                                    {
+                                        operacion.eliminarPiezaRegistradaPedido(txtClavePedido.Text, lblClaveSiniestro.Text, pieza);
+                                        filasIniciales -= 1;
+                                        nombresPiezas.Remove(pieza);
+                                        dgvPedido.Rows.RemoveAt(dgvPedido.CurrentRow.Index);
+                                    }
                                 }
+                                else
+                                    dgvPedido.Rows.RemoveAt(dgvPedido.CurrentRow.Index);
                             }
                             else
-                                dgvPedido.Rows.RemoveAt(dgvPedido.CurrentRow.Index);
+                                MessageBOX.SHowDialog(2, "No es posible eliminar pieza debido a que existen entregas");
                         }
                         else
-                            MessageBOX.SHowDialog(2, "No es posible eliminar pieza debido a que existen entregas");
+                            dgvPedido.Rows.RemoveAt(dgvPedido.CurrentRow.Index);
                     }
                     else
                         dgvPedido.Rows.RemoveAt(dgvPedido.CurrentRow.Index);
                 }
-                else
-                    dgvPedido.Rows.RemoveAt(dgvPedido.CurrentRow.Index);
-
-                //Put some logic here, for example to remove row from your binding list.
-                //yourBindingList.RemoveAt(e.RowIndex);
-
-                // Or
-                // var data = (Product)dataGridView1.Rows[e.RowIndex].DataBoundItem;
-                // do something
-            }
-            if (actualizar == 1)
-            {
-                if (e.ColumnIndex == dgvPedido.Columns["dataGridViewPenaltyButton"].Index)
+                if (actualizar == 1)
                 {
-                    DialogResult respuesta = DialogResult.Cancel;
-                    int cantidad = 0;
-                    Penalizaciones penalizaciones = new Penalizaciones();
+                    if (e.ColumnIndex == dgvPedido.Columns["dataGridViewPenaltyButton"].Index)
+                    {
+                        DialogResult respuesta = DialogResult.Cancel;
+                        int cantidad = 0;
+                        Penalizaciones penalizaciones = new Penalizaciones();
+                        foreach (DataGridViewRow row in dgvPedido.SelectedRows)
+                        {
+                            penalizaciones.cvePieza = operacion.clavePieza(Convert.ToString(row.Cells["Pieza"].Value));
+                            penalizaciones.cveVenta = operacion.claveVenta(txtClavePedido.Text, lblClaveSiniestro.Text);
+                            cantidad = Convert.ToInt32(row.Cells["Cantidad"].Value);
+                        }
+                        if (cantidad == 0)
+                        {
+                            MessageBOX.SHowDialog(2, "No es posible penalizar debido a que no hay cantidad suficiente");
+                        }
+                        else
+                        {
+                            penalizaciones.cantidad = cantidad;
+                            respuesta = penalizaciones.ShowDialog();
+                        }
+                        //Para que se actualice la cantidad que se penalizó
+                        if (respuesta == DialogResult.OK)
+                        {
+                            dt = operacion.piezasPedidoActualizar(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
+                            dgvPedido.DataSource = dt;
+                            cantidadPenalizada = penalizaciones.cantidadPenalizada;
+                            lblCantidadTotal.Text = (Convert.ToInt32(lblCantidadTotal.Text) - cantidadPenalizada).ToString();
+                        }
+                    }
+                }
+
+                if (e.ColumnIndex == dgvPedido.Columns["dataGridViewEditButton"].Index)
+                {
+                    int index = dgvPedido.CurrentCell.RowIndex;
+                    //MessageBox.Show(Convert.ToString(index));
+                    Pieza pieza = new Pieza();
                     foreach (DataGridViewRow row in dgvPedido.SelectedRows)
                     {
-                        penalizaciones.cvePieza = operacion.clavePieza(Convert.ToString(row.Cells["Pieza"].Value));
-                        penalizaciones.cveVenta = operacion.claveVenta(txtClavePedido.Text, lblClaveSiniestro.Text);
-                        cantidad = Convert.ToInt32(row.Cells["Cantidad"].Value);
+                        datosPieza[0] = Convert.ToString(row.Cells["Pieza"].Value);
+                        datosPieza[1] = Convert.ToString(row.Cells["Cantidad"].Value);
+                        datosPieza[2] = Convert.ToString(row.Cells["Clave de producto"].Value);
+                        datosPieza[3] = Convert.ToString(row.Cells["Número de guía"].Value);
+                        datosPieza[4] = Convert.ToString(row.Cells["Portal"].Value);
+                        datosPieza[5] = Convert.ToString(row.Cells["Origen"].Value);
+                        datosPieza[6] = Convert.ToString(row.Cells["Proveedor"].Value);
+                        datosPieza[7] = Convert.ToString(row.Cells["Fecha costo"].Value);
+                        //datosPieza[8] = Convert.ToString(row.Cells["Costo sin IVA"].Value);
+                        datosPieza[8] = Convert.ToString(row.Cells["Costo neto\n($)"].Value);
+                        datosPieza[9] = Convert.ToString(row.Cells["Costo de envío\n($)"].Value);
+                        datosPieza[10] = Convert.ToString(row.Cells["Precio de reparación\n($)"].Value);
+                        datosPieza[11] = Convert.ToString(row.Cells["Precio de venta\n($)"].Value);
                     }
-                    if (cantidad == 0)
+                    pieza.datosEditar = datosPieza;
+                    pieza.editarPieza = 1;
+                    pieza.marca = lblMarca.Text;
+                    pieza.modelo = lblVehiculo.Text;
+                    pieza.anio = lblAnio.Text;
+                    string[] guia = new string[dgvPedido.Rows.Count];
+                    int i = 0;
+                    pieza.destino = cbDestino.Text.Trim();
+                    if (dgvPedido.Rows.Count > 0)
                     {
-                        MessageBOX.SHowDialog(2, "No es posible penalizar debido a que no hay cantidad suficiente");
+                        foreach (DataGridViewRow row in dgvPedido.Rows)
+                        {
+                            if (!guia.Contains(Convert.ToString(row.Cells["Número de guía"].Value)))
+                            {
+                                pieza.cbNumeroGuia.Items.Add(Convert.ToString(row.Cells["Número de guía"].Value));
+                                guia[i] = Convert.ToString(row.Cells["Número de guía"].Value);
+                                i++;
+                            }
+                        }
                     }
-                    else
-                    {
-                        penalizaciones.cantidad = cantidad;
-                        respuesta = penalizaciones.ShowDialog();
-                    }
-                    //Para que se actualice la cantidad que se penalizó
+                    DialogResult respuesta = pieza.ShowDialog();
                     if (respuesta == DialogResult.OK)
                     {
-                        dt = operacion.piezasPedidoActualizar(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
-                        dgvPedido.DataSource = dt;
-                        cantidadPenalizada = penalizaciones.cantidadPenalizada;
-                        lblCantidadTotal.Text = (Convert.ToInt32(lblCantidadTotal.Text) - cantidadPenalizada).ToString();
+                        int k = 0;
+                        //probar llenando dgv de otra forma con arreglo (datasource?)
+                        if (actualizar == 1)
+                        {
+                            for (int j = 0; j < pieza.datosMandar.Length; j++)
+                            {
+                                dgvPedido[j + 3, index].Value = pieza.datosMandar[k];
+                                k++;
+                            }
+                        }
+                        else
+                        {
+                            for (int j = 0; j < pieza.datosMandar.Length; j++)
+                            {
+                                dgvPedido[j + 2, index].Value = pieza.datosMandar[k];
+                                k++;
+                            }
+                        }
                     }
                 }
             }
-
-            if (e.ColumnIndex == dgvPedido.Columns["dataGridViewEditButton"].Index)
+            catch (Exception EX)
             {
-                int index = dgvPedido.CurrentCell.RowIndex;
-                //MessageBox.Show(Convert.ToString(index));
-                Pieza pieza = new Pieza();
-                foreach (DataGridViewRow row in dgvPedido.SelectedRows)
-                {
-                    datosPieza[0] = Convert.ToString(row.Cells["Pieza"].Value);
-                    datosPieza[1] = Convert.ToString(row.Cells["Cantidad"].Value);
-                    datosPieza[2] = Convert.ToString(row.Cells["Clave de producto"].Value);
-                    datosPieza[3] = Convert.ToString(row.Cells["Número de guía"].Value);
-                    datosPieza[4] = Convert.ToString(row.Cells["Portal"].Value);
-                    datosPieza[5] = Convert.ToString(row.Cells["Origen"].Value);
-                    datosPieza[6] = Convert.ToString(row.Cells["Proveedor"].Value);
-                    datosPieza[7] = Convert.ToString(row.Cells["Fecha costo"].Value);
-                    //datosPieza[8] = Convert.ToString(row.Cells["Costo sin IVA"].Value);
-                    datosPieza[8] = Convert.ToString(row.Cells["Costo neto\n($)"].Value);
-                    datosPieza[9] = Convert.ToString(row.Cells["Costo de envío\n($)"].Value);
-                    datosPieza[10] = Convert.ToString(row.Cells["Precio de reparación\n($)"].Value);
-                    datosPieza[11] = Convert.ToString(row.Cells["Precio de venta\n($)"].Value);
-                }
-                pieza.datosEditar = datosPieza;
-                pieza.editarPieza = 1;
-                pieza.marca = lblMarca.Text;
-                pieza.modelo = lblVehiculo.Text;
-                pieza.anio = lblAnio.Text;
-                string[] guia = new string[dgvPedido.Rows.Count];
-                int i = 0;
-                pieza.destino = cbDestino.Text.Trim();
-                if (dgvPedido.Rows.Count > 0)
-                {
-                    foreach (DataGridViewRow row in dgvPedido.Rows)
-                    {
-                        if (!guia.Contains(Convert.ToString(row.Cells["Número de guía"].Value)))
-                        {
-                            pieza.cbNumeroGuia.Items.Add(Convert.ToString(row.Cells["Número de guía"].Value));
-                            guia[i] = Convert.ToString(row.Cells["Número de guía"].Value);
-                            i++;
-                        }
-                    }
-                }
-                DialogResult respuesta = pieza.ShowDialog();
-                if (respuesta == DialogResult.OK)
-                {
-                    int k = 0;
-                    //probar llenando dgv de otra forma con arreglo (datasource?)
-                    if (actualizar == 1)
-                    {
-                        for (int j = 0; j < pieza.datosMandar.Length; j++)
-                        {
-                            dgvPedido[j + 3, index].Value = pieza.datosMandar[k];
-                            k++;
-                        }
-                    }
-                    else
-                    {
-                        for (int j = 0; j < pieza.datosMandar.Length; j++)
-                        {
-                            dgvPedido[j + 2, index].Value = pieza.datosMandar[k];
-                            k++;
-                        }
-                    }
-                }
+                MessageBox.Show("Error en el evento dgvPedido_CellClick: " + EX.Message);
             }
         }
 
@@ -1168,51 +1157,6 @@ namespace Refracciones.Forms
                 lblDiasEspera.Visible = false;
                 txtDiasEspera.Visible = false;
             }
-
-            /*
-            if (actualizar == 1)
-            {
-                if (chbModificarVendedor.Checked == true)
-                {
-                    txtVendedor.Hide();
-                    cbVendedor.Show();
-                    cbVendedor.Enabled = true;
-                }
-                else
-                {
-                    txtVendedor.Show();
-                    cbVendedor.Enabled = false;
-                    cbVendedor.Hide();
-                    cbVendedor.SelectedIndex = -1;
-                }
-            }
-            else
-            {
-                if (chbModificarVendedor.Checked == true)
-                {
-                    txtVendedor.Show();
-                    txtVendedor.Enabled = true;
-                    lblNumeroEmpleado.Visible = true;
-                    txtNumeroEmpleado.Visible = true;
-                    cbVendedor.Hide();
-                }
-                else
-                {
-                    lblNumeroEmpleado.Hide();
-                    txtNumeroEmpleado.Hide();
-                    txtNumeroEmpleado.Clear();
-                    txtVendedor.Hide();
-                    txtVendedor.Text = "Escriba nombre del nuevo vendedor";
-                    txtVendedor.ForeColor = Color.FromArgb(160, 160, 140);
-                    cbVendedor.Show();
-
-                    chbOtroValuador.Checked = false;
-                    chbOtroValuador.Enabled = true;
-
-                    lblDiasEspera.Visible = false;
-                    txtDiasEspera.Visible = false;
-                }
-            }*/
         }
 
         private void cbEstadoSiniestro_Click(object sender, EventArgs e)
@@ -1250,11 +1194,6 @@ namespace Refracciones.Forms
         {
             txtComentarioSiniestro.SelectAll();
             txtComentarioSiniestro.Focus();
-            /*if (txtComentarioSiniestro.Text == "Agregue un comentario")
-            {
-                txtComentarioSiniestro.Clear();
-                txtComentarioSiniestro.ForeColor = Color.White;
-            }*/
         }
 
         private void txtClavePedido_Leave(object sender, EventArgs e)
@@ -1389,26 +1328,6 @@ namespace Refracciones.Forms
                     dtpFechaBaja.Enabled = true;
                     btnFinalizarPedido.Enabled = true;
                 }
-
-                /*
-                if (!string.IsNullOrEmpty(operacion.existeClavePedido(txtClavePedido.Text.Trim().ToUpper())))
-                {
-                    e.Cancel = true;
-                    errorProvider1.SetError(txtClavePedido, "Ya existe un pedido con la misma clave");
-                    panelSiniestro.Visible = false;
-                }
-                else if (txtClavePedido.Text.Trim() == "Escriba clave del pedido")
-                {
-                    e.Cancel = true;
-                    errorProvider1.SetError(txtClavePedido, "Favor de llenar este campo");
-                    panelSiniestro.Visible = false;
-                }
-                else
-                {
-                    e.Cancel = false;
-                    errorProvider1.SetError(txtClavePedido, null);
-                    panelSiniestro.Visible = true;
-                }*/
             }
         }
 
@@ -1423,19 +1342,26 @@ namespace Refracciones.Forms
 
         private void dgvPedido_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            int cantidad = 0;
-            double subtotalPrecio = 0;
-            double totalPrecio = 0;
-            foreach (DataGridViewRow dgvRow in dgvPedido.Rows)
+            try
             {
-                cantidad += Convert.ToInt32(dgvRow.Cells["Cantidad"].Value);
-                //subtotalPrecio += (Convert.ToInt32(dgvRow.Cells["Cantidad"].Value) * Convert.ToDouble(dgvRow.Cells["Precio de venta"].Value) /*+ Convert.ToDouble(dgvRow.Cells["Precio de reparación"].Value)*/);
-                totalPrecio += Convert.ToDouble(dgvRow.Cells["Precio de venta\n($)"].Value);
-            }
-            //totalPrecio = (subtotalPrecio * .16) + subtotalPrecio;
+                int cantidad = 0;
+                double subtotalPrecio = 0;
+                double totalPrecio = 0;
+                foreach (DataGridViewRow dgvRow in dgvPedido.Rows)
+                {
+                    cantidad += Convert.ToInt32(dgvRow.Cells["Cantidad"].Value);
+                    //subtotalPrecio += (Convert.ToInt32(dgvRow.Cells["Cantidad"].Value) * Convert.ToDouble(dgvRow.Cells["Precio de venta"].Value) /*+ Convert.ToDouble(dgvRow.Cells["Precio de reparación"].Value)*/);
+                    totalPrecio += Convert.ToDouble(dgvRow.Cells["Precio de venta\n($)"].Value);
+                }
+                //totalPrecio = (subtotalPrecio * .16) + subtotalPrecio;
 
-            lblCantidadTotal.Text = cantidad.ToString();
-            lblPrecioTotal.Text = "$" + totalPrecio.ToString();
+                lblCantidadTotal.Text = cantidad.ToString();
+                lblPrecioTotal.Text = "$" + totalPrecio.ToString();
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error en el evento dgvPedido_CellValueChanged: " + EX.Message);
+            }
         }
 
         private void txtDiasEspera_KeyPress(object sender, KeyPressEventArgs e)
@@ -1656,29 +1582,36 @@ namespace Refracciones.Forms
 
         private void btnPenalizarPedido_Click(object sender, EventArgs e)
         {
-            Penalizaciones penalizar = new Penalizaciones();
-            penalizar.penalizarPedido = 1;
-            DialogResult respuesta = penalizar.ShowDialog();
-
-            if (filasIniciales > 0)
+            try
             {
-                int i = 0;
-                DateTime hoy = DateTime.Today;
-                if (respuesta == DialogResult.OK)
+                Penalizaciones penalizar = new Penalizaciones();
+                penalizar.penalizarPedido = 1;
+                DialogResult respuesta = penalizar.ShowDialog();
+
+                if (filasIniciales > 0)
                 {
-                    foreach (DataGridViewRow row in dgvPedido.Rows)
+                    int i = 0;
+                    DateTime hoy = DateTime.Today;
+                    if (respuesta == DialogResult.OK)
                     {
-                        operacion.registrarPenalizacion(operacion.clavePieza(Convert.ToString(row.Cells["Pieza"].Value)), operacion.claveVenta(txtClavePedido.Text, lblClaveSiniestro.Text), Convert.ToInt32(row.Cells["Cantidad"].Value), penalizar.motivo, penalizar.porcentaje, hoy);
-                        i++;
-                        if (i == filasIniciales)
-                            break;
+                        foreach (DataGridViewRow row in dgvPedido.Rows)
+                        {
+                            operacion.registrarPenalizacion(operacion.clavePieza(Convert.ToString(row.Cells["Pieza"].Value)), operacion.claveVenta(txtClavePedido.Text, lblClaveSiniestro.Text), Convert.ToInt32(row.Cells["Cantidad"].Value), penalizar.motivo, penalizar.porcentaje, hoy);
+                            i++;
+                            if (i == filasIniciales)
+                                break;
+                        }
+                        dt = operacion.piezasPedidoActualizar(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
+                        dgvPedido.DataSource = dt;
                     }
-                    dt = operacion.piezasPedidoActualizar(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
-                    dgvPedido.DataSource = dt;
                 }
+                else
+                    MessageBOX.SHowDialog(2, "No es posible penalizar el pedido si aún no se ha hecho el registro de piezas correspondiente al pedido actual");
             }
-            else
-                MessageBOX.SHowDialog(2, "No es posible penalizar el pedido si aún no se ha hecho el registro de piezas correspondiente al pedido actual");
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error en el evento btnPenalizarPedido_Click: " + EX.Message);
+            }
         }
 
         private void txtDireccion_Enter(object sender, EventArgs e)
@@ -1720,41 +1653,5 @@ namespace Refracciones.Forms
                 }
             }
         }
-
-        /*  private void txtClavePedido_TextChanged(object sender, EventArgs e)
-          {
-              if (txtClavePedido.Text == "" || txtClavePedido.Text == "Escriba clave del pedido")
-              {
-                  errorProvider1.SetError(txtClavePedido, "Favor de llenar este campo");
-                  panelSiniestro.Visible = false;
-              }
-              else {
-                  if (!string.IsNullOrEmpty(operacion.existeClavePedido(txtClavePedido.Text.Trim().ToUpper())))
-                  {
-                      errorProvider1.SetError(txtClavePedido, "Ya existe un pedido con la misma clave");
-                      panelSiniestro.Visible = false;
-                  }
-                  else
-                  {
-                      errorProvider1.SetError(txtClavePedido, null);
-                      panelSiniestro.Visible = true;
-
-                      cbVendedor.Enabled = true;
-                      cbAseguradora.Enabled = true;
-                      chbOtraAseguradora.Enabled = true;
-                      chbModificarVendedor.Enabled = true;
-                      cbValuador.Enabled = true;
-                      chbOtroValuador.Enabled = true;
-                      cbTaller.Enabled = true;
-                      chbOtroTaller.Enabled = true;
-                      cbDestino.Enabled = true;
-                      chbOtroDestino.Enabled = true;
-                      dtpFechaAsignacion.Enabled = true;
-                      dtpFechaPromesa.Enabled = true;
-                      dtpFechaBaja.Enabled = true;
-                      btnFinalizarPedido.Enabled = true;
-                  }
-              }
-          }*/
     }
 }

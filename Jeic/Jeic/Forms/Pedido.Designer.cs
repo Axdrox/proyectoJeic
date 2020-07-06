@@ -577,7 +577,6 @@
             this.txtClavePedido.TabIndex = 33;
             this.txtClavePedido.Text = "Escriba clave del pedido";
             this.txtClavePedido.Enter += new System.EventHandler(this.txtClavePedido_Enter);
-            this.txtClavePedido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtClavePedido_KeyPress);
             this.txtClavePedido.Leave += new System.EventHandler(this.txtClavePedido_Leave);
             this.txtClavePedido.Validating += new System.ComponentModel.CancelEventHandler(this.txtClavePedido_Validating);
             // 

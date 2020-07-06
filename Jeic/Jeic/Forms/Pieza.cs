@@ -115,7 +115,7 @@
                 txtCostoNeto.Text = datos[8];
                 txtCostoNeto.Enabled = true;
 
-                cbCostoEnvio.DropDownStyle = ComboBoxStyle.DropDown;
+                //cbCostoEnvio.DropDownStyle = ComboBoxStyle.DropDown;
                 cbCostoEnvio.Text = datos[9];
 
                 txtPrecioReparacion.Text = datos[10];
