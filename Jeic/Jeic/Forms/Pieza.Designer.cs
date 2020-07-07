@@ -94,8 +94,10 @@
             // 
             // cbPiezaNombre
             // 
+            this.cbPiezaNombre.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbPiezaNombre.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbPiezaNombre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.cbPiezaNombre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbPiezaNombre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbPiezaNombre.ForeColor = System.Drawing.Color.White;
             this.cbPiezaNombre.FormattingEnabled = true;
             this.cbPiezaNombre.Location = new System.Drawing.Point(169, 18);
@@ -104,6 +106,7 @@
             this.cbPiezaNombre.Size = new System.Drawing.Size(196, 24);
             this.cbPiezaNombre.TabIndex = 0;
             this.cbPiezaNombre.SelectedIndexChanged += new System.EventHandler(this.cbPiezaNombre_SelectedIndexChanged);
+            this.cbPiezaNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbPiezaNombre_KeyPress);
             // 
             // label2
             // 
@@ -252,8 +255,9 @@
             // 
             // cbPortal
             // 
+            this.cbPortal.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbPortal.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbPortal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.cbPortal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPortal.ForeColor = System.Drawing.Color.White;
             this.cbPortal.FormattingEnabled = true;
             this.cbPortal.Location = new System.Drawing.Point(169, 142);
@@ -264,8 +268,9 @@
             // 
             // cbOrigen
             // 
+            this.cbOrigen.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbOrigen.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbOrigen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.cbOrigen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbOrigen.ForeColor = System.Drawing.Color.White;
             this.cbOrigen.FormattingEnabled = true;
             this.cbOrigen.Location = new System.Drawing.Point(168, 178);
@@ -276,8 +281,9 @@
             // 
             // cbProveedores
             // 
+            this.cbProveedores.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbProveedores.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbProveedores.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.cbProveedores.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbProveedores.ForeColor = System.Drawing.Color.White;
             this.cbProveedores.FormattingEnabled = true;
             this.cbProveedores.Location = new System.Drawing.Point(168, 217);
@@ -426,7 +432,7 @@
             this.txtNumeroGuia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.txtNumeroGuia.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNumeroGuia.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.txtNumeroGuia.Location = new System.Drawing.Point(168, 110);
+            this.txtNumeroGuia.Location = new System.Drawing.Point(168, 109);
             this.txtNumeroGuia.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNumeroGuia.Name = "txtNumeroGuia";
             this.txtNumeroGuia.Size = new System.Drawing.Size(197, 22);
@@ -535,7 +541,7 @@
             this.txtPiezaNombre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.txtPiezaNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPiezaNombre.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.txtPiezaNombre.Location = new System.Drawing.Point(169, 18);
+            this.txtPiezaNombre.Location = new System.Drawing.Point(169, 19);
             this.txtPiezaNombre.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPiezaNombre.Name = "txtPiezaNombre";
             this.txtPiezaNombre.Size = new System.Drawing.Size(197, 22);
@@ -552,7 +558,7 @@
             this.txtPortal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.txtPortal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPortal.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.txtPortal.Location = new System.Drawing.Point(169, 142);
+            this.txtPortal.Location = new System.Drawing.Point(169, 143);
             this.txtPortal.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPortal.Name = "txtPortal";
             this.txtPortal.Size = new System.Drawing.Size(197, 22);
@@ -568,7 +574,7 @@
             this.txtOrigen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.txtOrigen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtOrigen.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.txtOrigen.Location = new System.Drawing.Point(169, 178);
+            this.txtOrigen.Location = new System.Drawing.Point(169, 179);
             this.txtOrigen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtOrigen.Name = "txtOrigen";
             this.txtOrigen.Size = new System.Drawing.Size(197, 22);
@@ -662,7 +668,7 @@
             this.bunifuGradientPanel1.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.bunifuGradientPanel1.GradientTopRight = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.bunifuGradientPanel1.Location = new System.Drawing.Point(0, 0);
-            this.bunifuGradientPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bunifuGradientPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.bunifuGradientPanel1.Name = "bunifuGradientPanel1";
             this.bunifuGradientPanel1.Quality = 10;
             this.bunifuGradientPanel1.Size = new System.Drawing.Size(476, 487);
@@ -687,8 +693,9 @@
             // 
             // cbNumeroGuia
             // 
+            this.cbNumeroGuia.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbNumeroGuia.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbNumeroGuia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.cbNumeroGuia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbNumeroGuia.ForeColor = System.Drawing.Color.White;
             this.cbNumeroGuia.Location = new System.Drawing.Point(169, 108);
             this.cbNumeroGuia.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);

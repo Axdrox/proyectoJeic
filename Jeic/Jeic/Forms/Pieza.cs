@@ -916,5 +916,10 @@
                 errorProvider1.SetError(txtPrecioVenta, null);
             }
         }
+
+        private void cbPiezaNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            cbPiezaNombre.DroppedDown = false;
+        }
     }
 }
