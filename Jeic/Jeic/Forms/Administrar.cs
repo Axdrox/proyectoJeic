@@ -776,7 +776,7 @@ namespace Refracciones.Forms
                             }
                             break;
                         case 5:
-                            if (cmb4.Text.Trim() == "ACTIVO")
+                            if (cmb1.Text.Trim() == "ACTIVO")
                                 estado = 1;
                             else
                                 estado = 0;

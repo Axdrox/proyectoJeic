@@ -29,6 +29,7 @@ namespace Refracciones
         {
             this.Icon = Resources.iconJeic;
             btnEntrar.BackColor = Color.Transparent;
+            this.ActiveControl = pictureBox1;
         }
 
         private void txtUsuario_Enter(object sender, EventArgs e)
@@ -112,6 +113,7 @@ namespace Refracciones
                 MessageBOX.SHowDialog(2, "Usuario y/o contraseña incorrectos");
                 txtUsuario.Text = "Nombre de usuario";
                 txtContrasenia.Text = "Default";
+                bunifuCustomLabel1.Focus();
                 txtUsuario.ForeColor = Color.White;
                 txtContrasenia.ForeColor = Color.White;
             }

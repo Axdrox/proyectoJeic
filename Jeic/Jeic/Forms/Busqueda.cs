@@ -28,6 +28,7 @@ namespace Refracciones.Forms
 
         private void Busqueda_Devolver_Load(object sender, EventArgs e)
         {
+            this.ActiveControl = TxtClavePed;
             this.Icon = Resources.iconJeic;
             llenarDefaultDGV.defaultDGV(dvgPedido);
             menuStrip1.ForeColor = Color.White;

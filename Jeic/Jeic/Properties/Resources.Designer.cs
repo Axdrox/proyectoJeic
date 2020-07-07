@@ -193,6 +193,16 @@ namespace Jeic.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap JEIC_Login {
+            get {
+                object obj = ResourceManager.GetObject("JEIC_Login", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Minimize_Window_2_48px {
             get {
                 object obj = ResourceManager.GetObject("Minimize Window_2 48px", resourceCulture);

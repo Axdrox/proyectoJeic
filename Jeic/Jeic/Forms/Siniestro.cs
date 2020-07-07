@@ -34,9 +34,6 @@ namespace Refracciones.Forms
             cbEstadoSiniestro.DataSource = operacion.EstadoSiniestro().Tables[0].DefaultView;
             cbEstadoSiniestro.ValueMember = "estado";
 
-            //Hace que no sea posible escribir en el combobox, también se puede configurar seleccionando el elemento
-            this.cbVehiculo.DropDownStyle = ComboBoxStyle.DropDownList;
-
             //dtpYear.Hide();
             lblIngreseNombre.Hide();
             txtNombreVehiculoNuevo.Hide();
@@ -331,6 +328,60 @@ namespace Refracciones.Forms
             cbVehiculo.ValueMember = "modelo";
         }
 
+        private void cbMarca_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            cbMarca.DroppedDown = false;
+        }
 
+        private void cbVehiculo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            cbVehiculo.DroppedDown = false;
+        }
+
+        private void cbMarca_Validating(object sender, CancelEventArgs e)
+        {
+            if(chbMarca.Checked == false)
+            {
+                OperBD operacion = new OperBD();
+                if (string.IsNullOrEmpty(cbMarca.Text.Trim()))
+                {
+                    e.Cancel = true;
+                    errorProvider1.SetError(cbMarca, "Favor de seleccionar una marca");
+                }
+                else if (string.IsNullOrEmpty(operacion.existeMarca(cbMarca.Text.Trim())))
+                {
+                    e.Cancel = true;
+                    errorProvider1.SetError(cbMarca, "Favor de seleccionar una marca existente");
+                }
+                else
+                {
+                    e.Cancel = false;
+                    errorProvider1.SetError(cbMarca, null);
+                }
+            }
+        }
+
+        private void cbVehiculo_Validating(object sender, CancelEventArgs e)
+        {
+            if (chbOtroVehiculo.Checked == false)
+            {
+                OperBD operacion = new OperBD();
+                if (string.IsNullOrEmpty(cbVehiculo.Text.Trim()))
+                {
+                    e.Cancel = true;
+                    errorProvider1.SetError(cbVehiculo, "Favor de seleccionar un modelo");
+                }
+                else if (string.IsNullOrEmpty(operacion.existeVehiculo(cbVehiculo.Text.Trim())))
+                {
+                    e.Cancel = true;
+                    errorProvider1.SetError(cbVehiculo, "Favor de seleccionar un modelo existente");
+                }
+                else
+                {
+                    e.Cancel = false;
+                    errorProvider1.SetError(cbVehiculo, null);
+                }
+            }
+        }
     }
 }

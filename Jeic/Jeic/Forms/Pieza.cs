@@ -65,6 +65,15 @@
                     txtNumeroGuia.Hide();
                     cbNumeroGuia.Show();
                     chbOtroNumeroGuia.Visible = true;
+                    if (editarPieza == 1)
+                    {
+                        txtNumeroGuia.Visible = true;
+                        txtNumeroGuia.Text = datos[3];
+                        txtNumeroGuia.ReadOnly = true;
+                        cbNumeroGuia.Visible = false;
+                        cbNumeroGuia.Visible = false;
+                        chbOtroNumeroGuia.Text = "Modificar";
+                    }
                 }
             }
 
@@ -84,12 +93,16 @@
 
                 txtClaveProducto.Text = datos[2];
 
-                txtNumeroGuia.Visible = true;
+
+                txtNumeroGuia.Text = datos[3];
+                txtNumeroGuia.ReadOnly = true;
+                chbOtroNumeroGuia.Text = "Modificar";
+                /*txtNumeroGuia.Visible = true;
                 txtNumeroGuia.Text = datos[3];
                 txtNumeroGuia.ReadOnly = true;
                 cbNumeroGuia.Visible = false;
                 cbNumeroGuia.Visible = false;
-                chbOtroNumeroGuia.Text = "Modificar";
+                chbOtroNumeroGuia.Text = "Modificar";*/
 
                 txtPortal.Visible = true;
                 txtPortal.Text = datos[4];
@@ -920,6 +933,136 @@
         private void cbPiezaNombre_KeyPress(object sender, KeyPressEventArgs e)
         {
             cbPiezaNombre.DroppedDown = false;
+        }
+
+        private void cbNumeroGuia_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            cbNumeroGuia.DroppedDown = false;
+        }
+
+        private void cbPortal_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            cbPortal.DroppedDown = false;
+        }
+
+        private void cbOrigen_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            cbOrigen.DroppedDown = false;
+        }
+
+        private void cbProveedores_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            cbProveedores.DroppedDown = false;
+        }
+
+        private void cbPiezaNombre_Validating(object sender, CancelEventArgs e)
+        {
+            if(chbOtroPieza.Checked == false && chbOtroPieza.Text != "Modificar")
+            {
+                OperBD operacion = new OperBD();
+                if (string.IsNullOrEmpty(cbPiezaNombre.Text.Trim()))
+                {
+                    e.Cancel = true;
+                    errorProvider1.SetError(cbPiezaNombre, "Favor de seleccionar una pieza");
+                }
+                else if (string.IsNullOrEmpty(operacion.existePieza(cbPiezaNombre.Text.Trim())))
+                {
+                    e.Cancel = true;
+                    errorProvider1.SetError(cbPiezaNombre, "Favor de seleccionar una pieza existente");
+                }
+                else
+                {
+                    e.Cancel = false;
+                    errorProvider1.SetError(cbPiezaNombre, null);
+                }
+            }
+        }
+
+        private void cbNumeroGuia_Validating(object sender, CancelEventArgs e)
+        {
+            if(destinosAgregados == 1 && chbOtroNumeroGuia.Checked == false)
+            {
+                OperBD operacion = new OperBD();
+                if (string.IsNullOrEmpty(cbNumeroGuia.Text.Trim()))
+                {
+                    e.Cancel = true;
+                    errorProvider1.SetError(cbNumeroGuia, "Favor de seleccionar el número de guía");
+                }
+                else
+                {
+                    e.Cancel = false;
+                    errorProvider1.SetError(cbNumeroGuia, null);
+                }
+            }
+        }
+
+        private void cbPortal_Validating(object sender, CancelEventArgs e)
+        {
+            if (chbOtroPortal.Checked == false && chbOtroPortal.Text != "Modificar")
+            {
+                OperBD operacion = new OperBD();
+                if (string.IsNullOrEmpty(cbPortal.Text.Trim()))
+                {
+                    e.Cancel = true;
+                    errorProvider1.SetError(cbPortal, "Favor de seleccionar un portal");
+                }
+                else if (string.IsNullOrEmpty(operacion.existePortal(cbPortal.Text.Trim())))
+                {
+                    e.Cancel = true;
+                    errorProvider1.SetError(cbPortal, "Favor de seleccionar un portal existente");
+                }
+                else
+                {
+                    e.Cancel = false;
+                    errorProvider1.SetError(cbPortal, null);
+                }
+            }
+        }
+
+        private void cbOrigen_Validating(object sender, CancelEventArgs e)
+        {
+            if (chbOtroOrigen.Checked == false && chbOtroOrigen.Text != "Modificar")
+            {
+                OperBD operacion = new OperBD();
+                if (string.IsNullOrEmpty(cbOrigen.Text.Trim()))
+                {
+                    e.Cancel = true;
+                    errorProvider1.SetError(cbOrigen, "Favor de seleccionar un origen");
+                }
+                else if (string.IsNullOrEmpty(operacion.existeOrigen(cbOrigen.Text.Trim())))
+                {
+                    e.Cancel = true;
+                    errorProvider1.SetError(cbOrigen, "Favor de seleccionar un origen existente");
+                }
+                else
+                {
+                    e.Cancel = false;
+                    errorProvider1.SetError(cbOrigen, null);
+                }
+            }
+        }
+
+        private void cbProveedores_Validating(object sender, CancelEventArgs e)
+        {
+            if (chbOtroProveedor.Checked == false && chbOtroProveedor.Text != "Modificar")
+            {
+                OperBD operacion = new OperBD();
+                if (string.IsNullOrEmpty(cbProveedores.Text.Trim()))
+                {
+                    e.Cancel = true;
+                    errorProvider1.SetError(cbProveedores, "Favor de seleccionar un proveedor");
+                }
+                else if (string.IsNullOrEmpty(operacion.existeProveedor(cbProveedores.Text.Trim())))
+                {
+                    e.Cancel = true;
+                    errorProvider1.SetError(cbProveedores, "Favor de seleccionar un proveedor existente");
+                }
+                else
+                {
+                    e.Cancel = false;
+                    errorProvider1.SetError(cbProveedores, null);
+                }
+            }
         }
     }
 }

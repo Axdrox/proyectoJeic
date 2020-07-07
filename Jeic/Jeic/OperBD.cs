@@ -3176,6 +3176,32 @@ namespace Refracciones
             return resultado;
         }
 
+        //VALIDAR SI EXISTE UN MISMO REGISTRO DE VEHÍCULO PARA EVITAR DUPLICADOS, ETC.
+        public string existeAnioVehiculo(string modelo, string anio)
+        {
+            string resultado = "";
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("SELECT anio FROM VEHICULO WHERE modelo = @modelo AND anio = @anio", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@modelo", modelo);
+                    Comando.Parameters.AddWithValue("@anio", anio);
+
+                    //Para saber si en realidad existe, de lo contrario devuelve un string vacío
+                    if (Comando.ExecuteScalar() == null) { }
+                    else
+                        resultado = Comando.ExecuteScalar().ToString();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return resultado;
+        }
+
         //-------------INSERTAR DATOS EN MARCA
         public void registroMarca(string marca)
         {
@@ -3253,7 +3279,7 @@ namespace Refracciones
         }
 
         //-------------INSERTAR DATOS EN SINIESTRO
-        public int registrarSiniestro(string modelo, string claveSiniestro, string comentario, string estado)
+        public int registrarSiniestro(string modelo, string claveSiniestro, string comentario, string estado, string anio)
         {
             int i = 0;
             try
@@ -3265,8 +3291,9 @@ namespace Refracciones
 
                     nuevaConexion.Open();
                     //Obteniendo la clave del vehículo
-                    Comando = new SqlCommand("SELECT cve_vehiculo FROM VEHICULO WHERE modelo = @modelo", nuevaConexion);
-                    Comando.Parameters.AddWithValue("@modelo", modelo.Trim());
+                    Comando = new SqlCommand("SELECT cve_vehiculo FROM VEHICULO WHERE modelo = @modelo AND anio = @anio", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@modelo", modelo);
+                    Comando.Parameters.AddWithValue("@anio", anio);
                     Lector = Comando.ExecuteReader();
                     if (Lector.Read())
                     {

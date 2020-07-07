@@ -780,13 +780,17 @@ namespace Refracciones.Forms
                                 operacion.registroMarca(lblMarca.Text.Trim());
                             if (nuevoVehiculo == true)
                                 operacion.registroVehiculo(lblVehiculo.Text.Trim(), lblAnio.Text.Trim(), lblMarca.Text.Trim());
+                            else if (nuevoVehiculo == false && string.IsNullOrEmpty(operacion.existeAnioVehiculo(lblVehiculo.Text.Trim(), lblAnio.Text.Trim())))
+                            {
+                                operacion.registroVehiculo(lblVehiculo.Text.Trim(), lblAnio.Text.Trim(), lblMarca.Text.Trim());
+                            }
 
                             if (chbModificarEstado.Checked == true)
                                 estadoSiniestro = cbEstadoSiniestro.Text;
                             else
                                 estadoSiniestro = lblEstadoSiniestro.Text;
 
-                            operacion.registrarSiniestro(lblVehiculo.Text.Trim(), lblClaveSiniestro.Text.Trim(), txtComentarioSiniestro.Text.Trim(), estadoSiniestro);
+                            operacion.registrarSiniestro(lblVehiculo.Text.Trim(), lblClaveSiniestro.Text.Trim(), txtComentarioSiniestro.Text.Trim(), estadoSiniestro, lblAnio.Text);
 
                             calcularDGV();
 
@@ -1041,7 +1045,13 @@ namespace Refracciones.Forms
                     pieza.anio = lblAnio.Text;
                     string[] guia = new string[dgvPedido.Rows.Count];
                     int i = 0;
-                    pieza.destino = cbDestino.Text.Trim();
+                    if (chbOtroTaller.Checked == false && chbOtroTaller.Text != "Modificar")
+                        pieza.destino = cbDestino.Text.Trim();
+                    else if(chbOtroTaller.Checked == true && chbOtroTaller.Text != "Modificar")
+                        pieza.destino = txtDestino.Text.Trim();
+                    else if(chbOtroTaller.Checked == false && chbOtroTaller.Text == "Modificar")
+                        pieza.destino = txtDestino.Text.Trim();
+
                     if (dgvPedido.Rows.Count > 0)
                     {
                         foreach (DataGridViewRow row in dgvPedido.Rows)
@@ -1651,6 +1661,154 @@ namespace Refracciones.Forms
                     e.Cancel = false;
                     errorProvider1.SetError(txtDireccion, null);
                 }
+            }
+        }
+
+        private void cbVendedor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            cbVendedor.DroppedDown = false;
+        }
+
+        private void cbAseguradora_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            cbAseguradora.DroppedDown = false;
+        }
+
+        private void cbValuador_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            cbValuador.DroppedDown = false;
+        }
+
+        private void cbTaller_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            cbTaller.DroppedDown = false;
+        }
+
+        private void cbDestino_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            cbDestino.DroppedDown = false;
+        }
+
+        private void cbVendedor_Validating(object sender, CancelEventArgs e)
+        {
+            if (chbModificarVendedor.Checked == false && chbModificarVendedor.Text != "Modificar")
+            {
+                OperBD operacion = new OperBD();
+                if (string.IsNullOrEmpty(cbVendedor.Text.Trim()))
+                {
+                    e.Cancel = true;
+                    errorProvider1.SetError(cbVendedor, "Favor de seleccionar un vendedor");
+                }
+                else if (string.IsNullOrEmpty(operacion.existeVendedor(cbVendedor.Text.Trim())))
+                {
+                    e.Cancel = true;
+                    errorProvider1.SetError(cbVendedor, "Favor de seleccionar un vendedor existente");
+                }
+                else
+                {
+                    e.Cancel = false;
+                    errorProvider1.SetError(cbVendedor, null);
+                }
+            }
+        }
+
+        private void cbAseguradora_Validating(object sender, CancelEventArgs e)
+        {
+            if (chbOtraAseguradora.Checked == false && chbOtraAseguradora.Text != "Modificar")
+            {
+                OperBD operacion = new OperBD();
+                if (string.IsNullOrEmpty(cbAseguradora.Text.Trim()))
+                {
+                    e.Cancel = true;
+                    errorProvider1.SetError(cbAseguradora, "Favor de seleccionar un cliente");
+                }
+                else if (string.IsNullOrEmpty(operacion.existeCliente(cbAseguradora.Text.Trim())))
+                {
+                    e.Cancel = true;
+                    errorProvider1.SetError(cbAseguradora, "Favor de seleccionar un cliente existente");
+                }
+                else
+                {
+                    e.Cancel = false;
+                    errorProvider1.SetError(cbAseguradora, null);
+                }
+            }
+        }
+
+        private void cbValuador_Validating(object sender, CancelEventArgs e)
+        {
+            if (chbOtroValuador.Checked == false && chbOtroValuador.Text != "Modificar")
+            {
+                OperBD operacion = new OperBD();
+                if (string.IsNullOrEmpty(cbValuador.Text.Trim()))
+                {
+                    e.Cancel = true;
+                    errorProvider1.SetError(cbValuador, "Favor de seleccionar un valuador");
+                }
+                else if (string.IsNullOrEmpty(operacion.existeValuador(cbValuador.Text.Trim())))
+                {
+                    e.Cancel = true;
+                    errorProvider1.SetError(cbValuador, "Favor de seleccionar un valuador existente");
+                }
+                else
+                {
+                    e.Cancel = false;
+                    errorProvider1.SetError(cbValuador, null);
+                }
+            }
+        }
+
+        private void cbTaller_Validating(object sender, CancelEventArgs e)
+        {
+            if (chbOtroTaller.Checked == false && chbOtroTaller.Text != "Modificar")
+            {
+                OperBD operacion = new OperBD();
+                if (string.IsNullOrEmpty(cbTaller.Text.Trim()))
+                {
+                    e.Cancel = true;
+                    errorProvider1.SetError(cbTaller, "Favor de seleccionar un taller");
+                }
+                else if (string.IsNullOrEmpty(operacion.existeTaller(cbTaller.Text.Trim())))
+                {
+                    e.Cancel = true;
+                    errorProvider1.SetError(cbTaller, "Favor de seleccionar un taller existente");
+                }
+                else
+                {
+                    e.Cancel = false;
+                    errorProvider1.SetError(cbTaller, null);
+                }
+            }
+        }
+
+        private void cbDestino_Validating(object sender, CancelEventArgs e)
+        {
+            if (chbOtroDestino.Checked == false && chbOtroDestino.Text != "Modificar")
+            {
+                OperBD operacion = new OperBD();
+                if (string.IsNullOrEmpty(cbDestino.Text.Trim()))
+                {
+                    e.Cancel = true;
+                    errorProvider1.SetError(cbDestino, "Favor de seleccionar un destino");
+                }
+                else if (string.IsNullOrEmpty(operacion.existeDestino(cbDestino.Text.Trim())))
+                {
+                    e.Cancel = true;
+                    errorProvider1.SetError(cbDestino, "Favor de seleccionar un destino existente");
+                }
+                else
+                {
+                    e.Cancel = false;
+                    errorProvider1.SetError(cbDestino, null);
+                }
+            }
+        }
+
+        private void txtNumeroEmpleado_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtNumeroEmpleado.Text.Trim()))
+            {
+                txtNumeroEmpleado.Text = "0";
             }
         }
     }

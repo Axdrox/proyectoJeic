@@ -368,6 +368,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="iconJeic.ico" />
+    <None Include="Resources\JEIC_Login.png" />
     <None Include="Resources\cliente.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
