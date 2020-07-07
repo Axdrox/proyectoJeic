@@ -553,8 +553,8 @@
             // 
             // btnClientes
             // 
-            this.btnClientes.BackColor = System.Drawing.Color.RoyalBlue;
-            this.btnClientes.Image = global::Jeic.Properties.Resources.customer;
+            this.btnClientes.BackColor = System.Drawing.Color.Transparent;
+            this.btnClientes.Image = global::Jeic.Properties.Resources.cliente;
             this.btnClientes.ImageActive = null;
             this.btnClientes.Location = new System.Drawing.Point(13, 107);
             this.btnClientes.Name = "btnClientes";

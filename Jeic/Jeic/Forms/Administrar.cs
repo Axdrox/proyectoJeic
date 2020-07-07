@@ -136,7 +136,7 @@ namespace Refracciones.Forms
                         cmb2.Enabled = false; cmb2.Visible = false;
                         cmb3.Enabled = false; cmb3.Visible = false;
                         cmb4.Enabled = false; cmb4.Visible = false;
-                        txt1.Text = ""; txt2.Text = "";
+                        txt1.Text = ""; txt2.Text = ""; txt3.Text = "";
                         lbl1.Text = "Nombre:";
                         lbl2.Text = "Días de espera:";
                         lbl3.Text = "Valuador:";
@@ -203,12 +203,12 @@ namespace Refracciones.Forms
                     case 5:
                         chk1.Enabled = false; chk1.Visible = false;
                         lbl1.Visible = true;
-                        lbl2.Visible = false;
+                        lbl2.Visible = true;
                         lbl3.Visible = false;
                         lbl4.Visible = false;
                         lbl5.Visible = false;
                         txt1.Enabled = true; txt1.Visible = true;
-                        txt2.Enabled = false; txt2.Visible = false;
+                        txt2.Enabled = true; txt2.Visible = true;
                         txt3.Enabled = false; txt3.Visible = false;
                         cmb1.Enabled = false; cmb1.Visible = false;
                         cmb2.Enabled = false; cmb2.Visible = false;
@@ -216,7 +216,7 @@ namespace Refracciones.Forms
                         cmb4.Enabled = false; cmb4.Visible = false;
                         txt1.Text = ""; txt2.Text = "";
                         lbl1.Text = "Nombre:";
-                        lbl2.Text = "";
+                        lbl2.Text = "Descripción"+"\n"+"SAE:";
                         lbl3.Text = "";
                         break;
                     case 6:
@@ -398,25 +398,24 @@ namespace Refracciones.Forms
                         chk1.Enabled = false; chk1.Visible = false;
                         lbl1.Visible = true;
                         lbl2.Visible = true;
-                        lbl3.Visible = false;
+                        lbl3.Visible = true;
                         lbl4.Visible = false;
                         lbl5.Visible = false;
                         txt1.Enabled = false; txt1.Visible = false;
-                        txt2.Enabled = false; txt2.Visible = false;
+                        txt2.Enabled = true; txt2.Visible = true;
                         txt3.Enabled = false; txt3.Visible = false;
-                        cmb1.Enabled = false; cmb1.Visible = false;
+                        cmb1.Enabled = true; cmb1.Visible = true;
+                        cmb1.DataSource = null; cmb1.Items.Clear(); cmb1.Items.Add("ACTIVO"); cmb1.Items.Add("SUSPENDIDO"); cmb1.SelectedIndex = 0;
                         cmb2.Enabled = false; cmb2.Visible = false;
                         cmb3.Enabled = true; cmb3.Visible = true;
                         cmb3.DataSource = oper.NombrePiezasRegistrados(0).Tables[0].DefaultView;
                         cmb3.ValueMember = "nombre";
-                        cmb4.Enabled = true; cmb4.Visible = true;
-                        cmb4.DataSource = null; cmb4.Items.Clear(); cmb4.Items.Add("ACTIVO"); cmb4.Items.Add("SUSPENDIDO");
-                        cmb4.SelectedIndex = 0;
-                        cmb4.SelectedIndex = 0;
-                        txt1.Text = ""; txt2.Text = "";
+                        cmb4.Enabled = false; cmb4.Visible = false;
+                        txt1.Text = ""; 
+                        txt2.Text = oper.descSAE(cmb3.Text.Trim());
                         lbl1.Text = "Nombre:";
-                        lbl2.Text = "Estado:";
-                        lbl3.Text = "";
+                        lbl2.Text = "Descripción SAE:";
+                        lbl3.Text = "Estado:";
                         break;
                     case 6:
                         chk1.Enabled = false; chk1.Visible = false;
@@ -525,8 +524,8 @@ namespace Refracciones.Forms
                             else if (oper.existeCliente(txt1.Text.Trim()) == "")
                             {
                                 errorP.Clear();
-                                oper.registrarValuador(txt3.Text.Trim());
-                                oper.registrarCliente(txt1.Text.Trim(), txt3.Text.Trim(), Int32.Parse(txt2.Text.Trim()));
+                                oper.registrarValuador(txt3.Text.Trim().ToUpper());
+                                oper.registrarCliente(txt1.Text.Trim().ToUpper(), txt3.Text.Trim().ToUpper(), Int32.Parse(txt2.Text.Trim()));
                                 txt1.Text = ""; txt2.Text = ""; txt3.Text = "";
                             }
                             else
@@ -544,7 +543,7 @@ namespace Refracciones.Forms
                             else if (oper.existeProveedor(txt1.Text.Trim()) == "")
                             {
                                 errorP.Clear();
-                                oper.registrarProveedor(txt1.Text.Trim());
+                                oper.registrarProveedor(txt1.Text.Trim().ToUpper());
                                 txt1.Text = "";
                             }
                             else
@@ -566,7 +565,7 @@ namespace Refracciones.Forms
                             else if (oper.existeTaller(txt1.Text.Trim()) == "")
                             {
                                 errorP.Clear();
-                                oper.registrarTaller(txt1.Text.Trim(),txt2.Text.Trim());
+                                oper.registrarTaller(txt1.Text.Trim().ToUpper(),txt2.Text.Trim().ToUpper());
                                 
                                 txt1.Text = ""; txt2.Text = "";
                             }
@@ -592,8 +591,8 @@ namespace Refracciones.Forms
                                 if (oper.existeVehiculo(txt2.Text.Trim()) == "")
                                 {
                                     errorP.Clear();
-                                    oper.registroMarca(txt1.Text.Trim());
-                                    oper.registroVehiculo(txt2.Text.Trim(), txt3.Text.Trim(), txt1.Text.Trim());
+                                    oper.registroMarca(txt1.Text.Trim().ToUpper());
+                                    oper.registroVehiculo(txt2.Text.Trim().ToUpper(), txt3.Text.Trim(), txt1.Text.Trim().ToUpper());
                                     txt1.Text = ""; txt2.Text = ""; txt3.Text = "";
                                     
                                 }
@@ -608,7 +607,7 @@ namespace Refracciones.Forms
                                 if (oper.existeVehiculo(txt2.Text.Trim()) == "")
                                 {
                                     errorP.Clear();
-                                    oper.registroVehiculo(txt2.Text.Trim(), txt3.Text.Trim(), cmb3.Text.Trim());
+                                    oper.registroVehiculo(txt2.Text.Trim().ToUpper(), txt3.Text.Trim(), cmb3.Text.Trim().ToUpper());
                                     txt1.Text = ""; txt2.Text = ""; txt3.Text = "";
                                     
                                 }
@@ -630,11 +629,16 @@ namespace Refracciones.Forms
                                 errorP.SetError(txt1, "No se puede dejar este campo sin llenar");
                                 txt1.Focus();
                             }
+                            else if (txt2.Text.Trim() == "")
+                            {
+                                errorP.SetError(txt2, "No se puede dejar este campo sin llenar");
+                                txt2.Focus();
+                            }
                             else if (oper.existePieza(txt1.Text.Trim()) == "")
                             {
                                 errorP.Clear();
-                                oper.registrarPieza(txt1.Text.Trim());
-                                txt1.Text = "";
+                                oper.registrarPieza(txt1.Text.Trim().ToUpper(),txt2.Text.Trim().ToUpper());
+                                txt1.Text = ""; txt2.Text = "";
                             }
                             else
                             {
@@ -655,7 +659,7 @@ namespace Refracciones.Forms
                             else if (oper.existeVendedor(txt1.Text.Trim()) == "")
                             {
                                 errorP.Clear();
-                                oper.registrarVendedor(Int32.Parse(txt1.Text.Trim()),txt2.Text.Trim());
+                                oper.registrarVendedor(Int32.Parse(txt1.Text.Trim()),txt2.Text.Trim().ToUpper());
                                 txt1.Text = ""; txt2.Text = "";
                             }
                             else
@@ -672,7 +676,7 @@ namespace Refracciones.Forms
                             else if (oper.existePortal(txt1.Text.Trim()) == "")
                             {
                                 errorP.Clear();
-                                oper.registrarPortal(txt1.Text.Trim());
+                                oper.registrarPortal(txt1.Text.Trim().ToUpper());
                                 txt1.Text = "";
                             }
                             else
@@ -721,7 +725,7 @@ namespace Refracciones.Forms
                             else
                             {
                                 errorP.Clear();
-                                oper.ActualizarDatosCliente(cmb3.Text.Trim(),txt3.Text.Trim(),estado,Int32.Parse(txt2.Text.Trim()));
+                                oper.ActualizarDatosCliente(cmb3.Text.Trim(),txt3.Text.Trim().ToUpper(),estado,Int32.Parse(txt2.Text.Trim()));
                             }
                             break;
                         case 2:
@@ -744,7 +748,7 @@ namespace Refracciones.Forms
                             else 
                             {
                                 errorP.Clear();
-                                oper.ActualizarDatosTaller(cmb3.Text.Trim(), estado,txt2.Text.Trim());
+                                oper.ActualizarDatosTaller(cmb3.Text.Trim(), estado,txt2.Text.Trim().ToUpper());
                                 txt2.Text = "";
                             }
                             
@@ -776,7 +780,8 @@ namespace Refracciones.Forms
                                 estado = 1;
                             else
                                 estado = 0;
-                            oper.ActualizarDatosPieza(cmb3.Text.Trim(),estado);
+
+                            oper.ActualizarDatosPieza(cmb3.Text.Trim(),estado,txt2.Text.Trim().ToUpper());
                             break;
                         case 6:
                             if (cmb4.Text.Trim() == "ACTIVO")
@@ -817,6 +822,10 @@ namespace Refracciones.Forms
             {
                 txt3.Text = oper.NombreValuador(cmb3.Text.Trim());
                 txt2.Text = oper.Dias_Espera(cmb3.Text.Trim());
+            }
+            else if (x == 5 && y == 1)
+            {
+                txt2.Text = oper.descSAE(cmb3.Text.Trim());
             }
         }
 
