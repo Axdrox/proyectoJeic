@@ -355,9 +355,6 @@
     <None Include="Resources\GiftHECHO.gif" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cargando.gif" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Error.png" />
   </ItemGroup>
   <ItemGroup>
@@ -368,6 +365,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="iconJeic.ico" />
+    <None Include="Resources\Loading1.gif" />
     <None Include="Resources\JEIC_Login.png" />
     <None Include="Resources\cliente.png" />
   </ItemGroup>

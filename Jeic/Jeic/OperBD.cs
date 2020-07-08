@@ -3757,7 +3757,7 @@ namespace Refracciones
                     nuevaConexion.Close();
                     if (i == 1)
                     {
-                        MessageBOX.SHowDialog(3, "Se registro la venta correctamente");
+                       // MessageBOX.SHowDialog(3, "Se registro la venta correctamente");
                     }
                     else
                         MessageBOX.SHowDialog(2, "Problemas al registrar venta");

@@ -27,8 +27,8 @@ namespace Refracciones.Forms
             if (mensaje.Contains("Bienvenido"))
             {
                 lblTexto.Visible = false;
-                GifHecho.Image = Resources.Cargando;
-                lblTexto.Location = new Point(0, 90);
+                GifHecho.Image =Resources.Loading ;
+                lblTexto.Location = new Point(0, 110);
                 Retraso_icono.Interval = 3000;
                 btnOK.Visible = false;
                 this.Size = new Size(231, 153);
