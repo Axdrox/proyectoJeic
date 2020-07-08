@@ -1709,6 +1709,30 @@ namespace Refracciones
             }
             return desc;
         }
+        //VALIDAR SI EXISTE UN MISMO REGISTRO DE USUARIO PARA EVITAR DUPLICADOS, ETC.
+        public string existeUsuario(string nombre)
+        {
+            string resultado = "";
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("SELECT cve_Administrador FROM USUARIOS WHERE usuario = @usuario", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@usuario", nombre);
+
+                    //Para saber si en realidad existe, de lo contrario devuelve un string vacío
+                    if (Comando.ExecuteScalar() == null) { }
+                    else
+                        resultado = Comando.ExecuteScalar().ToString();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return resultado;
+        }
         //---------------------ALEX--------------------------------------------------------------------
 
         //VALIDAR SI EXISTE CLAVE PEDIDO
@@ -1819,7 +1843,7 @@ namespace Refracciones
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     nuevaConexion.Open();
-                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT DISTINCT veh.modelo FROM VEHICULO veh INNER JOIN MARCA mar ON veh.cve_marca = mar.cve_marca WHERE mar.marca = @marca", nuevaConexion);// WHERE modelo NOT LIKE 'PARTICULAR%'
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT  veh.modelo FROM VEHICULO veh INNER JOIN MARCA mar ON veh.cve_marca = mar.cve_marca WHERE mar.marca = @marca", nuevaConexion);// WHERE modelo NOT LIKE 'PARTICULAR%'
                     dataAdapter.SelectCommand.Parameters.AddWithValue("@marca", marca);
                     dataAdapter.Fill(dataSet, "VEHICULO");
                     nuevaConexion.Close();

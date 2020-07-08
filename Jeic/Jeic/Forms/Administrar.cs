@@ -588,7 +588,7 @@ namespace Refracciones.Forms
                             }
                             else if (chk1.Checked == true)
                             {
-                                if (oper.existeVehiculo(txt2.Text.Trim()) == "")
+                                if (string.IsNullOrEmpty(oper.existeAnioVehiculo(txt2.Text.Trim(),txt3.Text.Trim())))
                                 {
                                     errorP.Clear();
                                     oper.registroMarca(txt1.Text.Trim().ToUpper());
@@ -604,7 +604,7 @@ namespace Refracciones.Forms
                             }
                             else if (chk1.Checked == false)
                             {
-                                if (oper.existeVehiculo(txt2.Text.Trim()) == "")
+                                if (string.IsNullOrEmpty(oper.existeAnioVehiculo(txt2.Text.Trim(), txt3.Text.Trim())))
                                 {
                                     errorP.Clear();
                                     oper.registroVehiculo(txt2.Text.Trim().ToUpper(), txt3.Text.Trim(), cmb3.Text.Trim().ToUpper());
@@ -915,6 +915,414 @@ namespace Refracciones.Forms
                     MessageBox.Show("Solo se permiten numeros", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     e.Handled = true;
                     return;
+                }
+            }
+        }
+
+        private void cmb3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            cmb3.DroppedDown = false;
+        }
+
+        private void cmb4_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            cmb4.DroppedDown = false;
+        }
+
+        private void cmb2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            cmb2.DroppedDown = false;
+        }
+
+        private void cmb1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            cmb1.DroppedDown = false;
+        }
+
+        private void cmb3_Validating(object sender, CancelEventArgs e)
+        {
+            OperBD operacion = new OperBD();
+            if (x == 5 && y == 1)
+            {
+                if (string.IsNullOrEmpty(cmb3.Text.Trim()))
+                {
+                    e.Cancel = true;
+                    errorP.SetError(cmb3, "Favor de seleccionar una pieza");
+                }
+                else if (string.IsNullOrEmpty(operacion.existePieza(cmb3.Text.Trim())))
+                {
+                    e.Cancel = true;
+                    errorP.SetError(cmb3, "Favor de seleccionar una pieza existente");
+                }
+                else
+                {
+                    e.Cancel = false;
+                    errorP.SetError(cmb3, null);
+                }
+            }
+            else if (x == 2 && y == 1)
+            {
+                if (string.IsNullOrEmpty(cmb3.Text.Trim()))
+                {
+                    e.Cancel = true;
+                    errorP.SetError(cmb3, "Favor de seleccionar un proveedor");
+                }
+                else if (string.IsNullOrEmpty(operacion.existeProveedor(cmb3.Text.Trim())))
+                {
+                    e.Cancel = true;
+                    errorP.SetError(cmb3, "Favor de seleccionar un proveedor existente");
+                }
+                else
+                {
+                    e.Cancel = false;
+                    errorP.SetError(cmb3, null);
+                }
+            }
+            else if (x == 7 && y == 1)
+            {
+                
+                if (string.IsNullOrEmpty(cmb3.Text.Trim()))
+                {
+                    e.Cancel = true;
+                    errorP.SetError(cmb3, "Favor de seleccionar un portal");
+                }
+                else if (string.IsNullOrEmpty(operacion.existePortal(cmb3.Text.Trim())))
+                {
+                    e.Cancel = true;
+                    errorP.SetError(cmb3, "Favor de seleccionar un portal existente");
+                }
+                else
+                {
+                    e.Cancel = false;
+                    errorP.SetError(cmb3, null);
+                }
+            }
+            else if (x == 6 && y == 1)
+            {
+                if (string.IsNullOrEmpty(cmb3.Text.Trim()))
+                {
+                    e.Cancel = true;
+                    errorP.SetError(cmb3, "Favor de seleccionar un vendedor");
+                }
+                else if (string.IsNullOrEmpty(operacion.existeVendedor(lbl5.Text.Trim())))
+                {
+                    e.Cancel = true;
+                    errorP.SetError(cmb3, "Favor de seleccionar un vendedor existente");
+                }
+                else
+                {
+                    e.Cancel = false;
+                    errorP.SetError(cmb3, null);
+                }
+            }
+            else if (x == 1 && y == 1)
+            {
+                if (string.IsNullOrEmpty(cmb3.Text.Trim()))
+                {
+                    e.Cancel = true;
+                    errorP.SetError(cmb3, "Favor de seleccionar un cliente");
+                }
+                else if (string.IsNullOrEmpty(operacion.existeCliente(cmb3.Text.Trim())))
+                {
+                    e.Cancel = true;
+                    errorP.SetError(cmb3, "Favor de seleccionar un cliente existente");
+                }
+                else
+                {
+                    e.Cancel = false;
+                    errorP.SetError(cmb3, null);
+                }
+            }
+            else if (x == 3 && y == 1)
+            {
+                if (string.IsNullOrEmpty(cmb3.Text.Trim()))
+                {
+                    e.Cancel = true;
+                    errorP.SetError(cmb3, "Favor de seleccionar un taller");
+                }
+                else if (string.IsNullOrEmpty(operacion.existeTaller(cmb3.Text.Trim())))
+                {
+                    e.Cancel = true;
+                    errorP.SetError(cmb3, "Favor de seleccionar un taller existente");
+                }
+                else
+                {
+                    e.Cancel = false;
+                    errorP.SetError(cmb3, null);
+                }
+            }
+            else if (x == 0 && y == 1)
+            {
+                if (string.IsNullOrEmpty(cmb3.Text.Trim()))
+                {
+                    e.Cancel = true;
+                    errorP.SetError(cmb3, "Favor de seleccionar un usuario");
+                }
+                else if (string.IsNullOrEmpty(operacion.existeUsuario(cmb3.Text.Trim())))
+                {
+                    e.Cancel = true;
+                    errorP.SetError(cmb3, "Favor de seleccionar un usuario existente");
+                }
+                else
+                {
+                    e.Cancel = false;
+                    errorP.SetError(cmb3, null);
+                }
+            }
+            else if (x == 4 && y == 0)
+            {
+                if(chk1.Checked == false)
+                {
+                    if (string.IsNullOrEmpty(cmb3.Text.Trim()))
+                    {
+                        e.Cancel = true;
+                        errorP.SetError(cmb3, "Favor de seleccionar una marca");
+                    }
+                    else if (string.IsNullOrEmpty(operacion.existeMarca(cmb3.Text.Trim())))
+                    {
+                        e.Cancel = true;
+                        errorP.SetError(cmb3, "Favor de seleccionar una marca existente");
+                    }
+                    else
+                    {
+                        e.Cancel = false;
+                        errorP.SetError(cmb3, null);
+                    }
+                }
+            }
+            else if (x == 4 && y == 1)
+            {
+                if (chk1.Checked == false)
+                {
+                    if (string.IsNullOrEmpty(cmb3.Text.Trim()))
+                    {
+                        e.Cancel = true;
+                        errorP.SetError(cmb3, "Favor de seleccionar una marca");
+                    }
+                    else if (string.IsNullOrEmpty(operacion.existeMarca(cmb3.Text.Trim())))
+                    {
+                        e.Cancel = true;
+                        errorP.SetError(cmb3, "Favor de seleccionar una marca existente");
+                    }
+                    else
+                    {
+                        e.Cancel = false;
+                        errorP.SetError(cmb3, null);
+                    }
+                }
+            }
+        }
+
+        private void cmb1_Validating(object sender, CancelEventArgs e)
+        {
+            OperBD operacion = new OperBD();
+            if (x == 5 && y == 1)
+            {
+                if (string.IsNullOrEmpty(cmb1.Text.Trim()))
+                {
+                    e.Cancel = true;
+                    errorP.SetError(cmb1, "Favor de seleccionar un estado");
+                }
+                else if (cmb1.Text.Trim() != "ACTIVO" && cmb1.Text.Trim() != "SUSPENDIDO")
+                {
+                    e.Cancel = true;
+                    errorP.SetError(cmb1, "Favor de seleccionar un estado existente");
+                }
+                else
+                {
+                    e.Cancel = false;
+                    errorP.SetError(cmb1, null);
+                }
+            }
+            else if ( x == 3 && y == 1)
+            {
+                if (string.IsNullOrEmpty(cmb1.Text.Trim()))
+                {
+                    e.Cancel = true;
+                    errorP.SetError(cmb1, "Favor de seleccionar un estado");
+                }
+                else if (cmb1.Text.Trim() != "ACTIVO" && cmb1.Text.Trim() != "SUSPENDIDO")
+                {
+                    e.Cancel = true;
+                    errorP.SetError(cmb1, "Favor de seleccionar un estado existente");
+                }
+                else
+                {
+                    e.Cancel = false;
+                    errorP.SetError(cmb1, null);
+                }
+            }
+            else if (x == 0 && y == 0)
+            {
+                if (string.IsNullOrEmpty(cmb1.Text.Trim()))
+                {
+                    e.Cancel = true;
+                    errorP.SetError(cmb1, "Favor de seleccionar un estado");
+                }
+                else if (cmb1.Text.Trim() != "ADMINISTRADOR" && cmb1.Text.Trim() != "FINANZAS" && cmb1.Text.Trim() != "LOGÍSTICA" && cmb1.Text.Trim() != "VENTAS")
+                {
+                    e.Cancel = true;
+                    errorP.SetError(cmb1, "Favor de seleccionar un estado existente");
+                }
+                else
+                {
+                    e.Cancel = false;
+                    errorP.SetError(cmb1, null);
+                }
+            }
+            else if (x == 0 && y == 1)
+            {
+                if (string.IsNullOrEmpty(cmb1.Text.Trim()))
+                {
+                    e.Cancel = true;
+                    errorP.SetError(cmb1, "Favor de seleccionar un estado");
+                }
+                else if (cmb1.Text.Trim() != "ADMINISTRADOR" && cmb1.Text.Trim() != "FINANZAS" && cmb1.Text.Trim() != "LOGÍSTICA" && cmb1.Text.Trim() != "VENTAS")
+                {
+                    e.Cancel = true;
+                    errorP.SetError(cmb1, "Favor de seleccionar un estado existente");
+                }
+                else
+                {
+                    e.Cancel = false;
+                    errorP.SetError(cmb1, null);
+                }
+            }
+        }
+
+        private void cmb4_Validating(object sender, CancelEventArgs e)
+        {
+            OperBD operacion = new OperBD();
+            if (x == 7 && y == 1)
+            {
+                if (string.IsNullOrEmpty(cmb4.Text.Trim()))
+                {
+                    e.Cancel = true;
+                    errorP.SetError(cmb4, "Favor de seleccionar un estado");
+                }
+                else if (cmb4.Text.Trim() != "ACTIVO" && cmb4.Text.Trim() != "SUSPENDIDO")
+                {
+                    e.Cancel = true;
+                    errorP.SetError(cmb4, "Favor de seleccionar un estado existente");
+                }
+                else
+                {
+                    e.Cancel = false;
+                    errorP.SetError(cmb4, null);
+                }
+
+            }
+            else if (x == 2 && y == 1)
+            {
+                if (string.IsNullOrEmpty(cmb4.Text.Trim()))
+                {
+                    e.Cancel = true;
+                    errorP.SetError(cmb4, "Favor de seleccionar un estado");
+                }
+                else if (cmb4.Text.Trim() != "ACTIVO" && cmb4.Text.Trim() != "SUSPENDIDO")
+                {
+                    e.Cancel = true;
+                    errorP.SetError(cmb4, "Favor de seleccionar un estado existente");
+                }
+                else
+                {
+                    e.Cancel = false;
+                    errorP.SetError(cmb4, null);
+                }
+            }
+            else if (x == 6 && y == 1)
+            {
+                if (string.IsNullOrEmpty(cmb4.Text.Trim()))
+                {
+                    e.Cancel = true;
+                    errorP.SetError(cmb4, "Favor de seleccionar un estado");
+                }
+                else if (cmb4.Text.Trim() != "ACTIVO" && cmb4.Text.Trim() != "SUSPENDIDO")
+                {
+                    e.Cancel = true;
+                    errorP.SetError(cmb4, "Favor de seleccionar un estado existente");
+                }
+                else
+                {
+                    e.Cancel = false;
+                    errorP.SetError(cmb4, null);
+                }
+            }
+            else if (x == 4 && y == 1)
+            {
+                        if (string.IsNullOrEmpty(cmb4.Text.Trim()))
+                        {
+                            e.Cancel = true;
+                            errorP.SetError(cmb4, "Favor de seleccionar un modelo");
+                        }
+                        else if (string.IsNullOrEmpty(operacion.existeVehiculo(cmb4.Text.Trim())))
+                        {
+                            e.Cancel = true;
+                            errorP.SetError(cmb4, "Favor de seleccionar un modelo existente");
+                        }
+                        else
+                        {
+                            e.Cancel = false;
+                            errorP.SetError(cmb4, null);
+                        }
+            }
+        }
+
+        private void cmb2_Validating(object sender, CancelEventArgs e)
+        {
+            
+            if (x == 1 && y == 1)
+            {
+                if (string.IsNullOrEmpty(cmb2.Text.Trim()))
+                {
+                    e.Cancel = true;
+                    errorP.SetError(cmb2, "Favor de seleccionar un estado");
+                }
+                else if (cmb2.Text.Trim() != "ACTIVO" && cmb2.Text.Trim() != "SUSPENDIDO")
+                {
+                    e.Cancel = true;
+                    errorP.SetError(cmb2, "Favor de seleccionar un estado existente");
+                }
+                else
+                {
+                    e.Cancel = false;
+                    errorP.SetError(cmb2, null);
+                }
+            }
+            else if (x == 0 && y == 1)
+            {
+                if (string.IsNullOrEmpty(cmb2.Text.Trim()))
+                {
+                    e.Cancel = true;
+                    errorP.SetError(cmb2, "Favor de seleccionar un estado");
+                }
+                else if (cmb2.Text.Trim() != "ACTIVO" && cmb2.Text.Trim() != "SUSPENDIDO")
+                {
+                    e.Cancel = true;
+                    errorP.SetError(cmb2, "Favor de seleccionar un estado existente");
+                }
+                else
+                {
+                    e.Cancel = false;
+                    errorP.SetError(cmb2, null);
+                }
+            }
+            else if ( x == 4 && y == 1)
+            {
+                if (string.IsNullOrEmpty(cmb2.Text.Trim()))
+                {
+                    e.Cancel = true;
+                    errorP.SetError(cmb2, "Favor de seleccionar un estado");
+                }
+                else if (cmb2.Text.Trim() != "ACTIVO" && cmb2.Text.Trim() != "SUSPENDIDO")
+                {
+                    e.Cancel = true;
+                    errorP.SetError(cmb2, "Favor de seleccionar un estado existente");
+                }
+                else
+                {
+                    e.Cancel = false;
+                    errorP.SetError(cmb2, null);
                 }
             }
         }

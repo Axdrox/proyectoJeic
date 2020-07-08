@@ -245,9 +245,11 @@
             // 
             // cmb4
             // 
-            this.cmb4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.cmb4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb4.ForeColor = System.Drawing.Color.White;
+            this.cmb4.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmb4.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmb4.BackColor = System.Drawing.Color.White;
+            this.cmb4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.cmb4.ForeColor = System.Drawing.Color.Black;
             this.cmb4.FormattingEnabled = true;
             this.cmb4.Items.AddRange(new object[] {
             "ACTIVO",
@@ -257,6 +259,8 @@
             this.cmb4.Size = new System.Drawing.Size(121, 21);
             this.cmb4.TabIndex = 86;
             this.cmb4.SelectedIndexChanged += new System.EventHandler(this.cmb4_SelectedIndexChanged);
+            this.cmb4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmb4_KeyPress);
+            this.cmb4.Validating += new System.ComponentModel.CancelEventHandler(this.cmb4_Validating);
             // 
             // txt3
             // 
@@ -271,21 +275,27 @@
             // 
             // cmb3
             // 
-            this.cmb3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.cmb3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb3.ForeColor = System.Drawing.Color.White;
+            this.cmb3.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmb3.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmb3.BackColor = System.Drawing.Color.White;
+            this.cmb3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.cmb3.ForeColor = System.Drawing.Color.Black;
             this.cmb3.FormattingEnabled = true;
             this.cmb3.Location = new System.Drawing.Point(116, 61);
             this.cmb3.Name = "cmb3";
             this.cmb3.Size = new System.Drawing.Size(121, 21);
             this.cmb3.TabIndex = 84;
             this.cmb3.SelectedIndexChanged += new System.EventHandler(this.cmb3_SelectedIndexChanged);
+            this.cmb3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmb3_KeyPress);
+            this.cmb3.Validating += new System.ComponentModel.CancelEventHandler(this.cmb3_Validating);
             // 
             // cmb2
             // 
-            this.cmb2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.cmb2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb2.ForeColor = System.Drawing.Color.White;
+            this.cmb2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmb2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmb2.BackColor = System.Drawing.Color.White;
+            this.cmb2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.cmb2.ForeColor = System.Drawing.Color.Black;
             this.cmb2.FormattingEnabled = true;
             this.cmb2.Items.AddRange(new object[] {
             "ACTIVO",
@@ -294,6 +304,8 @@
             this.cmb2.Name = "cmb2";
             this.cmb2.Size = new System.Drawing.Size(121, 21);
             this.cmb2.TabIndex = 83;
+            this.cmb2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmb2_KeyPress);
+            this.cmb2.Validating += new System.ComponentModel.CancelEventHandler(this.cmb2_Validating);
             // 
             // lbl4
             // 
@@ -324,14 +336,17 @@
             // 
             // cmb1
             // 
-            this.cmb1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.cmb1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb1.ForeColor = System.Drawing.Color.White;
+            this.cmb1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmb1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmb1.BackColor = System.Drawing.Color.White;
+            this.cmb1.ForeColor = System.Drawing.Color.Black;
             this.cmb1.FormattingEnabled = true;
             this.cmb1.Location = new System.Drawing.Point(116, 131);
             this.cmb1.Name = "cmb1";
             this.cmb1.Size = new System.Drawing.Size(121, 21);
             this.cmb1.TabIndex = 7;
+            this.cmb1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmb1_KeyPress);
+            this.cmb1.Validating += new System.ComponentModel.CancelEventHandler(this.cmb1_Validating);
             // 
             // lbl3
             // 
