@@ -40,7 +40,7 @@ namespace Refracciones
                 factura.dato1.Text = factura.dato1.Text + " " + dato_1.Text;
                 factura.dato2.Text = factura.dato2.Text + " " + dato_2.Text;
                 factura.dato3.Text = "1";
-                factura.ShowDialog();
+                DialogResult  =  factura.ShowDialog();
             }
             else if (cve_factura != "0" && cve_refactura == "0")
             {
@@ -48,7 +48,7 @@ namespace Refracciones
                 factura.dato1.Text = factura.dato1.Text + " " + dato_1.Text;
                 factura.dato2.Text = factura.dato2.Text + " " + dato_2.Text;
                 factura.dato3.Text = "0";
-                factura.ShowDialog();
+                DialogResult = factura.ShowDialog();
             }
             else if (cve_factura != "0" && cve_refactura != "0")
             {
@@ -56,7 +56,7 @@ namespace Refracciones
                 refactura.dato1.Text = refactura.dato1.Text + " " + dato_1.Text;
                 refactura.dato2.Text = refactura.dato2.Text + " " + dato_2.Text;
                 refactura.dato3.Text = "0";
-                refactura.ShowDialog();
+                DialogResult = DialogResult = refactura.ShowDialog();
             }
         }
 
@@ -67,7 +67,7 @@ namespace Refracciones
             refactura.dato1.Text = refactura.dato1.Text + " " + dato_1.Text;
             refactura.dato2.Text = refactura.dato2.Text + " " + dato_2.Text;
             refactura.txtRefactura.Text = dato_3.Text;
-            refactura.ShowDialog();
+            DialogResult = DialogResult = refactura.ShowDialog();
         }
 
         private void btnDevolucionEntrega_Click(object sender, EventArgs e)
@@ -425,6 +425,7 @@ namespace Refracciones
         private void Eleccion_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.DialogResult = DialogResult.OK;
+            
         }
     }
 }

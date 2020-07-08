@@ -640,6 +640,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Administrar";
             this.Load += new System.EventHandler(this.Administrar_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Administrar_KeyDown);
             this.bunifuGradientPanel1.ResumeLayout(false);
             this.bunifuGradientPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnPortal)).EndInit();

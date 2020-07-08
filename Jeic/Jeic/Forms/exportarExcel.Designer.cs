@@ -103,6 +103,7 @@
             // btnGenerar
             // 
             this.btnGenerar.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnGenerar.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnGenerar.Enabled = false;
             this.btnGenerar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnGenerar.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -214,6 +215,7 @@
             this.Name = "exportarExcel";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reporte de Ventas";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.exportarExcel_FormClosing);
             this.Load += new System.EventHandler(this.exportarExcel_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.exportarExcel_KeyDown);
             this.bunifuGradientPanel1.ResumeLayout(false);

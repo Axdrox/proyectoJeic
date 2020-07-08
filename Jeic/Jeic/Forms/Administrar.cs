@@ -1326,5 +1326,10 @@ namespace Refracciones.Forms
                 }
             }
         }
+
+        private void Administrar_KeyDown(object sender, KeyEventArgs e)
+        {
+           
+        }
     }
 }

@@ -35,7 +35,9 @@ namespace Refracciones.Forms
             if (ruta != "")
             {
                 excel.generarExcel(ruta, Fecha_inicio, Fecha_Final,decimal.Parse(txtcostoOperativo.Text, new CultureInfo("en-US")));
+                this.Close();
             }
+            
         }
 
         private void exportarExcel_KeyDown(object sender, KeyEventArgs e)
@@ -83,6 +85,11 @@ namespace Refracciones.Forms
                 errorP.Clear();
                 btnGenerar.Enabled = true;
             }
+        }
+
+        private void exportarExcel_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
         }
     }
 }

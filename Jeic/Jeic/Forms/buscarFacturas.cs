@@ -109,10 +109,7 @@ namespace Refracciones.Forms
 
         private void buscarFacturas_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Escape)
-            {
-                this.Close();
-            }
+            
         }
 
         private void pbClose_Click(object sender, EventArgs e)
