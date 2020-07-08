@@ -3801,7 +3801,7 @@ namespace Refracciones
         }*/
 
         //-------------INSERTAR DATOS DE PEDIDO VENTAS
-        public int registrarVenta(string clavePedido, string claveSiniestro, string taller, string vendedor, DateTime fechaBaja, string valuador, string destino, double costoTotal, double subtotalPrecio, double totalPrecio, DateTime fechaAsignacion, DateTime fechaPromesa, double utilidad)//, double utilidad
+        public int registrarVenta(string clavePedido, string claveSiniestro, string taller, string vendedor, /*DateTime fechaBaja,*/ string valuador, string destino, double costoTotal, double subtotalPrecio, double totalPrecio, DateTime fechaAsignacion, DateTime fechaPromesa, double utilidad)//, double utilidad
         {
             //Variables
             int i = 0;
@@ -3815,14 +3815,14 @@ namespace Refracciones
                 {
                     nuevaConexion.Open();
                     //Insertando los datos en la relación VENTAS
-                    Comando = new SqlCommand("INSERT INTO VENTAS " + "(cve_pedido, cve_siniestro, cve_vendedor, cve_taller, cve_valuador, fecha_baja, cve_destino, costo_total, sub_total, total, fecha_asignacion, fecha_promesa, utilidad) " +
-                        "VALUES (@cve_pedido, @cve_siniestro, @cve_vendedor, @cve_taller, @cve_valuador, @fecha_baja, @cve_destino, @costo_total, @sub_total, @total, @fecha_asignacion, @fecha_promesa, @utilidad) ", nuevaConexion);//utilidad    , @utilidad
+                    Comando = new SqlCommand("INSERT INTO VENTAS " + "(cve_pedido, cve_siniestro, cve_vendedor, cve_taller, cve_valuador, cve_destino, costo_total, sub_total, total, fecha_asignacion, fecha_promesa, utilidad) " +
+                        "VALUES (@cve_pedido, @cve_siniestro, @cve_vendedor, @cve_taller, @cve_valuador, @cve_destino, @costo_total, @sub_total, @total, @fecha_asignacion, @fecha_promesa, @utilidad) ", nuevaConexion);//utilidad    , @utilidad
                     Comando.Parameters.AddWithValue("@cve_pedido", clavePedido);
                     Comando.Parameters.AddWithValue("@cve_siniestro", claveSiniestro);
                     Comando.Parameters.AddWithValue("@cve_vendedor", cve_vendedor);
                     Comando.Parameters.AddWithValue("@cve_taller", cve_taller);
                     Comando.Parameters.AddWithValue("@cve_valuador", cve_valuador);
-                    Comando.Parameters.AddWithValue("@fecha_baja", fechaBaja);
+                    //Comando.Parameters.AddWithValue("@fecha_baja", fechaBaja);
                     Comando.Parameters.AddWithValue("@cve_destino", cve_destino);
                     Comando.Parameters.AddWithValue("@costo_total", costoTotal);
                     Comando.Parameters.AddWithValue("@sub_total", subtotalPrecio);
