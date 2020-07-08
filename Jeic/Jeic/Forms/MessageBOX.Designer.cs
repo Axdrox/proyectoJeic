@@ -54,7 +54,6 @@
             // 
             // GifHecho
             // 
-            this.GifHecho.Image = global::Jeic.Properties.Resources.GiftHECHO;
             this.GifHecho.InitialImage = null;
             this.GifHecho.Location = new System.Drawing.Point(45, 12);
             this.GifHecho.Name = "GifHecho";
@@ -175,7 +174,6 @@
             this.Name = "MessageBOX";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dialog";
-            this.Load += new System.EventHandler(this.MessageBOX_Load);
             ((System.ComponentModel.ISupportInitialize)(this.GifHecho)).EndInit();
             this.ResumeLayout(false);
 

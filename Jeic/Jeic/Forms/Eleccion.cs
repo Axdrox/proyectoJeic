@@ -266,12 +266,14 @@ namespace Refracciones
                                           .MoveText(x + 300, y - 106.5)
                                           .ShowText(dgvDatosPDF.Rows[count].Cells[9].Value.ToString())
                                           .EndText();
+
+                                        //PROVEEDOR
+                                         canvas.BeginText().SetFontAndSize(font, 10)
+                                            .MoveText(x + 380, y - 106.5)
+                                            .ShowText(dgvDatosPDF.Rows[count].Cells[10].Value.ToString())
+                                            .EndText();
                                  }
-                                     /*//PROVEEDOR
-                                 canvas.BeginText().SetFontAndSize(font, 10)
-                                    .MoveText(x + 380, y - 110.5)
-                                    .ShowText(dgvDatosPDF.Rows[count].Cells[10].Value.ToString())
-                                    .EndText();*/
+                                     
                                          
                             Items += Int32.Parse(dgvDatosPDF.Rows[count].Cells[8].Value.ToString());
                             y -= 20;
@@ -382,15 +384,16 @@ namespace Refracciones
                             {
                                 //COSTO
                                 canvas.BeginText().SetFontAndSize(font, 10)
-                                  .MoveText(x + 300, y - 106.5)
+                                  .MoveText(x + 304, y - 106.5)
                                   .ShowText(dgvDatosPDF.Rows[count].Cells[9].Value.ToString())
                                   .EndText();
+
+                                //PROVEEDOR
+                                canvas.BeginText().SetFontAndSize(font, 10)
+                                   .MoveText(x + 370, y - 106.5)
+                                   .ShowText(dgvDatosPDF.Rows[count].Cells[10].Value.ToString())
+                                   .EndText();
                             }
-                            /*//PROVEEDOR
-                        canvas.BeginText().SetFontAndSize(font, 10)
-                           .MoveText(x + 380, y - 110.5)
-                           .ShowText(dgvDatosPDF.Rows[count].Cells[10].Value.ToString())
-                           .EndText();*/
 
                             Items += Int32.Parse(dgvDatosPDF.Rows[count].Cells[8].Value.ToString());
                             y -= 20;

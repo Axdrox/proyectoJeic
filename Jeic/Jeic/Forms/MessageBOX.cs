@@ -40,6 +40,7 @@ namespace Refracciones.Forms
                 {
                     case 1:
                         Retraso_icono.Start();
+                        GifHecho.Image = Resources.GiftHECHO;
                         GifHecho.Enabled = true;
                         break;
                     case 2:
@@ -86,15 +87,12 @@ namespace Refracciones.Forms
                         funcionamiento = funcion;
                         break;
                     default:
+                 
                         break;
                 }
             }
         }     
 
-        private void MessageBOX_Load(object sender, EventArgs e)
-        {
-        
-        }
 
         private void Retraso_icono_Tick(object sender, EventArgs e)
         {
