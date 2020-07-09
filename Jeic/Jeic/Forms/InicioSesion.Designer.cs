@@ -45,6 +45,7 @@
             this.PicOJO = new System.Windows.Forms.PictureBox();
             this.moverFormulario = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.label1 = new System.Windows.Forms.Label();
+            this.ToolTrip = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).BeginInit();
@@ -255,7 +256,9 @@
             this.PicOJO.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PicOJO.TabIndex = 17;
             this.PicOJO.TabStop = false;
+            this.PicOJO.Visible = false;
             this.PicOJO.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PicOJO_MouseDoubleClick);
+            this.PicOJO.MouseHover += new System.EventHandler(this.PicOJO_MouseHover);
             // 
             // moverFormulario
             // 
@@ -320,6 +323,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox PicOJO;
         private Bunifu.Framework.UI.BunifuMaterialTextbox txtContrasenia;
+        private System.Windows.Forms.ToolTip ToolTrip;
     }
 }
 

@@ -45,6 +45,7 @@ namespace Refracciones
 
         private void txtContrasenia_Enter(object sender, EventArgs e)
         {
+            PicOJO.Visible = true;
             if (txtContrasenia.Text == "Default" || txtContrasenia.Text == string.Empty)
             {
                 txtContrasenia.Text = "";
@@ -131,6 +132,7 @@ namespace Refracciones
                 txtContrasenia.Text = "Default";
 
             txtContrasenia.isPassword = true;
+            PicOJO.Visible = false;
         }
 
         private void pbClose_Click(object sender, EventArgs e)
@@ -145,13 +147,26 @@ namespace Refracciones
 
         private void PicOJO_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (txtContrasenia.Text != "Default")
+            if (PicOJO.Image.Height.ToString() == "128")
             {
-                if (txtContrasenia.isPassword)
-                    txtContrasenia.isPassword = false;
-                else
-                    txtContrasenia.isPassword = true;
+                txtContrasenia.isPassword = false;
+                PicOJO.Image = Resources.OjoCerrado;
+            }
+            else {
+                txtContrasenia.isPassword = true;
+                PicOJO.Image = Resources.ojo;
             }
         }
+
+        private void PicOJO_MouseHover(object sender, EventArgs e)
+        {
+            if (PicOJO.Image.Height.ToString() == "128")
+                this.ToolTrip.SetToolTip(PicOJO, "Mostrar contraseña");
+            else
+                this.ToolTrip.SetToolTip(PicOJO, "Ocultar contraseña");
+
+        }
+
+
     }
 }
