@@ -366,6 +366,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="iconJeic.ico" />
+    <None Include="Resources\ojo.png" />
     <None Include="Resources\Loading1.gif" />
     <None Include="Resources\JEIC_Login.png" />
     <None Include="Resources\cliente.png" />

@@ -42,6 +42,7 @@
             this.bunifuCustomLabel2 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.PicOJO = new System.Windows.Forms.PictureBox();
             this.moverFormulario = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -50,6 +51,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.bunifuGradientPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PicOJO)).BeginInit();
             this.SuspendLayout();
             // 
             // bunifuElipse1
@@ -223,6 +225,7 @@
             this.bunifuGradientPanel1.BackColor = System.Drawing.Color.Transparent;
             this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
             this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuGradientPanel1.Controls.Add(this.PicOJO);
             this.bunifuGradientPanel1.Controls.Add(this.pictureBox1);
             this.bunifuGradientPanel1.Controls.Add(this.btnEntrar);
             this.bunifuGradientPanel1.Controls.Add(this.txtContrasenia);
@@ -241,6 +244,18 @@
             this.bunifuGradientPanel1.Quality = 10;
             this.bunifuGradientPanel1.Size = new System.Drawing.Size(267, 274);
             this.bunifuGradientPanel1.TabIndex = 17;
+            // 
+            // PicOJO
+            // 
+            this.PicOJO.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PicOJO.Image = global::Jeic.Properties.Resources.ojo;
+            this.PicOJO.Location = new System.Drawing.Point(227, 184);
+            this.PicOJO.Name = "PicOJO";
+            this.PicOJO.Size = new System.Drawing.Size(33, 23);
+            this.PicOJO.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PicOJO.TabIndex = 17;
+            this.PicOJO.TabStop = false;
+            this.PicOJO.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PicOJO_MouseDoubleClick);
             // 
             // moverFormulario
             // 
@@ -283,6 +298,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.bunifuGradientPanel1.ResumeLayout(false);
             this.bunifuGradientPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PicOJO)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -291,7 +307,6 @@
         #endregion
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
         private Bunifu.Framework.UI.BunifuMaterialTextbox txtUsuario;
-        private Bunifu.Framework.UI.BunifuMaterialTextbox txtContrasenia;
         private Bunifu.Framework.UI.BunifuThinButton2 btnEntrar;
         private System.Windows.Forms.PictureBox pbClose;
         private System.Windows.Forms.PictureBox pbMinimize;
@@ -303,6 +318,8 @@
         private Bunifu.Framework.UI.BunifuDragControl moverFormulario;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox PicOJO;
+        private Bunifu.Framework.UI.BunifuMaterialTextbox txtContrasenia;
     }
 }
 

@@ -37,7 +37,6 @@ namespace Refracciones.Forms
             {
                 case 1:
                     btnAgregarPedido.Visible = false;
-                    generarReporteVentasToolStripMenuItem.Enabled = false;
                     administrarToolStripMenuItem.Enabled = false;
                     break;
 
@@ -48,7 +47,6 @@ namespace Refracciones.Forms
                     break;
 
                 case 3:
-                    generarReporteVentasToolStripMenuItem.Enabled = false;
                     notificacionesToolStripMenuItem.Enabled = false;
                     administrarToolStripMenuItem.Enabled = false;
                     buscarFacturasToolStripMenuItem.Enabled = false;

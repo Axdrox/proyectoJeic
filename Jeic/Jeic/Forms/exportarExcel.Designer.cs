@@ -103,6 +103,7 @@
             // btnGenerar
             // 
             this.btnGenerar.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnGenerar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnGenerar.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnGenerar.Enabled = false;
             this.btnGenerar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
@@ -138,7 +139,7 @@
             this.bunifuGradientPanel1.Location = new System.Drawing.Point(-1, -2);
             this.bunifuGradientPanel1.Name = "bunifuGradientPanel1";
             this.bunifuGradientPanel1.Quality = 10;
-            this.bunifuGradientPanel1.Size = new System.Drawing.Size(281, 204);
+            this.bunifuGradientPanel1.Size = new System.Drawing.Size(290, 204);
             this.bunifuGradientPanel1.TabIndex = 6;
             // 
             // txtcostoOperativo
@@ -167,11 +168,12 @@
             // 
             // pbMinimize
             // 
+            this.pbMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbMinimize.Image = global::Jeic.Properties.Resources.Minimize_Window_2_48px;
-            this.pbMinimize.Location = new System.Drawing.Point(242, 1);
+            this.pbMinimize.Location = new System.Drawing.Point(250, 2);
             this.pbMinimize.Margin = new System.Windows.Forms.Padding(2);
             this.pbMinimize.Name = "pbMinimize";
-            this.pbMinimize.Size = new System.Drawing.Size(15, 16);
+            this.pbMinimize.Size = new System.Drawing.Size(17, 17);
             this.pbMinimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbMinimize.TabIndex = 79;
             this.pbMinimize.TabStop = false;
@@ -179,11 +181,12 @@
             // 
             // pbClose
             // 
+            this.pbClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbClose.Image = global::Jeic.Properties.Resources.Close_Window__2_48px;
-            this.pbClose.Location = new System.Drawing.Point(261, 1);
+            this.pbClose.Location = new System.Drawing.Point(271, 2);
             this.pbClose.Margin = new System.Windows.Forms.Padding(2);
             this.pbClose.Name = "pbClose";
-            this.pbClose.Size = new System.Drawing.Size(15, 16);
+            this.pbClose.Size = new System.Drawing.Size(17, 17);
             this.pbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbClose.TabIndex = 78;
             this.pbClose.TabStop = false;
@@ -204,7 +207,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(278, 203);
+            this.ClientSize = new System.Drawing.Size(290, 203);
             this.Controls.Add(this.Fecha_Fin);
             this.Controls.Add(this.Fecha_in);
             this.Controls.Add(this.label3);

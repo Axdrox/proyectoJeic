@@ -142,5 +142,16 @@ namespace Refracciones
         {
             this.WindowState = FormWindowState.Minimized;
         }
+
+        private void PicOJO_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (txtContrasenia.Text != "Default")
+            {
+                if (txtContrasenia.isPassword)
+                    txtContrasenia.isPassword = false;
+                else
+                    txtContrasenia.isPassword = true;
+            }
+        }
     }
 }

@@ -224,7 +224,7 @@ namespace Refracciones
                         canvas.BeginText().SetFontAndSize(font, 9)
                                 .MoveText(x + 252, y - 39.5)
                                 .SetFillColor(ColorConstants.BLACK)
-                                .ShowText(dgvDatosPDF.Rows[0].Cells[11].Value.ToString() + "  -  " + dgvDatosPDF.Rows[0].Cells[4].Value.ToString())
+                                .ShowText(dgvDatosPDF.Rows[0].Cells[11].Value.ToString() + "  -  " + dgvDatosPDF.Rows[0].Cells[4].Value.ToString()+" - "+dgvDatosPDF.Rows[0].Cells[12].Value.ToString())
                                 .EndText();
                         //FECHA_ASIGNACION
                         canvas.BeginText().SetFontAndSize(font, 14)
@@ -345,7 +345,7 @@ namespace Refracciones
                         canvas.BeginText().SetFontAndSize(font, 9)
                                 .MoveText(x + 252, y - 39.5)
                                 .SetFillColor(ColorConstants.BLACK)
-                                .ShowText(dgvDatosPDF.Rows[0].Cells[11].Value.ToString() + "  -  " + dgvDatosPDF.Rows[0].Cells[4].Value.ToString())
+                                .ShowText(dgvDatosPDF.Rows[0].Cells[11].Value.ToString() + "  -  " + dgvDatosPDF.Rows[0].Cells[4].Value.ToString() + " - " + dgvDatosPDF.Rows[0].Cells[12].Value.ToString())
                                 .EndText();
                         //FECHA_ASIGNACION
                         canvas.BeginText().SetFontAndSize(font, 14)
