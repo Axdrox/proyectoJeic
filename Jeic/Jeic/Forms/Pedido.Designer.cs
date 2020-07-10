@@ -407,6 +407,7 @@
             this.dgvPedido.Size = new System.Drawing.Size(1361, 206);
             this.dgvPedido.TabIndex = 18;
             this.dgvPedido.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPedido_CellClick);
+            this.dgvPedido.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPedido_CellContentClick);
             this.dgvPedido.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPedido_CellValueChanged);
             // 
             // btnFinalizarPedido

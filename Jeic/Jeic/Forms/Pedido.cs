@@ -1810,5 +1810,10 @@ namespace Refracciones.Forms
                 txtNumeroEmpleado.Text = "0";
             }
         }
+
+        private void dgvPedido_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

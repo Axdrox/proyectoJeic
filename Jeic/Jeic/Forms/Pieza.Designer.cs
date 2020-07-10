@@ -266,7 +266,7 @@
             this.cbPortal.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbPortal.Name = "cbPortal";
             this.cbPortal.Size = new System.Drawing.Size(196, 24);
-            this.cbPortal.TabIndex = 2;
+            this.cbPortal.TabIndex = 5;
             this.cbPortal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbPortal_KeyPress);
             this.cbPortal.Validating += new System.ComponentModel.CancelEventHandler(this.cbPortal_Validating);
             // 
@@ -282,7 +282,7 @@
             this.cbOrigen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbOrigen.Name = "cbOrigen";
             this.cbOrigen.Size = new System.Drawing.Size(196, 24);
-            this.cbOrigen.TabIndex = 3;
+            this.cbOrigen.TabIndex = 7;
             this.cbOrigen.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbOrigen_KeyPress);
             this.cbOrigen.Validating += new System.ComponentModel.CancelEventHandler(this.cbOrigen_Validating);
             // 
@@ -298,7 +298,7 @@
             this.cbProveedores.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbProveedores.Name = "cbProveedores";
             this.cbProveedores.Size = new System.Drawing.Size(196, 24);
-            this.cbProveedores.TabIndex = 4;
+            this.cbProveedores.TabIndex = 9;
             this.cbProveedores.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbProveedores_KeyPress);
             this.cbProveedores.Validating += new System.ComponentModel.CancelEventHandler(this.cbProveedores_Validating);
             // 
@@ -309,7 +309,7 @@
             this.dtpFechaCosto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpFechaCosto.Name = "dtpFechaCosto";
             this.dtpFechaCosto.Size = new System.Drawing.Size(265, 22);
-            this.dtpFechaCosto.TabIndex = 5;
+            this.dtpFechaCosto.TabIndex = 11;
             // 
             // txtCostoSinIVA
             // 
@@ -346,7 +346,7 @@
             this.txtCostoNeto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtCostoNeto.Name = "txtCostoNeto";
             this.txtCostoNeto.Size = new System.Drawing.Size(122, 22);
-            this.txtCostoNeto.TabIndex = 8;
+            this.txtCostoNeto.TabIndex = 12;
             this.txtCostoNeto.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtCostoNeto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCostoNeto_KeyPress);
             this.txtCostoNeto.Validating += new System.ComponentModel.CancelEventHandler(this.txtCostoNeto_Validating);
@@ -370,7 +370,7 @@
             this.txtPrecioVenta.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPrecioVenta.Name = "txtPrecioVenta";
             this.txtPrecioVenta.Size = new System.Drawing.Size(122, 22);
-            this.txtPrecioVenta.TabIndex = 11;
+            this.txtPrecioVenta.TabIndex = 15;
             this.txtPrecioVenta.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtPrecioVenta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecioVenta_KeyPress);
             this.txtPrecioVenta.Validating += new System.ComponentModel.CancelEventHandler(this.txtPrecioVenta_Validating);
@@ -394,7 +394,7 @@
             this.txtPrecioReparacion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPrecioReparacion.Name = "txtPrecioReparacion";
             this.txtPrecioReparacion.Size = new System.Drawing.Size(122, 22);
-            this.txtPrecioReparacion.TabIndex = 10;
+            this.txtPrecioReparacion.TabIndex = 14;
             this.txtPrecioReparacion.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtPrecioReparacion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecioReparacion_KeyPress);
             this.txtPrecioReparacion.Validating += new System.ComponentModel.CancelEventHandler(this.txtPrecioReparacion_Validating);
@@ -433,7 +433,7 @@
             this.txtClaveProducto.Name = "txtClaveProducto";
             this.txtClaveProducto.ReadOnly = true;
             this.txtClaveProducto.Size = new System.Drawing.Size(197, 22);
-            this.txtClaveProducto.TabIndex = 2;
+            this.txtClaveProducto.TabIndex = 22;
             this.txtClaveProducto.Text = "Escriba clave del producto";
             this.txtClaveProducto.Validating += new System.ComponentModel.CancelEventHandler(this.txtClaveProducto_Validating);
             // 
@@ -462,7 +462,7 @@
             this.btnAniadirPieza.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAniadirPieza.Name = "btnAniadirPieza";
             this.btnAniadirPieza.Size = new System.Drawing.Size(99, 28);
-            this.btnAniadirPieza.TabIndex = 12;
+            this.btnAniadirPieza.TabIndex = 16;
             this.btnAniadirPieza.Text = "Añadir pieza";
             this.btnAniadirPieza.UseVisualStyleBackColor = false;
             this.btnAniadirPieza.Click += new System.EventHandler(this.btnAniadirPieza_Click);
@@ -477,7 +477,7 @@
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(99, 28);
-            this.btnCancelar.TabIndex = 13;
+            this.btnCancelar.TabIndex = 17;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -494,7 +494,7 @@
             this.chbOtroPieza.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chbOtroPieza.Name = "chbOtroPieza";
             this.chbOtroPieza.Size = new System.Drawing.Size(55, 21);
-            this.chbOtroPieza.TabIndex = 14;
+            this.chbOtroPieza.TabIndex = 18;
             this.chbOtroPieza.Text = "Otro";
             this.chbOtroPieza.UseVisualStyleBackColor = false;
             this.chbOtroPieza.CheckedChanged += new System.EventHandler(this.chbOtroPieza_CheckedChanged);
@@ -511,7 +511,7 @@
             this.chbOtroPortal.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chbOtroPortal.Name = "chbOtroPortal";
             this.chbOtroPortal.Size = new System.Drawing.Size(55, 21);
-            this.chbOtroPortal.TabIndex = 16;
+            this.chbOtroPortal.TabIndex = 20;
             this.chbOtroPortal.Text = "Otro";
             this.chbOtroPortal.UseVisualStyleBackColor = false;
             this.chbOtroPortal.CheckedChanged += new System.EventHandler(this.chbOtroPortal_CheckedChanged);
@@ -528,7 +528,7 @@
             this.chbOtroOrigen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chbOtroOrigen.Name = "chbOtroOrigen";
             this.chbOtroOrigen.Size = new System.Drawing.Size(55, 21);
-            this.chbOtroOrigen.TabIndex = 18;
+            this.chbOtroOrigen.TabIndex = 21;
             this.chbOtroOrigen.Text = "Otro";
             this.chbOtroOrigen.UseVisualStyleBackColor = false;
             this.chbOtroOrigen.CheckedChanged += new System.EventHandler(this.chbOtroOrigen_CheckedChanged);
@@ -545,7 +545,7 @@
             this.chbOtroProveedor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chbOtroProveedor.Name = "chbOtroProveedor";
             this.chbOtroProveedor.Size = new System.Drawing.Size(55, 21);
-            this.chbOtroProveedor.TabIndex = 19;
+            this.chbOtroProveedor.TabIndex = 22;
             this.chbOtroProveedor.Text = "Otro";
             this.chbOtroProveedor.UseVisualStyleBackColor = false;
             this.chbOtroProveedor.CheckedChanged += new System.EventHandler(this.chbOtroProveedor_CheckedChanged);
@@ -560,7 +560,7 @@
             this.txtPiezaNombre.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPiezaNombre.Name = "txtPiezaNombre";
             this.txtPiezaNombre.Size = new System.Drawing.Size(197, 22);
-            this.txtPiezaNombre.TabIndex = 0;
+            this.txtPiezaNombre.TabIndex = 1;
             this.txtPiezaNombre.Text = "Escriba nombre de pieza";
             this.txtPiezaNombre.Visible = false;
             this.txtPiezaNombre.TextChanged += new System.EventHandler(this.txtPiezaNombre_TextChanged);
@@ -577,7 +577,7 @@
             this.txtPortal.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPortal.Name = "txtPortal";
             this.txtPortal.Size = new System.Drawing.Size(197, 22);
-            this.txtPortal.TabIndex = 4;
+            this.txtPortal.TabIndex = 6;
             this.txtPortal.Text = "Escriba un nuevo portal";
             this.txtPortal.Visible = false;
             this.txtPortal.Enter += new System.EventHandler(this.txtPortal_Enter);
@@ -593,7 +593,7 @@
             this.txtOrigen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtOrigen.Name = "txtOrigen";
             this.txtOrigen.Size = new System.Drawing.Size(197, 22);
-            this.txtOrigen.TabIndex = 5;
+            this.txtOrigen.TabIndex = 8;
             this.txtOrigen.Text = "Escriba un nuevo origen";
             this.txtOrigen.Visible = false;
             this.txtOrigen.Enter += new System.EventHandler(this.txtOrigen_Enter);
@@ -609,7 +609,7 @@
             this.txtProveedor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtProveedor.Name = "txtProveedor";
             this.txtProveedor.Size = new System.Drawing.Size(197, 22);
-            this.txtProveedor.TabIndex = 6;
+            this.txtProveedor.TabIndex = 10;
             this.txtProveedor.Text = "Escriba un nuevo proveedor";
             this.txtProveedor.Visible = false;
             this.txtProveedor.Enter += new System.EventHandler(this.txtProveedor_Enter);
@@ -627,7 +627,7 @@
             this.cbCostoEnvio.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbCostoEnvio.Name = "cbCostoEnvio";
             this.cbCostoEnvio.Size = new System.Drawing.Size(121, 24);
-            this.cbCostoEnvio.TabIndex = 9;
+            this.cbCostoEnvio.TabIndex = 13;
             this.cbCostoEnvio.Click += new System.EventHandler(this.cbCostoEnvio_Click);
             // 
             // bunifuElipse1
@@ -701,7 +701,7 @@
             this.chbOtroNumeroGuia.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chbOtroNumeroGuia.Name = "chbOtroNumeroGuia";
             this.chbOtroNumeroGuia.Size = new System.Drawing.Size(55, 21);
-            this.chbOtroNumeroGuia.TabIndex = 15;
+            this.chbOtroNumeroGuia.TabIndex = 19;
             this.chbOtroNumeroGuia.Text = "Otro";
             this.chbOtroNumeroGuia.UseVisualStyleBackColor = false;
             this.chbOtroNumeroGuia.Visible = false;
@@ -718,7 +718,7 @@
             this.cbNumeroGuia.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbNumeroGuia.Name = "cbNumeroGuia";
             this.cbNumeroGuia.Size = new System.Drawing.Size(196, 24);
-            this.cbNumeroGuia.TabIndex = 1;
+            this.cbNumeroGuia.TabIndex = 4;
             this.cbNumeroGuia.Visible = false;
             this.cbNumeroGuia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbNumeroGuia_KeyPress);
             this.cbNumeroGuia.Validating += new System.ComponentModel.CancelEventHandler(this.cbNumeroGuia_Validating);
