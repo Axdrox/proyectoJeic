@@ -198,7 +198,7 @@
             this.cbAseguradora.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbAseguradora.Name = "cbAseguradora";
             this.cbAseguradora.Size = new System.Drawing.Size(295, 21);
-            this.cbAseguradora.TabIndex = 2;
+            this.cbAseguradora.TabIndex = 5;
             this.cbAseguradora.SelectedIndexChanged += new System.EventHandler(this.cbAseguradora_SelectedIndexChanged);
             this.cbAseguradora.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbAseguradora_KeyPress);
             this.cbAseguradora.Validating += new System.ComponentModel.CancelEventHandler(this.cbAseguradora_Validating);
@@ -243,7 +243,7 @@
             this.cbVendedor.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbVendedor.Name = "cbVendedor";
             this.cbVendedor.Size = new System.Drawing.Size(295, 21);
-            this.cbVendedor.TabIndex = 1;
+            this.cbVendedor.TabIndex = 2;
             this.cbVendedor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbVendedor_KeyPress);
             this.cbVendedor.Validating += new System.ComponentModel.CancelEventHandler(this.cbVendedor_Validating);
             // 
@@ -272,7 +272,7 @@
             this.dtpFechaAsignacion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dtpFechaAsignacion.Name = "dtpFechaAsignacion";
             this.dtpFechaAsignacion.Size = new System.Drawing.Size(107, 20);
-            this.dtpFechaAsignacion.TabIndex = 11;
+            this.dtpFechaAsignacion.TabIndex = 15;
             this.dtpFechaAsignacion.ValueChanged += new System.EventHandler(this.dtpFechaAsignacion_ValueChanged);
             // 
             // label8
@@ -299,7 +299,7 @@
             this.dtpFechaPromesa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dtpFechaPromesa.Name = "dtpFechaPromesa";
             this.dtpFechaPromesa.Size = new System.Drawing.Size(107, 20);
-            this.dtpFechaPromesa.TabIndex = 12;
+            this.dtpFechaPromesa.TabIndex = 16;
             this.dtpFechaPromesa.ValueChanged += new System.EventHandler(this.dtpFechaPromesa_ValueChanged);
             // 
             // label9
@@ -342,7 +342,7 @@
             this.cbTaller.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbTaller.Name = "cbTaller";
             this.cbTaller.Size = new System.Drawing.Size(295, 21);
-            this.cbTaller.TabIndex = 4;
+            this.cbTaller.TabIndex = 10;
             this.cbTaller.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbTaller_KeyPress);
             this.cbTaller.Validating += new System.ComponentModel.CancelEventHandler(this.cbTaller_Validating);
             // 
@@ -360,7 +360,7 @@
             this.cbDestino.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbDestino.Name = "cbDestino";
             this.cbDestino.Size = new System.Drawing.Size(295, 21);
-            this.cbDestino.TabIndex = 5;
+            this.cbDestino.TabIndex = 13;
             this.cbDestino.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbDestino_KeyPress);
             this.cbDestino.Validating += new System.ComponentModel.CancelEventHandler(this.cbDestino_Validating);
             // 
@@ -417,7 +417,7 @@
             this.dgvPedido.RowTemplate.Height = 24;
             this.dgvPedido.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPedido.Size = new System.Drawing.Size(1021, 167);
-            this.dgvPedido.TabIndex = 18;
+            this.dgvPedido.TabIndex = 19;
             this.dgvPedido.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPedido_CellClick);
             this.dgvPedido.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPedido_CellContentClick);
             this.dgvPedido.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPedido_CellValueChanged);
@@ -433,7 +433,7 @@
             this.btnFinalizarPedido.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnFinalizarPedido.Name = "btnFinalizarPedido";
             this.btnFinalizarPedido.Size = new System.Drawing.Size(107, 25);
-            this.btnFinalizarPedido.TabIndex = 19;
+            this.btnFinalizarPedido.TabIndex = 20;
             this.btnFinalizarPedido.Text = "Finalizar pedido";
             this.btnFinalizarPedido.UseVisualStyleBackColor = false;
             this.btnFinalizarPedido.Click += new System.EventHandler(this.btnFinalizarPedido_Click);
@@ -483,7 +483,7 @@
             this.chbOtroValuador.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chbOtroValuador.Name = "chbOtroValuador";
             this.chbOtroValuador.Size = new System.Drawing.Size(44, 17);
-            this.chbOtroValuador.TabIndex = 25;
+            this.chbOtroValuador.TabIndex = 26;
             this.chbOtroValuador.Text = "Otro";
             this.chbOtroValuador.UseVisualStyleBackColor = false;
             this.chbOtroValuador.CheckedChanged += new System.EventHandler(this.chbOtroValuador_CheckedChanged);
@@ -497,7 +497,7 @@
             this.txtValuador.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtValuador.Name = "txtValuador";
             this.txtValuador.Size = new System.Drawing.Size(297, 20);
-            this.txtValuador.TabIndex = 6;
+            this.txtValuador.TabIndex = 9;
             this.txtValuador.Text = "Escriba nombre del valuador";
             this.txtValuador.Enter += new System.EventHandler(this.txtValuador_Enter);
             this.txtValuador.Leave += new System.EventHandler(this.txtValuador_Leave);
@@ -517,7 +517,7 @@
             this.cbValuador.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbValuador.Name = "cbValuador";
             this.cbValuador.Size = new System.Drawing.Size(295, 21);
-            this.cbValuador.TabIndex = 3;
+            this.cbValuador.TabIndex = 8;
             this.cbValuador.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbValuador_KeyPress);
             this.cbValuador.Validating += new System.ComponentModel.CancelEventHandler(this.cbValuador_Validating);
             // 
@@ -530,7 +530,7 @@
             this.txtAseguradora.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtAseguradora.Name = "txtAseguradora";
             this.txtAseguradora.Size = new System.Drawing.Size(296, 20);
-            this.txtAseguradora.TabIndex = 4;
+            this.txtAseguradora.TabIndex = 6;
             this.txtAseguradora.Text = "Escriba el nombre del cliente";
             this.txtAseguradora.Enter += new System.EventHandler(this.txtAseguradora_Enter);
             this.txtAseguradora.Leave += new System.EventHandler(this.txtAseguradora_Leave);
@@ -549,7 +549,7 @@
             this.chbOtraAseguradora.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chbOtraAseguradora.Name = "chbOtraAseguradora";
             this.chbOtraAseguradora.Size = new System.Drawing.Size(44, 17);
-            this.chbOtraAseguradora.TabIndex = 29;
+            this.chbOtraAseguradora.TabIndex = 25;
             this.chbOtraAseguradora.Text = "Otro";
             this.chbOtraAseguradora.UseVisualStyleBackColor = false;
             this.chbOtraAseguradora.CheckedChanged += new System.EventHandler(this.chbOtraAseguradora_CheckedChanged);
@@ -618,7 +618,7 @@
             this.chbOtroTaller.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chbOtroTaller.Name = "chbOtroTaller";
             this.chbOtroTaller.Size = new System.Drawing.Size(44, 17);
-            this.chbOtroTaller.TabIndex = 34;
+            this.chbOtroTaller.TabIndex = 27;
             this.chbOtroTaller.Text = "Otro";
             this.chbOtroTaller.UseVisualStyleBackColor = false;
             this.chbOtroTaller.CheckedChanged += new System.EventHandler(this.chbOtroTaller_CheckedChanged);
@@ -636,7 +636,7 @@
             this.chbOtroDestino.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chbOtroDestino.Name = "chbOtroDestino";
             this.chbOtroDestino.Size = new System.Drawing.Size(44, 17);
-            this.chbOtroDestino.TabIndex = 35;
+            this.chbOtroDestino.TabIndex = 28;
             this.chbOtroDestino.Text = "Otro";
             this.chbOtroDestino.UseVisualStyleBackColor = false;
             this.chbOtroDestino.CheckedChanged += new System.EventHandler(this.chbOtroDestino_CheckedChanged);
@@ -650,7 +650,7 @@
             this.txtTaller.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtTaller.Name = "txtTaller";
             this.txtTaller.Size = new System.Drawing.Size(295, 20);
-            this.txtTaller.TabIndex = 7;
+            this.txtTaller.TabIndex = 11;
             this.txtTaller.Text = "Escriba nombre de taller";
             this.txtTaller.Enter += new System.EventHandler(this.txtTaller_Enter);
             this.txtTaller.Leave += new System.EventHandler(this.txtTaller_Leave);
@@ -665,7 +665,7 @@
             this.txtDestino.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtDestino.Name = "txtDestino";
             this.txtDestino.Size = new System.Drawing.Size(296, 20);
-            this.txtDestino.TabIndex = 9;
+            this.txtDestino.TabIndex = 14;
             this.txtDestino.Text = "Escriba el destino";
             this.txtDestino.Enter += new System.EventHandler(this.txtDestino_Enter);
             this.txtDestino.Leave += new System.EventHandler(this.txtDestino_Leave);
@@ -681,7 +681,7 @@
             this.btnAgregarPieza.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAgregarPieza.Name = "btnAgregarPieza";
             this.btnAgregarPieza.Size = new System.Drawing.Size(100, 25);
-            this.btnAgregarPieza.TabIndex = 38;
+            this.btnAgregarPieza.TabIndex = 18;
             this.btnAgregarPieza.Text = "Agregar pieza";
             this.btnAgregarPieza.UseVisualStyleBackColor = false;
             this.btnAgregarPieza.Click += new System.EventHandler(this.btnAgregarPieza_Click);
@@ -710,7 +710,7 @@
             this.dtpFechaBaja.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dtpFechaBaja.Name = "dtpFechaBaja";
             this.dtpFechaBaja.Size = new System.Drawing.Size(107, 20);
-            this.dtpFechaBaja.TabIndex = 13;
+            this.dtpFechaBaja.TabIndex = 17;
             // 
             // label5
             // 
@@ -781,7 +781,7 @@
             this.chbModificarFechaAsignacion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chbModificarFechaAsignacion.Name = "chbModificarFechaAsignacion";
             this.chbModificarFechaAsignacion.Size = new System.Drawing.Size(74, 18);
-            this.chbModificarFechaAsignacion.TabIndex = 46;
+            this.chbModificarFechaAsignacion.TabIndex = 29;
             this.chbModificarFechaAsignacion.Text = "Modificar";
             this.chbModificarFechaAsignacion.UseVisualStyleBackColor = false;
             this.chbModificarFechaAsignacion.Visible = false;
@@ -798,7 +798,7 @@
             this.chbModificarFechaPromesa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chbModificarFechaPromesa.Name = "chbModificarFechaPromesa";
             this.chbModificarFechaPromesa.Size = new System.Drawing.Size(74, 18);
-            this.chbModificarFechaPromesa.TabIndex = 47;
+            this.chbModificarFechaPromesa.TabIndex = 30;
             this.chbModificarFechaPromesa.Text = "Modificar";
             this.chbModificarFechaPromesa.UseVisualStyleBackColor = false;
             this.chbModificarFechaPromesa.Visible = false;
@@ -815,7 +815,7 @@
             this.chbModificarFechaBaja.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chbModificarFechaBaja.Name = "chbModificarFechaBaja";
             this.chbModificarFechaBaja.Size = new System.Drawing.Size(74, 18);
-            this.chbModificarFechaBaja.TabIndex = 48;
+            this.chbModificarFechaBaja.TabIndex = 31;
             this.chbModificarFechaBaja.Text = "Modificar";
             this.chbModificarFechaBaja.UseVisualStyleBackColor = false;
             this.chbModificarFechaBaja.Visible = false;
@@ -834,7 +834,7 @@
             this.chbModificarVendedor.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chbModificarVendedor.Name = "chbModificarVendedor";
             this.chbModificarVendedor.Size = new System.Drawing.Size(44, 17);
-            this.chbModificarVendedor.TabIndex = 49;
+            this.chbModificarVendedor.TabIndex = 24;
             this.chbModificarVendedor.Text = "Otro";
             this.chbModificarVendedor.UseVisualStyleBackColor = false;
             this.chbModificarVendedor.CheckedChanged += new System.EventHandler(this.chbModificarVendedor_CheckedChanged);
@@ -849,7 +849,7 @@
             this.txtVendedor.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtVendedor.Name = "txtVendedor";
             this.txtVendedor.Size = new System.Drawing.Size(296, 20);
-            this.txtVendedor.TabIndex = 2;
+            this.txtVendedor.TabIndex = 3;
             this.txtVendedor.Text = "Escriba nombre del nuevo vendedor";
             this.txtVendedor.Visible = false;
             this.txtVendedor.Enter += new System.EventHandler(this.txtVendedor_Enter);
@@ -927,7 +927,7 @@
             this.chbModificarEstado.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chbModificarEstado.Name = "chbModificarEstado";
             this.chbModificarEstado.Size = new System.Drawing.Size(74, 18);
-            this.chbModificarEstado.TabIndex = 56;
+            this.chbModificarEstado.TabIndex = 23;
             this.chbModificarEstado.Text = "Modificar";
             this.chbModificarEstado.UseVisualStyleBackColor = false;
             this.chbModificarEstado.CheckedChanged += new System.EventHandler(this.chbModificarEstado_CheckedChanged);
@@ -945,7 +945,7 @@
             this.txtDiasEspera.Location = new System.Drawing.Point(732, 126);
             this.txtDiasEspera.Name = "txtDiasEspera";
             this.txtDiasEspera.Size = new System.Drawing.Size(64, 20);
-            this.txtDiasEspera.TabIndex = 5;
+            this.txtDiasEspera.TabIndex = 7;
             this.txtDiasEspera.Visible = false;
             this.txtDiasEspera.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDiasEspera_KeyPress);
             this.txtDiasEspera.Validating += new System.ComponentModel.CancelEventHandler(this.txtDiasEspera_Validating);
@@ -1038,7 +1038,7 @@
             this.txtDireccion.Multiline = true;
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(296, 39);
-            this.txtDireccion.TabIndex = 8;
+            this.txtDireccion.TabIndex = 12;
             this.txtDireccion.Text = "Escriba dirección del taller";
             this.txtDireccion.Visible = false;
             this.txtDireccion.Enter += new System.EventHandler(this.txtDireccion_Enter);
@@ -1080,7 +1080,7 @@
             this.panelSiniestro.Location = new System.Drawing.Point(66, 46);
             this.panelSiniestro.Name = "panelSiniestro";
             this.panelSiniestro.Size = new System.Drawing.Size(306, 37);
-            this.panelSiniestro.TabIndex = 1;
+            this.panelSiniestro.TabIndex = 22;
             // 
             // btnLimpiarSiniestro
             // 
@@ -1092,7 +1092,7 @@
             this.btnLimpiarSiniestro.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnLimpiarSiniestro.Name = "btnLimpiarSiniestro";
             this.btnLimpiarSiniestro.Size = new System.Drawing.Size(60, 20);
-            this.btnLimpiarSiniestro.TabIndex = 80;
+            this.btnLimpiarSiniestro.TabIndex = 2;
             this.btnLimpiarSiniestro.Text = "Limpiar";
             this.btnLimpiarSiniestro.UseVisualStyleBackColor = false;
             this.btnLimpiarSiniestro.Visible = false;
@@ -1109,7 +1109,7 @@
             this.btnPenalizarPedido.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnPenalizarPedido.Name = "btnPenalizarPedido";
             this.btnPenalizarPedido.Size = new System.Drawing.Size(158, 25);
-            this.btnPenalizarPedido.TabIndex = 81;
+            this.btnPenalizarPedido.TabIndex = 21;
             this.btnPenalizarPedido.Text = "Penalizar pedido";
             this.btnPenalizarPedido.UseVisualStyleBackColor = false;
             this.btnPenalizarPedido.Visible = false;
@@ -1137,7 +1137,7 @@
             this.txtNumeroEmpleado.Location = new System.Drawing.Point(729, 59);
             this.txtNumeroEmpleado.Name = "txtNumeroEmpleado";
             this.txtNumeroEmpleado.Size = new System.Drawing.Size(64, 20);
-            this.txtNumeroEmpleado.TabIndex = 3;
+            this.txtNumeroEmpleado.TabIndex = 4;
             this.txtNumeroEmpleado.Visible = false;
             this.txtNumeroEmpleado.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeroEmpleado_KeyPress);
             this.txtNumeroEmpleado.Leave += new System.EventHandler(this.txtNumeroEmpleado_Leave);

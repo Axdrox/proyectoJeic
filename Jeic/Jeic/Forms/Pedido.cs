@@ -324,6 +324,7 @@ namespace Refracciones.Forms
 
                             lblComentarioSiniestro.Show();
                             txtComentarioSiniestro.Show();
+                            this.ActiveControl = txtComentarioSiniestro;
                             if (siniestro.comentario == "Agregue un comentario")
                                 txtComentarioSiniestro.Text = "Sin comentario por el momento";
                             else
@@ -400,6 +401,7 @@ namespace Refracciones.Forms
 
                             lblComentarioSiniestro.Show();
                             txtComentarioSiniestro.Show();
+                            this.ActiveControl = txtComentarioSiniestro;
                             if (siniestro.comentario == "Agregue un comentario")
                                 txtComentarioSiniestro.Text = "Sin comentario por el momento";
                             else
