@@ -81,6 +81,7 @@ namespace Refracciones
                     MessageBOX.SHowDialog(2,"Usuario y/o contraseña incorrectos");
                     txtUsuario.Text = "Nombre de usuario";
                     txtContrasenia.Text = "Default";
+                    bunifuCustomLabel1.Focus();
                     txtUsuario.ForeColor = Color.White;
                     txtContrasenia.ForeColor = Color.White;
                 }
