@@ -48,7 +48,6 @@ namespace Refracciones.Forms
 
         private void Pedido_Load(object sender, EventArgs e)
         {
-            this.ActiveControl = label1;
             chbModificarEstado.Location = new Point(330, 186);
             if (actualizar == 1)
             {

@@ -22,7 +22,6 @@ namespace Refracciones.Forms
 
         private void Siniestro_Load(object sender, EventArgs e)
         {
-            this.ActiveControl = label1;
             //Colocar ICONO
             this.Icon = Resources.iconJeic;
 

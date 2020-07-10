@@ -119,7 +119,7 @@
             this.dtpYear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpYear.Name = "dtpYear";
             this.dtpYear.Size = new System.Drawing.Size(83, 22);
-            this.dtpYear.TabIndex = 4;
+            this.dtpYear.TabIndex = 3;
             // 
             // txtClaveSiniestro
             // 
@@ -130,7 +130,7 @@
             this.txtClaveSiniestro.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtClaveSiniestro.Name = "txtClaveSiniestro";
             this.txtClaveSiniestro.Size = new System.Drawing.Size(169, 22);
-            this.txtClaveSiniestro.TabIndex = 1;
+            this.txtClaveSiniestro.TabIndex = 0;
             this.txtClaveSiniestro.Text = "Escriba clave del siniestro";
             this.txtClaveSiniestro.Enter += new System.EventHandler(this.txtClaveSiniestro_Enter);
             this.txtClaveSiniestro.Leave += new System.EventHandler(this.txtClaveSiniestro_Leave);
@@ -158,7 +158,7 @@
             this.txtComentario.Multiline = true;
             this.txtComentario.Name = "txtComentario";
             this.txtComentario.Size = new System.Drawing.Size(407, 82);
-            this.txtComentario.TabIndex = 6;
+            this.txtComentario.TabIndex = 4;
             this.txtComentario.Text = "Agregue un comentario";
             this.txtComentario.Enter += new System.EventHandler(this.txtComentario_Enter);
             this.txtComentario.Leave += new System.EventHandler(this.txtComentario_Leave);
@@ -190,7 +190,7 @@
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(85, 27);
-            this.btnCancelar.TabIndex = 10;
+            this.btnCancelar.TabIndex = 7;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -212,11 +212,11 @@
             this.txtNombreVehiculoNuevo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.txtNombreVehiculoNuevo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNombreVehiculoNuevo.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.txtNombreVehiculoNuevo.Location = new System.Drawing.Point(170, 83);
+            this.txtNombreVehiculoNuevo.Location = new System.Drawing.Point(156, 83);
             this.txtNombreVehiculoNuevo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNombreVehiculoNuevo.Name = "txtNombreVehiculoNuevo";
             this.txtNombreVehiculoNuevo.Size = new System.Drawing.Size(169, 22);
-            this.txtNombreVehiculoNuevo.TabIndex = 3;
+            this.txtNombreVehiculoNuevo.TabIndex = 2;
             this.txtNombreVehiculoNuevo.Text = "Escriba un nuevo modelo";
             this.txtNombreVehiculoNuevo.Enter += new System.EventHandler(this.txtNombreVehiculoNuevo_Enter);
             this.txtNombreVehiculoNuevo.Leave += new System.EventHandler(this.txtNombreVehiculoNuevo_Leave);
@@ -262,7 +262,7 @@
             this.cbEstadoSiniestro.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbEstadoSiniestro.Name = "cbEstadoSiniestro";
             this.cbEstadoSiniestro.Size = new System.Drawing.Size(343, 24);
-            this.cbEstadoSiniestro.TabIndex = 5;
+            this.cbEstadoSiniestro.TabIndex = 4;
             // 
             // bunifuElipse1
             // 
@@ -307,11 +307,11 @@
             this.txtMarca.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.txtMarca.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMarca.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.txtMarca.Location = new System.Drawing.Point(169, 51);
+            this.txtMarca.Location = new System.Drawing.Point(155, 51);
             this.txtMarca.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtMarca.Name = "txtMarca";
             this.txtMarca.Size = new System.Drawing.Size(169, 22);
-            this.txtMarca.TabIndex = 2;
+            this.txtMarca.TabIndex = 1;
             this.txtMarca.Text = "Escriba una nueva marca";
             this.txtMarca.Visible = false;
             this.txtMarca.Enter += new System.EventHandler(this.txtMarca_Enter);
@@ -331,7 +331,7 @@
             this.cbMarca.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbMarca.Name = "cbMarca";
             this.cbMarca.Size = new System.Drawing.Size(168, 24);
-            this.cbMarca.TabIndex = 22;
+            this.cbMarca.TabIndex = 1;
             this.cbMarca.SelectedIndexChanged += new System.EventHandler(this.cbMarca_SelectedIndexChanged);
             this.cbMarca.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbMarca_KeyPress);
             this.cbMarca.Validating += new System.ComponentModel.CancelEventHandler(this.cbMarca_Validating);
