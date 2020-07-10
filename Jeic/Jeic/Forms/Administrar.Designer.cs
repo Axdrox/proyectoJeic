@@ -32,6 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Administrar));
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.pbMinimize = new System.Windows.Forms.PictureBox();
+            this.pbClose = new System.Windows.Forms.PictureBox();
             this.btnPortal = new Bunifu.Framework.UI.BunifuImageButton();
             this.label8 = new System.Windows.Forms.Label();
             this.btnVendedor = new Bunifu.Framework.UI.BunifuImageButton();
@@ -66,11 +68,12 @@
             this.btnProveedor = new Bunifu.Framework.UI.BunifuImageButton();
             this.btnClientes = new Bunifu.Framework.UI.BunifuImageButton();
             this.btnUsuario = new Bunifu.Framework.UI.BunifuImageButton();
-            this.pbMinimize = new System.Windows.Forms.PictureBox();
-            this.pbClose = new System.Windows.Forms.PictureBox();
             this.errorP = new System.Windows.Forms.ErrorProvider(this.components);
             this.moverFormulario = new Bunifu.Framework.UI.BunifuDragControl(this.components);
+            this.label9 = new System.Windows.Forms.Label();
             this.bunifuGradientPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPortal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVendedor)).BeginInit();
             this.bunifuGradientPanel2.SuspendLayout();
@@ -80,8 +83,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnProveedor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnClientes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnUsuario)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorP)).BeginInit();
             this.SuspendLayout();
             // 
@@ -95,24 +96,7 @@
             this.bunifuGradientPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
             this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bunifuGradientPanel1.Controls.Add(this.btnPortal);
-            this.bunifuGradientPanel1.Controls.Add(this.label8);
-            this.bunifuGradientPanel1.Controls.Add(this.btnVendedor);
-            this.bunifuGradientPanel1.Controls.Add(this.label7);
-            this.bunifuGradientPanel1.Controls.Add(this.lblTitle);
-            this.bunifuGradientPanel1.Controls.Add(this.bunifuGradientPanel2);
-            this.bunifuGradientPanel1.Controls.Add(this.label6);
-            this.bunifuGradientPanel1.Controls.Add(this.label5);
-            this.bunifuGradientPanel1.Controls.Add(this.label4);
-            this.bunifuGradientPanel1.Controls.Add(this.label3);
-            this.bunifuGradientPanel1.Controls.Add(this.label2);
-            this.bunifuGradientPanel1.Controls.Add(this.label1);
-            this.bunifuGradientPanel1.Controls.Add(this.btnPieza);
-            this.bunifuGradientPanel1.Controls.Add(this.btnVehiculo);
-            this.bunifuGradientPanel1.Controls.Add(this.btnTaller);
-            this.bunifuGradientPanel1.Controls.Add(this.btnProveedor);
-            this.bunifuGradientPanel1.Controls.Add(this.btnClientes);
-            this.bunifuGradientPanel1.Controls.Add(this.btnUsuario);
+            this.bunifuGradientPanel1.Controls.Add(this.label9);
             this.bunifuGradientPanel1.Controls.Add(this.pbMinimize);
             this.bunifuGradientPanel1.Controls.Add(this.pbClose);
             this.bunifuGradientPanel1.GradientBottomLeft = System.Drawing.Color.Black;
@@ -123,11 +107,35 @@
             this.bunifuGradientPanel1.Name = "bunifuGradientPanel1";
             this.bunifuGradientPanel1.Quality = 10;
             this.bunifuGradientPanel1.Size = new System.Drawing.Size(643, 451);
-            this.bunifuGradientPanel1.TabIndex = 2;
+            this.bunifuGradientPanel1.TabIndex = 0;
+            // 
+            // pbMinimize
+            // 
+            this.pbMinimize.Image = global::Jeic.Properties.Resources.Minimize_Window_2_48px;
+            this.pbMinimize.Location = new System.Drawing.Point(607, 2);
+            this.pbMinimize.Margin = new System.Windows.Forms.Padding(2);
+            this.pbMinimize.Name = "pbMinimize";
+            this.pbMinimize.Size = new System.Drawing.Size(15, 16);
+            this.pbMinimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbMinimize.TabIndex = 77;
+            this.pbMinimize.TabStop = false;
+            this.pbMinimize.Click += new System.EventHandler(this.pbMinimize_Click);
+            // 
+            // pbClose
+            // 
+            this.pbClose.Image = global::Jeic.Properties.Resources.Close_Window__2_48px;
+            this.pbClose.Location = new System.Drawing.Point(626, 2);
+            this.pbClose.Margin = new System.Windows.Forms.Padding(2);
+            this.pbClose.Name = "pbClose";
+            this.pbClose.Size = new System.Drawing.Size(15, 16);
+            this.pbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbClose.TabIndex = 76;
+            this.pbClose.TabStop = false;
+            this.pbClose.Click += new System.EventHandler(this.pbClose_Click);
             // 
             // btnPortal
             // 
-            this.btnPortal.BackColor = System.Drawing.Color.Transparent;
+            this.btnPortal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(72)))), ((int)(((byte)(126)))));
             this.btnPortal.Image = global::Jeic.Properties.Resources.Portal;
             this.btnPortal.ImageActive = null;
             this.btnPortal.Location = new System.Drawing.Point(13, 396);
@@ -153,7 +161,7 @@
             // 
             // btnVendedor
             // 
-            this.btnVendedor.BackColor = System.Drawing.Color.Transparent;
+            this.btnVendedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(67)))), ((int)(((byte)(116)))));
             this.btnVendedor.Image = global::Jeic.Properties.Resources.seller;
             this.btnVendedor.ImageActive = null;
             this.btnVendedor.Location = new System.Drawing.Point(13, 352);
@@ -185,9 +193,9 @@
             this.lblTitle.ForeColor = System.Drawing.Color.White;
             this.lblTitle.Location = new System.Drawing.Point(362, 33);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(85, 23);
+            this.lblTitle.Size = new System.Drawing.Size(92, 23);
             this.lblTitle.TabIndex = 91;
-            this.lblTitle.Text = "SETTINGS";
+            this.lblTitle.Text = "USUARIOS";
             // 
             // bunifuGradientPanel2
             // 
@@ -512,7 +520,7 @@
             // 
             // btnPieza
             // 
-            this.btnPieza.BackColor = System.Drawing.Color.Transparent;
+            this.btnPieza.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(62)))), ((int)(((byte)(104)))));
             this.btnPieza.Image = global::Jeic.Properties.Resources.carPart;
             this.btnPieza.ImageActive = null;
             this.btnPieza.Location = new System.Drawing.Point(13, 302);
@@ -526,7 +534,7 @@
             // 
             // btnVehiculo
             // 
-            this.btnVehiculo.BackColor = System.Drawing.Color.Transparent;
+            this.btnVehiculo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(55)))), ((int)(((byte)(90)))));
             this.btnVehiculo.Image = global::Jeic.Properties.Resources.car;
             this.btnVehiculo.ImageActive = null;
             this.btnVehiculo.Location = new System.Drawing.Point(13, 250);
@@ -540,7 +548,7 @@
             // 
             // btnTaller
             // 
-            this.btnTaller.BackColor = System.Drawing.Color.Transparent;
+            this.btnTaller.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(79)))));
             this.btnTaller.Image = global::Jeic.Properties.Resources.Workshop;
             this.btnTaller.ImageActive = null;
             this.btnTaller.Location = new System.Drawing.Point(13, 202);
@@ -554,7 +562,7 @@
             // 
             // btnProveedor
             // 
-            this.btnProveedor.BackColor = System.Drawing.Color.Transparent;
+            this.btnProveedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(45)))), ((int)(((byte)(67)))));
             this.btnProveedor.Image = global::Jeic.Properties.Resources.provider;
             this.btnProveedor.ImageActive = null;
             this.btnProveedor.Location = new System.Drawing.Point(13, 154);
@@ -568,7 +576,7 @@
             // 
             // btnClientes
             // 
-            this.btnClientes.BackColor = System.Drawing.Color.Transparent;
+            this.btnClientes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(39)))), ((int)(((byte)(55)))));
             this.btnClientes.Image = global::Jeic.Properties.Resources.cliente;
             this.btnClientes.ImageActive = null;
             this.btnClientes.Location = new System.Drawing.Point(13, 107);
@@ -582,7 +590,7 @@
             // 
             // btnUsuario
             // 
-            this.btnUsuario.BackColor = System.Drawing.Color.Transparent;
+            this.btnUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(33)))), ((int)(((byte)(42)))));
             this.btnUsuario.Image = global::Jeic.Properties.Resources.user;
             this.btnUsuario.ImageActive = null;
             this.btnUsuario.Location = new System.Drawing.Point(13, 56);
@@ -593,30 +601,6 @@
             this.btnUsuario.TabStop = false;
             this.btnUsuario.Zoom = 10;
             this.btnUsuario.Click += new System.EventHandler(this.btnUsuario_Click);
-            // 
-            // pbMinimize
-            // 
-            this.pbMinimize.Image = global::Jeic.Properties.Resources.Minimize_Window_2_48px;
-            this.pbMinimize.Location = new System.Drawing.Point(607, 2);
-            this.pbMinimize.Margin = new System.Windows.Forms.Padding(2);
-            this.pbMinimize.Name = "pbMinimize";
-            this.pbMinimize.Size = new System.Drawing.Size(15, 16);
-            this.pbMinimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbMinimize.TabIndex = 77;
-            this.pbMinimize.TabStop = false;
-            this.pbMinimize.Click += new System.EventHandler(this.pbMinimize_Click);
-            // 
-            // pbClose
-            // 
-            this.pbClose.Image = global::Jeic.Properties.Resources.Close_Window__2_48px;
-            this.pbClose.Location = new System.Drawing.Point(626, 2);
-            this.pbClose.Margin = new System.Windows.Forms.Padding(2);
-            this.pbClose.Name = "pbClose";
-            this.pbClose.Size = new System.Drawing.Size(15, 16);
-            this.pbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbClose.TabIndex = 76;
-            this.pbClose.TabStop = false;
-            this.pbClose.Click += new System.EventHandler(this.pbClose_Click);
             // 
             // errorP
             // 
@@ -629,11 +613,41 @@
             this.moverFormulario.TargetControl = this.bunifuGradientPanel1;
             this.moverFormulario.Vertical = true;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(28)))));
+            this.label9.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(268, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(133, 26);
+            this.label9.TabIndex = 78;
+            this.label9.Text = "ADMINISTRAR";
+            // 
             // Administrar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(643, 450);
+            this.Controls.Add(this.btnPortal);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.btnVendedor);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.lblTitle);
+            this.Controls.Add(this.bunifuGradientPanel2);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnPieza);
+            this.Controls.Add(this.btnVehiculo);
+            this.Controls.Add(this.btnTaller);
+            this.Controls.Add(this.btnProveedor);
+            this.Controls.Add(this.btnClientes);
+            this.Controls.Add(this.btnUsuario);
             this.Controls.Add(this.bunifuGradientPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Administrar";
@@ -643,6 +657,8 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Administrar_KeyDown);
             this.bunifuGradientPanel1.ResumeLayout(false);
             this.bunifuGradientPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbClose)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPortal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVendedor)).EndInit();
             this.bunifuGradientPanel2.ResumeLayout(false);
@@ -653,10 +669,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnProveedor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnClientes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnUsuario)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbClose)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorP)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -702,5 +717,6 @@
         private Bunifu.Framework.UI.BunifuImageButton btnPortal;
         private System.Windows.Forms.Label label8;
         private Bunifu.Framework.UI.BunifuDragControl moverFormulario;
+        private System.Windows.Forms.Label label9;
     }
 }

@@ -79,7 +79,6 @@
             this.moverFormulario = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorP)).BeginInit();
-            this.bunifuGradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
             this.SuspendLayout();
@@ -100,7 +99,7 @@
             this.cmbEstadoFactura.Location = new System.Drawing.Point(138, 351);
             this.cmbEstadoFactura.Name = "cmbEstadoFactura";
             this.cmbEstadoFactura.Size = new System.Drawing.Size(121, 23);
-            this.cmbEstadoFactura.TabIndex = 52;
+            this.cmbEstadoFactura.TabIndex = 8;
             // 
             // lblEstadoFactura
             // 
@@ -111,7 +110,7 @@
             this.lblEstadoFactura.Location = new System.Drawing.Point(14, 354);
             this.lblEstadoFactura.Name = "lblEstadoFactura";
             this.lblEstadoFactura.Size = new System.Drawing.Size(118, 14);
-            this.lblEstadoFactura.TabIndex = 51;
+            this.lblEstadoFactura.TabIndex = 27;
             this.lblEstadoFactura.Text = "Estado de la Factura";
             // 
             // lblComentarios
@@ -123,7 +122,7 @@
             this.lblComentarios.Location = new System.Drawing.Point(318, 209);
             this.lblComentarios.Name = "lblComentarios";
             this.lblComentarios.Size = new System.Drawing.Size(76, 14);
-            this.lblComentarios.TabIndex = 50;
+            this.lblComentarios.TabIndex = 36;
             this.lblComentarios.Text = "Comentarios";
             // 
             // txtComentario
@@ -135,7 +134,7 @@
             this.txtComentario.Multiline = true;
             this.txtComentario.Name = "txtComentario";
             this.txtComentario.Size = new System.Drawing.Size(227, 105);
-            this.txtComentario.TabIndex = 49;
+            this.txtComentario.TabIndex = 13;
             // 
             // btnBuscarXml
             // 
@@ -146,7 +145,7 @@
             this.btnBuscarXml.Location = new System.Drawing.Point(251, 322);
             this.btnBuscarXml.Name = "btnBuscarXml";
             this.btnBuscarXml.Size = new System.Drawing.Size(45, 20);
-            this.btnBuscarXml.TabIndex = 45;
+            this.btnBuscarXml.TabIndex = 7;
             this.btnBuscarXml.Text = "...";
             this.btnBuscarXml.UseVisualStyleBackColor = false;
             this.btnBuscarXml.Click += new System.EventHandler(this.btnBuscarXml_Click);
@@ -160,7 +159,7 @@
             this.txtRutaXml.Name = "txtRutaXml";
             this.txtRutaXml.ReadOnly = true;
             this.txtRutaXml.Size = new System.Drawing.Size(228, 20);
-            this.txtRutaXml.TabIndex = 44;
+            this.txtRutaXml.TabIndex = 16;
             this.txtRutaXml.TextChanged += new System.EventHandler(this.txtRutaXml_TextChanged);
             // 
             // lblXml
@@ -172,7 +171,7 @@
             this.lblXml.Location = new System.Drawing.Point(14, 306);
             this.lblXml.Name = "lblXml";
             this.lblXml.Size = new System.Drawing.Size(27, 14);
-            this.lblXml.TabIndex = 43;
+            this.lblXml.TabIndex = 26;
             this.lblXml.Text = "Xml";
             // 
             // lblFechaPago
@@ -184,7 +183,7 @@
             this.lblFechaPago.Location = new System.Drawing.Point(222, 166);
             this.lblFechaPago.Name = "lblFechaPago";
             this.lblFechaPago.Size = new System.Drawing.Size(85, 14);
-            this.lblFechaPago.TabIndex = 42;
+            this.lblFechaPago.TabIndex = 35;
             this.lblFechaPago.Text = "Fecha de Pago";
             // 
             // lblFechaRevision
@@ -196,7 +195,7 @@
             this.lblFechaRevision.Location = new System.Drawing.Point(222, 129);
             this.lblFechaRevision.Name = "lblFechaRevision";
             this.lblFechaRevision.Size = new System.Drawing.Size(106, 14);
-            this.lblFechaRevision.TabIndex = 41;
+            this.lblFechaRevision.TabIndex = 34;
             this.lblFechaRevision.Text = "Fecha de Revisión";
             // 
             // dtpFechaPago
@@ -206,7 +205,7 @@
             this.dtpFechaPago.Location = new System.Drawing.Point(355, 163);
             this.dtpFechaPago.Name = "dtpFechaPago";
             this.dtpFechaPago.Size = new System.Drawing.Size(200, 20);
-            this.dtpFechaPago.TabIndex = 40;
+            this.dtpFechaPago.TabIndex = 12;
             // 
             // dtpFechaRevision
             // 
@@ -214,7 +213,7 @@
             this.dtpFechaRevision.Location = new System.Drawing.Point(355, 126);
             this.dtpFechaRevision.Name = "dtpFechaRevision";
             this.dtpFechaRevision.Size = new System.Drawing.Size(200, 20);
-            this.dtpFechaRevision.TabIndex = 39;
+            this.dtpFechaRevision.TabIndex = 11;
             // 
             // lblFechaIngreso
             // 
@@ -225,7 +224,7 @@
             this.lblFechaIngreso.Location = new System.Drawing.Point(222, 91);
             this.lblFechaIngreso.Name = "lblFechaIngreso";
             this.lblFechaIngreso.Size = new System.Drawing.Size(100, 14);
-            this.lblFechaIngreso.TabIndex = 38;
+            this.lblFechaIngreso.TabIndex = 33;
             this.lblFechaIngreso.Text = "Fecha de Ingreso";
             // 
             // dtpFechaIngreso
@@ -234,7 +233,7 @@
             this.dtpFechaIngreso.Location = new System.Drawing.Point(355, 85);
             this.dtpFechaIngreso.Name = "dtpFechaIngreso";
             this.dtpFechaIngreso.Size = new System.Drawing.Size(200, 20);
-            this.dtpFechaIngreso.TabIndex = 37;
+            this.dtpFechaIngreso.TabIndex = 10;
             this.dtpFechaIngreso.ValueChanged += new System.EventHandler(this.dtpFechaIngreso_ValueChanged);
             // 
             // lblFacturaConIVA
@@ -246,7 +245,7 @@
             this.lblFacturaConIVA.Location = new System.Drawing.Point(14, 199);
             this.lblFacturaConIVA.Name = "lblFacturaConIVA";
             this.lblFacturaConIVA.Size = new System.Drawing.Size(89, 14);
-            this.lblFacturaConIVA.TabIndex = 36;
+            this.lblFacturaConIVA.TabIndex = 23;
             this.lblFacturaConIVA.Text = "Factura con IVA";
             // 
             // txtFacturasinIVA
@@ -258,7 +257,7 @@
             this.txtFacturasinIVA.Name = "txtFacturasinIVA";
             this.txtFacturasinIVA.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtFacturasinIVA.Size = new System.Drawing.Size(100, 20);
-            this.txtFacturasinIVA.TabIndex = 35;
+            this.txtFacturasinIVA.TabIndex = 2;
             this.txtFacturasinIVA.TextChanged += new System.EventHandler(this.txtFacturasinIVA_TextChanged);
             this.txtFacturasinIVA.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFacturasinIVA_KeyPress);
             this.txtFacturasinIVA.Leave += new System.EventHandler(this.txtFacturasinIVA_Leave);
@@ -272,7 +271,7 @@
             this.txtRefactura.Location = new System.Drawing.Point(109, 88);
             this.txtRefactura.Name = "txtRefactura";
             this.txtRefactura.Size = new System.Drawing.Size(100, 20);
-            this.txtRefactura.TabIndex = 34;
+            this.txtRefactura.TabIndex = 1;
             this.txtRefactura.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRefactura_KeyPress);
             // 
             // lblClave_FacturaAnterior
@@ -284,7 +283,7 @@
             this.lblClave_FacturaAnterior.Location = new System.Drawing.Point(14, 55);
             this.lblClave_FacturaAnterior.Name = "lblClave_FacturaAnterior";
             this.lblClave_FacturaAnterior.Size = new System.Drawing.Size(68, 14);
-            this.lblClave_FacturaAnterior.TabIndex = 33;
+            this.lblClave_FacturaAnterior.TabIndex = 19;
             this.lblClave_FacturaAnterior.Text = "Cve Factura";
             // 
             // btnGuardar
@@ -299,7 +298,7 @@
             this.btnGuardar.Location = new System.Drawing.Point(473, 346);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 23);
-            this.btnGuardar.TabIndex = 32;
+            this.btnGuardar.TabIndex = 14;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
@@ -313,7 +312,7 @@
             this.btnBuscarFact.Location = new System.Drawing.Point(251, 283);
             this.btnBuscarFact.Name = "btnBuscarFact";
             this.btnBuscarFact.Size = new System.Drawing.Size(45, 20);
-            this.btnBuscarFact.TabIndex = 31;
+            this.btnBuscarFact.TabIndex = 6;
             this.btnBuscarFact.Text = "...";
             this.btnBuscarFact.UseVisualStyleBackColor = false;
             this.btnBuscarFact.Click += new System.EventHandler(this.btnBuscarFact_Click);
@@ -327,7 +326,7 @@
             this.txtRutaFactura.Name = "txtRutaFactura";
             this.txtRutaFactura.ReadOnly = true;
             this.txtRutaFactura.Size = new System.Drawing.Size(228, 20);
-            this.txtRutaFactura.TabIndex = 30;
+            this.txtRutaFactura.TabIndex = 15;
             this.txtRutaFactura.TextChanged += new System.EventHandler(this.txtRutaFactura_TextChanged);
             // 
             // txtCve_Factura
@@ -339,7 +338,7 @@
             this.txtCve_Factura.Name = "txtCve_Factura";
             this.txtCve_Factura.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtCve_Factura.Size = new System.Drawing.Size(100, 20);
-            this.txtCve_Factura.TabIndex = 29;
+            this.txtCve_Factura.TabIndex = 0;
             this.txtCve_Factura.TextChanged += new System.EventHandler(this.txtCve_Factura_TextChanged);
             // 
             // lblFacturaSinIVA
@@ -351,7 +350,7 @@
             this.lblFacturaSinIVA.Location = new System.Drawing.Point(13, 129);
             this.lblFacturaSinIVA.Name = "lblFacturaSinIVA";
             this.lblFacturaSinIVA.Size = new System.Drawing.Size(87, 14);
-            this.lblFacturaSinIVA.TabIndex = 28;
+            this.lblFacturaSinIVA.TabIndex = 21;
             this.lblFacturaSinIVA.Text = "Factura sin IVA";
             // 
             // lblFactura
@@ -363,7 +362,7 @@
             this.lblFactura.Location = new System.Drawing.Point(14, 267);
             this.lblFactura.Name = "lblFactura";
             this.lblFactura.Size = new System.Drawing.Size(47, 14);
-            this.lblFactura.TabIndex = 27;
+            this.lblFactura.TabIndex = 25;
             this.lblFactura.Text = "Factura";
             // 
             // lblRefactura
@@ -375,7 +374,7 @@
             this.lblRefactura.Location = new System.Drawing.Point(14, 91);
             this.lblRefactura.Name = "lblRefactura";
             this.lblRefactura.Size = new System.Drawing.Size(94, 14);
-            this.lblRefactura.TabIndex = 53;
+            this.lblRefactura.TabIndex = 20;
             this.lblRefactura.Text = "Cve a Refacturar";
             // 
             // txtFacturaconIVA
@@ -388,7 +387,7 @@
             this.txtFacturaconIVA.ReadOnly = true;
             this.txtFacturaconIVA.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtFacturaconIVA.Size = new System.Drawing.Size(100, 20);
-            this.txtFacturaconIVA.TabIndex = 54;
+            this.txtFacturaconIVA.TabIndex = 4;
             // 
             // lblCostoRefactura
             // 
@@ -399,7 +398,7 @@
             this.lblCostoRefactura.Location = new System.Drawing.Point(14, 234);
             this.lblCostoRefactura.Name = "lblCostoRefactura";
             this.lblCostoRefactura.Size = new System.Drawing.Size(92, 14);
-            this.lblCostoRefactura.TabIndex = 55;
+            this.lblCostoRefactura.TabIndex = 24;
             this.lblCostoRefactura.Text = "Costo Refactura";
             // 
             // txtCostoRefactura
@@ -411,7 +410,7 @@
             this.txtCostoRefactura.Name = "txtCostoRefactura";
             this.txtCostoRefactura.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtCostoRefactura.Size = new System.Drawing.Size(100, 20);
-            this.txtCostoRefactura.TabIndex = 56;
+            this.txtCostoRefactura.TabIndex = 5;
             this.txtCostoRefactura.TextChanged += new System.EventHandler(this.txtCostoRefactura_TextChanged);
             this.txtCostoRefactura.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCostoRefactura_KeyPress);
             // 
@@ -424,7 +423,7 @@
             this.lblFechaRefacturacion.Location = new System.Drawing.Point(222, 55);
             this.lblFechaRefacturacion.Name = "lblFechaRefacturacion";
             this.lblFechaRefacturacion.Size = new System.Drawing.Size(134, 14);
-            this.lblFechaRefacturacion.TabIndex = 57;
+            this.lblFechaRefacturacion.TabIndex = 32;
             this.lblFechaRefacturacion.Text = "Fecha de Refacturación";
             // 
             // dtpFechaRefacturacion
@@ -433,7 +432,7 @@
             this.dtpFechaRefacturacion.Location = new System.Drawing.Point(355, 52);
             this.dtpFechaRefacturacion.Name = "dtpFechaRefacturacion";
             this.dtpFechaRefacturacion.Size = new System.Drawing.Size(200, 20);
-            this.dtpFechaRefacturacion.TabIndex = 58;
+            this.dtpFechaRefacturacion.TabIndex = 9;
             // 
             // openFileDialog1
             // 
@@ -462,7 +461,7 @@
             this.dato1.Location = new System.Drawing.Point(141, 9);
             this.dato1.Name = "dato1";
             this.dato1.Size = new System.Drawing.Size(65, 14);
-            this.dato1.TabIndex = 61;
+            this.dato1.TabIndex = 18;
             this.dato1.Text = "SINIESTRO:";
             // 
             // dato2
@@ -474,7 +473,7 @@
             this.dato2.Location = new System.Drawing.Point(13, 9);
             this.dato2.Name = "dato2";
             this.dato2.Size = new System.Drawing.Size(50, 14);
-            this.dato2.TabIndex = 62;
+            this.dato2.TabIndex = 37;
             this.dato2.Text = "PEDIDO:";
             // 
             // dato3
@@ -495,7 +494,7 @@
             this.label1.Location = new System.Drawing.Point(111, 129);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(13, 13);
-            this.label1.TabIndex = 64;
+            this.label1.TabIndex = 28;
             this.label1.Text = "$";
             // 
             // label2
@@ -506,7 +505,7 @@
             this.label2.Location = new System.Drawing.Point(111, 199);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(13, 13);
-            this.label2.TabIndex = 65;
+            this.label2.TabIndex = 30;
             this.label2.Text = "$";
             // 
             // label3
@@ -517,7 +516,7 @@
             this.label3.Location = new System.Drawing.Point(111, 234);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(13, 13);
-            this.label3.TabIndex = 66;
+            this.label3.TabIndex = 31;
             this.label3.Text = "$";
             // 
             // errorP
@@ -529,15 +528,8 @@
             this.bunifuGradientPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
             this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bunifuGradientPanel1.Controls.Add(this.label4);
-            this.bunifuGradientPanel1.Controls.Add(this.txtDescuento);
-            this.bunifuGradientPanel1.Controls.Add(this.lblDescuento);
             this.bunifuGradientPanel1.Controls.Add(this.pbMinimize);
             this.bunifuGradientPanel1.Controls.Add(this.pbClose);
-            this.bunifuGradientPanel1.Controls.Add(this.cmbEstadoFactura);
-            this.bunifuGradientPanel1.Controls.Add(this.dtpFechaIngreso);
-            this.bunifuGradientPanel1.Controls.Add(this.dtpFechaRevision);
-            this.bunifuGradientPanel1.Controls.Add(this.dtpFechaPago);
             this.bunifuGradientPanel1.GradientBottomLeft = System.Drawing.Color.Black;
             this.bunifuGradientPanel1.GradientBottomRight = System.Drawing.Color.RoyalBlue;
             this.bunifuGradientPanel1.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
@@ -546,7 +538,7 @@
             this.bunifuGradientPanel1.Name = "bunifuGradientPanel1";
             this.bunifuGradientPanel1.Quality = 10;
             this.bunifuGradientPanel1.Size = new System.Drawing.Size(592, 397);
-            this.bunifuGradientPanel1.TabIndex = 67;
+            this.bunifuGradientPanel1.TabIndex = 38;
             // 
             // label4
             // 
@@ -556,7 +548,7 @@
             this.label4.Location = new System.Drawing.Point(112, 165);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(15, 13);
-            this.label4.TabIndex = 74;
+            this.label4.TabIndex = 29;
             this.label4.Text = "%";
             // 
             // txtDescuento
@@ -568,7 +560,7 @@
             this.txtDescuento.Name = "txtDescuento";
             this.txtDescuento.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtDescuento.Size = new System.Drawing.Size(100, 20);
-            this.txtDescuento.TabIndex = 73;
+            this.txtDescuento.TabIndex = 3;
             this.txtDescuento.Text = "0";
             this.txtDescuento.TextChanged += new System.EventHandler(this.txtDescuento_TextChanged);
             // 
@@ -580,7 +572,7 @@
             this.lblDescuento.Location = new System.Drawing.Point(14, 165);
             this.lblDescuento.Name = "lblDescuento";
             this.lblDescuento.Size = new System.Drawing.Size(62, 13);
-            this.lblDescuento.TabIndex = 75;
+            this.lblDescuento.TabIndex = 22;
             this.lblDescuento.Text = "Descuento:";
             // 
             // pbMinimize
@@ -626,6 +618,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(592, 398);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.txtDescuento);
+            this.Controls.Add(this.lblDescuento);
+            this.Controls.Add(this.cmbEstadoFactura);
+            this.Controls.Add(this.dtpFechaIngreso);
+            this.Controls.Add(this.dtpFechaRevision);
+            this.Controls.Add(this.dtpFechaPago);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -666,8 +665,6 @@
             this.Load += new System.EventHandler(this.registrarRefactura_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorP)).EndInit();
-            this.bunifuGradientPanel1.ResumeLayout(false);
-            this.bunifuGradientPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).EndInit();
             this.ResumeLayout(false);
