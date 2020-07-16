@@ -9,7 +9,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -206,19 +205,32 @@ namespace Refracciones
                                 .ShowText(dgvDatosPDF.Rows[0].Cells[2].Value.ToString())
                                 .EndText();
 
-                if (dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Contains("Rodrigo"))
-                    canvas.SetFillColor(ColorConstants.BLUE);
-                else if (dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Contains("Alberto"))
-                    canvas.SetFillColor(ColorConstants.YELLOW);
-                else if (dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Contains("Julio"))
-                    canvas.SetFillColor(ColorConstants.GREEN);
-                else if (dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Contains("Andre"))
-                    canvas.SetFillColor(ColorConstants.GRAY);
+                        if (dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Length > 6)
+                        canvas.Rectangle(x + 288, y - 28, 53, 9).SetFillColor(ColorConstants.LIGHT_GRAY).Fill();
+                        else if(dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Length == 6)
+                         canvas.Rectangle(x + 288, y - 28, 45, 9).SetFillColor(ColorConstants.LIGHT_GRAY).Fill();
+                        else if(dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Length == 5)
+                         canvas.Rectangle(x + 288, y - 28, 37, 9).SetFillColor(ColorConstants.LIGHT_GRAY).Fill();
+
+
+                        if (dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Contains("Rodrigo"))
+                            canvas.SetFillColor(ColorConstants.BLUE);
+                        else if (dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Contains("Alberto"))
+                            canvas.SetFillColor(ColorConstants.YELLOW);
+                        else if (dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Contains("Julio"))
+                        {
+                            canvas.Rectangle(x + 288, y - 28, 38, 9).SetFillColor(ColorConstants.GRAY).Fill();
+                            canvas.SetFillColor(ColorConstants.GREEN);
+                        }
+                        else if (dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Contains("Andre"))
+                            canvas.SetFillColor(ColorConstants.GRAY);
+                        else
+                            canvas.SetFillColor(ColorConstants.BLACK);
 
                         //COTIZADOR
                         canvas.BeginText().SetFontAndSize(font, 9)
-                            .MoveText(x + 257, y - 27)
-                            .ShowText(dgvDatosPDF.Rows[0].Cells[3].Value.ToString())
+                            .MoveText(x + 292, y - 27)
+                            .ShowText(dgvDatosPDF.Rows[0].Cells[3].Value.ToString().ToUpper())
                             .EndText();
                         //VEHICULO
                         canvas.BeginText().SetFontAndSize(font, 9)
@@ -230,16 +242,13 @@ namespace Refracciones
                         canvas.BeginText().SetFontAndSize(font, 14)
                                 .MoveText(x - 77, y - 50)
                                 .ShowText(dgvDatosPDF.Rows[0].Cells[5].Value.ToString().Substring(0, 10))
+                                .EndText();             
+                        //FECHA_PROMESA
+                        canvas.BeginText().SetFontAndSize(font, 14)
+                                .MoveText(x + 50, y - 50)
+                                .SetFillColor(ColorConstants.RED)
+                                .ShowText(dgvDatosPDF.Rows[0].Cells[6].Value.ToString().Substring(0, 10))
                                 .EndText();
-
-                    if (i == 0)
-                    canvas.SetFillColor(ColorConstants.RED);
-                
-                         //FECHA_PROMESA
-                         canvas.BeginText().SetFontAndSize(font, 14)
-                            .MoveText(x + 50, y - 50)
-                            .ShowText(dgvDatosPDF.Rows[0].Cells[6].Value.ToString().Substring(0, 10))
-                            .EndText();
                 
                         for (int count = 0; count < NumeroFila; count++)
                         {
@@ -259,20 +268,23 @@ namespace Refracciones
                                     .MoveText(x + 239, y - 106.5)
                                     .ShowText(dgvDatosPDF.Rows[count].Cells[8].Value.ToString())
                                     .EndText();
-                                 if (i == 0)
-                                 {
-                                        //COSTO
-                                        canvas.BeginText().SetFontAndSize(font, 10)
-                                          .MoveText(x + 300, y - 106.5)
-                                          .ShowText(dgvDatosPDF.Rows[count].Cells[9].Value.ToString())
-                                          .EndText();
 
-                                        //PROVEEDOR
-                                         canvas.BeginText().SetFontAndSize(font, 10)
-                                            .MoveText(x + 380, y - 106.5)
-                                            .ShowText(dgvDatosPDF.Rows[count].Cells[10].Value.ToString())
-                                            .EndText();
-                                 }
+                            if (dgvDatosPDF.Rows[count].Cells[9].Value.ToString() != "0.00" && i == 0)
+                            {
+                                //COSTO
+                                canvas.BeginText().SetFontAndSize(font, 10)
+                                  .MoveText(x + 300, y - 106.5)
+                                  .ShowText(dgvDatosPDF.Rows[count].Cells[9].Value.ToString())
+                                  .EndText();          
+                            }
+                            if (dgvDatosPDF.Rows[count].Cells[10].Value.ToString() != "PENDIENTE" && i == 0)
+                            {
+                                //PROVEEDOR
+                                canvas.BeginText().SetFontAndSize(font, 10)
+                                   .MoveText(x + 370, y - 106.5)
+                                   .ShowText(dgvDatosPDF.Rows[count].Cells[10].Value.ToString())
+                                   .EndText();
+                            }
                                      
                                          
                             Items += Int32.Parse(dgvDatosPDF.Rows[count].Cells[8].Value.ToString());
@@ -327,19 +339,32 @@ namespace Refracciones
                                 .ShowText(dgvDatosPDF.Rows[0].Cells[2].Value.ToString())
                                 .EndText();
 
+                        if (dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Length > 6)
+                            canvas.Rectangle(x + 288, y - 28, 53, 9).SetFillColor(ColorConstants.LIGHT_GRAY).Fill();
+                        else if (dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Length == 6)
+                            canvas.Rectangle(x + 288, y - 28, 45, 9).SetFillColor(ColorConstants.LIGHT_GRAY).Fill();
+                        else if (dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Length == 5)
+                            canvas.Rectangle(x + 288, y - 28, 37, 9).SetFillColor(ColorConstants.LIGHT_GRAY).Fill();
+
+
                         if (dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Contains("Rodrigo"))
                             canvas.SetFillColor(ColorConstants.BLUE);
                         else if (dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Contains("Alberto"))
                             canvas.SetFillColor(ColorConstants.YELLOW);
                         else if (dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Contains("Julio"))
+                        {
+                            canvas.Rectangle(x + 288, y - 28, 38, 9).SetFillColor(ColorConstants.GRAY).Fill();
                             canvas.SetFillColor(ColorConstants.GREEN);
+                        }
                         else if (dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Contains("Andre"))
                             canvas.SetFillColor(ColorConstants.GRAY);
+                        else
+                            canvas.SetFillColor(ColorConstants.BLACK);
 
                         //COTIZADOR
                         canvas.BeginText().SetFontAndSize(font, 9)
-                            .MoveText(x + 257, y - 27)
-                            .ShowText(dgvDatosPDF.Rows[0].Cells[3].Value.ToString())
+                            .MoveText(x + 292, y - 27)
+                            .ShowText(dgvDatosPDF.Rows[0].Cells[3].Value.ToString().ToUpper())
                             .EndText();
                         //VEHICULO
                         canvas.BeginText().SetFontAndSize(font, 9)
@@ -352,15 +377,12 @@ namespace Refracciones
                                 .MoveText(x - 77, y - 50)
                                 .ShowText(dgvDatosPDF.Rows[0].Cells[5].Value.ToString().Substring(0, 10))
                                 .EndText();
-
-                        if (i == 0)
-                            canvas.SetFillColor(ColorConstants.RED);
-
                         //FECHA_PROMESA
                         canvas.BeginText().SetFontAndSize(font, 14)
-                           .MoveText(x + 50, y - 50)
-                           .ShowText(dgvDatosPDF.Rows[0].Cells[6].Value.ToString().Substring(0, 10))
-                           .EndText();
+                                .MoveText(x + 50, y - 50)
+                                .SetFillColor(ColorConstants.RED)
+                                .ShowText(dgvDatosPDF.Rows[0].Cells[6].Value.ToString().Substring(0, 10))
+                                .EndText();
 
                         for (int count = 0; count < NumeroFila; count++)
                         {
@@ -380,20 +402,24 @@ namespace Refracciones
                                     .MoveText(x + 239, y - 106.5)
                                     .ShowText(dgvDatosPDF.Rows[count].Cells[8].Value.ToString())
                                     .EndText();
-                            if (i == 0)
+
+                            if (dgvDatosPDF.Rows[count].Cells[9].Value.ToString() != "0.00" && i == 0)
                             {
                                 //COSTO
                                 canvas.BeginText().SetFontAndSize(font, 10)
-                                  .MoveText(x + 304, y - 106.5)
+                                  .MoveText(x + 300, y - 106.5)
                                   .ShowText(dgvDatosPDF.Rows[count].Cells[9].Value.ToString())
                                   .EndText();
-
+                            }
+                            if (dgvDatosPDF.Rows[count].Cells[10].Value.ToString() != "PENDIENTE" && i == 0)
+                            {
                                 //PROVEEDOR
                                 canvas.BeginText().SetFontAndSize(font, 10)
                                    .MoveText(x + 370, y - 106.5)
                                    .ShowText(dgvDatosPDF.Rows[count].Cells[10].Value.ToString())
                                    .EndText();
                             }
+
 
                             Items += Int32.Parse(dgvDatosPDF.Rows[count].Cells[8].Value.ToString());
                             y -= 20;
