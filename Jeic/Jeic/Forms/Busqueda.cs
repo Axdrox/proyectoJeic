@@ -51,7 +51,11 @@ namespace Refracciones.Forms
                     administrarToolStripMenuItem.Enabled = false;
                     buscarFacturasToolStripMenuItem.Enabled = false;
                     break;
-
+                case 4:
+                    btnAgregarPedido.Visible = false;
+                    administrarToolStripMenuItem.Enabled = false;
+                    buscarFacturasToolStripMenuItem.Enabled = false;
+                    break;
                 default:
                     break;
             }

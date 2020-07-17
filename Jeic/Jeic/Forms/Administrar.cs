@@ -1157,12 +1157,12 @@ namespace Refracciones.Forms
                 if (string.IsNullOrEmpty(cmb1.Text.Trim()))
                 {
                     e.Cancel = true;
-                    errorP.SetError(cmb1, "Favor de seleccionar un estado");
+                    errorP.SetError(cmb1, "Favor de seleccionar un área");
                 }
-                else if (cmb1.Text.Trim() != "ADMINISTRADOR" && cmb1.Text.Trim() != "FINANZAS" && cmb1.Text.Trim() != "LOGÍSTICA" && cmb1.Text.Trim() != "VENTAS")
+                else if (cmb1.Text.Trim() != "ADMINISTRADOR" && cmb1.Text.Trim() != "FINANZAS" && cmb1.Text.Trim() != "LOGÍSTICA" && cmb1.Text.Trim() != "VENTAS" && cmb1.Text.Trim() != "CONSULTA")
                 {
                     e.Cancel = true;
-                    errorP.SetError(cmb1, "Favor de seleccionar un estado existente");
+                    errorP.SetError(cmb1, "Favor de seleccionar un área existente");
                 }
                 else
                 {
@@ -1175,12 +1175,12 @@ namespace Refracciones.Forms
                 if (string.IsNullOrEmpty(cmb1.Text.Trim()))
                 {
                     e.Cancel = true;
-                    errorP.SetError(cmb1, "Favor de seleccionar un estado");
+                    errorP.SetError(cmb1, "Favor de seleccionar un área");
                 }
-                else if (cmb1.Text.Trim() != "ADMINISTRADOR" && cmb1.Text.Trim() != "FINANZAS" && cmb1.Text.Trim() != "LOGÍSTICA" && cmb1.Text.Trim() != "VENTAS")
+                else if (cmb1.Text.Trim() != "ADMINISTRADOR" && cmb1.Text.Trim() != "FINANZAS" && cmb1.Text.Trim() != "LOGÍSTICA" && cmb1.Text.Trim() != "VENTAS" && cmb1.Text.Trim() != "CONSULTA")
                 {
                     e.Cancel = true;
-                    errorP.SetError(cmb1, "Favor de seleccionar un estado existente");
+                    errorP.SetError(cmb1, "Favor de seleccionar un área existente");
                 }
                 else
                 {
