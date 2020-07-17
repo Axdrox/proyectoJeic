@@ -205,37 +205,29 @@ namespace Refracciones
                                 .ShowText(dgvDatosPDF.Rows[0].Cells[2].Value.ToString())
                                 .EndText();
 
-                        if (dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Length > 6)
-                        canvas.Rectangle(x + 288, y - 28, 53, 9).SetFillColor(ColorConstants.LIGHT_GRAY).Fill();
-                        else if(dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Length == 6)
-                         canvas.Rectangle(x + 288, y - 28, 45, 9).SetFillColor(ColorConstants.LIGHT_GRAY).Fill();
-                        else if(dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Length == 5)
-                         canvas.Rectangle(x + 288, y - 28, 37, 9).SetFillColor(ColorConstants.LIGHT_GRAY).Fill();
-
-
                         if (dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Contains("Rodrigo"))
-                            canvas.SetFillColor(ColorConstants.BLUE);
-                        else if (dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Contains("Alberto"))
-                            canvas.SetFillColor(ColorConstants.YELLOW);
+                            canvas.Rectangle(x + 288, y - 28, 53, 9).SetFillColor(ColorConstants.LIGHT_GRAY).Fill();
+                        else if (dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Contains("Andrea"))
+                            canvas.Rectangle(x + 288, y - 28, 43, 9).SetFillColor(ColorConstants.GREEN).Fill();
+                        else if(dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Contains("Daniel"))
+                            canvas.Rectangle(x + 288, y - 28, 43, 9).SetFillColor(ColorConstants.YELLOW).Fill();
                         else if (dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Contains("Julio"))
-                        {
-                            canvas.Rectangle(x + 288, y - 28, 38, 9).SetFillColor(ColorConstants.GRAY).Fill();
-                            canvas.SetFillColor(ColorConstants.GREEN);
-                        }
-                        else if (dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Contains("Andre"))
-                            canvas.SetFillColor(ColorConstants.GRAY);
+                            canvas.Rectangle(x + 288, y - 28, 38, 9).SetFillColor(ColorConstants.BLUE).Fill();
+                        else if (dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Contains("Alberto"))
+                            canvas.Rectangle(x + 288, y - 28, 53, 9).SetFillColor(ColorConstants.RED).Fill();
                         else
-                            canvas.SetFillColor(ColorConstants.BLACK);
+                            canvas.Rectangle(x + 288, y - 28, 50, 9).SetFillColor(ColorConstants.LIGHT_GRAY).Fill();
+
 
                         //COTIZADOR
                         canvas.BeginText().SetFontAndSize(font, 9)
                             .MoveText(x + 292, y - 27)
+                            .SetFillColor(ColorConstants.BLACK)
                             .ShowText(dgvDatosPDF.Rows[0].Cells[3].Value.ToString().ToUpper())
                             .EndText();
                         //VEHICULO
                         canvas.BeginText().SetFontAndSize(font, 9)
                                 .MoveText(x + 252, y - 39.5)
-                                .SetFillColor(ColorConstants.BLACK)
                                 .ShowText(dgvDatosPDF.Rows[0].Cells[11].Value.ToString() + "  -  " + dgvDatosPDF.Rows[0].Cells[4].Value.ToString()+" - "+dgvDatosPDF.Rows[0].Cells[12].Value.ToString())
                                 .EndText();
                         //FECHA_ASIGNACION
@@ -339,37 +331,29 @@ namespace Refracciones
                                 .ShowText(dgvDatosPDF.Rows[0].Cells[2].Value.ToString())
                                 .EndText();
 
-                        if (dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Length > 6)
-                            canvas.Rectangle(x + 288, y - 28, 53, 9).SetFillColor(ColorConstants.LIGHT_GRAY).Fill();
-                        else if (dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Length == 6)
-                            canvas.Rectangle(x + 288, y - 28, 45, 9).SetFillColor(ColorConstants.LIGHT_GRAY).Fill();
-                        else if (dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Length == 5)
-                            canvas.Rectangle(x + 288, y - 28, 37, 9).SetFillColor(ColorConstants.LIGHT_GRAY).Fill();
-
-
                         if (dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Contains("Rodrigo"))
-                            canvas.SetFillColor(ColorConstants.BLUE);
-                        else if (dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Contains("Alberto"))
-                            canvas.SetFillColor(ColorConstants.YELLOW);
+                            canvas.Rectangle(x + 288, y - 28, 53, 9).SetFillColor(ColorConstants.LIGHT_GRAY).Fill();
+                        else if (dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Contains("Andrea"))
+                            canvas.Rectangle(x + 288, y - 28, 43, 9).SetFillColor(ColorConstants.GREEN).Fill();
+                        else if (dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Contains("Daniel"))
+                            canvas.Rectangle(x + 288, y - 28, 43, 9).SetFillColor(ColorConstants.YELLOW).Fill();
                         else if (dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Contains("Julio"))
-                        {
-                            canvas.Rectangle(x + 288, y - 28, 38, 9).SetFillColor(ColorConstants.GRAY).Fill();
-                            canvas.SetFillColor(ColorConstants.GREEN);
-                        }
-                        else if (dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Contains("Andre"))
-                            canvas.SetFillColor(ColorConstants.GRAY);
+                            canvas.Rectangle(x + 288, y - 28, 38, 9).SetFillColor(ColorConstants.BLUE).Fill();
+                        else if (dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Contains("Alberto"))
+                            canvas.Rectangle(x + 288, y - 28, 53, 9).SetFillColor(ColorConstants.RED).Fill();
                         else
-                            canvas.SetFillColor(ColorConstants.BLACK);
+                            canvas.Rectangle(x + 288, y - 28, 50, 9).SetFillColor(ColorConstants.LIGHT_GRAY).Fill();
+
 
                         //COTIZADOR
                         canvas.BeginText().SetFontAndSize(font, 9)
                             .MoveText(x + 292, y - 27)
+                            .SetFillColor(ColorConstants.BLACK)
                             .ShowText(dgvDatosPDF.Rows[0].Cells[3].Value.ToString().ToUpper())
                             .EndText();
                         //VEHICULO
                         canvas.BeginText().SetFontAndSize(font, 9)
                                 .MoveText(x + 252, y - 39.5)
-                                .SetFillColor(ColorConstants.BLACK)
                                 .ShowText(dgvDatosPDF.Rows[0].Cells[11].Value.ToString() + "  -  " + dgvDatosPDF.Rows[0].Cells[4].Value.ToString() + " - " + dgvDatosPDF.Rows[0].Cells[12].Value.ToString())
                                 .EndText();
                         //FECHA_ASIGNACION
