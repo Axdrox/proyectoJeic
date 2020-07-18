@@ -130,6 +130,12 @@ namespace Refracciones
                     btnDevolucionEntrega.Enabled = false;
                     btnChecarPedDev.Enabled = false;
                     break;
+                case 4:
+                    btnModificarDatosPedido.Enabled = false;
+                    btnFactura.Enabled = false;
+                    btnRefactura.Enabled = false;
+                    btnDevolucionEntrega.Enabled = false;
+                    break;
 
                 default:
                     break;
