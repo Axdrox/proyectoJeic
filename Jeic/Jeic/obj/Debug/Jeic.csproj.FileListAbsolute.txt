@@ -343,6 +343,7 @@ C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\D
 C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.registrarRefactura.resources
 C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.registroFactura.resources
 C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Siniestro.resources
+C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.Forms.Talleres.resources
 C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.Properties.Resources.resources
 C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.GenerateResource.cache
 C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.CoreCompileInputs.cache

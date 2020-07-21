@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Administrar));
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.label9 = new System.Windows.Forms.Label();
             this.pbMinimize = new System.Windows.Forms.PictureBox();
             this.pbClose = new System.Windows.Forms.PictureBox();
             this.btnPortal = new Bunifu.Framework.UI.BunifuImageButton();
@@ -40,6 +41,13 @@
             this.label7 = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
             this.bunifuGradientPanel2 = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.cmb5 = new System.Windows.Forms.ComboBox();
+            this.lbl8 = new System.Windows.Forms.Label();
+            this.lbl7 = new System.Windows.Forms.Label();
+            this.lbl6 = new System.Windows.Forms.Label();
+            this.txt4 = new System.Windows.Forms.TextBox();
+            this.txt6 = new System.Windows.Forms.TextBox();
+            this.txt5 = new System.Windows.Forms.TextBox();
             this.chk1 = new System.Windows.Forms.CheckBox();
             this.lbl5 = new System.Windows.Forms.Label();
             this.cmb4 = new System.Windows.Forms.ComboBox();
@@ -70,7 +78,6 @@
             this.btnUsuario = new Bunifu.Framework.UI.BunifuImageButton();
             this.errorP = new System.Windows.Forms.ErrorProvider(this.components);
             this.moverFormulario = new Bunifu.Framework.UI.BunifuDragControl(this.components);
-            this.label9 = new System.Windows.Forms.Label();
             this.bunifuGradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
@@ -108,6 +115,18 @@
             this.bunifuGradientPanel1.Quality = 10;
             this.bunifuGradientPanel1.Size = new System.Drawing.Size(643, 451);
             this.bunifuGradientPanel1.TabIndex = 0;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(28)))));
+            this.label9.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(268, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(133, 26);
+            this.label9.TabIndex = 78;
+            this.label9.Text = "ADMINISTRAR";
             // 
             // pbMinimize
             // 
@@ -201,6 +220,13 @@
             // 
             this.bunifuGradientPanel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel2.BackgroundImage")));
             this.bunifuGradientPanel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuGradientPanel2.Controls.Add(this.cmb5);
+            this.bunifuGradientPanel2.Controls.Add(this.lbl8);
+            this.bunifuGradientPanel2.Controls.Add(this.lbl7);
+            this.bunifuGradientPanel2.Controls.Add(this.lbl6);
+            this.bunifuGradientPanel2.Controls.Add(this.txt4);
+            this.bunifuGradientPanel2.Controls.Add(this.txt6);
+            this.bunifuGradientPanel2.Controls.Add(this.txt5);
             this.bunifuGradientPanel2.Controls.Add(this.chk1);
             this.bunifuGradientPanel2.Controls.Add(this.lbl5);
             this.bunifuGradientPanel2.Controls.Add(this.cmb4);
@@ -225,8 +251,91 @@
             this.bunifuGradientPanel2.Name = "bunifuGradientPanel2";
             this.bunifuGradientPanel2.Quality = 10;
             this.bunifuGradientPanel2.Size = new System.Drawing.Size(378, 371);
-            this.bunifuGradientPanel2.TabIndex = 90;
+            this.bunifuGradientPanel2.TabIndex = 0;
             this.bunifuGradientPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.bunifuGradientPanel2_Paint);
+            // 
+            // cmb5
+            // 
+            this.cmb5.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmb5.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmb5.BackColor = System.Drawing.Color.White;
+            this.cmb5.Enabled = false;
+            this.cmb5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.cmb5.ForeColor = System.Drawing.Color.Black;
+            this.cmb5.FormattingEnabled = true;
+            this.cmb5.Items.AddRange(new object[] {
+            "ACTIVO",
+            "SUSPENDIDO"});
+            this.cmb5.Location = new System.Drawing.Point(115, 265);
+            this.cmb5.Name = "cmb5";
+            this.cmb5.Size = new System.Drawing.Size(121, 21);
+            this.cmb5.TabIndex = 10;
+            // 
+            // lbl8
+            // 
+            this.lbl8.AutoSize = true;
+            this.lbl8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(100)))));
+            this.lbl8.ForeColor = System.Drawing.Color.White;
+            this.lbl8.Location = new System.Drawing.Point(23, 273);
+            this.lbl8.Name = "lbl8";
+            this.lbl8.Size = new System.Drawing.Size(43, 13);
+            this.lbl8.TabIndex = 21;
+            this.lbl8.Text = "Estado:";
+            // 
+            // lbl7
+            // 
+            this.lbl7.AutoSize = true;
+            this.lbl7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(60)))), ((int)(((byte)(100)))));
+            this.lbl7.ForeColor = System.Drawing.Color.White;
+            this.lbl7.Location = new System.Drawing.Point(20, 240);
+            this.lbl7.Name = "lbl7";
+            this.lbl7.Size = new System.Drawing.Size(44, 13);
+            this.lbl7.TabIndex = 20;
+            this.lbl7.Text = "Horario:";
+            // 
+            // lbl6
+            // 
+            this.lbl6.AutoSize = true;
+            this.lbl6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(55)))), ((int)(((byte)(89)))));
+            this.lbl6.ForeColor = System.Drawing.Color.White;
+            this.lbl6.Location = new System.Drawing.Point(20, 209);
+            this.lbl6.Name = "lbl6";
+            this.lbl6.Size = new System.Drawing.Size(53, 13);
+            this.lbl6.TabIndex = 19;
+            this.lbl6.Text = "Contacto:";
+            // 
+            // txt4
+            // 
+            this.txt4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.txt4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt4.Enabled = false;
+            this.txt4.ForeColor = System.Drawing.Color.White;
+            this.txt4.Location = new System.Drawing.Point(115, 169);
+            this.txt4.Name = "txt4";
+            this.txt4.Size = new System.Drawing.Size(121, 20);
+            this.txt4.TabIndex = 3;
+            // 
+            // txt6
+            // 
+            this.txt6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.txt6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt6.Enabled = false;
+            this.txt6.ForeColor = System.Drawing.Color.White;
+            this.txt6.Location = new System.Drawing.Point(115, 234);
+            this.txt6.Name = "txt6";
+            this.txt6.Size = new System.Drawing.Size(121, 20);
+            this.txt6.TabIndex = 5;
+            // 
+            // txt5
+            // 
+            this.txt5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.txt5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt5.Enabled = false;
+            this.txt5.ForeColor = System.Drawing.Color.White;
+            this.txt5.Location = new System.Drawing.Point(115, 203);
+            this.txt5.Name = "txt5";
+            this.txt5.Size = new System.Drawing.Size(121, 20);
+            this.txt5.TabIndex = 4;
             // 
             // chk1
             // 
@@ -236,7 +345,7 @@
             this.chk1.Location = new System.Drawing.Point(242, 64);
             this.chk1.Name = "chk1";
             this.chk1.Size = new System.Drawing.Size(85, 18);
-            this.chk1.TabIndex = 88;
+            this.chk1.TabIndex = 11;
             this.chk1.Text = "Otra Marca";
             this.chk1.UseVisualStyleBackColor = false;
             this.chk1.CheckedChanged += new System.EventHandler(this.chk1_CheckedChanged);
@@ -262,10 +371,10 @@
             this.cmb4.Items.AddRange(new object[] {
             "ACTIVO",
             "SUSPENDIDO"});
-            this.cmb4.Location = new System.Drawing.Point(116, 91);
+            this.cmb4.Location = new System.Drawing.Point(115, 91);
             this.cmb4.Name = "cmb4";
             this.cmb4.Size = new System.Drawing.Size(121, 21);
-            this.cmb4.TabIndex = 86;
+            this.cmb4.TabIndex = 7;
             this.cmb4.SelectedIndexChanged += new System.EventHandler(this.cmb4_SelectedIndexChanged);
             this.cmb4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmb4_KeyPress);
             this.cmb4.Validating += new System.ComponentModel.CancelEventHandler(this.cmb4_Validating);
@@ -274,11 +383,13 @@
             // 
             this.txt3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.txt3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt3.Enabled = false;
             this.txt3.ForeColor = System.Drawing.Color.White;
-            this.txt3.Location = new System.Drawing.Point(116, 131);
+            this.txt3.Location = new System.Drawing.Point(115, 131);
             this.txt3.Name = "txt3";
             this.txt3.Size = new System.Drawing.Size(121, 20);
-            this.txt3.TabIndex = 85;
+            this.txt3.TabIndex = 2;
+            this.txt3.Visible = false;
             this.txt3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt3_KeyPress);
             // 
             // cmb3
@@ -289,10 +400,10 @@
             this.cmb3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cmb3.ForeColor = System.Drawing.Color.Black;
             this.cmb3.FormattingEnabled = true;
-            this.cmb3.Location = new System.Drawing.Point(116, 61);
+            this.cmb3.Location = new System.Drawing.Point(115, 61);
             this.cmb3.Name = "cmb3";
             this.cmb3.Size = new System.Drawing.Size(121, 21);
-            this.cmb3.TabIndex = 84;
+            this.cmb3.TabIndex = 6;
             this.cmb3.SelectedIndexChanged += new System.EventHandler(this.cmb3_SelectedIndexChanged);
             this.cmb3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmb3_KeyPress);
             this.cmb3.Validating += new System.ComponentModel.CancelEventHandler(this.cmb3_Validating);
@@ -302,6 +413,7 @@
             this.cmb2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cmb2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmb2.BackColor = System.Drawing.Color.White;
+            this.cmb2.Enabled = false;
             this.cmb2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cmb2.ForeColor = System.Drawing.Color.Black;
             this.cmb2.FormattingEnabled = true;
@@ -311,7 +423,7 @@
             this.cmb2.Location = new System.Drawing.Point(116, 168);
             this.cmb2.Name = "cmb2";
             this.cmb2.Size = new System.Drawing.Size(121, 21);
-            this.cmb2.TabIndex = 83;
+            this.cmb2.TabIndex = 9;
             this.cmb2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmb2_KeyPress);
             this.cmb2.Validating += new System.ComponentModel.CancelEventHandler(this.cmb2_Validating);
             // 
@@ -324,7 +436,7 @@
             this.lbl4.Location = new System.Drawing.Point(17, 176);
             this.lbl4.Name = "lbl4";
             this.lbl4.Size = new System.Drawing.Size(47, 14);
-            this.lbl4.TabIndex = 82;
+            this.lbl4.TabIndex = 18;
             this.lbl4.Text = "Estado:";
             // 
             // btnAceptar
@@ -337,7 +449,7 @@
             this.btnAceptar.Margin = new System.Windows.Forms.Padding(2);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(60, 20);
-            this.btnAceptar.TabIndex = 81;
+            this.btnAceptar.TabIndex = 12;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = false;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
@@ -352,7 +464,7 @@
             this.cmb1.Location = new System.Drawing.Point(116, 131);
             this.cmb1.Name = "cmb1";
             this.cmb1.Size = new System.Drawing.Size(121, 21);
-            this.cmb1.TabIndex = 7;
+            this.cmb1.TabIndex = 8;
             this.cmb1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmb1_KeyPress);
             this.cmb1.Validating += new System.ComponentModel.CancelEventHandler(this.cmb1_Validating);
             // 
@@ -365,7 +477,7 @@
             this.lbl3.Location = new System.Drawing.Point(17, 131);
             this.lbl3.Name = "lbl3";
             this.lbl3.Size = new System.Drawing.Size(99, 28);
-            this.lbl3.TabIndex = 6;
+            this.lbl3.TabIndex = 17;
             this.lbl3.Text = "Tipo de Usuario/\r\nÁrea";
             // 
             // txt2
@@ -376,7 +488,7 @@
             this.txt2.Location = new System.Drawing.Point(116, 91);
             this.txt2.Name = "txt2";
             this.txt2.Size = new System.Drawing.Size(121, 20);
-            this.txt2.TabIndex = 5;
+            this.txt2.TabIndex = 1;
             this.txt2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt2_KeyPress);
             // 
             // txt1
@@ -387,7 +499,7 @@
             this.txt1.Location = new System.Drawing.Point(116, 61);
             this.txt1.Name = "txt1";
             this.txt1.Size = new System.Drawing.Size(121, 20);
-            this.txt1.TabIndex = 4;
+            this.txt1.TabIndex = 0;
             this.txt1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt1_KeyPress);
             // 
             // lbl2
@@ -399,7 +511,7 @@
             this.lbl2.Location = new System.Drawing.Point(17, 98);
             this.lbl2.Name = "lbl2";
             this.lbl2.Size = new System.Drawing.Size(72, 14);
-            this.lbl2.TabIndex = 3;
+            this.lbl2.TabIndex = 16;
             this.lbl2.Text = "Contraseña:";
             // 
             // lbl1
@@ -411,7 +523,7 @@
             this.lbl1.Location = new System.Drawing.Point(17, 64);
             this.lbl1.Name = "lbl1";
             this.lbl1.Size = new System.Drawing.Size(53, 14);
-            this.lbl1.TabIndex = 2;
+            this.lbl1.TabIndex = 15;
             this.lbl1.Text = "Usuario:";
             // 
             // rbtnModificar
@@ -423,7 +535,7 @@
             this.rbtnModificar.Location = new System.Drawing.Point(140, 14);
             this.rbtnModificar.Name = "rbtnModificar";
             this.rbtnModificar.Size = new System.Drawing.Size(75, 18);
-            this.rbtnModificar.TabIndex = 1;
+            this.rbtnModificar.TabIndex = 14;
             this.rbtnModificar.TabStop = true;
             this.rbtnModificar.Text = "Modificar";
             this.rbtnModificar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -439,7 +551,7 @@
             this.rbtnRegistrar.Location = new System.Drawing.Point(20, 14);
             this.rbtnRegistrar.Name = "rbtnRegistrar";
             this.rbtnRegistrar.Size = new System.Drawing.Size(74, 18);
-            this.rbtnRegistrar.TabIndex = 0;
+            this.rbtnRegistrar.TabIndex = 13;
             this.rbtnRegistrar.TabStop = true;
             this.rbtnRegistrar.Text = "Registrar";
             this.rbtnRegistrar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -613,18 +725,6 @@
             this.moverFormulario.TargetControl = this.bunifuGradientPanel1;
             this.moverFormulario.Vertical = true;
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(28)))));
-            this.label9.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(268, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(133, 26);
-            this.label9.TabIndex = 78;
-            this.label9.Text = "ADMINISTRAR";
-            // 
             // Administrar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -718,5 +818,12 @@
         private System.Windows.Forms.Label label8;
         private Bunifu.Framework.UI.BunifuDragControl moverFormulario;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txt6;
+        private System.Windows.Forms.TextBox txt5;
+        private System.Windows.Forms.TextBox txt4;
+        private System.Windows.Forms.Label lbl7;
+        private System.Windows.Forms.Label lbl6;
+        private System.Windows.Forms.ComboBox cmb5;
+        private System.Windows.Forms.Label lbl8;
     }
 }

@@ -1,4 +1,5 @@
-﻿using Jeic.Properties;
+﻿using Jeic.Forms;
+using Jeic.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -200,6 +201,12 @@ namespace Refracciones.Forms
         private void minimizarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void talleresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Talleres taller = new Talleres();
+            DialogResult result = taller.ShowDialog();
         }
     }
 }

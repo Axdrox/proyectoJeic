@@ -24,6 +24,7 @@ namespace Refracciones.Forms
         {
             //Colocar ICONO
             this.Icon = Resources.iconJeic;
+            rbtnRegistrar.Checked = true; 
         }
 
         private void btnUsuario_Click(object sender, EventArgs e)
@@ -108,13 +109,20 @@ namespace Refracciones.Forms
                         lbl3.Visible = true;
                         lbl4.Visible = false;
                         lbl5.Visible = false;
+                        lbl6.Visible = false;
+                        lbl7.Visible = false;
+                        lbl8.Visible = false;
                         txt1.Enabled = true; txt1.Visible = true;
                         txt2.Enabled = true; txt2.Visible = true;
                         txt3.Enabled = false; txt3.Visible = false;
+                        txt4.Enabled = false; txt4.Visible = false;
+                        txt5.Enabled = false; txt5.Visible = false;
+                        txt6.Enabled = false; txt6.Visible = false;
                         cmb1.Enabled = true; cmb1.Visible = true;
                         cmb2.Enabled = false; cmb2.Visible = false;
                         cmb3.Enabled = false; cmb3.Visible = false;
                         cmb4.Enabled = false; cmb4.Visible = false;
+                        cmb5.Enabled = false; cmb5.Visible = false;
                         txt1.Text = ""; txt2.Text = "";
                         cmb1.DataSource = oper.RolesRegistrados().Tables[0].DefaultView;
                         cmb1.ValueMember = "area";
@@ -129,13 +137,20 @@ namespace Refracciones.Forms
                         lbl3.Visible = true;
                         lbl4.Visible = false;
                         lbl5.Visible = false;
+                        lbl6.Visible = false;
+                        lbl7.Visible = false;
+                        lbl8.Visible = false;
                         txt1.Enabled = true; txt1.Visible = true;
                         txt2.Enabled = true; txt2.Visible = true;
                         txt3.Enabled = true; txt3.Visible = true;
+                        txt4.Enabled = false; txt4.Visible = false;
+                        txt5.Enabled = false; txt5.Visible = false;
+                        txt6.Enabled = false; txt6.Visible = false;
                         cmb1.Enabled = false; cmb1.Visible = false;
                         cmb2.Enabled = false; cmb2.Visible = false;
                         cmb3.Enabled = false; cmb3.Visible = false;
                         cmb4.Enabled = false; cmb4.Visible = false;
+                        cmb5.Enabled = false; cmb5.Visible = false;
                         txt1.Text = ""; txt2.Text = ""; txt3.Text = "";
                         lbl1.Text = "Nombre:";
                         lbl2.Text = "Días de espera:";
@@ -148,13 +163,20 @@ namespace Refracciones.Forms
                         lbl3.Visible = false;
                         lbl4.Visible = false;
                         lbl5.Visible = false;
+                        lbl6.Visible = false;
+                        lbl7.Visible = false;
+                        lbl8.Visible = false;
                         txt1.Enabled = true; txt1.Visible = true;
                         txt2.Enabled = false; txt2.Visible = false;
                         txt3.Enabled = false; txt3.Visible = false;
+                        txt4.Enabled = false; txt4.Visible = false;
+                        txt5.Enabled = false; txt5.Visible = false;
+                        txt6.Enabled = false; txt6.Visible = false;
                         cmb1.Enabled = false; cmb1.Visible = false;
                         cmb2.Enabled = false; cmb2.Visible = false;
                         cmb3.Enabled = false; cmb3.Visible = false;
                         cmb4.Enabled = false; cmb4.Visible = false;
+                        cmb5.Enabled = false; cmb5.Visible = false;
                         txt1.Text = ""; txt2.Text = "";
                         lbl1.Text = "Nombre:";
                         lbl2.Text = "";
@@ -164,20 +186,28 @@ namespace Refracciones.Forms
                         chk1.Enabled = false; chk1.Visible = false;
                         lbl1.Visible = true;
                         lbl2.Visible = true;
-                        lbl3.Visible = false;
-                        lbl4.Visible = false;
+                        lbl3.Visible = true;
+                        lbl4.Visible = true;
                         lbl5.Visible = false;
+                        lbl6.Visible = true;
+                        lbl7.Visible = true;
+                        lbl8.Visible = false;
                         txt1.Enabled = true; txt1.Visible = true;
                         txt2.Enabled = true; txt2.Visible = true;
-                        txt3.Enabled = false; txt3.Visible = false;
+                        txt3.Enabled = true; txt3.Visible = true;
+                        txt4.Enabled = true; txt4.Visible = true;
+                        txt5.Enabled = true; txt5.Visible = true;
+                        txt6.Enabled = true; txt6.Visible = true;
                         cmb1.Enabled = false; cmb1.Visible = false;
                         cmb2.Enabled = false; cmb2.Visible = false;
                         cmb3.Enabled = false; cmb3.Visible = false;
                         cmb4.Enabled = false; cmb4.Visible = false;
-                        txt1.Text = ""; txt2.Text = "";
+                        cmb5.Enabled = false; cmb5.Visible = false;
+                        txt1.Text = ""; txt2.Text = ""; txt3.Text = ""; txt4.Text = ""; txt5.Text = ""; txt6.Text = "";
                         lbl1.Text = "Nombre:";
                         lbl2.Text = "Dirección:";
-                        lbl3.Text = "";
+                        lbl3.Text = "Ciudad:";
+                        lbl4.Text = "Teléfono:";
                         break;
                     case 4:
                         chk1.Enabled = true; chk1.Visible = true;
@@ -186,15 +216,22 @@ namespace Refracciones.Forms
                         lbl3.Visible = true;
                         lbl4.Visible = false;
                         lbl5.Visible = false;
+                        lbl6.Visible = false;
+                        lbl7.Visible = false;
+                        lbl8.Visible = false;
                         txt1.Enabled = false; txt1.Visible = false;
                         txt2.Enabled = true; txt2.Visible = true;
                         txt3.Enabled = true; txt3.Visible = true;
+                        txt4.Enabled = false; txt4.Visible = false;
+                        txt5.Enabled = false; txt5.Visible = false;
+                        txt6.Enabled = false; txt6.Visible = false;
                         cmb1.Enabled = false; cmb1.Visible = false;
                         cmb2.Enabled = false; cmb2.Visible = false;
                         cmb3.Enabled = true; cmb3.Visible = true;
                         cmb3.DataSource = oper.MarcasRegistradas(0).Tables[0].DefaultView;
                         cmb3.ValueMember = "marca";
                         cmb4.Enabled = false; cmb4.Visible = false;
+                        cmb5.Enabled = false; cmb5.Visible = false;
                         txt1.Text = ""; txt2.Text = "";
                         lbl1.Text = "Marca:";
                         lbl2.Text = "Modelo:";
@@ -207,13 +244,20 @@ namespace Refracciones.Forms
                         lbl3.Visible = false;
                         lbl4.Visible = false;
                         lbl5.Visible = false;
+                        lbl6.Visible = false;
+                        lbl7.Visible = false;
+                        lbl8.Visible = false;
                         txt1.Enabled = true; txt1.Visible = true;
                         txt2.Enabled = true; txt2.Visible = true;
                         txt3.Enabled = false; txt3.Visible = false;
+                        txt4.Enabled = false; txt4.Visible = false;
+                        txt5.Enabled = false; txt5.Visible = false;
+                        txt6.Enabled = false; txt6.Visible = false;
                         cmb1.Enabled = false; cmb1.Visible = false;
                         cmb2.Enabled = false; cmb2.Visible = false;
                         cmb3.Enabled = false; cmb3.Visible = false;
                         cmb4.Enabled = false; cmb4.Visible = false;
+                        cmb5.Enabled = false; cmb5.Visible = false;
                         txt1.Text = ""; txt2.Text = "";
                         lbl1.Text = "Nombre:";
                         lbl2.Text = "Descripción"+"\n"+"SAE:";
@@ -226,13 +270,20 @@ namespace Refracciones.Forms
                         lbl3.Visible = false;
                         lbl4.Visible = false;
                         lbl5.Visible = false;
+                        lbl6.Visible = false;
+                        lbl7.Visible = false;
+                        lbl8.Visible = false;
                         txt1.Enabled = true; txt1.Visible = true;
                         txt2.Enabled = true; txt2.Visible = true;
                         txt3.Enabled = false; txt3.Visible = false;
+                        txt4.Enabled = false; txt4.Visible = false;
+                        txt5.Enabled = false; txt5.Visible = false;
+                        txt6.Enabled = false; txt6.Visible = false;
                         cmb1.Enabled = false; cmb1.Visible = false;
                         cmb2.Enabled = false; cmb2.Visible = false;
                         cmb3.Enabled = false; cmb3.Visible = false;
                         cmb4.Enabled = false; cmb4.Visible = false;
+                        cmb5.Enabled = false; cmb5.Visible = false;
                         txt1.Text = ""; txt2.Text = "";
                         lbl1.Text = "Vendedor:"+"\n"+"(Clave)";
                         lbl2.Text = "Nombre:";
@@ -245,13 +296,20 @@ namespace Refracciones.Forms
                         lbl3.Visible = false;
                         lbl4.Visible = false;
                         lbl5.Visible = false;
+                        lbl6.Visible = false;
+                        lbl7.Visible = false;
+                        lbl8.Visible = false;
                         txt1.Enabled = true; txt1.Visible = true;
                         txt2.Enabled = false; txt2.Visible = false;
                         txt3.Enabled = false; txt3.Visible = false;
+                        txt4.Enabled = false; txt4.Visible = false;
+                        txt5.Enabled = false; txt5.Visible = false;
+                        txt6.Enabled = false; txt6.Visible = false;
                         cmb1.Enabled = false; cmb1.Visible = false;
                         cmb2.Enabled = false; cmb2.Visible = false;
                         cmb3.Enabled = false; cmb3.Visible = false;
                         cmb4.Enabled = false; cmb4.Visible = false;
+                        cmb5.Enabled = false; cmb5.Visible = false;
                         txt1.Text = ""; txt2.Text = "";
                         lbl1.Text = "Nombre:";
                         lbl2.Text = "";
@@ -275,15 +333,22 @@ namespace Refracciones.Forms
                         lbl3.Visible = true;
                         lbl4.Visible = true;
                         lbl5.Visible = false;
+                        lbl6.Visible = false;
+                        lbl7.Visible = false;
+                        lbl8.Visible = false;
                         txt1.Enabled = false; txt1.Visible = false;
                         txt2.Enabled = true; txt2.Visible = true;
                         txt3.Enabled = false; txt3.Visible = false;
+                        txt4.Enabled = false; txt4.Visible = false;
+                        txt5.Enabled = false; txt5.Visible = false;
+                        txt6.Enabled = false; txt6.Visible = false;
                         cmb1.Enabled = true; cmb1.Visible = true;
                         cmb2.Enabled = true; cmb2.Visible = true;
                         cmb2.DataSource = null; cmb2.Items.Clear(); cmb2.Items.Add("ACTIVO"); cmb2.Items.Add("SUSPENDIDO");
                         cmb2.SelectedIndex = 0;
                         cmb3.Enabled = true; cmb3.Visible = true;
                         cmb4.Enabled = false; cmb4.Visible = false;
+                        cmb5.Enabled = false; cmb5.Visible = false;
                         txt1.Text = ""; txt2.Text = "";
                         cmb1.DataSource = oper.RolesRegistrados().Tables[0].DefaultView;
                         cmb1.ValueMember = "area";
@@ -301,14 +366,21 @@ namespace Refracciones.Forms
                         lbl3.Visible = true;
                         lbl4.Visible = true;
                         lbl5.Visible = false;
+                        lbl6.Visible = false;
+                        lbl7.Visible = false;
+                        lbl8.Visible = false;
                         txt1.Enabled = true; txt1.Visible = true;
                         txt2.Enabled = true; txt2.Visible = true;
                         txt3.Enabled = true; txt3.Visible = true;
+                        txt4.Enabled = false; txt4.Visible = false;
+                        txt5.Enabled = false; txt5.Visible = false;
+                        txt6.Enabled = false; txt6.Visible = false;
                         cmb1.Enabled = false; cmb1.Visible = false;
                         cmb2.Enabled = true; cmb2.Visible = true;
                         cmb2.SelectedIndex = 0;
                         cmb3.Enabled = true; cmb3.Visible = true;
                         cmb4.Enabled = false; cmb4.Visible = false;
+                        cmb5.Enabled = false; cmb5.Visible = false;
                         txt1.Text = ""; 
                         cmb3.DataSource = oper.AseguradorasRegistradas(0).Tables[0].DefaultView;
                         cmb3.ValueMember = "cve_nombre";
@@ -325,9 +397,15 @@ namespace Refracciones.Forms
                         lbl3.Visible = false;
                         lbl4.Visible = false;
                         lbl5.Visible = false;
+                        lbl6.Visible = false;
+                        lbl7.Visible = false;
+                        lbl8.Visible = false;
                         txt1.Enabled = false; txt1.Visible = false;
                         txt2.Enabled = false; txt2.Visible = false;
                         txt3.Enabled = false; txt3.Visible = false;
+                        txt4.Enabled = false; txt4.Visible = false;
+                        txt5.Enabled = false; txt5.Visible = false;
+                        txt6.Enabled = false; txt6.Visible = false;
                         cmb1.Enabled = false; cmb1.Visible = false;
                         cmb2.Enabled = false; cmb2.Visible = false;
                         cmb3.Enabled = true; cmb3.Visible = true;
@@ -337,6 +415,7 @@ namespace Refracciones.Forms
                         cmb4.DataSource = null; cmb4.Items.Clear(); cmb4.Items.Add("ACTIVO"); cmb4.Items.Add("SUSPENDIDO");
                         cmb4.SelectedIndex = 0;
                         cmb4.SelectedIndex = 0;
+                        cmb5.Enabled = false; cmb5.Visible = false;
                         txt1.Text = ""; txt2.Text = "";
                         lbl1.Text = "Nombre:";
                         lbl2.Text = "Estado:";
@@ -347,24 +426,36 @@ namespace Refracciones.Forms
                         lbl1.Visible = true;
                         lbl2.Visible = true;
                         lbl3.Visible = true;
-                        lbl4.Visible = false;
+                        lbl4.Visible = true;
                         lbl5.Visible = false;
+                        lbl6.Visible = true;
+                        lbl7.Visible = true;
+                        lbl8.Visible = true;
                         txt1.Enabled = false; txt1.Visible = false;
                         txt2.Enabled = true; txt2.Visible = true;
-                        txt3.Enabled = false; txt3.Visible = false;
-                        cmb1.Enabled = true; cmb1.Visible = true;
-                        cmb1.DataSource = null;
-                        cmb1.Items.Add("ACTIVO"); cmb1.Items.Add("SUSPENDIDO"); cmb1.SelectedIndex = 0;
+                        txt3.Enabled = true; txt3.Visible = true;
+                        txt4.Enabled = true; txt4.Visible = true;
+                        txt5.Enabled = true; txt5.Visible = true;
+                        txt6.Enabled = true; txt6.Visible = true;
+                        cmb1.Enabled = false; cmb1.Visible = false;
                         cmb2.Enabled = false; cmb2.Visible = false;
                         cmb3.Enabled = true; cmb3.Visible = true;
                         cmb3.DataSource = oper.TalleresRegistrados(0).Tables[0].DefaultView;
                         cmb3.ValueMember = "nombre";
                         cmb4.Enabled = false; cmb4.Visible = false;
+                        cmb5.Enabled = true; cmb5.Visible = true;
+                        /*cmb5.DataSource = null;
+                        cmb5.Items.Add("ACTIVO"); cmb5.Items.Add("SUSPENDIDO");*/ cmb5.SelectedIndex = 0;
                         txt1.Text = ""; txt2.Text = "";
                         txt2.Text = oper.direccionTaller(cmb3.Text.Trim());
+                        txt3.Text = oper.ciudadTaller(cmb3.Text.Trim());
+                        txt4.Text = oper.telefonoTaller(cmb3.Text.Trim());
+                        txt5.Text = oper.contactoTaller(cmb3.Text.Trim());
+                        txt6.Text = oper.horarioTaller(cmb3.Text.Trim());
                         lbl1.Text = "Nombre:";
                         lbl2.Text = "Dirección:";
-                        lbl3.Text = "Estado:";
+                        lbl3.Text = "Ciudad:";
+                        lbl4.Text = "Teléfono:";
                         break;
                     case 4:
                         chk1.Enabled = false; chk1.Visible = false;
@@ -373,9 +464,15 @@ namespace Refracciones.Forms
                         lbl3.Visible = true;
                         lbl4.Visible = true;
                         lbl5.Visible = false;
+                        lbl6.Visible = false;
+                        lbl7.Visible = false;
+                        lbl8.Visible = false;
                         txt1.Enabled = false; txt1.Visible = false;
                         txt2.Enabled = false; txt2.Visible = false;
                         txt3.Enabled = true; txt3.Visible = true;
+                        txt4.Enabled = false; txt4.Visible = false;
+                        txt5.Enabled = false; txt5.Visible = false;
+                        txt6.Enabled = false; txt6.Visible = false;
                         cmb1.Enabled = false; cmb1.Visible = false;
                         cmb2.Enabled = true; cmb2.Visible = true;
                         cmb2.DataSource = null;
@@ -387,6 +484,7 @@ namespace Refracciones.Forms
                         /*cmb4.DataSource = null; cmb4.Items.Clear();*/
                         cmb4.DataSource = oper.VehiculosRegistrados(cmb3.Text.Trim()).Tables["VEHICULO"].DefaultView;
                         cmb4.ValueMember = "modelo";
+                        cmb5.Enabled = false; cmb5.Visible = false;
                         txt1.Text = ""; txt2.Text = "";
                         txt3.Text = oper.anioVehiculo(cmb4.Text.Trim());
                         lbl1.Text = "Marca:";
@@ -401,9 +499,15 @@ namespace Refracciones.Forms
                         lbl3.Visible = true;
                         lbl4.Visible = false;
                         lbl5.Visible = false;
+                        lbl6.Visible = false;
+                        lbl7.Visible = false;
+                        lbl8.Visible = false;
                         txt1.Enabled = false; txt1.Visible = false;
                         txt2.Enabled = true; txt2.Visible = true;
                         txt3.Enabled = false; txt3.Visible = false;
+                        txt4.Enabled = false; txt4.Visible = false;
+                        txt5.Enabled = false; txt5.Visible = false;
+                        txt6.Enabled = false; txt6.Visible = false;
                         cmb1.Enabled = true; cmb1.Visible = true;
                         cmb1.DataSource = null; cmb1.Items.Clear(); cmb1.Items.Add("ACTIVO"); cmb1.Items.Add("SUSPENDIDO"); cmb1.SelectedIndex = 0;
                         cmb2.Enabled = false; cmb2.Visible = false;
@@ -411,6 +515,7 @@ namespace Refracciones.Forms
                         cmb3.DataSource = oper.NombrePiezasRegistrados(0).Tables[0].DefaultView;
                         cmb3.ValueMember = "nombre";
                         cmb4.Enabled = false; cmb4.Visible = false;
+                        cmb5.Enabled = false; cmb5.Visible = false;
                         txt1.Text = ""; 
                         txt2.Text = oper.descSAE(cmb3.Text.Trim());
                         lbl1.Text = "Nombre:";
@@ -424,9 +529,15 @@ namespace Refracciones.Forms
                         lbl3.Visible = false;
                         lbl4.Visible = false;
                         lbl5.Visible = true;
+                        lbl6.Visible = false;
+                        lbl7.Visible = false;
+                        lbl8.Visible = false;
                         txt1.Enabled = false; txt1.Visible = false;
                         txt2.Enabled = false; txt2.Visible = false;
                         txt3.Enabled = false; txt3.Visible = false;
+                        txt4.Enabled = false; txt4.Visible = false;
+                        txt5.Enabled = false; txt5.Visible = false;
+                        txt6.Enabled = false; txt6.Visible = false;
                         cmb1.Enabled = false; cmb1.Visible = false;
                         cmb2.Enabled = false; cmb2.Visible = false;
                         cmb3.Enabled = true; cmb3.Visible = true;
@@ -434,6 +545,7 @@ namespace Refracciones.Forms
                         cmb3.ValueMember = "cve_vendedor";
                         cmb4.Enabled = true; cmb4.Visible = true;
                         cmb4.DataSource = null; cmb4.Items.Clear(); cmb4.Items.Add("ACTIVO"); cmb4.Items.Add("SUSPENDIDO"); cmb4.SelectedIndex = 0;
+                        cmb5.Enabled = false; cmb5.Visible = false;
                         txt1.Text = ""; txt2.Text = "";
                         lbl1.Text = "Vendedor:" + "\n" + "(Clave)";
                         lbl2.Text = "Estado:";
@@ -447,9 +559,15 @@ namespace Refracciones.Forms
                         lbl3.Visible = false;
                         lbl4.Visible = false;
                         lbl5.Visible = false;
+                        lbl6.Visible = false;
+                        lbl7.Visible = false;
+                        lbl8.Visible = false;
                         txt1.Enabled = false; txt1.Visible = false;
                         txt2.Enabled = false; txt2.Visible = false;
                         txt3.Enabled = false; txt3.Visible = false;
+                        txt4.Enabled = false; txt4.Visible = false;
+                        txt5.Enabled = false; txt5.Visible = false;
+                        txt6.Enabled = false; txt6.Visible = false;
                         cmb1.Enabled = false; cmb1.Visible = false;
                         cmb2.Enabled = false; cmb2.Visible = false;
                         cmb3.Enabled = true; cmb3.Visible = true;
@@ -459,6 +577,7 @@ namespace Refracciones.Forms
                         cmb4.DataSource = null; cmb4.Items.Clear(); cmb4.Items.Add("ACTIVO"); cmb4.Items.Add("SUSPENDIDO");
                         cmb4.SelectedIndex = 0;
                         cmb4.SelectedIndex = 0;
+                        cmb5.Enabled = false; cmb5.Visible = false;
                         txt1.Text = ""; txt2.Text = "";
                         lbl1.Text = "Nombre:";
                         lbl2.Text = "Estado:";
@@ -565,9 +684,9 @@ namespace Refracciones.Forms
                             else if (oper.existeTaller(txt1.Text.Trim()) == "")
                             {
                                 errorP.Clear();
-                                oper.registrarTaller(txt1.Text.Trim().ToUpper(),txt2.Text.Trim().ToUpper());
+                                oper.registrarTaller(txt1.Text.Trim().ToUpper(),txt2.Text.Trim().ToUpper(), txt3.Text.Trim().ToUpper(), txt4.Text.Trim().ToUpper(), txt5.Text.Trim().ToUpper(), txt6.Text.Trim().ToUpper());
                                 
-                                txt1.Text = ""; txt2.Text = "";
+                                txt1.Text = ""; txt2.Text = ""; txt3.Text = ""; txt4.Text = ""; txt5.Text = ""; txt6.Text = "";
                             }
                             else
                             {
@@ -736,7 +855,7 @@ namespace Refracciones.Forms
                             oper.ActualizarDatosProveedor(cmb3.Text.Trim(), estado);
                             break;
                         case 3:
-                            if (cmb1.Text.Trim() == "ACTIVO")
+                            if (cmb5.Text.Trim() == "ACTIVO")
                                 estado = 1;
                             else
                                 estado = 0;
@@ -748,8 +867,8 @@ namespace Refracciones.Forms
                             else 
                             {
                                 errorP.Clear();
-                                oper.ActualizarDatosTaller(cmb3.Text.Trim(), estado,txt2.Text.Trim().ToUpper());
-                                txt2.Text = "";
+                                oper.ActualizarDatosTaller(cmb3.Text.Trim(), estado,txt2.Text.Trim().ToUpper(),txt3.Text.Trim().ToUpper(), txt4.Text.Trim().ToUpper(), txt5.Text.Trim().ToUpper(), txt6.Text.Trim().ToUpper());
+                                //txt2.Text = "";
                             }
                             
                             break;
@@ -817,6 +936,10 @@ namespace Refracciones.Forms
             else if (x == 3 && y == 1)
             {
                 txt2.Text = oper.direccionTaller(cmb3.Text.Trim());
+                txt3.Text = oper.ciudadTaller(cmb3.Text.Trim());
+                txt4.Text = oper.telefonoTaller(cmb3.Text.Trim());
+                txt5.Text = oper.contactoTaller(cmb3.Text.Trim());
+                txt6.Text = oper.horarioTaller(cmb3.Text.Trim());
             }
             else if (x == 1 && y == 1)
             {

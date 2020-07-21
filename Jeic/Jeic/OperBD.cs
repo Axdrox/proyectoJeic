@@ -791,7 +791,7 @@ namespace Refracciones
             {
                 using (SqlConnection nuevacon = Conexion.conexion())
                 {
-                    da = new SqlDataAdapter(string.Format("SELECT ven.cve_pedido AS PEDIDO, ven.cve_siniestro AS SINIESTRO, ven.cve_vendedor AS VENDEDOR, c.cve_nombre AS CLIENTE, k.nombre AS PIEZA, p.cantidad AS CANTIDAD, ven.fecha_asignacion AS 'FECHA DE ASIGNACIÓN', ven.fecha_promesa AS 'FECHA PROMESA', ven.cve_venta AS 'VENTA' FROM VENTAS ven LEFT OUTER JOIN PEDIDO p ON ven.cve_venta = p.cve_venta LEFT OUTER JOIN PIEZA k ON p.cve_pieza = k.cve_pieza LEFT OUTER JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE c ON c.cve_valuador = v.cve_valuador WHERE k.nombre != '' AND ven.cve_siniestro like '%{0}%' and CAST(ven.cve_pedido AS nvarchar) like '%{1}%' and ven.cve_vendedor like '%{2}%'", cve_Siniestro, cve_Pedido, cve_vendedor), nuevacon);
+                    da = new SqlDataAdapter(string.Format("SELECT TOP 250 ven.cve_pedido AS PEDIDO, ven.cve_siniestro AS SINIESTRO, ven.cve_vendedor AS VENDEDOR, c.cve_nombre AS CLIENTE, k.nombre AS PIEZA, p.cantidad AS CANTIDAD, ven.fecha_asignacion AS 'FECHA DE ASIGNACIÓN', ven.fecha_promesa AS 'FECHA PROMESA', ven.cve_venta AS 'VENTA' FROM VENTAS ven LEFT OUTER JOIN PEDIDO p ON ven.cve_venta = p.cve_venta LEFT OUTER JOIN PIEZA k ON p.cve_pieza = k.cve_pieza LEFT OUTER JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE c ON c.cve_valuador = v.cve_valuador WHERE k.nombre != '' AND ven.cve_siniestro like '%{0}%' and CAST(ven.cve_pedido AS nvarchar) like '%{1}%' and ven.cve_vendedor like '%{2}%'", cve_Siniestro, cve_Pedido, cve_vendedor), nuevacon);
 
                     nuevacon.Open();
                     dt = new DataTable();
@@ -815,7 +815,7 @@ namespace Refracciones
             {
                 using (SqlConnection nuevacon = Conexion.conexion())
                 {
-                    da = new SqlDataAdapter(string.Format("SELECT ven.cve_pedido AS PEDIDO, ven.cve_siniestro AS SINIESTRO, ven.cve_vendedor AS VENDEDOR, c.cve_nombre AS CLIENTE, k.nombre AS PIEZA, p.cantidad AS CANTIDAD, ven.fecha_asignacion AS 'FECHA DE ASIGNACIÓN', ven.fecha_promesa AS 'FECHA PROMESA', ven.cve_venta AS 'VENTA' FROM VENTAS ven LEFT OUTER JOIN PEDIDO p ON p.cve_venta = ven.cve_venta LEFT OUTER JOIN PIEZA k ON p.cve_pieza = k.cve_pieza  LEFT OUTER JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE c ON c.cve_valuador = v.cve_valuador WHERE k.nombre != '' AND fecha_asignacion between '{0}' and '{1}' order by ven.fecha_asignacion desc", Fecha_inicio, fecha_fin), nuevacon);
+                    da = new SqlDataAdapter(string.Format("SELECT TOP 250 ven.cve_pedido AS PEDIDO, ven.cve_siniestro AS SINIESTRO, ven.cve_vendedor AS VENDEDOR, c.cve_nombre AS CLIENTE, k.nombre AS PIEZA, p.cantidad AS CANTIDAD, ven.fecha_asignacion AS 'FECHA DE ASIGNACIÓN', ven.fecha_promesa AS 'FECHA PROMESA', ven.cve_venta AS 'VENTA' FROM VENTAS ven LEFT OUTER JOIN PEDIDO p ON p.cve_venta = ven.cve_venta LEFT OUTER JOIN PIEZA k ON p.cve_pieza = k.cve_pieza  LEFT OUTER JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE c ON c.cve_valuador = v.cve_valuador WHERE k.nombre != '' AND fecha_asignacion between '{0}' and '{1}' order by ven.fecha_asignacion desc", Fecha_inicio, fecha_fin), nuevacon);
                     nuevacon.Open();
                     dt = new DataTable();
                     da.Fill(dt);
@@ -932,7 +932,7 @@ namespace Refracciones
             {
                 using (SqlConnection nuevacon = Conexion.conexion())
                 {
-                    da = new SqlDataAdapter(string.Format("SELECT ven.cve_pedido AS PEDIDO, ven.cve_siniestro AS 'SINIESTRO', ven.cve_vendedor AS VENDEDOR, c.cve_nombre AS CLIENTE, k.nombre AS PIEZA, p.cantidad AS CANTIDAD, ven.fecha_asignacion AS 'FECHA DE ASIGNACIÓN', ven.fecha_promesa AS 'FECHA PROMESA', ven.cve_venta AS 'VENTA' FROM VENTAS ven LEFT OUTER JOIN PEDIDO p ON ven.cve_venta = p.cve_venta LEFT OUTER JOIN PIEZA k ON p.cve_pieza = k.cve_pieza LEFT OUTER JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE c ON c.cve_valuador = v.cve_valuador WHERE k.nombre != '' order by ven.fecha_asignacion desc"), nuevacon);
+                    da = new SqlDataAdapter(string.Format("SELECT TOP 250 ven.cve_pedido AS PEDIDO, ven.cve_siniestro AS 'SINIESTRO', ven.cve_vendedor AS VENDEDOR, c.cve_nombre AS CLIENTE, k.nombre AS PIEZA, p.cantidad AS CANTIDAD, ven.fecha_asignacion AS 'FECHA DE ASIGNACIÓN', ven.fecha_promesa AS 'FECHA PROMESA', ven.cve_venta AS 'VENTA' FROM VENTAS ven LEFT OUTER JOIN PEDIDO p ON ven.cve_venta = p.cve_venta LEFT OUTER JOIN PIEZA k ON p.cve_pieza = k.cve_pieza LEFT OUTER JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE c ON c.cve_valuador = v.cve_valuador WHERE k.nombre != '' order by ven.fecha_asignacion desc"), nuevacon);
                     nuevacon.Open();
                     dt = new DataTable();
                     da.Fill(dt);
@@ -1349,7 +1349,38 @@ namespace Refracciones
                 MessageBox.Show("Error: " + EX.Message);
             }
         }
+        //--------------------LLENAR DATAGRID BUSCAR TALLERES--------------------
+        public DataTable buscarTalleres(string taller)
+        {
+            dt = new DataTable();
+            using (SqlConnection nuevaConexion = Conexion.conexion())
+            {
+                nuevaConexion.Open();
+                Comando = new SqlCommand(string.Format("SELECT TOP 250 nombre AS 'NOMBRE', direccion AS 'DIRECCIÓN', ciudad AS 'CIUDAD', telefono AS 'TELÉFONO', contacto AS 'CONTACTO', horario AS 'HORARIO', estado AS 'ESTADO' FROM TALLER WHERE nombre like '%{0}%'",taller), nuevaConexion);
+                da = new SqlDataAdapter(Comando);
 
+                da.Fill(dt);
+
+                nuevaConexion.Close();
+            }
+            return dt;
+        }
+        //--------------------LLENAR DATAGRID BUSCAR TALLERES--------------------
+        public DataTable buscarTalleres()
+        {
+            dt = new DataTable();
+            using (SqlConnection nuevaConexion = Conexion.conexion())
+            {
+                nuevaConexion.Open();
+                Comando = new SqlCommand("SELECT TOP 250 nombre AS 'NOMBRE', direccion AS 'DIRECCIÓN', ciudad AS 'CIUDAD', telefono AS 'TELÉFONO', contacto AS 'CONTACTO', horario AS 'HORARIO', estado AS 'ESTADO' FROM TALLER", nuevaConexion);
+                da = new SqlDataAdapter(Comando);
+
+                da.Fill(dt);
+
+                nuevaConexion.Close();
+            }
+            return dt;
+        }
         //--------------------LLENAR DATAGRID BUSCAR FACTURAS--------------------
         public DataTable buscarFacturas()
         {
@@ -1357,7 +1388,7 @@ namespace Refracciones
             using (SqlConnection nuevaConexion = Conexion.conexion())
             {
                 nuevaConexion.Open();
-                Comando = new SqlCommand("SELECT fact.cve_factura AS 'FACTURA',ven.cve_siniestro AS 'SINIESTRO', ven.cve_pedido AS 'PEDIDO', fact.fact_sinIVA AS 'FACTURA SIN IVA',fact.descuento AS 'DESCUENTO',fact.fact_neto AS 'FACTURA NETO', fact.costo_refactura AS 'COSTO DE REFACTURA', fact.fecha_refactura AS 'FECHA DE REFACTURA',fact.fecha_ingreso AS 'FECHA DE INGRESO', fact.fecha_revision AS 'FECHA DE REVISIÓN',fact.fecha_pago AS 'FECHA DE PAGO', fact.comentario AS 'COMENTARIO', fact.cve_refactura AS 'FACTURA ASOCIADA' FROM FACTURA fact LEFT OUTER JOIN VENTAS ven ON fact.cve_factura = ven.cve_factura", nuevaConexion);
+                Comando = new SqlCommand("SELECT TOP 250 fact.cve_factura AS 'FACTURA',ven.cve_siniestro AS 'SINIESTRO', ven.cve_pedido AS 'PEDIDO', fact.fact_sinIVA AS 'FACTURA SIN IVA',fact.descuento AS 'DESCUENTO',fact.fact_neto AS 'FACTURA NETO', fact.costo_refactura AS 'COSTO DE REFACTURA', fact.fecha_refactura AS 'FECHA DE REFACTURA',fact.fecha_ingreso AS 'FECHA DE INGRESO', fact.fecha_revision AS 'FECHA DE REVISIÓN',fact.fecha_pago AS 'FECHA DE PAGO', fact.comentario AS 'COMENTARIO', fact.cve_refactura AS 'FACTURA ASOCIADA' FROM FACTURA fact LEFT OUTER JOIN VENTAS ven ON fact.cve_factura = ven.cve_factura", nuevaConexion);
                 da = new SqlDataAdapter(Comando);
 
                 da.Fill(dt);
@@ -1374,7 +1405,7 @@ namespace Refracciones
             using (SqlConnection nuevaConexion = Conexion.conexion())
             {
                 nuevaConexion.Open();
-                Comando = new SqlCommand(string.Format("SELECT fact.cve_factura AS 'FACTURA',ven.cve_siniestro AS 'SINIESTRO', ven.cve_pedido AS 'PEDIDO', fact.fact_sinIVA AS 'FACTURA SIN IVA',fact.descuento AS 'DESCUENTO',fact.fact_neto AS 'FACTURA NETO', fact.costo_refactura AS 'COSTO DE REFACTURA', fact.fecha_refactura AS 'FECHA DE REFACTURA',fact.fecha_ingreso AS 'FECHA DE INGRESO', fact.fecha_revision AS 'FECHA DE REVISIÓN',fact.fecha_pago AS 'FECHA DE PAGO', fact.comentario AS 'COMENTARIO' FROM FACTURA fact LEFT OUTER JOIN VENTAS ven ON fact.cve_factura = ven.cve_factura WHERE fact.cve_factura like '%{0}%'", cve_factura), nuevaConexion);
+                Comando = new SqlCommand(string.Format("SELECT TOP 250 fact.cve_factura AS 'FACTURA',ven.cve_siniestro AS 'SINIESTRO', ven.cve_pedido AS 'PEDIDO', fact.fact_sinIVA AS 'FACTURA SIN IVA',fact.descuento AS 'DESCUENTO',fact.fact_neto AS 'FACTURA NETO', fact.costo_refactura AS 'COSTO DE REFACTURA', fact.fecha_refactura AS 'FECHA DE REFACTURA',fact.fecha_ingreso AS 'FECHA DE INGRESO', fact.fecha_revision AS 'FECHA DE REVISIÓN',fact.fecha_pago AS 'FECHA DE PAGO', fact.comentario AS 'COMENTARIO' FROM FACTURA fact LEFT OUTER JOIN VENTAS ven ON fact.cve_factura = ven.cve_factura WHERE fact.cve_factura like '%{0}%'", cve_factura), nuevaConexion);
                 da = new SqlDataAdapter(Comando);
 
                 da.Fill(dt);
@@ -1391,7 +1422,7 @@ namespace Refracciones
             using (SqlConnection nuevaConexion = Conexion.conexion())
             {
                 nuevaConexion.Open();
-                Comando = new SqlCommand(string.Format("SELECT fact.cve_factura AS 'FACTURA',ven.cve_siniestro AS 'SINIESTRO', ven.cve_pedido AS 'PEDIDO', fact.fact_sinIVA AS 'FACTURA SIN IVA',fact.descuento AS 'DESCUENTO',fact.fact_neto AS 'FACTURA NETO', fact.costo_refactura AS 'COSTO DE REFACTURA', fact.fecha_refactura AS 'FECHA DE REFACTURA',fact.fecha_ingreso AS 'FECHA DE INGRESO', fact.fecha_revision AS 'FECHA DE REVISIÓN',fact.fecha_pago AS 'FECHA DE PAGO', fact.comentario AS 'COMENTARIO' FROM FACTURA fact LEFT OUTER JOIN VENTAS ven ON fact.cve_factura = ven.cve_factura WHERE fact.fecha_ingreso between '{0}' and '{1}' order by fact.fecha_ingreso desc", Fecha_inicio, fecha_fin), nuevaConexion);
+                Comando = new SqlCommand(string.Format("SELECT TOP 250 fact.cve_factura AS 'FACTURA',ven.cve_siniestro AS 'SINIESTRO', ven.cve_pedido AS 'PEDIDO', fact.fact_sinIVA AS 'FACTURA SIN IVA',fact.descuento AS 'DESCUENTO',fact.fact_neto AS 'FACTURA NETO', fact.costo_refactura AS 'COSTO DE REFACTURA', fact.fecha_refactura AS 'FECHA DE REFACTURA',fact.fecha_ingreso AS 'FECHA DE INGRESO', fact.fecha_revision AS 'FECHA DE REVISIÓN',fact.fecha_pago AS 'FECHA DE PAGO', fact.comentario AS 'COMENTARIO' FROM FACTURA fact LEFT OUTER JOIN VENTAS ven ON fact.cve_factura = ven.cve_factura WHERE fact.fecha_ingreso between '{0}' and '{1}' order by fact.fecha_ingreso desc", Fecha_inicio, fecha_fin), nuevaConexion);
                 da = new SqlDataAdapter(Comando);
 
                 da.Fill(dt);
@@ -1467,7 +1498,7 @@ namespace Refracciones
             }
         }
 
-        //---------------- ACTUALIZAR DATOS DE PROVEEDOR
+        //---------------- ACTUALIZAR DATOS DE TALLER
         public void ActualizarDatosTaller(string nombre, int estado, string direccion)
         {
             try
@@ -1489,7 +1520,32 @@ namespace Refracciones
                 MessageBox.Show("Error: " + EX.Message);
             }
         }
-
+        //---------------- ACTUALIZAR DATOS DE TALLER
+        public void ActualizarDatosTaller(string nombre, int estado, string direccion, string ciudad, string telefono, string contacto, string horario)
+        {
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("UPDATE TALLER SET  estado = @estado, direccion =@direccion, ciudad =@ciudad,telefono =@telefono, contacto =@contacto, horario =@horario WHERE nombre = @nombre", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@estado", estado);
+                    Comando.Parameters.AddWithValue("@nombre", nombre);
+                    Comando.Parameters.AddWithValue("@direccion", direccion);
+                    Comando.Parameters.AddWithValue("@ciudad", ciudad);
+                    Comando.Parameters.AddWithValue("@telefono", telefono);
+                    Comando.Parameters.AddWithValue("@contacto", contacto);
+                    Comando.Parameters.AddWithValue("@horario", horario);
+                    Comando.ExecuteNonQuery();
+                    nuevaConexion.Close();
+                    MessageBOX.SHowDialog(3, "Se actualizaron los datos correctamente");
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+        }
         //---------------- VEHICULOS-REGISTRADOS
         public DataSet VehiculosRegistrados()
         {
@@ -1665,7 +1721,110 @@ namespace Refracciones
             }
             return anio;
         }
-
+        //-------------OBTENER  CIUDAD A PARTIR DEL NOMBRE TALLER
+        public string ciudadTaller(string nombre)
+        {
+            string anio = "";
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("SELECT ciudad FROM TALLER WHERE nombre = @nombre", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@nombre", nombre.Trim());
+                    Lector = Comando.ExecuteReader();
+                    if (Lector.Read())
+                    {
+                        anio = Lector["ciudad"].ToString().Trim();
+                    }
+                    Lector.Close();
+                    nuevaConexion.Close();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return anio;
+        }
+        //-------------OBTENER  TELEFONO A PARTIR DEL NOMBRE TALLER
+        public string telefonoTaller(string nombre)
+        {
+            string anio = "";
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("SELECT telefono FROM TALLER WHERE nombre = @nombre", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@nombre", nombre.Trim());
+                    Lector = Comando.ExecuteReader();
+                    if (Lector.Read())
+                    {
+                        anio = Lector["telefono"].ToString().Trim();
+                    }
+                    Lector.Close();
+                    nuevaConexion.Close();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return anio;
+        }
+        //-------------OBTENER  CONTACTO A PARTIR DEL NOMBRE TALLER
+        public string contactoTaller(string nombre)
+        {
+            string anio = "";
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("SELECT contacto FROM TALLER WHERE nombre = @nombre", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@nombre", nombre.Trim());
+                    Lector = Comando.ExecuteReader();
+                    if (Lector.Read())
+                    {
+                        anio = Lector["contacto"].ToString().Trim();
+                    }
+                    Lector.Close();
+                    nuevaConexion.Close();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return anio;
+        }
+        //-------------OBTENER  HORARIO A PARTIR DEL NOMBRE TALLER
+        public string horarioTaller(string nombre)
+        {
+            string anio = "";
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("SELECT horario FROM TALLER WHERE nombre = @nombre", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@nombre", nombre.Trim());
+                    Lector = Comando.ExecuteReader();
+                    if (Lector.Read())
+                    {
+                        anio = Lector["horario"].ToString().Trim();
+                    }
+                    Lector.Close();
+                    nuevaConexion.Close();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return anio;
+        }
         //---------------- ACTUALIZAR DATOS DEL PORTAL
         public void ActualizarDatosPortal(string nombre, int estado)
         {
@@ -2466,7 +2625,39 @@ namespace Refracciones
             }
             return i;
         }
+        //---------------- INSERTAR UN NUEVO TALLER
+        public int registrarTaller(string nombre, string direccion, string ciudad, string telefono, string contacto, string horario )
+        {
+            int i = 0;
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("INSERT INTO TALLER " + "(nombre, direccion, ciudad, telefono, contacto, horario) " + "VALUES (@nombre, @direccion, @ciudad, @telefono, @contacto, @horario) ", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@nombre", nombre);
+                    Comando.Parameters.AddWithValue("@direccion", direccion);
+                    Comando.Parameters.AddWithValue("@ciudad", ciudad);
+                    Comando.Parameters.AddWithValue("@telefono", telefono);
+                    Comando.Parameters.AddWithValue("@contacto", contacto);
+                    Comando.Parameters.AddWithValue("@horario", horario);
 
+                    //Para saber si la inserción se hizo correctamente
+                    i = Comando.ExecuteNonQuery();
+                    nuevaConexion.Close();
+                    if (i == 1)
+                        MessageBOX.SHowDialog(3, "Se registró nuevo taller correctamente");
+                    else
+                        MessageBOX.SHowDialog(2, "Problemas al registar nuevo taller");
+                    nuevaConexion.Close();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error registrar taller: " + EX.Message);
+            }
+            return i;
+        }
         //VALIDAR SI EXISTE UN MISMO REGISTRO DE TALLERE PARA EVITAR DUPLICADOS, ETC.
         public string existeTaller(string nombre)
         {
