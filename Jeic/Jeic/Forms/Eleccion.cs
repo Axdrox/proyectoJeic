@@ -283,15 +283,15 @@ namespace Refracciones
                                    .ShowText(dgvDatosPDF.Rows[count].Cells[10].Value.ToString())
                                    .EndText();
                             }
-                                     
-                                         
-                            Items += Int32.Parse(dgvDatosPDF.Rows[count].Cells[8].Value.ToString());
+
+                            Items = count;      
+                            //Items += Int32.Parse(dgvDatosPDF.Rows[count].Cells[8].Value.ToString());
                             y -= 20;
                         }
                         //NUMERO DE ITEMS
                         canvas.BeginText().SetFontAndSize(font, 9)
-                                    .MoveText(x - 16, 51.5)
-                                    .ShowText(Items.ToString())
+                                    .MoveText(x - 16, 56.5)
+                                    .ShowText((Items+1).ToString())
                                     .EndText();
                     }
                     pdfdoc.Close();
@@ -411,13 +411,14 @@ namespace Refracciones
                             }
 
 
-                            Items += Int32.Parse(dgvDatosPDF.Rows[count].Cells[8].Value.ToString());
+                            Items = count;
+                            //Items += Int32.Parse(dgvDatosPDF.Rows[count].Cells[8].Value.ToString());
                             y -= 20;
                         }
                         //NUMERO DE ITEMS
                         canvas.BeginText().SetFontAndSize(font, 9)
-                                    .MoveText(x - 16, 51.5)
-                                    .ShowText(Items.ToString())
+                                    .MoveText(x - 16, 56.5)
+                                    .ShowText((Items+1).ToString())
                                     .EndText();
                     }
                     pdfdoc.Close();
