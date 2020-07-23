@@ -1,5 +1,6 @@
 ﻿namespace Refracciones.Forms
 {
+    using DocumentFormat.OpenXml.EMMA;
     using DocumentFormat.OpenXml.Office2010.PowerPoint;
     using Jeic.Properties;
     using System;
@@ -877,8 +878,7 @@
         private string claveProducto(string modelo, string descripcion, string marca, string anio)
         {
             string clave = "";
-
-            return clave = modelo + descripcion + "-" + marca.Substring(0, 3) + anio.Substring(2, 2);
+            return clave = descripcion.Substring(0, 4) + "-" + modelo.Substring(0, 3) + marca.Substring(0, 2) + anio.Substring(2, 2);
         }
 
         private void txtPiezaNombre_TextChanged(object sender, EventArgs e)

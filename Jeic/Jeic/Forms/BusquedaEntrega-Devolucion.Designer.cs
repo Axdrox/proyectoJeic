@@ -270,7 +270,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "BusquedaEntrega_Devolucion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "BusquedaEntrega_Devolucion";
+            this.Text = "Checar Entregas y Devoluciones";
             this.Load += new System.EventHandler(this.BusquedaEntrega_Devolucion_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.bunifuGradientPanel1.ResumeLayout(false);
