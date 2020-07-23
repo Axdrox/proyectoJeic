@@ -2674,35 +2674,6 @@ namespace Refracciones
         }
 
         //---------------- INSERTAR UN NUEVO TALLER
-        public int registrarTaller(string nombre, string direccion)
-        {
-            int i = 0;
-            try
-            {
-                using (SqlConnection nuevaConexion = Conexion.conexion())
-                {
-                    nuevaConexion.Open();
-                    Comando = new SqlCommand("INSERT INTO TALLER " + "(nombre, direccion) " + "VALUES (@nombre, @direccion) ", nuevaConexion);
-                    Comando.Parameters.AddWithValue("@nombre", nombre);
-                    Comando.Parameters.AddWithValue("@direccion", direccion);
-
-                    //Para saber si la inserción se hizo correctamente
-                    i = Comando.ExecuteNonQuery();
-                    nuevaConexion.Close();
-                    if (i == 1)
-                        MessageBOX.SHowDialog(3, "Se registró nuevo taller correctamente");
-                    else
-                        MessageBOX.SHowDialog(2, "Problemas al registar nuevo taller");
-                    nuevaConexion.Close();
-                }
-            }
-            catch (Exception EX)
-            {
-                MessageBox.Show("Error registrar taller: " + EX.Message);
-            }
-            return i;
-        }
-        //---------------- INSERTAR UN NUEVO TALLER
         public int registrarTaller(string nombre, string direccion, string ciudad, string telefono, string contacto, string horario )
         {
             int i = 0;

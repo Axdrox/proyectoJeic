@@ -517,6 +517,14 @@ namespace Refracciones.Forms
                 cbTaller.Hide();
                 txtDireccion.Show();
                 lblDireccion.Show();
+                txtCiudad.Show();
+                lblCiudad.Show();
+                txtContacto.Show();
+                lblContacto.Show();
+                lblTelefono.Show();
+                txtTelefono.Show();
+                lblHorario.Show();
+                txtHorario.Show();
                 //cbTaller.SelectedIndex = -1;
             }
             else if (chbOtroTaller.Text == "Otro" && chbOtroTaller.Checked == false)
@@ -529,6 +537,14 @@ namespace Refracciones.Forms
                 txtDireccion.ForeColor = Color.FromArgb(160, 160, 140);
                 txtDireccion.Hide();
                 lblDireccion.Hide();
+                txtCiudad.Hide();
+                lblCiudad.Hide();
+                txtContacto.Hide();
+                lblContacto.Hide();
+                lblTelefono.Hide();
+                txtTelefono.Hide();
+                lblHorario.Hide();
+                txtHorario.Hide();
                 cbTaller.Show();
             }
         }
@@ -624,7 +640,7 @@ namespace Refracciones.Forms
             if (chbOtroTaller.Checked == true)
             {
                 taller = txtTaller.Text.Trim().ToUpper();
-                operacion.registrarTaller(taller, txtDireccion.Text.Trim());
+                operacion.registrarTaller(taller, txtDireccion.Text.Trim(), txtCiudad.Text.Trim(), txtTelefono.Text.Trim(), txtContacto.Text.Trim(), txtHorario.Text.Trim());
             }
             else
                 taller = cbTaller.Text.Trim();
@@ -1816,6 +1832,114 @@ namespace Refracciones.Forms
         private void dgvPedido_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void txtCiudad_Enter(object sender, EventArgs e)
+        {
+            if (txtCiudad.Text == "Escriba la cuidad")
+            {
+                txtCiudad.Text = "";
+                txtCiudad.ForeColor = Color.White;
+            }
+        }
+
+        private void txtCiudad_Leave(object sender, EventArgs e)
+        {
+            if (txtCiudad.Text == "")
+            {
+                txtCiudad.Text = "Escriba la cuidad";
+                txtCiudad.ForeColor = Color.FromArgb(160, 160, 140);
+            }
+        }
+
+        private void txtCiudad_Validating(object sender, CancelEventArgs e)
+        {
+            if (chbOtroTaller.Checked == true && chbOtroTaller.Text != "Modificar")
+            {
+                if (string.IsNullOrEmpty(txtCiudad.Text.Trim()))
+                {
+                    e.Cancel = true;
+                    errorProvider1.SetError(txtCiudad, "Favor de llenar este campo");
+                }
+                else if (txtCiudad.Text.Trim() == "Escriba la cuidad")
+                {
+                    e.Cancel = true;
+                    errorProvider1.SetError(txtCiudad, "Favor de llenar este campo");
+                }
+                else
+                {
+                    e.Cancel = false;
+                    errorProvider1.SetError(txtCiudad, null);
+                }
+            }
+        }
+
+        private void txtContacto_Enter(object sender, EventArgs e)
+        {
+            if (txtContacto.Text == "Escriba nombre(s)")
+            {
+                txtContacto.Text = "";
+                txtContacto.ForeColor = Color.White;
+            }
+        }
+
+        private void txtContacto_Leave(object sender, EventArgs e)
+        {
+            if (txtContacto.Text == "")
+            {
+                txtContacto.Text = "Escriba nombre(s)";
+                txtContacto.ForeColor = Color.FromArgb(160, 160, 140);
+            }
+        }
+
+        private void txtContacto_Validating(object sender, CancelEventArgs e)
+        {
+            if (chbOtroTaller.Checked == true && chbOtroTaller.Text != "Modificar")
+            {
+                if (string.IsNullOrEmpty(txtContacto.Text.Trim()))
+                {
+                    e.Cancel = true;
+                    errorProvider1.SetError(txtContacto, "Favor de llenar este campo");
+                }
+                else if (txtContacto.Text.Trim() == "Escriba nombre(s)")
+                {
+                    e.Cancel = true;
+                    errorProvider1.SetError(txtContacto, "Favor de llenar este campo");
+                }
+                else
+                {
+                    e.Cancel = false;
+                    errorProvider1.SetError(txtContacto, null);
+                }
+            }
+        }
+
+        private void txtTelefono_Validating(object sender, CancelEventArgs e)
+        {
+            if (chbOtroTaller.Checked == true && string.IsNullOrEmpty(txtTelefono.Text.Trim()))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txtTelefono, "Favor de llenar este campo");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider1.SetError(txtTelefono, null);
+            }
+        }
+
+        private void txtHorario_Validating(object sender, CancelEventArgs e)
+        {
+            if (chbOtroTaller.Checked == true && string.IsNullOrEmpty(txtHorario.Text.Trim()))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txtHorario, "Favor de llenar este campo");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProvider1.SetError(txtHorario, null);
+            }
         }
     }
 }
