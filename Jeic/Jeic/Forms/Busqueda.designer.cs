@@ -603,7 +603,7 @@
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
             this.dvgPedido.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dvgPedido.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dvgPedido.Size = new System.Drawing.Size(944, 480);
+            this.dvgPedido.Size = new System.Drawing.Size(897, 480);
             this.dvgPedido.TabIndex = 7;
             this.dvgPedido.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgPedido_CellContentClick);
             // 
