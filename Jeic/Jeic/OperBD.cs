@@ -117,7 +117,7 @@ namespace Refracciones
         }
 
         //--------------------INGRESAR FACTURA--------------------
-        public string Registrar_factura(string cve_siniestro, string cve_pedido, string cve_factura, int cve_estado, decimal fact_sinIVA, decimal descuento, decimal fact_neto, DateTime fecha_ingreso, DateTime fecha_revision, DateTime fecha_pago, string nombre_factura, byte[] archivo, string nombre_xml, byte[] archivo_xml, string comentario)
+        public string Registrar_factura(string cve_siniestro, string cve_pedido, string cve_factura, int cve_estado, decimal fact_sinIVA, decimal descuento, decimal fact_neto, DateTime fecha_ingreso, DateTime fecha_revision, DateTime fecha_pago, string nombre_factura, byte[] archivo, string nombre_xml, byte[] archivo_xml, string comentario, string realizo)
         {
             string mensaje = "Se inserto la factura";
             // try
@@ -129,7 +129,7 @@ namespace Refracciones
                 SqlCommand comm;
                 if (archivo == null && archivo_xml == null)
                 {
-                    cmd = new SqlCommand("INSERT INTO FACTURA(cve_factura,cve_estado,fact_sinIVA,descuento,fact_neto,fecha_ingreso,fecha_revision,fecha_pago,comentario) VALUES (@cve_factura,@cve_estado,@fact_sinIVA,@descuento,@fact_neto,@fecha_ingreso,@fecha_revision,@fecha_pago,@comentario)", nuevaConexion);
+                    cmd = new SqlCommand("INSERT INTO FACTURA(cve_factura,cve_estado,fact_sinIVA,descuento,fact_neto,fecha_ingreso,fecha_revision,fecha_pago,comentario,realizo) VALUES (@cve_factura,@cve_estado,@fact_sinIVA,@descuento,@fact_neto,@fecha_ingreso,@fecha_revision,@fecha_pago,@comentario,@realizo)", nuevaConexion);
                     cmd.Parameters.Add("@cve_factura", SqlDbType.NVarChar, 50);
                     cmd.Parameters.Add("@cve_estado", SqlDbType.Int);
                     cmd.Parameters.Add("@fact_sinIVA", SqlDbType.Decimal);
@@ -139,6 +139,7 @@ namespace Refracciones
                     cmd.Parameters.Add("@fecha_revision", SqlDbType.Date);
                     cmd.Parameters.Add("@fecha_pago", SqlDbType.Date);
                     cmd.Parameters.Add("@comentario", SqlDbType.NVarChar, 100);
+                    cmd.Parameters.Add("@realizo", SqlDbType.NVarChar, 50);
 
                     cmd.Parameters["@cve_factura"].Value = cve_factura;
                     cmd.Parameters["@cve_estado"].Value = cve_estado;
@@ -149,6 +150,7 @@ namespace Refracciones
                     cmd.Parameters["@fecha_revision"].Value = fecha_revision;
                     cmd.Parameters["@fecha_pago"].Value = fecha_pago;
                     cmd.Parameters["@comentario"].Value = comentario;
+                    cmd.Parameters["@realizo"].Value = realizo;
                     cmd.ExecuteNonQuery();
                 }
                 else
@@ -167,6 +169,7 @@ namespace Refracciones
                     cmd.Parameters.Add("@nombre_xml", SqlDbType.NVarChar, 100);
                     cmd.Parameters.Add("@archivo_xml", SqlDbType.VarBinary);
                     cmd.Parameters.Add("@comentario", SqlDbType.NVarChar, 100);
+                    cmd.Parameters.Add("@realizo", SqlDbType.NVarChar, 50);
 
                     cmd.Parameters["@cve_factura"].Value = cve_factura;
                     cmd.Parameters["@cve_estado"].Value = cve_estado;
@@ -181,6 +184,7 @@ namespace Refracciones
                     cmd.Parameters["@nombre_xml"].Value = nombre_xml;
                     cmd.Parameters["@archivo_xml"].Value = archivo_xml;
                     cmd.Parameters["@comentario"].Value = comentario;
+                    cmd.Parameters["@realizo"].Value = realizo;
                     cmd.ExecuteNonQuery();
                 }
                 //MessageBox.Show(cve_siniestro.ToString());
@@ -268,7 +272,7 @@ namespace Refracciones
         //--------------------------------------------------------------------------------
 
         //--------------------INGRESAR FACTURA--------------------
-        public string Registrar_Refactura(string cve_siniestro, string cve_pedido, string cve_factura, int cve_estado, string cve_refactura, decimal fact_sinIVA, decimal descuento, decimal fact_neto, decimal costo_refactura, DateTime fecha_refactura, DateTime fecha_ingreso, DateTime fecha_revision, DateTime fecha_pago, string nombre_factura, byte[] archivo, string nombre_xml, byte[] archivo_xml, string comentario)
+        public string Registrar_Refactura(string cve_siniestro, string cve_pedido, string cve_factura, int cve_estado, string cve_refactura, decimal fact_sinIVA, decimal descuento, decimal fact_neto, decimal costo_refactura, DateTime fecha_refactura, DateTime fecha_ingreso, DateTime fecha_revision, DateTime fecha_pago, string nombre_factura, byte[] archivo, string nombre_xml, byte[] archivo_xml, string comentario, string realizo)
         {
             string mensaje = "Se inserto la factura";
             SqlCommand comm;
@@ -281,7 +285,7 @@ namespace Refracciones
 
                     if (archivo == null && archivo_xml == null)
                     {
-                        Comando = new SqlCommand("INSERT INTO FACTURA(cve_factura,cve_estado,cve_refactura,fact_sinIVA,descuento,fact_neto,costo_refactura,fecha_refactura,fecha_ingreso,fecha_revision,fecha_pago,comentario) VALUES (@cve_factura,@cve_estado,@cve_refactura,@fact_sinIVA,@descuento,@fact_neto,@costo_refactura,@fecha_refactura,@fecha_ingreso,@fecha_revision,@fecha_pago,@comentario)", nuevaConexion);
+                        Comando = new SqlCommand("INSERT INTO FACTURA(cve_factura,cve_estado,cve_refactura,fact_sinIVA,descuento,fact_neto,costo_refactura,fecha_refactura,fecha_ingreso,fecha_revision,fecha_pago,comentario,realizo) VALUES (@cve_factura,@cve_estado,@cve_refactura,@fact_sinIVA,@descuento,@fact_neto,@costo_refactura,@fecha_refactura,@fecha_ingreso,@fecha_revision,@fecha_pago,@comentario,@realizo)", nuevaConexion);
                         Comando.Parameters.Add("@cve_factura", SqlDbType.NVarChar, 50);
                         Comando.Parameters.Add("@cve_estado", SqlDbType.Int);
                         Comando.Parameters.Add("@cve_refactura", SqlDbType.NVarChar, 50);
@@ -294,6 +298,7 @@ namespace Refracciones
                         Comando.Parameters.Add("@fecha_revision", SqlDbType.Date);
                         Comando.Parameters.Add("@fecha_pago", SqlDbType.Date);
                         Comando.Parameters.Add("@comentario", SqlDbType.NVarChar, 100);
+                        Comando.Parameters.Add("@realizo", SqlDbType.NVarChar, 50);
 
                         Comando.Parameters["@cve_factura"].Value = cve_factura;
                         Comando.Parameters["@cve_estado"].Value = cve_estado;
@@ -307,11 +312,12 @@ namespace Refracciones
                         Comando.Parameters["@fecha_revision"].Value = fecha_revision;
                         Comando.Parameters["@fecha_pago"].Value = fecha_pago;
                         Comando.Parameters["@comentario"].Value = comentario;
+                        Comando.Parameters["@realizo"].Value = realizo;
                         Comando.ExecuteNonQuery();
                     }
                     else
                     {
-                        Comando = new SqlCommand("INSERT INTO FACTURA(cve_factura,cve_estado,cve_refactura,fact_sinIVA,fact_neto,costo_refactura,fecha_refactura,fecha_ingreso,fecha_revision,fecha_pago,nombre_factura,archivo,nombre_xml,archivo_xml,comentario) VALUES (@cve_factura,@cve_estado,@cve_refactura,@fact_sinIVA,@fact_neto,@costo_refactura,@fecha_refactura,@fecha_ingreso,@fecha_revision,@fecha_pago,@nombre_factura,@archivo,@nombre_xml,@archivo_xml,@comentario)", nuevaConexion);
+                        Comando = new SqlCommand("INSERT INTO FACTURA(cve_factura,cve_estado,cve_refactura,fact_sinIVA,fact_neto,costo_refactura,fecha_refactura,fecha_ingreso,fecha_revision,fecha_pago,nombre_factura,archivo,nombre_xml,archivo_xml,comentario,realizo) VALUES (@cve_factura,@cve_estado,@cve_refactura,@fact_sinIVA,@fact_neto,@costo_refactura,@fecha_refactura,@fecha_ingreso,@fecha_revision,@fecha_pago,@nombre_factura,@archivo,@nombre_xml,@archivo_xml,@comentario,@realizo)", nuevaConexion);
                         Comando.Parameters.Add("@cve_factura", SqlDbType.NVarChar, 50);
                         Comando.Parameters.Add("@cve_estado", SqlDbType.Int);
                         Comando.Parameters.Add("@cve_refactura", SqlDbType.NVarChar, 50);
@@ -328,6 +334,7 @@ namespace Refracciones
                         Comando.Parameters.Add("@nombre_xml", SqlDbType.NVarChar, 100);
                         Comando.Parameters.Add("@archivo_xml", SqlDbType.VarBinary);
                         Comando.Parameters.Add("@comentario", SqlDbType.NVarChar, 100);
+                        Comando.Parameters.Add("@realizo", SqlDbType.NVarChar, 50);
 
                         Comando.Parameters["@cve_factura"].Value = cve_factura;
                         Comando.Parameters["@cve_estado"].Value = cve_estado;
@@ -345,6 +352,7 @@ namespace Refracciones
                         Comando.Parameters["@nombre_xml"].Value = nombre_xml;
                         Comando.Parameters["@archivo_xml"].Value = archivo_xml;
                         Comando.Parameters["@comentario"].Value = comentario;
+                        Comando.Parameters["@realizo"].Value = realizo;
                         Comando.ExecuteNonQuery();
                     }
 
@@ -417,26 +425,28 @@ namespace Refracciones
         //-------------------------------------------------------------------------------------------------------
 
         //--------------------REGISTRAR DEVOLUCION ACTUALIZAR COLUMNA CANTIDAD Y ASIGNAR CVE DE DEVOLUCION CON FECHA--------------------
-        public string Registrar_Devolucion(string cve_siniestro, string cve_pedido, int cve_pieza, int cve_devolucion, int cantidad, DateTime fecha, int cantidadD, int cve_venta, string motivo, decimal penalizacion)
+        public string Registrar_Devolucion(string cve_siniestro, string cve_pedido, int cve_pieza, int cve_devolucion, int cantidad, DateTime fecha, int cantidadD, int cve_venta, string motivo, decimal penalizacion, string realizo)
         {
             string mensaje = "ERROR AL HACER LA DEVOLUCIÓN";
 
             using (SqlConnection nuevaConexion = Conexion.conexion())
             {
                 nuevaConexion.Open();
-                Comando = new SqlCommand("INSERT INTO DEVOLUCION (fecha,cantidad,cve_pieza,cve_venta,motivo,penalizacion) VALUES(@fecha,@cantidadD,@cve_pieza,@cve_venta,@motivo,@cve_penalizacion)", nuevaConexion);
+                Comando = new SqlCommand("INSERT INTO DEVOLUCION (fecha,cantidad,cve_pieza,cve_venta,motivo,penalizacion,realizo) VALUES(@fecha,@cantidadD,@cve_pieza,@cve_venta,@motivo,@cve_penalizacion,@realizo)", nuevaConexion);
                 Comando.Parameters.Add("@fecha", SqlDbType.Date);
                 Comando.Parameters.Add("@cantidadD", SqlDbType.Int);
                 Comando.Parameters.Add("@cve_pieza", SqlDbType.Int);
                 Comando.Parameters.Add("@cve_venta", SqlDbType.Int);
                 Comando.Parameters.Add("@motivo", SqlDbType.NVarChar, 50);
                 Comando.Parameters.Add("@cve_penalizacion", SqlDbType.Decimal);
+                Comando.Parameters.Add("@realizo", SqlDbType.NVarChar, 50);
                 Comando.Parameters["@fecha"].Value = fecha;
                 Comando.Parameters["@cantidadD"].Value = cantidadD;
                 Comando.Parameters["@cve_pieza"].Value = cve_pieza;
                 Comando.Parameters["@cve_venta"].Value = cve_venta;
                 Comando.Parameters["@motivo"].Value = motivo;
                 Comando.Parameters["@cve_penalizacion"].Value = penalizacion;
+                Comando.Parameters["@realizo"].Value = realizo;
                 Comando.ExecuteNonQuery();
                 //SqlCommand cmd = new SqlCommand(string.Format("UPDATE PEDIDO SET cantidad = {0}, cve_devolucion = {1}  WHERE cve_siniestro = '{2}' AND cve_pedido = {3} AND cve_pieza = {4}",/*cantidad,*/cve_devolucion, cve_siniestro, cve_pedido, cve_pieza), nuevaConexion);
                 SqlCommand cmd = new SqlCommand(string.Format("UPDATE p  SET  p.cve_devolucion = {0}, p.pzas_devolucion = {1} FROM PEDIDO p INNER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta WHERE ven.cve_siniestro = '{2}' AND ven.cve_pedido = '{3}' AND p.cve_pieza = {4}",/*cantidad,*/cve_devolucion, cantidad, cve_siniestro, cve_pedido, cve_pieza), nuevaConexion);
@@ -470,20 +480,21 @@ namespace Refracciones
         //-------------------------------------------------------------------------------------------------------------------------
 
         //--------------------REGISTRAR ENTREGA ACTUALIZAR COLUMNA CANTIDAD Y ASIGNAR CVE DE ENTREGA CON FECHA--------------------
-        public string Registrar_Entrega(string cve_siniestro, string cve_pedido, int cve_pieza, int cve_entrega, int cantidad, DateTime fecha, int cantidadE, int cve_venta, DateTime fecha_asigancion)
+        public string Registrar_Entrega(string cve_siniestro, string cve_pedido, int cve_pieza, int cve_entrega, int cantidad, DateTime fecha, int cantidadE, int cve_venta, DateTime fecha_asigancion, string realizo)
         {
             string mensaje = "ERROR AL HACER LA ENTREGA";
             int dias_entrega = 0;
             using (SqlConnection nuevaConexion = Conexion.conexion())
             {
                 nuevaConexion.Open();
-                Comando = new SqlCommand("INSERT INTO ENTREGA (fecha,cantidad,cve_pieza,cve_venta) VALUES (@fecha,@cantidadE,@cve_pieza,@cve_venta)", nuevaConexion);
+                Comando = new SqlCommand("INSERT INTO ENTREGA (fecha,cantidad,cve_pieza,cve_venta, realizo) VALUES (@fecha,@cantidadE,@cve_pieza,@cve_venta,@realizo)", nuevaConexion);
                 /*Comando.Parameters.Add("@fecha_asignacion", SqlDbType.Date);
                 Comando.Parameters.Add("@fecha_promesa", SqlDbType.Date);*/
                 Comando.Parameters.Add("@fecha", SqlDbType.Date);
                 Comando.Parameters.Add("@cantidadE", SqlDbType.Int);
                 Comando.Parameters.Add("@cve_pieza", SqlDbType.Int);
                 Comando.Parameters.Add("@cve_venta", SqlDbType.Int);
+                Comando.Parameters.Add("@realizo", SqlDbType.NVarChar, 50);
 
                 /*Comando.Parameters["@fecha_asignacion"].Value = fecha_asignacion;
                 Comando.Parameters["@fecha_promesa"].Value = fecha_promesa;*/
@@ -491,6 +502,7 @@ namespace Refracciones
                 Comando.Parameters["@cantidadE"].Value = cantidadE;
                 Comando.Parameters["@cve_pieza"].Value = cve_pieza;
                 Comando.Parameters["@cve_venta"].Value = cve_venta;
+                Comando.Parameters["@realizo"].Value = realizo;
                 Comando.ExecuteNonQuery();
 
                 //VAMOS A OBTENER LA DIFERENCIA DE DIAS ENTRE FECHA_ENTREGA Y FECHA_ASIGNACIÓN
@@ -569,7 +581,7 @@ namespace Refracciones
             {
                 nuevaConexion.Open();
                 //Comando = new SqlCommand(string.Format("SELECT DISTINCT  pie.nombre AS PIEZA,  ent.cantidad AS CANTIDAD, c.cve_nombre AS CLIENTE, ent.fecha AS 'FECHA ENTREGA', ven.fecha_promesa AS 'FECHA PROMESA' FROM ENTREGA ent JOIN VENTAS ven ON ven.cve_venta= ent.cve_venta JOIN VALUADOR val ON val.cve_valuador = ven.cve_valuador JOIN CLIENTE c ON c.cve_valuador = val.cve_valuador JOIN PIEZA  pie ON pie.cve_pieza = ent.cve_pieza WHERE ent.cve_venta = {0}", cve_venta), nuevaConexion);
-                Comando = new SqlCommand(string.Format("SELECT  pie.nombre AS PIEZA,  ent.cantidad AS CANTIDAD, c.cve_nombre AS CLIENTE, ent.fecha AS 'FECHA ENTREGA', ven.fecha_promesa AS 'FECHA PROMESA',p.entrega_enTiempo AS 'ENTREGA EN TIEMPO' FROM ENTREGA ent INNER JOIN VENTAS ven ON ven.cve_venta= ent.cve_venta INNER JOIN VALUADOR val ON val.cve_valuador = ven.cve_valuador INNER JOIN CLIENTE c ON c.cve_valuador = val.cve_valuador INNER JOIN PIEZA  pie ON pie.cve_pieza = ent.cve_pieza INNER JOIN PEDIDO p ON p.cve_venta= ent.cve_venta WHERE ent.cve_venta = {0}", cve_venta), nuevaConexion);
+                Comando = new SqlCommand(string.Format("SELECT  pie.nombre AS PIEZA,  ent.cantidad AS CANTIDAD, c.cve_nombre AS CLIENTE, ent.fecha AS 'FECHA ENTREGA', ven.fecha_promesa AS 'FECHA PROMESA',p.entrega_enTiempo AS 'ENTREGA EN TIEMPO', ent.realizo AS 'REALIZADA POR' FROM ENTREGA ent INNER JOIN VENTAS ven ON ven.cve_venta= ent.cve_venta INNER JOIN VALUADOR val ON val.cve_valuador = ven.cve_valuador INNER JOIN CLIENTE c ON c.cve_valuador = val.cve_valuador INNER JOIN PIEZA  pie ON pie.cve_pieza = ent.cve_pieza INNER JOIN PEDIDO p ON p.cve_venta= ent.cve_venta WHERE ent.cve_venta = {0}", cve_venta), nuevaConexion);
                 da = new SqlDataAdapter(Comando);
                 da.Fill(dt);
                 nuevaConexion.Close();
@@ -579,14 +591,14 @@ namespace Refracciones
 
         //---------------------------------------------------------------------------------------------------------------------
 
-        //--------------------OBTENER DATOS DE LA TABLA ENTREGA--------------------
+        //--------------------OBTENER DATOS DE LA TABLA DEVOLUCIÓN--------------------
         public DataTable Tabla_Devolucion(int cve_venta)
         {
             dt = new DataTable();
             using (SqlConnection nuevaConexion = Conexion.conexion())
             {
                 nuevaConexion.Open();
-                Comando = new SqlCommand(string.Format("SELECT  pie.nombre AS PIEZA,  dev.cantidad AS CANTIDAD, c.cve_nombre AS CLIENTE, dev.motivo AS MOTIVO,dev.penalizacion AS 'PORCENTAJE PENALIZACIÓN (%)', dev.fecha AS FECHA FROM DEVOLUCION dev JOIN VENTAS ven ON ven.cve_venta= dev.cve_venta JOIN VALUADOR val ON val.cve_valuador = ven.cve_valuador JOIN CLIENTE c ON c.cve_valuador = val.cve_valuador JOIN PIEZA  pie ON pie.cve_pieza = dev.cve_pieza  WHERE dev.cve_venta  = {0}", cve_venta), nuevaConexion);
+                Comando = new SqlCommand(string.Format("SELECT  pie.nombre AS PIEZA,  dev.cantidad AS CANTIDAD, c.cve_nombre AS CLIENTE, dev.motivo AS MOTIVO,dev.penalizacion AS 'PORCENTAJE PENALIZACIÓN (%)', dev.fecha AS FECHA, dev.realizo AS 'REALIZADA POR' FROM DEVOLUCION dev JOIN VENTAS ven ON ven.cve_venta= dev.cve_venta JOIN VALUADOR val ON val.cve_valuador = ven.cve_valuador JOIN CLIENTE c ON c.cve_valuador = val.cve_valuador JOIN PIEZA  pie ON pie.cve_pieza = dev.cve_pieza  WHERE dev.cve_venta  = {0}", cve_venta), nuevaConexion);
                 da = new SqlDataAdapter(Comando);
                 da.Fill(dt);
                 nuevaConexion.Close();
@@ -630,7 +642,7 @@ namespace Refracciones
         //-----------------------------------------------------------------------------------------------------
 
         //--------------------ACTUALIZAR FACTURA (UPDATE)--------------------
-        public string Actualizar_Factura(string cve_factura, int cve_estado, decimal fact_sinIVA, decimal descuento, decimal fact_neto, DateTime fecha_ingreso, DateTime fecha_revision, DateTime fecha_pago, string nombre_factura, byte[] archivo, string nombre_xml, byte[] archivo_xml, string comentario)
+        public string Actualizar_Factura(string cve_factura, int cve_estado, decimal fact_sinIVA, decimal descuento, decimal fact_neto, DateTime fecha_ingreso, DateTime fecha_revision, DateTime fecha_pago, string nombre_factura, byte[] archivo, string nombre_xml, byte[] archivo_xml, string comentario, string realizo)
         {
             string mensaje = "Se Actualizo Correctamente";
             using (SqlConnection nuevaConexion = Conexion.conexion())
@@ -638,7 +650,7 @@ namespace Refracciones
                 nuevaConexion.Open();
                 if (archivo == null && archivo_xml == null)
                 {
-                    Comando = new SqlCommand("UPDATE FACTURA SET cve_estado = @cve_estado,fact_sinIVA = @fact_sinIVA,descuento = @descuento,fact_neto = @fact_neto,fecha_ingreso = @fecha_ingreso,fecha_revision = @fecha_revision,fecha_pago = @fecha_pago,comentario = @comentario WHERE cve_factura = @cve_factura", nuevaConexion);
+                    Comando = new SqlCommand("UPDATE FACTURA SET cve_estado = @cve_estado,fact_sinIVA = @fact_sinIVA,descuento = @descuento,fact_neto = @fact_neto,fecha_ingreso = @fecha_ingreso,fecha_revision = @fecha_revision,fecha_pago = @fecha_pago,comentario = @comentario,realizo = @realizo WHERE cve_factura = @cve_factura", nuevaConexion);
                     Comando.Parameters.Add("@cve_factura", SqlDbType.NVarChar, 50);
                     Comando.Parameters.Add("@cve_estado", SqlDbType.Int);
                     Comando.Parameters.Add("@fact_sinIVA", SqlDbType.Decimal);
@@ -648,6 +660,7 @@ namespace Refracciones
                     Comando.Parameters.Add("@fecha_revision", SqlDbType.Date);
                     Comando.Parameters.Add("@fecha_pago", SqlDbType.Date);
                     Comando.Parameters.Add("@comentario", SqlDbType.NVarChar, 100);
+                    Comando.Parameters.Add("@realizo", SqlDbType.NVarChar, 50);
                     Comando.Parameters["@cve_factura"].Value = cve_factura;
                     Comando.Parameters["@cve_estado"].Value = cve_estado;
                     Comando.Parameters["@fact_sinIVA"].Value = fact_sinIVA;
@@ -657,6 +670,7 @@ namespace Refracciones
                     Comando.Parameters["@fecha_revision"].Value = fecha_revision;
                     Comando.Parameters["@fecha_pago"].Value = fecha_pago;
                     Comando.Parameters["@comentario"].Value = comentario;
+                    Comando.Parameters["@realizo"].Value = realizo;
                     Comando.ExecuteNonQuery();
                 }
                 else
@@ -699,7 +713,7 @@ namespace Refracciones
         //----------------------------------------------------------------------------------------------------------
 
         //--------------------ACTUALIZAR REFACTURA (UPDATE)--------------------
-        public string Actualizar_Refactura(string cve_factura, int cve_estado, string cve_refactura, decimal fact_sinIVA, decimal descuento, decimal fact_neto, decimal costo_refactura, DateTime fecha_refactura, DateTime fecha_ingreso, DateTime fecha_revision, DateTime fecha_pago, string nombre_factura, byte[] archivo, string nombre_xml, byte[] archivo_xml, string comentario)
+        public string Actualizar_Refactura(string cve_factura, int cve_estado, string cve_refactura, decimal fact_sinIVA, decimal descuento, decimal fact_neto, decimal costo_refactura, DateTime fecha_refactura, DateTime fecha_ingreso, DateTime fecha_revision, DateTime fecha_pago, string nombre_factura, byte[] archivo, string nombre_xml, byte[] archivo_xml, string comentario, string realizo)
         {
             string mensaje = "Se Actualizo Correctamente";
 
@@ -709,7 +723,7 @@ namespace Refracciones
 
                 if (archivo == null && archivo_xml == null)
                 {
-                    Comando = new SqlCommand("UPDATE FACTURA SET cve_refactura = @cve_refactura,cve_estado = @cve_estado,fact_sinIVA = @fact_sinIVA,descuento = @descuento,fact_neto = @fact_neto,costo_refactura = @costo_refactura,fecha_refactura = @fecha_refactura,fecha_ingreso = @fecha_ingreso,fecha_revision = @fecha_revision,fecha_pago = @fecha_pago,comentario = @comentario WHERE cve_factura = @cve_factura", nuevaConexion);
+                    Comando = new SqlCommand("UPDATE FACTURA SET cve_refactura = @cve_refactura,cve_estado = @cve_estado,fact_sinIVA = @fact_sinIVA,descuento = @descuento,fact_neto = @fact_neto,costo_refactura = @costo_refactura,fecha_refactura = @fecha_refactura,fecha_ingreso = @fecha_ingreso,fecha_revision = @fecha_revision,fecha_pago = @fecha_pago,comentario = @comentario, realizo = @realizo WHERE cve_factura = @cve_factura", nuevaConexion);
                     Comando.Parameters.Add("@cve_factura", SqlDbType.NVarChar, 50);
                     Comando.Parameters.Add("@cve_estado", SqlDbType.Int);
                     Comando.Parameters.Add("@cve_refactura", SqlDbType.NVarChar, 50);
@@ -722,6 +736,7 @@ namespace Refracciones
                     Comando.Parameters.Add("@fecha_revision", SqlDbType.Date);
                     Comando.Parameters.Add("@fecha_pago", SqlDbType.Date);
                     Comando.Parameters.Add("@comentario", SqlDbType.NVarChar, 100);
+                    Comando.Parameters.Add("@realizo", SqlDbType.NVarChar, 50);
 
                     Comando.Parameters["@cve_factura"].Value = cve_factura;
                     Comando.Parameters["@cve_estado"].Value = cve_estado;
@@ -735,11 +750,12 @@ namespace Refracciones
                     Comando.Parameters["@fecha_revision"].Value = fecha_revision;
                     Comando.Parameters["@fecha_pago"].Value = fecha_pago;
                     Comando.Parameters["@comentario"].Value = comentario;
+                    Comando.Parameters["@realizo"].Value = realizo;
                     Comando.ExecuteNonQuery();
                 }
                 else
                 {
-                    Comando = new SqlCommand("UPDATE FACTURA SET cve_estado = @cve_estado,cve_refactura = @cve_refactura,fact_sinIVA = @fact_sinIVA,descuento = @descuento,fact_neto = @fact_neto,costo_refactura = @costo_refactura,fecha_refactura = @fecha_refactura,fecha_ingreso = @fecha_ingreso,fecha_revision = @fecha_revision,fecha_pago = @fecha_pago,nombre_factura = @nombre_factura,archivo = @archivo,nombre_xml = @nombre_xml,archivo_xml = @archivo_xml,comentario = @comentario WHERE cve_factura = @cve_factura", nuevaConexion);
+                    Comando = new SqlCommand("UPDATE FACTURA SET cve_estado = @cve_estado,cve_refactura = @cve_refactura,fact_sinIVA = @fact_sinIVA,descuento = @descuento,fact_neto = @fact_neto,costo_refactura = @costo_refactura,fecha_refactura = @fecha_refactura,fecha_ingreso = @fecha_ingreso,fecha_revision = @fecha_revision,fecha_pago = @fecha_pago,nombre_factura = @nombre_factura,archivo = @archivo,nombre_xml = @nombre_xml,archivo_xml = @archivo_xml,comentario = @comentario, realizo = @realizo WHERE cve_factura = @cve_factura", nuevaConexion);
                     Comando.Parameters.Add("@cve_factura", SqlDbType.NVarChar, 50);
                     Comando.Parameters.Add("@cve_estado", SqlDbType.Int);
                     Comando.Parameters.Add("@cve_refactura", SqlDbType.NVarChar, 50);
@@ -756,6 +772,7 @@ namespace Refracciones
                     Comando.Parameters.Add("@nombre_xml", SqlDbType.NVarChar, 100);
                     Comando.Parameters.Add("@archivo_xml", SqlDbType.VarBinary);
                     Comando.Parameters.Add("@comentario", SqlDbType.NVarChar, 100);
+                    Comando.Parameters.Add("@realizo", SqlDbType.NVarChar, 50);
 
                     Comando.Parameters["@cve_factura"].Value = cve_factura;
                     Comando.Parameters["@cve_estado"].Value = cve_estado;
@@ -773,6 +790,7 @@ namespace Refracciones
                     Comando.Parameters["@nombre_xml"].Value = nombre_xml;
                     Comando.Parameters["@archivo_xml"].Value = archivo_xml;
                     Comando.Parameters["@comentario"].Value = comentario;
+                    Comando.Parameters["@realizo"].Value = realizo;
                     Comando.ExecuteNonQuery();
                 }
 
@@ -1202,9 +1220,17 @@ namespace Refracciones
         //------------- GENERAR EXCEL
         public void generarExcel(string ruta, string fecha1, string fecha2, decimal costoOperativo)
         {
-           // try
-            //{
+            try
+            {
                 int temp = 0;
+                Double tempd = 0;
+                double costoAdq = 0;
+                double precioV = 0;
+                double utilidadAdq = 0;
+                double utilidadFinal = 0;
+                double gasto = 0;
+                string tempSAE;
+                DateTime datevalue;
                 SLDocument sl = new SLDocument(ruta);
                 DateTime hoy = DateTime.Today;
                 sl.SetCellValue("M2", hoy.ToString("dd-MM-yyyy"));//Se agrega la fecha al excel
@@ -1226,8 +1252,7 @@ namespace Refracciones
                     Lector = Comando.ExecuteReader();
                     while (Lector.Read())
                     {
-                        string tempSAE;
-                        DateTime datevalue;
+                        
                        
                         tempSAE = DescSAE(Lector["VHEICULO MODELO"].ToString(), Lector["PIEZA"].ToString(), Lector["MARCA"].ToString(), Lector["AÑO"].ToString());
                         if(int.TryParse(Lector["PEDIDO"].ToString(),out temp))
@@ -1267,7 +1292,14 @@ namespace Refracciones
                         sl.SetCellValue("P" + celdaContenido, Lector["PORTAL"].ToString());
                         sl.SetCellValue("Q" + celdaContenido, Double.Parse(Lector["COSTO ENVÍO"].ToString()));
                         sl.SetCellValue("R" + celdaContenido, Double.Parse(Lector["COSTO"].ToString()));
-                        sl.SetCellValue("S" + celdaContenido, Double.Parse(Lector["PRECIO VENTA"].ToString()));
+                        if(Double.TryParse(Lector["PRECIO VENTA"].ToString(), out tempd))
+                        {
+                            sl.SetCellValue("S" + celdaContenido, Double.Parse(Lector["PRECIO VENTA"].ToString()));
+                        }
+                        else
+                        {
+                            sl.SetCellValue("S" + celdaContenido, 0);
+                         }
                         sl.SetCellValue("T" + celdaContenido, Lector["DESTINO"].ToString());
                         sl.SetCellValue("U" + celdaContenido, Int32.Parse(Lector["NUMERO DE VENDEDOR"].ToString()));
                         sl.SetCellValue("V" + celdaContenido, Lector["VENDEDOR"].ToString());
@@ -1373,20 +1405,34 @@ namespace Refracciones
                         {
                             sl.SetCellValue("AO" + celdaContenido, Lector["FECHA DE PAGO FACTURA"].ToString());
                         }
-                        sl.SetCellValue("AP" + celdaContenido, Double.Parse(Lector["FACTURA SIN IVA"].ToString()));
+                        if(Double.TryParse(Lector["FACTURA SIN IVA"].ToString(), out tempd))
+                        {
+                            sl.SetCellValue("AP" + celdaContenido, Double.Parse(Lector["FACTURA SIN IVA"].ToString()));
+                        }
+                        else
+                         {
+                            sl.SetCellValue("AP" + celdaContenido, 0);
+                         }
+                        if (Double.TryParse(Lector["FACTURA NETO"].ToString(), out tempd))
+                        {
                         sl.SetCellValue("AQ" + celdaContenido, Double.Parse(Lector["FACTURA NETO"].ToString()));
+                        }
+                        else
+                        {
+                        sl.SetCellValue("AQ" + celdaContenido, 0);
+                        }
                         sl.SetCellValue("AR" + celdaContenido, Lector["COMENTARIOS SINIESTRO"].ToString());
                         sl.SetCellValue("AS" + celdaContenido, Lector["COMENTARIOS FACTURA"].ToString());
 
 
-                        double costoAdq = 0;
+                        /*double costoAdq = 0;
                         double precioV = 0;
                         double utilidadAdq = 0;
                         double utilidadFinal = 0;
-                        double gasto = 0;
+                        double gasto = 0;*/
                         if (Lector["PENALIZACIÓN POR DEVOLUCIÓN"].ToString() != "")
                         {
-                            MessageBox.Show("despues entrega");
+                            
                             double costo = Double.Parse(Lector["COSTO ADQUISICION"].ToString());
                             double penalizacion = Double.Parse(Lector["PENALIZACIÓN POR DEVOLUCIÓN"].ToString())/100;//Porcentaje de penalización
                             costoAdq = (costo * penalizacion) + costo;
@@ -1394,7 +1440,7 @@ namespace Refracciones
                         }
                         else if (PiezasDevueltasPen(Convert.ToInt32(Lector["cve_venta"].ToString()), Convert.ToInt32(Lector["cve_pieza"].ToString())) != 0)
                         {
-                            MessageBox.Show("antes entrega");
+                            
                             double costo = Double.Parse(Lector["COSTO ADQUISICION"].ToString());
                             double penalizacion = PiezasDevueltasPen(Convert.ToInt32(Lector["cve_venta"].ToString()), Convert.ToInt32(Lector["cve_pieza"].ToString()));//Porcentaje de penalización
                             costoAdq = (costo * penalizacion) + costo;
@@ -1405,7 +1451,15 @@ namespace Refracciones
                             sl.SetCellValue("AT" + celdaContenido, Double.Parse(Lector["COSTO ADQUISICION"].ToString()));
                             costoAdq = Double.Parse(Lector["COSTO ADQUISICION"].ToString());
                         }
-                        precioV = Double.Parse(Lector["PRECIO VENTA"].ToString());
+                        if(Double.TryParse(Lector["PRECIO VENTA"].ToString(), out tempd))
+                        {
+                            precioV = Double.Parse(Lector["PRECIO VENTA"].ToString());
+                        }
+                        else
+                        {
+                            precioV = 0;
+                        }
+                        //precioV = Double.Parse(Lector["PRECIO VENTA"].ToString());
                         utilidadAdq = precioV - costoAdq;
                         sl.SetCellValue("AU" + celdaContenido, utilidadAdq);
                         sl.SetCellValue("AV" + celdaContenido, Double.Parse(Lector["COSTO OPERATIVO"].ToString()));
@@ -1456,11 +1510,11 @@ namespace Refracciones
                     Lector.Close();
                     nuevaConexion.Close();
                 }
-            /*}
+            }
             catch (Exception EX)
             {
                 MessageBox.Show("Error al generar el reporte: " + EX.Message);
-            }*/
+            }
         }
         //--------------------LLENAR DATAGRID BUSCAR TALLERES--------------------
         public DataTable buscarTalleres(string taller)
@@ -1501,7 +1555,7 @@ namespace Refracciones
             using (SqlConnection nuevaConexion = Conexion.conexion())
             {
                 nuevaConexion.Open();
-                Comando = new SqlCommand("SELECT TOP 250 fact.cve_factura AS 'FACTURA',ven.cve_siniestro AS 'SINIESTRO', ven.cve_pedido AS 'PEDIDO', fact.fact_sinIVA AS 'FACTURA SIN IVA',fact.descuento AS 'DESCUENTO',fact.fact_neto AS 'FACTURA NETO', fact.costo_refactura AS 'COSTO DE REFACTURA', fact.fecha_refactura AS 'FECHA DE REFACTURA',fact.fecha_ingreso AS 'FECHA DE INGRESO', fact.fecha_revision AS 'FECHA DE REVISIÓN',fact.fecha_pago AS 'FECHA DE PAGO', fact.comentario AS 'COMENTARIO', fact.cve_refactura AS 'FACTURA ASOCIADA' FROM FACTURA fact LEFT OUTER JOIN VENTAS ven ON fact.cve_factura = ven.cve_factura", nuevaConexion);
+                Comando = new SqlCommand("SELECT TOP 250 fact.cve_factura AS 'FACTURA',ven.cve_siniestro AS 'SINIESTRO', ven.cve_pedido AS 'PEDIDO', fact.fact_sinIVA AS 'FACTURA SIN IVA',fact.descuento AS 'DESCUENTO',fact.fact_neto AS 'FACTURA NETO', fact.costo_refactura AS 'COSTO DE REFACTURA', fact.fecha_refactura AS 'FECHA DE REFACTURA',fact.fecha_ingreso AS 'FECHA DE INGRESO', fact.fecha_revision AS 'FECHA DE REVISIÓN',fact.fecha_pago AS 'FECHA DE PAGO', fact.comentario AS 'COMENTARIO', fact.cve_refactura AS 'FACTURA ASOCIADA', fact.realizo AS 'REALIZADA POR' FROM FACTURA fact LEFT OUTER JOIN VENTAS ven ON fact.cve_factura = ven.cve_factura", nuevaConexion);
                 da = new SqlDataAdapter(Comando);
 
                 da.Fill(dt);
@@ -1518,7 +1572,7 @@ namespace Refracciones
             using (SqlConnection nuevaConexion = Conexion.conexion())
             {
                 nuevaConexion.Open();
-                Comando = new SqlCommand(string.Format("SELECT TOP 250 fact.cve_factura AS 'FACTURA',ven.cve_siniestro AS 'SINIESTRO', ven.cve_pedido AS 'PEDIDO', fact.fact_sinIVA AS 'FACTURA SIN IVA',fact.descuento AS 'DESCUENTO',fact.fact_neto AS 'FACTURA NETO', fact.costo_refactura AS 'COSTO DE REFACTURA', fact.fecha_refactura AS 'FECHA DE REFACTURA',fact.fecha_ingreso AS 'FECHA DE INGRESO', fact.fecha_revision AS 'FECHA DE REVISIÓN',fact.fecha_pago AS 'FECHA DE PAGO', fact.comentario AS 'COMENTARIO', fact.cve_refactura AS 'FACTURA ASOCIADA' FROM FACTURA fact LEFT OUTER JOIN VENTAS ven ON fact.cve_factura = ven.cve_factura WHERE fact.cve_factura like '%{0}%'", cve_factura), nuevaConexion);
+                Comando = new SqlCommand(string.Format("SELECT TOP 250 fact.cve_factura AS 'FACTURA',ven.cve_siniestro AS 'SINIESTRO', ven.cve_pedido AS 'PEDIDO', fact.fact_sinIVA AS 'FACTURA SIN IVA',fact.descuento AS 'DESCUENTO',fact.fact_neto AS 'FACTURA NETO', fact.costo_refactura AS 'COSTO DE REFACTURA', fact.fecha_refactura AS 'FECHA DE REFACTURA',fact.fecha_ingreso AS 'FECHA DE INGRESO', fact.fecha_revision AS 'FECHA DE REVISIÓN',fact.fecha_pago AS 'FECHA DE PAGO', fact.comentario AS 'COMENTARIO', fact.cve_refactura AS 'FACTURA ASOCIADA', fact.realizo AS 'REALIZADA POR' FROM FACTURA fact LEFT OUTER JOIN VENTAS ven ON fact.cve_factura = ven.cve_factura WHERE fact.cve_factura like '%{0}%'", cve_factura), nuevaConexion);
                 da = new SqlDataAdapter(Comando);
 
                 da.Fill(dt);
@@ -1535,7 +1589,7 @@ namespace Refracciones
             using (SqlConnection nuevaConexion = Conexion.conexion())
             {
                 nuevaConexion.Open();
-                Comando = new SqlCommand(string.Format("SELECT TOP 250 fact.cve_factura AS 'FACTURA',ven.cve_siniestro AS 'SINIESTRO', ven.cve_pedido AS 'PEDIDO', fact.fact_sinIVA AS 'FACTURA SIN IVA',fact.descuento AS 'DESCUENTO',fact.fact_neto AS 'FACTURA NETO', fact.costo_refactura AS 'COSTO DE REFACTURA', fact.fecha_refactura AS 'FECHA DE REFACTURA',fact.fecha_ingreso AS 'FECHA DE INGRESO', fact.fecha_revision AS 'FECHA DE REVISIÓN',fact.fecha_pago AS 'FECHA DE PAGO', fact.comentario AS 'COMENTARIO', fact.cve_refactura AS 'FACTURA ASOCIADA' FROM FACTURA fact LEFT OUTER JOIN VENTAS ven ON fact.cve_factura = ven.cve_factura WHERE fact.fecha_ingreso between '{0}' and '{1}' order by fact.fecha_ingreso desc", Fecha_inicio, fecha_fin), nuevaConexion);
+                Comando = new SqlCommand(string.Format("SELECT TOP 250 fact.cve_factura AS 'FACTURA',ven.cve_siniestro AS 'SINIESTRO', ven.cve_pedido AS 'PEDIDO', fact.fact_sinIVA AS 'FACTURA SIN IVA',fact.descuento AS 'DESCUENTO',fact.fact_neto AS 'FACTURA NETO', fact.costo_refactura AS 'COSTO DE REFACTURA', fact.fecha_refactura AS 'FECHA DE REFACTURA',fact.fecha_ingreso AS 'FECHA DE INGRESO', fact.fecha_revision AS 'FECHA DE REVISIÓN',fact.fecha_pago AS 'FECHA DE PAGO', fact.comentario AS 'COMENTARIO', fact.cve_refactura AS 'FACTURA ASOCIADA', fact.realizo AS 'REALIZADA POR' FROM FACTURA fact LEFT OUTER JOIN VENTAS ven ON fact.cve_factura = ven.cve_factura WHERE fact.fecha_ingreso BETWEEN '{0}' AND '{1}' ORDER BY fact.fecha_ingreso DESC", Fecha_inicio, fecha_fin), nuevaConexion);
                 da = new SqlDataAdapter(Comando);
 
                 da.Fill(dt);

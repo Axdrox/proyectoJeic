@@ -32,6 +32,8 @@ namespace Refracciones
 
         private void btnFactura_Click(object sender, EventArgs e)
         {
+            
+
             //ABRIR FORMULARIO DE FACTURA
             if (cve_factura == "0")
             {
@@ -39,6 +41,8 @@ namespace Refracciones
                 factura.dato1.Text = factura.dato1.Text + " " + dato_1.Text;
                 factura.dato2.Text = factura.dato2.Text + " " + dato_2.Text;
                 factura.dato3.Text = "1";
+                //LBLUSUARIO
+                factura.lblUsuario.Text = lblUsuario.Text;
                 DialogResult  =  factura.ShowDialog();
             }
             else if (cve_factura != "0" && cve_refactura == "0")
@@ -47,6 +51,8 @@ namespace Refracciones
                 factura.dato1.Text = factura.dato1.Text + " " + dato_1.Text;
                 factura.dato2.Text = factura.dato2.Text + " " + dato_2.Text;
                 factura.dato3.Text = "0";
+                //LBLUSUARIO
+                factura.lblUsuario.Text = lblUsuario.Text;
                 DialogResult = factura.ShowDialog();
             }
             else if (cve_factura != "0" && cve_refactura != "0")
@@ -55,6 +61,8 @@ namespace Refracciones
                 refactura.dato1.Text = refactura.dato1.Text + " " + dato_1.Text;
                 refactura.dato2.Text = refactura.dato2.Text + " " + dato_2.Text;
                 refactura.dato3.Text = "0";
+                //LBLUSUARIO
+                refactura.lblUsuario.Text = lblUsuario.Text;
                 DialogResult = DialogResult = refactura.ShowDialog();
             }
         }
@@ -66,6 +74,8 @@ namespace Refracciones
             refactura.dato1.Text = refactura.dato1.Text + " " + dato_1.Text;
             refactura.dato2.Text = refactura.dato2.Text + " " + dato_2.Text;
             refactura.txtRefactura.Text = dato_3.Text;
+            //LBLUSUARIO
+            refactura.lblUsuario.Text = lblUsuario.Text;
             DialogResult = DialogResult = refactura.ShowDialog();
         }
 
@@ -75,6 +85,8 @@ namespace Refracciones
             Devolucion dev = new Devolucion();
             dev.dato1.Text = dev.dato1.Text + " " + dato_1.Text;
             dev.dato2.Text = dev.dato2.Text + " " + dato_2.Text;
+            //LBLUSUARIO
+            dev.lblUsuario.Text = lblUsuario.Text;
             dev.ShowDialog();
         }
 
@@ -85,6 +97,8 @@ namespace Refracciones
             bdev.dato2.Text = bdev.dato2.Text + " " + dato_2.Text;
             bdev.lblcve_venta.Text = lblCve_venta.Text;
             bdev.dato3.Text = bdev.dato3.Text + " " + dato_3.Text;
+            //LBLUSUARIO
+            bdev.lblUsuario.Text = lblUsuario.Text;
             bdev.ShowDialog();
         }
 

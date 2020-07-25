@@ -189,6 +189,7 @@ namespace Refracciones.Forms
         private void buscarFacturasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             buscarFacturas bfact = new buscarFacturas();
+            bfact.lblUsuario.Text = Usuario.Text;
             bfact.Show();
         }
 
@@ -206,6 +207,7 @@ namespace Refracciones.Forms
         private void talleresToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Talleres taller = new Talleres();
+            taller.lblUsuario.Text = Usuario.Text;
             DialogResult result = taller.ShowDialog();
         }
     }

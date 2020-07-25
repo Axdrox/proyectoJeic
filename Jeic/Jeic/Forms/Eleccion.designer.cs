@@ -100,11 +100,11 @@
             // 
             this.lblUsuario.AutoSize = true;
             this.lblUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(28)))), ((int)(((byte)(32)))));
-            this.lblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsuario.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsuario.ForeColor = System.Drawing.Color.White;
             this.lblUsuario.Location = new System.Drawing.Point(3, 10);
             this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(52, 16);
+            this.lblUsuario.Size = new System.Drawing.Size(49, 14);
             this.lblUsuario.TabIndex = 3;
             this.lblUsuario.Text = "usuario";
             // 
@@ -238,7 +238,7 @@
             this.pbMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbMinimize.Image = global::Jeic.Properties.Resources.Minimize_Window_2_48px;
             this.pbMinimize.Location = new System.Drawing.Point(137, 3);
-            this.pbMinimize.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbMinimize.Margin = new System.Windows.Forms.Padding(2);
             this.pbMinimize.Name = "pbMinimize";
             this.pbMinimize.Size = new System.Drawing.Size(17, 17);
             this.pbMinimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -252,7 +252,7 @@
             this.pbClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbClose.Image = global::Jeic.Properties.Resources.Close_Window__2_48px;
             this.pbClose.Location = new System.Drawing.Point(156, 3);
-            this.pbClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbClose.Margin = new System.Windows.Forms.Padding(2);
             this.pbClose.Name = "pbClose";
             this.pbClose.Size = new System.Drawing.Size(17, 17);
             this.pbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;

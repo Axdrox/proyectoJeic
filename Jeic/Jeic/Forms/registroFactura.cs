@@ -111,12 +111,12 @@ namespace Refracciones.Forms
                 }
                 if (btnGuardar.Text == "Guardar")
                 {
-                    MessageBOX.SHowDialog(1, oper.Registrar_factura(cve_siniestro, cve_pedido, cve_factura, cve_estado, fact_sinIVA, descuento, fact_neto, fecha_ingreso, fecha_revision, fecha_pago, nombre_factura, file, nombre_xml, xml_file, comentario));
+                    MessageBOX.SHowDialog(1, oper.Registrar_factura(cve_siniestro, cve_pedido, cve_factura, cve_estado, fact_sinIVA, descuento, fact_neto, fecha_ingreso, fecha_revision, fecha_pago, nombre_factura, file, nombre_xml, xml_file, comentario,lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9)));
                     this.Close();
                 }
                 else if (btnGuardar.Text == "Actualizar")
                 {
-                    MessageBOX.SHowDialog(3, oper.Actualizar_Factura(cve_factura, cve_estado, fact_sinIVA, descuento, fact_neto, fecha_ingreso, fecha_revision, fecha_pago, nombre_factura, file, nombre_xml, xml_file, comentario));
+                    MessageBOX.SHowDialog(3, oper.Actualizar_Factura(cve_factura, cve_estado, fact_sinIVA, descuento, fact_neto, fecha_ingreso, fecha_revision, fecha_pago, nombre_factura, file, nombre_xml, xml_file, comentario, lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9)));
                     this.Close();
                 }
             }

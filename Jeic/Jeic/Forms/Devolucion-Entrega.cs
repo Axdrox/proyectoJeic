@@ -221,7 +221,7 @@ namespace Refracciones.Forms
 
                                 penalizacion = decimal.Parse(txtPenalizacion.Text.Trim());
                                 count = oper.Total_Registros() + 1;//Se calcula el total de registros en la tabla Devolución
-                                MessageBOX.SHowDialog(1, oper.Registrar_Devolucion(cve_siniestro, cve_pedido, cve_pieza, count, cantidad, fecha, cantidadD, cve_venta, motivo, penalizacion));
+                                MessageBOX.SHowDialog(1, oper.Registrar_Devolucion(cve_siniestro, cve_pedido, cve_pieza, count, cantidad, fecha, cantidadD, cve_venta, motivo, penalizacion, lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9)));
                                 cmbCantidad.Items.Clear();
                                 txtMotivo.Text = "";
                                 txtPenalizacion.Text = "";
@@ -249,7 +249,7 @@ namespace Refracciones.Forms
                                 btnCancelar.Enabled = false;
                                 dgvDevolucion.Enabled = true;
                                 count2 = oper.Total_Registros2() + 1;//Se calcula el total de registros en la tabla Entrega
-                                MessageBOX.SHowDialog(1, oper.Registrar_Entrega(cve_siniestro, cve_pedido, cve_pieza, count2, cantidad, fecha, cantidadD, cve_venta, fecha_asignacion));
+                                MessageBOX.SHowDialog(1, oper.Registrar_Entrega(cve_siniestro, cve_pedido, cve_pieza, count2, cantidad, fecha, cantidadD, cve_venta, fecha_asignacion, lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9)));
                                 cmbCantidad.Items.Clear();
                             }
                             else
@@ -366,7 +366,7 @@ namespace Refracciones.Forms
                     count2 = oper.Total_Registros2() + 1;//Se calcula el total de registros en la tabla Entrega
                     if (pzas_entregadas != cantidad)
                     {
-                        oper.Registrar_Entrega(cve_siniestro, cve_pedido, cve_pieza, count2, cantidad, fecha, (cantidad - pzas_entregadas), cve_venta, fecha_asignacion);
+                        oper.Registrar_Entrega(cve_siniestro, cve_pedido, cve_pieza, count2, cantidad, fecha, (cantidad - pzas_entregadas), cve_venta, fecha_asignacion, lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9));
                         x = 1;
                     }
                     else
@@ -413,7 +413,7 @@ namespace Refracciones.Forms
                     count = oper.Total_Registros() + 1;//Se calcula el total de registros en la tabla Devolución
                     if (pzas_devolucion != pzas_entregadas)
                     {
-                        oper.Registrar_Devolucion(cve_siniestro, cve_pedido, cve_pieza, count, pzas_entregadas, fecha, pzas_entregadas, cve_venta, motivo, penalizacion);
+                        oper.Registrar_Devolucion(cve_siniestro, cve_pedido, cve_pieza, count, pzas_entregadas, fecha, pzas_entregadas, cve_venta, motivo, penalizacion,lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9));
                         x = 1;
                     }
                     else

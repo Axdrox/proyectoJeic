@@ -79,6 +79,7 @@ namespace Refracciones.Forms
                         refactura.dato1.Text = "SINIESTRO:" + " " + dgvFacturas.Rows[fila].Cells[1].Value.ToString();
                         refactura.dato2.Text = "PEDIDO:" + " " + dgvFacturas.Rows[fila].Cells[2].Value.ToString();
                         refactura.dato3.Text = "0";
+                        refactura.lblUsuario.Text = lblUsuario.Text;
                         refactura.ShowDialog();
                     }
                     else
@@ -86,6 +87,7 @@ namespace Refracciones.Forms
                         rfactura.dato1.Text = "SINIESTRO:" + " " + dgvFacturas.Rows[fila].Cells[1].Value.ToString();
                         rfactura.dato2.Text = "PEDIDO:" + " " + dgvFacturas.Rows[fila].Cells[2].Value.ToString();
                         rfactura.dato3.Text = "0";
+                        rfactura.lblUsuario.Text = lblUsuario.Text;
                         rfactura.ShowDialog();
                     }
                     
