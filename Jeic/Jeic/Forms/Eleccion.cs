@@ -169,6 +169,7 @@ namespace Refracciones
         private void btnModificarDatosPedido_Click(object sender, EventArgs e)
         {
             Pedido pedido = new Pedido(1);
+            pedido.lblUsuario.Text = lblUsuario.Text;
             pedido.textBoxPedido = clavePedido;
             pedido.labelSiniestro = claveSiniestro;
             pedido.ShowDialog();
