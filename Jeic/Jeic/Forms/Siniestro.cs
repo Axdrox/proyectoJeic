@@ -218,6 +218,11 @@ namespace Refracciones.Forms
                     e.Cancel = true;
                     errorProvider1.SetError(txtMarca, "Favor de llenar este campo");
                 }
+                else if (txtMarca.Text.Trim() == "Escriba una nueva marca")
+                {
+                    e.Cancel = true;
+                    errorProvider1.SetError(txtMarca, "Favor de llenar este campo");
+                }
                 else
                 {
                     e.Cancel = false;
@@ -236,6 +241,11 @@ namespace Refracciones.Forms
                     errorProvider1.SetError(txtNombreVehiculoNuevo, "Modelo existente");
                 }
                 else if (string.IsNullOrEmpty(txtNombreVehiculoNuevo.Text.Trim()))
+                {
+                    e.Cancel = true;
+                    errorProvider1.SetError(txtNombreVehiculoNuevo, "Favor de llenar este campo");
+                }
+                else if(txtNombreVehiculoNuevo.Text.Trim() == "Escriba un nuevo modelo")
                 {
                     e.Cancel = true;
                     errorProvider1.SetError(txtNombreVehiculoNuevo, "Favor de llenar este campo");

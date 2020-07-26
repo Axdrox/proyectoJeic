@@ -710,7 +710,7 @@ namespace Refracciones.Forms
                         dtFechaCosto/*, Convert.ToString(row.Cells["Costo sin IVA"].Value)*/, Convert.ToString(row.Cells["Costo neto\n($)"].Value),
                         Convert.ToString(row.Cells["Costo de envío\n($)"].Value), Convert.ToString(row.Cells["Precio de venta\n($)"].Value),
                         Convert.ToString(row.Cells["Precio de reparación\n($)"].Value), Convert.ToString(row.Cells["Clave de producto"].Value),
-                        Convert.ToString(row.Cells["Número de guía"].Value), Convert.ToInt32(row.Cells["Cantidad"].Value));
+                        Convert.ToString(row.Cells["Número de guía"].Value), Convert.ToInt32(row.Cells["Cantidad"].Value), lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9));
                 }
                 MessageBOX.SHowDialog(1, "Se registró pedido correctamente");
             }
@@ -741,7 +741,7 @@ namespace Refracciones.Forms
                             dtFechaCosto/*, Convert.ToString(row.Cells["Costo sin IVA"].Value)*/, Convert.ToString(row.Cells["Costo neto\n($)"].Value),
                             Convert.ToString(row.Cells["Costo de envío\n($)"].Value), Convert.ToString(row.Cells["Precio de venta\n($)"].Value),
                             Convert.ToString(row.Cells["Precio de reparación\n($)"].Value), Convert.ToString(row.Cells["Clave de producto"].Value),
-                            Convert.ToString(row.Cells["Número de guía"].Value), Convert.ToInt32(row.Cells["Cantidad"].Value), nombresPiezas[i]);
+                            Convert.ToString(row.Cells["Número de guía"].Value), Convert.ToInt32(row.Cells["Cantidad"].Value), nombresPiezas[i], lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9));
                         i++;
                         if (i == filasIniciales)
                         {
@@ -760,7 +760,7 @@ namespace Refracciones.Forms
                                  Convert.ToDateTime(dgvPedido.Rows[j].Cells[10].Value), dgvPedido.Rows[j].Cells[11].Value.ToString(),
                                  dgvPedido.Rows[j].Cells[12].Value.ToString(), dgvPedido.Rows[j].Cells[13].Value.ToString(),
                                  dgvPedido.Rows[j].Cells[14].Value.ToString(), dgvPedido.Rows[j].Cells[5].Value.ToString(),
-                                 dgvPedido.Rows[j].Cells[6].Value.ToString(), Convert.ToInt32(dgvPedido.Rows[j].Cells[4].Value));
+                                 dgvPedido.Rows[j].Cells[6].Value.ToString(), Convert.ToInt32(dgvPedido.Rows[j].Cells[4].Value), lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9));
                         }
                         MessageBOX.SHowDialog(1, "Se registró pedido correctamente");
                     }
@@ -831,7 +831,7 @@ namespace Refracciones.Forms
                             else
                                 estadoSiniestro = lblEstadoSiniestro.Text;
 
-                            operacion.actualizarSiniestro(lblVehiculo.Text.Trim(), lblClaveSiniestro.Text.Trim(), txtComentarioSiniestro.Text.Trim(), estadoSiniestro);
+                            operacion.actualizarSiniestro(lblVehiculo.Text.Trim(), lblClaveSiniestro.Text.Trim(), txtComentarioSiniestro.Text.Trim(), estadoSiniestro, Convert.ToInt32(lblAnio.Text));
 
                             calcularDGV();
 
@@ -1012,6 +1012,7 @@ namespace Refracciones.Forms
                         {
                             penalizaciones.cvePieza = operacion.clavePieza(Convert.ToString(row.Cells["Pieza"].Value));
                             penalizaciones.cveVenta = operacion.claveVenta(txtClavePedido.Text, lblClaveSiniestro.Text);
+                            penalizaciones.usuario = lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9);
                             cantidad = Convert.ToInt32(row.Cells["Cantidad"].Value);
                         }
                         if (cantidad == 0)
@@ -1623,7 +1624,7 @@ namespace Refracciones.Forms
                     {
                         foreach (DataGridViewRow row in dgvPedido.Rows)
                         {
-                            operacion.registrarPenalizacion(operacion.clavePieza(Convert.ToString(row.Cells["Pieza"].Value)), operacion.claveVenta(txtClavePedido.Text, lblClaveSiniestro.Text), Convert.ToInt32(row.Cells["Cantidad"].Value), penalizar.motivo, penalizar.porcentaje, hoy);
+                            operacion.registrarPenalizacion(operacion.clavePieza(Convert.ToString(row.Cells["Pieza"].Value)), operacion.claveVenta(txtClavePedido.Text, lblClaveSiniestro.Text), Convert.ToInt32(row.Cells["Cantidad"].Value), penalizar.motivo, penalizar.porcentaje, hoy, lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9));
                             i++;
                             if (i == filasIniciales)
                                 break;

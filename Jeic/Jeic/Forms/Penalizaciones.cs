@@ -115,6 +115,11 @@ namespace Refracciones.Forms
             get { return Convert.ToInt32(cbCantidad.Text.Trim()); }
         }
 
+        public string usuario
+        {
+            set { lblUsuario.Text = value; }
+        }
+
         private void Penalizaciones_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (e.CloseReason == CloseReason.UserClosing)
@@ -136,7 +141,7 @@ namespace Refracciones.Forms
                     else
                     {
                         DateTime hoy = DateTime.Today;
-                        operacion.registrarPenalizacion(cvePieza, cveVenta, Convert.ToInt32(cbCantidad.Text.Trim()), motivo, Convert.ToDouble(txtPorcentaje.Text.Trim()), hoy);
+                        operacion.registrarPenalizacion(cvePieza, cveVenta, Convert.ToInt32(cbCantidad.Text.Trim()), motivo, Convert.ToDouble(txtPorcentaje.Text.Trim()), hoy, lblUsuario.Text);
                     }
                     this.DialogResult = DialogResult.OK;
                 }

@@ -3767,7 +3767,7 @@ namespace Refracciones
         }
 
         //--------------- ACTUALIZAR SINIESTRO
-        public int actualizarSiniestro(string modelo, string claveSiniestro, string comentario, string estado)
+        public int actualizarSiniestro(string modelo, string claveSiniestro, string comentario, string estado, int anio)
         {
             int i = 0;
             try
@@ -3779,8 +3779,9 @@ namespace Refracciones
 
                     nuevaConexion.Open();
                     //Obteniendo la clave del vehículo
-                    Comando = new SqlCommand("SELECT cve_vehiculo FROM VEHICULO WHERE modelo = @modelo", nuevaConexion);
+                    Comando = new SqlCommand("SELECT cve_vehiculo FROM VEHICULO WHERE modelo = @modelo AND anio = @anio", nuevaConexion);
                     Comando.Parameters.AddWithValue("@modelo", modelo.Trim());
+                    Comando.Parameters.AddWithValue("@anio", anio);
                     Lector = Comando.ExecuteReader();
                     if (Lector.Read())
                     {
@@ -3797,6 +3798,8 @@ namespace Refracciones
                         claveEstado = (int)Lector["cve_estado"];
                     }
                     Lector.Close();
+
+                    MessageBox.Show(claveVehiculo +"|"+claveEstado);
 
                     //Insertando los datos en la tabla SINIESTRO
                     Comando = new SqlCommand("UPDATE SINIESTRO SET comentario = @comentario, estado = @estado WHERE cve_siniestro = @cve_siniestro AND cve_vehiculo = @cve_vehiculo", nuevaConexion);
@@ -3818,7 +3821,7 @@ namespace Refracciones
             }
             catch (Exception EX)
             {
-                MessageBox.Show("Error actualizarsin: " + EX.Message);
+                MessageBox.Show("Error actualizando siniestro: " + EX.Message);
             }
             return i;
         }
@@ -4311,7 +4314,7 @@ namespace Refracciones
         }
 
         //-------------INSERTAR DATOS DE PEDIDO
-        public int registrarPedido(string clavePedido, string claveSiniestro, string nombrePieza, string portal, string origen, string proveedor, DateTime fechaCosto/*, string costoSinIVA*/, string costoNeto, string costoEnvio, string precioVenta, string precioReparacion, string claveProducto, string numeroGuia, int cantidad)
+        public int registrarPedido(string clavePedido, string claveSiniestro, string nombrePieza, string portal, string origen, string proveedor, DateTime fechaCosto/*, string costoSinIVA*/, string costoNeto, string costoEnvio, string precioVenta, string precioReparacion, string claveProducto, string numeroGuia, int cantidad, string realizo)
         {
             string destino;
             //Variables
@@ -4342,8 +4345,8 @@ namespace Refracciones
 
                     nuevaConexion.Open();
                     //Insertando los datos en la tabla PEDIDO
-                    Comando = new SqlCommand("INSERT INTO PEDIDO " + "(cve_venta, cve_pieza, cantidad, cve_origen, cve_proveedor, cve_portal, cve_guia, cve_producto, fecha_costo, costo_envio, costo_neto, precio_venta, precio_reparacion, gasto) " +
-                        "VALUES (@cve_venta, @cve_pieza, @cantidad, @cve_origen, @cve_proveedor, @cve_portal, @cve_guia, @cve_producto, @fecha_costo, @costo_envio, @costo_neto, @precio_venta, @precio_reparacion, @gasto) ", nuevaConexion);//, costo_comprasinIVA    , @costo_comprasinIVA
+                    Comando = new SqlCommand("INSERT INTO PEDIDO " + "(cve_venta, cve_pieza, cantidad, cve_origen, cve_proveedor, cve_portal, cve_guia, cve_producto, fecha_costo, costo_envio, costo_neto, precio_venta, precio_reparacion, gasto, realizo) " +
+                        "VALUES (@cve_venta, @cve_pieza, @cantidad, @cve_origen, @cve_proveedor, @cve_portal, @cve_guia, @cve_producto, @fecha_costo, @costo_envio, @costo_neto, @precio_venta, @precio_reparacion, @gasto, @realizo) ", nuevaConexion);//, costo_comprasinIVA    , @costo_comprasinIVA
                                                                                                                                                                                                                                               //Añadiendo los parámetros al query
                     Comando.Parameters.AddWithValue("@cve_venta", cve_venta);
                     Comando.Parameters.AddWithValue("@cve_pieza", cve_pieza);
@@ -4360,6 +4363,7 @@ namespace Refracciones
                     Comando.Parameters.AddWithValue("@precio_venta", Convert.ToDecimal(precioVenta));
                     Comando.Parameters.AddWithValue("@precio_reparacion", Convert.ToDecimal(precioReparacion));
                     Comando.Parameters.AddWithValue("@gasto", gasto);
+                    Comando.Parameters.AddWithValue("@realizo", realizo);
 
                     //Para saber si la inserción se hizo correctamente
                     i = Comando.ExecuteNonQuery();
@@ -4381,7 +4385,7 @@ namespace Refracciones
         }
 
         //-------------ACTUALIZAR DATOS DE PEDIDO
-        public int actualizarPedido(string clavePedido, string claveSiniestro, string nombrePiezaActual, string portal, string origen, string proveedor, DateTime fechaCosto/*, string costoSinIVA*/, string costoNeto, string costoEnvio, string precioVenta, string precioReparacion, string claveProducto, string numeroGuia, int cantidad, string nombrePiezaPasada)
+        public int actualizarPedido(string clavePedido, string claveSiniestro, string nombrePiezaActual, string portal, string origen, string proveedor, DateTime fechaCosto/*, string costoSinIVA*/, string costoNeto, string costoEnvio, string precioVenta, string precioReparacion, string claveProducto, string numeroGuia, int cantidad, string nombrePiezaPasada, string realizo)
         {
             string destino;
             //Variables
@@ -4412,7 +4416,7 @@ namespace Refracciones
 
                     nuevaConexion.Open();
                     //Insertando los datos en la tabla PEDIDO
-                    Comando = new SqlCommand("UPDATE PEDIDO SET " + "cve_pieza = @cve_piezaActual, cantidad = @cantidad, cve_origen = @cve_origen, cve_proveedor = @cve_proveedor, cve_portal = @cve_portal, cve_guia = @cve_guia, cve_producto = @cve_producto, fecha_costo = @fecha_costo, costo_envio = @costo_envio, costo_neto = @costo_neto, precio_venta = @precio_venta, precio_reparacion = @precio_reparacion, gasto = @gasto " +
+                    Comando = new SqlCommand("UPDATE PEDIDO SET " + "cve_pieza = @cve_piezaActual, cantidad = @cantidad, cve_origen = @cve_origen, cve_proveedor = @cve_proveedor, cve_portal = @cve_portal, cve_guia = @cve_guia, cve_producto = @cve_producto, fecha_costo = @fecha_costo, costo_envio = @costo_envio, costo_neto = @costo_neto, precio_venta = @precio_venta, precio_reparacion = @precio_reparacion, gasto = @gasto, realizo = @realizo " +
                         "WHERE cve_venta = @cve_venta AND cve_pieza = @cve_piezaPasada", nuevaConexion);//, costo_comprasinIVA    , @costo_comprasinIVA
                                                                                                         //Añadiendo los parámetros al query
                     Comando.Parameters.AddWithValue("@cve_venta", cve_venta);
@@ -4431,6 +4435,7 @@ namespace Refracciones
                     Comando.Parameters.AddWithValue("@precio_venta", Convert.ToDecimal(precioVenta));
                     Comando.Parameters.AddWithValue("@precio_reparacion", Convert.ToDecimal(precioReparacion));
                     Comando.Parameters.AddWithValue("@gasto", gasto);
+                    Comando.Parameters.AddWithValue("@realizo", realizo);
 
                     //Para saber si la inserción se hizo correctamente
                     i = Comando.ExecuteNonQuery();
@@ -4451,20 +4456,21 @@ namespace Refracciones
             return i;
         }
 
-        public void registrarPenalizacion(int clavePieza, int claveVenta, int cantidad, string motivo, double porcentaje, DateTime fecha)
+        public void registrarPenalizacion(int clavePieza, int claveVenta, int cantidad, string motivo, double porcentaje, DateTime fecha, string realizo)
         {
             try
             {
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     nuevaConexion.Open();
-                    Comando = new SqlCommand("INSERT INTO PENALIZACION " + "(cve_pieza, cve_venta, cantidad, motivo, porcentaje, fecha) " + "VALUES (@cve_pieza , @cve_venta, @cantidad, @motivo, @porcentaje, @fecha) ", nuevaConexion);
+                    Comando = new SqlCommand("INSERT INTO PENALIZACION " + "(cve_pieza, cve_venta, cantidad, motivo, porcentaje, fecha, realizo) " + "VALUES (@cve_pieza , @cve_venta, @cantidad, @motivo, @porcentaje, @fecha, @realizo) ", nuevaConexion);
                     Comando.Parameters.AddWithValue("@cve_pieza", clavePieza);
                     Comando.Parameters.AddWithValue("@cve_venta", claveVenta);
                     Comando.Parameters.AddWithValue("@cantidad", cantidad);
                     Comando.Parameters.AddWithValue("@motivo", motivo);
                     Comando.Parameters.AddWithValue("@porcentaje", porcentaje);
                     Comando.Parameters.AddWithValue("@fecha", fecha);
+                    Comando.Parameters.AddWithValue("@realizo", realizo);
 
                     //Para saber si la inserción se hizo correctamente
                     int i = Comando.ExecuteNonQuery();
