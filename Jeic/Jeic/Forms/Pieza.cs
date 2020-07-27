@@ -878,11 +878,20 @@
         private string claveProducto(string modelo, string descripcion, string marca, string anio)
         {
             string clave = "";
-            if (modelo.Length < 3)
-                modelo = modelo.Substring(0, modelo.Length);
-            else
-                modelo = modelo.Substring(0, 3);
-            return clave = descripcion.Substring(0, 4) + "-" + modelo + marca.Substring(0, 2) + anio.Substring(2, 2);
+            try
+            {
+                
+                if (modelo.Length < 3)
+                    modelo = modelo.Substring(0, modelo.Length);
+                else
+                    modelo = modelo.Substring(0, 3);
+                return clave = descripcion.Substring(0, 4) + "-" + modelo + marca.Substring(0, 2) + anio.Substring(2, 2);
+            }
+            catch(Exception ex)
+            {
+                //MessageBox.Show("Error al cargar la pieza");
+            }
+            return clave;
         }
 
         private void txtPiezaNombre_TextChanged(object sender, EventArgs e)

@@ -613,7 +613,7 @@ namespace Refracciones
             using (SqlConnection nuevaConexion = Conexion.conexion())
             {
                 nuevaConexion.Open();
-                Comando = new SqlCommand(string.Format("SELECT pie.nombre AS PIEZA, pena.cantidad AS CANTIDAD, c.cve_nombre AS CLIENTE, pena.motivo AS MOTIVO, pena.porcentaje AS 'PORCENTAJE PENALIZACIÓN (%)', pena.fecha AS FECHA FROM PENALIZACION pena INNER JOIN VENTAS ven ON ven.cve_venta = pena.cve_venta INNER JOIN VALUADOR val ON val.cve_valuador = ven.cve_valuador INNER JOIN CLIENTE c ON c.cve_valuador = val.cve_valuador INNER JOIN PIEZA pie ON pie.cve_pieza = pena.cve_pieza WHERE pena.cve_venta = {0}", cve_venta), nuevaConexion);
+                Comando = new SqlCommand(string.Format("SELECT pie.nombre AS PIEZA, pena.cantidad AS CANTIDAD, c.cve_nombre AS CLIENTE, pena.motivo AS MOTIVO, pena.porcentaje AS 'PORCENTAJE PENALIZACIÓN (%)', pena.fecha AS FECHA, pena.realizo AS 'REALIZADA POR' FROM PENALIZACION pena INNER JOIN VENTAS ven ON ven.cve_venta = pena.cve_venta INNER JOIN VALUADOR val ON val.cve_valuador = ven.cve_valuador INNER JOIN CLIENTE c ON c.cve_valuador = val.cve_valuador INNER JOIN PIEZA pie ON pie.cve_pieza = pena.cve_pieza WHERE pena.cve_venta = {0}", cve_venta), nuevaConexion);
                 da = new SqlDataAdapter(Comando);
                 da.Fill(dt);
                 nuevaConexion.Close();
@@ -809,7 +809,7 @@ namespace Refracciones
             {
                 using (SqlConnection nuevacon = Conexion.conexion())
                 {
-                    da = new SqlDataAdapter(string.Format("SELECT TOP 250 ven.cve_pedido AS PEDIDO, ven.cve_siniestro AS SINIESTRO, ven.cve_vendedor AS VENDEDOR, c.cve_nombre AS CLIENTE, k.nombre AS PIEZA, p.cantidad AS CANTIDAD, ven.fecha_asignacion AS 'FECHA DE ASIGNACIÓN', ven.fecha_promesa AS 'FECHA PROMESA', ven.cve_venta AS 'VENTA' FROM VENTAS ven LEFT OUTER JOIN PEDIDO p ON ven.cve_venta = p.cve_venta LEFT OUTER JOIN PIEZA k ON p.cve_pieza = k.cve_pieza LEFT OUTER JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE c ON c.cve_valuador = v.cve_valuador WHERE k.nombre != '' AND ven.cve_siniestro like '%{0}%' and CAST(ven.cve_pedido AS nvarchar) like '%{1}%' and ven.cve_vendedor like '%{2}%'", cve_Siniestro, cve_Pedido, cve_vendedor), nuevacon);
+                    da = new SqlDataAdapter(string.Format("SELECT TOP 250 ven.cve_pedido AS PEDIDO, ven.cve_siniestro AS SINIESTRO, ven.cve_vendedor AS VENDEDOR, c.cve_nombre AS CLIENTE, k.nombre AS PIEZA, p.cantidad AS CANTIDAD, ven.fecha_asignacion AS 'FECHA DE ASIGNACIÓN', ven.fecha_promesa AS 'FECHA PROMESA', ven.cve_venta AS 'VENTA', p.realizo AS 'REALIZADA POR' FROM VENTAS ven LEFT OUTER JOIN PEDIDO p ON ven.cve_venta = p.cve_venta LEFT OUTER JOIN PIEZA k ON p.cve_pieza = k.cve_pieza LEFT OUTER JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE c ON c.cve_valuador = v.cve_valuador WHERE k.nombre != '' AND ven.cve_siniestro like '%{0}%' and CAST(ven.cve_pedido AS nvarchar) like '%{1}%' and ven.cve_vendedor like '%{2}%'", cve_Siniestro, cve_Pedido, cve_vendedor), nuevacon);
 
                     nuevacon.Open();
                     dt = new DataTable();
@@ -833,7 +833,7 @@ namespace Refracciones
             {
                 using (SqlConnection nuevacon = Conexion.conexion())
                 {
-                    da = new SqlDataAdapter(string.Format("SELECT TOP 250 ven.cve_pedido AS PEDIDO, ven.cve_siniestro AS SINIESTRO, ven.cve_vendedor AS VENDEDOR, c.cve_nombre AS CLIENTE, k.nombre AS PIEZA, p.cantidad AS CANTIDAD, ven.fecha_asignacion AS 'FECHA DE ASIGNACIÓN', ven.fecha_promesa AS 'FECHA PROMESA', ven.cve_venta AS 'VENTA' FROM VENTAS ven LEFT OUTER JOIN PEDIDO p ON p.cve_venta = ven.cve_venta LEFT OUTER JOIN PIEZA k ON p.cve_pieza = k.cve_pieza  LEFT OUTER JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE c ON c.cve_valuador = v.cve_valuador WHERE k.nombre != '' AND fecha_asignacion between '{0}' and '{1}' order by ven.fecha_asignacion desc", Fecha_inicio, fecha_fin), nuevacon);
+                    da = new SqlDataAdapter(string.Format("SELECT TOP 250 ven.cve_pedido AS PEDIDO, ven.cve_siniestro AS SINIESTRO, ven.cve_vendedor AS VENDEDOR, c.cve_nombre AS CLIENTE, k.nombre AS PIEZA, p.cantidad AS CANTIDAD, ven.fecha_asignacion AS 'FECHA DE ASIGNACIÓN', ven.fecha_promesa AS 'FECHA PROMESA', ven.cve_venta AS 'VENTA', p.realizo AS 'REALIZADA POR' FROM VENTAS ven LEFT OUTER JOIN PEDIDO p ON p.cve_venta = ven.cve_venta LEFT OUTER JOIN PIEZA k ON p.cve_pieza = k.cve_pieza  LEFT OUTER JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE c ON c.cve_valuador = v.cve_valuador WHERE k.nombre != '' AND fecha_asignacion between '{0}' and '{1}' order by ven.fecha_asignacion desc", Fecha_inicio, fecha_fin), nuevacon);
                     nuevacon.Open();
                     dt = new DataTable();
                     da.Fill(dt);
@@ -950,7 +950,7 @@ namespace Refracciones
             {
                 using (SqlConnection nuevacon = Conexion.conexion())
                 {
-                    da = new SqlDataAdapter(string.Format("SELECT TOP 250 ven.cve_pedido AS PEDIDO, ven.cve_siniestro AS 'SINIESTRO', ven.cve_vendedor AS VENDEDOR, c.cve_nombre AS CLIENTE, k.nombre AS PIEZA, p.cantidad AS CANTIDAD, ven.fecha_asignacion AS 'FECHA DE ASIGNACIÓN', ven.fecha_promesa AS 'FECHA PROMESA', ven.cve_venta AS 'VENTA' FROM VENTAS ven LEFT OUTER JOIN PEDIDO p ON ven.cve_venta = p.cve_venta LEFT OUTER JOIN PIEZA k ON p.cve_pieza = k.cve_pieza LEFT OUTER JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE c ON c.cve_valuador = v.cve_valuador WHERE k.nombre != '' order by ven.fecha_asignacion desc"), nuevacon);
+                    da = new SqlDataAdapter(string.Format("SELECT TOP 250 ven.cve_pedido AS PEDIDO, ven.cve_siniestro AS 'SINIESTRO', ven.cve_vendedor AS VENDEDOR, c.cve_nombre AS CLIENTE, k.nombre AS PIEZA, p.cantidad AS CANTIDAD, ven.fecha_asignacion AS 'FECHA DE ASIGNACIÓN', ven.fecha_promesa AS 'FECHA PROMESA', ven.cve_venta AS 'VENTA', p.realizo AS 'REALIZADA POR' FROM VENTAS ven LEFT OUTER JOIN PEDIDO p ON ven.cve_venta = p.cve_venta LEFT OUTER JOIN PIEZA k ON p.cve_pieza = k.cve_pieza LEFT OUTER JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE c ON c.cve_valuador = v.cve_valuador WHERE k.nombre != '' order by ven.fecha_asignacion desc"), nuevacon);
                     nuevacon.Open();
                     dt = new DataTable();
                     da.Fill(dt);
