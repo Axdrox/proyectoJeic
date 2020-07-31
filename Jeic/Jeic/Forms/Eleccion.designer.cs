@@ -64,7 +64,7 @@
             this.btnModificarDatosPedido.Name = "btnModificarDatosPedido";
             this.btnModificarDatosPedido.Size = new System.Drawing.Size(155, 40);
             this.btnModificarDatosPedido.TabIndex = 0;
-            this.btnModificarDatosPedido.Text = "Modificar datos de pedido";
+            this.btnModificarDatosPedido.Text = "Modificar Datos de Pedido";
             this.btnModificarDatosPedido.UseVisualStyleBackColor = false;
             this.btnModificarDatosPedido.Click += new System.EventHandler(this.btnModificarDatosPedido_Click);
             // 
@@ -78,7 +78,7 @@
             this.btnFactura.Name = "btnFactura";
             this.btnFactura.Size = new System.Drawing.Size(155, 35);
             this.btnFactura.TabIndex = 1;
-            this.btnFactura.Text = "Agregar factura ";
+            this.btnFactura.Text = "Elaboración de Factura";
             this.btnFactura.UseVisualStyleBackColor = false;
             this.btnFactura.Click += new System.EventHandler(this.btnFactura_Click);
             // 
@@ -92,7 +92,7 @@
             this.btnDevolucionEntrega.Name = "btnDevolucionEntrega";
             this.btnDevolucionEntrega.Size = new System.Drawing.Size(155, 44);
             this.btnDevolucionEntrega.TabIndex = 2;
-            this.btnDevolucionEntrega.Text = "Registrar Devolucion/Entrega";
+            this.btnDevolucionEntrega.Text = "Registrar Entregas/Devoluciones";
             this.btnDevolucionEntrega.UseVisualStyleBackColor = false;
             this.btnDevolucionEntrega.Click += new System.EventHandler(this.btnDevolucionEntrega_Click);
             // 
@@ -132,7 +132,7 @@
             this.btnChecarPedDev.Name = "btnChecarPedDev";
             this.btnChecarPedDev.Size = new System.Drawing.Size(155, 44);
             this.btnChecarPedDev.TabIndex = 5;
-            this.btnChecarPedDev.Text = "Checar pedidos Devueltos/Entregados";
+            this.btnChecarPedDev.Text = "Revisar Pedidos Entregados/Devueltos";
             this.btnChecarPedDev.UseVisualStyleBackColor = false;
             this.btnChecarPedDev.Click += new System.EventHandler(this.button1_Click_1);
             // 

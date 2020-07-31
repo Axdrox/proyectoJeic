@@ -43,11 +43,11 @@
             this.lblcve_venta = new System.Windows.Forms.Label();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.lblUsuario = new System.Windows.Forms.Label();
             this.rbtnPenalizacion = new System.Windows.Forms.RadioButton();
             this.pbMinimize = new System.Windows.Forms.PictureBox();
             this.pbClose = new System.Windows.Forms.PictureBox();
             this.moverFormulario = new Bunifu.Framework.UI.BunifuDragControl(this.components);
-            this.lblUsuario = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.bunifuGradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).BeginInit();
@@ -127,10 +127,10 @@
             this.rbtnEntregas.ForeColor = System.Drawing.Color.White;
             this.rbtnEntregas.Location = new System.Drawing.Point(33, 43);
             this.rbtnEntregas.Name = "rbtnEntregas";
-            this.rbtnEntregas.Size = new System.Drawing.Size(79, 18);
+            this.rbtnEntregas.Size = new System.Drawing.Size(80, 18);
             this.rbtnEntregas.TabIndex = 2;
             this.rbtnEntregas.TabStop = true;
-            this.rbtnEntregas.Text = "ENTREGAS";
+            this.rbtnEntregas.Text = "Entregada";
             this.rbtnEntregas.UseVisualStyleBackColor = false;
             this.rbtnEntregas.CheckedChanged += new System.EventHandler(this.rbtnEntregas_CheckedChanged);
             // 
@@ -143,9 +143,9 @@
             this.rbtnDev.ForeColor = System.Drawing.Color.White;
             this.rbtnDev.Location = new System.Drawing.Point(141, 43);
             this.rbtnDev.Name = "rbtnDev";
-            this.rbtnDev.Size = new System.Drawing.Size(105, 18);
+            this.rbtnDev.Size = new System.Drawing.Size(74, 18);
             this.rbtnDev.TabIndex = 3;
-            this.rbtnDev.Text = "DEVOLUCIONES";
+            this.rbtnDev.Text = "Devuelta";
             this.rbtnDev.UseVisualStyleBackColor = false;
             this.rbtnDev.CheckedChanged += new System.EventHandler(this.rbtnDev_CheckedChanged);
             // 
@@ -207,6 +207,17 @@
             this.bunifuGradientPanel1.Size = new System.Drawing.Size(464, 450);
             this.bunifuGradientPanel1.TabIndex = 7;
             // 
+            // lblUsuario
+            // 
+            this.lblUsuario.AutoSize = true;
+            this.lblUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(27)))), ((int)(((byte)(28)))));
+            this.lblUsuario.ForeColor = System.Drawing.Color.White;
+            this.lblUsuario.Location = new System.Drawing.Point(3, 3);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(46, 13);
+            this.lblUsuario.TabIndex = 77;
+            this.lblUsuario.Text = "Usuario:";
+            // 
             // rbtnPenalizacion
             // 
             this.rbtnPenalizacion.AutoSize = true;
@@ -216,10 +227,10 @@
             this.rbtnPenalizacion.ForeColor = System.Drawing.Color.White;
             this.rbtnPenalizacion.Location = new System.Drawing.Point(254, 43);
             this.rbtnPenalizacion.Name = "rbtnPenalizacion";
-            this.rbtnPenalizacion.Size = new System.Drawing.Size(149, 18);
+            this.rbtnPenalizacion.Size = new System.Drawing.Size(148, 18);
             this.rbtnPenalizacion.TabIndex = 76;
             this.rbtnPenalizacion.TabStop = true;
-            this.rbtnPenalizacion.Text = "OTRAS PENALIZACIONES";
+            this.rbtnPenalizacion.Text = "Penalizada/Cancelada";
             this.rbtnPenalizacion.UseVisualStyleBackColor = false;
             this.rbtnPenalizacion.CheckedChanged += new System.EventHandler(this.rbtnPenalizacion_CheckedChanged);
             // 
@@ -255,17 +266,6 @@
             this.moverFormulario.Horizontal = true;
             this.moverFormulario.TargetControl = this.bunifuGradientPanel1;
             this.moverFormulario.Vertical = true;
-            // 
-            // lblUsuario
-            // 
-            this.lblUsuario.AutoSize = true;
-            this.lblUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(27)))), ((int)(((byte)(28)))));
-            this.lblUsuario.ForeColor = System.Drawing.Color.White;
-            this.lblUsuario.Location = new System.Drawing.Point(3, 3);
-            this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(46, 13);
-            this.lblUsuario.TabIndex = 77;
-            this.lblUsuario.Text = "Usuario:";
             // 
             // BusquedaEntrega_Devolucion
             // 

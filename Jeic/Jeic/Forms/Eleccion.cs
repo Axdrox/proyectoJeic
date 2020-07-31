@@ -117,7 +117,7 @@ namespace Refracciones
             }
             else
             {
-                btnFactura.Text = "Agregar factura";
+                btnFactura.Text = "Elaboración de Factura";
                 btnRefactura.Enabled = false;
             }
 
@@ -127,7 +127,7 @@ namespace Refracciones
             switch (rol)
             {
                 case 1:
-                    btnModificarDatosPedido.Enabled = false;
+                    btnModificarDatosPedido.Enabled = true;
                     btnDevolucionEntrega.Enabled = false;
                     btnChecarPedDev.Enabled = false;
                     break;

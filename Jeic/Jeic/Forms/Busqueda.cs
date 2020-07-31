@@ -56,6 +56,9 @@ namespace Refracciones.Forms
                     btnAgregarPedido.Visible = false;
                     administrarToolStripMenuItem.Enabled = false;
                     buscarFacturasToolStripMenuItem.Enabled = false;
+                    generarReporteVentasToolStripMenuItem.Enabled = false;
+                    notificacionesToolStripMenuItem.Enabled = false;
+                    talleresToolStripMenuItem.Enabled = false;
                     break;
                 default:
                     break;
