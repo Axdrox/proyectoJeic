@@ -135,7 +135,7 @@ namespace Refracciones
                 case 2:
                     btnFactura.Enabled = false;
                     btnRefactura.Enabled = false;
-                    btnModificarDatosPedido.Enabled = false;
+                    btnModificarDatosPedido.Enabled = true;
                     break;
 
                 case 3:
