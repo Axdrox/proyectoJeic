@@ -3802,8 +3802,6 @@ namespace Refracciones
                     }
                     Lector.Close();
 
-                    MessageBox.Show(claveVehiculo +"|"+claveEstado);
-
                     //Insertando los datos en la tabla SINIESTRO
                     Comando = new SqlCommand("UPDATE SINIESTRO SET comentario = @comentario, estado = @estado WHERE cve_siniestro = @cve_siniestro AND cve_vehiculo = @cve_vehiculo", nuevaConexion);
                     Comando.Parameters.AddWithValue("@cve_siniestro", claveSiniestro.Trim());

@@ -745,7 +745,7 @@ namespace Refracciones.Forms
                         i++;
                         if (i == filasIniciales)
                         {
-                            MessageBOX.SHowDialog(1, "Se actualizó pedido correctamente");
+                            //MessageBOX.SHowDialog(1, "Se actualizó pedido correctamente");
                             break;
                         }
                     }
@@ -762,8 +762,9 @@ namespace Refracciones.Forms
                                  dgvPedido.Rows[j].Cells[14].Value.ToString(), dgvPedido.Rows[j].Cells[5].Value.ToString(),
                                  dgvPedido.Rows[j].Cells[6].Value.ToString(), Convert.ToInt32(dgvPedido.Rows[j].Cells[4].Value), lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9));
                         }
-                        MessageBOX.SHowDialog(1, "Se registró pedido correctamente");
+                        //MessageBOX.SHowDialog(1, "Se registró pedido correctamente");
                     }
+                    MessageBOX.SHowDialog(1, "Se actualizó pedido correctamente");
                 }
                 else
                     registrarPedido();
@@ -806,6 +807,11 @@ namespace Refracciones.Forms
                                 estadoSiniestro = cbEstadoSiniestro.Text;
                             else
                                 estadoSiniestro = lblEstadoSiniestro.Text;
+
+                            if (!string.IsNullOrEmpty(operacion.existeClaveSiniestro(lblClaveSiniestro.Text)) && lblClaveSiniestro.Text.Substring(0, 5) == "JEIC-")
+                            {
+                                lblClaveSiniestro.Text = "JEIC-" + operacion.TotalSiniestro().ToString();
+                            }
 
                             operacion.registrarSiniestro(lblVehiculo.Text.Trim(), lblClaveSiniestro.Text.Trim(), txtComentarioSiniestro.Text.Trim(), estadoSiniestro, lblAnio.Text);
 
