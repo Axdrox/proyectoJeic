@@ -226,7 +226,7 @@ namespace Refracciones
                                 .ShowText(dgvDatosPDF.Rows[0].Cells[2].Value.ToString())
                                 .EndText();
 
-                        if (dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Contains("Rodrigo"))
+                        /*if (dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Contains("Rodrigo"))
                             canvas.Rectangle(x + 288, y - 28, 53, 9).SetFillColor(ColorConstants.LIGHT_GRAY).Fill();
                         else if (dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Contains("Andrea"))
                             canvas.Rectangle(x + 288, y - 28, 43, 9).SetFillColor(ColorConstants.GREEN).Fill();
@@ -238,7 +238,7 @@ namespace Refracciones
                             canvas.Rectangle(x + 288, y - 28, 53, 9).SetFillColor(ColorConstants.RED).Fill();
                         else
                             canvas.Rectangle(x + 288, y - 28, 50, 9).SetFillColor(ColorConstants.LIGHT_GRAY).Fill();
-
+                        */
 
                         //COTIZADOR
                         canvas.BeginText().SetFontAndSize(font, 9)
@@ -352,7 +352,7 @@ namespace Refracciones
                                 .ShowText(dgvDatosPDF.Rows[0].Cells[2].Value.ToString())
                                 .EndText();
 
-                        if (dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Contains("Rodrigo"))
+                        /*if (dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Contains("Rodrigo"))
                             canvas.Rectangle(x + 288, y - 28, 53, 9).SetFillColor(ColorConstants.LIGHT_GRAY).Fill();
                         else if (dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Contains("Andrea"))
                             canvas.Rectangle(x + 288, y - 28, 43, 9).SetFillColor(ColorConstants.GREEN).Fill();
@@ -364,7 +364,7 @@ namespace Refracciones
                             canvas.Rectangle(x + 288, y - 28, 53, 9).SetFillColor(ColorConstants.RED).Fill();
                         else
                             canvas.Rectangle(x + 288, y - 28, 50, 9).SetFillColor(ColorConstants.LIGHT_GRAY).Fill();
-
+                        */
 
                         //COTIZADOR
                         canvas.BeginText().SetFontAndSize(font, 9)

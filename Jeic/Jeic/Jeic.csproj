@@ -116,6 +116,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
     <Reference Include="System.Management" />
     <Reference Include="System.Xml.Linq" />
@@ -232,6 +233,12 @@
     <Compile Include="Forms\Talleres.Designer.cs">
       <DependentUpon>Talleres.cs</DependentUpon>
     </Compile>
+    <Compile Include="JeicInstaller.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="JeicInstaller.Designer.cs">
+      <DependentUpon>JeicInstaller.cs</DependentUpon>
+    </Compile>
     <Compile Include="OperBD.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -239,6 +246,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Forms\Administrar.resx">
       <DependentUpon>Administrar.cs</DependentUpon>
@@ -302,6 +314,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Resources\notify.png" />
   </ItemGroup>
   <ItemGroup>

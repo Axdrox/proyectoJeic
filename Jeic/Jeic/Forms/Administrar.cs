@@ -240,7 +240,7 @@ namespace Refracciones.Forms
                     case 5:
                         chk1.Enabled = false; chk1.Visible = false;
                         lbl1.Visible = true;
-                        lbl2.Visible = true;
+                        lbl2.Visible = false;
                         lbl3.Visible = false;
                         lbl4.Visible = false;
                         lbl5.Visible = false;
@@ -248,7 +248,7 @@ namespace Refracciones.Forms
                         lbl7.Visible = false;
                         lbl8.Visible = false;
                         txt1.Enabled = true; txt1.Visible = true;
-                        txt2.Enabled = true; txt2.Visible = true;
+                        txt2.Enabled = false; txt2.Visible = false;
                         txt3.Enabled = false; txt3.Visible = false;
                         txt4.Enabled = false; txt4.Visible = false;
                         txt5.Enabled = false; txt5.Visible = false;
@@ -260,7 +260,7 @@ namespace Refracciones.Forms
                         cmb5.Enabled = false; cmb5.Visible = false;
                         txt1.Text = ""; txt2.Text = "";
                         lbl1.Text = "Nombre:";
-                        lbl2.Text = "Descripción"+"\n"+"SAE:";
+                        lbl2.Text = "";
                         lbl3.Text = "";
                         break;
                     case 6:
@@ -495,7 +495,7 @@ namespace Refracciones.Forms
                     case 5:
                         chk1.Enabled = false; chk1.Visible = false;
                         lbl1.Visible = true;
-                        lbl2.Visible = true;
+                        lbl2.Visible = false;
                         lbl3.Visible = true;
                         lbl4.Visible = false;
                         lbl5.Visible = false;
@@ -503,7 +503,7 @@ namespace Refracciones.Forms
                         lbl7.Visible = false;
                         lbl8.Visible = false;
                         txt1.Enabled = false; txt1.Visible = false;
-                        txt2.Enabled = true; txt2.Visible = true;
+                        txt2.Enabled = false; txt2.Visible = false;
                         txt3.Enabled = false; txt3.Visible = false;
                         txt4.Enabled = false; txt4.Visible = false;
                         txt5.Enabled = false; txt5.Visible = false;
@@ -517,9 +517,9 @@ namespace Refracciones.Forms
                         cmb4.Enabled = false; cmb4.Visible = false;
                         cmb5.Enabled = false; cmb5.Visible = false;
                         txt1.Text = ""; 
-                        txt2.Text = oper.descSAE(cmb3.Text.Trim());
+                        //txt2.Text = oper.descSAE(cmb3.Text.Trim());
                         lbl1.Text = "Nombre:";
-                        lbl2.Text = "Descripción SAE:";
+                        lbl2.Text = "";
                         lbl3.Text = "Estado:";
                         break;
                     case 6:
@@ -748,15 +748,10 @@ namespace Refracciones.Forms
                                 errorP.SetError(txt1, "No se puede dejar este campo sin llenar");
                                 txt1.Focus();
                             }
-                            else if (txt2.Text.Trim() == "")
-                            {
-                                errorP.SetError(txt2, "No se puede dejar este campo sin llenar");
-                                txt2.Focus();
-                            }
                             else if (oper.existePieza(txt1.Text.Trim()) == "")
                             {
                                 errorP.Clear();
-                                oper.registrarPieza(txt1.Text.Trim().ToUpper(),txt2.Text.Trim().ToUpper());
+                                oper.registrarPieza(txt1.Text.Trim().ToUpper());
                                 txt1.Text = ""; txt2.Text = "";
                             }
                             else
@@ -900,7 +895,7 @@ namespace Refracciones.Forms
                             else
                                 estado = 0;
 
-                            oper.ActualizarDatosPieza(cmb3.Text.Trim(),estado,txt2.Text.Trim().ToUpper());
+                            oper.ActualizarDatosPieza(cmb3.Text.Trim(),estado);
                             break;
                         case 6:
                             if (cmb4.Text.Trim() == "ACTIVO")
@@ -946,10 +941,10 @@ namespace Refracciones.Forms
                 txt3.Text = oper.NombreValuador(cmb3.Text.Trim());
                 txt2.Text = oper.Dias_Espera(cmb3.Text.Trim());
             }
-            else if (x == 5 && y == 1)
+            /*else if (x == 5 && y == 1)
             {
                 txt2.Text = oper.descSAE(cmb3.Text.Trim());
-            }
+            }*/
         }
 
         private void pbMinimize_Click(object sender, EventArgs e)

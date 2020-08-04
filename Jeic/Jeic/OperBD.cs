@@ -1767,7 +1767,7 @@ namespace Refracciones
         }
 
         //---------------- ACTUALIZAR DATOS PIEZA
-        public void ActualizarDatosPieza(string nombre, int estado, string descSAE)
+        public void ActualizarDatosPieza(string nombre, int estado)
         {
             try
             {
@@ -1775,9 +1775,8 @@ namespace Refracciones
                 {
                     nuevaConexion.Open();
 
-                    Comando = new SqlCommand("UPDATE PIEZA SET nombre = @nombre,descSAE = @descSAE, estado = @estado WHERE nombre = @nombre ", nuevaConexion);
+                    Comando = new SqlCommand("UPDATE PIEZA SET nombre = @nombre, estado = @estado WHERE nombre = @nombre ", nuevaConexion);
                     Comando.Parameters.AddWithValue("@nombre", nombre);
-                    Comando.Parameters.AddWithValue("@descSAE", descSAE);
                     Comando.Parameters.AddWithValue("@estado", estado);
                     Comando.ExecuteNonQuery();
                     nuevaConexion.Close();

@@ -17,7 +17,7 @@ namespace Refracciones
         public static SqlConnection conexion()
         {
 
-            string strConexion = ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString;
+            string strConexion = Jeic.Properties.Settings.Default.SecretMessage;//ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString;
             SqlConnection nuevaConexion = new SqlConnection(strConexion);
             return nuevaConexion;
         }
