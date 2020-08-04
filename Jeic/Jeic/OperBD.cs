@@ -3535,13 +3535,13 @@ namespace Refracciones
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     nuevaConexion.Open();
-                    Comando = new SqlCommand("SELECT cve_vendedor FROM VENTAS WHERE cve_pedido = @cve_pedido AND cve_siniestro = @cve_siniestro", nuevaConexion);
+                    Comando = new SqlCommand("SELECT vend.nombre FROM VENTAS vent INNER JOIN VENDEDOR vend ON vent.cve_vendedor = vend.cve_vendedor WHERE vent.cve_pedido = @cve_pedido AND vent.cve_siniestro = @cve_siniestro", nuevaConexion);
                     Comando.Parameters.AddWithValue("@cve_pedido", clavePedido);
                     Comando.Parameters.AddWithValue("@cve_siniestro", claveSiniestro);
                     Lector = Comando.ExecuteReader();
                     if (Lector.Read())
                     {
-                        vendedor = Lector["cve_vendedor"].ToString().Trim();
+                        vendedor = Lector["nombre"].ToString().Trim();
                     }
                     Lector.Close();
                 }

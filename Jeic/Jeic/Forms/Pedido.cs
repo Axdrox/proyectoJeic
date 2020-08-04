@@ -605,7 +605,6 @@ namespace Refracciones.Forms
 
         //Variables
         private string vendedor = "";
-
         private string aseguradora = "";
         private string valuador = "";
         private string taller = "";
@@ -613,45 +612,55 @@ namespace Refracciones.Forms
 
         private void aniadirNuevosRegistros()
         {
-            if (chbModificarVendedor.Checked == true)
+            if (chbModificarVendedor.Checked == true && chbModificarVendedor.Text == "Otro")
             {
                 vendedor = txtVendedor.Text.Trim().ToUpper();
                 operacion.registrarVendedor(Convert.ToInt32(txtNumeroEmpleado.Text.Trim()), vendedor);
             }
-            else
+            else if (chbModificarVendedor.Checked == false && chbModificarVendedor.Text == "Otro")
                 vendedor = cbVendedor.Text.Trim();
+            else if (chbModificarVendedor.Checked == false && chbModificarVendedor.Text == "Modificar")
+                vendedor = txtVendedor.Text.Trim().ToUpper();
 
-            if (chbOtroValuador.Checked == true)
+            if (chbOtroValuador.Checked == true && chbOtroValuador.Text == "Otro")
             {
                 valuador = txtValuador.Text.Trim().ToUpper();
                 operacion.registrarValuador(valuador);
             }
-            else
+            else if (chbOtroValuador.Checked == false && chbOtroValuador.Text == "Otro")
                 valuador = cbValuador.Text.Trim();
+            else if (chbOtroValuador.Checked == false && chbOtroValuador.Text == "Modificar")
+                valuador = txtValuador.Text.Trim().ToUpper();
 
-            if (chbOtraAseguradora.Checked == true)
+            if (chbOtraAseguradora.Checked == true && chbOtraAseguradora.Text == "Otro")
             {
                 aseguradora = txtAseguradora.Text.Trim().ToUpper();
                 operacion.registrarCliente(aseguradora, valuador, Convert.ToInt32(txtDiasEspera.Text.Trim()));
             }
-            else
+            else if (chbOtraAseguradora.Checked == false && chbOtraAseguradora.Text == "Otro")
                 aseguradora = cbAseguradora.Text.Trim();
+            else if (chbOtraAseguradora.Checked == false && chbOtraAseguradora.Text == "Modificar")
+                aseguradora = txtAseguradora.Text.Trim().ToUpper();
 
-            if (chbOtroTaller.Checked == true)
+            if (chbOtroTaller.Checked == true && chbOtroTaller.Text == "Otro")
             {
                 taller = txtTaller.Text.Trim().ToUpper();
                 operacion.registrarTaller(taller, txtDireccion.Text.Trim(), txtCiudad.Text.Trim(), txtTelefono.Text.Trim(), txtContacto.Text.Trim(), txtHorario.Text.Trim());
             }
-            else
+            else if (chbOtroTaller.Checked == false && chbOtroTaller.Text == "Otro")
                 taller = cbTaller.Text.Trim();
+            else if (chbOtroTaller.Checked == false && chbOtroTaller.Text == "Modificar")
+                taller = txtTaller.Text.Trim().ToUpper();
 
-            if (chbOtroDestino.Checked == true)
+            if (chbOtroDestino.Checked == true && chbOtroDestino.Text == "Otro")
             {
                 destino = txtDestino.Text.Trim().ToUpper();
                 operacion.registrarDestino(destino);
             }
-            else
+            else if(chbOtroDestino.Checked == false && chbOtroDestino.Text == "Otro")
                 destino = cbDestino.Text.Trim();
+            else if (chbOtroDestino.Checked == false && chbOtroDestino.Text == "Modificar")
+                destino = txtDestino.Text.Trim().ToUpper();
         }
 
         //Variables
