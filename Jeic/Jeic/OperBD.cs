@@ -1086,7 +1086,7 @@ namespace Refracciones
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     nuevaConexion.Open();
-                    Comando = new SqlCommand("SELECT ven.cve_pedido AS 'Pedido', ven.cve_siniestro AS 'Siniestro',ven.fecha_promesa AS 'Fecha promesa',pie.nombre AS 'Pieza', p.cantidad AS 'Total de piezas', p.pzas_entregadas AS 'Piezas entregadas', p.fecha_entrega AS 'Ultima Fecha de entrega', p.entrega_enTiempo AS 'Eentrega a tiempo' FROM PEDIDO p INNER JOIN VENTAS ven ON p.cve_venta = ven.cve_venta INNER JOIN PIEZA pie ON p.cve_pieza = pie.cve_pieza  WHERE p.pzas_entregadas != p.cantidad ", nuevaConexion);
+                    Comando = new SqlCommand("SELECT ven.cve_pedido AS 'Pedido', ven.cve_siniestro AS 'Siniestro',ven.fecha_promesa AS 'Fecha promesa',pie.nombre AS 'Pieza', p.cantidad AS 'Total de piezas', p.pzas_entregadas AS 'Piezas entregadas', p.fecha_entrega AS 'Ultima Fecha de entrega', p.entrega_enTiempo AS 'Entrega a tiempo' FROM PEDIDO p INNER JOIN VENTAS ven ON p.cve_venta = ven.cve_venta INNER JOIN PIEZA pie ON p.cve_pieza = pie.cve_pieza  WHERE p.pzas_entregadas != p.cantidad ", nuevaConexion);
                     da = new SqlDataAdapter(Comando);
                     da.Fill(dt);
                     nuevaConexion.Close();

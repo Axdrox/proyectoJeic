@@ -1356,8 +1356,8 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:jeic"
-        "ProductCode" = "8:{0276AF2C-CF68-416F-8853-DC9966A45542}"
-        "PackageCode" = "8:{2CF7BEFE-47C1-4597-B7D9-4F901C8ED8D5}"
+        "ProductCode" = "8:{D2BB653E-A077-404E-803C-C419BE211A38}"
+        "PackageCode" = "8:{0EA58D79-7424-4D02-97FF-E55DD5D30342}"
         "UpgradeCode" = "8:{6864FDDB-5B1B-4795-9C8E-C76E272EB67F}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

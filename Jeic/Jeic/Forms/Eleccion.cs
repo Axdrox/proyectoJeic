@@ -128,7 +128,7 @@ namespace Refracciones
             {
                 case 1:
                     btnModificarDatosPedido.Enabled = true;
-                    btnDevolucionEntrega.Enabled = false;
+                    btnDevolucionEntrega.Enabled = true;
                     btnChecarPedDev.Enabled = false;
                     break;
 
