@@ -599,18 +599,13 @@
         "InstallerBootstrapper" = "3:2"
             "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
             {
-            "Enabled" = "11:TRUE"
+            "Enabled" = "11:FALSE"
             "PromptEnabled" = "11:TRUE"
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
                 "Items"
                 {
-                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.5.2"
-                    {
-                    "Name" = "8:Microsoft .NET Framework 4.5.2 (x86 and x64)"
-                    "ProductCode" = "8:.NETFramework,Version=v4.5.2"
-                    }
                 }
             }
         }
@@ -648,7 +643,7 @@
                 {
                 "Name" = "8:.NET Framework"
                 "Message" = "8:[VSDNETMSG]"
-                "FrameworkVersion" = "8:.NETFramework,Version=v4.7.2"
+                "FrameworkVersion" = "8:.NETFramework,Version=v4.5"
                 "AllowLaterVersions" = "11:FALSE"
                 "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=863262"
                 }
@@ -1361,15 +1356,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:jeic"
-        "ProductCode" = "8:{A91411AF-2EEB-4FCE-B56D-A488E24FEC51}"
-        "PackageCode" = "8:{7FF045C6-2146-43F3-978D-97FEB1153484}"
+        "ProductCode" = "8:{0276AF2C-CF68-416F-8853-DC9966A45542}"
+        "PackageCode" = "8:{2CF7BEFE-47C1-4597-B7D9-4F901C8ED8D5}"
         "UpgradeCode" = "8:{6864FDDB-5B1B-4795-9C8E-C76E272EB67F}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.9"
+        "ProductVersion" = "8:1.1.2"
         "Manufacturer" = "8:JAB"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -1487,7 +1482,7 @@
             "Name" = "8:Jeic"
             "Arguments" = "8:"
             "Description" = "8:"
-            "ShowCmd" = "3:1"
+            "ShowCmd" = "3:3"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
             "Target" = "8:_CECE9ED492574D10BA118E1731B3F5A8"
@@ -1501,7 +1496,7 @@
             "Name" = "8:Jeic"
             "Arguments" = "8:"
             "Description" = "8:"
-            "ShowCmd" = "3:1"
+            "ShowCmd" = "3:3"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
             "Target" = "8:_CECE9ED492574D10BA118E1731B3F5A8"
