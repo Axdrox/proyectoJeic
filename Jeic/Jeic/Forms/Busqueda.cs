@@ -85,7 +85,7 @@ namespace Refracciones.Forms
                 lblPieza.Text = lblPieza.Text.Substring(0, 6) + " " + dgvDatos.Rows[0].Cells[2].Value.ToString();
                 lblCantidad.Text = lblCantidad.Text.Substring(0, 9) + " " + dgvDatos.Rows[0].Cells[3].Value.ToString();
                 lblVendedor.Text = lblVendedor.Text.Substring(0, 9) + " " + dgvDatos.Rows[0].Cells[4].Value.ToString();
-                lblClaveSeguimiento.Text = lblClaveSeguimiento.Text.Substring(0, 16) + " " + dgvDatos.Rows[0].Cells[5].Value.ToString();
+                lblClaveSeguimiento.Text = lblClaveSeguimiento.Text.Substring(0, 9) + " " + dgvDatos.Rows[0].Cells[5].Value.ToString();
                 lblOrigen.Text = lblOrigen.Text.Substring(0, 7) + " " + dgvDatos.Rows[0].Cells[6].Value.ToString();
                 lblProveedor.Text = lblProveedor.Text.Substring(0, 10) + " " + dgvDatos.Rows[0].Cells[7].Value.ToString();
                 lblValuador.Text = lblValuador.Text.Substring(0, 9) + " " + dgvDatos.Rows[0].Cells[8].Value.ToString();
@@ -106,6 +106,7 @@ namespace Refracciones.Forms
                 lblFacturaSinIva.Text = lblFacturaSinIva.Text.Substring(0, 16) + " $" + dgvDatos.Rows[0].Cells[20].Value.ToString();
                 lblFacturaConIva.Text = lblFacturaConIva.Text.Substring(0, 16) + " $" + dgvDatos.Rows[0].Cells[21].Value.ToString();
                 lblEstadoFac.Text = lblEstadoFac.Text.Substring(0, 7) + " " + dgvDatos.Rows[0].Cells[22].Value.ToString();
+                lblEstadoSiniestro.Text = lblEstadoSiniestro.Text.Substring(0, 17) + " " + dgvDatos.Rows[0].Cells[23].Value.ToString();
             }
             else
             {

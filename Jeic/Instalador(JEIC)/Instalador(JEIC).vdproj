@@ -1356,15 +1356,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:jeic"
-        "ProductCode" = "8:{D2BB653E-A077-404E-803C-C419BE211A38}"
-        "PackageCode" = "8:{0EA58D79-7424-4D02-97FF-E55DD5D30342}"
+        "ProductCode" = "8:{B8E13EDA-A638-4115-BE0F-A0578B3D126F}"
+        "PackageCode" = "8:{2E5871BC-2CE0-4A14-AFF1-27F9CC3FC7F5}"
         "UpgradeCode" = "8:{6864FDDB-5B1B-4795-9C8E-C76E272EB67F}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.1.2"
+        "ProductVersion" = "8:1.1.3"
         "Manufacturer" = "8:JAB"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -1906,7 +1906,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_CECE9ED492574D10BA118E1731B3F5A8"
             {
-            "SourcePath" = "8:..\\Jeic\\obj\\Release\\Jeic.exe"
+            "SourcePath" = "8:"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_FB650AC968A44FA6BDD0AABDC0083F30"

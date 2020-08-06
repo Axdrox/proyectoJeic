@@ -94,6 +94,7 @@
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.moverFormulario = new Bunifu.Framework.UI.BunifuDragControl(this.components);
+            this.lblEstadoSiniestro = new System.Windows.Forms.Label();
             this.Panelinfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFactura)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dvgPedido)).BeginInit();
@@ -175,6 +176,7 @@
             // 
             this.Panelinfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(45)))), ((int)(((byte)(59)))));
             this.Panelinfo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Panelinfo.Controls.Add(this.lblEstadoSiniestro);
             this.Panelinfo.Controls.Add(this.label11);
             this.Panelinfo.Controls.Add(this.label10);
             this.Panelinfo.Controls.Add(this.label9);
@@ -224,7 +226,7 @@
             // label10
             // 
             this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(109)))), ((int)(((byte)(119)))));
-            this.label10.Location = new System.Drawing.Point(0, 324);
+            this.label10.Location = new System.Drawing.Point(0, 326);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(320, 2);
             this.label10.TabIndex = 37;
@@ -232,7 +234,7 @@
             // label9
             // 
             this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(109)))), ((int)(((byte)(119)))));
-            this.label9.Location = new System.Drawing.Point(0, 290);
+            this.label9.Location = new System.Drawing.Point(0, 283);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(320, 2);
             this.label9.TabIndex = 36;
@@ -384,11 +386,11 @@
             this.lblClaveSeguimiento.AutoSize = true;
             this.lblClaveSeguimiento.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblClaveSeguimiento.ForeColor = System.Drawing.Color.White;
-            this.lblClaveSeguimiento.Location = new System.Drawing.Point(5, 299);
+            this.lblClaveSeguimiento.Location = new System.Drawing.Point(5, 304);
             this.lblClaveSeguimiento.Name = "lblClaveSeguimiento";
-            this.lblClaveSeguimiento.Size = new System.Drawing.Size(100, 14);
+            this.lblClaveSeguimiento.Size = new System.Drawing.Size(54, 14);
             this.lblClaveSeguimiento.TabIndex = 23;
-            this.lblClaveSeguimiento.Text = "Cve seguimiento:";
+            this.lblClaveSeguimiento.Text = "Cve guía:";
             // 
             // lblCliente
             // 
@@ -828,6 +830,17 @@
             this.moverFormulario.TargetControl = this.bunifuGradientPanel1;
             this.moverFormulario.Vertical = true;
             // 
+            // lblEstadoSiniestro
+            // 
+            this.lblEstadoSiniestro.AutoSize = true;
+            this.lblEstadoSiniestro.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEstadoSiniestro.ForeColor = System.Drawing.Color.White;
+            this.lblEstadoSiniestro.Location = new System.Drawing.Point(5, 285);
+            this.lblEstadoSiniestro.Name = "lblEstadoSiniestro";
+            this.lblEstadoSiniestro.Size = new System.Drawing.Size(99, 14);
+            this.lblEstadoSiniestro.TabIndex = 39;
+            this.lblEstadoSiniestro.Text = "Estado Siniestro:";
+            // 
             // Busqueda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -919,5 +932,6 @@
         private System.Windows.Forms.ToolStripMenuItem administrarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem minimizarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem talleresToolStripMenuItem;
+        private System.Windows.Forms.Label lblEstadoSiniestro;
     }
 }
