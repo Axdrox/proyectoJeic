@@ -107,6 +107,8 @@ namespace Refracciones.Forms
                 lblFacturaConIva.Text = lblFacturaConIva.Text.Substring(0, 16) + " $" + dgvDatos.Rows[0].Cells[21].Value.ToString();
                 lblEstadoFac.Text = lblEstadoFac.Text.Substring(0, 7) + " " + dgvDatos.Rows[0].Cells[22].Value.ToString();
                 lblEstadoSiniestro.Text = lblEstadoSiniestro.Text.Substring(0, 17) + " " + dgvDatos.Rows[0].Cells[23].Value.ToString();
+                lblVehiculo.Text = lblVehiculo.Text.Substring(0,9) + "" + dgvDatos.Rows[0].Cells[26].Value.ToString() + "-" +dgvDatos.Rows[0].Cells[24].Value.ToString() + "-" + dgvDatos.Rows[0].Cells[25].Value.ToString();
+                txtComentarioSiniestro.Text = dgvDatos.Rows[0].Cells[27].Value.ToString();
             }
             else
             {
@@ -215,5 +217,7 @@ namespace Refracciones.Forms
             taller.lblUsuario.Text = Usuario.Text;
             DialogResult result = taller.ShowDialog();
         }
+
+
     }
 }

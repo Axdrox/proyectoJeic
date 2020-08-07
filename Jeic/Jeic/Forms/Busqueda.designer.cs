@@ -41,6 +41,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.Fecha_in = new System.Windows.Forms.DateTimePicker();
             this.Panelinfo = new System.Windows.Forms.Panel();
+            this.txtComentarioSiniestro = new System.Windows.Forms.TextBox();
+            this.lblVehiculo = new System.Windows.Forms.Label();
+            this.lblEstadoSiniestro = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -94,7 +97,6 @@
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.moverFormulario = new Bunifu.Framework.UI.BunifuDragControl(this.components);
-            this.lblEstadoSiniestro = new System.Windows.Forms.Label();
             this.Panelinfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFactura)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dvgPedido)).BeginInit();
@@ -176,6 +178,8 @@
             // 
             this.Panelinfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(45)))), ((int)(((byte)(59)))));
             this.Panelinfo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Panelinfo.Controls.Add(this.txtComentarioSiniestro);
+            this.Panelinfo.Controls.Add(this.lblVehiculo);
             this.Panelinfo.Controls.Add(this.lblEstadoSiniestro);
             this.Panelinfo.Controls.Add(this.label11);
             this.Panelinfo.Controls.Add(this.label10);
@@ -215,6 +219,41 @@
             this.Panelinfo.Size = new System.Drawing.Size(320, 479);
             this.Panelinfo.TabIndex = 6;
             // 
+            // txtComentarioSiniestro
+            // 
+            this.txtComentarioSiniestro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(45)))), ((int)(((byte)(59)))));
+            this.txtComentarioSiniestro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtComentarioSiniestro.ForeColor = System.Drawing.Color.White;
+            this.txtComentarioSiniestro.Location = new System.Drawing.Point(2, 304);
+            this.txtComentarioSiniestro.MaxLength = 100;
+            this.txtComentarioSiniestro.Multiline = true;
+            this.txtComentarioSiniestro.Name = "txtComentarioSiniestro";
+            this.txtComentarioSiniestro.ReadOnly = true;
+            this.txtComentarioSiniestro.Size = new System.Drawing.Size(302, 21);
+            this.txtComentarioSiniestro.TabIndex = 43;
+            // 
+            // lblVehiculo
+            // 
+            this.lblVehiculo.AutoSize = true;
+            this.lblVehiculo.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVehiculo.ForeColor = System.Drawing.Color.White;
+            this.lblVehiculo.Location = new System.Drawing.Point(0, 68);
+            this.lblVehiculo.Name = "lblVehiculo";
+            this.lblVehiculo.Size = new System.Drawing.Size(57, 15);
+            this.lblVehiculo.TabIndex = 41;
+            this.lblVehiculo.Text = "Vehículo:";
+            // 
+            // lblEstadoSiniestro
+            // 
+            this.lblEstadoSiniestro.AutoSize = true;
+            this.lblEstadoSiniestro.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEstadoSiniestro.ForeColor = System.Drawing.Color.White;
+            this.lblEstadoSiniestro.Location = new System.Drawing.Point(1, 287);
+            this.lblEstadoSiniestro.Name = "lblEstadoSiniestro";
+            this.lblEstadoSiniestro.Size = new System.Drawing.Size(99, 14);
+            this.lblEstadoSiniestro.TabIndex = 39;
+            this.lblEstadoSiniestro.Text = "Estado Siniestro:";
+            // 
             // label11
             // 
             this.label11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(109)))), ((int)(((byte)(119)))));
@@ -226,7 +265,7 @@
             // label10
             // 
             this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(109)))), ((int)(((byte)(119)))));
-            this.label10.Location = new System.Drawing.Point(0, 326);
+            this.label10.Location = new System.Drawing.Point(0, 351);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(320, 2);
             this.label10.TabIndex = 37;
@@ -250,7 +289,7 @@
             // label7
             // 
             this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(109)))), ((int)(((byte)(119)))));
-            this.label7.Location = new System.Drawing.Point(1, 64);
+            this.label7.Location = new System.Drawing.Point(1, 61);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(320, 2);
             this.label7.TabIndex = 34;
@@ -275,7 +314,7 @@
             this.lblFechaEntreg.AutoSize = true;
             this.lblFechaEntreg.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFechaEntreg.ForeColor = System.Drawing.Color.White;
-            this.lblFechaEntreg.Location = new System.Drawing.Point(0, 119);
+            this.lblFechaEntreg.Location = new System.Drawing.Point(0, 128);
             this.lblFechaEntreg.Name = "lblFechaEntreg";
             this.lblFechaEntreg.Size = new System.Drawing.Size(89, 14);
             this.lblFechaEntreg.TabIndex = 17;
@@ -309,7 +348,7 @@
             this.lblFacturaConIva.AutoSize = true;
             this.lblFacturaConIva.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFacturaConIva.ForeColor = System.Drawing.Color.White;
-            this.lblFacturaConIva.Location = new System.Drawing.Point(6, 450);
+            this.lblFacturaConIva.Location = new System.Drawing.Point(1, 447);
             this.lblFacturaConIva.Name = "lblFacturaConIva";
             this.lblFacturaConIva.Size = new System.Drawing.Size(92, 14);
             this.lblFacturaConIva.TabIndex = 30;
@@ -320,7 +359,7 @@
             this.lblFacturaSinIva.AutoSize = true;
             this.lblFacturaSinIva.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFacturaSinIva.ForeColor = System.Drawing.Color.White;
-            this.lblFacturaSinIva.Location = new System.Drawing.Point(6, 431);
+            this.lblFacturaSinIva.Location = new System.Drawing.Point(1, 428);
             this.lblFacturaSinIva.Name = "lblFacturaSinIva";
             this.lblFacturaSinIva.Size = new System.Drawing.Size(90, 14);
             this.lblFacturaSinIva.TabIndex = 29;
@@ -331,7 +370,7 @@
             this.lblCveFactura.AutoSize = true;
             this.lblCveFactura.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCveFactura.ForeColor = System.Drawing.Color.White;
-            this.lblCveFactura.Location = new System.Drawing.Point(5, 412);
+            this.lblCveFactura.Location = new System.Drawing.Point(0, 409);
             this.lblCveFactura.Name = "lblCveFactura";
             this.lblCveFactura.Size = new System.Drawing.Size(59, 14);
             this.lblCveFactura.TabIndex = 28;
@@ -364,7 +403,7 @@
             this.lblPrecioReparacion.AutoSize = true;
             this.lblPrecioReparacion.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPrecioReparacion.ForeColor = System.Drawing.Color.White;
-            this.lblPrecioReparacion.Location = new System.Drawing.Point(140, 356);
+            this.lblPrecioReparacion.Location = new System.Drawing.Point(137, 380);
             this.lblPrecioReparacion.Name = "lblPrecioReparacion";
             this.lblPrecioReparacion.Size = new System.Drawing.Size(122, 14);
             this.lblPrecioReparacion.TabIndex = 25;
@@ -375,7 +414,7 @@
             this.lblPrecioVenta.AutoSize = true;
             this.lblPrecioVenta.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPrecioVenta.ForeColor = System.Drawing.Color.White;
-            this.lblPrecioVenta.Location = new System.Drawing.Point(141, 337);
+            this.lblPrecioVenta.Location = new System.Drawing.Point(138, 359);
             this.lblPrecioVenta.Name = "lblPrecioVenta";
             this.lblPrecioVenta.Size = new System.Drawing.Size(93, 14);
             this.lblPrecioVenta.TabIndex = 24;
@@ -386,7 +425,7 @@
             this.lblClaveSeguimiento.AutoSize = true;
             this.lblClaveSeguimiento.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblClaveSeguimiento.ForeColor = System.Drawing.Color.White;
-            this.lblClaveSeguimiento.Location = new System.Drawing.Point(5, 304);
+            this.lblClaveSeguimiento.Location = new System.Drawing.Point(3, 331);
             this.lblClaveSeguimiento.Name = "lblClaveSeguimiento";
             this.lblClaveSeguimiento.Size = new System.Drawing.Size(54, 14);
             this.lblClaveSeguimiento.TabIndex = 23;
@@ -419,7 +458,7 @@
             this.lblCostoNeto.AutoSize = true;
             this.lblCostoNeto.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCostoNeto.ForeColor = System.Drawing.Color.White;
-            this.lblCostoNeto.Location = new System.Drawing.Point(6, 337);
+            this.lblCostoNeto.Location = new System.Drawing.Point(-1, 358);
             this.lblCostoNeto.Name = "lblCostoNeto";
             this.lblCostoNeto.Size = new System.Drawing.Size(69, 14);
             this.lblCostoNeto.TabIndex = 20;
@@ -430,7 +469,7 @@
             this.lblCostoEnvio.AutoSize = true;
             this.lblCostoEnvio.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCostoEnvio.ForeColor = System.Drawing.Color.White;
-            this.lblCostoEnvio.Location = new System.Drawing.Point(6, 356);
+            this.lblCostoEnvio.Location = new System.Drawing.Point(-1, 380);
             this.lblCostoEnvio.Name = "lblCostoEnvio";
             this.lblCostoEnvio.Size = new System.Drawing.Size(90, 14);
             this.lblCostoEnvio.TabIndex = 19;
@@ -441,7 +480,7 @@
             this.lblCostoSinIva.AutoSize = true;
             this.lblCostoSinIva.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCostoSinIva.ForeColor = System.Drawing.Color.White;
-            this.lblCostoSinIva.Location = new System.Drawing.Point(5, 337);
+            this.lblCostoSinIva.Location = new System.Drawing.Point(1, 358);
             this.lblCostoSinIva.Name = "lblCostoSinIva";
             this.lblCostoSinIva.Size = new System.Drawing.Size(80, 14);
             this.lblCostoSinIva.TabIndex = 18;
@@ -453,7 +492,7 @@
             this.lblPromesa.AutoSize = true;
             this.lblPromesa.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPromesa.ForeColor = System.Drawing.Color.White;
-            this.lblPromesa.Location = new System.Drawing.Point(0, 98);
+            this.lblPromesa.Location = new System.Drawing.Point(0, 107);
             this.lblPromesa.Name = "lblPromesa";
             this.lblPromesa.Size = new System.Drawing.Size(93, 14);
             this.lblPromesa.TabIndex = 13;
@@ -464,7 +503,7 @@
             this.lblAsignacion.AutoSize = true;
             this.lblAsignacion.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAsignacion.ForeColor = System.Drawing.Color.White;
-            this.lblAsignacion.Location = new System.Drawing.Point(0, 77);
+            this.lblAsignacion.Location = new System.Drawing.Point(0, 88);
             this.lblAsignacion.Name = "lblAsignacion";
             this.lblAsignacion.Size = new System.Drawing.Size(99, 14);
             this.lblAsignacion.TabIndex = 12;
@@ -830,17 +869,6 @@
             this.moverFormulario.TargetControl = this.bunifuGradientPanel1;
             this.moverFormulario.Vertical = true;
             // 
-            // lblEstadoSiniestro
-            // 
-            this.lblEstadoSiniestro.AutoSize = true;
-            this.lblEstadoSiniestro.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEstadoSiniestro.ForeColor = System.Drawing.Color.White;
-            this.lblEstadoSiniestro.Location = new System.Drawing.Point(5, 285);
-            this.lblEstadoSiniestro.Name = "lblEstadoSiniestro";
-            this.lblEstadoSiniestro.Size = new System.Drawing.Size(99, 14);
-            this.lblEstadoSiniestro.TabIndex = 39;
-            this.lblEstadoSiniestro.Text = "Estado Siniestro:";
-            // 
             // Busqueda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -933,5 +961,7 @@
         private System.Windows.Forms.ToolStripMenuItem minimizarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem talleresToolStripMenuItem;
         private System.Windows.Forms.Label lblEstadoSiniestro;
+        private System.Windows.Forms.Label lblVehiculo;
+        private System.Windows.Forms.TextBox txtComentarioSiniestro;
     }
 }
