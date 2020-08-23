@@ -705,9 +705,11 @@ namespace Refracciones.Forms
         {
             try
             {
+                int x = 0;
                 //AGREGANDO DATOS A PEDIDO
                 foreach (DataGridViewRow row in dgvPedido.Rows)
                 {
+
                     DateTime dtFechaCosto = new DateTime();
                     //if(row.Cells["Fecha costo"].Value != null || row.Cells["Fecha costo"].Value != DBNull.Value || row.Cells["Fecha costo"].Value.ToString() != string.Empty)
                     dtFechaCosto = DateTime.Parse(row.Cells["Fecha costo"].Value.ToString());
@@ -719,7 +721,10 @@ namespace Refracciones.Forms
                         dtFechaCosto/*, Convert.ToString(row.Cells["Costo sin IVA"].Value)*/, Convert.ToString(row.Cells["Costo neto\n($)"].Value),
                         Convert.ToString(row.Cells["Costo de envío\n($)"].Value), Convert.ToString(row.Cells["Precio de venta\n($)"].Value),
                         Convert.ToString(row.Cells["Precio de reparación\n($)"].Value), Convert.ToString(row.Cells["Clave de producto"].Value),
-                        Convert.ToString(row.Cells["Número de guía"].Value), Convert.ToInt32(row.Cells["Cantidad"].Value), lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9), dgvPedido.CurrentRow.Index);
+                        Convert.ToString(row.Cells["Número de guía"].Value), Convert.ToInt32(row.Cells["Cantidad"].Value), lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9), x);
+                        //MessageBox.Show(x.ToString());
+                        x = x + 1;
+                        
                 }
                 MessageBOX.SHowDialog(1, "Se registró pedido correctamente");
             }
@@ -733,6 +738,7 @@ namespace Refracciones.Forms
         {
             try
             {
+                int x = 0;
                 if (filasIniciales != 0)
                 {
                     int i = 0;
@@ -750,7 +756,8 @@ namespace Refracciones.Forms
                             dtFechaCosto/*, Convert.ToString(row.Cells["Costo sin IVA"].Value)*/, Convert.ToString(row.Cells["Costo neto\n($)"].Value),
                             Convert.ToString(row.Cells["Costo de envío\n($)"].Value), Convert.ToString(row.Cells["Precio de venta\n($)"].Value),
                             Convert.ToString(row.Cells["Precio de reparación\n($)"].Value), Convert.ToString(row.Cells["Clave de producto"].Value),
-                            Convert.ToString(row.Cells["Número de guía"].Value), Convert.ToInt32(row.Cells["Cantidad"].Value), nombresPiezas[i], lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9), dgvPedido.CurrentRow.Index);
+                            Convert.ToString(row.Cells["Número de guía"].Value), Convert.ToInt32(row.Cells["Cantidad"].Value), nombresPiezas[i], lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9), x);
+                        x = x + 1;
                         i++;
                         if (i == filasIniciales)
                         {
@@ -769,10 +776,12 @@ namespace Refracciones.Forms
                                  Convert.ToDateTime(dgvPedido.Rows[j].Cells[10].Value), dgvPedido.Rows[j].Cells[11].Value.ToString(),
                                  dgvPedido.Rows[j].Cells[12].Value.ToString(), dgvPedido.Rows[j].Cells[13].Value.ToString(),
                                  dgvPedido.Rows[j].Cells[14].Value.ToString(), dgvPedido.Rows[j].Cells[5].Value.ToString(),
-                                 dgvPedido.Rows[j].Cells[6].Value.ToString(), Convert.ToInt32(dgvPedido.Rows[j].Cells[4].Value), lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9), dgvPedido.CurrentRow.Index);
+                                 dgvPedido.Rows[j].Cells[6].Value.ToString(), Convert.ToInt32(dgvPedido.Rows[j].Cells[4].Value), lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9), x);
+                            x = x + 1;
                         }
                         //MessageBOX.SHowDialog(1, "Se registró pedido correctamente");
                     }
+                    
                     MessageBOX.SHowDialog(1, "Se actualizó pedido correctamente");
                 }
                 else
