@@ -151,7 +151,7 @@
             this.TxtClavePed.MaxLength = 30;
             this.TxtClavePed.Name = "TxtClavePed";
             this.TxtClavePed.Size = new System.Drawing.Size(133, 20);
-            this.TxtClavePed.TabIndex = 3;
+            this.TxtClavePed.TabIndex = 0;
             this.TxtClavePed.KeyUp += new System.Windows.Forms.KeyEventHandler(this.BusquedaPedido);
             // 
             // label3
@@ -171,7 +171,7 @@
             this.Fecha_in.Location = new System.Drawing.Point(24, 28);
             this.Fecha_in.Name = "Fecha_in";
             this.Fecha_in.Size = new System.Drawing.Size(128, 20);
-            this.Fecha_in.TabIndex = 5;
+            this.Fecha_in.TabIndex = 0;
             this.Fecha_in.ValueChanged += new System.EventHandler(this.BusquedaFecha);
             // 
             // Panelinfo
@@ -250,9 +250,9 @@
             this.lblEstadoSiniestro.ForeColor = System.Drawing.Color.White;
             this.lblEstadoSiniestro.Location = new System.Drawing.Point(1, 287);
             this.lblEstadoSiniestro.Name = "lblEstadoSiniestro";
-            this.lblEstadoSiniestro.Size = new System.Drawing.Size(99, 14);
+            this.lblEstadoSiniestro.Size = new System.Drawing.Size(47, 14);
             this.lblEstadoSiniestro.TabIndex = 39;
-            this.lblEstadoSiniestro.Text = "Estado Siniestro:";
+            this.lblEstadoSiniestro.Text = "Estado:";
             // 
             // label11
             // 
@@ -614,7 +614,7 @@
             this.dvgPedido.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dvgPedido.ColumnHeadersHeight = 22;
             this.dvgPedido.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -637,7 +637,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dvgPedido.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dvgPedido.RowHeadersWidth = 51;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(64)))), ((int)(((byte)(88)))));
@@ -655,7 +655,7 @@
             this.Fecha_Fin.Location = new System.Drawing.Point(230, 28);
             this.Fecha_Fin.Name = "Fecha_Fin";
             this.Fecha_Fin.Size = new System.Drawing.Size(112, 20);
-            this.Fecha_Fin.TabIndex = 8;
+            this.Fecha_Fin.TabIndex = 1;
             this.Fecha_Fin.ValueChanged += new System.EventHandler(this.BusquedaFecha);
             // 
             // label4
@@ -717,7 +717,7 @@
             this.txtCveVendedor.MaxLength = 30;
             this.txtCveVendedor.Name = "txtCveVendedor";
             this.txtCveVendedor.Size = new System.Drawing.Size(133, 20);
-            this.txtCveVendedor.TabIndex = 15;
+            this.txtCveVendedor.TabIndex = 2;
             this.txtCveVendedor.KeyUp += new System.Windows.Forms.KeyEventHandler(this.BusquedaPedido);
             // 
             // label5
@@ -860,7 +860,7 @@
             this.bunifuGradientPanel1.Name = "bunifuGradientPanel1";
             this.bunifuGradientPanel1.Quality = 10;
             this.bunifuGradientPanel1.Size = new System.Drawing.Size(1264, 633);
-            this.bunifuGradientPanel1.TabIndex = 18;
+            this.bunifuGradientPanel1.TabIndex = 0;
             // 
             // moverFormulario
             // 

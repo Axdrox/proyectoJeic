@@ -133,7 +133,7 @@ namespace Refracciones.Forms
                 }
                 if (btnGuardar.Text == "Guardar")
                 {
-                    MessageBOX.SHowDialog(1, factura.Registrar_Refactura(cve_siniestro, cve_pedido, cve_factura, cve_estado, cve_refactura, fact_sinIVA, descuento, fact_neto, costo_refactura, fecha_refactura, fecha_ingreso, fecha_revision, fecha_pago, nombre_factura, file, nombre_xml, xml_file, comentario, lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9)));
+                    MessageBOX.SHowDialog(1, factura.Registrar_Refactura(cve_siniestro, cve_pedido, cve_factura, cve_estado, cve_refactura, fact_sinIVA, descuento, fact_neto, costo_refactura, fecha_refactura, fecha_ingreso, fecha_revision, fecha_pago, nombre_factura, file, nombre_xml, xml_file, comentario, lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9),lblPieza.Text.Substring(7, lblPieza.Text.Length - 7),int.Parse(lblcvePedidoidentity.Text)));
                     this.Close();
                 }
                 else if (btnGuardar.Text == "Actualizar")
@@ -150,14 +150,14 @@ namespace Refracciones.Forms
             this.Icon = Resources.iconJeic;
             cve_pedido = dato2.Text.Substring(8, (dato2.Text.Length - 8)); 
             cve_siniestro = dato1.Text.Substring(11, dato1.Text.Length - 11);
-            txtFacturasinIVA.Text = (factura.venta_total(cve_pedido, cve_siniestro)).ToString();
+            txtFacturasinIVA.Text = (factura.venta_total(cve_pedido, cve_siniestro,lblPieza.Text.Substring(7,lblPieza.Text.Length - 7))).ToString();
             dtpFechaPago.Value = dtpFechaIngreso.Value.AddDays(factura.Dias_Espera(cve_siniestro, cve_pedido));
             cmbEstadoFactura.SelectedIndex = 0;
             if (dato3.Text == "0")
             {
                 try
                 {
-                    dataGridView1.DataSource = factura.Actualizar_Factura(factura.Clave_Fact(cve_siniestro,cve_pedido));
+                    dataGridView1.DataSource = factura.Actualizar_Factura(factura.Clave_Fact(cve_siniestro,cve_pedido, lblPieza.Text.Substring(7, lblPieza.Text.Length - 7), int.Parse(lblcvePedidoidentity.Text)));
                 }
                 catch (Exception ex)
                 {
@@ -275,6 +275,12 @@ namespace Refracciones.Forms
                 txtCve_Factura.Focus();
                 btnGuardar.Enabled = false;
             }
+            else if (factura.factExistente(txtCve_Factura.Text.Trim()) != "0")
+            {
+                errorP.SetError(txtCve_Factura, "Esa factura ya existe");
+                txtCve_Factura.Focus();
+                btnGuardar.Enabled = false;
+            }
             else
             {
                 errorP.Clear();
@@ -305,6 +311,7 @@ namespace Refracciones.Forms
 
         private void pbClose_Click(object sender, EventArgs e)
         {
+            lblPieza.Text = "PIEZA:";
             this.Close();
         }
 

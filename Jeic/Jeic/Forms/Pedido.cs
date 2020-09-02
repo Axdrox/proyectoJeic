@@ -13,6 +13,14 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+//usings para generar PDF
+using iText.IO.Font;
+using iText.Kernel.Font;
+using iText.Kernel.Pdf;
+using iText.Kernel.Pdf.Canvas;
+using System.IO;
+//using iText.Kernel.Colors;
+using DocumentFormat.OpenXml.Presentation;
 
 namespace Refracciones.Forms
 {
@@ -726,7 +734,7 @@ namespace Refracciones.Forms
                         x = x + 1;
                         
                 }
-                MessageBOX.SHowDialog(1, "Se registró pedido correctamente");
+                //MessageBOX.SHowDialog(1, "Se registró pedido correctamente");
             }
             catch (Exception Ex)
             {
@@ -782,7 +790,7 @@ namespace Refracciones.Forms
                         //MessageBOX.SHowDialog(1, "Se registró pedido correctamente");
                     }
                     
-                    MessageBOX.SHowDialog(1, "Se actualizó pedido correctamente");
+                    //MessageBOX.SHowDialog(1, "Se actualizó pedido correctamente");
                 }
                 else
                     registrarPedido();
@@ -1355,7 +1363,8 @@ namespace Refracciones.Forms
             {
                 if (!string.IsNullOrEmpty(operacion.existeClavePedido(txtClavePedido.Text.Trim().ToUpper())))
                 {
-                    errorProvider1.SetError(txtClavePedido, "Ya existe un pedido con la misma clave");
+                    
+                   errorProvider1.SetError(txtClavePedido, "Ya existe un pedido con la misma clave");
                     rdbSi.Checked = false;
                     rdbNo.Checked = false;
                     e.Cancel = true;
@@ -1966,5 +1975,371 @@ namespace Refracciones.Forms
                 errorProvider1.SetError(txtHorario, null);
             }
         }
+
+        private void btnPDF_Click(object sender, EventArgs e)
+        {
+            //ESTO ES LO MISMO QUE EL BOTON DE FINALIZAR O ACTUALIZAR PARA FINALIZAR EL PEDIDO
+            int g = 0;
+            try
+            {
+                if (dgvPedido.Rows.Count != 0)
+                {
+                    if (ValidateChildren(ValidationConstraints.Enabled))
+                    {
+                        aniadirNuevosRegistros();
+
+                        DateTime dtFechaBaja;
+                        DateTime dtFechaAsignacion = dtpFechaAsignacion.Value.Date;
+                        DateTime dtFechaPromesa = dtpFechaPromesa.Value.Date;
+                        if (actualizar != 1)
+                        {
+                            dtFechaBaja = DateTime.Parse("1753/01/01");
+
+                            //Registrar lo correspondiente a siniestro
+                            string estadoSiniestro = "";
+                            if (nuevoMarca == true)
+                                operacion.registroMarca(lblMarca.Text.Trim());
+                            if (nuevoVehiculo == true)
+                                operacion.registroVehiculo(lblVehiculo.Text.Trim(), lblAnio.Text.Trim(), lblMarca.Text.Trim());
+                            else if (nuevoVehiculo == false && string.IsNullOrEmpty(operacion.existeAnioVehiculo(lblVehiculo.Text.Trim(), lblAnio.Text.Trim())))
+                            {
+                                operacion.registroVehiculo(lblVehiculo.Text.Trim(), lblAnio.Text.Trim(), lblMarca.Text.Trim());
+                            }
+
+                            if (chbModificarEstado.Checked == true)
+                                estadoSiniestro = cbEstadoSiniestro.Text;
+                            else
+                                estadoSiniestro = lblEstadoSiniestro.Text;
+
+                            if (!string.IsNullOrEmpty(operacion.existeClaveSiniestro(lblClaveSiniestro.Text)) && lblClaveSiniestro.Text.Substring(0, 5) == "JEIC-")
+                            {
+                                lblClaveSiniestro.Text = "JEIC-" + operacion.TotalSiniestro().ToString();
+                            }
+
+                            operacion.registrarSiniestro(lblVehiculo.Text.Trim(), lblClaveSiniestro.Text.Trim(), txtComentarioSiniestro.Text.Trim(), estadoSiniestro, lblAnio.Text);
+
+                            calcularDGV();
+
+                            //AGREGANDO DATOS A VENTA
+                            operacion.registrarVenta(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(), taller, vendedor, /*dtFechaBaja,*/ valuador, destino, totalCosto, subtotalPrecio, totalPrecio, dtFechaAsignacion, dtFechaPromesa, utilidad);//, utilidad
+
+                            //REGISTRANDO PEDIDO
+                            registrarPedido();
+                            g = 1;
+                            this.DialogResult = DialogResult.OK;
+                        }
+                        else // ACTUALIZAR PEDIDO
+                        {
+                            if (chbModificarFechaBaja.Checked == true)
+                                dtFechaBaja = dtpFechaBaja.Value.Date;
+                            else
+                                dtFechaBaja = DateTime.Parse("1753/01/01");
+
+                            string estadoSiniestro = "";
+                            if (chbModificarEstado.Checked == true)
+                                estadoSiniestro = cbEstadoSiniestro.Text;
+                            else
+                                estadoSiniestro = lblEstadoSiniestro.Text;
+
+                            operacion.actualizarSiniestro(lblVehiculo.Text.Trim(), lblClaveSiniestro.Text.Trim(), txtComentarioSiniestro.Text.Trim(), estadoSiniestro, Convert.ToInt32(lblAnio.Text));
+
+                            calcularDGV();
+
+                            //AGREGANDO DATOS A VENTA
+                            operacion.actualizarVenta(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(), taller, vendedor, dtFechaBaja, valuador, destino, totalCosto, subtotalPrecio, totalPrecio, dtFechaAsignacion, dtFechaPromesa, utilidad);//, utilidad
+                            actualizarPedido();
+                            g = 1;
+                            this.DialogResult = DialogResult.OK;
+                        }
+                    }
+                }
+                else
+                    MessageBOX.SHowDialog(2, "Favor de agregar al menos una pieza");
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error en el evento btnFinalizarPedido_Click: " + EX.Message);
+            }
+            //GENERAR PDF
+            if (g == 1)
+            {
+                saveFileDialog1.InitialDirectory = @"C:\";
+                saveFileDialog1.Title = "PEDIDO";
+                saveFileDialog1.CheckPathExists = true;
+                saveFileDialog1.DefaultExt = "pdf";
+                saveFileDialog1.Filter = "PDF files (*.pdf)|*.pdf";
+                saveFileDialog1.FilterIndex = 2;
+                saveFileDialog1.RestoreDirectory = true;
+                saveFileDialog1.FileName = "Ped_" + txtClavePedido.Text.Trim();
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    if (File.Exists(saveFileDialog1.FileName))
+                    {
+                        PdfWriter pdfWriter = new PdfWriter(saveFileDialog1.FileName);
+                        PdfReader pdfReader = new PdfReader(Application.StartupPath + "\\VALE JEIC.pdf");
+
+                        PdfDocument pdfdoc = new PdfDocument(pdfReader, pdfWriter);
+
+                        OperBD pdfnuevo = new OperBD();
+                        pdfnuevo.Llenartabla(dgvDatosPDF, txtClavePedido.Text.Trim());
+
+                        int NumeroFila = pdfnuevo.NumeroFilas(txtClavePedido.Text.Trim());
+
+                        for (int i = 0; i < 3; i++)
+                        {
+                            PdfCanvas canvas = new PdfCanvas(pdfdoc.GetPage(i + 1));
+                            PdfFont font = PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD);
+
+                            int y = 659;
+                            int x = 109;
+                            int Items = 0;
+
+
+
+                            //PEDIDO
+                            canvas.BeginText().SetFontAndSize(font, 18)
+                                     .MoveText(x, y)
+                                     .ShowText(dgvDatosPDF.Rows[0].Cells[0].Value.ToString())
+                                     .EndText();
+                            //CLIENTE
+                            canvas.BeginText().SetFontAndSize(font, 9)
+                                    .MoveText(x + 245, y - 2.5)
+                                    .ShowText(dgvDatosPDF.Rows[0].Cells[1].Value.ToString())
+                                    .EndText();
+                            //TALLER
+                            canvas.BeginText().SetFontAndSize(font, 9)
+                                    .MoveText(x + 243, y - 14.5)
+                                    .ShowText(dgvDatosPDF.Rows[0].Cells[2].Value.ToString())
+                                    .EndText();
+
+                            /*if (dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Contains("Rodrigo"))
+                                canvas.Rectangle(x + 288, y - 28, 53, 9).SetFillColor(ColorConstants.LIGHT_GRAY).Fill();
+                            else if (dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Contains("Andrea"))
+                                canvas.Rectangle(x + 288, y - 28, 43, 9).SetFillColor(ColorConstants.GREEN).Fill();
+                            else if(dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Contains("Daniel"))
+                                canvas.Rectangle(x + 288, y - 28, 43, 9).SetFillColor(ColorConstants.YELLOW).Fill();
+                            else if (dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Contains("Julio"))
+                                canvas.Rectangle(x + 288, y - 28, 38, 9).SetFillColor(ColorConstants.BLUE).Fill();
+                            else if (dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Contains("Alberto"))
+                                canvas.Rectangle(x + 288, y - 28, 53, 9).SetFillColor(ColorConstants.RED).Fill();
+                            else
+                                canvas.Rectangle(x + 288, y - 28, 50, 9).SetFillColor(ColorConstants.LIGHT_GRAY).Fill();
+                            */
+
+                            //COTIZADOR
+                            canvas.BeginText().SetFontAndSize(font, 9)
+                                .MoveText(x + 292, y - 27)
+                                .SetFillColor(iText.Kernel.Colors.ColorConstants.BLACK)
+                                .ShowText(dgvDatosPDF.Rows[0].Cells[3].Value.ToString().ToUpper())
+                                .EndText();
+                            //VEHICULO
+                            canvas.BeginText().SetFontAndSize(font, 9)
+                                    .MoveText(x + 252, y - 39.5)
+                                    .ShowText(dgvDatosPDF.Rows[0].Cells[11].Value.ToString() + "  -  " + dgvDatosPDF.Rows[0].Cells[4].Value.ToString() + " - " + dgvDatosPDF.Rows[0].Cells[12].Value.ToString())
+                                    .EndText();
+                            //FECHA_ASIGNACION
+                            canvas.BeginText().SetFontAndSize(font, 14)
+                                    .MoveText(x - 77, y - 50)
+                                    .ShowText(dgvDatosPDF.Rows[0].Cells[5].Value.ToString().Substring(0, 10))
+                                    .EndText();
+                            //HORA DE CREACIÓN DEL VALE
+                            canvas.BeginText().SetFontAndSize(font, 10)
+                                    .MoveText(x - 77, y - 65)
+                                    .SetFillColor(iText.Kernel.Colors.ColorConstants.RED)
+                                    .ShowText("Creado: " + DateTime.Now.ToString())
+                                    .EndText();
+                            //FECHA_PROMESA
+                            canvas.BeginText().SetFontAndSize(font, 14)
+                                    .MoveText(x + 50, y - 50)
+                                    .SetFillColor(iText.Kernel.Colors.ColorConstants.RED)
+                                    .ShowText(dgvDatosPDF.Rows[0].Cells[6].Value.ToString().Substring(0, 10))
+                                    .EndText();
+
+                            for (int count = 0; count < NumeroFila; count++)
+                            {
+                                //NUMERO
+                                canvas.BeginText().SetFontAndSize(font, 10)
+                                        .MoveText(x - 49.5, y - 106.5)
+                                        .SetFillColor(iText.Kernel.Colors.ColorConstants.BLACK)
+                                        .ShowText((count + 1).ToString())
+                                        .EndText();
+                                //PIEZAS
+                                canvas.BeginText().SetFontAndSize(font, 10)
+                                        .MoveText(x - 5, y - 106.5)
+                                        .ShowText(dgvDatosPDF.Rows[count].Cells[7].Value.ToString())
+                                        .EndText();
+                                //CANTIDAD
+                                canvas.BeginText().SetFontAndSize(font, 10)
+                                        .MoveText(x + 239, y - 106.5)
+                                        .ShowText(dgvDatosPDF.Rows[count].Cells[8].Value.ToString())
+                                        .EndText();
+
+                                if (dgvDatosPDF.Rows[count].Cells[9].Value.ToString() != "0.00" && i == 0)
+                                {
+                                    //COSTO
+                                    canvas.BeginText().SetFontAndSize(font, 10)
+                                      .MoveText(x + 300, y - 106.5)
+                                      .ShowText(dgvDatosPDF.Rows[count].Cells[9].Value.ToString())
+                                      .EndText();
+                                }
+                                if (dgvDatosPDF.Rows[count].Cells[10].Value.ToString() != "PENDIENTE" && i == 0)
+                                {
+                                    //PROVEEDOR
+                                    canvas.BeginText().SetFontAndSize(font, 10)
+                                       .MoveText(x + 370, y - 106.5)
+                                       .ShowText(dgvDatosPDF.Rows[count].Cells[10].Value.ToString())
+                                       .EndText();
+                                }
+
+                                Items = count;
+                                //Items += Int32.Parse(dgvDatosPDF.Rows[count].Cells[8].Value.ToString());
+                                y -= 20;
+                            }
+                            //NUMERO DE ITEMS
+                            canvas.BeginText().SetFontAndSize(font, 9)
+                                        .MoveText(x - 16, 56.5)
+                                        .ShowText((Items + 1).ToString())
+                                        .EndText();
+                        }
+                        pdfdoc.Close();
+                        MessageBOX.SHowDialog(1, "PDF creado exitosamente");
+                        this.Close();
+                    }
+                    else
+                    {
+                        PdfWriter pdfWriter = new PdfWriter(saveFileDialog1.FileName);
+                        PdfReader pdfReader = new PdfReader(Application.StartupPath + "\\VALE JEIC.pdf");
+
+                        PdfDocument pdfdoc = new PdfDocument(pdfReader, pdfWriter);
+
+                        OperBD pdfnuevo = new OperBD();
+                        pdfnuevo.Llenartabla(dgvDatosPDF, txtClavePedido.Text.Trim());
+
+                        int NumeroFila = pdfnuevo.NumeroFilas(txtClavePedido.Text.Trim());
+
+                        for (int i = 0; i < 3; i++)
+                        {
+                            PdfCanvas canvas = new PdfCanvas(pdfdoc.GetPage(i + 1));
+                            PdfFont font = PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD);
+
+                            int y = 659;
+                            int x = 109;
+                            int Items = 0;
+
+
+
+                            //PEDIDO
+                            canvas.BeginText().SetFontAndSize(font, 18)
+                                     .MoveText(x, y)
+                                     .ShowText(dgvDatosPDF.Rows[0].Cells[0].Value.ToString())
+                                     .EndText();
+                            //CLIENTE
+                            canvas.BeginText().SetFontAndSize(font, 9)
+                                    .MoveText(x + 245, y - 2.5)
+                                    .ShowText(dgvDatosPDF.Rows[0].Cells[1].Value.ToString())
+                                    .EndText();
+                            //TALLER
+                            canvas.BeginText().SetFontAndSize(font, 9)
+                                    .MoveText(x + 243, y - 14.5)
+                                    .ShowText(dgvDatosPDF.Rows[0].Cells[2].Value.ToString())
+                                    .EndText();
+
+                            /*if (dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Contains("Rodrigo"))
+                                canvas.Rectangle(x + 288, y - 28, 53, 9).SetFillColor(ColorConstants.LIGHT_GRAY).Fill();
+                            else if (dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Contains("Andrea"))
+                                canvas.Rectangle(x + 288, y - 28, 43, 9).SetFillColor(ColorConstants.GREEN).Fill();
+                            else if (dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Contains("Daniel"))
+                                canvas.Rectangle(x + 288, y - 28, 43, 9).SetFillColor(ColorConstants.YELLOW).Fill();
+                            else if (dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Contains("Julio"))
+                                canvas.Rectangle(x + 288, y - 28, 38, 9).SetFillColor(ColorConstants.BLUE).Fill();
+                            else if (dgvDatosPDF.Rows[0].Cells[3].Value.ToString().Contains("Alberto"))
+                                canvas.Rectangle(x + 288, y - 28, 53, 9).SetFillColor(ColorConstants.RED).Fill();
+                            else
+                                canvas.Rectangle(x + 288, y - 28, 50, 9).SetFillColor(ColorConstants.LIGHT_GRAY).Fill();
+                            */
+
+                            //COTIZADOR
+                            canvas.BeginText().SetFontAndSize(font, 9)
+                                .MoveText(x + 292, y - 27)
+                                .SetFillColor(iText.Kernel.Colors.ColorConstants.BLACK)
+                                .ShowText(dgvDatosPDF.Rows[0].Cells[3].Value.ToString().ToUpper())
+                                .EndText();
+                            //VEHICULO
+                            canvas.BeginText().SetFontAndSize(font, 9)
+                                    .MoveText(x + 252, y - 39.5)
+                                    .ShowText(dgvDatosPDF.Rows[0].Cells[11].Value.ToString() + "  -  " + dgvDatosPDF.Rows[0].Cells[4].Value.ToString() + " - " + dgvDatosPDF.Rows[0].Cells[12].Value.ToString())
+                                    .EndText();
+                            //FECHA_ASIGNACION
+                            canvas.BeginText().SetFontAndSize(font, 14)
+                                    .MoveText(x - 77, y - 50)
+                                    .ShowText(dgvDatosPDF.Rows[0].Cells[5].Value.ToString().Substring(0, 10))
+                                    .EndText();
+                            //HORA DE CREACIÓN DEL VALE
+                            canvas.BeginText().SetFontAndSize(font, 10)
+                                    .MoveText(x - 77, y - 65)
+                                    .SetFillColor(iText.Kernel.Colors.ColorConstants.RED)
+                                    .ShowText("Creado: " + DateTime.Now.ToString())
+                                    .EndText();
+                            //FECHA_PROMESA
+                            canvas.BeginText().SetFontAndSize(font, 14)
+                                    .MoveText(x + 50, y - 50)
+                                    .SetFillColor(iText.Kernel.Colors.ColorConstants.RED)
+                                    .ShowText(dgvDatosPDF.Rows[0].Cells[6].Value.ToString().Substring(0, 10))
+                                    .EndText();
+
+                            for (int count = 0; count < NumeroFila; count++)
+                            {
+                                //NUMERO
+                                canvas.BeginText().SetFontAndSize(font, 10)
+                                        .MoveText(x - 49.5, y - 106.5)
+                                        .SetFillColor(iText.Kernel.Colors.ColorConstants.BLACK)
+                                        .ShowText((count + 1).ToString())
+                                        .EndText();
+                                //PIEZAS
+                                canvas.BeginText().SetFontAndSize(font, 10)
+                                        .MoveText(x - 5, y - 106.5)
+                                        .ShowText(dgvDatosPDF.Rows[count].Cells[7].Value.ToString())
+                                        .EndText();
+                                //CANTIDAD
+                                canvas.BeginText().SetFontAndSize(font, 10)
+                                        .MoveText(x + 239, y - 106.5)
+                                        .ShowText(dgvDatosPDF.Rows[count].Cells[8].Value.ToString())
+                                        .EndText();
+
+                                if (dgvDatosPDF.Rows[count].Cells[9].Value.ToString() != "0.00" && i == 0)
+                                {
+                                    //COSTO
+                                    canvas.BeginText().SetFontAndSize(font, 10)
+                                      .MoveText(x + 300, y - 106.5)
+                                      .ShowText(dgvDatosPDF.Rows[count].Cells[9].Value.ToString())
+                                      .EndText();
+                                }
+                                if (dgvDatosPDF.Rows[count].Cells[10].Value.ToString() != "PENDIENTE" && i == 0)
+                                {
+                                    //PROVEEDOR
+                                    canvas.BeginText().SetFontAndSize(font, 10)
+                                       .MoveText(x + 370, y - 106.5)
+                                       .ShowText(dgvDatosPDF.Rows[count].Cells[10].Value.ToString())
+                                       .EndText();
+                                }
+
+
+                                Items = count;
+                                //Items += Int32.Parse(dgvDatosPDF.Rows[count].Cells[8].Value.ToString());
+                                y -= 20;
+                            }
+                            //NUMERO DE ITEMS
+                            canvas.BeginText().SetFontAndSize(font, 9)
+                                        .MoveText(x - 16, 56.5)
+                                        .ShowText((Items + 1).ToString())
+                                        .EndText();
+                        }
+                        pdfdoc.Close();
+                        MessageBOX.SHowDialog(1, "PDF creado exitosamente");
+                        this.Close();
+                    }
+                }
+            }
+        }//LLAVE FINAL DE BTNGENERARPDF
     }
 }

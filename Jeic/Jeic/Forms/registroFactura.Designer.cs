@@ -65,6 +65,9 @@
             this.errorP = new System.Windows.Forms.ErrorProvider(this.components);
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.lblcvePedidoidentity = new System.Windows.Forms.Label();
+            this.lblPieza = new System.Windows.Forms.Label();
+            this.lblUsuario = new System.Windows.Forms.Label();
             this.pbMinimize = new System.Windows.Forms.PictureBox();
             this.pbClose = new System.Windows.Forms.PictureBox();
             this.dato4 = new System.Windows.Forms.Label();
@@ -72,7 +75,6 @@
             this.lblDescuento = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.moverFormulario = new Bunifu.Framework.UI.BunifuDragControl(this.components);
-            this.lblUsuario = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorP)).BeginInit();
             this.bunifuGradientPanel1.SuspendLayout();
@@ -244,7 +246,6 @@
             // 
             // dtpFechaPago
             // 
-            this.dtpFechaPago.Enabled = false;
             this.dtpFechaPago.Location = new System.Drawing.Point(374, 132);
             this.dtpFechaPago.Name = "dtpFechaPago";
             this.dtpFechaPago.Size = new System.Drawing.Size(200, 20);
@@ -321,6 +322,7 @@
             this.txtComentario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtComentario.ForeColor = System.Drawing.Color.White;
             this.txtComentario.Location = new System.Drawing.Point(342, 221);
+            this.txtComentario.MaxLength = 100;
             this.txtComentario.Multiline = true;
             this.txtComentario.Name = "txtComentario";
             this.txtComentario.Size = new System.Drawing.Size(243, 66);
@@ -447,6 +449,8 @@
             this.bunifuGradientPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
             this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuGradientPanel1.Controls.Add(this.lblcvePedidoidentity);
+            this.bunifuGradientPanel1.Controls.Add(this.lblPieza);
             this.bunifuGradientPanel1.Controls.Add(this.lblUsuario);
             this.bunifuGradientPanel1.Controls.Add(this.pbMinimize);
             this.bunifuGradientPanel1.Controls.Add(this.pbClose);
@@ -460,6 +464,41 @@
             this.bunifuGradientPanel1.Quality = 10;
             this.bunifuGradientPanel1.Size = new System.Drawing.Size(620, 358);
             this.bunifuGradientPanel1.TabIndex = 31;
+            // 
+            // lblcvePedidoidentity
+            // 
+            this.lblcvePedidoidentity.AutoSize = true;
+            this.lblcvePedidoidentity.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(30)))), ((int)(((byte)(37)))));
+            this.lblcvePedidoidentity.ForeColor = System.Drawing.Color.White;
+            this.lblcvePedidoidentity.Location = new System.Drawing.Point(265, 345);
+            this.lblcvePedidoidentity.Name = "lblcvePedidoidentity";
+            this.lblcvePedidoidentity.Size = new System.Drawing.Size(103, 14);
+            this.lblcvePedidoidentity.TabIndex = 84;
+            this.lblcvePedidoidentity.Text = "cvePedidoidentity";
+            this.lblcvePedidoidentity.Visible = false;
+            // 
+            // lblPieza
+            // 
+            this.lblPieza.AutoSize = true;
+            this.lblPieza.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(31)))), ((int)(((byte)(39)))));
+            this.lblPieza.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPieza.ForeColor = System.Drawing.Color.White;
+            this.lblPieza.Location = new System.Drawing.Point(374, 33);
+            this.lblPieza.Name = "lblPieza";
+            this.lblPieza.Size = new System.Drawing.Size(39, 14);
+            this.lblPieza.TabIndex = 32;
+            this.lblPieza.Text = "PIEZA:";
+            // 
+            // lblUsuario
+            // 
+            this.lblUsuario.AutoSize = true;
+            this.lblUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(27)))), ((int)(((byte)(28)))));
+            this.lblUsuario.ForeColor = System.Drawing.Color.White;
+            this.lblUsuario.Location = new System.Drawing.Point(3, 6);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(53, 14);
+            this.lblUsuario.TabIndex = 72;
+            this.lblUsuario.Text = "Usuario:";
             // 
             // pbMinimize
             // 
@@ -536,17 +575,6 @@
             this.moverFormulario.Horizontal = true;
             this.moverFormulario.TargetControl = this.bunifuGradientPanel1;
             this.moverFormulario.Vertical = true;
-            // 
-            // lblUsuario
-            // 
-            this.lblUsuario.AutoSize = true;
-            this.lblUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(27)))), ((int)(((byte)(28)))));
-            this.lblUsuario.ForeColor = System.Drawing.Color.White;
-            this.lblUsuario.Location = new System.Drawing.Point(3, 6);
-            this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(53, 14);
-            this.lblUsuario.TabIndex = 72;
-            this.lblUsuario.Text = "Usuario:";
             // 
             // registroFactura
             // 
@@ -650,5 +678,7 @@
         private Bunifu.Framework.UI.BunifuDragControl moverFormulario;
         private System.Windows.Forms.Label dato4;
         public System.Windows.Forms.Label lblUsuario;
+        public System.Windows.Forms.Label lblPieza;
+        public System.Windows.Forms.Label lblcvePedidoidentity;
     }
 }

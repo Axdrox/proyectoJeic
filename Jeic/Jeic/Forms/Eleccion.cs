@@ -40,6 +40,8 @@ namespace Refracciones
                 registroFactura factura = new registroFactura();
                 factura.dato1.Text = factura.dato1.Text + " " + dato_1.Text;
                 factura.dato2.Text = factura.dato2.Text + " " + dato_2.Text;
+                factura.lblPieza.Text = factura.lblPieza.Text + " " + lblPieza.Text;
+                factura.lblcvePedidoidentity.Text = lblcvePedidoidentity.Text;
                 factura.dato3.Text = "1";
                 //LBLUSUARIO
                 factura.lblUsuario.Text = lblUsuario.Text;
@@ -50,6 +52,8 @@ namespace Refracciones
                 registroFactura factura = new registroFactura();
                 factura.dato1.Text = factura.dato1.Text + " " + dato_1.Text;
                 factura.dato2.Text = factura.dato2.Text + " " + dato_2.Text;
+                factura.lblPieza.Text = factura.lblPieza.Text + " " + lblPieza.Text;
+                factura.lblcvePedidoidentity.Text = lblcvePedidoidentity.Text;
                 factura.dato3.Text = "0";
                 //LBLUSUARIO
                 factura.lblUsuario.Text = lblUsuario.Text;
@@ -60,6 +64,8 @@ namespace Refracciones
                 registrarRefactura refactura = new registrarRefactura();
                 refactura.dato1.Text = refactura.dato1.Text + " " + dato_1.Text;
                 refactura.dato2.Text = refactura.dato2.Text + " " + dato_2.Text;
+                refactura.lblPieza.Text = refactura.lblPieza.Text + " " + lblPieza.Text;
+                refactura.lblcvePedidoidentity.Text = lblcvePedidoidentity.Text;
                 refactura.dato3.Text = "0";
                 //LBLUSUARIO
                 refactura.lblUsuario.Text = lblUsuario.Text;
@@ -74,6 +80,8 @@ namespace Refracciones
             refactura.dato1.Text = refactura.dato1.Text + " " + dato_1.Text;
             refactura.dato2.Text = refactura.dato2.Text + " " + dato_2.Text;
             refactura.txtRefactura.Text = dato_3.Text;
+            refactura.lblPieza.Text = refactura.lblPieza.Text + " " + lblPieza.Text;
+            refactura.lblcvePedidoidentity.Text = lblcvePedidoidentity.Text;
             //LBLUSUARIO
             refactura.lblUsuario.Text = lblUsuario.Text;
             DialogResult = DialogResult = refactura.ShowDialog();
@@ -85,6 +93,7 @@ namespace Refracciones
             Devolucion dev = new Devolucion();
             dev.dato1.Text = dev.dato1.Text + " " + dato_1.Text;
             dev.dato2.Text = dev.dato2.Text + " " + dato_2.Text;
+            //dev.lblcvePedidoidentity.Text = lblcvePedidoidentity.Text;
             //LBLUSUARIO
             dev.lblUsuario.Text = lblUsuario.Text;
             dev.ShowDialog();
@@ -106,7 +115,7 @@ namespace Refracciones
         {
             //Colocar ICONO
             this.Icon = Resources.iconJeic;
-            cve_factura = oper.Clave_Fact(dato_1.Text, dato_2.Text);
+            cve_factura = oper.Clave_Fact(dato_1.Text, dato_2.Text,lblPieza.Text, int.Parse(lblcvePedidoidentity.Text));
             if (cve_factura != "0")
                 cve_refactura = oper.Clave_Refact(cve_factura);
 
@@ -255,7 +264,13 @@ namespace Refracciones
                         canvas.BeginText().SetFontAndSize(font, 14)
                                 .MoveText(x - 77, y - 50)
                                 .ShowText(dgvDatosPDF.Rows[0].Cells[5].Value.ToString().Substring(0, 10))
-                                .EndText();             
+                                .EndText();
+                        //HORA DE CREACIÓN DEL VALE
+                        canvas.BeginText().SetFontAndSize(font, 10)
+                                .MoveText(x - 77, y - 65)
+                                .SetFillColor(ColorConstants.RED)
+                                .ShowText("Creado: " + DateTime.Now.ToString())
+                                .EndText();
                         //FECHA_PROMESA
                         canvas.BeginText().SetFontAndSize(font, 14)
                                 .MoveText(x + 50, y - 50)
@@ -381,6 +396,12 @@ namespace Refracciones
                         canvas.BeginText().SetFontAndSize(font, 14)
                                 .MoveText(x - 77, y - 50)
                                 .ShowText(dgvDatosPDF.Rows[0].Cells[5].Value.ToString().Substring(0, 10))
+                                .EndText();
+                        //HORA DE CREACIÓN DEL VALE
+                        canvas.BeginText().SetFontAndSize(font, 10)
+                                .MoveText(x - 77, y - 65)
+                                .SetFillColor(ColorConstants.RED)
+                                .ShowText("Creado: " + DateTime.Now.ToString())
                                 .EndText();
                         //FECHA_PROMESA
                         canvas.BeginText().SetFontAndSize(font, 14)

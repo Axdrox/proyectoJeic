@@ -91,6 +91,7 @@
             // 
             this.moverFormulario.Fixed = true;
             this.moverFormulario.Horizontal = true;
+            this.moverFormulario.TargetControl = null;
             this.moverFormulario.Vertical = true;
             // 
             // dgvAlertas
@@ -125,7 +126,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvAlertas.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvAlertas.RowHeadersWidth = 51;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(64)))), ((int)(((byte)(88)))));

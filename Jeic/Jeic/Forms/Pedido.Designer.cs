@@ -91,6 +91,7 @@
             this.txtDiasEspera = new System.Windows.Forms.TextBox();
             this.lblDiasEspera = new System.Windows.Forms.Label();
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.btnPDF = new System.Windows.Forms.Button();
             this.txtHorario = new System.Windows.Forms.TextBox();
             this.txtTelefono = new System.Windows.Forms.TextBox();
             this.txtContacto = new System.Windows.Forms.TextBox();
@@ -115,6 +116,8 @@
             this.pbClose = new System.Windows.Forms.PictureBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.lblUsuario = new System.Windows.Forms.Label();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.dgvDatosPDF = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedido)).BeginInit();
             this.bunifuGradientPanel1.SuspendLayout();
             this.panelTotal.SuspendLayout();
@@ -122,6 +125,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDatosPDF)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -979,6 +983,8 @@
             this.bunifuGradientPanel1.BackColor = System.Drawing.Color.Transparent;
             this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
             this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuGradientPanel1.Controls.Add(this.dgvDatosPDF);
+            this.bunifuGradientPanel1.Controls.Add(this.btnPDF);
             this.bunifuGradientPanel1.Controls.Add(this.txtHorario);
             this.bunifuGradientPanel1.Controls.Add(this.txtTelefono);
             this.bunifuGradientPanel1.Controls.Add(this.txtContacto);
@@ -1045,6 +1051,21 @@
             this.bunifuGradientPanel1.Quality = 10;
             this.bunifuGradientPanel1.Size = new System.Drawing.Size(1347, 656);
             this.bunifuGradientPanel1.TabIndex = 0;
+            // 
+            // btnPDF
+            // 
+            this.btnPDF.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnPDF.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPDF.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnPDF.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPDF.Location = new System.Drawing.Point(1010, 333);
+            this.btnPDF.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPDF.Name = "btnPDF";
+            this.btnPDF.Size = new System.Drawing.Size(158, 25);
+            this.btnPDF.TabIndex = 88;
+            this.btnPDF.Text = "Generar PDF";
+            this.btnPDF.UseVisualStyleBackColor = false;
+            this.btnPDF.Click += new System.EventHandler(this.btnPDF_Click);
             // 
             // txtHorario
             // 
@@ -1355,6 +1376,20 @@
             this.lblUsuario.TabIndex = 88;
             this.lblUsuario.Text = "Usuario:";
             // 
+            // dgvDatosPDF
+            // 
+            this.dgvDatosPDF.AllowUserToAddRows = false;
+            this.dgvDatosPDF.AllowUserToDeleteRows = false;
+            this.dgvDatosPDF.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDatosPDF.Enabled = false;
+            this.dgvDatosPDF.Location = new System.Drawing.Point(1173, 350);
+            this.dgvDatosPDF.Name = "dgvDatosPDF";
+            this.dgvDatosPDF.ReadOnly = true;
+            this.dgvDatosPDF.RowHeadersWidth = 51;
+            this.dgvDatosPDF.Size = new System.Drawing.Size(40, 8);
+            this.dgvDatosPDF.TabIndex = 89;
+            this.dgvDatosPDF.Visible = false;
+            // 
             // Pedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1391,6 +1426,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDatosPDF)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1479,5 +1515,8 @@
         private System.Windows.Forms.TextBox txtContacto;
         private System.Windows.Forms.TextBox txtCiudad;
         public System.Windows.Forms.Label lblUsuario;
+        private System.Windows.Forms.Button btnPDF;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.DataGridView dgvDatosPDF;
     }
 }

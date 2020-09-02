@@ -188,7 +188,7 @@ namespace Refracciones.Forms
         private void txtClaveSiniestro_Validating(object sender, CancelEventArgs e)
         {
             if (!string.IsNullOrEmpty(operacion.existeClaveSiniestro(txtClaveSiniestro.Text.Trim().ToUpper())))
-            {
+            {   
                 e.Cancel = true;
                 errorProvider1.SetError(txtClaveSiniestro, "Ya existe un siniestro con la misma clave");
             }
