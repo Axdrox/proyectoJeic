@@ -28,11 +28,6 @@ namespace Refracciones.Forms
             //Carga los datos de las marcas de vehículos en el combobox
             cbMarca.DataSource = operacion.MarcasRegistradas(1).Tables[0].DefaultView;
             cbMarca.ValueMember = "marca";
-
-            //Carga los datos de las marcas de vehículos en el combobox
-            cbEstadoSiniestro.DataSource = operacion.EstadoSiniestro().Tables[0].DefaultView;
-            cbEstadoSiniestro.ValueMember = "estado";
-
             //dtpYear.Hide();
             lblIngreseNombre.Hide();
             txtNombreVehiculoNuevo.Hide();
@@ -152,11 +147,6 @@ namespace Refracciones.Forms
         public bool otroMarca
         {
             get { return chbMarca.Checked; }
-        }
-
-        public string estadoSiniestro
-        {
-            get { return cbEstadoSiniestro.Text.Trim(); }
         }
 
 

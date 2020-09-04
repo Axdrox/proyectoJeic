@@ -1,26 +1,28 @@
 ﻿using DocumentFormat.OpenXml.Office.CoverPageProps;
 using DocumentFormat.OpenXml.Office2010.PowerPoint;
 using DocumentFormat.OpenXml.Office2013.Excel;
+
+//using iText.Kernel.Colors;
+using DocumentFormat.OpenXml.Presentation;
+
+//usings para generar PDF
+using iText.IO.Font;
+using iText.Kernel.Font;
+using iText.Kernel.Pdf;
+using iText.Kernel.Pdf.Canvas;
 using Jeic.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-//usings para generar PDF
-using iText.IO.Font;
-using iText.Kernel.Font;
-using iText.Kernel.Pdf;
-using iText.Kernel.Pdf.Canvas;
-using System.IO;
-//using iText.Kernel.Colors;
-using DocumentFormat.OpenXml.Presentation;
 
 namespace Refracciones.Forms
 {
@@ -28,7 +30,6 @@ namespace Refracciones.Forms
     {
         private OperBD operacion = new OperBD();
         private DataTable dt;
-        //int totalCantidadPiezas = 0;
 
         private int actualizar = 0;
 
@@ -53,10 +54,18 @@ namespace Refracciones.Forms
         {
             set { lblAnio.Text = value; }
         }
+        /*
+         >>>>>>>>>>>>>-------MÉTODOS A CHECAR de OperBD-----!!!!!!!!!!!!!!!!!
+        Al eliminar todo lo que conlleva los elementos de siniestro por pedido en este formulario
+        se deben checar los métodos que se utilizaban tanto para ver si se pueden modificar algunas 
+        cosas y adaptarlas a lo nuevo, o bien, que se eliminen por completo.
+        >>>>>>----Listado:
+            estadoSiniestroClaves
+            
+         */
 
         private void Pedido_Load(object sender, EventArgs e)
         {
-            chbModificarEstado.Location = new Point(330, 186);
             if (actualizar == 1)
             {
                 var penaltyButton = new DataGridViewButtonColumn();
@@ -125,6 +134,17 @@ namespace Refracciones.Forms
             cbDestino.DataSource = operacion.DestinosRegistrados().Tables[0].DefaultView;
             cbDestino.ValueMember = "destino";
 
+            //Agregando combobox en DGV
+            var comboboxDgv = new DataGridViewComboBoxColumn();
+            comboboxDgv.FlatStyle = FlatStyle.Popup;
+            comboboxDgv.HeaderText = "Estado";
+            comboboxDgv.Name = "dataGridViewStatusCombobox";
+            comboboxDgv.DataPropertyName = "Estado";
+            comboboxDgv.DataSource = operacion.EstadoSiniestro().Tables[0].DefaultView;
+            comboboxDgv.ValueMember = "cve_estado";
+            comboboxDgv.DisplayMember = "estado";
+            this.dgvPedido.Columns.Add(comboboxDgv);
+
             //Colocar ICONO
             this.Icon = Resources.iconJeic;
             Eleccion eleccion = new Eleccion();
@@ -151,12 +171,6 @@ namespace Refracciones.Forms
                 lblAnioPedido.Visible = true;
                 lblAnio.Visible = true;
                 lblAnio.Text = operacion.Anio(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
-
-                chbModificarEstado.Show();
-                cbEstadoSiniestro.Enabled = false;
-                cbEstadoSiniestro.Visible = false;
-                lblEstadoSiniestro.Visible = true;
-                lblEstadoSiniestro.Text = operacion.estadoSiniestroClaves(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
 
                 lblComentarioSiniestro.Visible = true;
                 txtComentarioSiniestro.Visible = true;
@@ -238,16 +252,8 @@ namespace Refracciones.Forms
                 txtTaller.Hide();
                 txtDestino.Hide();
 
-                lblEstado.Hide();
-                cbEstadoSiniestro.Hide();
-
                 lblComentarioSiniestro.Hide();
                 txtComentarioSiniestro.Hide();
-
-                lblEstadoSiniestro.Hide();
-                cbEstadoSiniestro.Hide();
-                chbModificarEstado.Hide();
-                lblEstado.Hide();
 
                 dtpFechaBaja.Hide();
                 chbModificarFechaBaja.Hide();
@@ -280,7 +286,6 @@ namespace Refracciones.Forms
                     if (rdbSi.Checked == true)
                     {
                         btnLimpiarSiniestro.Visible = false;
-                        chbModificarEstado.Location = new Point(330, 186);
                         rdbNo.Checked = false;
                         lblClaveSiniestroPedido.Visible = false;
                         lblClaveSiniestro.Visible = false;
@@ -291,10 +296,6 @@ namespace Refracciones.Forms
                         lblVehiculo.Visible = false;
                         lblMarcaPedido.Visible = false;
                         lblMarca.Visible = false;
-                        lblEstadoSiniestro.Visible = false;
-                        cbEstadoSiniestro.Visible = false;
-                        chbModificarEstado.Visible = false;
-                        lblEstado.Visible = false;
                         lblComentarioSiniestro.Visible = false;
                         txtComentarioSiniestro.Visible = false;
 
@@ -325,11 +326,6 @@ namespace Refracciones.Forms
                             lblMarca.Show();
                             lblMarca.Text = siniestro.marcaSiniestro;
 
-                            lblEstado.Show();
-                            lblEstadoSiniestro.Show();
-                            lblEstadoSiniestro.Text = siniestro.estadoSiniestro;
-                            chbModificarEstado.Show();
-
                             lblComentarioSiniestro.Show();
                             txtComentarioSiniestro.Show();
                             this.ActiveControl = txtComentarioSiniestro;
@@ -358,7 +354,6 @@ namespace Refracciones.Forms
                     if (rdbNo.Checked == true)
                     {
                         btnLimpiarSiniestro.Visible = false;
-                        chbModificarEstado.Location = new Point(330, 186);
                         rdbSi.Checked = false;
                         lblClaveSiniestroPedido.Visible = false;
                         lblClaveSiniestro.Visible = false;
@@ -369,10 +364,6 @@ namespace Refracciones.Forms
                         lblVehiculo.Visible = false;
                         lblMarcaPedido.Visible = false;
                         lblMarca.Visible = false;
-                        lblEstadoSiniestro.Visible = false;
-                        cbEstadoSiniestro.Visible = false;
-                        chbModificarEstado.Visible = false;
-                        lblEstado.Visible = false;
                         lblComentarioSiniestro.Visible = false;
                         txtComentarioSiniestro.Visible = false;
 
@@ -401,11 +392,6 @@ namespace Refracciones.Forms
                             lblMarcaPedido.Show();
                             lblMarca.Show();
                             lblMarca.Text = siniestro.marcaSiniestro;
-
-                            lblEstado.Show();
-                            lblEstadoSiniestro.Show();
-                            lblEstadoSiniestro.Text = siniestro.estadoSiniestro;
-                            chbModificarEstado.Show();
 
                             lblComentarioSiniestro.Show();
                             txtComentarioSiniestro.Show();
@@ -613,6 +599,7 @@ namespace Refracciones.Forms
 
         //Variables
         private string vendedor = "";
+
         private string aseguradora = "";
         private string valuador = "";
         private string taller = "";
@@ -665,7 +652,7 @@ namespace Refracciones.Forms
                 destino = txtDestino.Text.Trim().ToUpper();
                 operacion.registrarDestino(destino);
             }
-            else if(chbOtroDestino.Checked == false && chbOtroDestino.Text == "Otro")
+            else if (chbOtroDestino.Checked == false && chbOtroDestino.Text == "Otro")
                 destino = cbDestino.Text.Trim();
             else if (chbOtroDestino.Checked == false && chbOtroDestino.Text == "Modificar")
                 destino = txtDestino.Text.Trim().ToUpper();
@@ -717,7 +704,6 @@ namespace Refracciones.Forms
                 //AGREGANDO DATOS A PEDIDO
                 foreach (DataGridViewRow row in dgvPedido.Rows)
                 {
-
                     DateTime dtFechaCosto = new DateTime();
                     //if(row.Cells["Fecha costo"].Value != null || row.Cells["Fecha costo"].Value != DBNull.Value || row.Cells["Fecha costo"].Value.ToString() != string.Empty)
                     dtFechaCosto = DateTime.Parse(row.Cells["Fecha costo"].Value.ToString());
@@ -730,9 +716,8 @@ namespace Refracciones.Forms
                         Convert.ToString(row.Cells["Costo de envío\n($)"].Value), Convert.ToString(row.Cells["Precio de venta\n($)"].Value),
                         Convert.ToString(row.Cells["Precio de reparación\n($)"].Value), Convert.ToString(row.Cells["Clave de producto"].Value),
                         Convert.ToString(row.Cells["Número de guía"].Value), Convert.ToInt32(row.Cells["Cantidad"].Value), lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9), x);
-                        //MessageBox.Show(x.ToString());
-                        x = x + 1;
-                        
+                    //MessageBox.Show(x.ToString());
+                    x = x + 1;
                 }
                 //MessageBOX.SHowDialog(1, "Se registró pedido correctamente");
             }
@@ -789,7 +774,7 @@ namespace Refracciones.Forms
                         }
                         //MessageBOX.SHowDialog(1, "Se registró pedido correctamente");
                     }
-                    
+
                     //MessageBOX.SHowDialog(1, "Se actualizó pedido correctamente");
                 }
                 else
@@ -829,11 +814,6 @@ namespace Refracciones.Forms
                                 operacion.registroVehiculo(lblVehiculo.Text.Trim(), lblAnio.Text.Trim(), lblMarca.Text.Trim());
                             }
 
-                            if (chbModificarEstado.Checked == true)
-                                estadoSiniestro = cbEstadoSiniestro.Text;
-                            else
-                                estadoSiniestro = lblEstadoSiniestro.Text;
-
                             if (!string.IsNullOrEmpty(operacion.existeClaveSiniestro(lblClaveSiniestro.Text)) && lblClaveSiniestro.Text.Substring(0, 5) == "JEIC-")
                             {
                                 lblClaveSiniestro.Text = "JEIC-" + operacion.TotalSiniestro().ToString();
@@ -856,12 +836,6 @@ namespace Refracciones.Forms
                                 dtFechaBaja = dtpFechaBaja.Value.Date;
                             else
                                 dtFechaBaja = DateTime.Parse("1753/01/01");
-
-                            string estadoSiniestro = "";
-                            if (chbModificarEstado.Checked == true)
-                                estadoSiniestro = cbEstadoSiniestro.Text;
-                            else
-                                estadoSiniestro = lblEstadoSiniestro.Text;
 
                             operacion.actualizarSiniestro(lblVehiculo.Text.Trim(), lblClaveSiniestro.Text.Trim(), txtComentarioSiniestro.Text.Trim(), estadoSiniestro, Convert.ToInt32(lblAnio.Text));
 
@@ -940,7 +914,12 @@ namespace Refracciones.Forms
                         }
                         dt.Rows.Add(row);
 
-                        //MessageBox.Show(filasIniciales.ToString());
+                        //Es utilizado para que por defecto el combobox del dgv tenga seleccionada una opción
+                        dgvPedido.Rows[dgvPedido.Rows.Count-1].Cells["dataGridViewStatusCombobox"].Value = 1;
+                        ///>>>>>>>>>>>>>>>>>>>>>----IMPORTANTE------:
+                        ///El tipo de dato al que se iguala tiene mucho que coincidir con el "ValueMember"
+                        ///de la columna combobox del datagridview, en este caso funciona porque se ha 
+                        ///seleccionado toda la tabla desde la consulta y coincide el tipo con el id
 
                         foreach (DataGridViewRow dgvRow in dgvPedido.Rows)
                         {
@@ -1097,9 +1076,9 @@ namespace Refracciones.Forms
                     int i = 0;
                     if (chbOtroTaller.Checked == false && chbOtroTaller.Text != "Modificar")
                         pieza.destino = cbDestino.Text.Trim();
-                    else if(chbOtroTaller.Checked == true && chbOtroTaller.Text != "Modificar")
+                    else if (chbOtroTaller.Checked == true && chbOtroTaller.Text != "Modificar")
                         pieza.destino = txtDestino.Text.Trim();
-                    else if(chbOtroTaller.Checked == false && chbOtroTaller.Text == "Modificar")
+                    else if (chbOtroTaller.Checked == false && chbOtroTaller.Text == "Modificar")
                         pieza.destino = txtDestino.Text.Trim();
 
                     if (dgvPedido.Rows.Count > 0)
@@ -1136,6 +1115,18 @@ namespace Refracciones.Forms
                             }
                         }
                     }
+                }
+                //Check if click is on specific column
+                if (e.ColumnIndex == dgvPedido.Columns["dataGridViewStatusCombobox"].Index)
+                {/*
+                    foreach (DataGridViewRow row in dgvPedido.Rows)
+                    {
+                        DataGridViewComboBoxCell comboBoxCell = (row.Cells[12] as DataGridViewComboBoxCell);
+                        comboBoxCell.DataSource = operacion.EstadoSiniestro();
+                        //comboBoxCell.DataPropertyName = "Estado";
+                        comboBoxCell.ValueMember = "cve_estado";
+                        comboBoxCell.DisplayMember = "estado";
+                    }*/
                 }
             }
             catch (Exception EX)
@@ -1216,31 +1207,6 @@ namespace Refracciones.Forms
 
                 lblDiasEspera.Visible = false;
                 txtDiasEspera.Visible = false;
-            }
-        }
-
-        private void cbEstadoSiniestro_Click(object sender, EventArgs e)
-        {
-            cbEstadoSiniestro.DataSource = operacion.EstadoSiniestro().Tables[0].DefaultView;
-            cbEstadoSiniestro.ValueMember = "estado";
-        }
-
-        private void chbModificarEstado_CheckedChanged(object sender, EventArgs e)
-        {
-            if (chbModificarEstado.Checked == true)
-            {
-                chbModificarEstado.Location = new Point(360, 186);
-                lblEstadoSiniestro.Hide();
-                cbEstadoSiniestro.Enabled = true;
-                cbEstadoSiniestro.Show();
-            }
-            else
-            {
-                chbModificarEstado.Location = new Point(330, 186);
-                lblEstadoSiniestro.Show();
-                cbEstadoSiniestro.Enabled = false;
-                //cbEstadoSiniestro.SelectedIndex = -1;
-                cbEstadoSiniestro.Hide();
             }
         }
 
@@ -1330,7 +1296,6 @@ namespace Refracciones.Forms
             rdbSi.Enabled = true;
             rdbNo.Enabled = true;
             btnLimpiarSiniestro.Visible = false;
-            chbModificarEstado.Location = new Point(330, 186);
             rdbSi.Checked = false;
             rdbNo.Checked = false;
             lblClaveSiniestroPedido.Visible = false;
@@ -1342,10 +1307,6 @@ namespace Refracciones.Forms
             lblVehiculo.Visible = false;
             lblMarcaPedido.Visible = false;
             lblMarca.Visible = false;
-            lblEstadoSiniestro.Visible = false;
-            cbEstadoSiniestro.Visible = false;
-            chbModificarEstado.Visible = false;
-            lblEstado.Visible = false;
             lblComentarioSiniestro.Visible = false;
             txtComentarioSiniestro.Visible = false;
         }
@@ -1363,8 +1324,7 @@ namespace Refracciones.Forms
             {
                 if (!string.IsNullOrEmpty(operacion.existeClavePedido(txtClavePedido.Text.Trim().ToUpper())))
                 {
-                    
-                   errorProvider1.SetError(txtClavePedido, "Ya existe un pedido con la misma clave");
+                    errorProvider1.SetError(txtClavePedido, "Ya existe un pedido con la misma clave");
                     rdbSi.Checked = false;
                     rdbNo.Checked = false;
                     e.Cancel = true;
@@ -1865,7 +1825,6 @@ namespace Refracciones.Forms
 
         private void dgvPedido_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
         }
 
         private void txtCiudad_Enter(object sender, EventArgs e)
@@ -2006,11 +1965,6 @@ namespace Refracciones.Forms
                                 operacion.registroVehiculo(lblVehiculo.Text.Trim(), lblAnio.Text.Trim(), lblMarca.Text.Trim());
                             }
 
-                            if (chbModificarEstado.Checked == true)
-                                estadoSiniestro = cbEstadoSiniestro.Text;
-                            else
-                                estadoSiniestro = lblEstadoSiniestro.Text;
-
                             if (!string.IsNullOrEmpty(operacion.existeClaveSiniestro(lblClaveSiniestro.Text)) && lblClaveSiniestro.Text.Substring(0, 5) == "JEIC-")
                             {
                                 lblClaveSiniestro.Text = "JEIC-" + operacion.TotalSiniestro().ToString();
@@ -2034,12 +1988,6 @@ namespace Refracciones.Forms
                                 dtFechaBaja = dtpFechaBaja.Value.Date;
                             else
                                 dtFechaBaja = DateTime.Parse("1753/01/01");
-
-                            string estadoSiniestro = "";
-                            if (chbModificarEstado.Checked == true)
-                                estadoSiniestro = cbEstadoSiniestro.Text;
-                            else
-                                estadoSiniestro = lblEstadoSiniestro.Text;
 
                             operacion.actualizarSiniestro(lblVehiculo.Text.Trim(), lblClaveSiniestro.Text.Trim(), txtComentarioSiniestro.Text.Trim(), estadoSiniestro, Convert.ToInt32(lblAnio.Text));
 
@@ -2093,8 +2041,6 @@ namespace Refracciones.Forms
                             int y = 659;
                             int x = 109;
                             int Items = 0;
-
-
 
                             //PEDIDO
                             canvas.BeginText().SetFontAndSize(font, 18)
@@ -2226,8 +2172,6 @@ namespace Refracciones.Forms
                             int x = 109;
                             int Items = 0;
 
-
-
                             //PEDIDO
                             canvas.BeginText().SetFontAndSize(font, 18)
                                      .MoveText(x, y)
@@ -2323,7 +2267,6 @@ namespace Refracciones.Forms
                                        .EndText();
                                 }
 
-
                                 Items = count;
                                 //Items += Int32.Parse(dgvDatosPDF.Rows[count].Cells[8].Value.ToString());
                                 y -= 20;
@@ -2341,5 +2284,17 @@ namespace Refracciones.Forms
                 }
             }
         }//LLAVE FINAL DE BTNGENERARPDF
+
+        public enum PositionEnum : int { Any = 1  }
+        private void dgvPedido_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
+        {
+            //e.Row.Cells["Estado"].Value = PositionEnum.Any;
+            e.Row.Cells["dataGridViewStatusCombobox"].Value = 1;
+        }
+
+        private void dgvPedido_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            //dgvPedido.Rows[0].Cells["dataGridViewStatusCombobox"].Value = "1";
+        }
     }
 }

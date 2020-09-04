@@ -84,13 +84,11 @@
             this.txtVendedor = new System.Windows.Forms.TextBox();
             this.lblComentarioSiniestro = new System.Windows.Forms.Label();
             this.txtComentarioSiniestro = new System.Windows.Forms.TextBox();
-            this.cbEstadoSiniestro = new System.Windows.Forms.ComboBox();
-            this.lblEstado = new System.Windows.Forms.Label();
-            this.chbModificarEstado = new System.Windows.Forms.CheckBox();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.txtDiasEspera = new System.Windows.Forms.TextBox();
             this.lblDiasEspera = new System.Windows.Forms.Label();
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.dgvDatosPDF = new System.Windows.Forms.DataGridView();
             this.btnPDF = new System.Windows.Forms.Button();
             this.txtHorario = new System.Windows.Forms.TextBox();
             this.txtTelefono = new System.Windows.Forms.TextBox();
@@ -108,7 +106,6 @@
             this.btnPenalizarPedido = new System.Windows.Forms.Button();
             this.lblNumeroEmpleado = new System.Windows.Forms.Label();
             this.txtNumeroEmpleado = new System.Windows.Forms.TextBox();
-            this.lblEstadoSiniestro = new System.Windows.Forms.Label();
             this.lblMarca = new System.Windows.Forms.Label();
             this.lblMarcaPedido = new System.Windows.Forms.Label();
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
@@ -117,15 +114,14 @@
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.lblUsuario = new System.Windows.Forms.Label();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.dgvDatosPDF = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedido)).BeginInit();
             this.bunifuGradientPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDatosPDF)).BeginInit();
             this.panelTotal.SuspendLayout();
             this.panelSiniestro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDatosPDF)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -409,7 +405,6 @@
             this.dgvPedido.Location = new System.Drawing.Point(160, 407);
             this.dgvPedido.Margin = new System.Windows.Forms.Padding(2);
             this.dgvPedido.Name = "dgvPedido";
-            this.dgvPedido.ReadOnly = true;
             this.dgvPedido.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
@@ -434,6 +429,8 @@
             this.dgvPedido.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPedido_CellClick);
             this.dgvPedido.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPedido_CellContentClick);
             this.dgvPedido.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPedido_CellValueChanged);
+            this.dgvPedido.DefaultValuesNeeded += new System.Windows.Forms.DataGridViewRowEventHandler(this.dgvPedido_DefaultValuesNeeded);
+            this.dgvPedido.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvPedido_RowsAdded);
             // 
             // btnFinalizarPedido
             // 
@@ -901,51 +898,6 @@
             this.txtComentarioSiniestro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtComentarioSiniestro_KeyPress);
             this.txtComentarioSiniestro.Leave += new System.EventHandler(this.txtComentarioSiniestro_Leave);
             // 
-            // cbEstadoSiniestro
-            // 
-            this.cbEstadoSiniestro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.cbEstadoSiniestro.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cbEstadoSiniestro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbEstadoSiniestro.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.cbEstadoSiniestro.ForeColor = System.Drawing.Color.White;
-            this.cbEstadoSiniestro.FormattingEnabled = true;
-            this.cbEstadoSiniestro.Location = new System.Drawing.Point(122, 181);
-            this.cbEstadoSiniestro.Margin = new System.Windows.Forms.Padding(2);
-            this.cbEstadoSiniestro.Name = "cbEstadoSiniestro";
-            this.cbEstadoSiniestro.Size = new System.Drawing.Size(232, 21);
-            this.cbEstadoSiniestro.TabIndex = 0;
-            this.cbEstadoSiniestro.Click += new System.EventHandler(this.cbEstadoSiniestro_Click);
-            // 
-            // lblEstado
-            // 
-            this.lblEstado.AutoSize = true;
-            this.lblEstado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(47)))), ((int)(((byte)(60)))));
-            this.lblEstado.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEstado.ForeColor = System.Drawing.Color.White;
-            this.lblEstado.Location = new System.Drawing.Point(60, 185);
-            this.lblEstado.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblEstado.Name = "lblEstado";
-            this.lblEstado.Size = new System.Drawing.Size(47, 14);
-            this.lblEstado.TabIndex = 54;
-            this.lblEstado.Text = "Estado:";
-            // 
-            // chbModificarEstado
-            // 
-            this.chbModificarEstado.AutoSize = true;
-            this.chbModificarEstado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
-            this.chbModificarEstado.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chbModificarEstado.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.chbModificarEstado.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chbModificarEstado.ForeColor = System.Drawing.Color.White;
-            this.chbModificarEstado.Location = new System.Drawing.Point(359, 184);
-            this.chbModificarEstado.Margin = new System.Windows.Forms.Padding(2);
-            this.chbModificarEstado.Name = "chbModificarEstado";
-            this.chbModificarEstado.Size = new System.Drawing.Size(74, 18);
-            this.chbModificarEstado.TabIndex = 26;
-            this.chbModificarEstado.Text = "Modificar";
-            this.chbModificarEstado.UseVisualStyleBackColor = false;
-            this.chbModificarEstado.CheckedChanged += new System.EventHandler(this.chbModificarEstado_CheckedChanged);
-            // 
             // bunifuElipse1
             // 
             this.bunifuElipse1.ElipseRadius = 5;
@@ -1012,7 +964,6 @@
             this.bunifuGradientPanel1.Controls.Add(this.chbOtroValuador);
             this.bunifuGradientPanel1.Controls.Add(this.chbOtraAseguradora);
             this.bunifuGradientPanel1.Controls.Add(this.txtNumeroEmpleado);
-            this.bunifuGradientPanel1.Controls.Add(this.lblEstadoSiniestro);
             this.bunifuGradientPanel1.Controls.Add(this.lblMarca);
             this.bunifuGradientPanel1.Controls.Add(this.lblMarcaPedido);
             this.bunifuGradientPanel1.Controls.Add(this.txtVendedor);
@@ -1020,15 +971,12 @@
             this.bunifuGradientPanel1.Controls.Add(this.label10);
             this.bunifuGradientPanel1.Controls.Add(this.txtValuador);
             this.bunifuGradientPanel1.Controls.Add(this.btnAgregarPieza);
-            this.bunifuGradientPanel1.Controls.Add(this.chbModificarEstado);
             this.bunifuGradientPanel1.Controls.Add(this.btnFinalizarPedido);
-            this.bunifuGradientPanel1.Controls.Add(this.lblEstado);
             this.bunifuGradientPanel1.Controls.Add(this.txtComentarioSiniestro);
             this.bunifuGradientPanel1.Controls.Add(this.lblComentarioSiniestro);
             this.bunifuGradientPanel1.Controls.Add(this.chbModificarFechaBaja);
             this.bunifuGradientPanel1.Controls.Add(this.lblClaveSiniestro);
             this.bunifuGradientPanel1.Controls.Add(this.chbModificarFechaPromesa);
-            this.bunifuGradientPanel1.Controls.Add(this.cbEstadoSiniestro);
             this.bunifuGradientPanel1.Controls.Add(this.chbModificarFechaAsignacion);
             this.bunifuGradientPanel1.Controls.Add(this.cbVendedor);
             this.bunifuGradientPanel1.Controls.Add(this.txtAseguradora);
@@ -1051,6 +999,20 @@
             this.bunifuGradientPanel1.Quality = 10;
             this.bunifuGradientPanel1.Size = new System.Drawing.Size(1347, 656);
             this.bunifuGradientPanel1.TabIndex = 0;
+            // 
+            // dgvDatosPDF
+            // 
+            this.dgvDatosPDF.AllowUserToAddRows = false;
+            this.dgvDatosPDF.AllowUserToDeleteRows = false;
+            this.dgvDatosPDF.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDatosPDF.Enabled = false;
+            this.dgvDatosPDF.Location = new System.Drawing.Point(1173, 350);
+            this.dgvDatosPDF.Name = "dgvDatosPDF";
+            this.dgvDatosPDF.ReadOnly = true;
+            this.dgvDatosPDF.RowHeadersWidth = 51;
+            this.dgvDatosPDF.Size = new System.Drawing.Size(40, 8);
+            this.dgvDatosPDF.TabIndex = 89;
+            this.dgvDatosPDF.Visible = false;
             // 
             // btnPDF
             // 
@@ -1294,18 +1256,6 @@
             this.txtNumeroEmpleado.Leave += new System.EventHandler(this.txtNumeroEmpleado_Leave);
             this.txtNumeroEmpleado.Validating += new System.ComponentModel.CancelEventHandler(this.txtNumeroEmpleado_Validating);
             // 
-            // lblEstadoSiniestro
-            // 
-            this.lblEstadoSiniestro.AutoSize = true;
-            this.lblEstadoSiniestro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(47)))), ((int)(((byte)(60)))));
-            this.lblEstadoSiniestro.Location = new System.Drawing.Point(123, 184);
-            this.lblEstadoSiniestro.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblEstadoSiniestro.Name = "lblEstadoSiniestro";
-            this.lblEstadoSiniestro.Size = new System.Drawing.Size(35, 13);
-            this.lblEstadoSiniestro.TabIndex = 59;
-            this.lblEstadoSiniestro.Text = "label3";
-            this.lblEstadoSiniestro.Visible = false;
-            // 
             // lblMarca
             // 
             this.lblMarca.AutoSize = true;
@@ -1376,20 +1326,6 @@
             this.lblUsuario.TabIndex = 88;
             this.lblUsuario.Text = "Usuario:";
             // 
-            // dgvDatosPDF
-            // 
-            this.dgvDatosPDF.AllowUserToAddRows = false;
-            this.dgvDatosPDF.AllowUserToDeleteRows = false;
-            this.dgvDatosPDF.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDatosPDF.Enabled = false;
-            this.dgvDatosPDF.Location = new System.Drawing.Point(1173, 350);
-            this.dgvDatosPDF.Name = "dgvDatosPDF";
-            this.dgvDatosPDF.ReadOnly = true;
-            this.dgvDatosPDF.RowHeadersWidth = 51;
-            this.dgvDatosPDF.Size = new System.Drawing.Size(40, 8);
-            this.dgvDatosPDF.TabIndex = 89;
-            this.dgvDatosPDF.Visible = false;
-            // 
             // Pedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1419,6 +1355,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedido)).EndInit();
             this.bunifuGradientPanel1.ResumeLayout(false);
             this.bunifuGradientPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDatosPDF)).EndInit();
             this.panelTotal.ResumeLayout(false);
             this.panelTotal.PerformLayout();
             this.panelSiniestro.ResumeLayout(false);
@@ -1426,7 +1363,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDatosPDF)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1484,9 +1420,6 @@
         private System.Windows.Forms.TextBox txtVendedor;
         private System.Windows.Forms.Label lblComentarioSiniestro;
         private System.Windows.Forms.TextBox txtComentarioSiniestro;
-        private System.Windows.Forms.ComboBox cbEstadoSiniestro;
-        private System.Windows.Forms.Label lblEstado;
-        private System.Windows.Forms.CheckBox chbModificarEstado;
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
         private System.Windows.Forms.Label lblDiasEspera;
         private System.Windows.Forms.TextBox txtDiasEspera;
@@ -1496,7 +1429,6 @@
         private System.Windows.Forms.PictureBox pbMinimize;
         public System.Windows.Forms.Label lblMarcaPedido;
         private System.Windows.Forms.Label lblMarca;
-        private System.Windows.Forms.Label lblEstadoSiniestro;
         private System.Windows.Forms.Button btnLimpiarSiniestro;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Label lblNumeroEmpleado;

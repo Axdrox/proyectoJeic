@@ -2832,7 +2832,7 @@ namespace Refracciones
             return count + 1;
         }
 
-        //---------------- ESTADO DE SINIESTRO (llena combobox)
+        //---------------- ESTADO DE SINIESTRO (llena combobox) CHECAR SI NO ALTERA OTRO FUNCIONAMIENTO!
         public DataSet EstadoSiniestro()
         {
             DataSet dataSet = new DataSet();
@@ -2841,7 +2841,7 @@ namespace Refracciones
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     nuevaConexion.Open();
-                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT estado FROM ESTADO_SINIESTRO", nuevaConexion);
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT * FROM ESTADO_SINIESTRO", nuevaConexion);
                     dataAdapter.Fill(dataSet, "ESTADO_SINIESTRO");
                     nuevaConexion.Close();
                 }
@@ -4611,6 +4611,29 @@ namespace Refracciones
             }
         }
 
+        //-------------OBTENER LA CLAVE DEL PEDIDO
+        public int clavePedidoNum(int cveVenta, int clavePiezaPasada, int indexDgv)
+        {
+            using (SqlConnection nuevaConexion = Conexion.conexion())
+            {
+                nuevaConexion.Open();
+                int clavePedido = 0;
+                //Obteniendo la clave del valuador
+                //Combobox de costoEnvio
+                Comando = new SqlCommand("SELECT cve_pedido FROM PEDIDO WHERE cve_venta = @cve_venta AND cve_pieza = @cve_piezaPasada AND ordenCaptura = @indexDgv", nuevaConexion);
+                Comando.Parameters.AddWithValue("@cve_venta", cveVenta);
+                Comando.Parameters.AddWithValue("@cve_piezaPasada", clavePiezaPasada);
+                Comando.Parameters.AddWithValue("@indexDgv", indexDgv);
+                Lector = Comando.ExecuteReader();
+                if (Lector.Read())
+                {
+                    clavePedido = (int)Lector["cve_pedido"];
+                }
+                Lector.Close();
+                nuevaConexion.Close();
+                return clavePedido;
+            }
+        }
         /*
         public int claveEntrega(DateTime fechaAsignacion, DateTime fechaPromesa)
         {
@@ -4888,7 +4911,7 @@ namespace Refracciones
                     if (i == 1)
                         MessageBox.Show("Pieza eliminada correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     else
-                        MessageBox.Show("Problemas al eliminar pieza", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Problemas al eliminar pieza", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception EX)
@@ -5012,6 +5035,7 @@ namespace Refracciones
             int cve_portal = clavePortal(portal);
             int cve_costoEnvio = claveCostoEnvio(costoEnvio);
             int cve_venta = claveVenta(clavePedido, claveSiniestro);
+            int cve_pedidoNum = clavePedidoNum(cve_venta, cve_piezaPasada, ordenCaptura);
 
             //Añadir el gasto en caso de que la pieza sea usada
             if (origen == "USADA")
@@ -5030,7 +5054,7 @@ namespace Refracciones
                     nuevaConexion.Open();
                     //Insertando los datos en la tabla PEDIDO
                     Comando = new SqlCommand("UPDATE PEDIDO SET " + "cve_pieza = @cve_piezaActual, cantidad = @cantidad, cve_origen = @cve_origen, cve_proveedor = @cve_proveedor, cve_portal = @cve_portal, cve_guia = @cve_guia, cve_producto = @cve_producto, fecha_costo = @fecha_costo, costo_envio = @costo_envio, costo_neto = @costo_neto, precio_venta = @precio_venta, precio_reparacion = @precio_reparacion, gasto = @gasto, realizo = @realizo, ordenCaptura = @ordenCaptura " +
-                        "WHERE cve_venta = @cve_venta AND cve_pieza = @cve_piezaPasada", nuevaConexion);//, costo_comprasinIVA    , @costo_comprasinIVA
+                        "WHERE cve_venta = @cve_venta AND cve_pieza = @cve_piezaPasada AND cve_pedido = @cvePedido", nuevaConexion);//, costo_comprasinIVA    , @costo_comprasinIVA
                                                                                                         //Añadiendo los parámetros al query
                     Comando.Parameters.AddWithValue("@cve_venta", cve_venta);
                     Comando.Parameters.AddWithValue("@cve_piezaPasada", cve_piezaPasada);
@@ -5050,6 +5074,7 @@ namespace Refracciones
                     Comando.Parameters.AddWithValue("@gasto", gasto);
                     Comando.Parameters.AddWithValue("@realizo", realizo);
                     Comando.Parameters.AddWithValue("@ordenCaptura", ordenCaptura);
+                    Comando.Parameters.AddWithValue("@cvePedido", cve_pedidoNum);
 
                     //Para saber si la inserción se hizo correctamente
                     i = Comando.ExecuteNonQuery();
