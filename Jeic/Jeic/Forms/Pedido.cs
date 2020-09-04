@@ -54,15 +54,6 @@ namespace Refracciones.Forms
         {
             set { lblAnio.Text = value; }
         }
-        /*
-         >>>>>>>>>>>>>-------MÉTODOS A CHECAR de OperBD-----!!!!!!!!!!!!!!!!!
-        Al eliminar todo lo que conlleva los elementos de siniestro por pedido en este formulario
-        se deben checar los métodos que se utilizaban tanto para ver si se pueden modificar algunas 
-        cosas y adaptarlas a lo nuevo, o bien, que se eliminen por completo.
-        >>>>>>----Listado:
-            estadoSiniestroClaves
-            
-         */
 
         private void Pedido_Load(object sender, EventArgs e)
         {
@@ -134,16 +125,12 @@ namespace Refracciones.Forms
             cbDestino.DataSource = operacion.DestinosRegistrados().Tables[0].DefaultView;
             cbDestino.ValueMember = "destino";
 
-            //Agregando combobox en DGV
-            var comboboxDgv = new DataGridViewComboBoxColumn();
-            comboboxDgv.FlatStyle = FlatStyle.Popup;
-            comboboxDgv.HeaderText = "Estado";
-            comboboxDgv.Name = "dataGridViewStatusCombobox";
-            comboboxDgv.DataPropertyName = "Estado";
-            comboboxDgv.DataSource = operacion.EstadoSiniestro().Tables[0].DefaultView;
-            comboboxDgv.ValueMember = "cve_estado";
-            comboboxDgv.DisplayMember = "estado";
-            this.dgvPedido.Columns.Add(comboboxDgv);
+            if(actualizar == 0)
+            {
+                //Agregar columna estado combobox a DGV
+                columnaCombobox();
+            }
+            
 
             //Colocar ICONO
             this.Icon = Resources.iconJeic;
@@ -227,14 +214,20 @@ namespace Refracciones.Forms
 
                 dt = operacion.piezasPedidoActualizar(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
                 dgvPedido.DataSource = dt;
+
+                //Agregando combobox en DGV
+                columnaCombobox();
+                
                 double precioTotal = 0; int piezasTotal = 0; nombrePieza = new string[Convert.ToInt32(dgvPedido.Rows.Count)]; int i = 0; filasIniciales = dgvPedido.Rows.Count;
                 foreach (DataGridViewRow row in dgvPedido.Rows)
                 {
+                    row.Cells["dataGridViewStatusCombobox"].Value = operacion.estadoSiniestroClaves(txtClavePedido.Text, lblClaveSiniestro.Text, row.Cells["Pieza"].Value.ToString(), i);
+
                     precioTotal += Convert.ToDouble(row.Cells["Precio de venta\n($)"].Value);
                     piezasTotal += Convert.ToInt32(row.Cells["Cantidad"].Value);
                     nombresPiezas.Add(row.Cells["Pieza"].Value.ToString());
                     //nombrePieza[i] = Convert.ToString(row.Cells["Pieza"].Value);
-                    //i++;
+                    i += 1;
                 }
                 lblPrecioTotal.Text = "$" + precioTotal.ToString();
                 lblCantidadTotal.Text = piezasTotal.ToString();
@@ -712,12 +705,12 @@ namespace Refracciones.Forms
                     operacion.registrarPedido(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(),
                         Convert.ToString(row.Cells["Pieza"].Value), Convert.ToString(row.Cells["Portal"].Value),
                         Convert.ToString(row.Cells["Origen"].Value).Trim(), Convert.ToString(row.Cells["Proveedor"].Value),
-                        dtFechaCosto/*, Convert.ToString(row.Cells["Costo sin IVA"].Value)*/, Convert.ToString(row.Cells["Costo neto\n($)"].Value),
+                        row.Cells["Fecha costo"].Value.ToString()/*, Convert.ToString(row.Cells["Costo sin IVA"].Value)*/, Convert.ToString(row.Cells["Costo neto\n($)"].Value),
                         Convert.ToString(row.Cells["Costo de envío\n($)"].Value), Convert.ToString(row.Cells["Precio de venta\n($)"].Value),
-                        Convert.ToString(row.Cells["Precio de reparación\n($)"].Value), Convert.ToString(row.Cells["Clave de producto"].Value),
-                        Convert.ToString(row.Cells["Número de guía"].Value), Convert.ToInt32(row.Cells["Cantidad"].Value), lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9), x);
+                        Convert.ToString(row.Cells["Precio de reparación\n($)"].Value), Convert.ToString(row.Cells["Clave de producto"].Value),                                 /*Se captura correctamente el valor del combobox ya que toma el valor del ValueMember*/
+                        Convert.ToString(row.Cells["Número de guía"].Value), Convert.ToInt32(row.Cells["Cantidad"].Value), lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9), x, Convert.ToInt32(row.Cells["dataGridViewStatusCombobox"].Value));
                     //MessageBox.Show(x.ToString());
-                    x = x + 1;
+                    x += 1;
                 }
                 //MessageBOX.SHowDialog(1, "Se registró pedido correctamente");
             }
@@ -749,7 +742,7 @@ namespace Refracciones.Forms
                             dtFechaCosto/*, Convert.ToString(row.Cells["Costo sin IVA"].Value)*/, Convert.ToString(row.Cells["Costo neto\n($)"].Value),
                             Convert.ToString(row.Cells["Costo de envío\n($)"].Value), Convert.ToString(row.Cells["Precio de venta\n($)"].Value),
                             Convert.ToString(row.Cells["Precio de reparación\n($)"].Value), Convert.ToString(row.Cells["Clave de producto"].Value),
-                            Convert.ToString(row.Cells["Número de guía"].Value), Convert.ToInt32(row.Cells["Cantidad"].Value), nombresPiezas[i], lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9), x);
+                            Convert.ToString(row.Cells["Número de guía"].Value), Convert.ToInt32(row.Cells["Cantidad"].Value), nombresPiezas[i], lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9), x, Convert.ToInt32(row.Cells["dataGridViewStatusCombobox"].Value));
                         x = x + 1;
                         i++;
                         if (i == filasIniciales)
@@ -763,13 +756,15 @@ namespace Refracciones.Forms
                     {
                         for (int j = filasIniciales; j < dgvPedido.Rows.Count; j++)
                         {
+                            MessageBox.Show(dgvPedido.Rows[j].Cells[10].Value.ToString());
+
                             operacion.registrarPedido(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(),
                                  dgvPedido.Rows[j].Cells[3].Value.ToString(), dgvPedido.Rows[j].Cells[7].Value.ToString(),
                                  dgvPedido.Rows[j].Cells[8].Value.ToString(), dgvPedido.Rows[j].Cells[9].Value.ToString(),
-                                 Convert.ToDateTime(dgvPedido.Rows[j].Cells[10].Value), dgvPedido.Rows[j].Cells[11].Value.ToString(),
+                                 dgvPedido.Rows[j].Cells[10].Value.ToString(), dgvPedido.Rows[j].Cells[11].Value.ToString(),
                                  dgvPedido.Rows[j].Cells[12].Value.ToString(), dgvPedido.Rows[j].Cells[13].Value.ToString(),
                                  dgvPedido.Rows[j].Cells[14].Value.ToString(), dgvPedido.Rows[j].Cells[5].Value.ToString(),
-                                 dgvPedido.Rows[j].Cells[6].Value.ToString(), Convert.ToInt32(dgvPedido.Rows[j].Cells[4].Value), lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9), x);
+                                 dgvPedido.Rows[j].Cells[6].Value.ToString(), Convert.ToInt32(dgvPedido.Rows[j].Cells[4].Value), lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9), x, Convert.ToInt32(dgvPedido.Rows[j].Cells[15].Value));
                             x = x + 1;
                         }
                         //MessageBOX.SHowDialog(1, "Se registró pedido correctamente");
@@ -804,7 +799,6 @@ namespace Refracciones.Forms
                             dtFechaBaja = DateTime.Parse("1753/01/01");
 
                             //Registrar lo correspondiente a siniestro
-                            string estadoSiniestro = "";
                             if (nuevoMarca == true)
                                 operacion.registroMarca(lblMarca.Text.Trim());
                             if (nuevoVehiculo == true)
@@ -819,7 +813,7 @@ namespace Refracciones.Forms
                                 lblClaveSiniestro.Text = "JEIC-" + operacion.TotalSiniestro().ToString();
                             }
 
-                            operacion.registrarSiniestro(lblVehiculo.Text.Trim(), lblClaveSiniestro.Text.Trim(), txtComentarioSiniestro.Text.Trim(), estadoSiniestro, lblAnio.Text);
+                            operacion.registrarSiniestro(lblVehiculo.Text.Trim(), lblClaveSiniestro.Text.Trim(), txtComentarioSiniestro.Text.Trim(), lblAnio.Text);
 
                             calcularDGV();
 
@@ -837,7 +831,7 @@ namespace Refracciones.Forms
                             else
                                 dtFechaBaja = DateTime.Parse("1753/01/01");
 
-                            operacion.actualizarSiniestro(lblVehiculo.Text.Trim(), lblClaveSiniestro.Text.Trim(), txtComentarioSiniestro.Text.Trim(), estadoSiniestro, Convert.ToInt32(lblAnio.Text));
+                            operacion.actualizarSiniestro(lblVehiculo.Text.Trim(), lblClaveSiniestro.Text.Trim(), txtComentarioSiniestro.Text.Trim(), Convert.ToInt32(lblAnio.Text));
 
                             calcularDGV();
 
@@ -964,6 +958,20 @@ namespace Refracciones.Forms
 
         public int cantidadPenalizada = 0;
 
+        private void columnaCombobox()
+        {
+            //Agregando combobox en DGV
+            var comboboxDgv = new DataGridViewComboBoxColumn();
+            comboboxDgv.FlatStyle = FlatStyle.Popup;
+            comboboxDgv.HeaderText = "Estado";
+            comboboxDgv.Name = "dataGridViewStatusCombobox";
+            comboboxDgv.DataPropertyName = "Estado";
+            comboboxDgv.DataSource = operacion.EstadoSiniestro().Tables[0].DefaultView;
+            comboboxDgv.ValueMember = "cve_estado";
+            comboboxDgv.DisplayMember = "estado";
+            this.dgvPedido.Columns.Add(comboboxDgv);
+        }
+
         private void dgvPedido_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -1017,10 +1025,11 @@ namespace Refracciones.Forms
                     if (e.ColumnIndex == dgvPedido.Columns["dataGridViewPenaltyButton"].Index)
                     {
                         DialogResult respuesta = DialogResult.Cancel;
-                        int cantidad = 0;
+                        int cantidad = 0; string piezaNombre = "";
                         Penalizaciones penalizaciones = new Penalizaciones();
                         foreach (DataGridViewRow row in dgvPedido.SelectedRows)
                         {
+                            piezaNombre = Convert.ToString(row.Cells["Pieza"].Value);
                             penalizaciones.cvePieza = operacion.clavePieza(Convert.ToString(row.Cells["Pieza"].Value));
                             penalizaciones.cveVenta = operacion.claveVenta(txtClavePedido.Text, lblClaveSiniestro.Text);
                             penalizaciones.usuario = lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9);
@@ -1042,6 +1051,13 @@ namespace Refracciones.Forms
                             dgvPedido.DataSource = dt;
                             cantidadPenalizada = penalizaciones.cantidadPenalizada;
                             lblCantidadTotal.Text = (Convert.ToInt32(lblCantidadTotal.Text) - cantidadPenalizada).ToString();
+
+                            int i = 0;
+                            foreach(DataGridViewRow row in dgvPedido.Rows)
+                            {
+                                row.Cells["dataGridViewStatusCombobox"].Value = operacion.estadoSiniestroClaves(txtClavePedido.Text, lblClaveSiniestro.Text, row.Cells["Pieza"].Value.ToString(), i);
+                                i += 1;
+                            }
                         }
                     }
                 }
@@ -1097,7 +1113,6 @@ namespace Refracciones.Forms
                     if (respuesta == DialogResult.OK)
                     {
                         int k = 0;
-                        //probar llenando dgv de otra forma con arreglo (datasource?)
                         if (actualizar == 1)
                         {
                             for (int j = 0; j < pieza.datosMandar.Length; j++)
@@ -1105,6 +1120,8 @@ namespace Refracciones.Forms
                                 dgvPedido[j + 3, index].Value = pieza.datosMandar[k];
                                 k++;
                             }
+                            //EN caso de que se quiera dejar por default se descomenta la línea de abajo
+                            //dgvPedido.Rows[index].Cells["dataGridViewStatusCombobox"].Value = 1;
                         }
                         else
                         {
@@ -1970,7 +1987,7 @@ namespace Refracciones.Forms
                                 lblClaveSiniestro.Text = "JEIC-" + operacion.TotalSiniestro().ToString();
                             }
 
-                            operacion.registrarSiniestro(lblVehiculo.Text.Trim(), lblClaveSiniestro.Text.Trim(), txtComentarioSiniestro.Text.Trim(), estadoSiniestro, lblAnio.Text);
+                            operacion.registrarSiniestro(lblVehiculo.Text.Trim(), lblClaveSiniestro.Text.Trim(), txtComentarioSiniestro.Text.Trim(), lblAnio.Text);
 
                             calcularDGV();
 
@@ -1989,7 +2006,7 @@ namespace Refracciones.Forms
                             else
                                 dtFechaBaja = DateTime.Parse("1753/01/01");
 
-                            operacion.actualizarSiniestro(lblVehiculo.Text.Trim(), lblClaveSiniestro.Text.Trim(), txtComentarioSiniestro.Text.Trim(), estadoSiniestro, Convert.ToInt32(lblAnio.Text));
+                            operacion.actualizarSiniestro(lblVehiculo.Text.Trim(), lblClaveSiniestro.Text.Trim(), txtComentarioSiniestro.Text.Trim(), Convert.ToInt32(lblAnio.Text));
 
                             calcularDGV();
 
@@ -2289,12 +2306,12 @@ namespace Refracciones.Forms
         private void dgvPedido_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
         {
             //e.Row.Cells["Estado"].Value = PositionEnum.Any;
-            e.Row.Cells["dataGridViewStatusCombobox"].Value = 1;
+            //e.Row.Cells["dataGridViewStatusCombobox"].Value = 1;
         }
 
         private void dgvPedido_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
-            //dgvPedido.Rows[0].Cells["dataGridViewStatusCombobox"].Value = "1";
+            //dgvPedido.Rows[0].Cells["dataGridViewStatusCombobox"].Value = 1;
         }
     }
 }
