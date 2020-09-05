@@ -209,9 +209,6 @@ namespace Refracciones.Forms
                 chbModificarFechaPromesa.Visible = true;
                 dtpFechaPromesa.Text = operacion.fechaPromesa(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
 
-                chbModificarFechaBaja.Visible = true;
-                //dtpFechaBaja.Text = operacion.fechaBaja(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
-
                 dt = operacion.piezasPedidoActualizar(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
                 dgvPedido.DataSource = dt;
 
@@ -247,10 +244,6 @@ namespace Refracciones.Forms
 
                 lblComentarioSiniestro.Hide();
                 txtComentarioSiniestro.Hide();
-
-                dtpFechaBaja.Hide();
-                chbModificarFechaBaja.Hide();
-                lblFechaBaja.Hide();
 
                 //Carga los datos registros de valuadores en el combobox
                 cbValuador.DataSource = operacion.ValuadoresRegistrados(cbAseguradora.Text.Trim()).Tables[0].DefaultView;
@@ -791,13 +784,10 @@ namespace Refracciones.Forms
                     {
                         aniadirNuevosRegistros();
 
-                        DateTime dtFechaBaja;
                         DateTime dtFechaAsignacion = dtpFechaAsignacion.Value.Date;
                         DateTime dtFechaPromesa = dtpFechaPromesa.Value.Date;
                         if (actualizar != 1)
                         {
-                            dtFechaBaja = DateTime.Parse("1753/01/01");
-
                             //Registrar lo correspondiente a siniestro
                             if (nuevoMarca == true)
                                 operacion.registroMarca(lblMarca.Text.Trim());
@@ -818,7 +808,7 @@ namespace Refracciones.Forms
                             calcularDGV();
 
                             //AGREGANDO DATOS A VENTA
-                            operacion.registrarVenta(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(), taller, vendedor, /*dtFechaBaja,*/ valuador, destino, totalCosto, subtotalPrecio, totalPrecio, dtFechaAsignacion, dtFechaPromesa, utilidad);//, utilidad
+                            operacion.registrarVenta(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(), taller, vendedor, valuador, destino, totalCosto, subtotalPrecio, totalPrecio, dtFechaAsignacion, dtFechaPromesa, utilidad);
 
                             //REGISTRANDO PEDIDO
                             registrarPedido();
@@ -826,17 +816,13 @@ namespace Refracciones.Forms
                         }
                         else // ACTUALIZAR PEDIDO
                         {
-                            if (chbModificarFechaBaja.Checked == true)
-                                dtFechaBaja = dtpFechaBaja.Value.Date;
-                            else
-                                dtFechaBaja = DateTime.Parse("1753/01/01");
 
                             operacion.actualizarSiniestro(lblVehiculo.Text.Trim(), lblClaveSiniestro.Text.Trim(), txtComentarioSiniestro.Text.Trim(), Convert.ToInt32(lblAnio.Text));
 
                             calcularDGV();
 
                             //AGREGANDO DATOS A VENTA
-                            operacion.actualizarVenta(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(), taller, vendedor, dtFechaBaja, valuador, destino, totalCosto, subtotalPrecio, totalPrecio, dtFechaAsignacion, dtFechaPromesa, utilidad);//, utilidad
+                            operacion.actualizarVenta(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(), taller, vendedor, valuador, destino, totalCosto, subtotalPrecio, totalPrecio, dtFechaAsignacion, dtFechaPromesa, utilidad);//, utilidad
 
                             actualizarPedido();
                             this.DialogResult = DialogResult.OK;
@@ -1135,15 +1121,8 @@ namespace Refracciones.Forms
                 }
                 //Check if click is on specific column
                 if (e.ColumnIndex == dgvPedido.Columns["dataGridViewStatusCombobox"].Index)
-                {/*
-                    foreach (DataGridViewRow row in dgvPedido.Rows)
-                    {
-                        DataGridViewComboBoxCell comboBoxCell = (row.Cells[12] as DataGridViewComboBoxCell);
-                        comboBoxCell.DataSource = operacion.EstadoSiniestro();
-                        //comboBoxCell.DataPropertyName = "Estado";
-                        comboBoxCell.ValueMember = "cve_estado";
-                        comboBoxCell.DisplayMember = "estado";
-                    }*/
+                {
+                    
                 }
             }
             catch (Exception EX)
@@ -1171,17 +1150,6 @@ namespace Refracciones.Forms
             {
                 dtpFechaPromesa.Text = operacion.fechaPromesa(txtClavePedido.Text, lblClaveSiniestro.Text);
                 dtpFechaPromesa.Enabled = false;
-            }
-        }
-
-        private void chbModificarFechaBaja_CheckedChanged(object sender, EventArgs e)
-        {
-            if (chbModificarFechaBaja.Checked == true)
-                dtpFechaBaja.Enabled = true;
-            else
-            {
-                //dtpFechaBaja.Text = operacion.fechaBaja(txtClavePedido.Text, lblClaveSiniestro.Text);
-                dtpFechaBaja.Enabled = false;
             }
         }
 
@@ -1363,7 +1331,6 @@ namespace Refracciones.Forms
                     chbOtroDestino.Enabled = true;
                     dtpFechaAsignacion.Enabled = true;
                     dtpFechaPromesa.Enabled = true;
-                    dtpFechaBaja.Enabled = true;
                     btnFinalizarPedido.Enabled = true;
                 }
             }
@@ -1964,13 +1931,10 @@ namespace Refracciones.Forms
                     {
                         aniadirNuevosRegistros();
 
-                        DateTime dtFechaBaja;
                         DateTime dtFechaAsignacion = dtpFechaAsignacion.Value.Date;
                         DateTime dtFechaPromesa = dtpFechaPromesa.Value.Date;
                         if (actualizar != 1)
                         {
-                            dtFechaBaja = DateTime.Parse("1753/01/01");
-
                             //Registrar lo correspondiente a siniestro
                             string estadoSiniestro = "";
                             if (nuevoMarca == true)
@@ -2001,17 +1965,12 @@ namespace Refracciones.Forms
                         }
                         else // ACTUALIZAR PEDIDO
                         {
-                            if (chbModificarFechaBaja.Checked == true)
-                                dtFechaBaja = dtpFechaBaja.Value.Date;
-                            else
-                                dtFechaBaja = DateTime.Parse("1753/01/01");
-
                             operacion.actualizarSiniestro(lblVehiculo.Text.Trim(), lblClaveSiniestro.Text.Trim(), txtComentarioSiniestro.Text.Trim(), Convert.ToInt32(lblAnio.Text));
 
                             calcularDGV();
 
                             //AGREGANDO DATOS A VENTA
-                            operacion.actualizarVenta(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(), taller, vendedor, dtFechaBaja, valuador, destino, totalCosto, subtotalPrecio, totalPrecio, dtFechaAsignacion, dtFechaPromesa, utilidad);//, utilidad
+                            operacion.actualizarVenta(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(), taller, vendedor, valuador, destino, totalCosto, subtotalPrecio, totalPrecio, dtFechaAsignacion, dtFechaPromesa, utilidad);
                             actualizarPedido();
                             g = 1;
                             this.DialogResult = DialogResult.OK;

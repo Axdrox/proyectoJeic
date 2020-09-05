@@ -4767,7 +4767,7 @@ namespace Refracciones
         }*/
 
         //-------------INSERTAR DATOS DE PEDIDO VENTAS
-        public int registrarVenta(string clavePedido, string claveSiniestro, string taller, string vendedor, /*DateTime fechaBaja,*/ string valuador, string destino, double costoTotal, double subtotalPrecio, double totalPrecio, DateTime fechaAsignacion, DateTime fechaPromesa, double utilidad)//, double utilidad
+        public int registrarVenta(string clavePedido, string claveSiniestro, string taller, string vendedor, string valuador, string destino, double costoTotal, double subtotalPrecio, double totalPrecio, DateTime fechaAsignacion, DateTime fechaPromesa, double utilidad)
         {
             //Variables
             int i = 0;
@@ -4782,13 +4782,12 @@ namespace Refracciones
                     nuevaConexion.Open();
                     //Insertando los datos en la relación VENTAS
                     Comando = new SqlCommand("INSERT INTO VENTAS " + "(cve_pedido, cve_siniestro, cve_vendedor, cve_taller, cve_valuador, cve_destino, costo_total, sub_total, total, fecha_asignacion, fecha_promesa, utilidad) " +
-                        "VALUES (@cve_pedido, @cve_siniestro, @cve_vendedor, @cve_taller, @cve_valuador, @cve_destino, @costo_total, @sub_total, @total, @fecha_asignacion, @fecha_promesa, @utilidad) ", nuevaConexion);//utilidad    , @utilidad
+                        "VALUES (@cve_pedido, @cve_siniestro, @cve_vendedor, @cve_taller, @cve_valuador, @cve_destino, @costo_total, @sub_total, @total, @fecha_asignacion, @fecha_promesa, @utilidad) ", nuevaConexion);
                     Comando.Parameters.AddWithValue("@cve_pedido", clavePedido);
                     Comando.Parameters.AddWithValue("@cve_siniestro", claveSiniestro);
                     Comando.Parameters.AddWithValue("@cve_vendedor", cve_vendedor);
                     Comando.Parameters.AddWithValue("@cve_taller", cve_taller);
                     Comando.Parameters.AddWithValue("@cve_valuador", cve_valuador);
-                    //Comando.Parameters.AddWithValue("@fecha_baja", fechaBaja);
                     Comando.Parameters.AddWithValue("@cve_destino", cve_destino);
                     Comando.Parameters.AddWithValue("@costo_total", costoTotal);
                     Comando.Parameters.AddWithValue("@sub_total", subtotalPrecio);
@@ -4816,7 +4815,7 @@ namespace Refracciones
         }
 
         //-------------ACTUALIZANDO EL REGISTRO DE VENTA
-        public void actualizarVenta(string clavePedido, string claveSiniestro, string taller, string vendedor, DateTime fechaBaja, string valuador, string destino, double costoTotal, double subtotalPrecio, double totalPrecio, DateTime fechaAsignacion, DateTime fechaPromesa, double utilidad)//, double utilidad
+        public void actualizarVenta(string clavePedido, string claveSiniestro, string taller, string vendedor, string valuador, string destino, double costoTotal, double subtotalPrecio, double totalPrecio, DateTime fechaAsignacion, DateTime fechaPromesa, double utilidad)//, double utilidad
         {
             //Variables
             int i = 0;
@@ -4831,14 +4830,13 @@ namespace Refracciones
                 {
                     nuevaConexion.Open();
                     //Insertando los datos en la relación VENTAS
-                    Comando = new SqlCommand("UPDATE VENTAS SET " + "cve_vendedor = @cve_vendedor, cve_taller = @cve_taller, cve_valuador = @cve_valuador, fecha_baja = @fecha_baja, cve_destino = @cve_destino, costo_total = @costo_total, sub_total = @sub_total, total = @total, fecha_asignacion = @fecha_asignacion, fecha_promesa = @fecha_promesa, utilidad = @utilidad " +
+                    Comando = new SqlCommand("UPDATE VENTAS SET " + "cve_vendedor = @cve_vendedor, cve_taller = @cve_taller, cve_valuador = @cve_valuador, cve_destino = @cve_destino, costo_total = @costo_total, sub_total = @sub_total, total = @total, fecha_asignacion = @fecha_asignacion, fecha_promesa = @fecha_promesa, utilidad = @utilidad " +
                         "WHERE cve_pedido = @cve_pedido AND cve_siniestro = @cve_siniestro", nuevaConexion);
                     Comando.Parameters.AddWithValue("@cve_pedido", clavePedido);
                     Comando.Parameters.AddWithValue("@cve_siniestro", claveSiniestro);
                     Comando.Parameters.AddWithValue("@cve_vendedor", cve_vendedor);
                     Comando.Parameters.AddWithValue("@cve_taller", cve_taller);
                     Comando.Parameters.AddWithValue("@cve_valuador", cve_valuador);
-                    Comando.Parameters.AddWithValue("@fecha_baja", fechaBaja);
                     Comando.Parameters.AddWithValue("@cve_destino", cve_destino);
                     Comando.Parameters.AddWithValue("@costo_total", costoTotal);
                     Comando.Parameters.AddWithValue("@sub_total", subtotalPrecio);
