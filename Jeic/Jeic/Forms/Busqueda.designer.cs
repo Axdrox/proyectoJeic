@@ -646,6 +646,7 @@
             this.dvgPedido.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dvgPedido.Size = new System.Drawing.Size(897, 480);
             this.dvgPedido.TabIndex = 7;
+            this.dvgPedido.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgPedido_CellClick);
             this.dvgPedido.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgPedido_CellContentClick);
             // 
             // Fecha_Fin
