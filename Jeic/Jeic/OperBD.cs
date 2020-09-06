@@ -3733,7 +3733,7 @@ namespace Refracciones
                     }
                     else if (x == 1)
                     {
-                        SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT nombre FROM PORTAL WHERE estado = 1", nuevaConexion);
+                        SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT * FROM PORTAL WHERE estado = 1", nuevaConexion);
                         dataAdapter.Fill(dataSet, "PORTAL");
                     }
                     nuevaConexion.Close();
@@ -3744,6 +3744,28 @@ namespace Refracciones
                 MessageBox.Show("Error: " + EX.Message);
             }
             return dataSet;
+        }
+
+        //Obtiene el index de un portal para poner su valor por default en el combobox de PIEZA al agregar una nueva
+        public int indexPortalRegistrado(string portal)
+        {
+            int index = 0;
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("SELECT cve_portal FROM PORTAL WHERE nombre = @nombre", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@nombre", portal);
+                    index = Convert.ToInt32(Comando.ExecuteScalar());
+                    nuevaConexion.Close();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return index;
         }
 
         //---------------- INSERTAR UN NUEVO PORTAL PARA PIEZA
@@ -3809,7 +3831,7 @@ namespace Refracciones
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     nuevaConexion.Open();
-                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT origen FROM ORIGEN_PIEZA", nuevaConexion);
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT * FROM ORIGEN_PIEZA", nuevaConexion);
                     dataAdapter.Fill(dataSet, "ORIGEN_PIEZA");
                     nuevaConexion.Close();
                 }
@@ -3819,6 +3841,28 @@ namespace Refracciones
                 MessageBox.Show("Error: " + EX.Message);
             }
             return dataSet;
+        }
+
+        //Obtiene el index del origen para poner su valor por default en el combobox de PIEZA al agregar una nueva
+        public int indexOrigenPiezasRegistradas(string origen)
+        {
+            int index = 0;
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("SELECT cve_origen FROM ORIGEN_PIEZA WHERE origen = @origen", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@origen", origen);
+                    index = Convert.ToInt32(Comando.ExecuteScalar());
+                    nuevaConexion.Close();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return index;
         }
 
         //---------------- INSERTAR UN NUEVO ORIGEN PARA PIEZA
@@ -3891,7 +3935,7 @@ namespace Refracciones
                     }
                     else if (x == 1)
                     {
-                        SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT nombre FROM PROVEEDOR WHERE estado = 1", nuevaConexion);
+                        SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT * FROM PROVEEDOR WHERE estado = 1", nuevaConexion);
                         dataAdapter.Fill(dataSet, "PROVEEDOR");
                     }
 
@@ -3903,6 +3947,28 @@ namespace Refracciones
                 MessageBox.Show("Error: " + EX.Message);
             }
             return dataSet;
+        }
+
+        //Obtiene el index del proveedor para poner su valor por default en el combobox de PIEZA al agregar una nueva
+        public int indexProveedoresRegistrados(string proveedor)
+        {
+            int index = 0;
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("SELECT cve_proveedor FROM PROVEEDOR WHERE nombre = @nombre", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@nombre", proveedor);
+                    index = Convert.ToInt32(Comando.ExecuteScalar());
+                    nuevaConexion.Close();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return index;
         }
 
         //---------------- INSERTAR UN NUEVO PROVEEDOR PARA PIEZA
@@ -3968,7 +4034,7 @@ namespace Refracciones
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     nuevaConexion.Open();
-                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT costo FROM COSTO_ENVIO", nuevaConexion);
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT * FROM COSTO_ENVIO", nuevaConexion);
                     dataAdapter.Fill(dataSet, "COSTO_ENVIO");
                     nuevaConexion.Close();
                 }
@@ -3978,6 +4044,28 @@ namespace Refracciones
                 MessageBox.Show("Error: " + EX.Message);
             }
             return dataSet;
+        }
+
+        //Obtiene el index costoEnvío para poner su valor por default en el combobox de PIEZA al agregar una nueva
+        public int indexCostoEnvioRegistrados(string costo)
+        {
+            int index = 0;
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("SELECT cve_costoEnvio FROM COSTO_ENVIO WHERE costo = @costo", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@costo", Convert.ToDecimal(costo));
+                    index = Convert.ToInt32(Comando.ExecuteScalar());
+                    nuevaConexion.Close();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return index;
         }
 
         //-------------OBTENER  AÑO A PARTIR DEL VEHÍCULO

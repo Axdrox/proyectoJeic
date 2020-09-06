@@ -38,17 +38,50 @@
             cbPiezaNombre.DataSource = operacion.NombrePiezasRegistrados(1).Tables[0].DefaultView;
             cbPiezaNombre.ValueMember = "nombre";
 
-            //Carga los datos de los nombres de los portales registrados
-            cbPortal.DataSource = operacion.PortalesRegistrados(1).Tables[0].DefaultView;
-            cbPortal.ValueMember = "nombre";
+            if(indicador != 1)
+            {
+                //Carga los datos de los nombres de los portales registrados
+                cbPortal.DataSource = operacion.PortalesRegistrados(1).Tables[0].DefaultView;
+                cbPortal.ValueMember = "nombre";
 
-            //Carga los datos de los nombres de los origenes registrados
-            cbOrigen.DataSource = operacion.OrigenPiezasRegistradas().Tables[0].DefaultView;
-            cbOrigen.ValueMember = "origen";
+                //Carga los datos de los nombres de los origenes registrados
+                cbOrigen.DataSource = operacion.OrigenPiezasRegistradas().Tables[0].DefaultView;
+                cbOrigen.ValueMember = "origen";
 
-            //Carga los datos de los nombres de los proveedores registrados
-            cbProveedores.DataSource = operacion.ProveedoresRegistrados(1).Tables[0].DefaultView;
-            cbProveedores.ValueMember = "nombre";
+                //Carga los datos de los nombres de los proveedores registrados
+                cbProveedores.DataSource = operacion.ProveedoresRegistrados(1).Tables[0].DefaultView;
+                cbProveedores.ValueMember = "nombre";
+
+                //Carga los datos de los costos registrados
+                cbCostoEnvio.DataSource = operacion.CostoEnvioRegistrados().Tables[0].DefaultView;
+                cbCostoEnvio.ValueMember = "costo";
+                cbCostoEnvio.SelectedValue = "0.00";
+            }
+            else
+            {
+                //---------- SECCIÓN UTILIZADA PARA CARGAR DATOS RECIENTES
+
+                cbPortal.DataSource = operacion.PortalesRegistrados(1).Tables[0];
+                cbPortal.ValueMember = "cve_portal";
+                cbPortal.DisplayMember = "nombre";
+                cbPortal.SelectedValue = operacion.indexPortalRegistrado(portalDefault);
+
+                cbOrigen.DataSource = operacion.OrigenPiezasRegistradas().Tables[0];
+                cbOrigen.ValueMember = "cve_origen";
+                cbOrigen.DisplayMember = "origen";
+                cbOrigen.SelectedValue = operacion.indexOrigenPiezasRegistradas(origenDefault);
+
+                cbProveedores.DataSource = operacion.ProveedoresRegistrados(1).Tables[0];
+                cbProveedores.ValueMember = "cve_proveedor";
+                cbProveedores.DisplayMember = "nombre";
+                cbProveedores.SelectedValue = operacion.indexProveedoresRegistrados(proveedorDefault);
+
+                cbCostoEnvio.DataSource = operacion.CostoEnvioRegistrados().Tables[0];
+                cbCostoEnvio.ValueMember = "cve_costoEnvio";
+                cbCostoEnvio.DisplayMember = "costo";
+                cbCostoEnvio.SelectedValue = operacion.indexCostoEnvioRegistrados(costoEnvioDefault);
+
+            }
 
             if (destinoLocal == "LOCAL" || destinoLocal == "CDMX" || destinoLocal == "Ciudad de México")
             {
@@ -137,16 +170,41 @@
             }
         }
 
+        public int indicador = 0;
         public string marca;
         public string modelo;
         public string anio;
 
         private int destinosAgregados = 0;
         private string destinoLocal = "";
+        string portalDefault = "";
+        string origenDefault = "";
+        string proveedorDefault = "";
+        string costoEnvioDefault = "";
 
         public string destino
         {
             set { destinoLocal = value; }
+        }
+
+        public string portal
+        {
+            set { portalDefault = value; }
+        }
+
+        public string origen
+        {
+            set { origenDefault = value; }
+        }
+
+        public string proveedor
+        {
+            set { proveedorDefault = value; }
+        }
+
+        public string costoEnvio
+        {
+            set { costoEnvioDefault = value; }
         }
 
         private string[] datos;
@@ -908,9 +966,7 @@
         private void cbCostoEnvio_Click(object sender, EventArgs e)
         {
             OperBD operacion = new OperBD();
-            //Carga los datos de los costos registrados
-            cbCostoEnvio.DataSource = operacion.CostoEnvioRegistrados().Tables[0].DefaultView;
-            cbCostoEnvio.ValueMember = "costo";
+            
         }
 
         private void txtCostoNeto_Validating(object sender, CancelEventArgs e)

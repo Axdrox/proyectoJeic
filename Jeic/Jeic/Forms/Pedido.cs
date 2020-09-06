@@ -1001,17 +1001,22 @@ namespace Refracciones.Forms
                     }
                     if (dgvPedido.Rows.Count > 0)
                     {
+                        int i = dgvPedido.Rows.Count - 1;
                         foreach (DataGridViewRow row in dgvPedido.Rows)
                         {
                             if (!guia.Contains(Convert.ToString(row.Cells["Número de guía"].Value)))
                             {
                                 pieza.cbNumeroGuia.Items.Add(Convert.ToString(row.Cells["Número de guía"].Value));
                                 guia[j] = Convert.ToString(row.Cells["Número de guía"].Value);
+                                pieza.portal = dgvPedido.Rows[i].Cells["Portal"].Value.ToString();
+                                pieza.origen = dgvPedido.Rows[i].Cells["Origen"].Value.ToString().Trim().ToUpper();
+                                pieza.proveedor = dgvPedido.Rows[i].Cells["Proveedor"].Value.ToString();
+                                pieza.costoEnvio = dgvPedido.Rows[i].Cells["Costo de envío\n($)"].Value.ToString();
+                                pieza.indicador = 1;
                                 j++;
                             }
                         }
                     }
-
                     pieza.marca = lblMarca.Text;
                     pieza.modelo = lblVehiculo.Text;
                     pieza.anio = lblAnio.Text;
@@ -1209,6 +1214,30 @@ namespace Refracciones.Forms
                             }
                         }
                     }
+                    if (e.ColumnIndex == dgvPedido.Columns["dataGridViewDarBajaButton"].Index)
+                    {
+                        string piezaNombre = ""; int index = dgvPedido.CurrentCell.RowIndex;
+                        foreach (DataGridViewRow row in dgvPedido.SelectedRows)
+                        {
+                            piezaNombre = Convert.ToString(row.Cells["Pieza"].Value);
+                        }
+
+                        /*Checar primero si es que esa pieza ya ha sido dada de baja
+                        (Probar si se puede bloquear el botón en la carga de datos)*/
+                        if (!string.IsNullOrEmpty(operacion.existeFechaBaja(txtClavePedido.Text, lblClaveSiniestro.Text, piezaNombre, index)))
+                            MessageBOX.SHowDialog(2, "Ya se ha registrado la fecha de baja");
+                        else
+                        {
+
+                            MessageBOX mes = new MessageBOX(4, "¿Registrar fecha de baja?");
+                            if (mes.ShowDialog() == DialogResult.OK)
+                            {
+                                operacion.registrarFechaBaja(txtClavePedido.Text, lblClaveSiniestro.Text, piezaNombre, index);
+                                //De esta forma se desabilita el botón cuando ya se ha registrado la fecha de baja
+                                SetDGVButtonColumnEnable(false);
+                            }
+                        }
+                    }
                 }
 
                 if (e.ColumnIndex == dgvPedido.Columns["dataGridViewEditButton"].Index)
@@ -1286,30 +1315,6 @@ namespace Refracciones.Forms
                 if (e.ColumnIndex == dgvPedido.Columns["dataGridViewStatusCombobox"].Index)
                 {
                     //Some logic here
-                }
-                if (e.ColumnIndex == dgvPedido.Columns["dataGridViewDarBajaButton"].Index)
-                {
-                    string piezaNombre = ""; int index = dgvPedido.CurrentCell.RowIndex;
-                    foreach (DataGridViewRow row in dgvPedido.SelectedRows)
-                    {
-                        piezaNombre = Convert.ToString(row.Cells["Pieza"].Value);
-                    }
-
-                    /*Checar primero si es que esa pieza ya ha sido dada de baja
-                    (Probar si se puede bloquear el botón en la carga de datos)*/
-                    if (!string.IsNullOrEmpty(operacion.existeFechaBaja(txtClavePedido.Text, lblClaveSiniestro.Text, piezaNombre, index)))
-                        MessageBOX.SHowDialog(2, "Ya se ha registrado la fecha de baja");
-                    else
-                    {
-
-                        MessageBOX mes = new MessageBOX(4, "¿Registrar fecha de baja?");
-                        if (mes.ShowDialog() == DialogResult.OK)
-                        {
-                            operacion.registrarFechaBaja(txtClavePedido.Text, lblClaveSiniestro.Text, piezaNombre, index);
-                            //De esta forma se desabilita el botón cuando ya se ha registrado la fecha de baja
-                            SetDGVButtonColumnEnable(false);
-                        }
-                    }
                 }
             }
             catch (Exception EX)
