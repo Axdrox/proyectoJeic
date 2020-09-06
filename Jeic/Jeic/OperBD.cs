@@ -115,6 +115,7 @@ namespace Refracciones
                 MessageBox.Show(ex.Message);
             }
         }
+
         //--------------------SE UTILIZA PARA SABER SI YA EXISTE ESA FACTURA----------------
         public string factExistente(string cve_factura)
         {
@@ -216,6 +217,7 @@ namespace Refracciones
             // }
             return mensaje;
         }
+
         //--------------------INGRESAR FACTURA PIEZA POR PIEZA--------------------
         public string Registrar_factura(string cve_siniestro, string cve_pedido, string cve_factura, int cve_estado, decimal fact_sinIVA, decimal descuento, decimal fact_neto, DateTime fecha_ingreso, DateTime fecha_revision, DateTime fecha_pago, string nombre_factura, byte[] archivo, string nombre_xml, byte[] archivo_xml, string comentario, string realizo, string pieza, int cvePedidoIdentity)
         {
@@ -300,6 +302,7 @@ namespace Refracciones
             // }
             return mensaje;
         }
+
         //----------------------------------------------------------------------------------
 
         //--------------------RECUPERAR FACTURA (PDF)--------------------
@@ -568,6 +571,7 @@ namespace Refracciones
             }
             return mensaje;
         }
+
         //--------------------LLENAR DATAGRID DEVOLUCIÓN-ENTREGA--------------------
         /*public DataTable Devolucion(string cve_siniestro, string cve_pedido)
         {
@@ -602,6 +606,7 @@ namespace Refracciones
             }
             return dt;
         }
+
         //--------------------OBTENER NUMERO DE REGISTROS EN DEVOLUCION--------------------
         public int Total_Registros()
         {
@@ -636,37 +641,37 @@ namespace Refracciones
         //-------------------------------------------------------------------------------------------------------
 
         //--------------------REGISTRAR DEVOLUCION ACTUALIZAR COLUMNA CANTIDAD Y ASIGNAR CVE DE DEVOLUCION CON FECHA--------------------
-       /* public string Registrar_Devolucion(string cve_siniestro, string cve_pedido, int cve_pieza, int cve_devolucion, int cantidad, DateTime fecha, int cantidadD, int cve_venta, string motivo, decimal penalizacion, string realizo)
-        {
-            string mensaje = "ERROR AL HACER LA DEVOLUCIÓN";
+        /* public string Registrar_Devolucion(string cve_siniestro, string cve_pedido, int cve_pieza, int cve_devolucion, int cantidad, DateTime fecha, int cantidadD, int cve_venta, string motivo, decimal penalizacion, string realizo)
+         {
+             string mensaje = "ERROR AL HACER LA DEVOLUCIÓN";
 
-            using (SqlConnection nuevaConexion = Conexion.conexion())
-            {
-                nuevaConexion.Open();
-                Comando = new SqlCommand("INSERT INTO DEVOLUCION (fecha,cantidad,cve_pieza,cve_venta,motivo,penalizacion,realizo) VALUES(@fecha,@cantidadD,@cve_pieza,@cve_venta,@motivo,@cve_penalizacion,@realizo)", nuevaConexion);
-                Comando.Parameters.Add("@fecha", SqlDbType.Date);
-                Comando.Parameters.Add("@cantidadD", SqlDbType.Int);
-                Comando.Parameters.Add("@cve_pieza", SqlDbType.Int);
-                Comando.Parameters.Add("@cve_venta", SqlDbType.Int);
-                Comando.Parameters.Add("@motivo", SqlDbType.NVarChar, 50);
-                Comando.Parameters.Add("@cve_penalizacion", SqlDbType.Decimal);
-                Comando.Parameters.Add("@realizo", SqlDbType.NVarChar, 50);
-                Comando.Parameters["@fecha"].Value = fecha;
-                Comando.Parameters["@cantidadD"].Value = cantidadD;
-                Comando.Parameters["@cve_pieza"].Value = cve_pieza;
-                Comando.Parameters["@cve_venta"].Value = cve_venta;
-                Comando.Parameters["@motivo"].Value = motivo;
-                Comando.Parameters["@cve_penalizacion"].Value = penalizacion;
-                Comando.Parameters["@realizo"].Value = realizo;
-                Comando.ExecuteNonQuery();
-                SqlCommand cmd = new SqlCommand(string.Format("UPDATE p  SET  p.cve_devolucion = {0}, p.pzas_devolucion = {1} FROM PEDIDO p INNER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta WHERE ven.cve_siniestro = '{2}' AND ven.cve_pedido = '{3}' AND p.cve_pieza = {4}",cve_devolucion, cantidad, cve_siniestro, cve_pedido, cve_pieza), nuevaConexion);
-                cmd.ExecuteNonQuery();
-                nuevaConexion.Close();
-                mensaje = "DEVOLUCIÓN EXITOSA";
-            }
+             using (SqlConnection nuevaConexion = Conexion.conexion())
+             {
+                 nuevaConexion.Open();
+                 Comando = new SqlCommand("INSERT INTO DEVOLUCION (fecha,cantidad,cve_pieza,cve_venta,motivo,penalizacion,realizo) VALUES(@fecha,@cantidadD,@cve_pieza,@cve_venta,@motivo,@cve_penalizacion,@realizo)", nuevaConexion);
+                 Comando.Parameters.Add("@fecha", SqlDbType.Date);
+                 Comando.Parameters.Add("@cantidadD", SqlDbType.Int);
+                 Comando.Parameters.Add("@cve_pieza", SqlDbType.Int);
+                 Comando.Parameters.Add("@cve_venta", SqlDbType.Int);
+                 Comando.Parameters.Add("@motivo", SqlDbType.NVarChar, 50);
+                 Comando.Parameters.Add("@cve_penalizacion", SqlDbType.Decimal);
+                 Comando.Parameters.Add("@realizo", SqlDbType.NVarChar, 50);
+                 Comando.Parameters["@fecha"].Value = fecha;
+                 Comando.Parameters["@cantidadD"].Value = cantidadD;
+                 Comando.Parameters["@cve_pieza"].Value = cve_pieza;
+                 Comando.Parameters["@cve_venta"].Value = cve_venta;
+                 Comando.Parameters["@motivo"].Value = motivo;
+                 Comando.Parameters["@cve_penalizacion"].Value = penalizacion;
+                 Comando.Parameters["@realizo"].Value = realizo;
+                 Comando.ExecuteNonQuery();
+                 SqlCommand cmd = new SqlCommand(string.Format("UPDATE p  SET  p.cve_devolucion = {0}, p.pzas_devolucion = {1} FROM PEDIDO p INNER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta WHERE ven.cve_siniestro = '{2}' AND ven.cve_pedido = '{3}' AND p.cve_pieza = {4}",cve_devolucion, cantidad, cve_siniestro, cve_pedido, cve_pieza), nuevaConexion);
+                 cmd.ExecuteNonQuery();
+                 nuevaConexion.Close();
+                 mensaje = "DEVOLUCIÓN EXITOSA";
+             }
 
-            return mensaje;
-        }*/
+             return mensaje;
+         }*/
 
         //---------------------------------------------------------------------------------------------------------------
         //--------------------REGISTRAR DEVOLUCION ACTUALIZAR COLUMNA CANTIDAD Y ASIGNAR CVE DE DEVOLUCION CON FECHA PIEZA POR PIEZA--------------------
@@ -695,7 +700,7 @@ namespace Refracciones
                 Comando.Parameters["@realizo"].Value = realizo;
                 Comando.Parameters["@cve_pedido"].Value = cvePedidoIdentity;
                 Comando.ExecuteNonQuery();
-                SqlCommand cmd = new SqlCommand(string.Format("UPDATE p  SET  p.cve_devolucion = {0}, p.pzas_devolucion = {1} FROM PEDIDO p INNER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta WHERE ven.cve_siniestro = '{2}' AND ven.cve_pedido = '{3}' AND p.cve_pieza = {4} AND p.cve_pedido = {5}",cve_devolucion, cantidad, cve_siniestro, cve_pedido, cve_pieza, cvePedidoIdentity), nuevaConexion);
+                SqlCommand cmd = new SqlCommand(string.Format("UPDATE p  SET  p.cve_devolucion = {0}, p.pzas_devolucion = {1} FROM PEDIDO p INNER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta WHERE ven.cve_siniestro = '{2}' AND ven.cve_pedido = '{3}' AND p.cve_pieza = {4} AND p.cve_pedido = {5}", cve_devolucion, cantidad, cve_siniestro, cve_pedido, cve_pieza, cvePedidoIdentity), nuevaConexion);
                 cmd.ExecuteNonQuery();
                 nuevaConexion.Close();
                 mensaje = "DEVOLUCIÓN EXITOSA";
@@ -703,6 +708,7 @@ namespace Refracciones
 
             return mensaje;
         }
+
         //--------------------OBTENGO LAS PIEZAS ENTREGADAS DE ESE SINIESTRO, PEDIDO CON WHERE EN PIEZA--------------------
         /*public int Pzas_Devolucion(string cve_siniestro, string cve_pedido, int cve_pieza)
         {
@@ -737,6 +743,7 @@ namespace Refracciones
             }
             return pzas;
         }
+
         //--------------------REGISTRAR ENTREGA ACTUALIZAR COLUMNA CANTIDAD Y ASIGNAR CVE DE ENTREGA CON FECHA--------------------
         /*public string Registrar_Entrega(string cve_siniestro, string cve_pedido, int cve_pieza, int cve_entrega, int cantidad, DateTime fecha, int cantidadE, int cve_venta, DateTime fecha_asigancion, string realizo)
         {
@@ -883,6 +890,7 @@ namespace Refracciones
 
             return mensaje;
         }
+
         //--------------------OBTENGO LAS PIEZAS ENTREGADAS DE ESE SINIESTRO, PEDIDO CON WHERE EN PIEZA--------------------
         /*public int Pzas_Entregadas(string cve_siniestro, string cve_pedido, int cve_pieza)
         {
@@ -917,6 +925,7 @@ namespace Refracciones
             }
             return pzas;
         }
+
         //--------------------OBTENER DATOS DE LA TABLA ENTREGA--------------------
         /*public DataTable Tabla_Entrega(int cve_venta)
         {
@@ -949,6 +958,7 @@ namespace Refracciones
             }
             return dt;
         }
+
         //--------------------OBTENER DATOS DE LA TABLA DEVOLUCIÓN--------------------
         /*public DataTable Tabla_Devolucion(int cve_venta)
         {
@@ -963,6 +973,7 @@ namespace Refracciones
             }
             return dt;
         }*/
+
         //--------------------OBTENER DATOS DE LA TABLA DEVOLUCIÓN PIEZA POR PIEZA--------------------
         public DataTable Tabla_Devolucion(int cve_venta)
         {
@@ -977,6 +988,7 @@ namespace Refracciones
             }
             return dt;
         }
+
         //--------------------OBTENER DATOS DE LA TABLA PENALIZACIONES--------------------
         public DataTable Tabla_Penalizacion(int cve_venta)
         {
@@ -1217,6 +1229,7 @@ namespace Refracciones
                 MessageBox.Show(ex.ToString());
             }
         }
+
         //-----------------LLENAR TABLA FECHAS-------------------------------
         /*public void Llenartabla(DataGridView dvg, string Fecha_inicio, string fecha_fin)
         {
@@ -1253,6 +1266,7 @@ namespace Refracciones
             }
             catch (Exception ex) { }
         }
+
         //---------------------------LLENAR TABLA PARA DATOS DE MUESTRA--------------------
         public void Llenartabla(DataGridView dgv, string cve_Siniestro, string cve_Pedido, string nombre_pieza)
         {
@@ -1282,7 +1296,7 @@ namespace Refracciones
             {
                 using (SqlConnection nuevacon = Conexion.conexion())
                 {
-                    da = new SqlDataAdapter(string.Format("SELECT ven.cve_pedido AS PEDIDO, ven.cve_siniestro AS SINIESTRO, pi.nombre AS PIEZA,  p.cantidad AS CANTIDAD, vend.nombre AS VENDEDOR, p.cve_guia 'CLAVE GUIA', o.origen AS ORIGEN, pro.nombre AS PROVEEDOR, v.nombre AS VALUADOR, c.cve_nombre AS CLIENTE, po.nombre AS PORTAL, t.nombre AS TALLER, CONVERT(varchar, ven.fecha_asignacion, 6) AS 'FECHA DE ASIGNACIÓN', CONVERT(varchar, ven.fecha_promesa, 6) AS 'FECHA PROMESA',CONVERT(varchar,ent.fecha, 6)  AS 'FECHA DE ENTREGA', p.costo_neto AS 'COSTO COMPRA', cos.costo AS 'COSTO DE ENVÍO', p.precio_venta AS 'PRECIO DE VENTA', p.precio_reparacion AS 'PRECIO REPARACIÓN', p.cve_factura AS 'FACTURA', fa.fact_sinIVA AS 'FACTURA SIN IVA', fa.fact_neto AS 'FACTURA NETO', es.estado AS 'ESTADO FACTURA', ess.estado AS 'ESTADO SINIESTRO', vh.modelo AS 'VEHICULO', vh.anio AS 'VH AÑO',ma.marca AS 'VH MARCA', s.comentario AS 'SCOMMENT' FROM PEDIDO p LEFT OUTER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta LEFT OUTER JOIN ORIGEN_PIEZA o ON o.cve_origen = p.cve_origen LEFT OUTER JOIN PIEZA pi ON p.cve_pieza = pi.cve_pieza LEFT OUTER JOIN PROVEEDOR pro ON p.cve_proveedor = pro.cve_proveedor LEFT OUTER JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE c ON c.cve_valuador = v.cve_valuador LEFT OUTER JOIN PORTAL po ON po.cve_portal = p.cve_portal LEFT OUTER JOIN TALLER t ON t.cve_taller = ven.cve_taller  LEFT OUTER JOIN FACTURA fa ON fa.cve_factura = p.cve_factura LEFT OUTER JOIN ESTADO_FACTURA es ON es.cve_estado = fa.cve_estado LEFT OUTER JOIN ENTREGA ent ON ent.cve_entrega = p.cve_entrega LEFT OUTER JOIN COSTO_ENVIO cos ON cos.cve_costoEnvio = p.costo_envio LEFT OUTER JOIN SINIESTRO s ON s.cve_siniestro = ven.cve_siniestro LEFT OUTER JOIN Estado_Siniestro ess ON ess.cve_estado = p.estado LEFT OUTER JOIN VEHICULO vh ON s.cve_vehiculo = vh.cve_vehiculo LEFT OUTER JOIN MARCA ma ON vh.cve_marca = ma.cve_marca LEFT OUTER JOIN VENDEDOR vend ON vend.cve_vendedor = ven.cve_vendedor WHERE ven.cve_pedido = '{0}' AND ven.cve_siniestro = '{1}' AND pi.nombre = '{2}' AND p.cve_pedido = {3}", cve_Pedido, cve_Siniestro, nombre_pieza,pedido), nuevacon);
+                    da = new SqlDataAdapter(string.Format("SELECT ven.cve_pedido AS PEDIDO, ven.cve_siniestro AS SINIESTRO, pi.nombre AS PIEZA,  p.cantidad AS CANTIDAD, vend.nombre AS VENDEDOR, p.cve_guia 'CLAVE GUIA', o.origen AS ORIGEN, pro.nombre AS PROVEEDOR, v.nombre AS VALUADOR, c.cve_nombre AS CLIENTE, po.nombre AS PORTAL, t.nombre AS TALLER, CONVERT(varchar, ven.fecha_asignacion, 6) AS 'FECHA DE ASIGNACIÓN', CONVERT(varchar, ven.fecha_promesa, 6) AS 'FECHA PROMESA',CONVERT(varchar,ent.fecha, 6)  AS 'FECHA DE ENTREGA', p.costo_neto AS 'COSTO COMPRA', cos.costo AS 'COSTO DE ENVÍO', p.precio_venta AS 'PRECIO DE VENTA', p.precio_reparacion AS 'PRECIO REPARACIÓN', p.cve_factura AS 'FACTURA', fa.fact_sinIVA AS 'FACTURA SIN IVA', fa.fact_neto AS 'FACTURA NETO', es.estado AS 'ESTADO FACTURA', ess.estado AS 'ESTADO SINIESTRO', vh.modelo AS 'VEHICULO', vh.anio AS 'VH AÑO',ma.marca AS 'VH MARCA', s.comentario AS 'SCOMMENT' FROM PEDIDO p LEFT OUTER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta LEFT OUTER JOIN ORIGEN_PIEZA o ON o.cve_origen = p.cve_origen LEFT OUTER JOIN PIEZA pi ON p.cve_pieza = pi.cve_pieza LEFT OUTER JOIN PROVEEDOR pro ON p.cve_proveedor = pro.cve_proveedor LEFT OUTER JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE c ON c.cve_valuador = v.cve_valuador LEFT OUTER JOIN PORTAL po ON po.cve_portal = p.cve_portal LEFT OUTER JOIN TALLER t ON t.cve_taller = ven.cve_taller  LEFT OUTER JOIN FACTURA fa ON fa.cve_factura = p.cve_factura LEFT OUTER JOIN ESTADO_FACTURA es ON es.cve_estado = fa.cve_estado LEFT OUTER JOIN ENTREGA ent ON ent.cve_entrega = p.cve_entrega LEFT OUTER JOIN COSTO_ENVIO cos ON cos.cve_costoEnvio = p.costo_envio LEFT OUTER JOIN SINIESTRO s ON s.cve_siniestro = ven.cve_siniestro LEFT OUTER JOIN Estado_Siniestro ess ON ess.cve_estado = p.estado LEFT OUTER JOIN VEHICULO vh ON s.cve_vehiculo = vh.cve_vehiculo LEFT OUTER JOIN MARCA ma ON vh.cve_marca = ma.cve_marca LEFT OUTER JOIN VENDEDOR vend ON vend.cve_vendedor = ven.cve_vendedor WHERE ven.cve_pedido = '{0}' AND ven.cve_siniestro = '{1}' AND pi.nombre = '{2}' AND p.cve_pedido = {3}", cve_Pedido, cve_Siniestro, nombre_pieza, pedido), nuevacon);
                     nuevacon.Open();
                     dt = new DataTable();
                     da.Fill(dt);
@@ -1295,6 +1309,7 @@ namespace Refracciones
                 MessageBox.Show(ex.ToString());
             }
         }
+
         //---------------------------LLENAR TABLA PARA DATOS DE MUESTRA AL ESCRIBIR EN EL TEXBOX DE PEDIDO EN BUSQUEDA PIEZA POR PIEZA--------------------
         public void Llenartablaa(DataGridView dgv, string cve_Pedido)
         {
@@ -1315,6 +1330,7 @@ namespace Refracciones
                 MessageBox.Show(ex.ToString());
             }
         }
+
         //---------------------------LLENAR TABLA PARA DATOS DE MUESTRA PDF--------------------
         public void Llenartabla(DataGridView dgv, string cve_Pedido)
         {
@@ -1432,6 +1448,7 @@ namespace Refracciones
                 MessageBox.Show(ex.ToString());
             }
         }
+
         //---------------------------OBTENER CLAVE DE FACTURA-------------------
         public string Clave_Fact(string siniestro, string cve_pedido)
         {
@@ -1488,6 +1505,7 @@ namespace Refracciones
             }
             return cve_refactura;
         }
+
         //---------------------------OBTENER CLAVE DE FACTURA POR PIEZA-------------------
         public string Clave_Fact(string siniestro, string cve_pedido, string pieza, int cvePedidoIdentity)
         {
@@ -1497,7 +1515,7 @@ namespace Refracciones
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     nuevaConexion.Open();
-                    Comando = new SqlCommand(string.Format("SELECT p.cve_factura FROM PEDIDO p INNER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta INNER JOIN PIEZA pie ON pie.cve_pieza = p.cve_pieza WHERE ven.cve_siniestro = '{0}' AND ven.cve_pedido = '{1}' AND pie.nombre = '{2}' AND p.cve_pedido = {3}", siniestro, cve_pedido,pieza, cvePedidoIdentity), nuevaConexion);
+                    Comando = new SqlCommand(string.Format("SELECT p.cve_factura FROM PEDIDO p INNER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta INNER JOIN PIEZA pie ON pie.cve_pieza = p.cve_pieza WHERE ven.cve_siniestro = '{0}' AND ven.cve_pedido = '{1}' AND pie.nombre = '{2}' AND p.cve_pedido = {3}", siniestro, cve_pedido, pieza, cvePedidoIdentity), nuevaConexion);
                     if (Comando.ExecuteScalar() == null || Comando.ExecuteScalar().ToString() == string.Empty)
                     {
                         cve_factura = "0";
@@ -1544,6 +1562,7 @@ namespace Refracciones
             }
             return cve_refactura;
         }*/
+
         //---------------------------OBTENER DIAS ESPERA POR CLIENTE-------------------
         public int Dias_Espera(string siniestro, string cve_pedido)
         {
@@ -1597,6 +1616,7 @@ namespace Refracciones
             catch (Exception e) { MessageBox.Show(e.Message); }
             return dt;
         }
+
         //---------------------------TABLA ALERTAS FACTURAS PENDIENTES PIEZA POR PIEZA--------------------
         public DataTable Alertass(DateTime fecha_sys)
         {
@@ -1617,6 +1637,7 @@ namespace Refracciones
             catch (Exception e) { MessageBox.Show(e.Message); }
             return dt;
         }
+
         //---------------------------TABLA ALERTAS POR PIEZA--------------------
         public DataTable Alertas()
         {
@@ -1636,6 +1657,7 @@ namespace Refracciones
 
             return dt;
         }
+
         //OBTENER PRECIO VENTA PIEZA
         public double venta_total(string pedido, string siniestro)
         {
@@ -1662,6 +1684,7 @@ namespace Refracciones
                 return ventaTotal;
             }
         }
+
         //OBTENER PRECIO VENTA PIEZA
         public double venta_total(string pedido, string siniestro, string pieza)
         {
@@ -1675,7 +1698,7 @@ namespace Refracciones
                 Comando = new SqlCommand("SELECT p.precio_venta, pie.nombre FROM PEDIDO p INNER JOIN VENTAS ven ON p.cve_venta = ven.cve_venta INNER JOIN PIEZA pie ON pie.cve_pieza = p.cve_pieza WHERE ven.cve_pedido = @cve_pedido AND ven.cve_siniestro = @cve_siniestro AND pie.nombre = @pieza", nuevaConexion);
                 Comando.Parameters.AddWithValue("cve_pedido", pedido);
                 Comando.Parameters.AddWithValue("cve_siniestro", siniestro);
-                Comando.Parameters.AddWithValue("pieza",pieza);
+                Comando.Parameters.AddWithValue("pieza", pieza);
                 Lector = Comando.ExecuteReader();
                 if (Lector.Read())
                 {
@@ -1689,6 +1712,7 @@ namespace Refracciones
                 return precioVenta;
             }
         }
+
         //---------------------------OBTENER PIEZAS DEVUELTAS ANTES DE ENTREGA -------------------
         public int PiezasDevueltas(int cve_venta, int cve_pieza)
         {
@@ -1718,6 +1742,7 @@ namespace Refracciones
             }
             return PiezasDevueltas;
         }
+
         //---------------------------OBTENER PORCENTAJE DE PENALIZACIÓN DE PIEZAS DEVUELTAS ANTES DE ENTREGA -------------------
         public double PiezasDevueltasPen(int cve_venta, int cve_pieza)
         {
@@ -1735,7 +1760,7 @@ namespace Refracciones
                     { }
                     else
                     {
-                        PiezasDevueltas = Double.Parse(Comando.ExecuteScalar().ToString())/100;
+                        PiezasDevueltas = Double.Parse(Comando.ExecuteScalar().ToString()) / 100;
                     }
                     nuevaConexion.Close();
                     return PiezasDevueltas;
@@ -1747,10 +1772,11 @@ namespace Refracciones
             }
             return PiezasDevueltas;
         }
+
         private string DescSAE(string modelo, string descripcion, string marca, string anio)
         {
             string clave;
-            if(anio == "")
+            if (anio == "")
             {
                 if (marca.Length < 3)
                 {
@@ -1760,11 +1786,10 @@ namespace Refracciones
                 {
                     return clave = modelo + descripcion + "-" + marca.Substring(0, 3) + "20";
                 }
-               
             }
             else
             {
-                if(marca.Length < 3)
+                if (marca.Length < 3)
                 {
                     return clave = modelo + descripcion + "-" + marca + anio.Substring(2, 2);
                 }
@@ -1772,9 +1797,9 @@ namespace Refracciones
                 {
                     return clave = modelo + descripcion + "-" + marca.Substring(0, 3) + anio.Substring(2, 2);
                 }
-                
             }
         }
+
         /*public string DescSAE(string modelo, string desc, string marca, string anio)
         {
             string descSAE;
@@ -1783,6 +1808,7 @@ namespace Refracciones
 
             return descSAE;
         }*/
+
         //------------- GENERAR EXCEL
         public void generarExcel(string ruta, string fecha1, string fecha2, decimal costoOperativo)
         {
@@ -1811,11 +1837,11 @@ namespace Refracciones
                     //Comando = new SqlCommand("SELECT ven.cve_pedido AS 'PEDIDO', ven.cve_siniestro AS 'SINIESTRO', c.cve_nombre AS 'CLIENTE', val.nombre AS 'VALUADOR', t.nombre AS 'TALLER', vh.modelo AS 'VHEICULO MODELO',marca.marca AS 'MARCA', vh.anio 'AÑO', pro.nombre AS 'PROVEEDOR', pie.nombre AS 'PIEZA', ped.cve_producto AS 'CLAVE PRODUCTO', ped.cantidad AS 'TOTAL DE PIEZAS', ped.cve_guia AS 'GUÍA DE ENVIO', opie.origen AS 'ORIGEN PIEZA', por.nombre 'PORTAL', cosen.costo AS 'COSTO ENVÍO', ped.costo_neto AS 'COSTO', ped.precio_venta AS 'PRECIO VENTA', dest.destino AS 'DESTINO',vendedor.cve_vendedor AS 'NUMERO DE VENDEDOR', vendedor.nombre AS 'VENDEDOR', CONVERT(varchar,ven.fecha_asignacion,3)  AS 'FECHA DE ASIGNACIÓN', CONVERT(varchar,ven.fecha_promesa,3)  AS 'FECHA PROMESA', CONVERT(varchar,ent.fecha,3)  AS 'FECHA DE ENTREGA', ped.pzas_entregadas AS 'PIEZAS ENTREGADAS', ped.entrega_enTiempo AS 'ENTREGA EN TIEMPO', ped.dias_entrega AS 'DÍAS DE ENTREGA', CONVERT(varchar,ven.fecha_baja,3)  AS 'FECHA DE BAJA', CONVERT(varchar,dev.fecha,3)  AS 'FECHA DEVOLUCIÓN', dev.motivo AS 'MOTIVO DE DEVOLUCIÓN', ped.pzas_devolucion AS 'CANTIDAD DE PIEZAS DEVUELTAS', dev.penalizacion AS 'PENALIZACIÓN POR DEVOLUCIÓN', ven.cve_factura AS 'FACTURA ACTUAL', fact.cve_refactura AS 'FACTURA ANTERIOR', CONVERT(varchar,fact.fecha_ingreso,3)  AS 'FECHA INGRESO FACTURA', estfact.estado AS 'ESTADO DE LA FACTURA', CONVERT(varchar,fact.fecha_revision,3)  AS 'FECHA DE REVISIÓN FACTURA', CONVERT(varchar,fact.fecha_pago,3)  AS 'FECHA DE PAGO FACTURA', ped.precio_venta AS 'FACTURA SIN IVA', (ped.precio_venta * 1.16) AS 'FACTURA NETO', si.comentario AS 'COMENTARIOS SINIESTRO', fact.comentario AS 'COMENTARIOS FACTURA',(cosen.costo + ped.costo_neto) AS 'COSTO ADQUISICION', ((ped.precio_venta)-(cosen.costo + ped.costo_neto)) AS 'UTILIDAD ADQUISICION', (@costoOperativo) AS 'COSTO OPERATIVO',ped.gasto AS 'GASTO',(((ped.precio_venta)-(cosen.costo + ped.costo_neto))-(@costoOperativo)-(ped.gasto)) AS 'UTILIDAD FINAL',ven.cve_venta,pie.cve_pieza,pie.descSAE FROM VENTAS ven INNER JOIN VALUADOR val ON ven.cve_valuador = val.cve_valuador INNER JOIN CLIENTE c ON c.cve_valuador = val.cve_valuador INNER JOIN TALLER t ON ven.cve_taller = t.cve_taller INNER JOIN SINIESTRO si ON ven.cve_siniestro = si.cve_siniestro INNER JOIN VEHICULO vh ON si.cve_vehiculo = vh.cve_vehiculo INNER JOIN PEDIDO ped ON ven.cve_venta = ped.cve_venta INNER JOIN PROVEEDOR pro ON ped.cve_venta = pro.cve_proveedor INNER JOIN PIEZA pie ON ped.cve_pieza = pie.cve_pieza INNER JOIN ORIGEN_PIEZA opie ON ped.cve_origen = opie.cve_origen INNER JOIN PORTAL por ON ped.cve_portal = por.cve_portal INNER JOIN COSTO_ENVIO cosen ON ped.costo_envio = cosen.cve_costoEnvio INNER JOIN DESTINO dest ON ven.cve_destino = dest.cve_destino LEFT OUTER JOIN FACTURA fact ON ven.cve_factura = fact.cve_factura FULL JOIN ESTADO_FACTURA estfact ON fact.cve_estado = estfact.cve_estado INNER JOIN VENDEDOR vendedor ON ven.cve_vendedor = vendedor.cve_vendedor INNER JOIN MARCA marca ON vh.cve_marca = marca.cve_marca FULL JOIN ENTREGA ent ON ped.cve_entrega = ent.cve_entrega FULL JOIN DEVOLUCION dev ON ped.cve_devolucion = dev.cve_devolucion WHERE ven.fecha_asignacion BETWEEN  @fecha1 AND @fecha2", nuevaConexion);//EL CHIDO SIN ERRORES 08/07/2020
                     //Comando = new SqlCommand("SELECT ven.cve_pedido AS 'PEDIDO', ven.cve_siniestro AS 'SINIESTRO', c.cve_nombre AS 'CLIENTE', val.nombre AS 'VALUADOR', t.nombre AS 'TALLER', vh.modelo AS 'VHEICULO MODELO',marca.marca AS 'MARCA', vh.anio 'AÑO', pro.nombre AS 'PROVEEDOR', pie.nombre AS 'PIEZA', ped.cve_producto AS 'CLAVE PRODUCTO', ped.cantidad AS 'TOTAL DE PIEZAS', ped.cve_guia AS 'GUÍA DE ENVIO', opie.origen AS 'ORIGEN PIEZA', por.nombre 'PORTAL', cosen.costo AS 'COSTO ENVÍO', ped.costo_neto AS 'COSTO', ped.precio_venta AS 'PRECIO VENTA', dest.destino AS 'DESTINO',vendedor.cve_vendedor AS 'NUMERO DE VENDEDOR', vendedor.nombre AS 'VENDEDOR', ven.fecha_asignacion  AS 'FECHA DE ASIGNACIÓN', ven.fecha_promesa  AS 'FECHA PROMESA', ent.fecha  AS 'FECHA DE ENTREGA', ped.pzas_entregadas AS 'PIEZAS ENTREGADAS', ped.entrega_enTiempo AS 'ENTREGA EN TIEMPO', ped.dias_entrega AS 'DÍAS DE ENTREGA', ven.fecha_baja  AS 'FECHA DE BAJA', dev.fecha  AS 'FECHA DEVOLUCIÓN', dev.motivo AS 'MOTIVO DE DEVOLUCIÓN', ped.pzas_devolucion AS 'CANTIDAD DE PIEZAS DEVUELTAS', dev.penalizacion AS 'PENALIZACIÓN POR DEVOLUCIÓN', ven.cve_factura AS 'FACTURA ACTUAL', fact.cve_refactura AS 'FACTURA ANTERIOR', fact.fecha_ingreso  AS 'FECHA INGRESO FACTURA', estfact.estado AS 'ESTADO DE LA FACTURA', fact.fecha_revision  AS 'FECHA DE REVISIÓN FACTURA', fact.fecha_pago  AS 'FECHA DE PAGO FACTURA', ped.precio_venta AS 'FACTURA SIN IVA', (ped.precio_venta * 1.16) AS 'FACTURA NETO', si.comentario AS 'COMENTARIOS SINIESTRO', fact.comentario AS 'COMENTARIOS FACTURA',(ped.costo_neto) AS 'COSTO ADQUISICION', ((ped.precio_venta)-(cosen.costo + ped.costo_neto)) AS 'UTILIDAD ADQUISICION', (@costoOperativo) AS 'COSTO OPERATIVO',ped.gasto AS 'GASTO',(((ped.precio_venta)-(cosen.costo + ped.costo_neto))-(@costoOperativo)-(ped.gasto)) AS 'UTILIDAD FINAL',ven.cve_venta,pie.cve_pieza FROM VENTAS ven INNER JOIN VALUADOR val ON ven.cve_valuador = val.cve_valuador INNER JOIN CLIENTE c ON c.cve_valuador = val.cve_valuador INNER JOIN TALLER t ON ven.cve_taller = t.cve_taller INNER JOIN SINIESTRO si ON ven.cve_siniestro = si.cve_siniestro INNER JOIN VEHICULO vh ON si.cve_vehiculo = vh.cve_vehiculo INNER JOIN PEDIDO ped ON ven.cve_venta = ped.cve_venta INNER JOIN PROVEEDOR pro ON ped.cve_venta = pro.cve_proveedor INNER JOIN PIEZA pie ON ped.cve_pieza = pie.cve_pieza INNER JOIN ORIGEN_PIEZA opie ON ped.cve_origen = opie.cve_origen INNER JOIN PORTAL por ON ped.cve_portal = por.cve_portal INNER JOIN COSTO_ENVIO cosen ON ped.costo_envio = cosen.cve_costoEnvio INNER JOIN DESTINO dest ON ven.cve_destino = dest.cve_destino LEFT OUTER JOIN FACTURA fact ON ven.cve_factura = fact.cve_factura FULL JOIN ESTADO_FACTURA estfact ON fact.cve_estado = estfact.cve_estado INNER JOIN VENDEDOR vendedor ON ven.cve_vendedor = vendedor.cve_vendedor INNER JOIN MARCA marca ON vh.cve_marca = marca.cve_marca FULL JOIN ENTREGA ent ON ped.cve_entrega = ent.cve_entrega FULL JOIN DEVOLUCION dev ON ped.cve_devolucion = dev.cve_devolucion WHERE ven.fecha_asignacion BETWEEN  @fecha1 AND @fecha2", nuevaConexion);//REVISANDO
                     //Comando = new SqlCommand("SELECT ven.cve_pedido AS 'PEDIDO', ven.cve_siniestro AS 'SINIESTRO', c.cve_nombre AS 'CLIENTE', val.nombre AS 'VALUADOR', t.nombre AS 'TALLER', vh.modelo AS 'VHEICULO MODELO',marca.marca AS 'MARCA', vh.anio 'AÑO', pro.nombre AS 'PROVEEDOR', pie.nombre AS 'PIEZA', ped.cve_producto AS 'CLAVE PRODUCTO', ped.cantidad AS 'TOTAL DE PIEZAS', ped.cve_guia AS 'GUÍA DE ENVIO', opie.origen AS 'ORIGEN PIEZA', por.nombre 'PORTAL', cosen.costo AS 'COSTO ENVÍO', ped.costo_neto AS 'COSTO', ped.precio_venta AS 'PRECIO VENTA', dest.destino AS 'DESTINO',vendedor.cve_vendedor AS 'NUMERO DE VENDEDOR', vendedor.nombre AS 'VENDEDOR', ven.fecha_asignacion  AS 'FECHA DE ASIGNACIÓN', ven.fecha_promesa  AS 'FECHA PROMESA', ent.fecha  AS 'FECHA DE ENTREGA', ped.pzas_entregadas AS 'PIEZAS ENTREGADAS', ped.entrega_enTiempo AS 'ENTREGA EN TIEMPO', ped.dias_entrega AS 'DÍAS DE ENTREGA', ven.fecha_baja  AS 'FECHA DE BAJA', dev.fecha  AS 'FECHA DEVOLUCIÓN', dev.motivo AS 'MOTIVO DE DEVOLUCIÓN', ped.pzas_devolucion AS 'CANTIDAD DE PIEZAS DEVUELTAS', dev.penalizacion AS 'PENALIZACIÓN POR DEVOLUCIÓN', ven.cve_factura AS 'FACTURA ACTUAL', fact.cve_refactura AS 'FACTURA ANTERIOR', fact.fecha_ingreso  AS 'FECHA INGRESO FACTURA', estfact.estado AS 'ESTADO DE LA FACTURA', fact.fecha_revision  AS 'FECHA DE REVISIÓN FACTURA', fact.fecha_pago  AS 'FECHA DE PAGO FACTURA', ped.precio_venta AS 'FACTURA SIN IVA', (ped.precio_venta * 1.16) AS 'FACTURA NETO', si.comentario AS 'COMENTARIOS SINIESTRO', fact.comentario AS 'COMENTARIOS FACTURA',(cosen.costo + ped.costo_neto) AS 'COSTO ADQUISICION', ((ped.precio_venta)-(cosen.costo + ped.costo_neto)) AS 'UTILIDAD ADQUISICION', (@costoOperativo) AS 'COSTO OPERATIVO',ped.gasto AS 'GASTO',(((ped.precio_venta)-(cosen.costo + ped.costo_neto))-(@costoOperativo)-(ped.gasto)) AS 'UTILIDAD FINAL',ven.cve_venta,pie.cve_pieza FROM VENTAS ven INNER JOIN VALUADOR val ON ven.cve_valuador = val.cve_valuador INNER JOIN CLIENTE c ON c.cve_valuador = val.cve_valuador INNER JOIN TALLER t ON ven.cve_taller = t.cve_taller INNER JOIN SINIESTRO si ON ven.cve_siniestro = si.cve_siniestro INNER JOIN VEHICULO vh ON si.cve_vehiculo = vh.cve_vehiculo INNER JOIN PEDIDO ped ON ven.cve_venta = ped.cve_venta INNER JOIN PROVEEDOR pro ON ped.cve_venta = pro.cve_proveedor INNER JOIN PIEZA pie ON ped.cve_pieza = pie.cve_pieza INNER JOIN ORIGEN_PIEZA opie ON ped.cve_origen = opie.cve_origen INNER JOIN PORTAL por ON ped.cve_portal = por.cve_portal INNER JOIN COSTO_ENVIO cosen ON ped.costo_envio = cosen.cve_costoEnvio INNER JOIN DESTINO dest ON ven.cve_destino = dest.cve_destino LEFT OUTER JOIN FACTURA fact ON ven.cve_factura = fact.cve_factura FULL JOIN ESTADO_FACTURA estfact ON fact.cve_estado = estfact.cve_estado INNER JOIN VENDEDOR vendedor ON ven.cve_vendedor = vendedor.cve_vendedor INNER JOIN MARCA marca ON vh.cve_marca = marca.cve_marca FULL JOIN ENTREGA ent ON ped.cve_entrega = ent.cve_entrega FULL JOIN DEVOLUCION dev ON ped.cve_devolucion = dev.cve_devolucion WHERE ven.fecha_asignacion BETWEEN  @fecha1 AND @fecha2", nuevaConexion);//FUNCIONAL 23/07/2020
-                    Comando = new SqlCommand("SELECT Count(ven.cve_venta) AS 'TOTAL DE REGISTROS A EXPORTAR' FROM VENTAS ven  INNER JOIN PEDIDO ped ON ven.cve_venta = ped.cve_venta  WHERE ven.fecha_asignacion BETWEEN @fecha1 AND @fecha2",nuevaConexion);
+                    Comando = new SqlCommand("SELECT Count(ven.cve_venta) AS 'TOTAL DE REGISTROS A EXPORTAR' FROM VENTAS ven  INNER JOIN PEDIDO ped ON ven.cve_venta = ped.cve_venta  WHERE ven.fecha_asignacion BETWEEN @fecha1 AND @fecha2", nuevaConexion);
                     Comando.Parameters.AddWithValue("@fecha1", fecha1);
                     Comando.Parameters.AddWithValue("@fecha2", fecha2);
                     totalRegistrosExportar = Int32.Parse(Comando.ExecuteScalar().ToString());
-                    MessageBox.Show("El número de registros encontrados son: " + totalRegistrosExportar.ToString() +"\n"+ "Antes de dar clic en Aceptar revisa que tu conexión a internet sea estable, para evitar error a la hora de generar", "Generar Reporte",MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("El número de registros encontrados son: " + totalRegistrosExportar.ToString() + "\n" + "Antes de dar clic en Aceptar revisa que tu conexión a internet sea estable, para evitar error a la hora de generar", "Generar Reporte", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     //ESTE COMANDO FUNCIONA EN LA VERSIÓN 1.1.6 ANTES DE CAMBIAR A PIEZA POR PIEZAComando = new SqlCommand("SELECT ven.cve_pedido AS 'PEDIDO', ven.cve_siniestro AS 'SINIESTRO', c.cve_nombre AS 'CLIENTE', val.nombre AS 'VALUADOR', t.nombre AS 'TALLER', vh.modelo AS 'VHEICULO MODELO',marca.marca AS 'MARCA', vh.anio 'AÑO', pro.nombre AS 'PROVEEDOR', pie.nombre AS 'PIEZA', ped.cve_producto AS 'CLAVE PRODUCTO', ped.cantidad AS 'TOTAL DE PIEZAS', ped.cve_guia AS 'GUÍA DE ENVIO', opie.origen AS 'ORIGEN PIEZA', por.nombre 'PORTAL', cosen.costo AS 'COSTO ENVÍO', ped.costo_neto AS 'COSTO', ped.precio_venta AS 'PRECIO VENTA', dest.destino AS 'DESTINO',vendedor.cve_vendedor AS 'NUMERO DE VENDEDOR', vendedor.nombre AS 'VENDEDOR', ven.fecha_asignacion  AS 'FECHA DE ASIGNACIÓN', ven.fecha_promesa  AS 'FECHA PROMESA', ent.fecha  AS 'FECHA DE ENTREGA', ped.pzas_entregadas AS 'PIEZAS ENTREGADAS', ped.entrega_enTiempo AS 'ENTREGA EN TIEMPO', ped.dias_entrega AS 'DÍAS DE ENTREGA', ven.fecha_baja  AS 'FECHA DE BAJA', dev.fecha  AS 'FECHA DEVOLUCIÓN', dev.motivo AS 'MOTIVO DE DEVOLUCIÓN', ped.pzas_devolucion AS 'CANTIDAD DE PIEZAS DEVUELTAS', dev.penalizacion AS 'PENALIZACIÓN POR DEVOLUCIÓN', ven.cve_factura AS 'FACTURA ACTUAL', fact.cve_refactura AS 'FACTURA ANTERIOR', fact.fecha_ingreso  AS 'FECHA INGRESO FACTURA', estfact.estado AS 'ESTADO DE LA FACTURA', fact.fecha_revision  AS 'FECHA DE REVISIÓN FACTURA', fact.fecha_pago  AS 'FECHA DE PAGO FACTURA', ped.precio_venta AS 'FACTURA SIN IVA', (ped.precio_venta * 1.16) AS 'FACTURA NETO', si.comentario AS 'COMENTARIOS SINIESTRO', fact.comentario AS 'COMENTARIOS FACTURA',(cosen.costo + ped.costo_neto) AS 'COSTO ADQUISICION', (@costoOperativo) AS 'COSTO OPERATIVO',ped.gasto AS 'GASTO',ven.cve_venta,pie.cve_pieza FROM VENTAS ven INNER JOIN VALUADOR val ON ven.cve_valuador = val.cve_valuador INNER JOIN CLIENTE c ON c.cve_valuador = val.cve_valuador INNER JOIN TALLER t ON ven.cve_taller = t.cve_taller INNER JOIN SINIESTRO si ON ven.cve_siniestro = si.cve_siniestro INNER JOIN VEHICULO vh ON si.cve_vehiculo = vh.cve_vehiculo INNER JOIN PEDIDO ped ON ven.cve_venta = ped.cve_venta INNER JOIN PROVEEDOR pro ON ped.cve_proveedor = pro.cve_proveedor INNER JOIN PIEZA pie ON ped.cve_pieza = pie.cve_pieza INNER JOIN ORIGEN_PIEZA opie ON ped.cve_origen = opie.cve_origen INNER JOIN PORTAL por ON ped.cve_portal = por.cve_portal INNER JOIN COSTO_ENVIO cosen ON ped.costo_envio = cosen.cve_costoEnvio INNER JOIN DESTINO dest ON ven.cve_destino = dest.cve_destino LEFT OUTER JOIN FACTURA fact ON ven.cve_factura = fact.cve_factura FULL JOIN ESTADO_FACTURA estfact ON fact.cve_estado = estfact.cve_estado INNER JOIN VENDEDOR vendedor ON ven.cve_vendedor = vendedor.cve_vendedor INNER JOIN MARCA marca ON vh.cve_marca = marca.cve_marca FULL JOIN ENTREGA ent ON ped.cve_entrega = ent.cve_entrega FULL JOIN DEVOLUCION dev ON ped.cve_devolucion = dev.cve_devolucion WHERE ven.fecha_asignacion BETWEEN  @fecha1 AND @fecha2 ORDER BY ven.fecha_asignacion", nuevaConexion);//REVISANDO
                     Comando = new SqlCommand("SELECT ven.cve_pedido AS 'PEDIDO', ven.cve_siniestro AS 'SINIESTRO', c.cve_nombre AS 'CLIENTE', val.nombre AS 'VALUADOR', t.nombre AS 'TALLER', vh.modelo AS 'VHEICULO MODELO',marca.marca AS 'MARCA', vh.anio 'AÑO', pro.nombre AS 'PROVEEDOR', pie.nombre AS 'PIEZA', ped.cve_producto AS 'CLAVE PRODUCTO', ped.cantidad AS 'TOTAL DE PIEZAS', ped.cve_guia AS 'GUÍA DE ENVIO', opie.origen AS 'ORIGEN PIEZA', por.nombre 'PORTAL', cosen.costo AS 'COSTO ENVÍO', ped.costo_neto AS 'COSTO', ped.precio_venta AS 'PRECIO VENTA', dest.destino AS 'DESTINO',vendedor.cve_vendedor AS 'NUMERO DE VENDEDOR', vendedor.nombre AS 'VENDEDOR', ven.fecha_asignacion  AS 'FECHA DE ASIGNACIÓN', ven.fecha_promesa  AS 'FECHA PROMESA', ent.fecha  AS 'FECHA DE ENTREGA', ped.pzas_entregadas AS 'PIEZAS ENTREGADAS', ped.entrega_enTiempo AS 'ENTREGA EN TIEMPO', ped.dias_entrega AS 'DÍAS DE ENTREGA', ped.fecha_baja  AS 'FECHA DE BAJA', dev.fecha  AS 'FECHA DEVOLUCIÓN', dev.motivo AS 'MOTIVO DE DEVOLUCIÓN', ped.pzas_devolucion AS 'CANTIDAD DE PIEZAS DEVUELTAS', dev.penalizacion AS 'PENALIZACIÓN POR DEVOLUCIÓN', ped.cve_factura AS 'FACTURA ACTUAL', fact.cve_refactura AS 'FACTURA ANTERIOR', fact.fecha_ingreso  AS 'FECHA INGRESO FACTURA', estfact.estado AS 'ESTADO DE LA FACTURA', fact.fecha_revision  AS 'FECHA DE REVISIÓN FACTURA', fact.fecha_pago  AS 'FECHA DE PAGO FACTURA', ped.precio_venta AS 'FACTURA SIN IVA', (ped.precio_venta * 1.16) AS 'FACTURA NETO', si.comentario AS 'COMENTARIOS SINIESTRO', fact.comentario AS 'COMENTARIOS FACTURA',(cosen.costo + ped.costo_neto) AS 'COSTO ADQUISICION', (@costoOperativo) AS 'COSTO OPERATIVO',ped.gasto AS 'GASTO',ven.cve_venta,pie.cve_pieza FROM VENTAS ven INNER JOIN VALUADOR val ON ven.cve_valuador = val.cve_valuador INNER JOIN CLIENTE c ON c.cve_valuador = val.cve_valuador INNER JOIN TALLER t ON ven.cve_taller = t.cve_taller INNER JOIN SINIESTRO si ON ven.cve_siniestro = si.cve_siniestro INNER JOIN VEHICULO vh ON si.cve_vehiculo = vh.cve_vehiculo INNER JOIN PEDIDO ped ON ven.cve_venta = ped.cve_venta INNER JOIN PROVEEDOR pro ON ped.cve_proveedor = pro.cve_proveedor INNER JOIN PIEZA pie ON ped.cve_pieza = pie.cve_pieza INNER JOIN ORIGEN_PIEZA opie ON ped.cve_origen = opie.cve_origen INNER JOIN PORTAL por ON ped.cve_portal = por.cve_portal INNER JOIN COSTO_ENVIO cosen ON ped.costo_envio = cosen.cve_costoEnvio INNER JOIN DESTINO dest ON ven.cve_destino = dest.cve_destino LEFT OUTER JOIN FACTURA fact ON ped.cve_factura = fact.cve_factura FULL JOIN ESTADO_FACTURA estfact ON fact.cve_estado = estfact.cve_estado INNER JOIN VENDEDOR vendedor ON ven.cve_vendedor = vendedor.cve_vendedor INNER JOIN MARCA marca ON vh.cve_marca = marca.cve_marca FULL JOIN ENTREGA ent ON ped.cve_entrega = ent.cve_entrega FULL JOIN DEVOLUCION dev ON ped.cve_devolucion = dev.cve_devolucion WHERE ven.fecha_asignacion BETWEEN  @fecha1 AND @fecha2 ORDER BY ven.fecha_asignacion", nuevaConexion);//PIEZA POR PIEZA
                     Comando.Parameters.AddWithValue("@fecha1", fecha1);
@@ -1825,51 +1851,51 @@ namespace Refracciones
                     while (Lector.Read())
                     {
                         tempSAE = DescSAE(Lector["VHEICULO MODELO"].ToString(), Lector["PIEZA"].ToString(), Lector["MARCA"].ToString(), Lector["AÑO"].ToString());
-                        if(int.TryParse(Lector["PEDIDO"].ToString(),out temp))
-                        {sl.SetCellValue("A" + celdaContenido,Int32.Parse(Lector["PEDIDO"].ToString()));}
+                        if (int.TryParse(Lector["PEDIDO"].ToString(), out temp))
+                        { sl.SetCellValue("A" + celdaContenido, Int32.Parse(Lector["PEDIDO"].ToString())); }
                         else
-                        {sl.SetCellValue("A" + celdaContenido, Lector["PEDIDO"].ToString());}
-                        if(int.TryParse(Lector["SINIESTRO"].ToString(),out temp))
-                        {sl.SetCellValue("B" + celdaContenido,Int32.Parse(Lector["SINIESTRO"].ToString()));}
+                        { sl.SetCellValue("A" + celdaContenido, Lector["PEDIDO"].ToString()); }
+                        if (int.TryParse(Lector["SINIESTRO"].ToString(), out temp))
+                        { sl.SetCellValue("B" + celdaContenido, Int32.Parse(Lector["SINIESTRO"].ToString())); }
                         else
-                        {sl.SetCellValue("B" + celdaContenido, Lector["SINIESTRO"].ToString());}
+                        { sl.SetCellValue("B" + celdaContenido, Lector["SINIESTRO"].ToString()); }
                         sl.SetCellValue("C" + celdaContenido, Lector["CLIENTE"].ToString());
                         sl.SetCellValue("D" + celdaContenido, Lector["VALUADOR"].ToString());
                         sl.SetCellValue("E" + celdaContenido, Lector["TALLER"].ToString());
                         if (int.TryParse(Lector["VHEICULO MODELO"].ToString(), out temp))
-                        { sl.SetCellValue("F" + celdaContenido,Int32.Parse(Lector["VHEICULO MODELO"].ToString())); }
+                        { sl.SetCellValue("F" + celdaContenido, Int32.Parse(Lector["VHEICULO MODELO"].ToString())); }
                         else
-                        {sl.SetCellValue("F" + celdaContenido, Lector["VHEICULO MODELO"].ToString());}
+                        { sl.SetCellValue("F" + celdaContenido, Lector["VHEICULO MODELO"].ToString()); }
                         sl.SetCellValue("G" + celdaContenido, Lector["MARCA"].ToString());
-                        if(Lector["AÑO"].ToString() == "")
+                        if (Lector["AÑO"].ToString() == "")
                         {
-                        sl.SetCellValue("H" + celdaContenido, Lector["AÑO"].ToString());
+                            sl.SetCellValue("H" + celdaContenido, Lector["AÑO"].ToString());
                         }
                         else
                         {
-                        sl.SetCellValue("H" + celdaContenido, Int32.Parse(Lector["AÑO"].ToString()));
+                            sl.SetCellValue("H" + celdaContenido, Int32.Parse(Lector["AÑO"].ToString()));
                         }
                         sl.SetCellValue("I" + celdaContenido, Lector["PROVEEDOR"].ToString());
                         sl.SetCellValue("J" + celdaContenido, Lector["PIEZA"].ToString());
                         sl.SetCellValue("K" + celdaContenido, Lector["CLAVE PRODUCTO"].ToString());
                         sl.SetCellValue("L" + celdaContenido, tempSAE);
                         sl.SetCellValue("M" + celdaContenido, Int32.Parse(Lector["TOTAL DE PIEZAS"].ToString()));
-                        if(int.TryParse(Lector["GUÍA DE ENVIO"].ToString(), out temp))
-                        {sl.SetCellValue("N" + celdaContenido,Int32.Parse(Lector["GUÍA DE ENVIO"].ToString()));}
+                        if (int.TryParse(Lector["GUÍA DE ENVIO"].ToString(), out temp))
+                        { sl.SetCellValue("N" + celdaContenido, Int32.Parse(Lector["GUÍA DE ENVIO"].ToString())); }
                         else
-                        {sl.SetCellValue("N" + celdaContenido, Lector["GUÍA DE ENVIO"].ToString());}
+                        { sl.SetCellValue("N" + celdaContenido, Lector["GUÍA DE ENVIO"].ToString()); }
                         sl.SetCellValue("O" + celdaContenido, Lector["ORIGEN PIEZA"].ToString());
                         sl.SetCellValue("P" + celdaContenido, Lector["PORTAL"].ToString());
                         sl.SetCellValue("Q" + celdaContenido, Double.Parse(Lector["COSTO ENVÍO"].ToString()));
                         sl.SetCellValue("R" + celdaContenido, Double.Parse(Lector["COSTO"].ToString()));
-                        if(Double.TryParse(Lector["PRECIO VENTA"].ToString(), out tempd))
+                        if (Double.TryParse(Lector["PRECIO VENTA"].ToString(), out tempd))
                         {
                             sl.SetCellValue("S" + celdaContenido, Double.Parse(Lector["PRECIO VENTA"].ToString()));
                         }
                         else
                         {
                             sl.SetCellValue("S" + celdaContenido, 0);
-                         }
+                        }
                         sl.SetCellValue("T" + celdaContenido, Lector["DESTINO"].ToString());
                         sl.SetCellValue("U" + celdaContenido, Int32.Parse(Lector["NUMERO DE VENDEDOR"].ToString()));
                         sl.SetCellValue("V" + celdaContenido, Lector["VENDEDOR"].ToString());
@@ -1881,7 +1907,7 @@ namespace Refracciones
                         {
                             sl.SetCellValue("W" + celdaContenido, Lector["FECHA DE ASIGNACIÓN"].ToString());
                         }
-                        if(DateTime.TryParse(Lector["FECHA PROMESA"].ToString(),out datevalue))
+                        if (DateTime.TryParse(Lector["FECHA PROMESA"].ToString(), out datevalue))
                         {
                             sl.SetCellValue("X" + celdaContenido, datevalue.ToString("dd/M/yyyy", CultureInfo.InvariantCulture));
                         }
@@ -1897,9 +1923,9 @@ namespace Refracciones
                         {
                             sl.SetCellValue("Y" + celdaContenido, Lector["FECHA DE ENTREGA"].ToString());
                         }
-                        
+
                         sl.SetCellValue("Z" + celdaContenido, Int32.Parse(Lector["PIEZAS ENTREGADAS"].ToString()));
-                        if(Lector["ENTREGA EN TIEMPO"].ToString().ToUpper() == "TRUE")
+                        if (Lector["ENTREGA EN TIEMPO"].ToString().ToUpper() == "TRUE")
                         {
                             sl.SetCellValue("AA" + celdaContenido, "SI");
                         }
@@ -1934,7 +1960,7 @@ namespace Refracciones
                         else
                         { sl.SetCellValue("AG" + celdaContenido, Double.Parse(Lector["PENALIZACIÓN POR DEVOLUCIÓN"].ToString()) / 100); }
                         sl.SetCellValue("AH" + celdaContenido, PiezasDevueltas(Convert.ToInt32(Lector["cve_venta"].ToString()), Convert.ToInt32(Lector["cve_pieza"].ToString())));
-                        if(PiezasDevueltasPen(Convert.ToInt32(Lector["cve_venta"].ToString()), Convert.ToInt32(Lector["cve_pieza"].ToString())) == 0)
+                        if (PiezasDevueltasPen(Convert.ToInt32(Lector["cve_venta"].ToString()), Convert.ToInt32(Lector["cve_pieza"].ToString())) == 0)
                         {
                             sl.SetCellValue("AI" + celdaContenido, string.Empty);
                         }
@@ -1975,25 +2001,24 @@ namespace Refracciones
                         {
                             sl.SetCellValue("AO" + celdaContenido, Lector["FECHA DE PAGO FACTURA"].ToString());
                         }
-                        if(Double.TryParse(Lector["FACTURA SIN IVA"].ToString(), out tempd))
+                        if (Double.TryParse(Lector["FACTURA SIN IVA"].ToString(), out tempd))
                         {
                             sl.SetCellValue("AP" + celdaContenido, Double.Parse(Lector["FACTURA SIN IVA"].ToString()));
                         }
                         else
-                         {
+                        {
                             sl.SetCellValue("AP" + celdaContenido, 0);
-                         }
+                        }
                         if (Double.TryParse(Lector["FACTURA NETO"].ToString(), out tempd))
                         {
-                        sl.SetCellValue("AQ" + celdaContenido, Double.Parse(Lector["FACTURA NETO"].ToString()));
+                            sl.SetCellValue("AQ" + celdaContenido, Double.Parse(Lector["FACTURA NETO"].ToString()));
                         }
                         else
                         {
-                        sl.SetCellValue("AQ" + celdaContenido, 0);
+                            sl.SetCellValue("AQ" + celdaContenido, 0);
                         }
                         sl.SetCellValue("AR" + celdaContenido, Lector["COMENTARIOS SINIESTRO"].ToString());
                         sl.SetCellValue("AS" + celdaContenido, Lector["COMENTARIOS FACTURA"].ToString());
-
 
                         /*double costoAdq = 0;
                         double precioV = 0;
@@ -2002,15 +2027,13 @@ namespace Refracciones
                         double gasto = 0;*/
                         if (Lector["PENALIZACIÓN POR DEVOLUCIÓN"].ToString() != "")
                         {
-                            
                             double costo = Double.Parse(Lector["COSTO ADQUISICION"].ToString());
-                            double penalizacion = Double.Parse(Lector["PENALIZACIÓN POR DEVOLUCIÓN"].ToString())/100;//Porcentaje de penalización
+                            double penalizacion = Double.Parse(Lector["PENALIZACIÓN POR DEVOLUCIÓN"].ToString()) / 100;//Porcentaje de penalización
                             costoAdq = (costo * penalizacion) + costo;
                             sl.SetCellValue("AT" + celdaContenido, costoAdq);
                         }
                         else if (PiezasDevueltasPen(Convert.ToInt32(Lector["cve_venta"].ToString()), Convert.ToInt32(Lector["cve_pieza"].ToString())) != 0)
                         {
-                            
                             double costo = Double.Parse(Lector["COSTO ADQUISICION"].ToString());
                             double penalizacion = PiezasDevueltasPen(Convert.ToInt32(Lector["cve_venta"].ToString()), Convert.ToInt32(Lector["cve_pieza"].ToString()));//Porcentaje de penalización
                             costoAdq = (costo * penalizacion) + costo;
@@ -2021,7 +2044,7 @@ namespace Refracciones
                             sl.SetCellValue("AT" + celdaContenido, Double.Parse(Lector["COSTO ADQUISICION"].ToString()));
                             costoAdq = Double.Parse(Lector["COSTO ADQUISICION"].ToString());
                         }
-                        if(Double.TryParse(Lector["PRECIO VENTA"].ToString(), out tempd))
+                        if (Double.TryParse(Lector["PRECIO VENTA"].ToString(), out tempd))
                         {
                             precioV = Double.Parse(Lector["PRECIO VENTA"].ToString());
                         }
@@ -2034,10 +2057,10 @@ namespace Refracciones
                         sl.SetCellValue("AU" + celdaContenido, utilidadAdq);
                         sl.SetCellValue("AV" + celdaContenido, Double.Parse(Lector["COSTO OPERATIVO"].ToString()));
                         if (Lector["GASTO"].ToString() == "")
-                         {
+                        {
                             sl.SetCellValue("AW" + celdaContenido, 0);
                             gasto = 0;
-                         }
+                        }
                         else
                         {
                             sl.SetCellValue("AW" + celdaContenido, Double.Parse(Lector["GASTO"].ToString()));
@@ -2086,6 +2109,7 @@ namespace Refracciones
                 MessageBox.Show("Error al generar el reporte: " + EX.Message);
             }
         }
+
         //--------------------LLENAR DATAGRID BUSCAR TALLERES--------------------
         public DataTable buscarTalleres(string taller)
         {
@@ -2093,7 +2117,7 @@ namespace Refracciones
             using (SqlConnection nuevaConexion = Conexion.conexion())
             {
                 nuevaConexion.Open();
-                Comando = new SqlCommand(string.Format("SELECT TOP 250 nombre AS 'NOMBRE', direccion AS 'DIRECCIÓN', ciudad AS 'CIUDAD', telefono AS 'TELÉFONO', contacto AS 'CONTACTO', horario AS 'HORARIO', estado AS 'ESTADO' FROM TALLER WHERE nombre like '%{0}%'",taller), nuevaConexion);
+                Comando = new SqlCommand(string.Format("SELECT TOP 250 nombre AS 'NOMBRE', direccion AS 'DIRECCIÓN', ciudad AS 'CIUDAD', telefono AS 'TELÉFONO', contacto AS 'CONTACTO', horario AS 'HORARIO', estado AS 'ESTADO' FROM TALLER WHERE nombre like '%{0}%'", taller), nuevaConexion);
                 da = new SqlDataAdapter(Comando);
 
                 da.Fill(dt);
@@ -2102,6 +2126,7 @@ namespace Refracciones
             }
             return dt;
         }
+
         //--------------------LLENAR DATAGRID BUSCAR TALLERES--------------------
         public DataTable buscarTalleres()
         {
@@ -2118,6 +2143,7 @@ namespace Refracciones
             }
             return dt;
         }
+
         //--------------------LLENAR DATAGRID BUSCAR FACTURAS--------------------
         public DataTable buscarFacturas()
         {
@@ -2134,6 +2160,7 @@ namespace Refracciones
             }
             return dt;
         }
+
         //--------------------LLENAR DATAGRID BUSCAR FACTURAS PIEZA POR PIEZA--------------------
         public DataTable buscarFacturass()
         {
@@ -2150,6 +2177,7 @@ namespace Refracciones
             }
             return dt;
         }
+
         //--------------------LLENAR DATAGRID BUSCAR FACTURAS CON TEXBOX--------------------
         public DataTable buscarFacturas(string cve_factura)
         {
@@ -2166,6 +2194,7 @@ namespace Refracciones
             }
             return dt;
         }
+
         //--------------------LLENAR DATAGRID BUSCAR FACTURAS CON TEXBOX PIEZA POR PIEZA--------------------
         public DataTable buscarFacturass(string cve_factura)
         {
@@ -2182,6 +2211,7 @@ namespace Refracciones
             }
             return dt;
         }
+
         //--------------------LLENAR DATAGRID BUSCAR FACTURAS CON FECHAS--------------------
         public DataTable buscarFacturas(string Fecha_inicio, string fecha_fin)
         {
@@ -2198,6 +2228,7 @@ namespace Refracciones
             }
             return dt;
         }
+
         //--------------------LLENAR DATAGRID BUSCAR FACTURAS CON FECHAS PIEZA POR PIEZA--------------------
         public DataTable buscarFacturass(string Fecha_inicio, string fecha_fin)
         {
@@ -2214,6 +2245,7 @@ namespace Refracciones
             }
             return dt;
         }
+
         //---------------- USUARIOS REGISTRADOS
         public DataSet UsuariosRegistrados()
         {
@@ -2302,6 +2334,7 @@ namespace Refracciones
                 MessageBox.Show("Error: " + EX.Message);
             }
         }
+
         //---------------- ACTUALIZAR DATOS DE TALLER
         public void ActualizarDatosTaller(string nombre, int estado, string direccion, string ciudad, string telefono, string contacto, string horario)
         {
@@ -2328,6 +2361,7 @@ namespace Refracciones
                 MessageBox.Show("Error: " + EX.Message);
             }
         }
+
         //---------------- VEHICULOS-REGISTRADOS
         public DataSet VehiculosRegistrados()
         {
@@ -2453,7 +2487,6 @@ namespace Refracciones
             return nombreVal;
         }
 
-        
         //---------------- ACTUALIZAR DATOS DEL VENDEDOR MEDIANTE CLAVE
         public void ActualizarDatosVendedor(int clave, int estado)
         {
@@ -2502,6 +2535,7 @@ namespace Refracciones
             }
             return anio;
         }
+
         //-------------OBTENER  CIUDAD A PARTIR DEL NOMBRE TALLER
         public string ciudadTaller(string nombre)
         {
@@ -2528,6 +2562,7 @@ namespace Refracciones
             }
             return anio;
         }
+
         //-------------OBTENER  TELEFONO A PARTIR DEL NOMBRE TALLER
         public string telefonoTaller(string nombre)
         {
@@ -2554,6 +2589,7 @@ namespace Refracciones
             }
             return anio;
         }
+
         //-------------OBTENER  CONTACTO A PARTIR DEL NOMBRE TALLER
         public string contactoTaller(string nombre)
         {
@@ -2580,6 +2616,7 @@ namespace Refracciones
             }
             return anio;
         }
+
         //-------------OBTENER  HORARIO A PARTIR DEL NOMBRE TALLER
         public string horarioTaller(string nombre)
         {
@@ -2606,6 +2643,7 @@ namespace Refracciones
             }
             return anio;
         }
+
         //---------------- ACTUALIZAR DATOS DEL PORTAL
         public void ActualizarDatosPortal(string nombre, int estado)
         {
@@ -2707,7 +2745,8 @@ namespace Refracciones
                 MessageBox.Show("Error: " + EX.Message);
             }
         }
-        //---------------- OBTENER DESCRIPCIÓN SAE POR MEDIO DEL NOMBRE PIEZA 
+
+        //---------------- OBTENER DESCRIPCIÓN SAE POR MEDIO DEL NOMBRE PIEZA
         public string descSAE(string nombrePieza)
         {
             string desc = "";
@@ -2728,6 +2767,7 @@ namespace Refracciones
             }
             return desc;
         }
+
         //VALIDAR SI EXISTE UN MISMO REGISTRO DE USUARIO PARA EVITAR DUPLICADOS, ETC.
         public string existeUsuario(string nombre)
         {
@@ -2752,6 +2792,7 @@ namespace Refracciones
             }
             return resultado;
         }
+
         //---------------------ALEX--------------------------------------------------------------------
 
         //VALIDAR SI EXISTE CLAVE PEDIDO
@@ -2851,6 +2892,57 @@ namespace Refracciones
                 MessageBox.Show("Error: " + EX.Message);
             }
             return dataSet;
+        }
+
+        //También se puede utilizar para obtener la fecha
+        public string existeFechaBaja(string clavePedido, string claveSiniestro, string nombrePieza, int ordenCaptrura)
+        {
+            string resultado = "";
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    int cveVenta = claveVenta(clavePedido, claveSiniestro);
+                    int cvePieza = clavePieza(nombrePieza);
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("SELECT fecha_baja FROM PEDIDO WHERE cve_venta = @cve_venta AND cve_pieza = @cve_pieza AND ordenCaptura = @ordenCaptura", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@cve_venta", cveVenta);
+                    Comando.Parameters.AddWithValue("@cve_pieza", cvePieza);
+                    Comando.Parameters.AddWithValue("@ordenCaptura", ordenCaptrura);
+                    if (Comando.ExecuteScalar() == null) { }
+                    else
+                        resultado = Comando.ExecuteScalar().ToString();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return resultado;
+        }
+
+        public void registrarFechaBaja(string clavePedido, string claveSiniestro, string nombrePieza, int ordenCaptrura)
+        {
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    DateTime fechaBaja = DateTime.Now;
+                    int cveVenta = claveVenta(clavePedido, claveSiniestro);
+                    int cvePieza = clavePieza(nombrePieza);
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("UPDATE PEDIDO SET fecha_baja = @fechaBaja WHERE cve_venta = @cve_venta AND cve_pieza = @cve_pieza AND ordenCaptura = @ordenCaptura", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@fechaBaja", fechaBaja);
+                    Comando.Parameters.AddWithValue("@cve_venta", cveVenta);
+                    Comando.Parameters.AddWithValue("@cve_pieza", cvePieza);
+                    Comando.Parameters.AddWithValue("@ordenCaptura", ordenCaptrura);
+                    Comando.ExecuteNonQuery();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
         }
 
         //---------------- VEHICULOS-REGISTRADOS
@@ -3378,7 +3470,7 @@ namespace Refracciones
         }
 
         //---------------- INSERTAR UN NUEVO TALLER
-        public int registrarTaller(string nombre, string direccion, string ciudad, string telefono, string contacto, string horario )
+        public int registrarTaller(string nombre, string direccion, string ciudad, string telefono, string contacto, string horario)
         {
             int i = 0;
             try
@@ -3410,6 +3502,7 @@ namespace Refracciones
             }
             return i;
         }
+
         //VALIDAR SI EXISTE UN MISMO REGISTRO DE TALLERE PARA EVITAR DUPLICADOS, ETC.
         public string existeTaller(string nombre)
         {
@@ -3568,6 +3661,7 @@ namespace Refracciones
             }
             return i;
         }
+
         //---------------- INSERTAR UN NUEVO NOMBRE DE PIEZA CON DESCRIPCIÓN SAE
         public int registrarPieza(string nombre, string desc)
         {
@@ -3597,6 +3691,7 @@ namespace Refracciones
             }
             return i;
         }
+
         //VALIDAR SI EXISTE UN MISMO REGISTRO DE PIEZA PARA EVITAR DUPLICADOS, ETC.
         public string existePieza(string nombre)
         {
@@ -3922,7 +4017,6 @@ namespace Refracciones
                 {
                     int cveVenta = claveVenta(clavePedido, claveSiniestro);
                     int cvePieza = clavePieza(nombrePieza);
-
                     nuevaConexion.Open();
                     Comando = new SqlCommand("SELECT estado FROM PEDIDO WHERE cve_venta = @cve_venta AND cve_pieza = @cve_pieza AND ordenCaptura = @ordenCaptura", nuevaConexion);
                     Comando.Parameters.AddWithValue("@cve_venta", cveVenta);
@@ -4115,6 +4209,7 @@ namespace Refracciones
             return fechaPromesa;
         }
 
+        /*
         //-------------OBTENER LA FECHA BAJA A PARTIR DE LAS CLAVES PEDIDO Y SINIESTRO
         public string fechaBaja(string clavePedido, string claveSiniestro)
         {
@@ -4141,6 +4236,7 @@ namespace Refracciones
             }
             return fechaBaja;
         }
+        */
 
         //-------------OBTENER VENDEDOR EN PARTICULAR A PARTIR DE LAS CLAVES PEDIDO Y SINIESTRO
         public string Vendedor(string clavePedido, string claveSiniestro)
@@ -4337,7 +4433,6 @@ namespace Refracciones
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     int claveVehiculo = 0;
-                    int claveEstado = 0;
 
                     nuevaConexion.Open();
                     //Obteniendo la clave del vehículo
@@ -4352,11 +4447,10 @@ namespace Refracciones
                     Lector.Close();
 
                     //Insertando los datos en la tabla SINIESTRO
-                    Comando = new SqlCommand("INSERT INTO SINIESTRO " + "(cve_siniestro, cve_vehiculo, comentario, estado) " + "VALUES (@cve_siniestro, @cve_vehiculo, @comentario, @estado) ", nuevaConexion);
+                    Comando = new SqlCommand("INSERT INTO SINIESTRO " + "(cve_siniestro, cve_vehiculo, comentario) " + "VALUES (@cve_siniestro, @cve_vehiculo, @comentario) ", nuevaConexion);
                     Comando.Parameters.AddWithValue("@cve_siniestro", claveSiniestro.Trim());
                     Comando.Parameters.AddWithValue("@cve_vehiculo", claveVehiculo);
                     Comando.Parameters.AddWithValue("@comentario", comentario.Trim());
-                    Comando.Parameters.AddWithValue("@estado", claveEstado);
 
                     //Para saber si la inserción se hizo correctamente
                     i = Comando.ExecuteNonQuery();
@@ -4441,6 +4535,7 @@ namespace Refracciones
                 return clavePieza;
             }
         }
+
         /*
         public int claveEstadoPieza(string estado)
         {
@@ -4458,6 +4553,7 @@ namespace Refracciones
             }
         }
         */
+
         //-------------OBTENER LA CLAVE DEL ORIGEN DE ACUERDO AL TEXTO
         public int claveOrigen(string origen)
         {
@@ -4633,6 +4729,7 @@ namespace Refracciones
                 return clavePedido;
             }
         }
+
         /*
         public int claveEntrega(DateTime fechaAsignacion, DateTime fechaPromesa)
         {
@@ -4801,7 +4898,7 @@ namespace Refracciones
                     nuevaConexion.Close();
                     if (i == 1)
                     {
-                       // MessageBOX.SHowDialog(3, "Se registro la venta correctamente");
+                        // MessageBOX.SHowDialog(3, "Se registro la venta correctamente");
                     }
                     else
                         MessageBOX.SHowDialog(2, "Problemas al registrar venta");
@@ -4863,7 +4960,7 @@ namespace Refracciones
         }
 
         //-------------EXISTE PIEZA REGISTRADA EN PEDIDO
-        public string existePiezaRegistradaPedido(string cvePedido, string cveSiniestro, string pieza)
+        public string existePiezaRegistradaPedido(string cvePedido, string cveSiniestro, string pieza, int ordenCaptura)
         {
             string resultado = "";
             int cveVenta = claveVenta(cvePedido, cveSiniestro);
@@ -4873,9 +4970,10 @@ namespace Refracciones
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     nuevaConexion.Open();
-                    Comando = new SqlCommand("SELECT cve_venta  FROM PEDIDO WHERE cve_venta  = @cve_venta AND cve_pieza = @cve_pieza", nuevaConexion);
+                    Comando = new SqlCommand("SELECT ordenCaptura  FROM PEDIDO WHERE cve_venta  = @cve_venta AND cve_pieza = @cve_pieza AND ordenCaptura = @ordenCaptura", nuevaConexion);
                     Comando.Parameters.AddWithValue("@cve_venta", cveVenta);
                     Comando.Parameters.AddWithValue("@cve_pieza", cvePieza);
+                    Comando.Parameters.AddWithValue("@ordenCaptura", ordenCaptura);
 
                     //Para saber si en realidad existe, de lo contrario devuelve un string vacío
                     if (Comando.ExecuteScalar() == null) { }
@@ -4891,7 +4989,7 @@ namespace Refracciones
         }
 
         //------------- ELIMINAR PIEZA REGISTRADA
-        public void eliminarPiezaRegistradaPedido(string cvePedido, string cveSiniestro, string pieza)
+        public void eliminarPiezaRegistradaPedido(string cvePedido, string cveSiniestro, string pieza, int ordenCaptura)
         {
             int cveVenta = claveVenta(cvePedido, cveSiniestro);
             int cvePieza = clavePieza(pieza);
@@ -4900,9 +4998,10 @@ namespace Refracciones
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     nuevaConexion.Open();
-                    Comando = new SqlCommand("DELETE FROM PEDIDO WHERE cve_venta  = @cve_venta AND cve_pieza = @cve_pieza", nuevaConexion);
+                    Comando = new SqlCommand("DELETE FROM PEDIDO WHERE cve_venta  = @cve_venta AND cve_pieza = @cve_pieza AND ordenCaptura = @ordenCaptura", nuevaConexion);
                     Comando.Parameters.AddWithValue("@cve_venta", cveVenta);
                     Comando.Parameters.AddWithValue("@cve_pieza", cvePieza);
+                    Comando.Parameters.AddWithValue("@ordenCaptura", ordenCaptura);
                     int i = Comando.ExecuteNonQuery();
                     //Para saber se eliminó correctamente el registro
                     if (i == 1)
@@ -4953,8 +5052,6 @@ namespace Refracciones
             int i = 0;
             double gasto = 0;
 
-            
-
             int cve_pieza = clavePieza(nombrePieza);
             int cve_origen = claveOrigen(origen);
             int cve_proveedor = claveProveedor(proveedor);
@@ -4981,7 +5078,7 @@ namespace Refracciones
                     //Insertando los datos en la tabla PEDIDO
                     Comando = new SqlCommand("INSERT INTO PEDIDO " + "(cve_venta, cve_pieza, cantidad, cve_origen, cve_proveedor, cve_portal, cve_guia, cve_producto, fecha_costo, costo_envio, costo_neto, precio_venta, precio_reparacion, gasto, realizo, ordenCaptura, estado) " +
                         "VALUES (@cve_venta, @cve_pieza, @cantidad, @cve_origen, @cve_proveedor, @cve_portal, @cve_guia, @cve_producto, @fecha_costo, @costo_envio, @costo_neto, @precio_venta, @precio_reparacion, @gasto, @realizo, @ordenCaptura, @estado) ", nuevaConexion);//, costo_comprasinIVA    , @costo_comprasinIVA
-                                                                                                                                                                                                                                              //Añadiendo los parámetros al query
+                                                                                                                                                                                                                                                                                //Añadiendo los parámetros al query
                     Comando.Parameters.AddWithValue("@cve_venta", cve_venta);
                     Comando.Parameters.AddWithValue("@cve_pieza", cve_pieza);
                     Comando.Parameters.AddWithValue("@cantidad", cantidad);
@@ -5020,6 +5117,34 @@ namespace Refracciones
             return i;
         }
 
+        //Sirve para refresacar el orden de captura al eliminar una pieza y no altere el código por parte de las consultas
+        public void actualizarOrdenCaptura(string clavePedido, string claveSiniestro, string nombrePieza, int ordenCaptruraActual, int ordenCapturaPasado)
+        {
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    int cveVenta = claveVenta(clavePedido, claveSiniestro);
+                    int cvePieza = clavePieza(nombrePieza);
+
+                    DateTime fechaBaja = DateTime.Now;
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("UPDATE PEDIDO SET ordenCaptura = @ordenCapturaActual WHERE cve_venta = @cve_venta AND cve_pieza = @cve_pieza AND ordenCaptura = @ordenCapturaPasado", nuevaConexion);
+                    //Número que se obtiene de la lista de números al cargar el formulario PEDIDO en modo actualizar para ser sustituido por el nuevo
+                    Comando.Parameters.AddWithValue("@ordenCapturaPasado", ordenCapturaPasado);
+                    Comando.Parameters.AddWithValue("@ordenCapturaActual", ordenCaptruraActual);
+                    Comando.Parameters.AddWithValue("@cve_venta", cveVenta);
+                    Comando.Parameters.AddWithValue("@cve_pieza", cvePieza);
+                    Comando.ExecuteNonQuery();
+                    nuevaConexion.Close();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+        }
+
         //-------------ACTUALIZAR DATOS DE PEDIDO
         public int actualizarPedido(string clavePedido, string claveSiniestro, string nombrePiezaActual, string portal, string origen, string proveedor, DateTime fechaCosto/*, string costoSinIVA*/, string costoNeto, string costoEnvio, string precioVenta, string precioReparacion, string claveProducto, string numeroGuia, int cantidad, string nombrePiezaPasada, string realizo, int ordenCaptura, int estado)
         {
@@ -5055,7 +5180,7 @@ namespace Refracciones
                     //Insertando los datos en la tabla PEDIDO
                     Comando = new SqlCommand("UPDATE PEDIDO SET " + "cve_pieza = @cve_piezaActual, cantidad = @cantidad, cve_origen = @cve_origen, cve_proveedor = @cve_proveedor, cve_portal = @cve_portal, cve_guia = @cve_guia, cve_producto = @cve_producto, fecha_costo = @fecha_costo, costo_envio = @costo_envio, costo_neto = @costo_neto, precio_venta = @precio_venta, precio_reparacion = @precio_reparacion, gasto = @gasto, realizo = @realizo, ordenCaptura = @ordenCaptura, estado = @estado " +
                         "WHERE cve_venta = @cve_venta AND cve_pieza = @cve_piezaPasada AND cve_pedido = @cvePedido", nuevaConexion);//, costo_comprasinIVA    , @costo_comprasinIVA
-                                                                                                        //Añadiendo los parámetros al query
+                                                                                                                                    //Añadiendo los parámetros al query
                     Comando.Parameters.AddWithValue("@cve_venta", cve_venta);
                     Comando.Parameters.AddWithValue("@cve_piezaPasada", cve_piezaPasada);
                     Comando.Parameters.AddWithValue("@cve_piezaActual", cve_piezaActual);
@@ -5080,13 +5205,14 @@ namespace Refracciones
                     //Para saber si la inserción se hizo correctamente
                     i = Comando.ExecuteNonQuery();
                     nuevaConexion.Close();
+                    /*
                     if (i == 1)
                     {
                         //Se omitió esta parte, para evitar que se notificara por cada pieza
                         // MessageBOX.SHowDialog(1, "Se actualizó pedido correctamente");
                     }
                     else
-                        MessageBOX.SHowDialog(2, "Problemas al actualizar pedido");
+                        MessageBOX.SHowDialog(2, "Problemas al actualizar pedido");*/
                 }
             }
             catch (Exception EX)
