@@ -39,6 +39,7 @@ namespace Refracciones.Forms
 
         public int cvePieza;
         public int cveVenta;
+        public int ordenCaptura;
         public int cantidad;
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -141,7 +142,8 @@ namespace Refracciones.Forms
                     else
                     {
                         DateTime hoy = DateTime.Today;
-                        operacion.registrarPenalizacion(cvePieza, cveVenta, Convert.ToInt32(cbCantidad.Text.Trim()), motivo, Convert.ToDouble(txtPorcentaje.Text.Trim()), hoy, lblUsuario.Text);
+                        int clavePedidoPedido = operacion.clavePedidoPedido(cveVenta, cvePieza, ordenCaptura);
+                        operacion.registrarPenalizacion(cvePieza, cveVenta, Convert.ToInt32(cbCantidad.Text.Trim()), motivo, Convert.ToDouble(txtPorcentaje.Text.Trim()), hoy, lblUsuario.Text, clavePedidoPedido);
                     }
                     this.DialogResult = DialogResult.OK;
                 }

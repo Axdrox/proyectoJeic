@@ -57,122 +57,6 @@ namespace Refracciones.Forms
             set { lblAnio.Text = value; }
         }
 
-        //Método necesario para que se pueda invocar la función de desactivar botones en dgv
-        public class DataGridViewDisableButtonColumn : DataGridViewButtonColumn
-        {
-            public DataGridViewDisableButtonColumn()
-            {
-                this.CellTemplate = new DataGridViewDisableButtonCell();
-            }
-        }
-
-        //Método necesario para que se pueda invocar la función de desactivar botones en dgv
-        public class DataGridViewDisableButtonCell : DataGridViewButtonCell
-        {
-            private bool enabledValue;
-
-            public bool Enabled
-            {
-                get
-                {
-                    return enabledValue;
-                }
-                set
-                {
-                    enabledValue = value;
-                }
-            }
-
-            // Override the Clone method so that the Enabled property is copied.
-            public override object Clone()
-            {
-                DataGridViewDisableButtonCell cell =
-                    (DataGridViewDisableButtonCell)base.Clone();
-                cell.Enabled = this.Enabled;
-                return cell;
-            }
-
-            // By default, enable the button cell.
-            public DataGridViewDisableButtonCell()
-            {
-                this.enabledValue = true;
-            }
-
-            protected override void Paint(Graphics graphics,
-                Rectangle clipBounds, Rectangle cellBounds, int rowIndex,
-                DataGridViewElementStates elementState, object value,
-                object formattedValue, string errorText,
-                DataGridViewCellStyle cellStyle,
-                DataGridViewAdvancedBorderStyle advancedBorderStyle,
-                DataGridViewPaintParts paintParts)
-            {
-                // The button cell is disabled, so paint the border,
-                // background, and disabled button for the cell.
-                if (!this.enabledValue)
-                {
-                    // Draw the cell background, if specified.
-                    if ((paintParts & DataGridViewPaintParts.Background) ==
-                        DataGridViewPaintParts.Background)
-                    {
-                        SolidBrush cellBackground =
-                            new SolidBrush(cellStyle.BackColor);
-                        graphics.FillRectangle(cellBackground, cellBounds);
-                        cellBackground.Dispose();
-                    }
-
-                    // Draw the cell borders, if specified.
-                    if ((paintParts & DataGridViewPaintParts.Border) ==
-                        DataGridViewPaintParts.Border)
-                    {
-                        PaintBorder(graphics, clipBounds, cellBounds, cellStyle,
-                            advancedBorderStyle);
-                    }
-
-                    // Calculate the area in which to draw the button.
-                    Rectangle buttonArea = cellBounds;
-                    Rectangle buttonAdjustment =
-                        this.BorderWidths(advancedBorderStyle);
-                    buttonArea.X += buttonAdjustment.X;
-                    buttonArea.Y += buttonAdjustment.Y;
-                    buttonArea.Height -= buttonAdjustment.Height;
-                    buttonArea.Width -= buttonAdjustment.Width;
-
-                    // Draw the disabled button.
-                    ButtonRenderer.DrawButton(graphics, buttonArea,
-                        PushButtonState.Disabled);
-
-                    // Draw the disabled button text.
-                    if (this.FormattedValue is String)
-                    {
-                        TextRenderer.DrawText(graphics,
-                            (string)this.FormattedValue,
-                            this.DataGridView.Font,
-                            buttonArea, SystemColors.GrayText);
-                    }
-                }
-                else
-                {
-                    // The button cell is enabled, so let the base class
-                    // handle the painting.
-                    base.Paint(graphics, clipBounds, cellBounds, rowIndex,
-                        elementState, value, formattedValue, errorText,
-                        cellStyle, advancedBorderStyle, paintParts);
-                }
-            }
-        }
-
-        //Método para desactivar botones en DGV
-        private void SetDGVButtonColumnEnable(bool enabled)
-        {
-            foreach (DataGridViewRow row in dgvPedido.Rows)
-            {
-                // Set Enabled property of the zero column in the DGV.
-                //Which is the one we want to disable
-                ((DataGridViewDisableButtonCell)row.Cells[0]).Enabled = enabled;
-            }
-            dgvPedido.Refresh();
-        }
-
         private void Pedido_Load(object sender, EventArgs e)
         {
             if (actualizar == 1)
@@ -196,7 +80,9 @@ namespace Refracciones.Forms
                 penaltyButton.Text = "Penalizar";
                 penaltyButton.FlatStyle = FlatStyle.Popup;
                 penaltyButton.CellTemplate.Style.BackColor = Color.DarkViolet;
-                penaltyButton.UseColumnTextForButtonValue = true;
+                ///--------- ATENCIÓN---------
+                ///Se comentó esta línea para poder dar nombres diferentes de acuerdo a las condiciones que se evalúen
+                //penaltyButton.UseColumnTextForButtonValue = true;;
                 this.dgvPedido.Columns.Add(penaltyButton);
             }
 
@@ -354,6 +240,11 @@ namespace Refracciones.Forms
                         row.Cells["dataGridViewDarBajaButton"].Value = "Registrado";
                     else
                         row.Cells["dataGridViewDarBajaButton"].Value = "Dar de baja";
+
+                    if (!string.IsNullOrEmpty(operacion.existePenalizacion(Convert.ToString(row.Cells["Pieza"].Value), txtClavePedido.Text, lblClaveSiniestro.Text, index)))
+                        row.Cells["dataGridViewPenaltyButton"].Value = "Penalizado";
+                    else
+                        row.Cells["dataGridViewPenaltyButton"].Value = "Penalizar";
 
                     //Carga los estados que se tienen de cada pieza
                     row.Cells["dataGridViewStatusCombobox"].Value = operacion.estadoSiniestroClaves(txtClavePedido.Text, lblClaveSiniestro.Text, row.Cells["Pieza"].Value.ToString(), i);
@@ -1046,9 +937,13 @@ namespace Refracciones.Forms
                         ///El tipo de dato al que se iguala tiene mucho que coincidir con el "ValueMember"
                         ///de la columna combobox del datagridview, en este caso funciona porque se ha
                         ///seleccionado toda la tabla desde la consulta y coincide el tipo con el id
-
-                        //Añadir botón con el nombre correcto (de lo contrario se queda en blanco)
-                        dgvPedido.Rows[dgvPedido.Rows.Count - 1].Cells["dataGridViewDarBajaButton"].Value = "Dar de baja";
+                        
+                        if (actualizar == 1)
+                        {
+                            //Añadir botón con el nombre correcto (de lo contrario se queda en blanco)
+                            dgvPedido.Rows[dgvPedido.Rows.Count - 1].Cells["dataGridViewDarBajaButton"].Value = "Dar de baja";
+                            dgvPedido.Rows[dgvPedido.Rows.Count - 1].Cells["dataGridViewPenaltyButton"].Value = "Penalizar";
+                        }
 
                         foreach (DataGridViewRow dgvRow in dgvPedido.Rows)
                         {
@@ -1189,58 +1084,83 @@ namespace Refracciones.Forms
                     {
                         piezaNombre = Convert.ToString(row.Cells["Pieza"].Value);
                     }
-                    //Checar si hay registros de esa pieza (o si es nueva)
-                    if (!string.IsNullOrEmpty(operacion.existePiezaRegistradaPedido(txtClavePedido.Text, lblClaveSiniestro.Text, piezaNombre, dgvPedido.CurrentRow.Index)))
+                    if (e.ColumnIndex != dgvPedido.Columns["dataGridViewDeleteButton"].Index)
                     {
-                        if (e.ColumnIndex == dgvPedido.Columns["dataGridViewPenaltyButton"].Index)
+                        //Checar si hay registros de esa pieza (o si es nueva)
+                        if (!string.IsNullOrEmpty(operacion.existePiezaRegistradaPedido(txtClavePedido.Text, lblClaveSiniestro.Text, piezaNombre, dgvPedido.CurrentRow.Index)))
                         {
-                            DialogResult respuesta = DialogResult.Cancel;
-                            int cantidad = 0;
-                            Penalizaciones penalizaciones = new Penalizaciones();
-                            foreach (DataGridViewRow row in dgvPedido.SelectedRows)
+                            int indexPenalizacion = dgvPedido.CurrentRow.Index;
+                            if (e.ColumnIndex == dgvPedido.Columns["dataGridViewPenaltyButton"].Index)
                             {
-                                piezaNombre = Convert.ToString(row.Cells["Pieza"].Value);
-                                penalizaciones.cvePieza = operacion.clavePieza(Convert.ToString(row.Cells["Pieza"].Value));
-                                penalizaciones.cveVenta = operacion.claveVenta(txtClavePedido.Text, lblClaveSiniestro.Text);
-                                penalizaciones.usuario = lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9);
-                                cantidad = Convert.ToInt32(row.Cells["Cantidad"].Value);
-                            }
-                            if (cantidad == 0)
-                            {
-                                MessageBOX.SHowDialog(2, "No es posible penalizar debido a que no hay cantidad suficiente");
-                            }
-                            else
-                            {
-                                penalizaciones.cantidad = cantidad;
-                                respuesta = penalizaciones.ShowDialog();
-                            }
-                            //Para que se actualice la cantidad que se penalizó
-                            if (respuesta == DialogResult.OK)
-                            {
-                                dt = operacion.piezasPedidoActualizar(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
-                                dgvPedido.DataSource = dt;
-                                cantidadPenalizada = penalizaciones.cantidadPenalizada;
-                                lblCantidadTotal.Text = (Convert.ToInt32(lblCantidadTotal.Text) - cantidadPenalizada).ToString();
-
-                                int i = 0;
-                                foreach (DataGridViewRow row in dgvPedido.Rows)
+                                DialogResult respuesta = DialogResult.Cancel;
+                                int piezaPenalizada = 0; int cantidad = 0;
+                                Penalizaciones penalizaciones = new Penalizaciones();
+                                foreach (DataGridViewRow row in dgvPedido.SelectedRows)
                                 {
-                                    row.Cells["dataGridViewStatusCombobox"].Value = operacion.estadoSiniestroClaves(txtClavePedido.Text, lblClaveSiniestro.Text, row.Cells["Pieza"].Value.ToString(), i);
-                                    i += 1;
+                                    piezaNombre = Convert.ToString(row.Cells["Pieza"].Value);
+                                    penalizaciones.cvePieza = operacion.clavePieza(Convert.ToString(row.Cells["Pieza"].Value));
+                                    penalizaciones.cveVenta = operacion.claveVenta(txtClavePedido.Text, lblClaveSiniestro.Text);
+                                    penalizaciones.ordenCaptura = dgvPedido.CurrentCell.RowIndex;
+                                    penalizaciones.usuario = lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9);
+                                    cantidad = Convert.ToInt32(row.Cells["Cantidad"].Value);
+                                    if (!string.IsNullOrEmpty(operacion.existePenalizacion(Convert.ToString(row.Cells["Pieza"].Value), txtClavePedido.Text, lblClaveSiniestro.Text, dgvPedido.CurrentRow.Index)))
+                                        piezaPenalizada += 1;
+                                }
+                                if (cantidad == 0)
+                                {
+                                    MessageBOX.SHowDialog(2, "No es posible penalizar debido a que no hay cantidad suficiente");
+                                    if (piezaPenalizada != 0)
+                                        MessageBOX.SHowDialog(2, "La pieza ya se ha penalizado");
+                                }
+                                else
+                                {
+                                    penalizaciones.cantidad = cantidad;
+                                    respuesta = penalizaciones.ShowDialog();
+                                }
+                                //Para que se actualice la cantidad que se penalizó
+                                if (respuesta == DialogResult.OK)
+                                {
+                                    dt = operacion.piezasPedidoActualizar(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
+                                    dgvPedido.DataSource = dt;
+                                    cantidadPenalizada = penalizaciones.cantidadPenalizada;
+                                    lblCantidadTotal.Text = (Convert.ToInt32(lblCantidadTotal.Text) - cantidadPenalizada).ToString();
+
+                                    //Actualizar estado de pieza
+                                    dgvPedido.Rows[indexPenalizacion].Cells["dataGridViewPenaltyButton"].Value = "Penalizado";
+
+                                    int i = 0;
+                                    foreach (DataGridViewRow row in dgvPedido.Rows)
+                                    {
+                                        row.Cells["dataGridViewStatusCombobox"].Value = operacion.estadoSiniestroClaves(txtClavePedido.Text, lblClaveSiniestro.Text, row.Cells["Pieza"].Value.ToString(), i);
+                                        i += 1;
+                                    }
                                 }
                             }
-                        }
-                        if (e.ColumnIndex == dgvPedido.Columns["dataGridViewDarBajaButton"].Index)
-                        {
-                            int index = dgvPedido.CurrentCell.RowIndex;
-                            //Checar primero si es que esa pieza ya ha sido dada de baja
-                            if (!string.IsNullOrEmpty(operacion.existeFechaBaja(txtClavePedido.Text, lblClaveSiniestro.Text, piezaNombre, index)))
+                            if (e.ColumnIndex == dgvPedido.Columns["dataGridViewDarBajaButton"].Index)
                             {
-                                MessageBOX mes = new MessageBOX(4, "¿Modificar fecha?\n" + Convert.ToDateTime(operacion.existeFechaBaja(txtClavePedido.Text, lblClaveSiniestro.Text, piezaNombre, index)).ToShortDateString());
-                                if (mes.ShowDialog() == DialogResult.OK)
+                                int index = dgvPedido.CurrentCell.RowIndex;
+                                //Checar primero si es que esa pieza ya ha sido dada de baja
+                                if (!string.IsNullOrEmpty(operacion.existeFechaBaja(txtClavePedido.Text, lblClaveSiniestro.Text, piezaNombre, index)))
+                                {
+                                    MessageBOX mes = new MessageBOX(4, "¿Modificar fecha?\n" + Convert.ToDateTime(operacion.existeFechaBaja(txtClavePedido.Text, lblClaveSiniestro.Text, piezaNombre, index)).ToShortDateString());
+                                    if (mes.ShowDialog() == DialogResult.OK)
+                                    {
+                                        FechaBaja fechaBaja = new FechaBaja();
+                                        fechaBaja.identificador = 1;
+                                        fechaBaja.cvePedido = txtClavePedido.Text;
+                                        fechaBaja.cveSiniestro = lblClaveSiniestro.Text;
+                                        fechaBaja.nombrePieza = piezaNombre;
+                                        fechaBaja.index = index;
+                                        fechaBaja.dt1 = dtpFechaAsignacion.Value;
+                                        if (fechaBaja.ShowDialog() == DialogResult.OK)
+                                        {
+                                            //Add logic if needed
+                                        }
+                                    }
+                                }
+                                else
                                 {
                                     FechaBaja fechaBaja = new FechaBaja();
-                                    fechaBaja.identificador = 1;
                                     fechaBaja.cvePedido = txtClavePedido.Text;
                                     fechaBaja.cveSiniestro = lblClaveSiniestro.Text;
                                     fechaBaja.nombrePieza = piezaNombre;
@@ -1248,31 +1168,18 @@ namespace Refracciones.Forms
                                     fechaBaja.dt1 = dtpFechaAsignacion.Value;
                                     if (fechaBaja.ShowDialog() == DialogResult.OK)
                                     {
-                                        //Add logic if needed
+                                        //De esta forma se desabilita el botón cuando ya se ha registrado la fecha de baja
+                                        //SetDGVButtonColumnEnable(false);
+
+                                        //Cambia el nombre del botón al correcto (de lo contrario no se actualiza)
+                                        dgvPedido.Rows[index].Cells["dataGridViewDarBajaButton"].Value = "Registrado";
                                     }
                                 }
                             }
-                            else
-                            {
-                                FechaBaja fechaBaja = new FechaBaja();
-                                fechaBaja.cvePedido = txtClavePedido.Text;
-                                fechaBaja.cveSiniestro = lblClaveSiniestro.Text;
-                                fechaBaja.nombrePieza = piezaNombre;
-                                fechaBaja.index = index;
-                                fechaBaja.dt1 = dtpFechaAsignacion.Value;
-                                if (fechaBaja.ShowDialog() == DialogResult.OK)
-                                {
-                                    //De esta forma se desabilita el botón cuando ya se ha registrado la fecha de baja
-                                    //SetDGVButtonColumnEnable(false);
-
-                                    //Cambia el nombre del botón al correcto (de lo contrario no se actualiza)
-                                    dgvPedido.Rows[index].Cells["dataGridViewDarBajaButton"].Value = "Registrado";
-                                }
-                            }
                         }
+                        else
+                            MessageBOX.SHowDialog(2, "Pieza debe ser registrada primero"); //SE PODRÍA PONER LA LÓGICA DE REGISTRAR AUTOMÁTICO
                     }
-                    else
-                        MessageBOX.SHowDialog(2, "Pieza debe ser registrada primero"); //SE PODRÍA PONER LA LÓGICA DE REGISTRAR AUTOMÁTICO
                 }
 
                 if (e.ColumnIndex == dgvPedido.Columns["dataGridViewEditButton"].Index)
@@ -1816,29 +1723,56 @@ namespace Refracciones.Forms
         {
             try
             {
-                Penalizaciones penalizar = new Penalizaciones();
-                penalizar.penalizarPedido = 1;
-                DialogResult respuesta = penalizar.ShowDialog();
-
-                if (filasIniciales > 0)
+                int contadorCantidadPiezas = 0; int k = 0;
+                foreach (DataGridViewRow row in dgvPedido.Rows)
                 {
-                    int i = 0;
-                    DateTime hoy = DateTime.Today;
-                    if (respuesta == DialogResult.OK)
+                    if (!string.IsNullOrEmpty(operacion.existePenalizacion(Convert.ToString(row.Cells["Pieza"].Value), txtClavePedido.Text, lblClaveSiniestro.Text, k)))
+                        contadorCantidadPiezas++;
+                    k++;
+                }
+                if(contadorCantidadPiezas == 0)
+                {
+                    Penalizaciones penalizar = new Penalizaciones();
+                    penalizar.penalizarPedido = 1;
+                    DialogResult respuesta = penalizar.ShowDialog();
+
+                    if (filasIniciales > 0)
                     {
-                        foreach (DataGridViewRow row in dgvPedido.Rows)
+                        int i = 0; int clavePedidoPedido = 0;
+                        DateTime hoy = DateTime.Today;
+                        if (respuesta == DialogResult.OK)
                         {
-                            operacion.registrarPenalizacion(operacion.clavePieza(Convert.ToString(row.Cells["Pieza"].Value)), operacion.claveVenta(txtClavePedido.Text, lblClaveSiniestro.Text), Convert.ToInt32(row.Cells["Cantidad"].Value), penalizar.motivo, penalizar.porcentaje, hoy, lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9));
-                            i++;
-                            if (i == filasIniciales)
-                                break;
+                            foreach (DataGridViewRow row in dgvPedido.Rows)
+                            {
+                                clavePedidoPedido = operacion.clavePedidoPedido(operacion.claveVenta(txtClavePedido.Text, lblClaveSiniestro.Text), operacion.clavePieza(Convert.ToString(row.Cells["Pieza"].Value)), i);
+                                operacion.registrarPenalizacion(operacion.clavePieza(Convert.ToString(row.Cells["Pieza"].Value)), operacion.claveVenta(txtClavePedido.Text, lblClaveSiniestro.Text), Convert.ToInt32(row.Cells["Cantidad"].Value), penalizar.motivo, penalizar.porcentaje, hoy, lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9), clavePedidoPedido);
+                                i++;
+                                if (i == filasIniciales)
+                                    break;
+                            }
+                            dt = operacion.piezasPedidoActualizar(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
+                            dgvPedido.DataSource = dt;
+                            int index = 0;
+                            foreach (DataGridViewRow row in dgvPedido.Rows)
+                            {
+                                //Para poder desactivar los botones en caso de que ya se hayan dado de baja
+                                if (!string.IsNullOrEmpty(operacion.existeFechaBaja(txtClavePedido.Text, lblClaveSiniestro.Text, Convert.ToString(row.Cells["Pieza"].Value), index)))
+                                    row.Cells["dataGridViewDarBajaButton"].Value = "Registrado";
+                                else
+                                    row.Cells["dataGridViewDarBajaButton"].Value = "Dar de baja";
+
+                                //Carga los estados que se tienen de cada pieza
+                                row.Cells["dataGridViewStatusCombobox"].Value = operacion.estadoSiniestroClaves(txtClavePedido.Text, lblClaveSiniestro.Text, row.Cells["Pieza"].Value.ToString(), index);
+                                index++;
+                            }
                         }
-                        dt = operacion.piezasPedidoActualizar(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
-                        dgvPedido.DataSource = dt;
                     }
+                    else
+                        MessageBox.Show("No es posible penalizar el pedido si aún no se ha hecho el registro de piezas correspondiente al pedido actual\nFavor de registrar piezas antes", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
-                    MessageBOX.SHowDialog(2, "No es posible penalizar el pedido si aún no se ha hecho el registro de piezas correspondiente al pedido actual");
+                    MessageBOX.SHowDialog(2, "Los registros ya han sido penalizados previamente");
+
             }
             catch (Exception EX)
             {

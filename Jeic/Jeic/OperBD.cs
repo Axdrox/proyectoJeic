@@ -5302,14 +5302,72 @@ namespace Refracciones
             return i;
         }
 
-        public void registrarPenalizacion(int clavePieza, int claveVenta, int cantidad, string motivo, double porcentaje, DateTime fecha, string realizo)
+        //-------------OBTENER CLAVE PEDIDO de la tabla PEDIDO para PENALIZACIONES
+        public int clavePedidoPedido(int cveVenta, int cvePieza, int ordenCaptura)
+        {
+            int resultado = 0;
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("SELECT cve_pedido  FROM PEDIDO WHERE cve_venta  = @cve_venta AND cve_pieza = @cve_pieza AND ordenCaptura = @ordenCaptura", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@cve_venta", cveVenta);
+                    Comando.Parameters.AddWithValue("@cve_pieza", cvePieza);
+                    Comando.Parameters.AddWithValue("@ordenCaptura", ordenCaptura);
+
+                    //Para saber si en realidad existe, de lo contrario devuelve un string vacío
+                    if (Comando.ExecuteScalar() == null) { }
+                    else
+                        resultado = Convert.ToInt32(Comando.ExecuteScalar().ToString());
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return resultado;
+        }
+
+        //EXISTE PENALIZACIÓN
+        public string existePenalizacion(string pieza, string clavePedido, string claveSiniestro, int ordenCaptura)
+        {
+            string resultado = "";
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    int cvePieza = clavePieza(pieza);
+                    int cveVenta = claveVenta(clavePedido, claveSiniestro);
+                    int cvePedido = clavePedidoPedido(cveVenta, cvePieza, ordenCaptura);
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("SELECT * FROM PENALIZACION WHERE cve_pieza = @cvePieza AND cve_venta = @cveVenta AND cve_pedido = @cvePedido", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@cvePieza", cvePieza);
+                    Comando.Parameters.AddWithValue("@cveVenta", cveVenta);
+                    Comando.Parameters.AddWithValue("@cvePedido", cvePedido);
+                    //Para saber si en realidad existe, de lo contrario devuelve un string vacío
+                    if (Comando.ExecuteScalar() == null) { }
+                    else
+                        resultado = Comando.ExecuteScalar().ToString();
+                    nuevaConexion.Close();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return resultado;
+        }
+
+        //REGISTRO DE PENALIZACIÓN
+        public void registrarPenalizacion(int clavePieza, int claveVenta, int cantidad, string motivo, double porcentaje, DateTime fecha, string realizo, int cvePedido)
         {
             try
             {
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     nuevaConexion.Open();
-                    Comando = new SqlCommand("INSERT INTO PENALIZACION " + "(cve_pieza, cve_venta, cantidad, motivo, porcentaje, fecha, realizo) " + "VALUES (@cve_pieza , @cve_venta, @cantidad, @motivo, @porcentaje, @fecha, @realizo) ", nuevaConexion);
+                    Comando = new SqlCommand("INSERT INTO PENALIZACION " + "(cve_pieza, cve_venta, cantidad, motivo, porcentaje, fecha, realizo, cve_pedido) " + "VALUES (@cve_pieza , @cve_venta, @cantidad, @motivo, @porcentaje, @fecha, @realizo, @cve_pedido) ", nuevaConexion);
                     Comando.Parameters.AddWithValue("@cve_pieza", clavePieza);
                     Comando.Parameters.AddWithValue("@cve_venta", claveVenta);
                     Comando.Parameters.AddWithValue("@cantidad", cantidad);
@@ -5317,6 +5375,7 @@ namespace Refracciones
                     Comando.Parameters.AddWithValue("@porcentaje", porcentaje);
                     Comando.Parameters.AddWithValue("@fecha", fecha);
                     Comando.Parameters.AddWithValue("@realizo", realizo);
+                    Comando.Parameters.AddWithValue("@cve_pedido", cvePedido);
 
                     //Para saber si la inserción se hizo correctamente
                     int i = Comando.ExecuteNonQuery();
