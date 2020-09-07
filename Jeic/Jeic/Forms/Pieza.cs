@@ -398,29 +398,6 @@
         }
 
         /// <summary>
-        /// The Pieza_FormClosing.
-        /// </summary>
-        /// <param name="sender">The sender<see cref="object"/>.</param>
-        /// <param name="e">The e<see cref="FormClosingEventArgs"/>.</param>
-        private void Pieza_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (e.CloseReason == CloseReason.UserClosing)
-            {
-                MessageBOX pregunta = new MessageBOX(4, "¿Los datos son correctos?");
-                dynamic result = pregunta.ShowDialog();
-                if (result == DialogResult.OK)
-                {
-                    this.DialogResult = DialogResult.OK;
-                }
-
-                if (result == DialogResult.No)
-                {
-                    e.Cancel = true;
-                }
-            }
-        }
-
-        /// <summary>
         /// The txtCostoSinIVA_KeyPress.
         /// </summary>
         /// <param name="sender">The sender<see cref="object"/>.</param>
@@ -607,7 +584,12 @@
                 else if (chbOtroProveedor.Checked == false && chbOtroProveedor.Text != "Modificar")
                     datosPieza[6] = cbProveedores.Text.Trim().ToUpper();
 
-                this.Close();
+                MessageBOX mes = new MessageBOX(4, "¿Los datos son correctos?");
+                if (mes.ShowDialog() == DialogResult.OK)
+                {
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
             }
         }
 

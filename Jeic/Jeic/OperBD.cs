@@ -2921,13 +2921,13 @@ namespace Refracciones
             return resultado;
         }
 
-        public void registrarFechaBaja(string clavePedido, string claveSiniestro, string nombrePieza, int ordenCaptrura)
+        //REGISTRA Y ACTUALIZA LA FECHA DE BAJA EN PEDIDO
+        public void registrarFechaBaja(string clavePedido, string claveSiniestro, string nombrePieza, int ordenCaptrura, DateTime fechaBaja)
         {
             try
             {
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
-                    DateTime fechaBaja = DateTime.Now;
                     int cveVenta = claveVenta(clavePedido, claveSiniestro);
                     int cvePieza = clavePieza(nombrePieza);
                     nuevaConexion.Open();
@@ -2937,6 +2937,7 @@ namespace Refracciones
                     Comando.Parameters.AddWithValue("@cve_pieza", cvePieza);
                     Comando.Parameters.AddWithValue("@ordenCaptura", ordenCaptrura);
                     Comando.ExecuteNonQuery();
+                    nuevaConexion.Close();
                 }
             }
             catch (Exception EX)
@@ -3293,7 +3294,7 @@ namespace Refracciones
             //{
             using (SqlConnection nuevaConexion = Conexion.conexion())
             {
-
+                nuevaConexion.Open();
                 Comando = new SqlCommand("INSERT INTO CLIENTE " + "(cve_nombre, dias_espera) " + "VALUES (@cve_nombre, @dias_espera) ", nuevaConexion);
                 Comando.Parameters.AddWithValue("@cve_nombre", nombreCliente);
                 Comando.Parameters.AddWithValue("@dias_espera", diasEspera);
