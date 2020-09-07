@@ -20,6 +20,12 @@ namespace Refracciones.Forms
             InitializeComponent();
         }
 
+        public string claveSiniestroPedido = "";
+        public string marcaPedido = "";
+        public string vehiculoPedido = "";
+        public string anioPedido = "";
+        public int indicadorPedido = 0;
+
         private void Siniestro_Load(object sender, EventArgs e)
         {
             //Colocar ICONO
@@ -27,7 +33,8 @@ namespace Refracciones.Forms
 
             //Carga los datos de las marcas de vehículos en el combobox
             cbMarca.DataSource = operacion.MarcasRegistradas(1).Tables[0].DefaultView;
-            cbMarca.ValueMember = "marca";
+            cbMarca.ValueMember = "cve_marca";
+            cbMarca.DisplayMember = "marca";
             //dtpYear.Hide();
             lblIngreseNombre.Hide();
             txtNombreVehiculoNuevo.Hide();
@@ -39,6 +46,20 @@ namespace Refracciones.Forms
 
             if (txtClaveSiniestro.Text != "Escriba clave del siniestro")
                 txtClaveSiniestro.Enabled = false;
+
+            if(indicadorPedido == 1)
+            {
+                //Carga los datos de las marcas de vehículos en el combobox
+                cbMarca.DataSource = operacion.MarcasRegistradas(1).Tables[0];
+                cbMarca.ValueMember = "cve_marca";
+                cbMarca.DisplayMember = "marca";
+                cbMarca.SelectedValue = operacion.indexMarcasRegistradas(marcaPedido);
+
+                txtClaveSiniestro.Text = claveSiniestroPedido;
+                txtClaveSiniestro.Enabled = false;
+                cbVehiculo.SelectedValue = vehiculoPedido;
+                dtpYear.Text = "01/12/"+anioPedido;
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -325,6 +346,10 @@ namespace Refracciones.Forms
             //Carga los datos de los modelos de vehículos en el combobox
             cbVehiculo.DataSource = operacion.VehiculosRegistrados(cbMarca.Text.Trim()).Tables[0].DefaultView;
             cbVehiculo.ValueMember = "modelo";
+            if(cbVehiculo.Items.Count == 0)
+            {
+                cbVehiculo.Text = "";
+            }
         }
 
         private void cbMarca_KeyPress(object sender, KeyPressEventArgs e)
@@ -370,7 +395,7 @@ namespace Refracciones.Forms
                     e.Cancel = true;
                     errorProvider1.SetError(cbVehiculo, "Favor de seleccionar un modelo");
                 }
-                else if (string.IsNullOrEmpty(operacion.existeVehiculo(cbVehiculo.Text.Trim())))
+                else if (string.IsNullOrEmpty(operacion.existeVehiculo(cbMarca.Text.Trim())) && cbVehiculo.Text.Length != 0)
                 {
                     e.Cancel = true;
                     errorProvider1.SetError(cbVehiculo, "Favor de seleccionar un modelo existente");

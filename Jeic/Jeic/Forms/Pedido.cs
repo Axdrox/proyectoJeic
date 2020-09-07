@@ -146,6 +146,7 @@ namespace Refracciones.Forms
             {
                 //Agregar columna estado combobox a DGV
                 columnaCombobox();
+                btnModificarSiniestro.Hide();
             }
 
             //Colocar ICONO
@@ -821,7 +822,7 @@ namespace Refracciones.Forms
                         DateTime dtFechaPromesa = dtpFechaPromesa.Value.Date;
                         if (actualizar != 1)
                         {
-                            //Registrar lo correspondiente a siniestro
+                            //Registrar lo correspondiente a VEHICULO
                             if (nuevoMarca == true)
                                 operacion.registroMarca(lblMarca.Text.Trim());
                             if (nuevoVehiculo == true)
@@ -831,11 +832,11 @@ namespace Refracciones.Forms
                                 operacion.registroVehiculo(lblVehiculo.Text.Trim(), lblAnio.Text.Trim(), lblMarca.Text.Trim());
                             }
 
+                            //Registrar lo correspondiente a SINIESTRO
                             if (!string.IsNullOrEmpty(operacion.existeClaveSiniestro(lblClaveSiniestro.Text)) && lblClaveSiniestro.Text.Substring(0, 5) == "JEIC-")
                             {
                                 lblClaveSiniestro.Text = "JEIC-" + operacion.TotalSiniestro().ToString();
                             }
-
                             operacion.registrarSiniestro(lblVehiculo.Text.Trim(), lblClaveSiniestro.Text.Trim(), txtComentarioSiniestro.Text.Trim(), lblAnio.Text);
 
                             calcularDGV();
@@ -849,6 +850,17 @@ namespace Refracciones.Forms
                         }
                         else // ACTUALIZAR PEDIDO
                         {
+                            //Registrar lo correspondiente a VEHICULO
+                            if (nuevoMarca == true)
+                                operacion.registroMarca(lblMarca.Text.Trim());
+                            if (nuevoVehiculo == true)
+                                operacion.registroVehiculo(lblVehiculo.Text.Trim(), lblAnio.Text.Trim(), lblMarca.Text.Trim());
+                            else if (nuevoVehiculo == false && string.IsNullOrEmpty(operacion.existeAnioVehiculo(lblVehiculo.Text.Trim(), lblAnio.Text.Trim())))
+                            {
+                                operacion.registroVehiculo(lblVehiculo.Text.Trim(), lblAnio.Text.Trim(), lblMarca.Text.Trim());
+                            }
+
+                            //ACTUALIZAR lo correspondiente a SINIESTRO
                             operacion.actualizarSiniestro(lblVehiculo.Text.Trim(), lblClaveSiniestro.Text.Trim(), txtComentarioSiniestro.Text.Trim(), Convert.ToInt32(lblAnio.Text));
 
                             calcularDGV();
@@ -2422,17 +2434,28 @@ namespace Refracciones.Forms
             }
         }//LLAVE FINAL DE BTNGENERARPDF
 
-        public enum PositionEnum : int { Any = 1 }
-
-        private void dgvPedido_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
+        private void btnModificarSiniestro_Click(object sender, EventArgs e)
         {
-            //e.Row.Cells["Estado"].Value = PositionEnum.Any;
-            //e.Row.Cells["dataGridViewStatusCombobox"].Value = 1;
-        }
+            Siniestro siniestro = new Siniestro();
+            siniestro.claveSiniestroPedido = lblClaveSiniestro.Text;
+            siniestro.marcaPedido = lblMarca.Text;
+            siniestro.vehiculoPedido = lblVehiculo.Text;
+            siniestro.anioPedido = lblAnio.Text;
+            siniestro.indicadorPedido = 1;
 
-        private void dgvPedido_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
-        {
-            //dgvPedido.Rows[0].Cells["dataGridViewStatusCombobox"].Value = 1;
+            if (siniestro.ShowDialog() == DialogResult.OK)
+            {
+                nuevoVehiculo = siniestro.otroVehiculo;
+                nuevoMarca = siniestro.otroMarca;
+                lblVehiculo.Text = siniestro.vehiculoSiniestro;
+                lblAnio.Text = siniestro.anioSiniestro;
+                lblMarca.Text = siniestro.marcaSiniestro;
+                this.ActiveControl = txtComentarioSiniestro;
+                if (siniestro.comentario == "Agregue un comentario")
+                    txtComentarioSiniestro.Text = "Sin comentario por el momento";
+                else
+                    txtComentarioSiniestro.Text = siniestro.comentario;
+            }
         }
     }
 }

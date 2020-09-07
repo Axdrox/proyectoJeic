@@ -2955,7 +2955,7 @@ namespace Refracciones
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     nuevaConexion.Open();
-                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT  veh.modelo FROM VEHICULO veh INNER JOIN MARCA mar ON veh.cve_marca = mar.cve_marca WHERE mar.marca = @marca", nuevaConexion);// WHERE modelo NOT LIKE 'PARTICULAR%'
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT veh.modelo FROM VEHICULO veh INNER JOIN MARCA mar ON veh.cve_marca = mar.cve_marca WHERE mar.marca = @marca AND mar.estado = 1 AND veh.estado = 1", nuevaConexion);// WHERE modelo NOT LIKE 'PARTICULAR%'
                     dataAdapter.SelectCommand.Parameters.AddWithValue("@marca", marca);
                     dataAdapter.Fill(dataSet, "VEHICULO");
                     nuevaConexion.Close();
@@ -2984,7 +2984,7 @@ namespace Refracciones
                     }
                     else if (x == 1)
                     {
-                        SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT marca FROM MARCA WHERE estado = 1", nuevaConexion);//  WHERE marca NOT LIKE 'PARTICULAR%'
+                        SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT * FROM MARCA WHERE estado = 1", nuevaConexion);//  WHERE marca NOT LIKE 'PARTICULAR%'
                         dataAdapter.Fill(dataSet, "MARCA");
                     }
 
@@ -4061,6 +4061,28 @@ namespace Refracciones
             return index;
         }
 
+        //Obtiene el index marca para poner su valor por default en el combobox de SINIESTRO al agregar editar datos 
+        public int indexMarcasRegistradas(string marca)
+        {
+            int index = 0;
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("SELECT cve_marca FROM MARCA WHERE marca = @marca", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@marca", marca);
+                    index = Convert.ToInt32(Comando.ExecuteScalar());
+                    nuevaConexion.Close();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return index;
+        }
+
         //-------------OBTENER  AÑO A PARTIR DEL VEHÍCULO
         public string anioVehiculo(string modelo)
         {
@@ -4378,7 +4400,7 @@ namespace Refracciones
         }
 
         //VALIDAR SI EXISTE UN MISMO REGISTRO DE VEHÍCULO PARA EVITAR DUPLICADOS, ETC.
-        public string existeVehiculo(string modelo)
+        public string existeVehiculo(string marca)
         {
             string resultado = "";
             try
@@ -4386,8 +4408,8 @@ namespace Refracciones
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     nuevaConexion.Open();
-                    Comando = new SqlCommand("SELECT cve_vehiculo FROM VEHICULO WHERE modelo = @modelo", nuevaConexion);
-                    Comando.Parameters.AddWithValue("@modelo", modelo);
+                    Comando = new SqlCommand("SELECT veh.modelo FROM VEHICULO veh INNER JOIN MARCA mar ON veh.cve_marca = mar.cve_marca WHERE mar.marca = @marca AND mar.estado = 1", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@marca", marca);
 
                     //Para saber si en realidad existe, de lo contrario devuelve un string vacío
                     if (Comando.ExecuteScalar() == null) { }
@@ -4556,25 +4578,37 @@ namespace Refracciones
             {
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
-                    int claveVehiculo = 0;
+                    int claveVehiculoPasado = 0;
+                    int claveVehiculoActual = 0;
                     int claveEstado = 0;
 
                     nuevaConexion.Open();
-                    //Obteniendo la clave del vehículo
+                    //Obteniendo la clave del vehículo pasado
+                    Comando = new SqlCommand("SELECT cve_vehiculo FROM SINIESTRO WHERE cve_siniestro = @cve_siniestro", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@cve_siniestro", claveSiniestro);
+                    Lector = Comando.ExecuteReader();
+                    if (Lector.Read())
+                    {
+                        claveVehiculoPasado = (int)Lector["cve_vehiculo"];
+                    }
+                    Lector.Close();
+
+                    //Obteniendo la clave del vehículo acutal
                     Comando = new SqlCommand("SELECT cve_vehiculo FROM VEHICULO WHERE modelo = @modelo AND anio = @anio", nuevaConexion);
-                    Comando.Parameters.AddWithValue("@modelo", modelo.Trim());
+                    Comando.Parameters.AddWithValue("@modelo", modelo);
                     Comando.Parameters.AddWithValue("@anio", anio);
                     Lector = Comando.ExecuteReader();
                     if (Lector.Read())
                     {
-                        claveVehiculo = (int)Lector["cve_vehiculo"];
+                        claveVehiculoActual = (int)Lector["cve_vehiculo"];
                     }
                     Lector.Close();
 
                     //Insertando los datos en la tabla SINIESTRO
-                    Comando = new SqlCommand("UPDATE SINIESTRO SET comentario = @comentario WHERE cve_siniestro = @cve_siniestro AND cve_vehiculo = @cve_vehiculo", nuevaConexion);
+                    Comando = new SqlCommand("UPDATE SINIESTRO SET cve_vehiculo = @cveVehiculoActual, comentario = @comentario WHERE cve_siniestro = @cve_siniestro AND cve_vehiculo = @cveVehiculoPasado", nuevaConexion);
                     Comando.Parameters.AddWithValue("@cve_siniestro", claveSiniestro.Trim());
-                    Comando.Parameters.AddWithValue("@cve_vehiculo", claveVehiculo);
+                    Comando.Parameters.AddWithValue("@cveVehiculoPasado", claveVehiculoPasado);
+                    Comando.Parameters.AddWithValue("@cveVehiculoActual", claveVehiculoActual);
                     Comando.Parameters.AddWithValue("@comentario", comentario.Trim());
 
                     //Para saber si la inserción se hizo correctamente
@@ -4584,8 +4618,6 @@ namespace Refracciones
                     {
                         //MessageBOX.SHowDialog(3, "Siniestro actualizado correctamente");
                     }
-                    else
-                        MessageBOX.SHowDialog(2, "Problemas al actualizar siniestro");
                 }
             }
             catch (Exception EX)
