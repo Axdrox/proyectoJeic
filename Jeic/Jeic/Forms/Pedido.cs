@@ -2125,8 +2125,7 @@ namespace Refracciones.Forms
                         DateTime dtFechaPromesa = dtpFechaPromesa.Value.Date;
                         if (actualizar != 1)
                         {
-                            //Registrar lo correspondiente a siniestro
-                            string estadoSiniestro = "";
+                            //Registrar lo correspondiente a VEHICULO
                             if (nuevoMarca == true)
                                 operacion.registroMarca(lblMarca.Text.Trim());
                             if (nuevoVehiculo == true)
@@ -2136,17 +2135,17 @@ namespace Refracciones.Forms
                                 operacion.registroVehiculo(lblVehiculo.Text.Trim(), lblAnio.Text.Trim(), lblMarca.Text.Trim());
                             }
 
+                            //Registrar lo correspondiente a SINIESTRO
                             if (!string.IsNullOrEmpty(operacion.existeClaveSiniestro(lblClaveSiniestro.Text)) && lblClaveSiniestro.Text.Substring(0, 5) == "JEIC-")
                             {
                                 lblClaveSiniestro.Text = "JEIC-" + operacion.TotalSiniestro().ToString();
                             }
-
                             operacion.registrarSiniestro(lblVehiculo.Text.Trim(), lblClaveSiniestro.Text.Trim(), txtComentarioSiniestro.Text.Trim(), lblAnio.Text);
 
                             calcularDGV();
 
                             //AGREGANDO DATOS A VENTA
-                            operacion.registrarVenta(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(), taller, vendedor, /*dtFechaBaja,*/ valuador, destino, totalCosto, subtotalPrecio, totalPrecio, dtFechaAsignacion, dtFechaPromesa, utilidad);//, utilidad
+                            operacion.registrarVenta(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(), taller, vendedor, valuador, destino, totalCosto, subtotalPrecio, totalPrecio, dtFechaAsignacion, dtFechaPromesa, utilidad);
 
                             //REGISTRANDO PEDIDO
                             registrarPedido();
@@ -2155,12 +2154,23 @@ namespace Refracciones.Forms
                         }
                         else // ACTUALIZAR PEDIDO
                         {
+                            //Registrar lo correspondiente a VEHICULO
+                            if (nuevoMarca == true)
+                                operacion.registroMarca(lblMarca.Text.Trim());
+                            if (nuevoVehiculo == true)
+                                operacion.registroVehiculo(lblVehiculo.Text.Trim(), lblAnio.Text.Trim(), lblMarca.Text.Trim());
+                            else if (nuevoVehiculo == false && string.IsNullOrEmpty(operacion.existeAnioVehiculo(lblVehiculo.Text.Trim(), lblAnio.Text.Trim())))
+                            {
+                                operacion.registroVehiculo(lblVehiculo.Text.Trim(), lblAnio.Text.Trim(), lblMarca.Text.Trim());
+                            }
+
+                            //ACTUALIZAR lo correspondiente a SINIESTRO
                             operacion.actualizarSiniestro(lblVehiculo.Text.Trim(), lblClaveSiniestro.Text.Trim(), txtComentarioSiniestro.Text.Trim(), Convert.ToInt32(lblAnio.Text));
 
                             calcularDGV();
 
                             //AGREGANDO DATOS A VENTA
-                            operacion.actualizarVenta(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(), taller, vendedor, valuador, destino, totalCosto, subtotalPrecio, totalPrecio, dtFechaAsignacion, dtFechaPromesa, utilidad);
+                            operacion.actualizarVenta(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(), taller, vendedor, valuador, destino, totalCosto, subtotalPrecio, totalPrecio, dtFechaAsignacion, dtFechaPromesa, utilidad);//, utilidad
                             actualizarPedido();
                             g = 1;
                             this.DialogResult = DialogResult.OK;

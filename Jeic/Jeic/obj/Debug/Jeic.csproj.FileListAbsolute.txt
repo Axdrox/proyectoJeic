@@ -290,7 +290,6 @@ C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\D
 C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.CopyComplete
 C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.exe
 C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.pdb
-C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csprojAssemblyReference.cache
 C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\bin\Debug\Jeic.exe.config
 C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\bin\Debug\Jeic.exe
 C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\bin\Debug\Jeic.pdb

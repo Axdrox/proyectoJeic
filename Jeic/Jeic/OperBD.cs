@@ -1338,7 +1338,7 @@ namespace Refracciones
             {
                 using (SqlConnection nuevacon = Conexion.conexion())
                 {
-                    da = new SqlDataAdapter(string.Format("SELECT ven.cve_pedido,cli.cve_nombre,ta.nombre,v.nombre,veh.modelo,ven.fecha_asignacion,ven.fecha_promesa,pi.nombre,p.cantidad,p.costo_neto,pro.nombre, m.marca,veh.anio FROM pedido p LEFT OUTER JOIN ventas ven ON ven.cve_venta=p.cve_venta LEFT OUTER JOIN valuador va ON va.cve_valuador=ven.cve_valuador LEFT OUTER JOIN cliente cli ON cli.cve_valuador=va.cve_valuador  LEFT OUTER JOIN taller ta ON ta.cve_taller=ven.cve_taller LEFT OUTER JOIN vendedor v ON v.cve_vendedor=ven.cve_vendedor LEFT OUTER JOIN siniestro si ON si.cve_siniestro=ven.cve_siniestro LEFT OUTER JOIN vehiculo veh ON veh.cve_vehiculo=si.cve_vehiculo LEFT OUTER JOIN marca m ON veh.cve_marca = m.cve_marca LEFT OUTER JOIN pieza pi ON pi.cve_pieza=p.cve_pieza LEFT OUTER JOIN proveedor pro ON pro.cve_proveedor =p.cve_proveedor where ven.cve_pedido='{0}' ORDER BY p.ordenCaptura ASC", cve_Pedido), nuevacon);
+                    da = new SqlDataAdapter(string.Format("SELECT ven.cve_pedido,cli.cve_nombre,ta.nombre,v.nombre,veh.modelo,ven.fecha_asignacion,ven.fecha_promesa,pi.nombre,p.cantidad,p.costo_neto,pro.nombre, m.marca,veh.anio FROM pedido p LEFT OUTER JOIN ventas ven ON ven.cve_venta=p.cve_venta LEFT OUTER JOIN valuador va ON va.cve_valuador=ven.cve_valuador LEFT OUTER JOIN cliente cli ON cli.cve_nombre = va.cve_cliente  LEFT OUTER JOIN taller ta ON ta.cve_taller=ven.cve_taller LEFT OUTER JOIN vendedor v ON v.cve_vendedor=ven.cve_vendedor LEFT OUTER JOIN siniestro si ON si.cve_siniestro=ven.cve_siniestro LEFT OUTER JOIN vehiculo veh ON veh.cve_vehiculo=si.cve_vehiculo LEFT OUTER JOIN marca m ON veh.cve_marca = m.cve_marca LEFT OUTER JOIN pieza pi ON pi.cve_pieza=p.cve_pieza LEFT OUTER JOIN proveedor pro ON pro.cve_proveedor =p.cve_proveedor where ven.cve_pedido='{0}' ORDER BY p.ordenCaptura ASC", cve_Pedido), nuevacon);
                     dt = new DataTable();
                     da.Fill(dt);
                     dgv.DataSource = dt;
@@ -1360,7 +1360,7 @@ namespace Refracciones
             {
                 using (SqlConnection nuevacon = Conexion.conexion())
                 {
-                    Comando = new SqlCommand(string.Format("SELECT COUNT(p.cve_pieza) FROM PEDIDO p LEFT OUTER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta  LEFT OUTER JOIN PIEZA pi ON p.cve_pieza = pi.cve_pieza  LEFT OUTER JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE c ON c.cve_valuador = v.cve_valuador LEFT OUTER JOIN TALLER t ON t.cve_taller = ven.cve_taller LEFT OUTER JOIN ENTREGA e ON p.cve_entrega = e.cve_entrega LEFT OUTER JOIN SINIESTRO si ON si.cve_siniestro=ven.cve_siniestro LEFT OUTER JOIN VEHICULO veh ON veh.cve_vehiculo=si.cve_vehiculo where ven.cve_pedido='{0}'", cve_ped), nuevacon);
+                    Comando = new SqlCommand(string.Format("SELECT COUNT(p.cve_pieza) FROM PEDIDO p LEFT OUTER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta  LEFT OUTER JOIN PIEZA pi ON p.cve_pieza = pi.cve_pieza  LEFT OUTER JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE c ON c.cve_nombre = v.cve_cliente LEFT OUTER JOIN TALLER t ON t.cve_taller = ven.cve_taller LEFT OUTER JOIN ENTREGA e ON p.cve_entrega = e.cve_entrega LEFT OUTER JOIN SINIESTRO si ON si.cve_siniestro=ven.cve_siniestro LEFT OUTER JOIN VEHICULO veh ON veh.cve_vehiculo=si.cve_vehiculo where ven.cve_pedido='{0}'", cve_ped), nuevacon);
                     nuevacon.Open();
                     Lector = Comando.ExecuteReader();
 
@@ -1572,7 +1572,7 @@ namespace Refracciones
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     nuevaConexion.Open();
-                    Comando = new SqlCommand("SELECT c.dias_espera FROM VENTAS ven JOIN VALUADOR val ON ven.cve_valuador = val.cve_valuador JOIN CLIENTE c ON val.cve_valuador = c.cve_valuador WHERE ven.cve_siniestro = @cve_siniestro AND ven.cve_pedido = @cve_pedido", nuevaConexion);
+                    Comando = new SqlCommand("SELECT c.dias_espera FROM VENTAS ven JOIN VALUADOR val ON ven.cve_valuador = val.cve_valuador JOIN CLIENTE c ON val.cve_cliente = c.cve_nombre WHERE ven.cve_siniestro = @cve_siniestro AND ven.cve_pedido = @cve_pedido", nuevaConexion);
                     Comando.Parameters.Add("@cve_siniestro", SqlDbType.NVarChar, 50);
                     Comando.Parameters.Add("@cve_pedido", SqlDbType.NVarChar, 50);
 
