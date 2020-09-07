@@ -241,7 +241,7 @@ namespace Refracciones.Forms
             cbVendedor.ValueMember = "nombre";
 
             //Carga los datos registros de clientes/aseguradoras en el combobox
-            cbAseguradora.DataSource = operacion.AseguradorasRegistradas(1).Tables[0].DefaultView;
+            cbAseguradora.DataSource = operacion.ClientesRegistrados(1).Tables[0].DefaultView;
             cbAseguradora.ValueMember = "cve_nombre";
 
             //Carga los datos registros de talleres en el combobox
@@ -737,25 +737,25 @@ namespace Refracciones.Forms
             else if (chbModificarVendedor.Checked == false && chbModificarVendedor.Text == "Modificar")
                 vendedor = txtVendedor.Text.Trim().ToUpper();
 
-            if (chbOtroValuador.Checked == true && chbOtroValuador.Text == "Otro")
-            {
-                valuador = txtValuador.Text.Trim().ToUpper();
-                operacion.registrarValuador(valuador);
-            }
-            else if (chbOtroValuador.Checked == false && chbOtroValuador.Text == "Otro")
-                valuador = cbValuador.Text.Trim();
-            else if (chbOtroValuador.Checked == false && chbOtroValuador.Text == "Modificar")
-                valuador = txtValuador.Text.Trim().ToUpper();
-
             if (chbOtraAseguradora.Checked == true && chbOtraAseguradora.Text == "Otro")
             {
                 aseguradora = txtAseguradora.Text.Trim().ToUpper();
-                operacion.registrarCliente(aseguradora, valuador, Convert.ToInt32(txtDiasEspera.Text.Trim()));
+                operacion.registrarCliente(aseguradora, Convert.ToInt32(txtDiasEspera.Text.Trim()));
             }
             else if (chbOtraAseguradora.Checked == false && chbOtraAseguradora.Text == "Otro")
                 aseguradora = cbAseguradora.Text.Trim();
             else if (chbOtraAseguradora.Checked == false && chbOtraAseguradora.Text == "Modificar")
                 aseguradora = txtAseguradora.Text.Trim().ToUpper();
+
+            if (chbOtroValuador.Checked == true && chbOtroValuador.Text == "Otro")
+            {
+                valuador = txtValuador.Text.Trim().ToUpper();
+                operacion.registrarValuador(valuador, aseguradora);
+            }
+            else if (chbOtroValuador.Checked == false && chbOtroValuador.Text == "Otro")
+                valuador = cbValuador.Text.Trim();
+            else if (chbOtroValuador.Checked == false && chbOtroValuador.Text == "Modificar")
+                valuador = txtValuador.Text.Trim().ToUpper();
 
             if (chbOtroTaller.Checked == true && chbOtroTaller.Text == "Otro")
             {

@@ -3256,7 +3256,7 @@ namespace Refracciones
         }
 
         //---------------- ASEGURADORAS/CLIENTES REGISTRADAS
-        public DataSet AseguradorasRegistradas(int x)
+        public DataSet ClientesRegistrados(int x)
         {
             DataSet dataSet = new DataSet();
             try
@@ -3286,26 +3286,16 @@ namespace Refracciones
         }
 
         //---------------- INSERTAR UN NUEVO CLIENTE
-        public int registrarCliente(string nombreCliente, string nombreValuador, int diasEspera)
+        public int registrarCliente(string nombreCliente, int diasEspera)
         {
             int i = 0; int cve_valuador = 0;
             //try
             //{
             using (SqlConnection nuevaConexion = Conexion.conexion())
             {
-                nuevaConexion.Open();
-                Comando = new SqlCommand("SELECT cve_valuador FROM VALUADOR WHERE nombre = @nombre", nuevaConexion);
-                Comando.Parameters.AddWithValue("@nombre", nombreValuador);
-                Lector = Comando.ExecuteReader();
-                if (Lector.Read())
-                {
-                    cve_valuador = (int)Lector["cve_valuador"];
-                }
-                Lector.Close();
 
-                Comando = new SqlCommand("INSERT INTO CLIENTE " + "(cve_nombre, cve_valuador, dias_espera) " + "VALUES (@cve_nombre, @cve_valuador, @dias_espera) ", nuevaConexion);
+                Comando = new SqlCommand("INSERT INTO CLIENTE " + "(cve_nombre, dias_espera) " + "VALUES (@cve_nombre, @dias_espera) ", nuevaConexion);
                 Comando.Parameters.AddWithValue("@cve_nombre", nombreCliente);
-                Comando.Parameters.AddWithValue("@cve_valuador", cve_valuador);
                 Comando.Parameters.AddWithValue("@dias_espera", diasEspera);
 
                 //Para saber si la inserción se hizo correctamente
@@ -3351,7 +3341,7 @@ namespace Refracciones
         }
 
         //-------------VALUADORES REGISTRADOS
-        public DataSet ValuadoresRegistrados(string nombreAseguradora)
+        public DataSet ValuadoresRegistrados(string nombreCliente)
         {
             DataSet dataSet = new DataSet();
             SqlDataAdapter dataAdapter = new SqlDataAdapter();
@@ -3361,17 +3351,17 @@ namespace Refracciones
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     nuevaConexion.Open();
-                    Comando = new SqlCommand("SELECT cve_valuador FROM CLIENTE WHERE cve_nombre = @cve_nombre", nuevaConexion);
+                    /*Comando = new SqlCommand("SELECT cve_valuador FROM CLIENTE WHERE cve_nombre = @cve_nombre", nuevaConexion);
                     Comando.Parameters.AddWithValue("@cve_nombre", nombreAseguradora.Trim());
                     Lector = Comando.ExecuteReader();
                     if (Lector.Read())
                     {
                         cveValuador = (int)Lector["cve_valuador"];
                     }
-                    Lector.Close();
+                    Lector.Close();*/
 
-                    Comando = new SqlCommand("SELECT nombre FROM VALUADOR WHERE cve_valuador = @cve_valuador", nuevaConexion);
-                    Comando.Parameters.AddWithValue("@cve_valuador", cveValuador);
+                    Comando = new SqlCommand("SELECT nombre FROM VALUADOR WHERE cve_cliente = @cve_cliente AND estado = 1", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@cve_cliente", nombreCliente);
                     dataAdapter.SelectCommand = Comando;
                     dataAdapter.Fill(dataSet, "VALUADOR");
                     nuevaConexion.Close();
@@ -3385,7 +3375,7 @@ namespace Refracciones
         }
 
         //---------------- INSERTAR UN NUEVO VALUADOR
-        public int registrarValuador(string nombre)
+        public int registrarValuador(string nombre, string cveCliente)
         {
             int i = 0;
             try
@@ -3393,8 +3383,9 @@ namespace Refracciones
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     nuevaConexion.Open();
-                    Comando = new SqlCommand("INSERT INTO VALUADOR " + "(nombre) " + "VALUES (@nombre) ", nuevaConexion);
+                    Comando = new SqlCommand("INSERT INTO VALUADOR " + "(nombre, cve_cliente) " + "VALUES (@nombre, @cve_cliente) ", nuevaConexion);
                     Comando.Parameters.AddWithValue("@nombre", nombre);
+                    Comando.Parameters.AddWithValue("@cve_cliente", cveCliente);
 
                     //Para saber si la inserción se hizo correctamente
                     i = Comando.ExecuteNonQuery();

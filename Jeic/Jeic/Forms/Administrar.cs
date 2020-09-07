@@ -382,7 +382,7 @@ namespace Refracciones.Forms
                         cmb4.Enabled = false; cmb4.Visible = false;
                         cmb5.Enabled = false; cmb5.Visible = false;
                         txt1.Text = ""; 
-                        cmb3.DataSource = oper.AseguradorasRegistradas(0).Tables[0].DefaultView;
+                        cmb3.DataSource = oper.ClientesRegistrados(0).Tables[0].DefaultView;
                         cmb3.ValueMember = "cve_nombre";
                         lbl1.Text = "Nombre:";
                         lbl2.Text = "Días de espera:";
@@ -643,8 +643,8 @@ namespace Refracciones.Forms
                             else if (oper.existeCliente(txt1.Text.Trim()) == "")
                             {
                                 errorP.Clear();
-                                oper.registrarValuador(txt3.Text.Trim().ToUpper());
-                                oper.registrarCliente(txt1.Text.Trim().ToUpper(), txt3.Text.Trim().ToUpper(), Int32.Parse(txt2.Text.Trim()));
+                                oper.registrarCliente(txt1.Text.Trim().ToUpper(), Int32.Parse(txt2.Text.Trim()));
+                                oper.registrarValuador(txt3.Text.Trim().ToUpper(), txt1.Text.Trim().ToUpper());
                                 txt1.Text = ""; txt2.Text = ""; txt3.Text = "";
                             }
                             else
