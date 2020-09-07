@@ -60,4 +60,4 @@ C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\R
 C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Release\Jeic.csproj.CopyComplete
 C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Release\Jeic.exe
 C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Release\Jeic.pdb
-C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Release\Jeic.csprojAssemblyReference.cache
+C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Release\Jeic.Forms.FechaBaja.resources
