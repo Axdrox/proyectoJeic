@@ -301,21 +301,21 @@ namespace Refracciones.Forms
                 chbModificarVendedor.Text = "Modificar";
                 chbModificarVendedor.Enabled = true;
 
-                chbOtraAseguradora.Enabled = true;
-                chbOtraAseguradora.Text = "Modificar";
-                cbAseguradora.Hide();
-                txtAseguradora.Text = operacion.Cliente(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
-                txtAseguradora.Enabled = false;
-
-                //Carga los datos registros de valuadores en el combobox
-                cbValuador.DataSource = operacion.ValuadoresRegistrados(txtAseguradora.Text.Trim()).Tables[0].DefaultView;
-                cbValuador.ValueMember = "nombre";
-
                 chbOtroValuador.Enabled = true;
                 chbOtroValuador.Text = "Modificar";
                 cbValuador.Hide();
                 txtValuador.Text = operacion.Valuador(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
                 txtValuador.Enabled = false;
+
+                chbOtraAseguradora.Enabled = true;
+                chbOtraAseguradora.Text = "Modificar";
+                cbAseguradora.Hide();
+                txtAseguradora.Text = operacion.Cliente(txtValuador.Text);
+                txtAseguradora.Enabled = false;
+
+                //Carga los datos registros de valuadores en el combobox
+                cbValuador.DataSource = operacion.ValuadoresRegistrados(txtAseguradora.Text.Trim()).Tables[0].DefaultView;
+                cbValuador.ValueMember = "nombre";
 
                 chbOtroTaller.Enabled = true;
                 chbOtroTaller.Text = "Modificar";
@@ -1697,10 +1697,10 @@ namespace Refracciones.Forms
         {
             if (chbOtroValuador.Checked == true && chbOtroValuador.Text != "Modificar")
             {
-                if (!string.IsNullOrEmpty(operacion.existeValuador(txtValuador.Text.Trim().ToUpper())))
+                if (!string.IsNullOrEmpty(operacion.existeValuador(txtValuador.Text.Trim().ToUpper(), cbAseguradora.Text.Trim())))
                 {
                     e.Cancel = true;
-                    errorProvider1.SetError(txtValuador, "Cliente ya existente");
+                    errorProvider1.SetError(txtValuador, "Valuador ya existente");
                 }
                 else if (txtValuador.Text.Trim() == "Escriba nombre del valuador")
                 {
@@ -1932,7 +1932,7 @@ namespace Refracciones.Forms
                     e.Cancel = true;
                     errorProvider1.SetError(cbValuador, "Favor de seleccionar un valuador");
                 }
-                else if (string.IsNullOrEmpty(operacion.existeValuador(cbValuador.Text.Trim())))
+                else if (string.IsNullOrEmpty(operacion.existeValuador(cbValuador.Text.Trim(), cbAseguradora.Text.Trim())))
                 {
                     e.Cancel = true;
                     errorProvider1.SetError(cbValuador, "Favor de seleccionar un valuador existente");

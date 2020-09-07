@@ -3406,7 +3406,7 @@ namespace Refracciones
         }
 
         //VALIDAR SI EXISTE UN MISMO REGISTRO DE VALUADOR PARA EVITAR DUPLICADOS, ETC.
-        public string existeValuador(string nombre)
+        public string existeValuador(string nombre, string cveCliente)
         {
             string resultado = "";
             try
@@ -3414,8 +3414,9 @@ namespace Refracciones
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     nuevaConexion.Open();
-                    Comando = new SqlCommand("SELECT nombre FROM VALUADOR WHERE nombre = @nombre", nuevaConexion);
+                    Comando = new SqlCommand("SELECT nombre FROM VALUADOR WHERE nombre = @nombre AND cve_cliente = @cve_cliente", nuevaConexion);
                     Comando.Parameters.AddWithValue("@nombre", nombre);
+                    Comando.Parameters.AddWithValue("@cve_cliente", cveCliente);
 
                     //Para saber si en realidad existe, de lo contrario devuelve un string vacío
                     if (Comando.ExecuteScalar() == null) { }
@@ -4118,7 +4119,7 @@ namespace Refracciones
         }
 
         //------------- OBTENER ASEGURADORA/CLIENTE EN PARTICULAR DE ACUERDO A CLAVES PEDIDO & SINIESTRO
-        public string Cliente(string clavePedido, string claveSiniestro)
+        public string Cliente(string valuador)
         {
             string cliente = "";
             try
@@ -4127,9 +4128,8 @@ namespace Refracciones
                 {
                     nuevaConexion.Open();
                     //CORREGIR BUGSOTE, ESTA RARO DICE BRYAN
-                    Comando = new SqlCommand("SELECT cli.cve_nombre FROM VENTAS ven INNER JOIN VALUADOR val ON ven.cve_valuador = val.cve_valuador INNER JOIN CLIENTE cli ON val.cve_valuador = cli.cve_valuador WHERE ven.cve_pedido = @cve_pedido AND ven.cve_siniestro = @cve_siniestro", nuevaConexion);
-                    Comando.Parameters.AddWithValue("@cve_pedido", clavePedido);
-                    Comando.Parameters.AddWithValue("@cve_siniestro", claveSiniestro);
+                    Comando = new SqlCommand("SELECT cve_nombre FROM CLIENTE cli INNER JOIN VALUADOR val ON val.cve_cliente = cli.cve_nombre WHERE val.nombre = @nombreValuador", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@nombreValuador", valuador);
                     Lector = Comando.ExecuteReader();
                     if (Lector.Read())
                     {
