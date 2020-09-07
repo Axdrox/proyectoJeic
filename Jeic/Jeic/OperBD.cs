@@ -2955,7 +2955,7 @@ namespace Refracciones
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     nuevaConexion.Open();
-                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT veh.modelo FROM VEHICULO veh INNER JOIN MARCA mar ON veh.cve_marca = mar.cve_marca WHERE mar.marca = @marca AND mar.estado = 1 AND veh.estado = 1", nuevaConexion);// WHERE modelo NOT LIKE 'PARTICULAR%'
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT DISTINCT veh.modelo FROM VEHICULO veh INNER JOIN MARCA mar ON veh.cve_marca = mar.cve_marca WHERE mar.marca = @marca AND mar.estado = 1 AND veh.estado = 1", nuevaConexion);// WHERE modelo NOT LIKE 'PARTICULAR%'
                     dataAdapter.SelectCommand.Parameters.AddWithValue("@marca", marca);
                     dataAdapter.Fill(dataSet, "VEHICULO");
                     nuevaConexion.Close();
