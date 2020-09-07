@@ -5412,7 +5412,7 @@ namespace Refracciones
                     //Para saber si la inserción se hizo correctamente
                     int i = Comando.ExecuteNonQuery();
                     nuevaConexion.Close();
-                    if (i == 1)
+                    /*if (i == 1)
                     {
                         MessageBOX.SHowDialog(3, "Se registró penalización correctamente");
                         nuevaConexion.Open();
@@ -5426,7 +5426,7 @@ namespace Refracciones
                             MessageBOX.SHowDialog(2, "Problemas al actualizar cantidad de pieza");
                     }
                     else
-                        MessageBOX.SHowDialog(2, "Problemas al registar penalización");
+                        MessageBOX.SHowDialog(2, "Problemas al registar penalización");*/
                     nuevaConexion.Close();
                 }
             }

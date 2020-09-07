@@ -1119,11 +1119,9 @@ namespace Refracciones.Forms
                                         piezaPenalizada += 1;
                                 }
                                 if (cantidad == 0)
-                                {
                                     MessageBOX.SHowDialog(2, "No es posible penalizar debido a que no hay cantidad suficiente");
-                                    if (piezaPenalizada != 0)
-                                        MessageBOX.SHowDialog(2, "La pieza ya se ha penalizado");
-                                }
+                                else if (piezaPenalizada != 0)
+                                    MessageBOX.SHowDialog(2, "La pieza ya se ha penalizado");
                                 else
                                 {
                                     penalizaciones.cantidad = cantidad;
@@ -1137,8 +1135,23 @@ namespace Refracciones.Forms
                                     cantidadPenalizada = penalizaciones.cantidadPenalizada;
                                     lblCantidadTotal.Text = (Convert.ToInt32(lblCantidadTotal.Text) - cantidadPenalizada).ToString();
 
-                                    //Actualizar estado de pieza
-                                    dgvPedido.Rows[indexPenalizacion].Cells["dataGridViewPenaltyButton"].Value = "Penalizado";
+                                    int indexActualizar = 0;
+                                    foreach (DataGridViewRow row in dgvPedido.Rows)
+                                    {
+                                        if (!string.IsNullOrEmpty(operacion.existeFechaBaja(txtClavePedido.Text, lblClaveSiniestro.Text, Convert.ToString(row.Cells["Pieza"].Value), indexActualizar)))
+                                            row.Cells["dataGridViewDarBajaButton"].Value = "Registrado";
+                                        else
+                                            row.Cells["dataGridViewDarBajaButton"].Value = "Dar de baja";
+
+                                        if (!string.IsNullOrEmpty(operacion.existePenalizacion(Convert.ToString(row.Cells["Pieza"].Value), txtClavePedido.Text, lblClaveSiniestro.Text, indexActualizar)))
+                                            row.Cells["dataGridViewPenaltyButton"].Value = "Penalizado";
+                                        else
+                                            row.Cells["dataGridViewPenaltyButton"].Value = "Penalizar";
+
+                                        //Carga los estados que se tienen de cada pieza
+                                        row.Cells["dataGridViewStatusCombobox"].Value = operacion.estadoSiniestroClaves(txtClavePedido.Text, lblClaveSiniestro.Text, row.Cells["Pieza"].Value.ToString(), indexActualizar);
+                                        indexActualizar++;
+                                    }
 
                                     int i = 0;
                                     foreach (DataGridViewRow row in dgvPedido.Rows)
@@ -1767,11 +1780,15 @@ namespace Refracciones.Forms
                             int index = 0;
                             foreach (DataGridViewRow row in dgvPedido.Rows)
                             {
-                                //Para poder desactivar los botones en caso de que ya se hayan dado de baja
                                 if (!string.IsNullOrEmpty(operacion.existeFechaBaja(txtClavePedido.Text, lblClaveSiniestro.Text, Convert.ToString(row.Cells["Pieza"].Value), index)))
                                     row.Cells["dataGridViewDarBajaButton"].Value = "Registrado";
                                 else
                                     row.Cells["dataGridViewDarBajaButton"].Value = "Dar de baja";
+
+                                if (!string.IsNullOrEmpty(operacion.existePenalizacion(Convert.ToString(row.Cells["Pieza"].Value), txtClavePedido.Text, lblClaveSiniestro.Text, index)))
+                                    row.Cells["dataGridViewPenaltyButton"].Value = "Penalizado";
+                                else
+                                    row.Cells["dataGridViewPenaltyButton"].Value = "Penalizar";
 
                                 //Carga los estados que se tienen de cada pieza
                                 row.Cells["dataGridViewStatusCombobox"].Value = operacion.estadoSiniestroClaves(txtClavePedido.Text, lblClaveSiniestro.Text, row.Cells["Pieza"].Value.ToString(), index);
