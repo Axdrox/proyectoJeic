@@ -32,6 +32,8 @@ namespace Refracciones.Forms
             this.ActiveControl = TxtClavePed;
             this.Icon = Resources.iconJeic;
             llenarDefaultDGV.defaultDGV(dvgPedido);
+            dvgPedido.Columns["VENTA"].Visible = false;// VENTA INDEX 9
+            dvgPedido.Columns["CVE"].Visible = false;// CVE INDEX 10
             menuStrip1.ForeColor = Color.White;
             int rol = ObtenerRol.Rol(Usuario.Text.Substring(9, Usuario.Text.Length - 9));
             switch (rol)

@@ -50,6 +50,8 @@ namespace Refracciones.Forms
             cve_pedido = dato2.Text.Substring(8, (dato2.Text.Length - 8));
             cve_siniestro = dato1.Text.Substring(11, dato1.Text.Length - 11);
             dgvDevolucion.DataSource = oper.Devolucion(cve_siniestro, cve_pedido);
+            dgvDevolucion.Columns["CLAVE VENTA"].Visible = false;// VENTA INDEX 11
+            dgvDevolucion.Columns["CVE"].Visible = false;// CVE INDEX 12
             menu.ForeColor = Color.White;
             /*count = oper.Total_Registros() +1 ;
             count2 = oper.Total_Registros2() + 1;*/

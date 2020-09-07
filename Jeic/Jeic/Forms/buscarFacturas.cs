@@ -27,11 +27,12 @@ namespace Refracciones.Forms
         {
             this.Icon = Resources.iconJeic;
             dgvFacturas.DataSource =  factura.buscarFacturass();
+            dgvFacturas.Columns["CVE"].Visible = false; //INDEX 17 CVE
         }
 
         private void dgvFacturas_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            int fila = Int32.Parse(e.RowIndex.ToString());
+            /*int fila = Int32.Parse(e.RowIndex.ToString());
             
             if (fila == -1) { }
             else if (e.ColumnIndex == -1)
@@ -57,7 +58,10 @@ namespace Refracciones.Forms
                     catch (Exception ex)
                     { MessageBox.Show("Ya tienes abierto el archivo"); }
                 }
-                else { MessageBOX.SHowDialog(2, "No se encontro un PDF"); ; }
+                else 
+                { 
+                    //MessageBOX.SHowDialog(2, "No se encontro un PDF"); 
+                }
                 if (factura.Buscar_factura_xml(cve_factura) != null)
                 {
                     File.WriteAllBytes(fullFilePath2, factura.Buscar_factura_xml(cve_factura));
@@ -97,7 +101,7 @@ namespace Refracciones.Forms
                     
                 }
                 
-            }
+            }*/
         }
 
         private void txtFactura_KeyUp(object sender, KeyEventArgs e)
@@ -145,5 +149,75 @@ namespace Refracciones.Forms
            
         }
 
+        private void dgvFacturas_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int fila = Int32.Parse(e.RowIndex.ToString());
+
+            if (fila == -1) { }
+            else if (e.ColumnIndex == -1)
+            {
+            }
+            else
+            {
+                string cve_factura = dgvFacturas.Rows[fila].Cells[0].Value.ToString();
+                string path = AppDomain.CurrentDomain.BaseDirectory;
+                string folder = path + "/temp/";
+                string fullFilePath = folder + factura.Nombre_Factura(cve_factura);
+                string fullFilePath2 = folder + factura.Nombre_Factura_xml(cve_factura);
+                if (!Directory.Exists(folder))
+                    Directory.CreateDirectory(folder);
+
+                if (factura.Buscar_factura(cve_factura) != null)
+                {
+                    try
+                    {
+                        File.WriteAllBytes(fullFilePath, factura.Buscar_factura(cve_factura));
+                        Process.Start(fullFilePath);
+                    }
+                    catch (Exception ex)
+                    { MessageBox.Show("Ya tienes abierto el archivo"); }
+                }
+                else { /*MessageBOX.SHowDialog(2, "No se encontro un PDF");*/ }
+                if (factura.Buscar_factura_xml(cve_factura) != null)
+                {
+                    File.WriteAllBytes(fullFilePath2, factura.Buscar_factura_xml(cve_factura));
+                    Process.Start(fullFilePath2);
+
+                }
+                else
+                { }
+
+                if (dgvFacturas.Rows[fila].Cells[1].Value.ToString() == "")
+                {
+
+                }
+                else
+                {
+                    if (dgvFacturas.Rows[fila].Cells[15].Value.ToString() != "")// SE CAMBIO 12 POR 15 YA QUE SE AGREGARON TRES CAMPOS A LA CONSULTA
+                    {
+
+                        refactura.dato1.Text = "SINIESTRO:" + " " + dgvFacturas.Rows[fila].Cells[1].Value.ToString();
+                        refactura.dato2.Text = "PEDIDO:" + " " + dgvFacturas.Rows[fila].Cells[2].Value.ToString();
+                        refactura.lblPieza.Text = refactura.lblPieza.Text + " " + dgvFacturas.Rows[fila].Cells[3].Value.ToString();
+                        refactura.lblcvePedidoidentity.Text = dgvFacturas.Rows[fila].Cells[17].Value.ToString();
+                        refactura.dato3.Text = "0";
+                        refactura.lblUsuario.Text = lblUsuario.Text;
+                        refactura.ShowDialog();
+                    }
+                    else
+                    {
+                        rfactura.dato1.Text = "SINIESTRO:" + " " + dgvFacturas.Rows[fila].Cells[1].Value.ToString();
+                        rfactura.dato2.Text = "PEDIDO:" + " " + dgvFacturas.Rows[fila].Cells[2].Value.ToString();
+                        rfactura.lblPieza.Text = rfactura.lblPieza.Text + " " + dgvFacturas.Rows[fila].Cells[3].Value.ToString();
+                        rfactura.lblcvePedidoidentity.Text = dgvFacturas.Rows[fila].Cells[17].Value.ToString();
+                        rfactura.dato3.Text = "0";
+                        rfactura.lblUsuario.Text = lblUsuario.Text;
+                        rfactura.ShowDialog();
+                    }
+
+                }
+
+            }
+        }
     }
 }

@@ -354,3 +354,4 @@ C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.
 C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.exe
 C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.pdb
 C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csprojAssemblyReference.cache
+C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.Forms.FechaBaja.resources

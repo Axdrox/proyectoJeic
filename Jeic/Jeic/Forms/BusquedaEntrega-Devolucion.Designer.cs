@@ -65,6 +65,7 @@
             this.dato3.Size = new System.Drawing.Size(56, 14);
             this.dato3.TabIndex = 0;
             this.dato3.Text = "FACTURA:";
+            this.dato3.Visible = false;
             // 
             // dataGridView1
             // 

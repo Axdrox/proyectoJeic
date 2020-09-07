@@ -120,6 +120,7 @@ namespace Refracciones.Forms
                     this.Close();
                 }
             }
+            lblPieza.Text = "PIEZA:";//PARA EVITAR ERROR EN BUSCAR FACTURA
         }
 
         private void btnAbrir_Click(object sender, EventArgs e)

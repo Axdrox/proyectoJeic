@@ -142,6 +142,7 @@ namespace Refracciones.Forms
                     this.Close();
                 }
             }
+            lblPieza.Text = "PIEZA:";//PARA EVITAR ERROR EN BUSCAR FACTURA
         }
 
         private void registrarRefactura_Load(object sender, EventArgs e)
