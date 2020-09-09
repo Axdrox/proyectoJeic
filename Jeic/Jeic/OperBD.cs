@@ -219,7 +219,7 @@ namespace Refracciones
         }
 
         //--------------------INGRESAR FACTURA PIEZA POR PIEZA--------------------
-        public string Registrar_factura(string cve_siniestro, string cve_pedido, string cve_factura, int cve_estado, decimal fact_sinIVA, decimal descuento, decimal fact_neto, DateTime fecha_ingreso, DateTime fecha_revision, DateTime fecha_pago, string nombre_factura, byte[] archivo, string nombre_xml, byte[] archivo_xml, string comentario, string realizo, string pieza, int cvePedidoIdentity)
+        public string Registrar_factura(string cve_factura, int cve_estado, decimal fact_sinIVA, decimal descuento, decimal fact_neto, DateTime fecha_ingreso, DateTime fecha_revision, DateTime fecha_pago, string nombre_factura, byte[] archivo, string nombre_xml, byte[] archivo_xml, string comentario, string realizo, string[] dat)
         {
             string mensaje = "Se inserto la factura";
             // try
@@ -291,8 +291,17 @@ namespace Refracciones
                 }
                 //MessageBox.Show(cve_siniestro.ToString());
                 //MessageBox.Show(cve_pedido.ToString());
-                comm = new SqlCommand(string.Format("UPDATE p SET p.cve_factura = '{0}' FROM PEDIDO p INNER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta INNER JOIN PIEZA pie ON pie.cve_pieza = p.cve_pieza WHERE ven.cve_siniestro = '{1}' AND ven.cve_pedido = '{2}' AND pie.nombre = '{3}' AND p.cve_pedido = {4}", cve_factura, cve_siniestro, cve_pedido, pieza, cvePedidoIdentity), nuevaConexion);
-                comm.ExecuteNonQuery();
+                //comm = new SqlCommand(string.Format("UPDATE p SET p.cve_factura = '{0}' FROM PEDIDO p INNER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta INNER JOIN PIEZA pie ON pie.cve_pieza = p.cve_pieza WHERE ven.cve_siniestro = '{1}' AND ven.cve_pedido = '{2}' AND pie.nombre = '{3}' AND p.cve_pedido = {4}", cve_factura, cve_siniestro, cve_pedido, pieza, cvePedidoIdentity), nuevaConexion);
+                int temp = 0;
+                for (int i = 0; i < dat.Length; i++)
+                {
+                    if(int.TryParse(dat[i] , out temp))
+                    {
+                        MessageBox.Show("I=" +i.ToString() +" cvepedido:" + dat[i]);
+                        comm = new SqlCommand(string.Format("UPDATE p SET p.cve_factura = '{0}' FROM PEDIDO p WHERE p.cve_pedido = {1}", cve_factura, int.Parse(dat[i])), nuevaConexion);
+                        comm.ExecuteNonQuery();
+                    }
+                }
                 nuevaConexion.Close();
             }
             // }
@@ -474,7 +483,7 @@ namespace Refracciones
 
         //----------------------------------------------------------------------------------------
         //--------------------INGRESAR REFACTURA PIEZA POR PIEZA--------------------
-        public string Registrar_Refactura(string cve_siniestro, string cve_pedido, string cve_factura, int cve_estado, string cve_refactura, decimal fact_sinIVA, decimal descuento, decimal fact_neto, decimal costo_refactura, DateTime fecha_refactura, DateTime fecha_ingreso, DateTime fecha_revision, DateTime fecha_pago, string nombre_factura, byte[] archivo, string nombre_xml, byte[] archivo_xml, string comentario, string realizo, string pieza, int cvePedidoIdentity)
+        public string Registrar_Refactura(string cve_factura, int cve_estado, string cve_refactura, decimal fact_sinIVA, decimal descuento, decimal fact_neto, decimal costo_refactura, DateTime fecha_refactura, DateTime fecha_ingreso, DateTime fecha_revision, DateTime fecha_pago, string nombre_factura, byte[] archivo, string nombre_xml, byte[] archivo_xml, string comentario, string realizo, string[] dat)
         {
             string mensaje = "Se inserto la factura";
             SqlCommand comm;
@@ -558,8 +567,17 @@ namespace Refracciones
                         Comando.ExecuteNonQuery();
                     }
 
-                    comm = new SqlCommand(string.Format("UPDATE p SET p.cve_factura = '{0}' FROM PEDIDO p INNER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta INNER JOIN PIEZA pie ON pie.cve_pieza = p.cve_pieza WHERE ven.cve_siniestro = '{1}' AND ven.cve_pedido = '{2}' AND pie.nombre = '{3}' AND p.cve_pedido = {4}", cve_factura, cve_siniestro, cve_pedido, pieza, cvePedidoIdentity), nuevaConexion);
-                    comm.ExecuteNonQuery();
+                    //comm = new SqlCommand(string.Format("UPDATE p SET p.cve_factura = '{0}' FROM PEDIDO p INNER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta INNER JOIN PIEZA pie ON pie.cve_pieza = p.cve_pieza WHERE ven.cve_siniestro = '{1}' AND ven.cve_pedido = '{2}' AND pie.nombre = '{3}' AND p.cve_pedido = {4}", cve_factura, cve_siniestro, cve_pedido, pieza, cvePedidoIdentity), nuevaConexion);
+                    int temp = 0;
+                    for (int i = 0; i < dat.Length; i++)
+                    {
+                        if (int.TryParse(dat[i], out temp))
+                        {
+                            MessageBox.Show("I=" + i.ToString() + " cvepedido:" + dat[i]);
+                            comm = new SqlCommand(string.Format("UPDATE p SET p.cve_factura = '{0}' FROM PEDIDO p WHERE p.cve_pedido = {1}", cve_factura, int.Parse(dat[i])), nuevaConexion);
+                            comm.ExecuteNonQuery();
+                        }
+                    }
                     cmd = new SqlCommand(string.Format("UPDATE FACTURA SET cve_refactura = '{0}' WHERE cve_factura = '{1}'", cve_factura, cve_refactura), nuevaConexion);
                     cmd.ExecuteNonQuery();
                     nuevaConexion.Close();
@@ -2792,7 +2810,64 @@ namespace Refracciones
             }
             return resultado;
         }
+        //---------------------------LLENAR DATOS EN DGV PARA ELEGIR PIEZAS A FACTURAR--------------------
+        public void productosFacturar(DataGridView dgv, int cve_venta)
+        {
+            
+            try
+            {
+                using (SqlConnection nuevacon = Conexion.conexion())
+                {
+                    da = new SqlDataAdapter(string.Format("SELECT pie.nombre AS 'PIEZA', p.cve_venta AS 'CVE VENTA', p.cve_pedido AS 'CVE PEDIDO'  FROM PEDIDO p LEFT OUTER JOIN PIEZA pie ON p.cve_pieza = pie.cve_pieza  WHERE p.cve_venta = {0} AND p.cve_factura IS NULL",cve_venta), nuevacon);
+                    nuevacon.Open();
+                    dt = new DataTable();
+                    da.Fill(dt);
+                    dgv.DataSource = dt;
+                    nuevacon.Close();
+                }
+                //Add a CheckBox Column to the DataGridView at the first position.
+                DataGridViewCheckBoxColumn checkBoxColumn = new DataGridViewCheckBoxColumn();
+                checkBoxColumn.HeaderText = "";
+                checkBoxColumn.Width = 30;
+                checkBoxColumn.Name = "checkBoxColumn";
+                dgv.Columns.Insert(0, checkBoxColumn);
+                dgv.Columns["CVE VENTA"].Visible = false;
+                dgv.Columns["CVE PEDIDO"].Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+        //---------------------------LLENAR DATOS EN DGV PARA ELEGIR PIEZAS A REFACTURAR--------------------
+        public void productosRefacturar(DataGridView dgv, int cve_venta)
+        {
 
+            try
+            {
+                using (SqlConnection nuevacon = Conexion.conexion())
+                {
+                    da = new SqlDataAdapter(string.Format("SELECT pie.nombre AS 'PIEZA', p.cve_venta AS 'CVE VENTA', p.cve_pedido AS 'CVE PEDIDO'  FROM PEDIDO p LEFT OUTER JOIN PIEZA pie ON p.cve_pieza = pie.cve_pieza  WHERE p.cve_venta = {0}", cve_venta), nuevacon);
+                    nuevacon.Open();
+                    dt = new DataTable();
+                    da.Fill(dt);
+                    dgv.DataSource = dt;
+                    nuevacon.Close();
+                }
+                //Add a CheckBox Column to the DataGridView at the first position.
+                DataGridViewCheckBoxColumn checkBoxColumn = new DataGridViewCheckBoxColumn();
+                checkBoxColumn.HeaderText = "";
+                checkBoxColumn.Width = 30;
+                checkBoxColumn.Name = "checkBoxColumn";
+                dgv.Columns.Insert(0, checkBoxColumn);
+                dgv.Columns["CVE VENTA"].Visible = false;
+                dgv.Columns["CVE PEDIDO"].Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
         //---------------------ALEX--------------------------------------------------------------------
 
         //VALIDAR SI EXISTE CLAVE PEDIDO

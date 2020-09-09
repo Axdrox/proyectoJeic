@@ -22,6 +22,7 @@ namespace Refracciones.Forms
         CultureInfo culture = new CultureInfo("en-US");
         string cve_siniestro;
         string cve_pedido;
+        public string[] dat;
         public registroFactura()
         {
             InitializeComponent();
@@ -111,7 +112,8 @@ namespace Refracciones.Forms
                 }
                 if (btnGuardar.Text == "Guardar")
                 {
-                    MessageBOX.SHowDialog(1, oper.Registrar_factura(cve_siniestro, cve_pedido, cve_factura, cve_estado, fact_sinIVA, descuento, fact_neto, fecha_ingreso, fecha_revision, fecha_pago, nombre_factura, file, nombre_xml, xml_file, comentario,lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9),lblPieza.Text.Substring(7,lblPieza.Text.Length - 7),int.Parse(lblcvePedidoidentity.Text)));
+                    //Antes de hacer factura con el dgv para seleccionarMessageBOX.SHowDialog(1, oper.Registrar_factura(cve_siniestro, cve_pedido, cve_factura, cve_estado, fact_sinIVA, descuento, fact_neto, fecha_ingreso, fecha_revision, fecha_pago, nombre_factura, file, nombre_xml, xml_file, comentario,lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9),lblPieza.Text.Substring(7,lblPieza.Text.Length - 7),int.Parse(lblcvePedidoidentity.Text)));
+                    MessageBOX.SHowDialog(1, oper.Registrar_factura(cve_factura, cve_estado, fact_sinIVA, descuento, fact_neto, fecha_ingreso, fecha_revision, fecha_pago, nombre_factura, file, nombre_xml, xml_file, comentario, lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9), dat));
                     this.Close();
                 }
                 else if (btnGuardar.Text == "Actualizar")
@@ -121,6 +123,8 @@ namespace Refracciones.Forms
                 }
             }
             lblPieza.Text = "PIEZA:";//PARA EVITAR ERROR EN BUSCAR FACTURA
+            dato1.Text = "SINIESTRO:";
+            dato2.Text = "PEDIDO:";
         }
 
         private void btnAbrir_Click(object sender, EventArgs e)
@@ -145,14 +149,15 @@ namespace Refracciones.Forms
         private void registroFactura_Load(object sender, EventArgs e)
         {
             //Colocar ICONO
-            this.Icon = Resources.iconJeic;
-            
+                this.Icon = Resources.iconJeic;
+            //MessageBox.Show(dat[0] + " " + dat[1] + " " + dat[2] );
+            //MessageBox.Show(dat.Length.ToString());
                 cve_pedido = dato2.Text.Substring(8, (dato2.Text.Length - 8));
                 cve_siniestro = dato1.Text.Substring(11, dato1.Text.Length - 11);
-                txtFacturasinIVA.Text = (oper.venta_total(cve_pedido, cve_siniestro,lblPieza.Text.Substring(7,(lblPieza.Text.Length-7)))).ToString();
+                //Comentado 08/09/2020txtFacturasinIVA.Text = (oper.venta_total(cve_pedido, cve_siniestro,lblPieza.Text.Substring(7,(lblPieza.Text.Length-7)))).ToString();
                 cmbEstadoFactura.SelectedIndex = 0;
                 dtpFechaPago.Value = dtpFechaIngreso.Value.AddDays(oper.Dias_Espera(cve_siniestro, cve_pedido));
-                if (dato3.Text == "0")
+                if (dato3.Text == "0")// significa que se va a modificar una factura existente
                 {
                     dataGridView1.DataSource = oper.Actualizar_Factura(oper.Clave_Fact(cve_siniestro, cve_pedido, lblPieza.Text.Substring(7, (lblPieza.Text.Length - 7)), int.Parse(lblcvePedidoidentity.Text)));
                     if (dataGridView1.Rows[0].Cells[1].Value.ToString() == "1") { cmbEstadoFactura.SelectedIndex = 0; }
@@ -265,6 +270,8 @@ namespace Refracciones.Forms
         private void pbClose_Click(object sender, EventArgs e)
         {
             lblPieza.Text = "PIEZA:";
+            dato1.Text = "SINIESTRO:";
+            dato2.Text = "PEDIDO:";
             this.Close();
         }
 

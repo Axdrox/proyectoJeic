@@ -483,7 +483,7 @@
             // dato3
             // 
             this.dato3.AutoSize = true;
-            this.dato3.Location = new System.Drawing.Point(594, 0);
+            this.dato3.Location = new System.Drawing.Point(513, 26);
             this.dato3.Name = "dato3";
             this.dato3.Size = new System.Drawing.Size(35, 13);
             this.dato3.TabIndex = 63;
@@ -537,6 +537,7 @@
             this.bunifuGradientPanel1.Controls.Add(this.lblUsuario);
             this.bunifuGradientPanel1.Controls.Add(this.pbMinimize);
             this.bunifuGradientPanel1.Controls.Add(this.pbClose);
+            this.bunifuGradientPanel1.Controls.Add(this.dato3);
             this.bunifuGradientPanel1.GradientBottomLeft = System.Drawing.Color.Black;
             this.bunifuGradientPanel1.GradientBottomRight = System.Drawing.Color.RoyalBlue;
             this.bunifuGradientPanel1.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
@@ -670,7 +671,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dato3);
             this.Controls.Add(this.dato2);
             this.Controls.Add(this.dato1);
             this.Controls.Add(this.dataGridView1);

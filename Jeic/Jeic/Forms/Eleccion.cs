@@ -16,6 +16,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using iText.Kernel.Colors;
 using DocumentFormat.OpenXml.Presentation;
+using Jeic.Forms;
 
 namespace Refracciones
 {
@@ -37,15 +38,27 @@ namespace Refracciones
             //ABRIR FORMULARIO DE FACTURA
             if (cve_factura == "0")
             {
-                registroFactura factura = new registroFactura();
-                factura.dato1.Text = factura.dato1.Text + " " + dato_1.Text;
-                factura.dato2.Text = factura.dato2.Text + " " + dato_2.Text;
+                Factura fact = new Factura();
+                fact.lblcveVenta.Text = lblCve_venta.Text;
+                fact.dato1.Text = fact.dato1.Text + " " + dato_1.Text;//SINIESTRO
+                fact.dato2.Text = fact.dato2.Text + " " + dato_2.Text;//PEDIDO
+                fact.lblPieza.Text = fact.lblPieza.Text + " " + lblPieza.Text;
+                fact.lblcvePedidoidentity.Text = lblcvePedidoidentity.Text;
+                fact.dato3.Text = "1";// te abre el formulario en modo registrar
+                fact.lblFoRF.Text = "0";// 0 significa factura y 1 significa refactura
+                //LBLUSUARIO
+                fact.lblUsuario.Text = lblUsuario.Text;
+                DialogResult = fact.ShowDialog();
+                
+                /*registroFactura factura = new registroFactura();
+                factura.dato1.Text = factura.dato1.Text + " " + dato_1.Text;//SINIESTRO
+                factura.dato2.Text = factura.dato2.Text + " " + dato_2.Text;//PEDIDO
                 factura.lblPieza.Text = factura.lblPieza.Text + " " + lblPieza.Text;
                 factura.lblcvePedidoidentity.Text = lblcvePedidoidentity.Text;
-                factura.dato3.Text = "1";
+                factura.dato3.Text = "1";// te abre el formulario en modo registrar
                 //LBLUSUARIO
                 factura.lblUsuario.Text = lblUsuario.Text;
-                DialogResult  =  factura.ShowDialog();
+                //DialogResult  =  factura.ShowDialog();*/
             }
             else if (cve_factura != "0" && cve_refactura == "0")
             {
@@ -54,7 +67,7 @@ namespace Refracciones
                 factura.dato2.Text = factura.dato2.Text + " " + dato_2.Text;
                 factura.lblPieza.Text = factura.lblPieza.Text + " " + lblPieza.Text;
                 factura.lblcvePedidoidentity.Text = lblcvePedidoidentity.Text;
-                factura.dato3.Text = "0";
+                factura.dato3.Text = "0";// te abre el formulario en modo actualizar
                 //LBLUSUARIO
                 factura.lblUsuario.Text = lblUsuario.Text;
                 DialogResult = factura.ShowDialog();
@@ -66,7 +79,7 @@ namespace Refracciones
                 refactura.dato2.Text = refactura.dato2.Text + " " + dato_2.Text;
                 refactura.lblPieza.Text = refactura.lblPieza.Text + " " + lblPieza.Text;
                 refactura.lblcvePedidoidentity.Text = lblcvePedidoidentity.Text;
-                refactura.dato3.Text = "0";
+                refactura.dato3.Text = "0";// te abre el formulario en modo actualizar
                 //LBLUSUARIO
                 refactura.lblUsuario.Text = lblUsuario.Text;
                 DialogResult = DialogResult = refactura.ShowDialog();
@@ -75,8 +88,19 @@ namespace Refracciones
 
         private void btnRefactura_Click(object sender, EventArgs e)
         {
+            Factura fact = new Factura();
+            fact.lblcveVenta.Text = lblCve_venta.Text;
+            fact.dato1.Text = fact.dato1.Text + " " + dato_1.Text;//SINIESTRO
+            fact.dato2.Text = fact.dato2.Text + " " + dato_2.Text;//PEDIDO
+            fact.lblPieza.Text = fact.lblPieza.Text + " " + lblPieza.Text;
+            fact.lblcvePedidoidentity.Text = lblcvePedidoidentity.Text;
+            fact.dato3.Text = dato_3.Text;// manda la clave a refacturar
+            fact.lblFoRF.Text = "1";// 0 significa factura y 1 significa refactura
+            //LBLUSUARIO
+            fact.lblUsuario.Text = lblUsuario.Text;
+            DialogResult = fact.ShowDialog();
             //ABRIR FORMULARIO DE REFACTURA
-            registrarRefactura refactura = new registrarRefactura();
+            /*registrarRefactura refactura = new registrarRefactura();
             refactura.dato1.Text = refactura.dato1.Text + " " + dato_1.Text;
             refactura.dato2.Text = refactura.dato2.Text + " " + dato_2.Text;
             refactura.txtRefactura.Text = dato_3.Text;
@@ -84,7 +108,7 @@ namespace Refracciones
             refactura.lblcvePedidoidentity.Text = lblcvePedidoidentity.Text;
             //LBLUSUARIO
             refactura.lblUsuario.Text = lblUsuario.Text;
-            DialogResult = DialogResult = refactura.ShowDialog();
+            DialogResult = DialogResult = refactura.ShowDialog();*/
         }
 
         private void btnDevolucionEntrega_Click(object sender, EventArgs e)

@@ -408,9 +408,9 @@
             this.dato3.AutoSize = true;
             this.dato3.Location = new System.Drawing.Point(539, 33);
             this.dato3.Name = "dato3";
-            this.dato3.Size = new System.Drawing.Size(35, 13);
+            this.dato3.Size = new System.Drawing.Size(13, 13);
             this.dato3.TabIndex = 15;
-            this.dato3.Text = "label1";
+            this.dato3.Text = "0";
             this.dato3.Visible = false;
             // 
             // label1
@@ -470,7 +470,7 @@
             this.lblcvePedidoidentity.AutoSize = true;
             this.lblcvePedidoidentity.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(30)))), ((int)(((byte)(37)))));
             this.lblcvePedidoidentity.ForeColor = System.Drawing.Color.White;
-            this.lblcvePedidoidentity.Location = new System.Drawing.Point(265, 345);
+            this.lblcvePedidoidentity.Location = new System.Drawing.Point(262, 345);
             this.lblcvePedidoidentity.Name = "lblcvePedidoidentity";
             this.lblcvePedidoidentity.Size = new System.Drawing.Size(103, 14);
             this.lblcvePedidoidentity.TabIndex = 84;
@@ -483,7 +483,7 @@
             this.lblPieza.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(31)))), ((int)(((byte)(39)))));
             this.lblPieza.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPieza.ForeColor = System.Drawing.Color.White;
-            this.lblPieza.Location = new System.Drawing.Point(374, 33);
+            this.lblPieza.Location = new System.Drawing.Point(371, 33);
             this.lblPieza.Name = "lblPieza";
             this.lblPieza.Size = new System.Drawing.Size(39, 14);
             this.lblPieza.TabIndex = 32;

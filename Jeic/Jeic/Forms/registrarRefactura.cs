@@ -20,6 +20,7 @@ namespace Refracciones.Forms
         CultureInfo culture = new CultureInfo("en-US");
         string cve_siniestro;
         string cve_pedido;
+        public string[] dat;
         public registrarRefactura()
         {
             InitializeComponent();
@@ -133,7 +134,7 @@ namespace Refracciones.Forms
                 }
                 if (btnGuardar.Text == "Guardar")
                 {
-                    MessageBOX.SHowDialog(1, factura.Registrar_Refactura(cve_siniestro, cve_pedido, cve_factura, cve_estado, cve_refactura, fact_sinIVA, descuento, fact_neto, costo_refactura, fecha_refactura, fecha_ingreso, fecha_revision, fecha_pago, nombre_factura, file, nombre_xml, xml_file, comentario, lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9),lblPieza.Text.Substring(7, lblPieza.Text.Length - 7),int.Parse(lblcvePedidoidentity.Text)));
+                    MessageBOX.SHowDialog(1, factura.Registrar_Refactura(cve_factura, cve_estado, cve_refactura, fact_sinIVA, descuento, fact_neto, costo_refactura, fecha_refactura, fecha_ingreso, fecha_revision, fecha_pago, nombre_factura, file, nombre_xml, xml_file, comentario, lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9),dat));
                     this.Close();
                 }
                 else if (btnGuardar.Text == "Actualizar")
@@ -143,6 +144,8 @@ namespace Refracciones.Forms
                 }
             }
             lblPieza.Text = "PIEZA:";//PARA EVITAR ERROR EN BUSCAR FACTURA
+            dato1.Text = "SINIESTRO:";
+            dato2.Text = "PEDIDO:";
         }
 
         private void registrarRefactura_Load(object sender, EventArgs e)
@@ -151,10 +154,10 @@ namespace Refracciones.Forms
             this.Icon = Resources.iconJeic;
             cve_pedido = dato2.Text.Substring(8, (dato2.Text.Length - 8)); 
             cve_siniestro = dato1.Text.Substring(11, dato1.Text.Length - 11);
-            txtFacturasinIVA.Text = (factura.venta_total(cve_pedido, cve_siniestro,lblPieza.Text.Substring(7,lblPieza.Text.Length - 7))).ToString();
+            //Comentado 08/09/2020txtFacturasinIVA.Text = (factura.venta_total(cve_pedido, cve_siniestro,lblPieza.Text.Substring(7,lblPieza.Text.Length - 7))).ToString();
             dtpFechaPago.Value = dtpFechaIngreso.Value.AddDays(factura.Dias_Espera(cve_siniestro, cve_pedido));
             cmbEstadoFactura.SelectedIndex = 0;
-            if (dato3.Text == "0")
+            if (dato3.Text == "0")// entra en modo actualizar
             {
                 try
                 {
@@ -313,6 +316,8 @@ namespace Refracciones.Forms
         private void pbClose_Click(object sender, EventArgs e)
         {
             lblPieza.Text = "PIEZA:";
+            dato1.Text = "SINIESTRO:";
+            dato2.Text = "PEDIDO:";
             this.Close();
         }
 

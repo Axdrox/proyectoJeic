@@ -179,6 +179,12 @@
     <Compile Include="Forms\exportarExcel.Designer.cs">
       <DependentUpon>exportarExcel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Factura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Factura.Designer.cs">
+      <DependentUpon>Factura.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FechaBaja.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -281,6 +287,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\exportarExcel.resx">
       <DependentUpon>exportarExcel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Factura.resx">
+      <DependentUpon>Factura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FechaBaja.resx">
       <DependentUpon>FechaBaja.cs</DependentUpon>
