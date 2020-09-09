@@ -907,7 +907,7 @@ namespace Refracciones
                     cmd.Parameters["@cve_venta"].Value = cve_venta;
                     cmd.Parameters["@cve_pieza"].Value = cve_pieza;
                     cmd.Parameters["@cve_pedido"].Value = cvePedidoIdentity;
-                    MessageBOX.SHowDialog(3, "Entregado a Tiempo!");
+                    //MessageBOX.SHowDialog(3, "Entregado a Tiempo!");
                 }
 
                 cmd.ExecuteNonQuery();
