@@ -359,15 +359,15 @@
             // registrarEntregaDeTodoElPedidoToolStripMenuItem
             // 
             this.registrarEntregaDeTodoElPedidoToolStripMenuItem.Name = "registrarEntregaDeTodoElPedidoToolStripMenuItem";
-            this.registrarEntregaDeTodoElPedidoToolStripMenuItem.Size = new System.Drawing.Size(287, 22);
-            this.registrarEntregaDeTodoElPedidoToolStripMenuItem.Text = "Registrar entrega de todo el pedido ";
+            this.registrarEntregaDeTodoElPedidoToolStripMenuItem.Size = new System.Drawing.Size(378, 22);
+            this.registrarEntregaDeTodoElPedidoToolStripMenuItem.Text = "Registrar entrega de piezas faltantes de todo el pedido";
             this.registrarEntregaDeTodoElPedidoToolStripMenuItem.Click += new System.EventHandler(this.registrarEntregaDeTodoElPedidoToolStripMenuItem_Click);
             // 
             // registrarDevoluciónDeTodoElPedidoToolStripMenuItem
             // 
             this.registrarDevoluciónDeTodoElPedidoToolStripMenuItem.Name = "registrarDevoluciónDeTodoElPedidoToolStripMenuItem";
-            this.registrarDevoluciónDeTodoElPedidoToolStripMenuItem.Size = new System.Drawing.Size(287, 22);
-            this.registrarDevoluciónDeTodoElPedidoToolStripMenuItem.Text = "Registrar devolución de todo el pedido";
+            this.registrarDevoluciónDeTodoElPedidoToolStripMenuItem.Size = new System.Drawing.Size(378, 22);
+            this.registrarDevoluciónDeTodoElPedidoToolStripMenuItem.Text = "Registrar devolución de piezas entregadas del pedido";
             this.registrarDevoluciónDeTodoElPedidoToolStripMenuItem.Click += new System.EventHandler(this.registrarDevoluciónDeTodoElPedidoToolStripMenuItem_Click);
             // 
             // bunifuGradientPanel1

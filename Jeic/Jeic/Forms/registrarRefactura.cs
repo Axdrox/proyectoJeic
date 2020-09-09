@@ -135,12 +135,12 @@ namespace Refracciones.Forms
                 if (btnGuardar.Text == "Guardar")
                 {
                     factura.Registrar_Refactura(cve_factura, cve_estado, cve_refactura, fact_sinIVA, descuento, fact_neto, costo_refactura, fecha_refactura, fecha_ingreso, fecha_revision, fecha_pago, nombre_factura, file, nombre_xml, xml_file, comentario, lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9), dat);
-                    this.Close();
+                    this.DialogResult = DialogResult.OK;
                 }
                 else if (btnGuardar.Text == "Actualizar")
                 {
                     factura.Actualizar_Refactura(cve_factura, cve_estado, cve_refactura, fact_sinIVA, descuento, fact_neto, costo_refactura, fecha_refactura, fecha_ingreso, fecha_revision, fecha_pago, nombre_factura, file, nombre_xml, xml_file, comentario, lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9));
-                    this.Close();
+                    this.DialogResult = DialogResult.OK;
                 }
             }
             lblPieza.Text = "PIEZA:";//PARA EVITAR ERROR EN BUSCAR FACTURA
@@ -162,30 +162,30 @@ namespace Refracciones.Forms
                 try
                 {
                     dataGridView1.DataSource = factura.Actualizar_Factura(factura.Clave_Fact(cve_siniestro,cve_pedido, lblPieza.Text.Substring(7, lblPieza.Text.Length - 7), int.Parse(lblcvePedidoidentity.Text)));
+                    if (dataGridView1.Rows[0].Cells[1].Value.ToString() == "1") { cmbEstadoFactura.SelectedIndex = 0; }
+                    else if (dataGridView1.Rows[0].Cells[1].Value.ToString() == "2") { cmbEstadoFactura.SelectedIndex = 1; }
+                    else if (dataGridView1.Rows[0].Cells[1].Value.ToString() == "3") { cmbEstadoFactura.SelectedIndex = 2; }
+                    txtCve_Factura.Text = dataGridView1.Rows[0].Cells[0].Value.ToString();
+                    txtRefactura.Text = dataGridView1.Rows[0].Cells[2].Value.ToString();
+                    txtFacturasinIVA.Text = dataGridView1.Rows[0].Cells[3].Value.ToString();
+                    txtDescuento.Text = dataGridView1.Rows[0].Cells[4].Value.ToString();
+                    txtFacturaconIVA.Text = dataGridView1.Rows[0].Cells[5].Value.ToString();
+                    txtCostoRefactura.Text = dataGridView1.Rows[0].Cells[6].Value.ToString();
+                    dtpFechaRefacturacion.Value = DateTime.Parse(dataGridView1.Rows[0].Cells[7].Value.ToString());
+                    dtpFechaIngreso.Value = DateTime.Parse(dataGridView1.Rows[0].Cells[8].Value.ToString());
+                    dtpFechaRevision.Value = DateTime.Parse(dataGridView1.Rows[0].Cells[9].Value.ToString());
+                    dtpFechaPago.Value = DateTime.Parse(dataGridView1.Rows[0].Cells[10].Value.ToString());
+                    txtComentario.Text = dataGridView1.Rows[0].Cells[11].Value.ToString();
+                    txtCve_Factura.ReadOnly = true;
+                    btnGuardar.Text = "Actualizar";
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.ToString());
                 }
-                if (dataGridView1.Rows[0].Cells[1].Value.ToString() == "1") { cmbEstadoFactura.SelectedIndex = 0; }
-                else if (dataGridView1.Rows[0].Cells[1].Value.ToString() == "2") { cmbEstadoFactura.SelectedIndex = 1; }
-                else if (dataGridView1.Rows[0].Cells[1].Value.ToString() == "3") { cmbEstadoFactura.SelectedIndex = 2; }
-                txtCve_Factura.Text = dataGridView1.Rows[0].Cells[0].Value.ToString();
-                txtRefactura.Text = dataGridView1.Rows[0].Cells[2].Value.ToString();
-                txtFacturasinIVA.Text = dataGridView1.Rows[0].Cells[3].Value.ToString();
-                txtDescuento.Text = dataGridView1.Rows[0].Cells[4].Value.ToString();
-                txtFacturaconIVA.Text = dataGridView1.Rows[0].Cells[5].Value.ToString();
-                txtCostoRefactura.Text = dataGridView1.Rows[0].Cells[6].Value.ToString();
-                dtpFechaRefacturacion.Value = DateTime.Parse(dataGridView1.Rows[0].Cells[7].Value.ToString());
-                dtpFechaIngreso.Value = DateTime.Parse(dataGridView1.Rows[0].Cells[8].Value.ToString());
-                dtpFechaRevision.Value = DateTime.Parse(dataGridView1.Rows[0].Cells[9].Value.ToString());
-                dtpFechaPago.Value = DateTime.Parse(dataGridView1.Rows[0].Cells[10].Value.ToString());
-                txtComentario.Text = dataGridView1.Rows[0].Cells[11].Value.ToString();
-                txtCve_Factura.ReadOnly = true;
-                btnGuardar.Text = "Actualizar";
+                
             }
-            else
-            { }
+
         }
 
         private void txtRefactura_KeyPress(object sender, KeyPressEventArgs e)
@@ -318,7 +318,7 @@ namespace Refracciones.Forms
             lblPieza.Text = "PIEZA:";
             dato1.Text = "SINIESTRO:";
             dato2.Text = "PEDIDO:";
-            this.Close();
+            this.DialogResult = DialogResult.Cancel;
         }
 
         private void txtDescuento_TextChanged(object sender, EventArgs e)

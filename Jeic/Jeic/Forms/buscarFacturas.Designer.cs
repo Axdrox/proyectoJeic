@@ -34,9 +34,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtFactura = new System.Windows.Forms.TextBox();
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbEstadoFactura = new System.Windows.Forms.ComboBox();
+            this.txtFactura = new System.Windows.Forms.TextBox();
+            this.lblEstadoFact = new System.Windows.Forms.Label();
             this.lblUsuario = new System.Windows.Forms.Label();
             this.PanelFecha = new System.Windows.Forms.Panel();
             this.Fecha_in = new System.Windows.Forms.DateTimePicker();
@@ -68,8 +70,6 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.label1);
-            this.splitContainer1.Panel1.Controls.Add(this.txtFactura);
             this.splitContainer1.Panel1.Controls.Add(this.bunifuGradientPanel1);
             // 
             // splitContainer1.Panel2
@@ -79,37 +79,15 @@
             this.splitContainer1.SplitterDistance = 127;
             this.splitContainer1.TabIndex = 0;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(45)))));
-            this.label1.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(12, 26);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(113, 14);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Número de Factura:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // txtFactura
-            // 
-            this.txtFactura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.txtFactura.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtFactura.ForeColor = System.Drawing.Color.White;
-            this.txtFactura.Location = new System.Drawing.Point(130, 23);
-            this.txtFactura.Name = "txtFactura";
-            this.txtFactura.Size = new System.Drawing.Size(100, 20);
-            this.txtFactura.TabIndex = 0;
-            this.txtFactura.TextChanged += new System.EventHandler(this.txtFactura_TextChanged);
-            this.txtFactura.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFactura_KeyPress);
-            this.txtFactura.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtFactura_KeyUp);
-            // 
             // bunifuGradientPanel1
             // 
             this.bunifuGradientPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
             this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuGradientPanel1.Controls.Add(this.label1);
+            this.bunifuGradientPanel1.Controls.Add(this.cmbEstadoFactura);
+            this.bunifuGradientPanel1.Controls.Add(this.txtFactura);
+            this.bunifuGradientPanel1.Controls.Add(this.lblEstadoFact);
             this.bunifuGradientPanel1.Controls.Add(this.lblUsuario);
             this.bunifuGradientPanel1.Controls.Add(this.PanelFecha);
             this.bunifuGradientPanel1.Controls.Add(this.pbMinimize);
@@ -123,6 +101,62 @@
             this.bunifuGradientPanel1.Quality = 10;
             this.bunifuGradientPanel1.Size = new System.Drawing.Size(496, 389);
             this.bunifuGradientPanel1.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(45)))));
+            this.label1.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(3, 30);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(113, 14);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Número de Factura:";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // cmbEstadoFactura
+            // 
+            this.cmbEstadoFactura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.cmbEstadoFactura.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cmbEstadoFactura.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbEstadoFactura.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cmbEstadoFactura.ForeColor = System.Drawing.Color.White;
+            this.cmbEstadoFactura.FormattingEnabled = true;
+            this.cmbEstadoFactura.Items.AddRange(new object[] {
+            "PENDIENTE",
+            "PAGADA",
+            "CANCELADA"});
+            this.cmbEstadoFactura.Location = new System.Drawing.Point(354, 25);
+            this.cmbEstadoFactura.Name = "cmbEstadoFactura";
+            this.cmbEstadoFactura.Size = new System.Drawing.Size(121, 21);
+            this.cmbEstadoFactura.TabIndex = 80;
+            this.cmbEstadoFactura.SelectedIndexChanged += new System.EventHandler(this.cmbEstadoFactura_SelectedIndexChanged);
+            // 
+            // txtFactura
+            // 
+            this.txtFactura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.txtFactura.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtFactura.ForeColor = System.Drawing.Color.White;
+            this.txtFactura.Location = new System.Drawing.Point(122, 26);
+            this.txtFactura.Name = "txtFactura";
+            this.txtFactura.Size = new System.Drawing.Size(100, 20);
+            this.txtFactura.TabIndex = 0;
+            this.txtFactura.TextChanged += new System.EventHandler(this.txtFactura_TextChanged);
+            this.txtFactura.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFactura_KeyPress);
+            this.txtFactura.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtFactura_KeyUp);
+            // 
+            // lblEstadoFact
+            // 
+            this.lblEstadoFact.AutoSize = true;
+            this.lblEstadoFact.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(45)))));
+            this.lblEstadoFact.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEstadoFact.ForeColor = System.Drawing.Color.White;
+            this.lblEstadoFact.Location = new System.Drawing.Point(227, 30);
+            this.lblEstadoFact.Name = "lblEstadoFact";
+            this.lblEstadoFact.Size = new System.Drawing.Size(121, 14);
+            this.lblEstadoFact.TabIndex = 2;
+            this.lblEstadoFact.Text = "Estado de la Factura:";
             // 
             // lblUsuario
             // 
@@ -283,7 +317,6 @@
             this.Load += new System.EventHandler(this.buscarFacturas_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.buscarFacturas_KeyDown);
             this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
@@ -315,5 +348,7 @@
         private System.Windows.Forms.Label label4;
         private Bunifu.Framework.UI.BunifuDragControl moverFormulario;
         public System.Windows.Forms.Label lblUsuario;
+        private System.Windows.Forms.Label lblEstadoFact;
+        private System.Windows.Forms.ComboBox cmbEstadoFactura;
     }
 }

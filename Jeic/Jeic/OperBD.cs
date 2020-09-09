@@ -578,6 +578,10 @@ namespace Refracciones
                             comm.ExecuteNonQuery();
                         }
                     }
+                    //LIMPIAR LAS PIEZAS EN EL CAMPO CVE_FACTURA EN DONDE SE ENCONTRABA LA FACTURA A CANCELAR
+                    cmd = new SqlCommand(string.Format("UPDATE p SET p.cve_factura = NULL FROM PEDIDO p WHERE p.cve_factura = '{0}'", cve_refactura), nuevaConexion);
+                    cmd.ExecuteNonQuery();
+                    //ACTUALIZAR CVE_REFACTURA EN TABLA FACTURAS
                     cmd = new SqlCommand(string.Format("UPDATE FACTURA SET cve_refactura = '{0}', cve_estado = 3 WHERE cve_factura = '{1}'", cve_factura, cve_refactura), nuevaConexion);
                     cmd.ExecuteNonQuery();
                     nuevaConexion.Close();
@@ -693,10 +697,10 @@ namespace Refracciones
 
         //---------------------------------------------------------------------------------------------------------------
         //--------------------REGISTRAR DEVOLUCION ACTUALIZAR COLUMNA CANTIDAD Y ASIGNAR CVE DE DEVOLUCION CON FECHA PIEZA POR PIEZA--------------------
-        public string Registrar_Devolucion(string cve_siniestro, string cve_pedido, int cve_pieza, int cve_devolucion, int cantidad, DateTime fecha, int cantidadD, int cve_venta, string motivo, decimal penalizacion, string realizo, int cvePedidoIdentity)
+        public string Registrar_Devolucion(string cve_siniestro, string cve_pedido, int cve_pieza, /*int cve_devolucion,*/ int cantidad, DateTime fecha, int cantidadD, int cve_venta, string motivo, decimal penalizacion, string realizo, int cvePedidoIdentity)
         {
             string mensaje = "ERROR AL HACER LA DEVOLUCIÓN";
-
+            int cve_devolucion;
             using (SqlConnection nuevaConexion = Conexion.conexion())
             {
                 nuevaConexion.Open();
@@ -718,6 +722,8 @@ namespace Refracciones
                 Comando.Parameters["@realizo"].Value = realizo;
                 Comando.Parameters["@cve_pedido"].Value = cvePedidoIdentity;
                 Comando.ExecuteNonQuery();
+                Comando = new SqlCommand("SELECT TOP 1 cve_devolucion FROM DEVOLUCION ORDER BY cve_devolucion DESC", nuevaConexion);
+                cve_devolucion = int.Parse(Comando.ExecuteScalar().ToString());
                 SqlCommand cmd = new SqlCommand(string.Format("UPDATE p  SET  p.cve_devolucion = {0}, p.pzas_devolucion = {1} FROM PEDIDO p INNER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta WHERE ven.cve_siniestro = '{2}' AND ven.cve_pedido = '{3}' AND p.cve_pieza = {4} AND p.cve_pedido = {5}", cve_devolucion, cantidad, cve_siniestro, cve_pedido, cve_pieza, cvePedidoIdentity), nuevaConexion);
                 cmd.ExecuteNonQuery();
                 nuevaConexion.Close();
@@ -833,10 +839,11 @@ namespace Refracciones
 
         //----------------------------------------------------------------------------------------------------------------------------------
         //--------------------REGISTRAR ENTREGA ACTUALIZAR COLUMNA CANTIDAD Y ASIGNAR CVE DE ENTREGA CON FECHA PIEZA POR PIEZA--------------------
-        public string Registrar_Entrega(string cve_siniestro, string cve_pedido, int cve_pieza, int cve_entrega, int cantidad, DateTime fecha, int cantidadE, int cve_venta, DateTime fecha_asigancion, string realizo, int cvePedidoIdentity)
+        public string Registrar_Entrega(string cve_siniestro, string cve_pedido, int cve_pieza,/* int cve_entrega,*/ int cantidad, DateTime fecha, int cantidadE, int cve_venta, DateTime fecha_asigancion, string realizo, int cvePedidoIdentity)
         {
             string mensaje = "ERROR AL HACER LA ENTREGA";
             int dias_entrega = 0;
+            int cve_entrega;
             using (SqlConnection nuevaConexion = Conexion.conexion())
             {
                 nuevaConexion.Open();
@@ -855,7 +862,9 @@ namespace Refracciones
                 Comando.Parameters["@realizo"].Value = realizo;
                 Comando.Parameters["@cve_pedido"].Value = cvePedidoIdentity;
                 Comando.ExecuteNonQuery();
-
+                //VAMOS A OBTENER LA CLAVE DE ENTREGA DEL ULTIMO REGISTRO EN ENTREGA
+                Comando = new SqlCommand("SELECT TOP 1 cve_entrega FROM ENTREGA ORDER BY cve_entrega DESC", nuevaConexion);
+                cve_entrega =  int.Parse(Comando.ExecuteScalar().ToString());
                 //VAMOS A OBTENER LA DIFERENCIA DE DIAS ENTRE FECHA_ENTREGA Y FECHA_ASIGNACIÓN
                 Comando = new SqlCommand("SELECT DATEDIFF(DAY,@fecha_asignacion, @fecha)", nuevaConexion);
                 Comando.Parameters.AddWithValue("@fecha_asignacion", fecha_asigancion);
@@ -2243,14 +2252,14 @@ namespace Refracciones
             return dt;
         }
 
-        //--------------------LLENAR DATAGRID BUSCAR FACTURAS CON TEXBOX PIEZA POR PIEZA--------------------
-        public DataTable buscarFacturass(string cve_factura)
+        //--------------------LLENAR DATAGRID BUSCAR FACTURAS CON TEXBOX Y COMBOBOX PIEZA POR PIEZA--------------------
+        public DataTable buscarFacturass(string cve_factura, int cve_estado)
         {
             dt = new DataTable();
             using (SqlConnection nuevaConexion = Conexion.conexion())
             {
                 nuevaConexion.Open();
-                Comando = new SqlCommand(string.Format("SELECT TOP 250 fact.cve_factura AS 'FACTURA',ven.cve_siniestro AS 'SINIESTRO', ven.cve_pedido AS 'PEDIDO',pie.nombre AS 'PIEZA', p.cantidad AS 'CANTIDAD', fact.fact_sinIVA AS 'FACTURA SIN IVA',fact.descuento AS 'DESCUENTO',fact.fact_neto AS 'FACTURA NETO', fact.costo_refactura AS 'COSTO DE REFACTURA', fact.fecha_refactura AS 'FECHA DE REFACTURA',fact.fecha_ingreso AS 'FECHA DE INGRESO', fact.fecha_revision AS 'FECHA DE REVISIÓN',fact.fecha_pago AS 'FECHA DE PAGO', fact.comentario AS 'COMENTARIO',estfact.estado AS 'ESTADO DE LA FACTURA', fact.cve_refactura AS 'FACTURA ASOCIADA', fact.realizo AS 'REALIZADA POR', p.cve_pedido AS 'CVE' FROM FACTURA fact LEFT OUTER JOIN PEDIDO p ON p.cve_factura = fact.cve_factura LEFT OUTER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta LEFT OUTER JOIN PIEZA pie ON pie.cve_pieza = p.cve_pieza LEFT OUTER JOIN ESTADO_FACTURA estfact ON estfact.cve_estado = fact.cve_estado WHERE fact.cve_factura like '%{0}%'", cve_factura), nuevaConexion);
+                Comando = new SqlCommand(string.Format("SELECT TOP 250 fact.cve_factura AS 'FACTURA',ven.cve_siniestro AS 'SINIESTRO', ven.cve_pedido AS 'PEDIDO',pie.nombre AS 'PIEZA', p.cantidad AS 'CANTIDAD', fact.fact_sinIVA AS 'FACTURA SIN IVA',fact.descuento AS 'DESCUENTO',fact.fact_neto AS 'FACTURA NETO', fact.costo_refactura AS 'COSTO DE REFACTURA', fact.fecha_refactura AS 'FECHA DE REFACTURA',fact.fecha_ingreso AS 'FECHA DE INGRESO', fact.fecha_revision AS 'FECHA DE REVISIÓN',fact.fecha_pago AS 'FECHA DE PAGO', fact.comentario AS 'COMENTARIO',estfact.estado AS 'ESTADO DE LA FACTURA', fact.cve_refactura AS 'FACTURA ASOCIADA', fact.realizo AS 'REALIZADA POR', p.cve_pedido AS 'CVE' FROM FACTURA fact LEFT OUTER JOIN PEDIDO p ON p.cve_factura = fact.cve_factura LEFT OUTER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta LEFT OUTER JOIN PIEZA pie ON pie.cve_pieza = p.cve_pieza LEFT OUTER JOIN ESTADO_FACTURA estfact ON estfact.cve_estado = fact.cve_estado WHERE fact.cve_factura like '%{0}%' AND fact.cve_estado = {1}", cve_factura, cve_estado), nuevaConexion);
                 da = new SqlDataAdapter(Comando);
 
                 da.Fill(dt);
@@ -2285,6 +2294,22 @@ namespace Refracciones
             {
                 nuevaConexion.Open();
                 Comando = new SqlCommand(string.Format("SELECT TOP 250 fact.cve_factura AS 'FACTURA',ven.cve_siniestro AS 'SINIESTRO', ven.cve_pedido AS 'PEDIDO',pie.nombre AS 'PIEZA', p.cantidad AS 'CANTIDAD', fact.fact_sinIVA AS 'FACTURA SIN IVA',fact.descuento AS 'DESCUENTO',fact.fact_neto AS 'FACTURA NETO', fact.costo_refactura AS 'COSTO DE REFACTURA', fact.fecha_refactura AS 'FECHA DE REFACTURA',fact.fecha_ingreso AS 'FECHA DE INGRESO', fact.fecha_revision AS 'FECHA DE REVISIÓN',fact.fecha_pago AS 'FECHA DE PAGO', fact.comentario AS 'COMENTARIO',estfact.estado AS 'ESTADO DE LA FACTURA', fact.cve_refactura AS 'FACTURA ASOCIADA', fact.realizo AS 'REALIZADA POR', p.cve_pedido AS 'CVE' FROM FACTURA fact LEFT OUTER JOIN PEDIDO p ON p.cve_factura = fact.cve_factura LEFT OUTER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta LEFT OUTER JOIN PIEZA pie ON pie.cve_pieza = p.cve_pieza LEFT OUTER JOIN ESTADO_FACTURA estfact ON estfact.cve_estado = fact.cve_estado WHERE fact.fecha_ingreso BETWEEN '{0}' AND '{1}' ORDER BY fact.fecha_ingreso DESC", Fecha_inicio, fecha_fin), nuevaConexion);
+                da = new SqlDataAdapter(Comando);
+
+                da.Fill(dt);
+
+                nuevaConexion.Close();
+            }
+            return dt;
+        }
+        //--------------------LLENAR DATAGRID BUSCAR FACTURAS PIEZA POR PIEZA CON COMBOBOX--------------------
+        public DataTable buscarFacturass(int cve_estado)
+        {
+            dt = new DataTable();
+            using (SqlConnection nuevaConexion = Conexion.conexion())
+            {
+                nuevaConexion.Open();
+                Comando = new SqlCommand(string.Format("SELECT TOP 250 fact.cve_factura AS 'FACTURA',ven.cve_siniestro AS 'SINIESTRO', ven.cve_pedido AS 'PEDIDO',pie.nombre AS 'PIEZA', p.cantidad AS 'CANTIDAD', fact.fact_sinIVA AS 'FACTURA SIN IVA',fact.descuento AS 'DESCUENTO',fact.fact_neto AS 'FACTURA NETO', fact.costo_refactura AS 'COSTO DE REFACTURA', fact.fecha_refactura AS 'FECHA DE REFACTURA',fact.fecha_ingreso AS 'FECHA DE INGRESO', fact.fecha_revision AS 'FECHA DE REVISIÓN',fact.fecha_pago AS 'FECHA DE PAGO', fact.comentario AS 'COMENTARIO',estfact.estado AS 'ESTADO DE LA FACTURA', fact.cve_refactura AS 'FACTURA ASOCIADA', fact.realizo AS 'REALIZADA POR', p.cve_pedido AS 'CVE' FROM FACTURA fact LEFT OUTER JOIN PEDIDO p ON p.cve_factura = fact.cve_factura LEFT OUTER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta LEFT OUTER JOIN PIEZA pie ON pie.cve_pieza = p.cve_pieza LEFT OUTER JOIN ESTADO_FACTURA estfact ON estfact.cve_estado = fact.cve_estado WHERE fact.cve_estado = {0}",cve_estado), nuevaConexion);
                 da = new SqlDataAdapter(Comando);
 
                 da.Fill(dt);

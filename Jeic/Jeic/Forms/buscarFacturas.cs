@@ -28,6 +28,7 @@ namespace Refracciones.Forms
             this.Icon = Resources.iconJeic;
             dgvFacturas.DataSource =  factura.buscarFacturass();
             dgvFacturas.Columns["CVE"].Visible = false; //INDEX 17 CVE
+            cmbEstadoFactura.SelectedIndex = 0;
         }
 
         private void dgvFacturas_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -107,7 +108,7 @@ namespace Refracciones.Forms
         private void txtFactura_KeyUp(object sender, KeyEventArgs e)
         {
             if (txtFactura.Text != "")
-                dgvFacturas.DataSource = factura.buscarFacturass(txtFactura.Text);
+                dgvFacturas.DataSource = factura.buscarFacturass(txtFactura.Text,cmbEstadoFactura.SelectedIndex + 1);
             else
                 dgvFacturas.DataSource = factura.buscarFacturass();
         }
@@ -202,7 +203,11 @@ namespace Refracciones.Forms
                         refactura.lblcvePedidoidentity.Text = dgvFacturas.Rows[fila].Cells[17].Value.ToString();
                         refactura.dato3.Text = "0";
                         refactura.lblUsuario.Text = lblUsuario.Text;
-                        refactura.ShowDialog();
+                        DialogResult dialogResult =  refactura.ShowDialog();
+                        if(dialogResult == DialogResult.OK)
+                        {
+                            dgvFacturas.DataSource = factura.buscarFacturass();
+                        }
                     }
                     else
                     {
@@ -212,12 +217,24 @@ namespace Refracciones.Forms
                         rfactura.lblcvePedidoidentity.Text = dgvFacturas.Rows[fila].Cells[17].Value.ToString();
                         rfactura.dato3.Text = "0";
                         rfactura.lblUsuario.Text = lblUsuario.Text;
-                        rfactura.ShowDialog();
+                        DialogResult dialogResult = rfactura.ShowDialog();
+                        if (dialogResult == DialogResult.OK)
+                        {
+                            dgvFacturas.DataSource = factura.buscarFacturass();
+                        }
                     }
 
                 }
 
             }
+        }
+
+        private void cmbEstadoFactura_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (txtFactura.Text != "")
+                dgvFacturas.DataSource = factura.buscarFacturass(txtFactura.Text, cmbEstadoFactura.SelectedIndex + 1);
+            else
+                dgvFacturas.DataSource = factura.buscarFacturass(cmbEstadoFactura.SelectedIndex + 1);
         }
     }
 }
