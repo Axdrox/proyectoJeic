@@ -488,6 +488,7 @@
             this.lblPieza.Size = new System.Drawing.Size(39, 14);
             this.lblPieza.TabIndex = 32;
             this.lblPieza.Text = "PIEZA:";
+            this.lblPieza.Visible = false;
             // 
             // lblUsuario
             // 
@@ -643,7 +644,6 @@
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Label lblClave_Factura;
-        private System.Windows.Forms.TextBox txtFacturasinIVA;
         private System.Windows.Forms.Button btnAbrir;
         private System.Windows.Forms.TextBox txtFacturaconIVA;
         private System.Windows.Forms.Label lblFacturaConIVA;
@@ -680,5 +680,6 @@
         public System.Windows.Forms.Label lblUsuario;
         public System.Windows.Forms.Label lblPieza;
         public System.Windows.Forms.Label lblcvePedidoidentity;
+        public System.Windows.Forms.TextBox txtFacturasinIVA;
     }
 }

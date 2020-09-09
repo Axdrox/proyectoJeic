@@ -297,7 +297,7 @@ namespace Refracciones
                 {
                     if(int.TryParse(dat[i] , out temp))
                     {
-                        MessageBox.Show("I=" +i.ToString() +" cvepedido:" + dat[i]);
+                        //MessageBox.Show("I=" +i.ToString() +" cvepedido:" + dat[i]);
                         comm = new SqlCommand(string.Format("UPDATE p SET p.cve_factura = '{0}' FROM PEDIDO p WHERE p.cve_pedido = {1}", cve_factura, int.Parse(dat[i])), nuevaConexion);
                         comm.ExecuteNonQuery();
                     }
@@ -573,12 +573,12 @@ namespace Refracciones
                     {
                         if (int.TryParse(dat[i], out temp))
                         {
-                            MessageBox.Show("I=" + i.ToString() + " cvepedido:" + dat[i]);
+                            //MessageBox.Show("I=" + i.ToString() + " cvepedido:" + dat[i]);
                             comm = new SqlCommand(string.Format("UPDATE p SET p.cve_factura = '{0}' FROM PEDIDO p WHERE p.cve_pedido = {1}", cve_factura, int.Parse(dat[i])), nuevaConexion);
                             comm.ExecuteNonQuery();
                         }
                     }
-                    cmd = new SqlCommand(string.Format("UPDATE FACTURA SET cve_refactura = '{0}' WHERE cve_factura = '{1}'", cve_factura, cve_refactura), nuevaConexion);
+                    cmd = new SqlCommand(string.Format("UPDATE FACTURA SET cve_refactura = '{0}', cve_estado = 3 WHERE cve_factura = '{1}'", cve_factura, cve_refactura), nuevaConexion);
                     cmd.ExecuteNonQuery();
                     nuevaConexion.Close();
                 }
@@ -1704,7 +1704,7 @@ namespace Refracciones
         }
 
         //OBTENER PRECIO VENTA PIEZA
-        public double venta_total(string pedido, string siniestro, string pieza)
+        /*public double venta_total(string pedido, string siniestro, string pieza)
         {
             double precioVenta = 0;
 
@@ -1729,8 +1729,38 @@ namespace Refracciones
                 nuevaConexion.Close();
                 return precioVenta;
             }
-        }
+        }*/
+        //OBTENER PRECIO VENTA DE LAS PIEZAS SELECCIONADAS
+        public double venta_total(string[] dat)
+        {
+            double precioVenta = 0;
+            int i;
+            int temp = 0;
+            using (SqlConnection nuevaConexion = Conexion.conexion())
+            {
+                nuevaConexion.Open();
 
+                //Obteniendo Total de la Venta
+                
+                for(i = 0; i <dat.Length; i++)
+                {
+                    if (int.TryParse(dat[i], out temp))
+                    {
+                        Comando = new SqlCommand("SELECT p.precio_venta FROM PEDIDO p WHERE p.cve_pedido = @cve_pedido", nuevaConexion);
+                        Comando.Parameters.AddWithValue("cve_pedido", dat[i]);
+                        Lector = Comando.ExecuteReader();
+                        if (Lector.Read())
+                        {
+                            if (Lector["precio_venta"].ToString() != string.Empty)
+                                precioVenta = precioVenta + Convert.ToDouble(Lector["precio_venta"]);
+                        }
+                        Lector.Close();
+                    }
+                }
+                nuevaConexion.Close();
+                return precioVenta;
+            }
+        }
         //---------------------------OBTENER PIEZAS DEVUELTAS ANTES DE ENTREGA -------------------
         public int PiezasDevueltas(int cve_venta, int cve_pieza)
         {
@@ -2833,6 +2863,7 @@ namespace Refracciones
                 dgv.Columns.Insert(0, checkBoxColumn);
                 dgv.Columns["CVE VENTA"].Visible = false;
                 dgv.Columns["CVE PEDIDO"].Visible = false;
+                dgv.Columns["PIEZA"].ReadOnly = true;
             }
             catch (Exception ex)
             {
@@ -2862,6 +2893,7 @@ namespace Refracciones
                 dgv.Columns.Insert(0, checkBoxColumn);
                 dgv.Columns["CVE VENTA"].Visible = false;
                 dgv.Columns["CVE PEDIDO"].Visible = false;
+                dgv.Columns["PIEZA"].ReadOnly = true;
             }
             catch (Exception ex)
             {

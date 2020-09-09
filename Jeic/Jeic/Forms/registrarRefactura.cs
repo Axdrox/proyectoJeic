@@ -134,12 +134,12 @@ namespace Refracciones.Forms
                 }
                 if (btnGuardar.Text == "Guardar")
                 {
-                    MessageBOX.SHowDialog(1, factura.Registrar_Refactura(cve_factura, cve_estado, cve_refactura, fact_sinIVA, descuento, fact_neto, costo_refactura, fecha_refactura, fecha_ingreso, fecha_revision, fecha_pago, nombre_factura, file, nombre_xml, xml_file, comentario, lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9),dat));
+                    factura.Registrar_Refactura(cve_factura, cve_estado, cve_refactura, fact_sinIVA, descuento, fact_neto, costo_refactura, fecha_refactura, fecha_ingreso, fecha_revision, fecha_pago, nombre_factura, file, nombre_xml, xml_file, comentario, lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9), dat);
                     this.Close();
                 }
                 else if (btnGuardar.Text == "Actualizar")
                 {
-                    MessageBOX.SHowDialog(3,factura.Actualizar_Refactura(cve_factura, cve_estado, cve_refactura, fact_sinIVA, descuento, fact_neto, costo_refactura, fecha_refactura, fecha_ingreso, fecha_revision, fecha_pago, nombre_factura, file, nombre_xml, xml_file, comentario, lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9)));
+                    factura.Actualizar_Refactura(cve_factura, cve_estado, cve_refactura, fact_sinIVA, descuento, fact_neto, costo_refactura, fecha_refactura, fecha_ingreso, fecha_revision, fecha_pago, nombre_factura, file, nombre_xml, xml_file, comentario, lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9));
                     this.Close();
                 }
             }
@@ -154,7 +154,7 @@ namespace Refracciones.Forms
             this.Icon = Resources.iconJeic;
             cve_pedido = dato2.Text.Substring(8, (dato2.Text.Length - 8)); 
             cve_siniestro = dato1.Text.Substring(11, dato1.Text.Length - 11);
-            //Comentado 08/09/2020txtFacturasinIVA.Text = (factura.venta_total(cve_pedido, cve_siniestro,lblPieza.Text.Substring(7,lblPieza.Text.Length - 7))).ToString();
+            //txtFacturasinIVA.Text = (factura.venta_total(dat)).ToString();
             dtpFechaPago.Value = dtpFechaIngreso.Value.AddDays(factura.Dias_Espera(cve_siniestro, cve_pedido));
             cmbEstadoFactura.SelectedIndex = 0;
             if (dato3.Text == "0")// entra en modo actualizar

@@ -78,7 +78,7 @@ namespace Refracciones.Forms
                 cvePedidoIdentity = Int32.Parse(dgvDevolucion.Rows[fila].Cells[12].Value.ToString());
                 fecha_asignacion = DateTime.Parse(dgvDevolucion.Rows[fila].Cells[7].Value.ToString());//7
 
-                MessageBOX.SHowDialog(3, "Pieza seleccionada: " + dgvDevolucion.Rows[fila].Cells[0].Value.ToString());
+                //MessageBOX.SHowDialog(3, "Pieza seleccionada: " + dgvDevolucion.Rows[fila].Cells[0].Value.ToString());
                 rbtnEntrega.Enabled = true;
                 rbtnDevolucion.Enabled = true;
                 rbtnDevolucion.Checked = true;
@@ -225,7 +225,7 @@ namespace Refracciones.Forms
 
                                 penalizacion = decimal.Parse(txtPenalizacion.Text.Trim());
                                 count = oper.Total_Registros() + 1;//Se calcula el total de registros en la tabla Devolución
-                                MessageBOX.SHowDialog(1, oper.Registrar_Devolucion(cve_siniestro, cve_pedido, cve_pieza, count, cantidad, fecha, cantidadD, cve_venta, motivo, penalizacion, lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9), cvePedidoIdentity));
+                                oper.Registrar_Devolucion(cve_siniestro, cve_pedido, cve_pieza, count, cantidad, fecha, cantidadD, cve_venta, motivo, penalizacion, lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9), cvePedidoIdentity);
                                 cmbCantidad.Items.Clear();
                                 txtMotivo.Text = "";
                                 txtPenalizacion.Text = "";
@@ -253,7 +253,7 @@ namespace Refracciones.Forms
                                 btnCancelar.Enabled = false;
                                 dgvDevolucion.Enabled = true;
                                 count2 = oper.Total_Registros2() + 1;//Se calcula el total de registros en la tabla Entrega
-                                MessageBOX.SHowDialog(1, oper.Registrar_Entrega(cve_siniestro, cve_pedido, cve_pieza, count2, cantidad, fecha, cantidadD, cve_venta, fecha_asignacion, lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9), cvePedidoIdentity));
+                                oper.Registrar_Entrega(cve_siniestro, cve_pedido, cve_pieza, count2, cantidad, fecha, cantidadD, cve_venta, fecha_asignacion, lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9), cvePedidoIdentity);
                                 cmbCantidad.Items.Clear();
                             }
                             else
@@ -271,7 +271,7 @@ namespace Refracciones.Forms
             {
                 if (entregarTodo() == 1)
                 {
-                    MessageBOX.SHowDialog(1, "Se registro la entrega de todo el pedido correctamente!");
+                    //MessageBOX.SHowDialog(1, "Se registro la entrega de todo el pedido correctamente!");
                 }
                 else
                 {
@@ -283,7 +283,7 @@ namespace Refracciones.Forms
             {
                 if(devolverTodo() == 1)
                 {
-                    MessageBOX.SHowDialog(1, "Se registro la devolución de todo el pedido correctamente!");
+                    //MessageBOX.SHowDialog(1, "Se registro la devolución de todo el pedido correctamente!");
                 }
                 else
                 {

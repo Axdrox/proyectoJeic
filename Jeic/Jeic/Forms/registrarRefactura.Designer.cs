@@ -571,6 +571,7 @@
             this.lblPieza.Size = new System.Drawing.Size(39, 14);
             this.lblPieza.TabIndex = 64;
             this.lblPieza.Text = "PIEZA:";
+            this.lblPieza.Visible = false;
             // 
             // lblUsuario
             // 
@@ -732,7 +733,6 @@
         private System.Windows.Forms.Label lblFechaIngreso;
         private System.Windows.Forms.DateTimePicker dtpFechaIngreso;
         private System.Windows.Forms.Label lblFacturaConIVA;
-        private System.Windows.Forms.TextBox txtFacturasinIVA;
         private System.Windows.Forms.Label lblClave_FacturaAnterior;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnBuscarFact;
@@ -768,5 +768,6 @@
         public System.Windows.Forms.Label lblUsuario;
         public System.Windows.Forms.Label lblPieza;
         public System.Windows.Forms.Label lblcvePedidoidentity;
+        public System.Windows.Forms.TextBox txtFacturasinIVA;
     }
 }
