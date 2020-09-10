@@ -199,13 +199,22 @@ namespace Refracciones
             get { return dato_1.Text.Trim(); }
         }
 
+        private string clavePedidoTxt = "";
+
+        public string clavePedidoTextBox
+        {
+            get { return clavePedidoTxt; }
+        }
         private void btnModificarDatosPedido_Click(object sender, EventArgs e)
         {
             Pedido pedido = new Pedido(1);
             pedido.lblUsuario.Text = lblUsuario.Text;
             pedido.textBoxPedido = clavePedido;
             pedido.labelSiniestro = claveSiniestro;
-            pedido.ShowDialog();
+            DialogResult result = pedido.ShowDialog();
+            //implementar aquí si se desea, pasar el txtClavePedido
+            if (result == DialogResult.OK)
+                clavePedidoTxt = pedido.clavePedidoTextBox;
         }
 
         private void btnPDF_Click(object sender, EventArgs e)

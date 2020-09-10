@@ -57,8 +57,26 @@ namespace Refracciones.Forms
             set { lblAnio.Text = value; }
         }
 
+        private void columnaCombobox()
+        {
+            //Agregando combobox en DGV
+            var comboboxDgv = new DataGridViewComboBoxColumn();
+            comboboxDgv.FlatStyle = FlatStyle.Popup;
+            comboboxDgv.HeaderText = "Estado";
+            comboboxDgv.Name = "dataGridViewStatusCombobox";
+            comboboxDgv.DataPropertyName = "Estado";
+            comboboxDgv.DataSource = operacion.EstadoSiniestro().Tables[0].DefaultView;
+            comboboxDgv.ValueMember = "cve_estado";
+            comboboxDgv.DisplayMember = "estado";
+            comboboxDgv.AutoComplete = true;
+            this.dgvPedido.Columns.Add(comboboxDgv);
+        }
+
         private void Pedido_Load(object sender, EventArgs e)
         {
+            //Agregar columna estado combobox a DGV
+            columnaCombobox();
+
             if (actualizar == 1)
             {
                 //Para que se tenga éxito en desactivar un botón del DGV y se pueda invocar el método "SetDGVButtonColumnEnable"
@@ -144,8 +162,7 @@ namespace Refracciones.Forms
 
             if (actualizar == 0)
             {
-                //Agregar columna estado combobox a DGV
-                columnaCombobox();
+                
                 btnModificarSiniestro.Hide();
             }
 
@@ -230,7 +247,7 @@ namespace Refracciones.Forms
                 dgvPedido.DataSource = dt;
 
                 //Agregando combobox en DGV
-                columnaCombobox();
+                //columnaCombobox();
 
                 double precioTotal = 0; int piezasTotal = 0; nombrePieza = new string[Convert.ToInt32(dgvPedido.Rows.Count)]; int i = 0; filasIniciales = dgvPedido.Rows.Count;
                 foreach (DataGridViewRow row in dgvPedido.Rows)
@@ -808,6 +825,11 @@ namespace Refracciones.Forms
             }
         }
 
+        public string clavePedidoTextBox
+        {
+            get { return txtClavePedido.Text.Trim(); }
+        }
+
         private void btnFinalizarPedido_Click(object sender, EventArgs e)
         {
             try
@@ -999,21 +1021,6 @@ namespace Refracciones.Forms
         }
 
         public int cantidadPenalizada = 0;
-
-        private void columnaCombobox()
-        {
-            //Agregando combobox en DGV
-            var comboboxDgv = new DataGridViewComboBoxColumn();
-            comboboxDgv.FlatStyle = FlatStyle.Popup;
-            comboboxDgv.HeaderText = "Estado";
-            comboboxDgv.Name = "dataGridViewStatusCombobox";
-            comboboxDgv.DataPropertyName = "Estado";
-            comboboxDgv.DataSource = operacion.EstadoSiniestro().Tables[0].DefaultView;
-            comboboxDgv.ValueMember = "cve_estado";
-            comboboxDgv.DisplayMember = "estado";
-            this.dgvPedido.Columns.Add(comboboxDgv);
-        }
-
         private void dgvPedido_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -1262,7 +1269,7 @@ namespace Refracciones.Forms
                         {
                             for (int j = 0; j < pieza.datosMandar.Length; j++)
                             {
-                                dgvPedido[j + 3, index].Value = pieza.datosMandar[k];
+                                dgvPedido[j + 5, index].Value = pieza.datosMandar[k];
                                 k++;
                             }
                             //EN caso de que se quiera dejar por default se descomenta la línea de abajo
@@ -2482,6 +2489,31 @@ namespace Refracciones.Forms
                     txtComentarioSiniestro.Text = "Sin comentario por el momento";
                 else
                     txtComentarioSiniestro.Text = siniestro.comentario;
+            }
+        }
+
+        //-------------EVENTOS PARA LA COLUMNA COMBOBOX DEL DATAGRIDVIEW----------------
+        private void comboBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ((ComboBox)sender).DroppedDown = false;
+        }
+
+        private void dgvPedido_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            var comboBox = e.Control as DataGridViewComboBoxEditingControl;
+            if (comboBox != null)
+            {
+                comboBox.DropDownStyle = ComboBoxStyle.DropDown;
+                comboBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+
+                // Remove an existing event-handler, if present, to avoid 
+                // adding multiple handlers when the editing control is reused.
+                comboBox.KeyPress -=
+                    new KeyPressEventHandler (comboBox_KeyPress);
+
+                // Add the event handler. 
+                comboBox.KeyPress +=
+                    new KeyPressEventHandler(comboBox_KeyPress);
             }
         }
     }

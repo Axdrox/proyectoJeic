@@ -354,6 +354,7 @@ namespace Refracciones.Forms
 
         private void cbMarca_KeyPress(object sender, KeyPressEventArgs e)
         {
+            //EVITA QUE SE TRASLAPEN EL MENÚ DE SUGERENCIAS AL AUTOCOMPLETAR EL COMBOBOX
             cbMarca.DroppedDown = false;
         }
 

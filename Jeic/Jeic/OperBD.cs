@@ -4519,10 +4519,10 @@ namespace Refracciones
                     nuevaConexion.Close();
                     if (i == 1)
                     {
-                        MessageBOX.SHowDialog(3, "Se registró vehículo correctamente");
+                        //MessageBOX.SHowDialog(3, "Se registró vehículo correctamente");
                     }
                     else
-                        MessageBOX.SHowDialog(2, "Problemas al registar");
+                        MessageBOX.SHowDialog(2, "Problemas al registar nuevo vehículo");
                 }
             }
             catch (Exception EX)
@@ -4692,7 +4692,7 @@ namespace Refracciones
                     if (i == 1)
                     { }//MessageBOX.SHowDialog(3, "Se registró siniestro correctamente.");
                     else
-                        MessageBOX.SHowDialog(2, "Problemas al registar.");
+                        MessageBOX.SHowDialog(2, "Problemas al registar siniestro");
                 }
             }
             catch (Exception EX)

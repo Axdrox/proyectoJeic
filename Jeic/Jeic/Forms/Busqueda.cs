@@ -208,6 +208,7 @@ namespace Refracciones.Forms
             Pedido pedido = new Pedido(0);
             pedido.lblUsuario.Text = Usuario.Text;
             DialogResult result = pedido.ShowDialog();
+            //implementar aquí si se desea, pasar el txtClavePedido
             if (result == DialogResult.OK)
                 llenarDefaultDGV.defaultDGV(dvgPedido);
         }
@@ -307,7 +308,10 @@ namespace Refracciones.Forms
                 elec.lblcvePedidoidentity.Text = dvgPedido.Rows[fila].Cells[10].Value.ToString();
                 DialogResult result = elec.ShowDialog();
                 if (result == DialogResult.OK)
+                {
                     llenarDefaultDGV.defaultDGV(dvgPedido);
+                    TxtClavePed.Text = elec.clavePedidoTextBox;
+                }
             }
         }
 
