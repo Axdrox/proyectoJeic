@@ -152,6 +152,7 @@
             this.TxtClavePed.Name = "TxtClavePed";
             this.TxtClavePed.Size = new System.Drawing.Size(133, 20);
             this.TxtClavePed.TabIndex = 0;
+            this.TxtClavePed.TextChanged += new System.EventHandler(this.TxtClavePed_TextChanged);
             this.TxtClavePed.KeyUp += new System.Windows.Forms.KeyEventHandler(this.BusquedaPedido);
             // 
             // label3

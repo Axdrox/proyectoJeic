@@ -311,9 +311,14 @@ namespace Refracciones.Forms
                 {
                     llenarDefaultDGV.defaultDGV(dvgPedido);
                     TxtClavePed.Text = elec.clavePedidoTextBox;
+                    llenar.Llenartabla1(dvgPedido, TxtClaveSin.Text.ToString(), TxtClavePed.Text.ToString(), txtCveVendedor.Text.ToString());
                 }
             }
         }
 
+        private void TxtClavePed_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

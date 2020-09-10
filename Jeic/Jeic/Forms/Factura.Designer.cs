@@ -102,7 +102,7 @@
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
             this.dgvFactura.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvFactura.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvFactura.Size = new System.Drawing.Size(219, 150);
+            this.dgvFactura.Size = new System.Drawing.Size(161, 142);
             this.dgvFactura.TabIndex = 0;
             // 
             // btnAceptar
@@ -110,7 +110,7 @@
             this.btnAceptar.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAceptar.ForeColor = System.Drawing.Color.White;
-            this.btnAceptar.Location = new System.Drawing.Point(302, 184);
+            this.btnAceptar.Location = new System.Drawing.Point(257, 179);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
             this.btnAceptar.TabIndex = 1;
@@ -133,7 +133,7 @@
             this.lblTitulo.AutoSize = true;
             this.lblTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(28)))), ((int)(((byte)(32)))));
             this.lblTitulo.ForeColor = System.Drawing.Color.White;
-            this.lblTitulo.Location = new System.Drawing.Point(196, 6);
+            this.lblTitulo.Location = new System.Drawing.Point(160, 6);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(161, 13);
             this.lblTitulo.TabIndex = 5;
@@ -231,6 +231,7 @@
             this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bunifuGradientPanel1.Controls.Add(this.pbClose);
             this.bunifuGradientPanel1.Controls.Add(this.lblTitulo);
+            this.bunifuGradientPanel1.Controls.Add(this.btnAceptar);
             this.bunifuGradientPanel1.GradientBottomLeft = System.Drawing.Color.Black;
             this.bunifuGradientPanel1.GradientBottomRight = System.Drawing.Color.RoyalBlue;
             this.bunifuGradientPanel1.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
@@ -238,14 +239,14 @@
             this.bunifuGradientPanel1.Location = new System.Drawing.Point(-3, 0);
             this.bunifuGradientPanel1.Name = "bunifuGradientPanel1";
             this.bunifuGradientPanel1.Quality = 10;
-            this.bunifuGradientPanel1.Size = new System.Drawing.Size(391, 216);
+            this.bunifuGradientPanel1.Size = new System.Drawing.Size(345, 216);
             this.bunifuGradientPanel1.TabIndex = 88;
             // 
             // pbClose
             // 
             this.pbClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbClose.Image = global::Jeic.Properties.Resources.Close_Window__2_48px;
-            this.pbClose.Location = new System.Drawing.Point(372, 2);
+            this.pbClose.Location = new System.Drawing.Point(321, 2);
             this.pbClose.Margin = new System.Windows.Forms.Padding(2);
             this.pbClose.Name = "pbClose";
             this.pbClose.Size = new System.Drawing.Size(17, 17);
@@ -258,7 +259,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(389, 214);
+            this.ClientSize = new System.Drawing.Size(341, 214);
             this.Controls.Add(this.lblFoRF);
             this.Controls.Add(this.lblcvePedidoidentity);
             this.Controls.Add(this.lblPieza);
@@ -267,7 +268,6 @@
             this.Controls.Add(this.dato2);
             this.Controls.Add(this.dato1);
             this.Controls.Add(this.lblcveVenta);
-            this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.dgvFactura);
             this.Controls.Add(this.bunifuGradientPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
