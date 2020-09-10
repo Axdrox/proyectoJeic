@@ -214,7 +214,11 @@ namespace Refracciones
             DialogResult result = pedido.ShowDialog();
             //implementar aquí si se desea, pasar el txtClavePedido
             if (result == DialogResult.OK)
+            { 
                 clavePedidoTxt = pedido.clavePedidoTextBox;
+                this.Close();
+            }
+
         }
 
         private void btnPDF_Click(object sender, EventArgs e)
