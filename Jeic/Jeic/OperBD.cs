@@ -2993,6 +2993,49 @@ namespace Refracciones
             return resultado;
         }
 
+        //VALIDAR SI EXISTE CLAVE SINIESTRO
+        public string[] llenarSiniestro(string cveSiniestro)
+        {
+            string[] datos = new string[3];
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    //Obtener la marca
+                    Comando = new SqlCommand("SELECT mar.marca FROM VEHICULO veh INNER JOIN SINIESTRO sin ON sin.cve_vehiculo = veh.cve_vehiculo INNER JOIN MARCA mar ON veh.cve_marca = mar.cve_marca WHERE sin.cve_siniestro = @cveSiniestro", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@cveSiniestro", cveSiniestro);
+                    //Para saber si en realidad existe, de lo contrario devuelve un string vacío
+                    if (Comando.ExecuteScalar() == null) { }
+                    else
+                        datos[0] = Comando.ExecuteScalar().ToString();
+
+                    //Obtener el modelo
+                    Comando = new SqlCommand("SELECT veh.modelo FROM VEHICULO veh INNER JOIN SINIESTRO sin ON sin.cve_vehiculo = veh.cve_vehiculo WHERE sin.cve_siniestro = @cveSiniestro", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@cveSiniestro", cveSiniestro);
+                    //Para saber si en realidad existe, de lo contrario devuelve un string vacío
+                    if (Comando.ExecuteScalar() == null) { }
+                    else
+                        datos[1] = Comando.ExecuteScalar().ToString();
+
+                    //Obtener el año
+                    Comando = new SqlCommand("SELECT veh.anio FROM VEHICULO veh INNER JOIN SINIESTRO sin ON sin.cve_vehiculo = veh.cve_vehiculo WHERE sin.cve_siniestro = @cveSiniestro", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@cveSiniestro", cveSiniestro);
+                    //Para saber si en realidad existe, de lo contrario devuelve un string vacío
+                    if (Comando.ExecuteScalar() == null) { }
+                    else
+                        datos[2] = Comando.ExecuteScalar().ToString();
+
+                    nuevaConexion.Close();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return datos;
+        }
+
         //Se ocupará al momento de generar la clave para cuando no haya un siniestro
         public int TotalSiniestro()
         {

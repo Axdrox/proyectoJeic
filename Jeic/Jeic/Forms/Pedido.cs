@@ -855,12 +855,10 @@ namespace Refracciones.Forms
                             }
 
                             //Registrar lo correspondiente a SINIESTRO
-                            if (!string.IsNullOrEmpty(operacion.existeClaveSiniestro(lblClaveSiniestro.Text)) && lblClaveSiniestro.Text.Substring(0, 5) == "JEIC-")
-                            {
-                                lblClaveSiniestro.Text = "JEIC-" + operacion.TotalSiniestro().ToString();
-                            }
-                            operacion.registrarSiniestro(lblVehiculo.Text.Trim(), lblClaveSiniestro.Text.Trim(), txtComentarioSiniestro.Text.Trim(), lblAnio.Text);
+                            if (string.IsNullOrEmpty(operacion.existeClaveSiniestro(lblClaveSiniestro.Text)) && lblClaveSiniestro.Text.Substring(0, 5) == "JEIC-")
+                                operacion.registrarSiniestro(lblVehiculo.Text.Trim(), lblClaveSiniestro.Text.Trim(), txtComentarioSiniestro.Text.Trim(), lblAnio.Text);
 
+                            //Calcula cantidad, precio, costos
                             calcularDGV();
 
                             //AGREGANDO DATOS A VENTA
@@ -1279,7 +1277,7 @@ namespace Refracciones.Forms
                         {
                             for (int j = 0; j < pieza.datosMandar.Length; j++)
                             {
-                                dgvPedido[j + 2, index].Value = pieza.datosMandar[k];
+                                dgvPedido[j + 3, index].Value = pieza.datosMandar[k];
                                 k++;
                             }
                         }
@@ -2143,12 +2141,10 @@ namespace Refracciones.Forms
                             }
 
                             //Registrar lo correspondiente a SINIESTRO
-                            if (!string.IsNullOrEmpty(operacion.existeClaveSiniestro(lblClaveSiniestro.Text)) && lblClaveSiniestro.Text.Substring(0, 5) == "JEIC-")
-                            {
-                                lblClaveSiniestro.Text = "JEIC-" + operacion.TotalSiniestro().ToString();
-                            }
-                            operacion.registrarSiniestro(lblVehiculo.Text.Trim(), lblClaveSiniestro.Text.Trim(), txtComentarioSiniestro.Text.Trim(), lblAnio.Text);
+                            if (string.IsNullOrEmpty(operacion.existeClaveSiniestro(lblClaveSiniestro.Text)) && lblClaveSiniestro.Text.Substring(0, 5) == "JEIC-")
+                                operacion.registrarSiniestro(lblVehiculo.Text.Trim(), lblClaveSiniestro.Text.Trim(), txtComentarioSiniestro.Text.Trim(), lblAnio.Text);
 
+                            //Calcula cantidad, precio, costos
                             calcularDGV();
 
                             //AGREGANDO DATOS A VENTA
