@@ -2868,14 +2868,14 @@ namespace Refracciones
             return resultado;
         }
         //---------------------------LLENAR DATOS EN DGV PARA ELEGIR PIEZAS A FACTURAR--------------------
-        public void productosFacturar(DataGridView dgv, int cve_venta)
+        public void productosFacturar(DataGridView dgv, string cve_siniestro)
         {
             
             try
             {
                 using (SqlConnection nuevacon = Conexion.conexion())
                 {
-                    da = new SqlDataAdapter(string.Format("SELECT pie.nombre AS 'PIEZA', p.cve_venta AS 'CVE VENTA', p.cve_pedido AS 'CVE PEDIDO'  FROM PEDIDO p LEFT OUTER JOIN PIEZA pie ON p.cve_pieza = pie.cve_pieza  WHERE p.cve_venta = {0} AND p.cve_factura IS NULL",cve_venta), nuevacon);
+                    da = new SqlDataAdapter(string.Format("SELECT pie.nombre AS 'PIEZA', p.cve_venta AS 'CVE VENTA', p.cve_pedido AS 'CVE PEDIDO'  FROM PEDIDO p LEFT OUTER JOIN PIEZA pie ON p.cve_pieza = pie.cve_pieza INNER JOIN VENTAS ven ON p.cve_venta = ven.cve_venta WHERE ven.cve_siniestro = '{0}' AND p.cve_factura IS NULL", cve_siniestro), nuevacon);
                     nuevacon.Open();
                     dt = new DataTable();
                     da.Fill(dt);
@@ -2898,14 +2898,14 @@ namespace Refracciones
             }
         }
         //---------------------------LLENAR DATOS EN DGV PARA ELEGIR PIEZAS A REFACTURAR--------------------
-        public void productosRefacturar(DataGridView dgv, int cve_venta)
+        public void productosRefacturar(DataGridView dgv, string cve_siniestro)
         {
 
             try
             {
                 using (SqlConnection nuevacon = Conexion.conexion())
                 {
-                    da = new SqlDataAdapter(string.Format("SELECT pie.nombre AS 'PIEZA', p.cve_venta AS 'CVE VENTA', p.cve_pedido AS 'CVE PEDIDO'  FROM PEDIDO p LEFT OUTER JOIN PIEZA pie ON p.cve_pieza = pie.cve_pieza  WHERE p.cve_venta = {0}", cve_venta), nuevacon);
+                    da = new SqlDataAdapter(string.Format("SELECT pie.nombre AS 'PIEZA', p.cve_venta AS 'CVE VENTA', p.cve_pedido AS 'CVE PEDIDO'  FROM PEDIDO p LEFT OUTER JOIN PIEZA pie ON p.cve_pieza = pie.cve_pieza INNER JOIN VENTAS ven ON p.cve_venta = ven.cve_venta WHERE ven.cve_siniestro = '{0}'", cve_siniestro), nuevacon);
                     nuevacon.Open();
                     dt = new DataTable();
                     da.Fill(dt);

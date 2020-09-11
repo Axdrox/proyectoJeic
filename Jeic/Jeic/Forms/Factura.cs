@@ -24,10 +24,10 @@ namespace Jeic.Forms
             OperBD fact = new OperBD();
             if (lblFoRF.Text == "0")
             {
-                fact.productosFacturar(dgvFactura, int.Parse(lblcveVenta.Text));
+                fact.productosFacturar(dgvFactura, dato1.Text.Substring(11, dato1.Text.Length - 11));
             }
-            else if (lblFoRF.Text == "1") 
-            fact.productosRefacturar(dgvFactura,int.Parse(lblcveVenta.Text));
+            else if (lblFoRF.Text == "1")
+                fact.productosRefacturar(dgvFactura, dato1.Text.Substring(11, dato1.Text.Length - 11));
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
