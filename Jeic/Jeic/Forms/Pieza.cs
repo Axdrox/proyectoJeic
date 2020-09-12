@@ -853,7 +853,7 @@
             OperBD operacion = new OperBD();
             if (chbOtroOrigen.Checked == true && chbOtroOrigen.Text != "Modificar")
             {
-                if (txtPortal.Text == "Escriba un nuevo origen")// || string.IsNullOrEmpty(txtOrigen.Text)
+                if (txtOrigen.Text == "Escriba un nuevo origen")// || string.IsNullOrEmpty(txtOrigen.Text)
                 {
                     e.Cancel = true;
                     //txtOrigen.Focus();
