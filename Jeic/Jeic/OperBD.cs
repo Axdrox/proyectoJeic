@@ -5407,7 +5407,7 @@ namespace Refracciones
         }
 
         //Sirve para refresacar el orden de captura al eliminar una pieza y no altere el código por parte de las consultas
-        public void actualizarOrdenCaptura(string clavePedido, string claveSiniestro, string nombrePieza, int ordenCaptruraActual, int ordenCapturaPasado)
+        public void actualizarOrdenCaptura(string clavePedido, string claveSiniestro, string nombrePieza, int ordenCaptruraActual, int ordenCapturaPasado, int identificador)
         {
             try
             {
@@ -5418,13 +5418,28 @@ namespace Refracciones
 
                     DateTime fechaBaja = DateTime.Now;
                     nuevaConexion.Open();
-                    Comando = new SqlCommand("UPDATE PEDIDO SET ordenCaptura = @ordenCapturaActual WHERE cve_venta = @cve_venta AND cve_pieza = @cve_pieza AND ordenCaptura = @ordenCapturaPasado", nuevaConexion);
-                    //Número que se obtiene de la lista de números al cargar el formulario PEDIDO en modo actualizar para ser sustituido por el nuevo
-                    Comando.Parameters.AddWithValue("@ordenCapturaPasado", ordenCapturaPasado);
-                    Comando.Parameters.AddWithValue("@ordenCapturaActual", ordenCaptruraActual);
-                    Comando.Parameters.AddWithValue("@cve_venta", cveVenta);
-                    Comando.Parameters.AddWithValue("@cve_pieza", cvePieza);
-                    Comando.ExecuteNonQuery();
+                    
+                    if(identificador == 0)
+                    {
+                        
+                        Comando = new SqlCommand("UPDATE PEDIDO SET ordenCaptura = @ordenCapturaActual WHERE cve_venta = @cve_venta AND cve_pieza = @cve_pieza AND ordenCaptura = @ordenCapturaPasado", nuevaConexion);
+                        //Número que se obtiene de la lista de números al cargar el formulario PEDIDO en modo actualizar para ser sustituido por el nuevo
+                        Comando.Parameters.AddWithValue("@ordenCapturaPasado", ordenCapturaPasado);
+                        Comando.Parameters.AddWithValue("@ordenCapturaActual", ordenCaptruraActual);
+                        Comando.Parameters.AddWithValue("@cve_venta", cveVenta);
+                        Comando.Parameters.AddWithValue("@cve_pieza", cvePieza);
+                        Comando.ExecuteNonQuery();
+                    }
+                    else
+                    {
+                        //Para asignar un orden de captura evitando que salga un error al cargar el formulario en modo actualizar
+                        Comando = new SqlCommand("UPDATE PEDIDO SET ordenCaptura = @ordenCapturaActual WHERE cve_venta = @cve_venta AND cve_pieza = @cve_pieza AND ordenCaptura IS NULL", nuevaConexion);
+                        Comando.Parameters.AddWithValue("@ordenCapturaActual", ordenCaptruraActual);
+                        Comando.Parameters.AddWithValue("@cve_venta", cveVenta);
+                        Comando.Parameters.AddWithValue("@cve_pieza", cvePieza);
+                        Comando.ExecuteNonQuery();
+                    }
+                    
                     nuevaConexion.Close();
                 }
             }

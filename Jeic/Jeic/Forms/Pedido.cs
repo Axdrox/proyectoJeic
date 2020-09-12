@@ -252,6 +252,10 @@ namespace Refracciones.Forms
                 double precioTotal = 0; int piezasTotal = 0; nombrePieza = new string[Convert.ToInt32(dgvPedido.Rows.Count)]; int i = 0; filasIniciales = dgvPedido.Rows.Count;
                 foreach (DataGridViewRow row in dgvPedido.Rows)
                 {
+                    //Comprobar si existe orden de captura para que no aparezca null
+                    if (string.IsNullOrEmpty(operacion.existePiezaRegistradaPedido(txtClavePedido.Text, lblClaveSiniestro.Text, Convert.ToString(row.Cells["Pieza"].Value), i)))
+                        operacion.actualizarOrdenCaptura(txtClavePedido.Text, lblClaveSiniestro.Text, Convert.ToString(row.Cells["Pieza"].Value), i, 0, 1);
+
                     //Para poder desactivar los botones en caso de que ya se hayan dado de baja
                     int index = i;
                     if (!string.IsNullOrEmpty(operacion.existeFechaBaja(txtClavePedido.Text, lblClaveSiniestro.Text, Convert.ToString(row.Cells["Pieza"].Value), index)))
@@ -1064,7 +1068,7 @@ namespace Refracciones.Forms
                                             if (!string.IsNullOrEmpty(operacion.existePiezaRegistradaPedido(txtClavePedido.Text, lblClaveSiniestro.Text, row.Cells["Pieza"].Value.ToString(), ordenCapturaIndice[j])))
                                             {
                                                 //Para reasignar correctamente el orden de captura a las piezas
-                                                operacion.actualizarOrdenCaptura(txtClavePedido.Text, lblClaveSiniestro.Text, row.Cells["Pieza"].Value.ToString(), i, ordenCapturaIndice[i]);
+                                                operacion.actualizarOrdenCaptura(txtClavePedido.Text, lblClaveSiniestro.Text, row.Cells["Pieza"].Value.ToString(), i, ordenCapturaIndice[i], 0);
                                                 i += 1;
                                             }
                                             j++;
