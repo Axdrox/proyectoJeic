@@ -859,8 +859,9 @@ namespace Refracciones.Forms
                             }
 
                             //Registrar lo correspondiente a SINIESTRO
-                            if (string.IsNullOrEmpty(operacion.existeClaveSiniestro(lblClaveSiniestro.Text)) && lblClaveSiniestro.Text.Substring(0, 5) == "JEIC-")
+                            if (string.IsNullOrEmpty(operacion.existeClaveSiniestro(lblClaveSiniestro.Text)))
                                 operacion.registrarSiniestro(lblVehiculo.Text.Trim(), lblClaveSiniestro.Text.Trim(), txtComentarioSiniestro.Text.Trim(), lblAnio.Text);
+
 
                             //Calcula cantidad, precio, costos
                             calcularDGV();
@@ -2145,7 +2146,7 @@ namespace Refracciones.Forms
                             }
 
                             //Registrar lo correspondiente a SINIESTRO
-                            if (string.IsNullOrEmpty(operacion.existeClaveSiniestro(lblClaveSiniestro.Text)) && lblClaveSiniestro.Text.Substring(0, 5) == "JEIC-")
+                            if (string.IsNullOrEmpty(operacion.existeClaveSiniestro(lblClaveSiniestro.Text)))
                                 operacion.registrarSiniestro(lblVehiculo.Text.Trim(), lblClaveSiniestro.Text.Trim(), txtComentarioSiniestro.Text.Trim(), lblAnio.Text);
 
                             //Calcula cantidad, precio, costos
