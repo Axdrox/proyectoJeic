@@ -4929,7 +4929,7 @@ namespace Refracciones
         }
 
         //-------------OBTENER LA CLAVE DEL VALUADOR DE ACUERDO AL TEXTO
-        public int claveValuador(string valuador)
+        public int claveValuador(string valuador, string cliente)
         {
             using (SqlConnection nuevaConexion = Conexion.conexion())
             {
@@ -4937,8 +4937,9 @@ namespace Refracciones
                 int claveValuador = 0;
                 //Obteniendo la clave del valuador
                 //Combobox de valuador
-                Comando = new SqlCommand("SELECT cve_valuador FROM VALUADOR WHERE nombre = @nombre", nuevaConexion);
+                Comando = new SqlCommand("SELECT cve_valuador FROM VALUADOR WHERE nombre = @nombre AND cve_cliente = @cveCliente", nuevaConexion);
                 Comando.Parameters.AddWithValue("@nombre", valuador);
+                Comando.Parameters.AddWithValue("@cveCliente", cliente);
                 Lector = Comando.ExecuteReader();
                 if (Lector.Read())
                 {
@@ -5153,12 +5154,12 @@ namespace Refracciones
         }*/
 
         //-------------INSERTAR DATOS DE PEDIDO VENTAS
-        public int registrarVenta(string clavePedido, string claveSiniestro, string taller, string vendedor, string valuador, string destino, double costoTotal, double subtotalPrecio, double totalPrecio, DateTime fechaAsignacion, DateTime fechaPromesa, double utilidad)
+        public int registrarVenta(string clavePedido, string claveSiniestro, string taller, string vendedor, string valuador, string destino, double costoTotal, double subtotalPrecio, double totalPrecio, DateTime fechaAsignacion, DateTime fechaPromesa, double utilidad, string cliente)
         {
             //Variables
             int i = 0;
             int cve_taller = claveTaller(taller);
-            int cve_valuador = claveValuador(valuador);
+            int cve_valuador = claveValuador(valuador, cliente);
             int cve_destino = claveDestino(destino);
             int cve_vendedor = claveVendedor(vendedor);
             try
@@ -5201,12 +5202,12 @@ namespace Refracciones
         }
 
         //-------------ACTUALIZANDO EL REGISTRO DE VENTA
-        public void actualizarVenta(string clavePedido, string claveSiniestro, string taller, string vendedor, string valuador, string destino, double costoTotal, double subtotalPrecio, double totalPrecio, DateTime fechaAsignacion, DateTime fechaPromesa, double utilidad)//, double utilidad
+        public void actualizarVenta(string clavePedido, string claveSiniestro, string taller, string vendedor, string valuador, string destino, double costoTotal, double subtotalPrecio, double totalPrecio, DateTime fechaAsignacion, DateTime fechaPromesa, double utilidad, string cliente)//, double utilidad
         {
             //Variables
             int i = 0;
             int cve_taller = claveTaller(taller);
-            int cve_valuador = claveValuador(valuador);
+            int cve_valuador = claveValuador(valuador, cliente);
             int cve_destino = claveDestino(destino);
             int cve_vendedor = claveVendedor(vendedor);
 

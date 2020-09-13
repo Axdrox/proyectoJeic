@@ -639,7 +639,7 @@ namespace Refracciones.Forms
         //Variables
         private string vendedor = "";
 
-        private string aseguradora = "";
+        private string cliente = "";
         private string valuador = "";
         private string taller = "";
         private string destino = "";
@@ -658,18 +658,18 @@ namespace Refracciones.Forms
 
             if (chbOtraAseguradora.Checked == true && chbOtraAseguradora.Text == "Otro")
             {
-                aseguradora = txtAseguradora.Text.Trim().ToUpper();
-                operacion.registrarCliente(aseguradora, Convert.ToInt32(txtDiasEspera.Text.Trim()));
+                cliente = txtAseguradora.Text.Trim().ToUpper();
+                operacion.registrarCliente(cliente, Convert.ToInt32(txtDiasEspera.Text.Trim()));
             }
             else if (chbOtraAseguradora.Checked == false && chbOtraAseguradora.Text == "Otro")
-                aseguradora = cbAseguradora.Text.Trim();
+                cliente = cbAseguradora.Text.Trim();
             else if (chbOtraAseguradora.Checked == false && chbOtraAseguradora.Text == "Modificar")
-                aseguradora = txtAseguradora.Text.Trim().ToUpper();
+                cliente = txtAseguradora.Text.Trim().ToUpper();
 
             if (chbOtroValuador.Checked == true && chbOtroValuador.Text == "Otro")
             {
                 valuador = txtValuador.Text.Trim().ToUpper();
-                operacion.registrarValuador(valuador, aseguradora);
+                operacion.registrarValuador(valuador, cliente);
             }
             else if (chbOtroValuador.Checked == false && chbOtroValuador.Text == "Otro")
                 valuador = cbValuador.Text.Trim();
@@ -867,7 +867,7 @@ namespace Refracciones.Forms
                             calcularDGV();
 
                             //AGREGANDO DATOS A VENTA
-                            operacion.registrarVenta(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(), taller, vendedor, valuador, destino, totalCosto, subtotalPrecio, totalPrecio, dtFechaAsignacion, dtFechaPromesa, utilidad);
+                            operacion.registrarVenta(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(), taller, vendedor, valuador, destino, totalCosto, subtotalPrecio, totalPrecio, dtFechaAsignacion, dtFechaPromesa, utilidad, cliente);
 
                             //REGISTRANDO PEDIDO
                             registrarPedido();
@@ -891,7 +891,7 @@ namespace Refracciones.Forms
                             calcularDGV();
 
                             //AGREGANDO DATOS A VENTA
-                            operacion.actualizarVenta(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(), taller, vendedor, valuador, destino, totalCosto, subtotalPrecio, totalPrecio, dtFechaAsignacion, dtFechaPromesa, utilidad);//, utilidad
+                            operacion.actualizarVenta(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(), taller, vendedor, valuador, destino, totalCosto, subtotalPrecio, totalPrecio, dtFechaAsignacion, dtFechaPromesa, utilidad, cliente);//, utilidad
 
                             actualizarPedido();
                             this.DialogResult = DialogResult.OK;
@@ -2153,7 +2153,7 @@ namespace Refracciones.Forms
                             calcularDGV();
 
                             //AGREGANDO DATOS A VENTA
-                            operacion.registrarVenta(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(), taller, vendedor, valuador, destino, totalCosto, subtotalPrecio, totalPrecio, dtFechaAsignacion, dtFechaPromesa, utilidad);
+                            operacion.registrarVenta(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(), taller, vendedor, valuador, destino, totalCosto, subtotalPrecio, totalPrecio, dtFechaAsignacion, dtFechaPromesa, utilidad, cliente);
 
                             //REGISTRANDO PEDIDO
                             registrarPedido();
@@ -2178,7 +2178,7 @@ namespace Refracciones.Forms
                             calcularDGV();
 
                             //AGREGANDO DATOS A VENTA
-                            operacion.actualizarVenta(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(), taller, vendedor, valuador, destino, totalCosto, subtotalPrecio, totalPrecio, dtFechaAsignacion, dtFechaPromesa, utilidad);//, utilidad
+                            operacion.actualizarVenta(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(), taller, vendedor, valuador, destino, totalCosto, subtotalPrecio, totalPrecio, dtFechaAsignacion, dtFechaPromesa, utilidad, cliente);//, utilidad
                             actualizarPedido();
                             g = 1;
                             this.DialogResult = DialogResult.OK;
