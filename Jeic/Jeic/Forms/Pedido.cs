@@ -83,7 +83,7 @@ namespace Refracciones.Forms
                 //Se debe hacer un objeto de tipo: DataGridViewDisableButtonColumn
                 var darBajaButton = new DataGridViewButtonColumn();
                 darBajaButton.Name = "dataGridViewDarBajaButton";
-                darBajaButton.HeaderText = "Dar de baja";
+                darBajaButton.HeaderText = "Fecha de entrega";
                 darBajaButton.Text = "Dar de baja";
                 darBajaButton.FlatStyle = FlatStyle.Popup;
                 darBajaButton.CellTemplate.Style.BackColor = Color.DarkGoldenrod;
@@ -218,7 +218,7 @@ namespace Refracciones.Forms
                 chbOtraAseguradora.Enabled = true;
                 chbOtraAseguradora.Text = "Modificar";
                 cbAseguradora.Hide();
-                txtAseguradora.Text = operacion.Cliente(txtValuador.Text);
+                txtAseguradora.Text = operacion.Cliente(txtClavePedido.Text);
                 txtAseguradora.Enabled = false;
 
                 //Carga los datos registros de valuadores en el combobox

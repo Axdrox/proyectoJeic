@@ -4319,7 +4319,7 @@ namespace Refracciones
         }
 
         //------------- OBTENER ASEGURADORA/CLIENTE EN PARTICULAR DE ACUERDO A CLAVES PEDIDO & SINIESTRO
-        public string Cliente(string valuador)
+        public string Cliente(string cvePedido)
         {
             string cliente = "";
             try
@@ -4328,8 +4328,8 @@ namespace Refracciones
                 {
                     nuevaConexion.Open();
                     //CORREGIR BUGSOTE, ESTA RARO DICE BRYAN
-                    Comando = new SqlCommand("SELECT cve_nombre FROM CLIENTE cli INNER JOIN VALUADOR val ON val.cve_cliente = cli.cve_nombre WHERE val.nombre = @nombreValuador", nuevaConexion);
-                    Comando.Parameters.AddWithValue("@nombreValuador", valuador);
+                    Comando = new SqlCommand("SELECT cli.cve_nombre FROM VENTAS ven INNER JOIN VALUADOR val ON ven.cve_valuador = val.cve_valuador INNER JOIN CLIENTE cli ON cli.cve_nombre = val.cve_cliente WHERE ven.cve_pedido = @cvePedido", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@cvePedido", cvePedido);
                     Lector = Comando.ExecuteReader();
                     if (Lector.Read())
                     {
