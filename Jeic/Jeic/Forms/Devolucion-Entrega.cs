@@ -103,8 +103,8 @@ namespace Refracciones.Forms
             //cmbCantidad.Enabled = true;
             if (rbtnEntrega.Checked == true)
             {
-                lbl1.Text = "Fecha Entrega";
-                lbl2.Text = "Cantidad Entregada";
+                lbl1.Text = "Fecha Baja";
+                lbl2.Text = "Cantidad Bajas";
                 lbl2.Visible = true;
                 btnAceptar.Text = "ENTREGA";
                 cmbCantidad.Items.Clear();
