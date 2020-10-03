@@ -102,6 +102,7 @@ namespace Refracciones.Forms
                 lblEstadoSiniestro.Text = lblEstadoSiniestro.Text.Substring(0, 7) + " " + dgvDatos.Rows[0].Cells[23].Value.ToString();
                 lblVehiculo.Text = lblVehiculo.Text.Substring(0, 9) + "" + dgvDatos.Rows[0].Cells[26].Value.ToString() + "-" + dgvDatos.Rows[0].Cells[24].Value.ToString() + "-" + dgvDatos.Rows[0].Cells[25].Value.ToString();
                 txtComentarioSiniestro.Text = dgvDatos.Rows[0].Cells[27].Value.ToString();
+                lblFechaBaja.Text = lblFechaBaja.Text.Substring(0, 11) + " " + dgvDatos.Rows[0].Cells[28].Value.ToString();
             }
             llenar.Llenartabla1(dvgPedido, TxtClaveSin.Text.ToString(), TxtClavePed.Text.ToString(), txtCveVendedor.Text.ToString());
         }
@@ -296,6 +297,7 @@ namespace Refracciones.Forms
                 lblEstadoSiniestro.Text = lblEstadoSiniestro.Text.Substring(0, 7) + " " + dgvDatos.Rows[0].Cells[23].Value.ToString();
                 lblVehiculo.Text = lblVehiculo.Text.Substring(0, 9) + "" + dgvDatos.Rows[0].Cells[26].Value.ToString() + "-" + dgvDatos.Rows[0].Cells[24].Value.ToString() + "-" + dgvDatos.Rows[0].Cells[25].Value.ToString();
                 txtComentarioSiniestro.Text = dgvDatos.Rows[0].Cells[27].Value.ToString();
+                lblFechaBaja.Text = lblFechaBaja.Text.Substring(0, 11) + " " + dgvDatos.Rows[0].Cells[28].Value.ToString();
             }
             else
             {

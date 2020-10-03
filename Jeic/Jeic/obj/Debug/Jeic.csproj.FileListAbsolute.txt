@@ -291,7 +291,6 @@ C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\D
 C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.exe
 C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.pdb
 C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.Forms.FechaBaja.resources
-C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csprojAssemblyReference.cache
 C:\Users\BuGsBunNy\Desktop\proyectoJeic\Jeic\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.Forms.Factura.resources
 C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Administrar.resources
 C:\Users\deada\OneDrive\Documentos\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Alertas.resources
