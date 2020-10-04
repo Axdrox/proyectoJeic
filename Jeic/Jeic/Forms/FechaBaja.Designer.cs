@@ -45,9 +45,10 @@
             // 
             // dtpFechaBaja
             // 
-            this.dtpFechaBaja.Location = new System.Drawing.Point(30, 48);
+            this.dtpFechaBaja.Location = new System.Drawing.Point(22, 39);
+            this.dtpFechaBaja.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dtpFechaBaja.Name = "dtpFechaBaja";
-            this.dtpFechaBaja.Size = new System.Drawing.Size(268, 22);
+            this.dtpFechaBaja.Size = new System.Drawing.Size(202, 20);
             this.dtpFechaBaja.TabIndex = 0;
             this.dtpFechaBaja.ValueChanged += new System.EventHandler(this.dtpFechaBaja_ValueChanged);
             // 
@@ -57,20 +58,22 @@
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(67, 15);
+            this.label1.Location = new System.Drawing.Point(27, 12);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(204, 20);
+            this.label1.Size = new System.Drawing.Size(194, 17);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Seleccione Fecha de Baja";
+            this.label1.Text = "Seleccione Fecha de Entrega";
             // 
             // btnRegistrarFechaBaja
             // 
             this.btnRegistrarFechaBaja.BackColor = System.Drawing.Color.CornflowerBlue;
             this.btnRegistrarFechaBaja.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRegistrarFechaBaja.ForeColor = System.Drawing.Color.White;
-            this.btnRegistrarFechaBaja.Location = new System.Drawing.Point(130, 89);
+            this.btnRegistrarFechaBaja.Location = new System.Drawing.Point(98, 72);
+            this.btnRegistrarFechaBaja.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnRegistrarFechaBaja.Name = "btnRegistrarFechaBaja";
-            this.btnRegistrarFechaBaja.Size = new System.Drawing.Size(81, 32);
+            this.btnRegistrarFechaBaja.Size = new System.Drawing.Size(61, 26);
             this.btnRegistrarFechaBaja.TabIndex = 2;
             this.btnRegistrarFechaBaja.Text = "Aceptar";
             this.btnRegistrarFechaBaja.UseVisualStyleBackColor = false;
@@ -81,10 +84,10 @@
             this.pbClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.pbClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbClose.Image = global::Jeic.Properties.Resources.Close_Window__2_48px;
-            this.pbClose.Location = new System.Drawing.Point(315, 4);
-            this.pbClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pbClose.Location = new System.Drawing.Point(236, 3);
+            this.pbClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pbClose.Name = "pbClose";
-            this.pbClose.Size = new System.Drawing.Size(23, 21);
+            this.pbClose.Size = new System.Drawing.Size(17, 17);
             this.pbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbClose.TabIndex = 81;
             this.pbClose.TabStop = false;
@@ -99,10 +102,10 @@
             // 
             // FechaBaja
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(72)))), ((int)(((byte)(126)))));
-            this.ClientSize = new System.Drawing.Size(343, 133);
+            this.ClientSize = new System.Drawing.Size(257, 108);
             this.ControlBox = false;
             this.Controls.Add(this.pbClose);
             this.Controls.Add(this.btnRegistrarFechaBaja);
@@ -110,6 +113,7 @@
             this.Controls.Add(this.dtpFechaBaja);
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FechaBaja";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FechaBaja";

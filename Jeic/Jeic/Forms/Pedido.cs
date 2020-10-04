@@ -84,7 +84,7 @@ namespace Refracciones.Forms
                 var darBajaButton = new DataGridViewButtonColumn();
                 darBajaButton.Name = "dataGridViewDarBajaButton";
                 darBajaButton.HeaderText = "Fecha de entrega";
-                darBajaButton.Text = "Dar de baja";
+                darBajaButton.Text = "Entregar";
                 darBajaButton.FlatStyle = FlatStyle.Popup;
                 darBajaButton.CellTemplate.Style.BackColor = Color.DarkGoldenrod;
                 ///--------- ATENCIÓN---------
@@ -261,7 +261,7 @@ namespace Refracciones.Forms
                     if (!string.IsNullOrEmpty(operacion.existeFechaBaja(txtClavePedido.Text, lblClaveSiniestro.Text, Convert.ToString(row.Cells["Pieza"].Value), index)))
                         row.Cells["dataGridViewDarBajaButton"].Value = "Registrado";
                     else
-                        row.Cells["dataGridViewDarBajaButton"].Value = "Dar de baja";
+                        row.Cells["dataGridViewDarBajaButton"].Value = "Entregar";
 
                     if (!string.IsNullOrEmpty(operacion.existePenalizacion(Convert.ToString(row.Cells["Pieza"].Value), txtClavePedido.Text, lblClaveSiniestro.Text, index)))
                         row.Cells["dataGridViewPenaltyButton"].Value = "Penalizado";
@@ -978,7 +978,7 @@ namespace Refracciones.Forms
                         if (actualizar == 1)
                         {
                             //Añadir botón con el nombre correcto (de lo contrario se queda en blanco)
-                            dgvPedido.Rows[dgvPedido.Rows.Count - 1].Cells["dataGridViewDarBajaButton"].Value = "Dar de baja";
+                            dgvPedido.Rows[dgvPedido.Rows.Count - 1].Cells["dataGridViewDarBajaButton"].Value = "Entregar";
                             dgvPedido.Rows[dgvPedido.Rows.Count - 1].Cells["dataGridViewPenaltyButton"].Value = "Penalizar";
                         }
 
@@ -1151,7 +1151,7 @@ namespace Refracciones.Forms
                                         if (!string.IsNullOrEmpty(operacion.existeFechaBaja(txtClavePedido.Text, lblClaveSiniestro.Text, Convert.ToString(row.Cells["Pieza"].Value), indexActualizar)))
                                             row.Cells["dataGridViewDarBajaButton"].Value = "Registrado";
                                         else
-                                            row.Cells["dataGridViewDarBajaButton"].Value = "Dar de baja";
+                                            row.Cells["dataGridViewDarBajaButton"].Value = "Entregar";
 
                                         if (!string.IsNullOrEmpty(operacion.existePenalizacion(Convert.ToString(row.Cells["Pieza"].Value), txtClavePedido.Text, lblClaveSiniestro.Text, indexActualizar)))
                                             row.Cells["dataGridViewPenaltyButton"].Value = "Penalizado";
@@ -1793,7 +1793,7 @@ namespace Refracciones.Forms
                                 if (!string.IsNullOrEmpty(operacion.existeFechaBaja(txtClavePedido.Text, lblClaveSiniestro.Text, Convert.ToString(row.Cells["Pieza"].Value), index)))
                                     row.Cells["dataGridViewDarBajaButton"].Value = "Registrado";
                                 else
-                                    row.Cells["dataGridViewDarBajaButton"].Value = "Dar de baja";
+                                    row.Cells["dataGridViewDarBajaButton"].Value = "Entregar";
 
                                 if (!string.IsNullOrEmpty(operacion.existePenalizacion(Convert.ToString(row.Cells["Pieza"].Value), txtClavePedido.Text, lblClaveSiniestro.Text, index)))
                                     row.Cells["dataGridViewPenaltyButton"].Value = "Penalizado";

@@ -45,11 +45,11 @@
             this.lblCve_venta = new System.Windows.Forms.Label();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.lblcvePedidoidentity = new System.Windows.Forms.Label();
             this.lblPieza = new System.Windows.Forms.Label();
             this.pbMinimize = new System.Windows.Forms.PictureBox();
             this.pbClose = new System.Windows.Forms.PictureBox();
             this.moverFormulario = new Bunifu.Framework.UI.BunifuDragControl(this.components);
-            this.lblcvePedidoidentity = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatosPDF)).BeginInit();
             this.bunifuGradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).BeginInit();
@@ -94,7 +94,7 @@
             this.btnDevolucionEntrega.Name = "btnDevolucionEntrega";
             this.btnDevolucionEntrega.Size = new System.Drawing.Size(155, 44);
             this.btnDevolucionEntrega.TabIndex = 2;
-            this.btnDevolucionEntrega.Text = "Registrar Entregas/Devoluciones";
+            this.btnDevolucionEntrega.Text = "Registrar Bajas/Devoluciones";
             this.btnDevolucionEntrega.UseVisualStyleBackColor = false;
             this.btnDevolucionEntrega.Click += new System.EventHandler(this.btnDevolucionEntrega_Click);
             // 
@@ -236,6 +236,18 @@
             this.bunifuGradientPanel1.TabIndex = 12;
             this.bunifuGradientPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.bunifuGradientPanel1_Paint);
             // 
+            // lblcvePedidoidentity
+            // 
+            this.lblcvePedidoidentity.AutoSize = true;
+            this.lblcvePedidoidentity.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(30)))), ((int)(((byte)(37)))));
+            this.lblcvePedidoidentity.ForeColor = System.Drawing.Color.White;
+            this.lblcvePedidoidentity.Location = new System.Drawing.Point(70, 324);
+            this.lblcvePedidoidentity.Name = "lblcvePedidoidentity";
+            this.lblcvePedidoidentity.Size = new System.Drawing.Size(91, 13);
+            this.lblcvePedidoidentity.TabIndex = 83;
+            this.lblcvePedidoidentity.Text = "cvePedidoidentity";
+            this.lblcvePedidoidentity.Visible = false;
+            // 
             // lblPieza
             // 
             this.lblPieza.AutoSize = true;
@@ -282,18 +294,6 @@
             this.moverFormulario.Horizontal = true;
             this.moverFormulario.TargetControl = this.bunifuGradientPanel1;
             this.moverFormulario.Vertical = true;
-            // 
-            // lblcvePedidoidentity
-            // 
-            this.lblcvePedidoidentity.AutoSize = true;
-            this.lblcvePedidoidentity.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(30)))), ((int)(((byte)(37)))));
-            this.lblcvePedidoidentity.ForeColor = System.Drawing.Color.White;
-            this.lblcvePedidoidentity.Location = new System.Drawing.Point(70, 324);
-            this.lblcvePedidoidentity.Name = "lblcvePedidoidentity";
-            this.lblcvePedidoidentity.Size = new System.Drawing.Size(91, 13);
-            this.lblcvePedidoidentity.TabIndex = 83;
-            this.lblcvePedidoidentity.Text = "cvePedidoidentity";
-            this.lblcvePedidoidentity.Visible = false;
             // 
             // Eleccion
             // 

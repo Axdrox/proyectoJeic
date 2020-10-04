@@ -36,7 +36,7 @@ namespace Jeic.Forms
             {
                 if (identificador != 1)
                 {
-                    MessageBOX result = new MessageBOX(4, "¿Registrar fecha de baja?");
+                    MessageBOX result = new MessageBOX(4, "¿Registrar fecha de Entrega?");
                     if (result.ShowDialog() == DialogResult.OK)
                     {
                         operacion.registrarFechaBaja(cvePedido, cveSiniestro, nombrePieza, index, dtpFechaBaja.Value);
@@ -45,7 +45,7 @@ namespace Jeic.Forms
                 }
                 else
                 {
-                    MessageBOX result = new MessageBOX(4, "¿Actualizar fecha de baja?");
+                    MessageBOX result = new MessageBOX(4, "¿Actualizar fecha de Entrega?");
                     if (result.ShowDialog() == DialogResult.OK)
                     {
                         operacion.registrarFechaBaja(cvePedido, cveSiniestro, nombrePieza, index, dtpFechaBaja.Value);
