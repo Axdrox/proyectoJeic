@@ -53,9 +53,9 @@
                 cbProveedores.ValueMember = "nombre";
 
                 //Carga los datos de los costos registrados
-                cbCostoEnvio.DataSource = operacion.CostoEnvioRegistrados().Tables[0].DefaultView;
+                /*cbCostoEnvio.DataSource = operacion.CostoEnvioRegistrados().Tables[0].DefaultView;
                 cbCostoEnvio.ValueMember = "costo";
-                cbCostoEnvio.SelectedValue = "0.00";
+                cbCostoEnvio.SelectedValue = "0.00";*///TESTING
             }
             else
             {
@@ -76,10 +76,10 @@
                 cbProveedores.DisplayMember = "nombre";
                 cbProveedores.SelectedValue = operacion.indexProveedoresRegistrados(proveedorDefault);
 
-                cbCostoEnvio.DataSource = operacion.CostoEnvioRegistrados().Tables[0];
+                /*cbCostoEnvio.DataSource = operacion.CostoEnvioRegistrados().Tables[0];
                 cbCostoEnvio.ValueMember = "cve_costoEnvio";
                 cbCostoEnvio.DisplayMember = "costo";
-                cbCostoEnvio.SelectedValue = operacion.indexCostoEnvioRegistrados(costoEnvioDefault);
+                cbCostoEnvio.SelectedValue = operacion.indexCostoEnvioRegistrados(costoEnvioDefault);*///TESTING
 
             }
 
@@ -163,7 +163,8 @@
                 txtCostoNeto.Enabled = true;
 
                 //cbCostoEnvio.DropDownStyle = ComboBoxStyle.DropDown;
-                cbCostoEnvio.Text = datos[9];
+                //cbCostoEnvio.Text = datos[9];//TESTING
+                txtCostoEnvio.Text = datos[9];
 
                 txtPrecioReparacion.Text = datos[10];
                 txtPrecioVenta.Text = datos[11];
@@ -512,8 +513,11 @@
                 //datosPieza[8] = txtCostoSinIVA.Text.Trim();
                 datosPieza[8] = txtCostoNeto.Text.Trim();
 
-                if (!string.IsNullOrEmpty(cbCostoEnvio.Text))
-                    datosPieza[9] = cbCostoEnvio.Text.Trim();
+                if (!string.IsNullOrEmpty(txtCostoEnvio.Text))
+                {
+                    //datosPieza[9] = cbCostoEnvio.Text.Trim();//TESTING
+                    datosPieza[9] = txtCostoEnvio.Text.Trim();
+                }
                 else
                     datosPieza[9] = "0";
 
@@ -1113,6 +1117,20 @@
                     e.Cancel = false;
                     errorProvider1.SetError(cbProveedores, null);
                 }
+            }
+        }
+
+        private void txtCostoEnvio_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // solo 1 punto decimal
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
             }
         }
     }

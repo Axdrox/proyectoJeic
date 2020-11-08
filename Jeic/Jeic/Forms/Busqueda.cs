@@ -318,9 +318,6 @@ namespace Refracciones.Forms
             }
         }
 
-        private void TxtClavePed_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
+
     }
 }
