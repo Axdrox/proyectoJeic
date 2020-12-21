@@ -83,12 +83,28 @@ namespace Refracciones.Forms
                     cve_estado = 3;
 
 
-                //fecha_ingreso = dtpFechaIngreso.Value.ToString("dd/MM/yyyy");
+
                 fecha_ingreso = dtpFechaIngreso.Value.Date;
-                //fecha_revision = dtpFechaRevision.Value.ToString("dd/MM/yyyy");
+
                 fecha_revision = dtpFechaRevision.Value.Date;
-                //fecha_pago = dtpFechaPago.Value.ToString("dd/MM/yyyy");
-                fecha_pago = dtpFechaPago.Value.Date;
+
+                if (dato3.Text == "1")//dataGridView1.Rows[0].Cells[10].Value.ToString() != string.Empty
+                {
+                    if (chkFP.Checked == true)
+                        fecha_pago = dtpFechaPago.Value.Date;
+                    else
+                        fecha_pago = DateTime.MinValue;
+                }
+                else
+                {
+                    if (chkFP.Checked == true)
+                        fecha_pago = dtpFechaPago.Value.Date;
+                    else
+                        fecha_pago = DateTime.Parse(dataGridView1.Rows[0].Cells[10].Value.ToString());
+                }
+                   
+                
+                
                 //obtenemos el arreglo de bytes de factura
                 if (txtRutaFactura.Text == string.Empty && txtRutaXml.Text == string.Empty)
                 { }
@@ -171,9 +187,17 @@ namespace Refracciones.Forms
                     if (dataGridView1.Rows[0].Cells[9].Value.ToString() != DateTime.MinValue.ToString())
                     { dtpFechaRevision.Value = DateTime.Parse(dataGridView1.Rows[0].Cells[9].Value.ToString()); }
                     else { dtpFechaRevision.Value = DateTime.Now; }
-                    if (dataGridView1.Rows[0].Cells[10].Value.ToString() != DateTime.MinValue.ToString())
+                    /*if (dataGridView1.Rows[0].Cells[10].Value.ToString() != DateTime.MinValue.ToString())
                     { dtpFechaPago.Value = DateTime.Parse(dataGridView1.Rows[0].Cells[10].Value.ToString()); }
-                    else { dtpFechaPago.Value = DateTime.Now; }
+                    else { dtpFechaPago.Value = DateTime.Now; }*///Working 07/11/2020 
+                    if (dataGridView1.Rows[0].Cells[10].Value.ToString() == string.Empty || dataGridView1.Rows[0].Cells[10].Value.ToString() == DateTime.MinValue.ToString())
+                    {
+                        dtpFechaPago.Value = DateTime.Now;
+                    }
+                    else
+                     {
+                    dtpFechaPago.Value = DateTime.Parse(dataGridView1.Rows[0].Cells[10].Value.ToString());
+                     }
                     txtComentario.Text = dataGridView1.Rows[0].Cells[11].Value.ToString();
                     txtCve_Factura.ReadOnly = true;
                     btnGuardar.Text = "Actualizar";
@@ -335,6 +359,18 @@ namespace Refracciones.Forms
             {
                 errorP.Clear();
                 btnGuardar.Enabled = true;
+            }
+        }
+
+        private void chkFP_CheckedChanged(object sender, EventArgs e)
+        {
+            if(chkFP.Checked == true)
+            {
+                dtpFechaPago.Enabled = true;
+            }
+            else 
+            {
+                dtpFechaPago.Enabled = false;
             }
         }
     }

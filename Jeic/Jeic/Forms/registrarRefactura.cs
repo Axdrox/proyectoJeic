@@ -108,8 +108,25 @@ namespace Refracciones.Forms
                 // if (chkFechaRevision.Checked)
                 fecha_revision = DateTime.Parse(dtpFechaRevision.Value.ToShortDateString());
                 //if (chkFechaPago.Checked)
-                fecha_pago = DateTime.Parse(dtpFechaPago.Value.ToShortDateString());
+                //fecha_pago = DateTime.Parse(dtpFechaPago.Value.ToShortDateString());//Working 08/11/2020
                 // if (chkFechaRefacturacion.Checked)
+                
+                if (dato3.Text == "1")//1 significa que es la primera vez
+                {
+                    if (chkFP.Checked == true)
+                        fecha_pago = dtpFechaPago.Value.Date;
+                    else
+                        fecha_pago = DateTime.MinValue;
+                }
+                else
+                {
+                    if (chkFP.Checked == true)
+                        fecha_pago = dtpFechaPago.Value.Date;
+                    else
+                        fecha_pago = DateTime.Parse(dataGridView1.Rows[0].Cells[10].Value.ToString());
+                }
+
+
                 fecha_refactura = DateTime.Parse(dtpFechaRefacturacion.Value.ToShortDateString());
                 if (txtRutaFactura.Text == string.Empty && txtRutaXml.Text == string.Empty)
                 { }
@@ -174,7 +191,15 @@ namespace Refracciones.Forms
                     dtpFechaRefacturacion.Value = DateTime.Parse(dataGridView1.Rows[0].Cells[7].Value.ToString());
                     dtpFechaIngreso.Value = DateTime.Parse(dataGridView1.Rows[0].Cells[8].Value.ToString());
                     dtpFechaRevision.Value = DateTime.Parse(dataGridView1.Rows[0].Cells[9].Value.ToString());
-                    dtpFechaPago.Value = DateTime.Parse(dataGridView1.Rows[0].Cells[10].Value.ToString());
+                    //dtpFechaPago.Value = DateTime.Parse(dataGridView1.Rows[0].Cells[10].Value.ToString());//Working 08/11/2020
+                    if (dataGridView1.Rows[0].Cells[10].Value.ToString() == string.Empty || dataGridView1.Rows[0].Cells[10].Value.ToString() == DateTime.MinValue.ToString())
+                    {
+                        dtpFechaPago.Value = DateTime.Now;
+                    }
+                    else
+                    {
+                        dtpFechaPago.Value = DateTime.Parse(dataGridView1.Rows[0].Cells[10].Value.ToString());
+                    }
                     txtComentario.Text = dataGridView1.Rows[0].Cells[11].Value.ToString();
                     txtCve_Factura.ReadOnly = true;
                     btnGuardar.Text = "Actualizar";
@@ -377,6 +402,18 @@ namespace Refracciones.Forms
             {
                 errorP.Clear();
                 btnGuardar.Enabled = true;
+            }
+        }
+
+        private void chkFP_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkFP.Checked == true)
+            {
+                dtpFechaPago.Enabled = true;
+            }
+            else
+            {
+                dtpFechaPago.Enabled = false;
             }
         }
     }

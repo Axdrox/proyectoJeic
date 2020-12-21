@@ -74,6 +74,7 @@ namespace Jeic.Forms
                     registrarRefactura refactura = new registrarRefactura();
                     refactura.dato1.Text = dato1.Text;
                     refactura.dato2.Text = dato2.Text;
+                    refactura.dato3.Text = "1";//te abre el formulario en modo registrar Testing 09/11/2020
                     refactura.txtRefactura.Text = dato3.Text;
                     refactura.lblPieza.Text = lblPieza.Text;
                     refactura.lblcvePedidoidentity.Text = lblcvePedidoidentity.Text;

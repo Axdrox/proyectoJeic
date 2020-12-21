@@ -394,7 +394,6 @@ C:\Users\OGTBoXBuNy\Documents\JEIC PROYECTO\GITHUB\proyectoJeic\Jeic\Jeic\bin\De
 C:\Users\OGTBoXBuNy\Documents\JEIC PROYECTO\GITHUB\proyectoJeic\Jeic\Jeic\bin\Debug\Microsoft.IdentityModel.Protocols.xml
 C:\Users\OGTBoXBuNy\Documents\JEIC PROYECTO\GITHUB\proyectoJeic\Jeic\Jeic\bin\Debug\Microsoft.IdentityModel.Tokens.xml
 C:\Users\OGTBoXBuNy\Documents\JEIC PROYECTO\GITHUB\proyectoJeic\Jeic\Jeic\bin\Debug\SpreadsheetLight.xml
-C:\Users\OGTBoXBuNy\Documents\JEIC PROYECTO\GITHUB\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csprojAssemblyReference.cache
 C:\Users\OGTBoXBuNy\Documents\JEIC PROYECTO\GITHUB\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Administrar.resources
 C:\Users\OGTBoXBuNy\Documents\JEIC PROYECTO\GITHUB\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Alertas.resources
 C:\Users\OGTBoXBuNy\Documents\JEIC PROYECTO\GITHUB\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.buscarFacturas.resources
@@ -420,3 +419,4 @@ C:\Users\OGTBoXBuNy\Documents\JEIC PROYECTO\GITHUB\proyectoJeic\Jeic\Jeic\obj\De
 C:\Users\OGTBoXBuNy\Documents\JEIC PROYECTO\GITHUB\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.CopyComplete
 C:\Users\OGTBoXBuNy\Documents\JEIC PROYECTO\GITHUB\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.exe
 C:\Users\OGTBoXBuNy\Documents\JEIC PROYECTO\GITHUB\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.pdb
+C:\Users\OGTBoXBuNy\Documents\JEIC PROYECTO\GITHUB\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csprojAssemblyReference.cache

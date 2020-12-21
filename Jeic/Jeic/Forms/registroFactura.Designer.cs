@@ -65,6 +65,7 @@
             this.errorP = new System.Windows.Forms.ErrorProvider(this.components);
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.chkFP = new System.Windows.Forms.CheckBox();
             this.lblcvePedidoidentity = new System.Windows.Forms.Label();
             this.lblPieza = new System.Windows.Forms.Label();
             this.lblUsuario = new System.Windows.Forms.Label();
@@ -246,6 +247,7 @@
             // 
             // dtpFechaPago
             // 
+            this.dtpFechaPago.Enabled = false;
             this.dtpFechaPago.Location = new System.Drawing.Point(374, 132);
             this.dtpFechaPago.Name = "dtpFechaPago";
             this.dtpFechaPago.Size = new System.Drawing.Size(200, 20);
@@ -449,6 +451,7 @@
             this.bunifuGradientPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
             this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuGradientPanel1.Controls.Add(this.chkFP);
             this.bunifuGradientPanel1.Controls.Add(this.lblcvePedidoidentity);
             this.bunifuGradientPanel1.Controls.Add(this.lblPieza);
             this.bunifuGradientPanel1.Controls.Add(this.lblUsuario);
@@ -464,6 +467,16 @@
             this.bunifuGradientPanel1.Quality = 10;
             this.bunifuGradientPanel1.Size = new System.Drawing.Size(620, 358);
             this.bunifuGradientPanel1.TabIndex = 31;
+            // 
+            // chkFP
+            // 
+            this.chkFP.AutoSize = true;
+            this.chkFP.Location = new System.Drawing.Point(580, 137);
+            this.chkFP.Name = "chkFP";
+            this.chkFP.Size = new System.Drawing.Size(15, 14);
+            this.chkFP.TabIndex = 85;
+            this.chkFP.UseVisualStyleBackColor = true;
+            this.chkFP.CheckedChanged += new System.EventHandler(this.chkFP_CheckedChanged);
             // 
             // lblcvePedidoidentity
             // 
@@ -681,5 +694,6 @@
         public System.Windows.Forms.Label lblPieza;
         public System.Windows.Forms.Label lblcvePedidoidentity;
         public System.Windows.Forms.TextBox txtFacturasinIVA;
+        private System.Windows.Forms.CheckBox chkFP;
     }
 }
