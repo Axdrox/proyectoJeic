@@ -31,7 +31,7 @@ namespace Refracciones.Forms
         {
             this.ActiveControl = TxtClavePed;
             this.Icon = Resources.iconJeic;
-            llenarDefaultDGV.defaultDGV(dvgPedido);
+            llenarDefaultDGV.defaultDGV(dvgPedido,lblcvePe.Text);
             dvgPedido.Columns["VENTA"].Visible = false;// VENTA INDEX 9
             dvgPedido.Columns["CVE"].Visible = false;// CVE INDEX 10
             menuStrip1.ForeColor = Color.White;
@@ -104,7 +104,7 @@ namespace Refracciones.Forms
                 txtComentarioSiniestro.Text = dgvDatos.Rows[0].Cells[27].Value.ToString();
                 lblFechaBaja.Text = lblFechaBaja.Text.Substring(0, 11) + " " + dgvDatos.Rows[0].Cells[28].Value.ToString();
             }
-            llenar.Llenartabla1(dvgPedido, TxtClaveSin.Text.ToString(), TxtClavePed.Text.ToString(), txtCveVendedor.Text.ToString());
+            llenar.Llenartabla1(dvgPedido, TxtClaveSin.Text.ToString(), TxtClavePed.Text.ToString(), txtCveVendedor.Text.ToString(), lblcvePe.Text);
         }
 
         private void dvgPedido_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -168,7 +168,7 @@ namespace Refracciones.Forms
             string Fecha_Final = Fecha_Fin.Value.Year.ToString() + "-" + Fecha_Fin.Value.Month.ToString() + "-" + Fecha_Fin.Value.Day.ToString();
 
             OperBD llenarFecha = new OperBD();
-            llenarFecha.Llenartabla(dvgPedido, Fecha_inicio, Fecha_Final);
+            llenarFecha.Llenartabla(dvgPedido, Fecha_inicio, Fecha_Final, lblcvePe.Text);
             TxtClavePed.Text = "";
             TxtClaveSin.Text = "";
         }
@@ -211,12 +211,13 @@ namespace Refracciones.Forms
             DialogResult result = pedido.ShowDialog();
             //implementar aquí si se desea, pasar el txtClavePedido
             if (result == DialogResult.OK)
-                llenarDefaultDGV.defaultDGV(dvgPedido);
+                llenarDefaultDGV.defaultDGV(dvgPedido, lblcvePe.Text);
         }
 
         private void generarReporteVentasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             exportarExcel reporte = new exportarExcel();
+            reporte.lblcvePe.Text = lblcvePe.Text;
             reporte.Show();
         }
 
@@ -311,9 +312,9 @@ namespace Refracciones.Forms
                 DialogResult result = elec.ShowDialog();
                 if (result == DialogResult.OK)
                 {
-                    llenarDefaultDGV.defaultDGV(dvgPedido);
+                    llenarDefaultDGV.defaultDGV(dvgPedido, lblcvePe.Text);
                     TxtClavePed.Text = elec.clavePedidoTextBox;
-                    llenar.Llenartabla1(dvgPedido, TxtClaveSin.Text.ToString(), TxtClavePed.Text.ToString(), txtCveVendedor.Text.ToString());
+                    llenar.Llenartabla1(dvgPedido, TxtClaveSin.Text.ToString(), TxtClavePed.Text.ToString(), txtCveVendedor.Text.ToString(), lblcvePe.Text);
                 }
             }
         }

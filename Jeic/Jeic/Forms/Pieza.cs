@@ -588,12 +588,12 @@
                 else if (chbOtroProveedor.Checked == false && chbOtroProveedor.Text != "Modificar")
                     datosPieza[6] = cbProveedores.Text.Trim().ToUpper();
 
-                MessageBOX mes = new MessageBOX(4, "¿Los datos son correctos?");
-                if (mes.ShowDialog() == DialogResult.OK)
-                {
+               // MessageBOX mes = new MessageBOX(4, "¿Los datos son correctos?");
+                //if (mes.ShowDialog() == DialogResult.OK)
+                //{
                     this.DialogResult = DialogResult.OK;
                     this.Close();
-                }
+                //}
             }
         }
 

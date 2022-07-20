@@ -41,6 +41,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.Fecha_in = new System.Windows.Forms.DateTimePicker();
             this.Panelinfo = new System.Windows.Forms.Panel();
+            this.lblFechaBaja = new System.Windows.Forms.Label();
             this.txtComentarioSiniestro = new System.Windows.Forms.TextBox();
             this.lblVehiculo = new System.Windows.Forms.Label();
             this.lblEstadoSiniestro = new System.Windows.Forms.Label();
@@ -97,7 +98,7 @@
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.moverFormulario = new Bunifu.Framework.UI.BunifuDragControl(this.components);
-            this.lblFechaBaja = new System.Windows.Forms.Label();
+            this.lblcvePe = new System.Windows.Forms.Label();
             this.Panelinfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFactura)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dvgPedido)).BeginInit();
@@ -220,6 +221,17 @@
             this.Panelinfo.Name = "Panelinfo";
             this.Panelinfo.Size = new System.Drawing.Size(320, 479);
             this.Panelinfo.TabIndex = 6;
+            // 
+            // lblFechaBaja
+            // 
+            this.lblFechaBaja.AutoSize = true;
+            this.lblFechaBaja.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFechaBaja.ForeColor = System.Drawing.Color.White;
+            this.lblFechaBaja.Location = new System.Drawing.Point(0, 147);
+            this.lblFechaBaja.Name = "lblFechaBaja";
+            this.lblFechaBaja.Size = new System.Drawing.Size(72, 14);
+            this.lblFechaBaja.TabIndex = 44;
+            this.lblFechaBaja.Text = "Fecha Baja: ";
             // 
             // txtComentarioSiniestro
             // 
@@ -845,6 +857,7 @@
             this.bunifuGradientPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
             this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuGradientPanel1.Controls.Add(this.lblcvePe);
             this.bunifuGradientPanel1.Controls.Add(this.label5);
             this.bunifuGradientPanel1.Controls.Add(this.dvgPedido);
             this.bunifuGradientPanel1.Controls.Add(this.txtCveVendedor);
@@ -872,16 +885,14 @@
             this.moverFormulario.TargetControl = this.bunifuGradientPanel1;
             this.moverFormulario.Vertical = true;
             // 
-            // lblFechaBaja
+            // lblcvePe
             // 
-            this.lblFechaBaja.AutoSize = true;
-            this.lblFechaBaja.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFechaBaja.ForeColor = System.Drawing.Color.White;
-            this.lblFechaBaja.Location = new System.Drawing.Point(0, 147);
-            this.lblFechaBaja.Name = "lblFechaBaja";
-            this.lblFechaBaja.Size = new System.Drawing.Size(72, 14);
-            this.lblFechaBaja.TabIndex = 44;
-            this.lblFechaBaja.Text = "Fecha Baja: ";
+            this.lblcvePe.AutoSize = true;
+            this.lblcvePe.Location = new System.Drawing.Point(3, 134);
+            this.lblcvePe.Name = "lblcvePe";
+            this.lblcvePe.Size = new System.Drawing.Size(73, 13);
+            this.lblcvePe.TabIndex = 17;
+            this.lblcvePe.Text = "Clave Pedido:";
             // 
             // Busqueda
             // 
@@ -978,5 +989,6 @@
         private System.Windows.Forms.Label lblVehiculo;
         private System.Windows.Forms.TextBox txtComentarioSiniestro;
         private System.Windows.Forms.Label lblFechaBaja;
+        public System.Windows.Forms.Label lblcvePe;
     }
 }

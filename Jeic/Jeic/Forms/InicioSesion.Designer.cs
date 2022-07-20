@@ -193,7 +193,7 @@
             this.bunifuCustomLabel1.Location = new System.Drawing.Point(47, 116);
             this.bunifuCustomLabel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.bunifuCustomLabel1.Name = "bunifuCustomLabel1";
-            this.bunifuCustomLabel1.Size = new System.Drawing.Size(62, 16);
+            this.bunifuCustomLabel1.Size = new System.Drawing.Size(61, 16);
             this.bunifuCustomLabel1.TabIndex = 14;
             this.bunifuCustomLabel1.Text = "Usuario";
             // 
@@ -206,7 +206,7 @@
             this.bunifuCustomLabel2.Location = new System.Drawing.Point(46, 167);
             this.bunifuCustomLabel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.bunifuCustomLabel2.Name = "bunifuCustomLabel2";
-            this.bunifuCustomLabel2.Size = new System.Drawing.Size(87, 16);
+            this.bunifuCustomLabel2.Size = new System.Drawing.Size(86, 16);
             this.bunifuCustomLabel2.TabIndex = 15;
             this.bunifuCustomLabel2.Text = "Contraseña";
             // 
@@ -275,7 +275,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(72, 13);
             this.label1.TabIndex = 18;
-            this.label1.Text = "Versión: 2.0.6";
+            this.label1.Text = "Versión: 2.0.7";
             // 
             // InicioSesion
             // 

@@ -56,25 +56,26 @@ namespace Refracciones
         private void txtContrasenia_KeyPress(object sender, KeyPressEventArgs e)
         {
             txtContrasenia.ForeColor = Color.White;
-            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            if (e.KeyChar == Convert.ToChar(Keys.Escape))
             {             
                 if (Operacion.logeo(txtUsuario.Text, txtContrasenia.Text) == 1)
                 {
                     //MessageBOX.SHowDialog(1, "Bienvenido " + txtUsuario.Text);
                     Forms.Busqueda bus = new Forms.Busqueda();
+                    bus.lblcvePe.Text = Operacion.obtenerCvePedido(txtUsuario.Text.Trim());
                     bus.Usuario.Text = "Usuario: " + txtUsuario.Text;
                     bus.Show();
 
-                    int rol = ObtenerRol.Rol(txtUsuario.Text);
+                    /*int rol = ObtenerRol.Rol(txtUsuario.Text);
                     if (rol == 1 || rol == 2 || rol == 0)
                     {
                         Alertas alerta = new Alertas();
                         alerta.Show();
-                    }
+                    }*/
 
-                    txtUsuario.Text = "";
+                    /*txtUsuario.Text = "";
                     txtContrasenia.Text = "";
-                    this.Hide();
+                    this.Hide();*/
                 }
                 else
                 {
@@ -95,15 +96,16 @@ namespace Refracciones
             {
                 //MessageBOX.SHowDialog(1,"Bienvenido "+ txtUsuario.Text);
                 Forms.Busqueda bus = new Forms.Busqueda();
+                bus.lblcvePe.Text = Operacion.obtenerCvePedido(txtUsuario.Text.Trim());
                 bus.Usuario.Text= "Usuario: " + txtUsuario.Text;
                 bus.Show();
 
-                int rol = ObtenerRol.Rol(txtUsuario.Text);
+                /*int rol = ObtenerRol.Rol(txtUsuario.Text);
                 if ( rol== 1 || rol==2 || rol == 0 )
                 {
                     Alertas alerta = new Alertas();
                     alerta.Show();
-                }
+                }*/
 
                 txtUsuario.Text = "";
                 txtContrasenia.Text = "";

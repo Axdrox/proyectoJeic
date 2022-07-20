@@ -44,6 +44,7 @@
             this.pbClose = new System.Windows.Forms.PictureBox();
             this.errorP = new System.Windows.Forms.ErrorProvider(this.components);
             this.moverFormulario = new Bunifu.Framework.UI.BunifuDragControl(this.components);
+            this.lblcvePe = new System.Windows.Forms.Label();
             this.bunifuGradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
@@ -127,6 +128,7 @@
             this.bunifuGradientPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
             this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuGradientPanel1.Controls.Add(this.lblcvePe);
             this.bunifuGradientPanel1.Controls.Add(this.btnGenerar);
             this.bunifuGradientPanel1.Controls.Add(this.txtcostoOperativo);
             this.bunifuGradientPanel1.Controls.Add(this.label4);
@@ -203,6 +205,15 @@
             this.moverFormulario.TargetControl = this.bunifuGradientPanel1;
             this.moverFormulario.Vertical = true;
             // 
+            // lblcvePe
+            // 
+            this.lblcvePe.AutoSize = true;
+            this.lblcvePe.Location = new System.Drawing.Point(13, 183);
+            this.lblcvePe.Name = "lblcvePe";
+            this.lblcvePe.Size = new System.Drawing.Size(73, 13);
+            this.lblcvePe.TabIndex = 82;
+            this.lblcvePe.Text = "Clave Pedido:";
+            // 
             // exportarExcel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -247,5 +258,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ErrorProvider errorP;
         private Bunifu.Framework.UI.BunifuDragControl moverFormulario;
+        public System.Windows.Forms.Label lblcvePe;
     }
 }

@@ -105,9 +105,9 @@ namespace Refracciones.Forms
                     else
                     {
                         int i = 0;
-                        MessageBOX mes = new MessageBOX(4, "¿Los datos son correctos?");
-                        if (mes.ShowDialog() == DialogResult.OK)
-                        {
+                        //MessageBOX mes = new MessageBOX(4, "¿Los datos son correctos?");
+                        //if (mes.ShowDialog() == DialogResult.OK)
+                        //{
                             if (chbOtroVehiculo.Checked == true)
                                 modelo = txtNombreVehiculoNuevo.Text.Trim().ToUpper();
                             else
@@ -120,7 +120,7 @@ namespace Refracciones.Forms
 
                             this.DialogResult = DialogResult.OK;
                             this.Close();
-                        }
+                        //}
                     }
                 }
             }

@@ -205,10 +205,10 @@ namespace Refracciones.Forms
                     {
 
                             cantidad = pzas_devolucion + cantidadD;
-                            MessageBOX pregunta = new MessageBOX(4, "¿Está seguro que desea Registrar la devolución del registro seleccionado?");
-                            oDlgRes = pregunta.ShowDialog();
-                            if (oDlgRes == DialogResult.OK)
-                            {
+                            //MessageBOX pregunta = new MessageBOX(4, "¿Está seguro que desea Registrar la devolución del registro seleccionado?");
+                            //oDlgRes = pregunta.ShowDialog();
+                            //if (oDlgRes == DialogResult.OK)
+                            //{
                                 rbtnEntrega.Enabled = false;
                                 rbtnDevolucion.Enabled = false;
                                 dtpFecha.Enabled = false;
@@ -229,11 +229,11 @@ namespace Refracciones.Forms
                                 cmbCantidad.Items.Clear();
                                 txtMotivo.Text = "";
                                 txtPenalizacion.Text = "";
-                            }
-                            else
-                            {
-                                MessageBOX.SHowDialog(2, "No se realizó ninguna operación");
-                            }
+                            //}
+                            //else
+                            //{
+                               // MessageBOX.SHowDialog(2, "No se realizó ninguna operación");
+                            //}
                         
                     }
                     else if (rbtnEntrega.Checked == true)
@@ -241,10 +241,10 @@ namespace Refracciones.Forms
                         if (btnAceptar.Text == "ENTREGA")
                         {
                             cantidad = pzas_entregadas + cantidadD;
-                            MessageBOX pregunta = new MessageBOX(4, "¿Está seguro que desea Registrar la entrega del registro seleccionado ?");
-                            oDlgRes = pregunta.ShowDialog();
-                            if (oDlgRes == DialogResult.OK)
-                            {
+                            //MessageBOX pregunta = new MessageBOX(4, "¿Está seguro que desea Registrar la entrega del registro seleccionado ?");
+                            //oDlgRes = pregunta.ShowDialog();
+                            //if (oDlgRes == DialogResult.OK)
+                            //{
                                 rbtnEntrega.Enabled = false;
                                 rbtnDevolucion.Enabled = false;
                                 dtpFecha.Enabled = false;
@@ -255,11 +255,11 @@ namespace Refracciones.Forms
                                 //count2 = oper.Total_Registros2() + 1;//Se calcula el total de registros en la tabla Entrega
                                 oper.Registrar_Entrega(cve_siniestro, cve_pedido, cve_pieza, cantidad, fecha, cantidadD, cve_venta, fecha_asignacion, lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9), cvePedidoIdentity);
                                 cmbCantidad.Items.Clear();
-                            }
-                            else
-                            {
-                                MessageBOX.SHowDialog(2, "No se realizó ninguna operación");
-                            }
+                            //}
+                            //else
+                            //{
+                                //MessageBOX.SHowDialog(2, "No se realizó ninguna operación");
+                            //}
                         }
                         
                         
