@@ -58,7 +58,7 @@ namespace Refracciones.Forms
                     btnAgregarPedido.Visible = false;
                     administrarToolStripMenuItem.Enabled = false;
                     buscarFacturasToolStripMenuItem.Enabled = false;
-                    generarReporteVentasToolStripMenuItem.Enabled = false;
+                    //generarReporteVentasToolStripMenuItem.Enabled = false;
                     notificacionesToolStripMenuItem.Enabled = false;
                     talleresToolStripMenuItem.Enabled = false;
                     break;
@@ -70,7 +70,7 @@ namespace Refracciones.Forms
         private void BusquedaPedido(object sender, KeyEventArgs e)
         {
             OperBD llenardatos = new OperBD();
-            llenardatos.Llenartablaa(dgvDatos,TxtClavePed.Text.Trim());
+            llenardatos.Llenartablaa(dgvDatos,TxtClavePed.Text.Trim(),lblcvePe.Text);
             if(dgvDatos.Rows[0].Cells[0].Value != null)
             {
                 lblcvePedido.Text = lblcvePedido.Text.Substring(0, 9) + " " + dgvDatos.Rows[0].Cells[0].Value.ToString();
