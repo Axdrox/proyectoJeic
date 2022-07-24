@@ -112,6 +112,7 @@
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.lblUsuario = new System.Windows.Forms.Label();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.fileRoute = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedido)).BeginInit();
             this.bunifuGradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatosPDF)).BeginInit();
@@ -1413,5 +1414,6 @@
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.DataGridView dgvDatosPDF;
         private System.Windows.Forms.Button btnModificarSiniestro;
+        private System.Windows.Forms.SaveFileDialog fileRoute;
     }
 }

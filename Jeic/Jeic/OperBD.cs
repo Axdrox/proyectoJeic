@@ -14,6 +14,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BarcodeLib;
+using ProyectoBarras.Utilidades;
+using System.IO;
+using iText.IO.Font;
+using iText.Kernel.Font;
+using iText.Kernel.Pdf;
+using iText.Kernel.Pdf.Canvas;
+using iText.Kernel.Colors;
 
 namespace Refracciones
 {
@@ -1360,14 +1368,14 @@ namespace Refracciones
             }
         }
 
-        //---------------------------LLENAR TABLA PARA DATOS DE MUESTRA PDF--------------------
-        public void Llenartabla(DataGridView dgv, string cve_Pedido)
+        //---------------------------LLENAR TABLA PARA DATOS DE MUESTRA PDF CODIGO DE BARRAS--------------------
+        public void LlenartablaPDF(DataGridView dgv, string cve_Pedido)
         {
             try
             {
                 using (SqlConnection nuevacon = Conexion.conexion())
                 {
-                    da = new SqlDataAdapter(string.Format("SELECT ven.cve_pedido,cli.cve_nombre,ta.nombre,v.nombre,veh.modelo,ven.fecha_asignacion,ven.fecha_promesa,pi.nombre,p.cantidad,p.costo_neto,pro.nombre, m.marca,veh.anio FROM pedido p LEFT OUTER JOIN ventas ven ON ven.cve_venta=p.cve_venta LEFT OUTER JOIN valuador va ON va.cve_valuador=ven.cve_valuador LEFT OUTER JOIN cliente cli ON cli.cve_nombre = va.cve_cliente  LEFT OUTER JOIN taller ta ON ta.cve_taller=ven.cve_taller LEFT OUTER JOIN vendedor v ON v.cve_vendedor=ven.cve_vendedor LEFT OUTER JOIN siniestro si ON si.cve_siniestro=ven.cve_siniestro LEFT OUTER JOIN vehiculo veh ON veh.cve_vehiculo=si.cve_vehiculo LEFT OUTER JOIN marca m ON veh.cve_marca = m.cve_marca LEFT OUTER JOIN pieza pi ON pi.cve_pieza=p.cve_pieza LEFT OUTER JOIN proveedor pro ON pro.cve_proveedor =p.cve_proveedor where ven.cve_pedido='{0}' ORDER BY p.ordenCaptura ASC", cve_Pedido), nuevacon);
+                    da = new SqlDataAdapter(string.Format("SELECT ven.cve_pedido,cli.cve_nombre,ta.nombre,v.nombre,veh.modelo,ven.fecha_asignacion,ven.fecha_promesa,pi.nombre,p.cantidad,p.costo_neto,pro.nombre, m.marca,veh.anio,p.cve_venta, p.cve_pedido FROM pedido p LEFT OUTER JOIN ventas ven ON ven.cve_venta=p.cve_venta LEFT OUTER JOIN valuador va ON va.cve_valuador=ven.cve_valuador LEFT OUTER JOIN cliente cli ON cli.cve_nombre = va.cve_cliente  LEFT OUTER JOIN taller ta ON ta.cve_taller=ven.cve_taller LEFT OUTER JOIN vendedor v ON v.cve_vendedor=ven.cve_vendedor LEFT OUTER JOIN siniestro si ON si.cve_siniestro=ven.cve_siniestro LEFT OUTER JOIN vehiculo veh ON veh.cve_vehiculo=si.cve_vehiculo LEFT OUTER JOIN marca m ON veh.cve_marca = m.cve_marca LEFT OUTER JOIN pieza pi ON pi.cve_pieza=p.cve_pieza LEFT OUTER JOIN proveedor pro ON pro.cve_proveedor =p.cve_proveedor where ven.cve_pedido='{0}' ORDER BY p.ordenCaptura ASC", cve_Pedido), nuevacon);
                     dt = new DataTable();
                     da.Fill(dt);
                     dgv.DataSource = dt;
@@ -1382,6 +1390,322 @@ namespace Refracciones
 
         //-------------------------------------------------------------------------------
 
+        //---------------------------GENERAR CODIGO DE BARRAS PARA PDF--------------------
+        public void generarEtiqueta(string cveVenta, string cvePedido)
+        {
+            
+                int valor = 31;
+                    try
+                    {
+                        using (Barcode etiqueta = new Barcode())
+                        {
+                            etiqueta.IncludeLabel = false;
+                            etiqueta.AlternateLabel = cveVenta + "," + cvePedido;
+                            etiqueta.LabelPosition = LabelPositions.BOTTOMCENTER;
+                            etiqueta.LabelFont = new System.Drawing.Font(FontFamily.GenericMonospace, 15, FontStyle.Regular);
+                            var etiquetaImagen = etiqueta.Encode(((BarcodeLib.TYPE)valor), cveVenta + "," + cvePedido, System.Drawing.Color.Black, System.Drawing.Color.White, 150, 17);
+
+
+                            Bitmap titulo = ConvertirBitmap.convertirTextoImagen("");
+                            int width = Math.Max((false ? titulo.Width : 0), etiquetaImagen.Width);
+                            int height = (false ? titulo.Height : 0) + etiquetaImagen.Height;
+
+                            Bitmap img3 = new Bitmap(width, height);
+                            Graphics g = Graphics.FromImage(img3);
+                            if (false)
+                                g.DrawImage(titulo, new Point(0, 0));
+
+                            g.DrawImage(etiquetaImagen, new Point(0, (false ? titulo.Height : 0)));
+
+                            img3.Save(Application.StartupPath + "\\temp.png", System.Drawing.Imaging.ImageFormat.Png);
+                            img3.Dispose();
+
+                            g.Dispose();
+                            titulo.Dispose();
+                            etiquetaImagen.Dispose();
+                            //etiqueta.Dispose();
+
+                            //MessageBox.Show("Etiqueta Generada!", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                    catch (Exception err)
+                    {
+                        MessageBox.Show("Ocurrió un problema\nMayor Detalle:\n" + err.Message + "\n\n*Si muestra en ingles, proceda a traducirlo", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                
+        }
+        //----------------------GENERAR PDF (VALE JEIC)
+        public void generarVale(SaveFileDialog fileRoute, DataGridView dgvDatosPDF, string cvePedido)
+        {
+            try
+            {
+                fileRoute.InitialDirectory = @"C:\";
+                fileRoute.Title = "PEDIDO";
+                fileRoute.CheckPathExists = true;
+                fileRoute.DefaultExt = "pdf";
+                fileRoute.Filter = "PDF files (*.pdf)|*.pdf";
+                fileRoute.FilterIndex = 2;
+                fileRoute.RestoreDirectory = true;
+                fileRoute.FileName = "Ped_" + cvePedido;
+                if (fileRoute.ShowDialog() == DialogResult.OK)
+                {
+                    if (File.Exists(fileRoute.FileName))
+                    {
+                        iText.Kernel.Pdf.PdfWriter pdfWriter = new iText.Kernel.Pdf.PdfWriter(fileRoute.FileName);
+                        iText.Kernel.Pdf.PdfReader pdfReader = new iText.Kernel.Pdf.PdfReader(Application.StartupPath + "\\VALE JEIC.pdf");
+
+                        iText.Kernel.Pdf.PdfDocument pdfdoc = new iText.Kernel.Pdf.PdfDocument(pdfReader, pdfWriter);
+
+                        OperBD pdfnuevo = new OperBD();
+                        pdfnuevo.LlenartablaPDF(dgvDatosPDF, cvePedido);
+
+                        int NumeroFila = pdfnuevo.NumeroFilas(cvePedido);
+
+                        for (int i = 0; i < 3; i++)
+                        {
+                            PdfCanvas canvas = new PdfCanvas(pdfdoc.GetPage(i + 1));
+                            iText.Kernel.Font.PdfFont font = PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD);
+
+                            int y = 633;
+                            int x = 109;
+                            int Items = 0;
+
+
+
+                            //PEDIDO
+                            canvas.BeginText().SetFontAndSize(font, 18)
+                                     .MoveText(x, y)
+                                     .ShowText(dgvDatosPDF.Rows[0].Cells[0].Value.ToString())
+                                     .EndText();
+                            //CLIENTE
+                            canvas.BeginText().SetFontAndSize(font, 9)
+                                    .MoveText(x + 268, y - 1)
+                                    .ShowText(dgvDatosPDF.Rows[0].Cells[1].Value.ToString())
+                                    .EndText();
+                            //TALLER
+                            canvas.BeginText().SetFontAndSize(font, 9)
+                                    .MoveText(x + 268, y - 12)
+                                    .ShowText(dgvDatosPDF.Rows[0].Cells[2].Value.ToString())
+                                    .EndText();
+
+                            //COTIZADOR
+                            canvas.BeginText().SetFontAndSize(font, 9)
+                                .MoveText(x + 280, y - 23)
+                                .SetFillColor(ColorConstants.BLACK)
+                                .ShowText(dgvDatosPDF.Rows[0].Cells[3].Value.ToString().ToUpper())
+                                .EndText();
+                            //VEHICULO
+                            canvas.BeginText().SetFontAndSize(font, 9)
+                                    .MoveText(x + 274, y - 34.5)
+                                    .ShowText(dgvDatosPDF.Rows[0].Cells[11].Value.ToString() + "  -  " + dgvDatosPDF.Rows[0].Cells[4].Value.ToString() + " - " + dgvDatosPDF.Rows[0].Cells[12].Value.ToString())
+                                    .EndText();
+                            //FECHA_ASIGNACION
+                            canvas.BeginText().SetFontAndSize(font, 14)
+                                    .MoveText(x - 74, y - 45)
+                                    .ShowText(dgvDatosPDF.Rows[0].Cells[5].Value.ToString().Substring(0, 10))
+                                    .EndText();
+                            //HORA DE CREACIÓN DEL VALE
+                            canvas.BeginText().SetFontAndSize(font, 10)
+                                    .MoveText(x - 77, y - 63)
+                                    .SetFillColor(ColorConstants.RED)
+                                    .ShowText("Creado: " + DateTime.Now.ToString())
+                                    .EndText();
+                            //FECHA_PROMESA
+                            canvas.BeginText().SetFontAndSize(font, 14)
+                                    .MoveText(x + 64, y - 45)
+                                    .SetFillColor(ColorConstants.RED)
+                                    .ShowText(dgvDatosPDF.Rows[0].Cells[6].Value.ToString().Substring(0, 10))
+                                    .EndText();
+
+                            for (int count = 0; count < NumeroFila; count++)
+                            {
+
+                                pdfnuevo.generarEtiqueta(dgvDatosPDF.Rows[count].Cells[13].Value.ToString(), dgvDatosPDF.Rows[count].Cells[14].Value.ToString());
+                                iText.IO.Image.ImageData img = iText.IO.Image.ImageDataFactory.Create(Application.StartupPath + "\\temp.png");
+                                img.SetWidth(150);
+                                img.SetHeight(17);
+                                //canvas.AddImage(img,Convert.ToSingle(x - 78), Convert.ToSingle(y - 106.5), false);
+                                canvas.AddImage(img, Convert.ToSingle(x - 76), Convert.ToSingle(y - 102.5), false);
+                                File.Delete(Application.StartupPath + "\\temp.png");
+                                //PIEZAS
+                                canvas.BeginText().SetFontAndSize(font, 10)
+                                        .MoveText(x + 88.6, y - 100)
+                                        .SetFillColor(ColorConstants.BLACK)
+                                        .ShowText(dgvDatosPDF.Rows[count].Cells[7].Value.ToString())
+                                        .EndText();
+                                //CANTIDAD
+                                canvas.BeginText().SetFontAndSize(font, 10)
+                                        .MoveText(x + 260, y - 100)
+                                        .SetFillColor(ColorConstants.BLACK)
+                                        .ShowText(dgvDatosPDF.Rows[count].Cells[8].Value.ToString())
+                                        .EndText();
+
+                                if (dgvDatosPDF.Rows[count].Cells[9].Value.ToString() != "0.00" && i == 0)
+                                {
+                                    //COSTO
+                                    canvas.BeginText().SetFontAndSize(font, 10)
+                                      .MoveText(x + 300, y - 100)
+                                      .SetFillColor(ColorConstants.BLACK)
+                                      .ShowText(dgvDatosPDF.Rows[count].Cells[9].Value.ToString())
+                                      .EndText();
+                                }
+                                if (dgvDatosPDF.Rows[count].Cells[10].Value.ToString() != "PENDIENTE" && i == 0)
+                                {
+                                    //PROVEEDOR
+                                    canvas.BeginText().SetFontAndSize(font, 10)
+                                       .MoveText(x + 367, y - 98)
+                                       .SetFillColor(ColorConstants.BLACK)
+                                       .ShowText(dgvDatosPDF.Rows[count].Cells[10].Value.ToString())
+                                       .EndText();
+                                }
+
+                                Items = count;
+                                y -= 25;
+                            }
+                            //NUMERO DE ITEMS
+                            canvas.BeginText().SetFontAndSize(font, 9)
+                                        .MoveText(x - 16, 96)
+                                        .ShowText((Items + 1).ToString())
+                                        .EndText();
+                        }
+                        pdfdoc.Close();
+
+                        MessageBOX.SHowDialog(3, "PDF creado exitosamente");
+                        
+                    }
+                    else
+                    {
+                        iText.Kernel.Pdf.PdfWriter pdfWriter = new iText.Kernel.Pdf.PdfWriter(fileRoute.FileName);
+                        iText.Kernel.Pdf.PdfReader pdfReader = new iText.Kernel.Pdf.PdfReader(Application.StartupPath + "\\VALE JEIC.pdf");
+
+                        iText.Kernel.Pdf.PdfDocument pdfdoc = new iText.Kernel.Pdf.PdfDocument(pdfReader, pdfWriter);
+
+                        OperBD pdfnuevo = new OperBD();
+                        pdfnuevo.LlenartablaPDF(dgvDatosPDF, cvePedido);
+
+                        int NumeroFila = pdfnuevo.NumeroFilas(cvePedido);
+
+                        for (int i = 0; i < 3; i++)
+                        {
+                            PdfCanvas canvas = new PdfCanvas(pdfdoc.GetPage(i + 1));
+                            iText.Kernel.Font.PdfFont font = PdfFontFactory.CreateFont(FontConstants.HELVETICA_BOLD);
+
+                            int y = 633;
+                            int x = 109;
+                            int Items = 0;
+
+
+
+                            //PEDIDO
+                            canvas.BeginText().SetFontAndSize(font, 18)
+                                     .MoveText(x, y)
+                                     .ShowText(dgvDatosPDF.Rows[0].Cells[0].Value.ToString())
+                                     .EndText();
+                            //CLIENTE
+                            canvas.BeginText().SetFontAndSize(font, 9)
+                                    .MoveText(x + 268, y - 1)
+                                    .ShowText(dgvDatosPDF.Rows[0].Cells[1].Value.ToString())
+                                    .EndText();
+                            //TALLER
+                            canvas.BeginText().SetFontAndSize(font, 9)
+                                    .MoveText(x + 268, y - 12)
+                                    .ShowText(dgvDatosPDF.Rows[0].Cells[2].Value.ToString())
+                                    .EndText();
+
+                            //COTIZADOR
+                            canvas.BeginText().SetFontAndSize(font, 9)
+                                .MoveText(x + 280, y - 23)
+                                .SetFillColor(ColorConstants.BLACK)
+                                .ShowText(dgvDatosPDF.Rows[0].Cells[3].Value.ToString().ToUpper())
+                                .EndText();
+                            //VEHICULO
+                            canvas.BeginText().SetFontAndSize(font, 9)
+                                    .MoveText(x + 274, y - 34.5)
+                                    .ShowText(dgvDatosPDF.Rows[0].Cells[11].Value.ToString() + "  -  " + dgvDatosPDF.Rows[0].Cells[4].Value.ToString() + " - " + dgvDatosPDF.Rows[0].Cells[12].Value.ToString())
+                                    .EndText();
+                            //FECHA_ASIGNACION
+                            canvas.BeginText().SetFontAndSize(font, 14)
+                                    .MoveText(x - 74, y - 45)
+                                    .ShowText(dgvDatosPDF.Rows[0].Cells[5].Value.ToString().Substring(0, 10))
+                                    .EndText();
+                            //HORA DE CREACIÓN DEL VALE
+                            canvas.BeginText().SetFontAndSize(font, 10)
+                                    .MoveText(x - 77, y - 63)
+                                    .SetFillColor(ColorConstants.RED)
+                                    .ShowText("Creado: " + DateTime.Now.ToString())
+                                    .EndText();
+                            //FECHA_PROMESA
+                            canvas.BeginText().SetFontAndSize(font, 14)
+                                    .MoveText(x + 64, y - 45)
+                                    .SetFillColor(ColorConstants.RED)
+                                    .ShowText(dgvDatosPDF.Rows[0].Cells[6].Value.ToString().Substring(0, 10))
+                                    .EndText();
+
+                            for (int count = 0; count < NumeroFila; count++)
+                            {
+
+                                pdfnuevo.generarEtiqueta(dgvDatosPDF.Rows[count].Cells[13].Value.ToString(), dgvDatosPDF.Rows[count].Cells[14].Value.ToString());
+                                iText.IO.Image.ImageData img = iText.IO.Image.ImageDataFactory.Create(Application.StartupPath + "\\temp.png");
+                                img.SetWidth(150);
+                                img.SetHeight(17);
+                                //canvas.AddImage(img,Convert.ToSingle(x - 78), Convert.ToSingle(y - 106.5), false);
+                                canvas.AddImage(img, Convert.ToSingle(x - 76), Convert.ToSingle(y - 102.5), false);
+                                File.Delete(Application.StartupPath + "\\temp.png");
+                                //PIEZAS
+                                canvas.BeginText().SetFontAndSize(font, 10)
+                                        .MoveText(x + 88.6, y - 100)
+                                        .SetFillColor(ColorConstants.BLACK)
+                                        .ShowText(dgvDatosPDF.Rows[count].Cells[7].Value.ToString())
+                                        .EndText();
+                                //CANTIDAD
+                                canvas.BeginText().SetFontAndSize(font, 10)
+                                        .MoveText(x + 260, y - 100)
+                                        .SetFillColor(ColorConstants.BLACK)
+                                        .ShowText(dgvDatosPDF.Rows[count].Cells[8].Value.ToString())
+                                        .EndText();
+
+                                if (dgvDatosPDF.Rows[count].Cells[9].Value.ToString() != "0.00" && i == 0)
+                                {
+                                    //COSTO
+                                    canvas.BeginText().SetFontAndSize(font, 10)
+                                      .MoveText(x + 300, y - 100)
+                                      .SetFillColor(ColorConstants.BLACK)
+                                      .ShowText(dgvDatosPDF.Rows[count].Cells[9].Value.ToString())
+                                      .EndText();
+                                }
+                                if (dgvDatosPDF.Rows[count].Cells[10].Value.ToString() != "PENDIENTE" && i == 0)
+                                {
+                                    //PROVEEDOR
+                                    canvas.BeginText().SetFontAndSize(font, 10)
+                                       .MoveText(x + 367, y - 98)
+                                       .SetFillColor(ColorConstants.BLACK)
+                                       .ShowText(dgvDatosPDF.Rows[count].Cells[10].Value.ToString())
+                                       .EndText();
+                                }
+
+                                Items = count;
+                                y -= 25;
+                            }
+                            //NUMERO DE ITEMS
+                            canvas.BeginText().SetFontAndSize(font, 9)
+                                        .MoveText(x - 16, 96)
+                                        .ShowText((Items + 1).ToString())
+                                        .EndText();
+                        }
+                        pdfdoc.Close();
+
+                        MessageBOX.SHowDialog(3, "PDF creado exitosamente");
+
+                    }
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show("Ocurrió un problema\nMayor Detalle:\n" + err.Message + "\n\n*Si muestra en ingles, proceda a traducirlo", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+
+        }
+        //-------------------------------------------------------------------------------
         public int NumeroFilas(string cve_ped)
         {
             int fila = 0;
