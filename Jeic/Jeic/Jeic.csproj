@@ -188,6 +188,12 @@
     <Compile Include="Forms\buscarFacturas.Designer.cs">
       <DependentUpon>buscarFacturas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\cambioEstatus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\cambioEstatus.Designer.cs">
+      <DependentUpon>cambioEstatus.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Eleccion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -313,6 +319,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\buscarFacturas.resx">
       <DependentUpon>buscarFacturas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\cambioEstatus.resx">
+      <DependentUpon>cambioEstatus.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Eleccion.resx">
       <DependentUpon>Eleccion.cs</DependentUpon>

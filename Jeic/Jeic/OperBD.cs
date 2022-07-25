@@ -5997,6 +5997,97 @@ namespace Refracciones
             return resultado;
         }
 
+        //------------- GENERAR EXCEL
+        public string[] llenarCodigoBarras(string cvePedido)
+        {
+            string[] datos = new string[7];
+            
+            try
+            {
+               
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    
+                   
+                    Comando = new SqlCommand(string.Format("SELECT ven.cve_pedido AS 'PEDIDO', ven.cve_siniestro AS 'SINIESTRO', pie.nombre AS 'PIEZA', val.cve_cliente AS 'CLIENTE',estSin.estado AS 'ESTATUS ACTUAL', ped.cve_pedido AS 'CVE PEDIDO', ped.cve_venta AS 'CVE VENTA'  FROM PEDIDO ped JOIN PIEZA pie ON ped.cve_pieza = pie.cve_pieza JOIN VENTAS ven ON ped.cve_venta = ven.cve_venta JOIN VALUADOR val ON ven.cve_valuador = val.cve_valuador JOIN ESTADO_SINIESTRO estSin ON ped.estado = estSin.cve_estado WHERE ped.cve_pedido = {0}", cvePedido ), nuevaConexion);
+                    
+                    Lector = Comando.ExecuteReader();
+                    while (Lector.Read())
+                    {
+
+                        datos[0] = Lector["PEDIDO"].ToString();
+                        datos[1] = Lector["SINIESTRO"].ToString();
+                        datos[2] = Lector["PIEZA"].ToString();
+                        datos[3] = Lector["CLIENTE"].ToString();
+                        datos[4] = Lector["ESTATUS ACTUAL"].ToString();
+                        datos[5] = Lector["CVE PEDIDO"].ToString();
+                        datos[6] = Lector["CVE VENTA"].ToString();
+                    }
+                    Lector.Close();
+                    nuevaConexion.Close();
+                }
+                return datos;
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error al generar la peticion: " + EX.Message);
+            }
+            return datos;
+        }
+
+        //--------------------CAMBIO DE ESTADO (ESTATUS) DE PIEZA POR CODIGO BARRAS--------------------
+        public void registrarEstadoCodigoBarras(string cvePedido, string cveEstatus)
+        {
+            int cveEstado = -1;
+            using (SqlConnection nuevaConexion = Conexion.conexion())
+            {
+                nuevaConexion.Open();
+                Comando = new SqlCommand(string.Format("SELECT cve_estado AS 'ESTADO' FROM ESTADO_SINIESTRO WHERE estado = '{0}'", cveEstatus), nuevaConexion);
+                Lector = Comando.ExecuteReader();
+                while (Lector.Read())
+                {
+                    cveEstado = Convert.ToInt32(Lector["ESTADO"].ToString());
+                }
+                Lector.Close();
+                if (cveEstado != -1)
+                {
+                    SqlCommand cmd = new SqlCommand(string.Format("UPDATE p  SET  p.estado = {0} FROM PEDIDO p WHERE p.cve_pedido = {1}", cveEstado, cvePedido), nuevaConexion);
+                    cmd.ExecuteNonQuery();
+                }
+                nuevaConexion.Close();
+                
+            }
+            
+            
+        }
+
+        //--------------------CAMBIO DE ESTADO (ESTATUS) POR VENTA POR CODIGO BARRAS--------------------
+        public void registrarEstadoCodigoBarras(int cveVenta, string cveEstatus)
+        {
+            int cveEstado = -1;
+            using (SqlConnection nuevaConexion = Conexion.conexion())
+            {
+                nuevaConexion.Open();
+                Comando = new SqlCommand(string.Format("SELECT cve_estado AS 'ESTADO' FROM ESTADO_SINIESTRO WHERE estado = '{0}'", cveEstatus), nuevaConexion);
+                Lector = Comando.ExecuteReader();
+                while (Lector.Read())
+                {
+                    cveEstado = Convert.ToInt32(Lector["ESTADO"].ToString());
+                }
+                Lector.Close();
+                if (cveEstado != -1)
+                {
+                    SqlCommand cmd = new SqlCommand(string.Format("UPDATE p  SET  p.estado = {0} FROM PEDIDO p WHERE cve_venta = {1}", cveEstado, cveVenta), nuevaConexion);
+                    cmd.ExecuteNonQuery();
+                }
+                nuevaConexion.Close();
+
+            }
+
+
+        }
+
         /*
         //SE QUITARÁ
         //CALCULAR CANTIDADES PARA AGREGAR A VENTAS

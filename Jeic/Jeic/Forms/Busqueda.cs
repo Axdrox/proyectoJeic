@@ -61,6 +61,7 @@ namespace Refracciones.Forms
                     //generarReporteVentasToolStripMenuItem.Enabled = false;
                     notificacionesToolStripMenuItem.Enabled = false;
                     talleresToolStripMenuItem.Enabled = false;
+                    cambioEstadoToolStripMenuItem.Enabled = false;
                     break;
                 default:
                     break;
@@ -319,6 +320,10 @@ namespace Refracciones.Forms
             }
         }
 
-
+        private void cambioEstadoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            cambioEstatus cmbe = new cambioEstatus();
+            cmbe.ShowDialog();
+        }
     }
 }
