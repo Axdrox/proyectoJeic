@@ -237,6 +237,12 @@
     <Compile Include="Forms\FechaBaja.Designer.cs">
       <DependentUpon>FechaBaja.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\GeneradorClave.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GeneradorClave.Designer.cs">
+      <DependentUpon>GeneradorClave.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\InicioSesion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -343,6 +349,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FechaBaja.resx">
       <DependentUpon>FechaBaja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GeneradorClave.resx">
+      <DependentUpon>GeneradorClave.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\InicioSesion.resx">
       <DependentUpon>InicioSesion.cs</DependentUpon>

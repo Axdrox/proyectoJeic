@@ -325,5 +325,12 @@ namespace Refracciones.Forms
             cambioEstatus cmbe = new cambioEstatus();
             cmbe.ShowDialog();
         }
+
+        private void generadorClavesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GeneradorClave gen = new GeneradorClave();
+            gen.lblcvePe.Text = lblcvePe.Text;
+            gen.ShowDialog();
+        }
     }
 }

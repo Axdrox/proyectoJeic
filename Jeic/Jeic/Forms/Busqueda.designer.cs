@@ -88,6 +88,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.otrasOpcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generarReporteVentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.generadorClavesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cambioEstadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notificacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buscarFacturasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -766,6 +767,7 @@
             // 
             this.otrasOpcionesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.generarReporteVentasToolStripMenuItem,
+            this.generadorClavesToolStripMenuItem,
             this.cambioEstadoToolStripMenuItem,
             this.notificacionesToolStripMenuItem,
             this.buscarFacturasToolStripMenuItem,
@@ -782,40 +784,42 @@
             // generarReporteVentasToolStripMenuItem
             // 
             this.generarReporteVentasToolStripMenuItem.Name = "generarReporteVentasToolStripMenuItem";
-            this.generarReporteVentasToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
-            this.generarReporteVentasToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
+            this.generarReporteVentasToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.generarReporteVentasToolStripMenuItem.Text = "Generar Reporte Ventas";
             this.generarReporteVentasToolStripMenuItem.Click += new System.EventHandler(this.generarReporteVentasToolStripMenuItem_Click);
+            // 
+            // generadorClavesToolStripMenuItem
+            // 
+            this.generadorClavesToolStripMenuItem.Name = "generadorClavesToolStripMenuItem";
+            this.generadorClavesToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.generadorClavesToolStripMenuItem.Text = "Generador Claves";
+            this.generadorClavesToolStripMenuItem.Click += new System.EventHandler(this.generadorClavesToolStripMenuItem_Click);
             // 
             // cambioEstadoToolStripMenuItem
             // 
             this.cambioEstadoToolStripMenuItem.Name = "cambioEstadoToolStripMenuItem";
-            this.cambioEstadoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
-            this.cambioEstadoToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
+            this.cambioEstadoToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.cambioEstadoToolStripMenuItem.Text = "Cambio Estado";
             this.cambioEstadoToolStripMenuItem.Click += new System.EventHandler(this.cambioEstadoToolStripMenuItem_Click);
             // 
             // notificacionesToolStripMenuItem
             // 
             this.notificacionesToolStripMenuItem.Name = "notificacionesToolStripMenuItem";
-            this.notificacionesToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.notificacionesToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
+            this.notificacionesToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.notificacionesToolStripMenuItem.Text = "Notificaciones";
             this.notificacionesToolStripMenuItem.Click += new System.EventHandler(this.notificacionesToolStripMenuItem_Click);
             // 
             // buscarFacturasToolStripMenuItem
             // 
             this.buscarFacturasToolStripMenuItem.Name = "buscarFacturasToolStripMenuItem";
-            this.buscarFacturasToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
-            this.buscarFacturasToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
+            this.buscarFacturasToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.buscarFacturasToolStripMenuItem.Text = "Buscar Facturas";
             this.buscarFacturasToolStripMenuItem.Click += new System.EventHandler(this.buscarFacturasToolStripMenuItem_Click);
             // 
             // talleresToolStripMenuItem
             // 
             this.talleresToolStripMenuItem.Name = "talleresToolStripMenuItem";
-            this.talleresToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
-            this.talleresToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
+            this.talleresToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.talleresToolStripMenuItem.Text = "Talleres";
             this.talleresToolStripMenuItem.Click += new System.EventHandler(this.talleresToolStripMenuItem_Click);
             // 
@@ -823,23 +827,21 @@
             // 
             this.administrarToolStripMenuItem.Enabled = false;
             this.administrarToolStripMenuItem.Name = "administrarToolStripMenuItem";
-            this.administrarToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-            this.administrarToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
+            this.administrarToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.administrarToolStripMenuItem.Text = "Administrar";
             this.administrarToolStripMenuItem.Click += new System.EventHandler(this.administrarToolStripMenuItem_Click);
             // 
             // minimizarToolStripMenuItem
             // 
             this.minimizarToolStripMenuItem.Name = "minimizarToolStripMenuItem";
-            this.minimizarToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
-            this.minimizarToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
+            this.minimizarToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.minimizarToolStripMenuItem.Text = "Minimizar";
             this.minimizarToolStripMenuItem.Click += new System.EventHandler(this.minimizarToolStripMenuItem_Click);
             // 
             // cerrarSesionToolStripMenuItem1
             // 
             this.cerrarSesionToolStripMenuItem1.Name = "cerrarSesionToolStripMenuItem1";
-            this.cerrarSesionToolStripMenuItem1.Size = new System.Drawing.Size(242, 22);
+            this.cerrarSesionToolStripMenuItem1.Size = new System.Drawing.Size(204, 22);
             this.cerrarSesionToolStripMenuItem1.Text = "Cerrar Sesión";
             this.cerrarSesionToolStripMenuItem1.Click += new System.EventHandler(this.cerrarSesionToolStripMenuItem1_Click);
             // 
@@ -1002,5 +1004,6 @@
         private System.Windows.Forms.Label lblFechaBaja;
         public System.Windows.Forms.Label lblcvePe;
         private System.Windows.Forms.ToolStripMenuItem cambioEstadoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem generadorClavesToolStripMenuItem;
     }
 }

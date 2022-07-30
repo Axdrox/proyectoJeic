@@ -214,3 +214,4 @@ C:\Users\bunny\source\repos\proyectoJeic\Jeic\Jeic\bin\Release\System.Text.Json.
 C:\Users\bunny\source\repos\proyectoJeic\Jeic\Jeic\bin\Release\System.Threading.Tasks.Extensions.xml
 C:\Users\bunny\source\repos\proyectoJeic\Jeic\Jeic\bin\Release\System.ValueTuple.xml
 C:\Users\bunny\source\repos\proyectoJeic\Jeic\Jeic\obj\Release\Jeic.Forms.cambioEstatus.resources
+C:\Users\bunny\source\repos\proyectoJeic\Jeic\Jeic\obj\Release\Jeic.Forms.GeneradorClave.resources

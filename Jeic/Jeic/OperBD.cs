@@ -1528,7 +1528,7 @@ namespace Refracciones
                                 canvas.AddImage(img, Convert.ToSingle(x - 76), Convert.ToSingle(y - 102.5), false);
                                 File.Delete(Application.StartupPath + "\\temp.png");
                                 //PIEZAS
-                                canvas.BeginText().SetFontAndSize(font, 10)
+                                canvas.BeginText().SetFontAndSize(font, 7)
                                         .MoveText(x + 88.6, y - 100)
                                         .SetFillColor(ColorConstants.BLACK)
                                         .ShowText(dgvDatosPDF.Rows[count].Cells[7].Value.ToString())
@@ -1552,7 +1552,7 @@ namespace Refracciones
                                 if (dgvDatosPDF.Rows[count].Cells[10].Value.ToString() != "PENDIENTE" && i == 0)
                                 {
                                     //PROVEEDOR
-                                    canvas.BeginText().SetFontAndSize(font, 10)
+                                    canvas.BeginText().SetFontAndSize(font, 7)
                                        .MoveText(x + 367, y - 98)
                                        .SetFillColor(ColorConstants.BLACK)
                                        .ShowText(dgvDatosPDF.Rows[count].Cells[10].Value.ToString())
@@ -1652,7 +1652,7 @@ namespace Refracciones
                                 canvas.AddImage(img, Convert.ToSingle(x - 76), Convert.ToSingle(y - 102.5), false);
                                 File.Delete(Application.StartupPath + "\\temp.png");
                                 //PIEZAS
-                                canvas.BeginText().SetFontAndSize(font, 10)
+                                canvas.BeginText().SetFontAndSize(font, 7)
                                         .MoveText(x + 88.6, y - 100)
                                         .SetFillColor(ColorConstants.BLACK)
                                         .ShowText(dgvDatosPDF.Rows[count].Cells[7].Value.ToString())
@@ -1676,7 +1676,7 @@ namespace Refracciones
                                 if (dgvDatosPDF.Rows[count].Cells[10].Value.ToString() != "PENDIENTE" && i == 0)
                                 {
                                     //PROVEEDOR
-                                    canvas.BeginText().SetFontAndSize(font, 10)
+                                    canvas.BeginText().SetFontAndSize(font, 7)
                                        .MoveText(x + 367, y - 98)
                                        .SetFillColor(ColorConstants.BLACK)
                                        .ShowText(dgvDatosPDF.Rows[count].Cells[10].Value.ToString())
@@ -2494,7 +2494,7 @@ namespace Refracciones
                     if (guarda.ShowDialog() == DialogResult.OK)
                     {
                         sl.SaveAs(guarda.FileName);
-                        MessageBOX.SHowDialog(1, "Archivo Guardado");
+                        MessageBOX.SHowDialog(3, "Archivo Guardado");
                     }
                     Lector.Close();
                     nuevaConexion.Close();
@@ -5997,7 +5997,7 @@ namespace Refracciones
             return resultado;
         }
 
-        //------------- GENERAR EXCEL
+        //------------- GENERAR 
         public string[] llenarCodigoBarras(string cvePedido)
         {
             string[] datos = new string[7];
@@ -6040,6 +6040,8 @@ namespace Refracciones
         public void registrarEstadoCodigoBarras(string cvePedido, string cveEstatus)
         {
             int cveEstado = -1;
+            DateTime hoy = DateTime.Today;
+            string fecha = hoy.Date.Year.ToString() + "-" + hoy.Date.Month.ToString() + "-" + hoy.Date.Day.ToString();
             using (SqlConnection nuevaConexion = Conexion.conexion())
             {
                 nuevaConexion.Open();
@@ -6052,7 +6054,8 @@ namespace Refracciones
                 Lector.Close();
                 if (cveEstado != -1)
                 {
-                    SqlCommand cmd = new SqlCommand(string.Format("UPDATE p  SET  p.estado = {0} FROM PEDIDO p WHERE p.cve_pedido = {1}", cveEstado, cvePedido), nuevaConexion);
+                    SqlCommand cmd = new SqlCommand(string.Format("UPDATE p  SET  p.estado = {0}, p.fecha_baja = @fecha FROM PEDIDO p WHERE p.cve_pedido = {1}", cveEstado, cvePedido), nuevaConexion);
+                    cmd.Parameters.AddWithValue("@fecha", fecha);
                     cmd.ExecuteNonQuery();
                 }
                 nuevaConexion.Close();
@@ -6066,6 +6069,8 @@ namespace Refracciones
         public void registrarEstadoCodigoBarras(int cveVenta, string cveEstatus)
         {
             int cveEstado = -1;
+            DateTime hoy = DateTime.Today;
+            string fecha = hoy.Date.Year.ToString() + "-" + hoy.Date.Month.ToString() + "-" + hoy.Date.Day.ToString();
             using (SqlConnection nuevaConexion = Conexion.conexion())
             {
                 nuevaConexion.Open();
@@ -6078,7 +6083,8 @@ namespace Refracciones
                 Lector.Close();
                 if (cveEstado != -1)
                 {
-                    SqlCommand cmd = new SqlCommand(string.Format("UPDATE p  SET  p.estado = {0} FROM PEDIDO p WHERE cve_venta = {1}", cveEstado, cveVenta), nuevaConexion);
+                    SqlCommand cmd = new SqlCommand(string.Format("UPDATE p  SET  p.estado = {0}, p.fecha_baja = @fecha FROM PEDIDO p WHERE cve_venta = {1}", cveEstado, cveVenta), nuevaConexion);
+                    cmd.Parameters.AddWithValue("@fecha", fecha);
                     cmd.ExecuteNonQuery();
                 }
                 nuevaConexion.Close();
@@ -6086,6 +6092,134 @@ namespace Refracciones
             }
 
 
+        }
+
+        //------------- GENERAR EXCEL
+        public void generarExcelClaves(string ruta, string fecha1, string fecha2, string cvePed)
+        {
+            try
+            {
+                int totalRegistrosExportar = 0;
+                int temp = 0;
+               
+                SLDocument sl = new SLDocument(ruta);
+                //DateTime hoy = DateTime.Today;
+                //sl.SetCellValue("M2", hoy.ToString("dd-MM-yyyy"));//Se agrega la fecha al excel
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    int celdaContenido = 2;
+                    
+                    Comando = new SqlCommand(string.Format("SELECT Count(ven.cve_venta) AS 'TOTAL DE REGISTROS A EXPORTAR' FROM VENTAS ven  INNER JOIN PEDIDO ped ON ven.cve_venta = ped.cve_venta  WHERE ven.fecha_asignacion BETWEEN @fecha1 AND @fecha2 AND ven.cve_pedido LIKE '{0}%'", cvePed), nuevaConexion);
+                    Comando.Parameters.AddWithValue("@fecha1", fecha1);
+                    Comando.Parameters.AddWithValue("@fecha2", fecha2);
+                    totalRegistrosExportar = Int32.Parse(Comando.ExecuteScalar().ToString());
+                    MessageBox.Show("El número de registros encontrados son: " + totalRegistrosExportar.ToString() + "\n" + "Antes de dar clic en Aceptar revisa que tu conexión a internet sea estable, para evitar error a la hora de generar", "Generar Reporte", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    
+                    Comando = new SqlCommand(string.Format("SELECT ven.cve_pedido AS 'PEDIDO',  c.cve_nombre AS 'CLIENTE',  t.nombre AS 'TALLER', ped.cve_factura AS 'FACTURA ACTUAL', pie.nombre AS 'PIEZA', vh.modelo AS 'VHEICULO MODELO', marca.marca AS 'MARCA', vh.anio 'AÑO', opie.origen AS 'ORIGEN PIEZA', ped.costo_neto AS 'COSTO',  ped.precio_venta AS 'PRECIO VENTA', ven.cve_siniestro AS 'SINIESTRO', pro.nombre AS 'PROVEEDOR', vendedor.nombre AS 'VENDEDOR', (ven.cve_pedido + pie.nombre) AS 'FILA PARA BUSQUEDA' FROM VENTAS ven INNER JOIN VALUADOR val ON ven.cve_valuador = val.cve_valuador INNER JOIN CLIENTE c ON c.cve_nombre = val.cve_cliente INNER JOIN TALLER t ON ven.cve_taller = t.cve_taller INNER JOIN SINIESTRO si ON ven.cve_siniestro = si.cve_siniestro INNER JOIN VEHICULO vh ON si.cve_vehiculo = vh.cve_vehiculo INNER JOIN PEDIDO ped ON ven.cve_venta = ped.cve_venta INNER JOIN PROVEEDOR pro ON ped.cve_proveedor = pro.cve_proveedor INNER JOIN PIEZA pie ON ped.cve_pieza = pie.cve_pieza INNER JOIN ORIGEN_PIEZA opie ON ped.cve_origen = opie.cve_origen INNER JOIN PORTAL por ON ped.cve_portal = por.cve_portal INNER JOIN DESTINO dest ON ven.cve_destino = dest.cve_destino LEFT OUTER JOIN FACTURA fact ON ped.cve_factura = fact.cve_factura FULL JOIN ESTADO_FACTURA estfact ON fact.cve_estado = estfact.cve_estado INNER JOIN VENDEDOR vendedor ON ven.cve_vendedor = vendedor.cve_vendedor INNER JOIN MARCA marca ON vh.cve_marca = marca.cve_marca FULL JOIN ENTREGA ent ON ped.cve_entrega = ent.cve_entrega FULL JOIN DEVOLUCION dev ON ped.cve_devolucion = dev.cve_devolucion INNER JOIN Estado_Siniestro ess ON ped.estado = ess.cve_estado WHERE ven.fecha_asignacion BETWEEN  @fecha1 AND @fecha2 AND ven.cve_pedido LIKE '{0}%' ORDER BY ven.fecha_asignacion ;", cvePed), nuevaConexion);
+                    Comando.Parameters.AddWithValue("@fecha1", fecha1);
+                    Comando.Parameters.AddWithValue("@fecha2", fecha2);
+                    //Comando.Parameters.AddWithValue("@costoOperativo", costoOperativo);
+                    Lector = Comando.ExecuteReader();
+                    while (Lector.Read())
+                    {
+
+
+                        if (int.TryParse(Lector["PEDIDO"].ToString(), out temp))
+                        { sl.SetCellValue("A" + celdaContenido, Int32.Parse(Lector["PEDIDO"].ToString())); }
+                        else
+                        { sl.SetCellValue("A" + celdaContenido, Lector["PEDIDO"].ToString()); }
+
+                        if (int.TryParse(Lector["CLIENTE"].ToString(), out temp))
+                        { sl.SetCellValue("B" + celdaContenido, Int32.Parse(Lector["CLIENTE"].ToString())); }
+                        else
+                        { sl.SetCellValue("B" + celdaContenido, Lector["CLIENTE"].ToString()); }
+
+                        if (int.TryParse(Lector["TALLER"].ToString(), out temp))
+                        { sl.SetCellValue("C" + celdaContenido, Int32.Parse(Lector["TALLER"].ToString())); }
+                        else
+                        { sl.SetCellValue("C" + celdaContenido, Lector["TALLER"].ToString()); }
+
+                        if (int.TryParse(Lector["FACTURA ACTUAL"].ToString(), out temp))
+                        { sl.SetCellValue("D" + celdaContenido, Int32.Parse(Lector["FACTURA ACTUAL"].ToString())); }
+                        else
+                        { sl.SetCellValue("D" + celdaContenido, Lector["FACTURA ACTUAL"].ToString()); }
+
+                        if (int.TryParse(Lector["PIEZA"].ToString(), out temp))
+                        { sl.SetCellValue("E" + celdaContenido, Int32.Parse(Lector["PIEZA"].ToString())); }
+                        else
+                        { sl.SetCellValue("E" + celdaContenido, Lector["PIEZA"].ToString()); }
+
+                        if (int.TryParse(Lector["VHEICULO MODELO"].ToString(), out temp))
+                        { sl.SetCellValue("F" + celdaContenido, Int32.Parse(Lector["VHEICULO MODELO"].ToString())); }
+                        else
+                        { sl.SetCellValue("F" + celdaContenido, Lector["VHEICULO MODELO"].ToString()); }
+
+                        if (int.TryParse(Lector["MARCA"].ToString(), out temp))
+                        { sl.SetCellValue("G" + celdaContenido, Int32.Parse(Lector["MARCA"].ToString())); }
+                        else
+                        { sl.SetCellValue("G" + celdaContenido, Lector["MARCA"].ToString()); }
+
+                        if (int.TryParse(Lector["AÑO"].ToString(), out temp))
+                        { sl.SetCellValue("H" + celdaContenido, Int32.Parse(Lector["AÑO"].ToString())); }
+                        else
+                        { sl.SetCellValue("H" + celdaContenido, Lector["AÑO"].ToString()); }
+
+                        if (int.TryParse(Lector["ORIGEN PIEZA"].ToString(), out temp))
+                        { sl.SetCellValue("K" + celdaContenido, Int32.Parse(Lector["ORIGEN PIEZA"].ToString())); }
+                        else
+                        { sl.SetCellValue("K" + celdaContenido, Lector["ORIGEN PIEZA"].ToString()); }
+
+                        if (int.TryParse(Lector["COSTO"].ToString(), out temp))
+                        { sl.SetCellValue("L" + celdaContenido, Int32.Parse(Lector["COSTO"].ToString())); }
+                        else
+                        { sl.SetCellValue("L" + celdaContenido, Lector["COSTO"].ToString()); }
+
+                        if (int.TryParse(Lector["PRECIO VENTA"].ToString(), out temp))
+                        { sl.SetCellValue("M" + celdaContenido, Int32.Parse(Lector["PRECIO VENTA"].ToString())); }
+                        else
+                        { sl.SetCellValue("M" + celdaContenido, Lector["PRECIO VENTA"].ToString()); }
+
+                        if (int.TryParse(Lector["SINIESTRO"].ToString(), out temp))
+                        { sl.SetCellValue("R" + celdaContenido, Int32.Parse(Lector["SINIESTRO"].ToString())); }
+                        else
+                        { sl.SetCellValue("R" + celdaContenido, Lector["SINIESTRO"].ToString()); }
+
+                        if (int.TryParse(Lector["PROVEEDOR"].ToString(), out temp))
+                        { sl.SetCellValue("S" + celdaContenido, Int32.Parse(Lector["PROVEEDOR"].ToString())); }
+                        else
+                        { sl.SetCellValue("S" + celdaContenido, Lector["PROVEEDOR"].ToString()); }
+
+                        if (int.TryParse(Lector["VENDEDOR"].ToString(), out temp))
+                        { sl.SetCellValue("X" + celdaContenido, Int32.Parse(Lector["VENDEDOR"].ToString())); }
+                        else
+                        { sl.SetCellValue("X" + celdaContenido, Lector["VENDEDOR"].ToString()); }
+
+                        if (int.TryParse(Lector["FILA PARA BUSQUEDA"].ToString(), out temp))
+                        { sl.SetCellValue("Y" + celdaContenido, Int32.Parse(Lector["FILA PARA BUSQUEDA"].ToString())); }
+                        else
+                        { sl.SetCellValue("Y" + celdaContenido, Lector["FILA PARA BUSQUEDA"].ToString()); }
+                        celdaContenido++;
+                    }
+                        sl.AutoFitColumn("A", "Z");
+                        SaveFileDialog guarda = new SaveFileDialog();
+                        guarda.Filter = "Libro de Excel|*.xlsx";
+                        guarda.Title = "Guardar Reporte";
+                        guarda.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                        if (guarda.ShowDialog() == DialogResult.OK)
+                        {
+                            sl.SaveAs(guarda.FileName);
+                            MessageBOX.SHowDialog(3, "Archivo Guardado");
+                        }
+                        Lector.Close();
+                        nuevaConexion.Close();
+                    
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error al generar el reporte: " + EX.Message);
+            }
         }
 
         /*
