@@ -34,6 +34,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.lblTitle = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.dgvEstatus = new System.Windows.Forms.DataGridView();
             this.ColumnPed = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,7 +49,8 @@
             this.rbtnPorPedido = new System.Windows.Forms.RadioButton();
             this.rbtnPorPieza = new System.Windows.Forms.RadioButton();
             this.pbClose = new System.Windows.Forms.PictureBox();
-            this.lblTitle = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.Fecha_in = new System.Windows.Forms.DateTimePicker();
+            this.lblFecha = new System.Windows.Forms.Label();
             this.bunifuGradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEstatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
@@ -59,6 +61,8 @@
             this.bunifuGradientPanel1.BackColor = System.Drawing.Color.Transparent;
             this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
             this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuGradientPanel1.Controls.Add(this.lblFecha);
+            this.bunifuGradientPanel1.Controls.Add(this.Fecha_in);
             this.bunifuGradientPanel1.Controls.Add(this.lblTitle);
             this.bunifuGradientPanel1.Controls.Add(this.txtCodigo);
             this.bunifuGradientPanel1.Controls.Add(this.dgvEstatus);
@@ -70,19 +74,32 @@
             this.bunifuGradientPanel1.GradientBottomRight = System.Drawing.Color.CornflowerBlue;
             this.bunifuGradientPanel1.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.bunifuGradientPanel1.GradientTopRight = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.bunifuGradientPanel1.Location = new System.Drawing.Point(-1, 23);
-            this.bunifuGradientPanel1.Margin = new System.Windows.Forms.Padding(2);
+            this.bunifuGradientPanel1.Location = new System.Drawing.Point(-1, 28);
+            this.bunifuGradientPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bunifuGradientPanel1.Name = "bunifuGradientPanel1";
             this.bunifuGradientPanel1.Quality = 10;
-            this.bunifuGradientPanel1.Size = new System.Drawing.Size(751, 343);
+            this.bunifuGradientPanel1.Size = new System.Drawing.Size(1001, 422);
             this.bunifuGradientPanel1.TabIndex = 18;
             this.bunifuGradientPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.bunifuGradientPanel1_Paint);
             // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.BackColor = System.Drawing.Color.Transparent;
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lblTitle.Location = new System.Drawing.Point(284, 14);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(409, 20);
+            this.lblTitle.TabIndex = 18;
+            this.lblTitle.Text = "ACTUALIZAR ESTATUS POR PIEZA O PEDIDO";
+            // 
             // txtCodigo
             // 
-            this.txtCodigo.Location = new System.Drawing.Point(556, 102);
+            this.txtCodigo.Location = new System.Drawing.Point(741, 126);
+            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(185, 20);
+            this.txtCodigo.Size = new System.Drawing.Size(245, 22);
             this.txtCodigo.TabIndex = 16;
             this.txtCodigo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCodigo_KeyDown);
             this.txtCodigo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigo_KeyPress);
@@ -125,7 +142,8 @@
             this.dgvEstatus.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvEstatus.EnableHeadersVisualStyles = false;
             this.dgvEstatus.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(51)))), ((int)(((byte)(65)))));
-            this.dgvEstatus.Location = new System.Drawing.Point(13, 101);
+            this.dgvEstatus.Location = new System.Drawing.Point(17, 124);
+            this.dgvEstatus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvEstatus.Name = "dgvEstatus";
             this.dgvEstatus.ReadOnly = true;
             this.dgvEstatus.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -145,58 +163,65 @@
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
             this.dgvEstatus.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvEstatus.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvEstatus.Size = new System.Drawing.Size(537, 234);
+            this.dgvEstatus.Size = new System.Drawing.Size(716, 288);
             this.dgvEstatus.TabIndex = 15;
             this.dgvEstatus.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEstatus_CellClick);
             // 
             // ColumnPed
             // 
             this.ColumnPed.HeaderText = "PEDIDO";
+            this.ColumnPed.MinimumWidth = 6;
             this.ColumnPed.Name = "ColumnPed";
             this.ColumnPed.ReadOnly = true;
-            this.ColumnPed.Width = 71;
+            this.ColumnPed.Width = 87;
             // 
             // ColumnSin
             // 
             this.ColumnSin.HeaderText = "SINIESTRO";
+            this.ColumnSin.MinimumWidth = 6;
             this.ColumnSin.Name = "ColumnSin";
             this.ColumnSin.ReadOnly = true;
-            this.ColumnSin.Width = 88;
+            this.ColumnSin.Width = 108;
             // 
             // ColumnPieza
             // 
             this.ColumnPieza.HeaderText = "PIEZA";
+            this.ColumnPieza.MinimumWidth = 6;
             this.ColumnPieza.Name = "ColumnPieza";
             this.ColumnPieza.ReadOnly = true;
-            this.ColumnPieza.Width = 61;
+            this.ColumnPieza.Width = 74;
             // 
             // ColumnCliente
             // 
             this.ColumnCliente.HeaderText = "CLIENTE";
+            this.ColumnCliente.MinimumWidth = 6;
             this.ColumnCliente.Name = "ColumnCliente";
             this.ColumnCliente.ReadOnly = true;
-            this.ColumnCliente.Width = 75;
+            this.ColumnCliente.Width = 92;
             // 
             // ColumnEstatus
             // 
             this.ColumnEstatus.HeaderText = "ESTATUS ACTUAL";
+            this.ColumnEstatus.MinimumWidth = 6;
             this.ColumnEstatus.Name = "ColumnEstatus";
             this.ColumnEstatus.ReadOnly = true;
-            this.ColumnEstatus.Width = 125;
+            this.ColumnEstatus.Width = 157;
             // 
             // ColumnCvePedido
             // 
             this.ColumnCvePedido.HeaderText = "CVE PEDIDO";
+            this.ColumnCvePedido.MinimumWidth = 6;
             this.ColumnCvePedido.Name = "ColumnCvePedido";
             this.ColumnCvePedido.ReadOnly = true;
-            this.ColumnCvePedido.Width = 95;
+            this.ColumnCvePedido.Width = 118;
             // 
             // ColumnCveVenta
             // 
             this.ColumnCveVenta.HeaderText = "CVE VENTA";
+            this.ColumnCveVenta.MinimumWidth = 6;
             this.ColumnCveVenta.Name = "ColumnCveVenta";
             this.ColumnCveVenta.ReadOnly = true;
-            this.ColumnCveVenta.Width = 90;
+            this.ColumnCveVenta.Width = 112;
             // 
             // btnGuardar
             // 
@@ -205,10 +230,10 @@
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnGuardar.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
-            this.btnGuardar.Location = new System.Drawing.Point(599, 298);
-            this.btnGuardar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGuardar.Location = new System.Drawing.Point(799, 367);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(111, 30);
+            this.btnGuardar.Size = new System.Drawing.Size(148, 37);
             this.btnGuardar.TabIndex = 14;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = false;
@@ -217,9 +242,10 @@
             // cmbEstado
             // 
             this.cmbEstado.FormattingEnabled = true;
-            this.cmbEstado.Location = new System.Drawing.Point(556, 238);
+            this.cmbEstado.Location = new System.Drawing.Point(741, 293);
+            this.cmbEstado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmbEstado.Name = "cmbEstado";
-            this.cmbEstado.Size = new System.Drawing.Size(185, 21);
+            this.cmbEstado.Size = new System.Drawing.Size(245, 24);
             this.cmbEstado.TabIndex = 3;
             this.cmbEstado.SelectedIndexChanged += new System.EventHandler(this.cmbEstado_SelectedIndexChanged);
             // 
@@ -228,9 +254,10 @@
             this.rbtnPorPedido.AutoSize = true;
             this.rbtnPorPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
             this.rbtnPorPedido.ForeColor = System.Drawing.SystemColors.Control;
-            this.rbtnPorPedido.Location = new System.Drawing.Point(166, 65);
+            this.rbtnPorPedido.Location = new System.Drawing.Point(221, 80);
+            this.rbtnPorPedido.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rbtnPorPedido.Name = "rbtnPorPedido";
-            this.rbtnPorPedido.Size = new System.Drawing.Size(158, 20);
+            this.rbtnPorPedido.Size = new System.Drawing.Size(187, 24);
             this.rbtnPorPedido.TabIndex = 1;
             this.rbtnPorPedido.TabStop = true;
             this.rbtnPorPedido.Text = "Cambio por pedido";
@@ -242,9 +269,10 @@
             this.rbtnPorPieza.AutoSize = true;
             this.rbtnPorPieza.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
             this.rbtnPorPieza.ForeColor = System.Drawing.SystemColors.Control;
-            this.rbtnPorPieza.Location = new System.Drawing.Point(13, 65);
+            this.rbtnPorPieza.Location = new System.Drawing.Point(17, 80);
+            this.rbtnPorPieza.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rbtnPorPieza.Name = "rbtnPorPieza";
-            this.rbtnPorPieza.Size = new System.Drawing.Size(147, 20);
+            this.rbtnPorPieza.Size = new System.Drawing.Size(177, 24);
             this.rbtnPorPieza.TabIndex = 0;
             this.rbtnPorPieza.TabStop = true;
             this.rbtnPorPieza.Text = "Cambio por pieza";
@@ -255,38 +283,50 @@
             // 
             this.pbClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbClose.Image = global::Jeic.Properties.Resources.Close_Window__2_48px;
-            this.pbClose.Location = new System.Drawing.Point(723, 2);
-            this.pbClose.Margin = new System.Windows.Forms.Padding(2);
+            this.pbClose.Location = new System.Drawing.Point(964, 2);
+            this.pbClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pbClose.Name = "pbClose";
-            this.pbClose.Size = new System.Drawing.Size(17, 17);
+            this.pbClose.Size = new System.Drawing.Size(23, 21);
             this.pbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbClose.TabIndex = 19;
             this.pbClose.TabStop = false;
             this.pbClose.Click += new System.EventHandler(this.pbClose_Click);
             // 
-            // lblTitle
+            // Fecha_in
             // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.BackColor = System.Drawing.Color.Transparent;
-            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblTitle.Location = new System.Drawing.Point(213, 11);
-            this.lblTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(334, 16);
-            this.lblTitle.TabIndex = 18;
-            this.lblTitle.Text = "ACTUALIZAR ESTATUS POR PIEZA O PEDIDO";
+            this.Fecha_in.Enabled = false;
+            this.Fecha_in.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Fecha_in.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.Fecha_in.Location = new System.Drawing.Point(816, 252);
+            this.Fecha_in.Margin = new System.Windows.Forms.Padding(4);
+            this.Fecha_in.Name = "Fecha_in";
+            this.Fecha_in.Size = new System.Drawing.Size(169, 23);
+            this.Fecha_in.TabIndex = 19;
+            this.Fecha_in.Visible = false;
+            // 
+            // lblFecha
+            // 
+            this.lblFecha.AutoSize = true;
+            this.lblFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFecha.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.lblFecha.Location = new System.Drawing.Point(750, 256);
+            this.lblFecha.Name = "lblFecha";
+            this.lblFecha.Size = new System.Drawing.Size(59, 18);
+            this.lblFecha.TabIndex = 20;
+            this.lblFecha.Text = "Fecha:";
+            this.lblFecha.Visible = false;
             // 
             // cambioEstatus
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(125)))), ((int)(((byte)(188)))));
-            this.ClientSize = new System.Drawing.Size(748, 366);
+            this.ClientSize = new System.Drawing.Size(997, 450);
             this.Controls.Add(this.pbClose);
             this.Controls.Add(this.bunifuGradientPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "cambioEstatus";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "cambioEstatus";
@@ -317,5 +357,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCvePedido;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCveVenta;
         private Bunifu.Framework.UI.BunifuCustomLabel lblTitle;
+        private System.Windows.Forms.Label lblFecha;
+        private System.Windows.Forms.DateTimePicker Fecha_in;
     }
 }

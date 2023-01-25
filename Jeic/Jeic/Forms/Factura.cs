@@ -21,6 +21,7 @@ namespace Jeic.Forms
 
         private void Factura_Load(object sender, EventArgs e)
         {
+            
             OperBD fact = new OperBD();
             if (lblFoRF.Text == "0")
             {
@@ -28,6 +29,8 @@ namespace Jeic.Forms
             }
             else if (lblFoRF.Text == "1")
                 fact.productosRefacturar(dgvFactura, dato1.Text.Substring(11, dato1.Text.Length - 11));
+
+            dgvFactura.Columns[0].Width = 20;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)

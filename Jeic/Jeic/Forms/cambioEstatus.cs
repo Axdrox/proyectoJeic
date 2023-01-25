@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DocumentFormat.OpenXml.Drawing.Charts;
 using Refracciones;
 using Refracciones.Forms;
 
@@ -30,6 +31,10 @@ namespace Jeic.Forms
             cmbEstado.DisplayMember = "estado";
             dgvEstatus.Columns["ColumnCvePedido"].Visible = false;
             dgvEstatus.Columns["ColumnCveVenta"].Visible = false;
+            DateTime maximaFechaInicio = DateTime.Now;
+            Fecha_in.MinDate = new DateTime(maximaFechaInicio.Year, maximaFechaInicio.Month, maximaFechaInicio.Day - 5);
+            Fecha_in.MaxDate = DateTime.Now;
+
         }
 
         private void pbClose_Click(object sender, EventArgs e)
@@ -44,7 +49,18 @@ namespace Jeic.Forms
 
         private void cmbEstado_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if(cmbEstado.SelectedIndex == 5)
+            {
+                lblFecha.Visible = true;
+                Fecha_in.Visible = true;
+                Fecha_in.Enabled = true;
+            }
+            else
+            {
+                lblFecha.Visible = false;
+                Fecha_in.Visible = false;
+                Fecha_in.Enabled = false;
+            }
         }
 
         private void txtCodigo_KeyDown(object sender, KeyEventArgs e)
@@ -121,7 +137,7 @@ namespace Jeic.Forms
                 
                 foreach (DataGridViewRow row in dgvEstatus.Rows)
                 {
-                    operacion.registrarEstadoCodigoBarras(row.Cells["ColumnCvePedido"].Value.ToString(),cmbEstado.Text.Trim());
+                    operacion.registrarEstadoCodigoBarras(row.Cells["ColumnCvePedido"].Value.ToString(),cmbEstado.Text.Trim(), Fecha_in.Value);
                 }
                 dgvEstatus.DataSource = null;
                 dgvEstatus.Rows.Clear();
@@ -131,7 +147,7 @@ namespace Jeic.Forms
             {
                 foreach (DataGridViewRow row in dgvEstatus.Rows)
                 {
-                    operacion.registrarEstadoCodigoBarras(int.Parse(row.Cells["ColumnCveVenta"].Value.ToString()), cmbEstado.Text.Trim());
+                    operacion.registrarEstadoCodigoBarras(int.Parse(row.Cells["ColumnCveVenta"].Value.ToString()), cmbEstado.Text.Trim(), Fecha_in.Value);
                 }
                 dgvEstatus.DataSource = null;
                 dgvEstatus.Rows.Clear();

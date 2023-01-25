@@ -74,7 +74,7 @@
             this.txtUsuario.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(71)))), ((int)(((byte)(122)))));
             this.txtUsuario.LineThickness = 3;
             this.txtUsuario.Location = new System.Drawing.Point(67, 161);
-            this.txtUsuario.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.txtUsuario.Margin = new System.Windows.Forms.Padding(5);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(236, 30);
             this.txtUsuario.TabIndex = 7;
@@ -98,7 +98,7 @@
             this.txtContrasenia.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(71)))), ((int)(((byte)(122)))));
             this.txtContrasenia.LineThickness = 3;
             this.txtContrasenia.Location = new System.Drawing.Point(60, 225);
-            this.txtContrasenia.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.txtContrasenia.Margin = new System.Windows.Forms.Padding(5);
             this.txtContrasenia.Name = "txtContrasenia";
             this.txtContrasenia.Size = new System.Drawing.Size(243, 30);
             this.txtContrasenia.TabIndex = 8;
@@ -177,7 +177,7 @@
             this.btnEntrar.IdleForecolor = System.Drawing.Color.White;
             this.btnEntrar.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnEntrar.Location = new System.Drawing.Point(103, 277);
-            this.btnEntrar.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnEntrar.Margin = new System.Windows.Forms.Padding(5);
             this.btnEntrar.Name = "btnEntrar";
             this.btnEntrar.Size = new System.Drawing.Size(140, 43);
             this.btnEntrar.TabIndex = 9;
@@ -249,7 +249,7 @@
             this.PicOJO.Cursor = System.Windows.Forms.Cursors.Hand;
             this.PicOJO.Image = global::Jeic.Properties.Resources.ojo;
             this.PicOJO.Location = new System.Drawing.Point(303, 226);
-            this.PicOJO.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PicOJO.Margin = new System.Windows.Forms.Padding(4);
             this.PicOJO.Name = "PicOJO";
             this.PicOJO.Size = new System.Drawing.Size(44, 28);
             this.PicOJO.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -275,7 +275,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(96, 16);
             this.label1.TabIndex = 18;
-            this.label1.Text = "Versión: 2.0.9.2";
+            this.label1.Text = "Versión: 2.0.9.4";
             // 
             // InicioSesion
             // 
@@ -289,7 +289,7 @@
             this.Controls.Add(this.bunifuGradientPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "InicioSesion";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

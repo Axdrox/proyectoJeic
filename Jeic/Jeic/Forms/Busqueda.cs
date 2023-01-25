@@ -88,7 +88,7 @@ namespace Refracciones.Forms
                 lblTaller.Text = lblTaller.Text.Substring(0, 7) + " " + dgvDatos.Rows[0].Cells[11].Value.ToString();
                 lblAsignacion.Text = lblAsignacion.Text.Substring(0, 15) + " " + dgvDatos.Rows[0].Cells[12].Value.ToString();
                 lblPromesa.Text = lblPromesa.Text.Substring(0, 14) + " " + dgvDatos.Rows[0].Cells[13].Value.ToString();
-                lblFechaEntreg.Text = lblFechaEntreg.Text.Substring(0, 14) + " " + dgvDatos.Rows[0].Cells[14].Value.ToString();
+                lblFechaEntreg.Text = "Fecha y Hora de Entrega:" + " " + dgvDatos.Rows[0].Cells[14].Value.ToString() + " , " + dgvDatos.Rows[0].Cells[29].Value.ToString();
                 lblCostoEnvio.Text = lblCostoEnvio.Text.Substring(0, 15) + " $" + dgvDatos.Rows[0].Cells[16].Value.ToString();
                 lblCostoNeto.Text = lblCostoNeto.Text.Substring(0, 11) + " $" + dgvDatos.Rows[0].Cells[15].Value.ToString();
                 lblPrecioVenta.Text = lblPrecioVenta.Text.Substring(0, 16) + " $" + dgvDatos.Rows[0].Cells[17].Value.ToString();
@@ -284,7 +284,7 @@ namespace Refracciones.Forms
                 lblTaller.Text = lblTaller.Text.Substring(0, 7) + " " + dgvDatos.Rows[0].Cells[11].Value.ToString();
                 lblAsignacion.Text = lblAsignacion.Text.Substring(0, 15) + " " + dgvDatos.Rows[0].Cells[12].Value.ToString();
                 lblPromesa.Text = lblPromesa.Text.Substring(0, 14) + " " + dgvDatos.Rows[0].Cells[13].Value.ToString();
-                lblFechaEntreg.Text = lblFechaEntreg.Text.Substring(0, 14) + " " + dgvDatos.Rows[0].Cells[14].Value.ToString();
+                lblFechaEntreg.Text = "Fecha y Hora de Entrega:" + " " + dgvDatos.Rows[0].Cells[14].Value.ToString() + " , " + dgvDatos.Rows[0].Cells[29].Value.ToString();
                 lblCostoEnvio.Text = lblCostoEnvio.Text.Substring(0, 15) + " $" + dgvDatos.Rows[0].Cells[16].Value.ToString();
                 lblCostoNeto.Text = lblCostoNeto.Text.Substring(0, 11) + " $" + dgvDatos.Rows[0].Cells[15].Value.ToString();
                 lblPrecioVenta.Text = lblPrecioVenta.Text.Substring(0, 16) + " $" + dgvDatos.Rows[0].Cells[17].Value.ToString();
@@ -313,9 +313,11 @@ namespace Refracciones.Forms
                 DialogResult result = elec.ShowDialog();
                 if (result == DialogResult.OK)
                 {
-                    llenarDefaultDGV.defaultDGV(dvgPedido, lblcvePe.Text);
-                    TxtClavePed.Text = elec.clavePedidoTextBox;
-                    llenar.Llenartabla1(dvgPedido, TxtClaveSin.Text.ToString(), TxtClavePed.Text.ToString(), txtCveVendedor.Text.ToString(), lblcvePe.Text);
+                    //INICIO Se quitó esta parte el día 21/ene/2023 cambio solicitado Isra.
+                    //llenarDefaultDGV.defaultDGV(dvgPedido, lblcvePe.Text);
+                    //TxtClavePed.Text = elec.clavePedidoTextBox; 
+                    //llenar.Llenartabla1(dvgPedido, TxtClaveSin.Text.ToString(), TxtClavePed.Text.ToString(), txtCveVendedor.Text.ToString(), lblcvePe.Text);
+                    //FIN
                 }
             }
         }
@@ -331,6 +333,11 @@ namespace Refracciones.Forms
             GeneradorClave gen = new GeneradorClave();
             gen.lblcvePe.Text = lblcvePe.Text;
             gen.ShowDialog();
+        }
+
+        private void lblFechaEntreg_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
