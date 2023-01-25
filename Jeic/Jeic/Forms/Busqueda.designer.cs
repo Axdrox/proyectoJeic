@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Busqueda));
             this.label1 = new System.Windows.Forms.Label();
             this.TxtClaveSin = new System.Windows.Forms.TextBox();
@@ -41,6 +41,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.Fecha_in = new System.Windows.Forms.DateTimePicker();
             this.Panelinfo = new System.Windows.Forms.Panel();
+            this.lblFechaEntreg = new System.Windows.Forms.Label();
             this.lblFechaBaja = new System.Windows.Forms.Label();
             this.txtComentarioSiniestro = new System.Windows.Forms.TextBox();
             this.lblVehiculo = new System.Windows.Forms.Label();
@@ -51,7 +52,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.lblFechaEntreg = new System.Windows.Forms.Label();
             this.pbFactura = new System.Windows.Forms.PictureBox();
             this.lblEstadoFac = new System.Windows.Forms.Label();
             this.lblFacturaConIva = new System.Windows.Forms.Label();
@@ -101,6 +101,7 @@
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.lblcvePe = new System.Windows.Forms.Label();
             this.moverFormulario = new Bunifu.Framework.UI.BunifuDragControl(this.components);
+            this.registroBajasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Panelinfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFactura)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dvgPedido)).BeginInit();
@@ -129,7 +130,7 @@
             this.TxtClaveSin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtClaveSin.ForeColor = System.Drawing.Color.White;
             this.TxtClaveSin.Location = new System.Drawing.Point(299, 101);
-            this.TxtClaveSin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtClaveSin.Margin = new System.Windows.Forms.Padding(4);
             this.TxtClaveSin.MaxLength = 30;
             this.TxtClaveSin.Name = "TxtClaveSin";
             this.TxtClaveSin.Size = new System.Drawing.Size(177, 22);
@@ -155,7 +156,7 @@
             this.TxtClavePed.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtClavePed.ForeColor = System.Drawing.Color.White;
             this.TxtClavePed.Location = new System.Drawing.Point(49, 101);
-            this.TxtClavePed.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtClavePed.Margin = new System.Windows.Forms.Padding(4);
             this.TxtClavePed.MaxLength = 30;
             this.TxtClavePed.Name = "TxtClavePed";
             this.TxtClavePed.Size = new System.Drawing.Size(177, 22);
@@ -178,7 +179,7 @@
             this.Fecha_in.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Fecha_in.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.Fecha_in.Location = new System.Drawing.Point(32, 34);
-            this.Fecha_in.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Fecha_in.Margin = new System.Windows.Forms.Padding(4);
             this.Fecha_in.Name = "Fecha_in";
             this.Fecha_in.Size = new System.Drawing.Size(169, 23);
             this.Fecha_in.TabIndex = 0;
@@ -226,10 +227,23 @@
             this.Panelinfo.Controls.Add(this.lblcvePedido);
             this.Panelinfo.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.Panelinfo.Location = new System.Drawing.Point(0, 185);
-            this.Panelinfo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Panelinfo.Margin = new System.Windows.Forms.Padding(4);
             this.Panelinfo.Name = "Panelinfo";
             this.Panelinfo.Size = new System.Drawing.Size(425, 589);
             this.Panelinfo.TabIndex = 6;
+            // 
+            // lblFechaEntreg
+            // 
+            this.lblFechaEntreg.AutoSize = true;
+            this.lblFechaEntreg.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFechaEntreg.ForeColor = System.Drawing.Color.White;
+            this.lblFechaEntreg.Location = new System.Drawing.Point(0, 149);
+            this.lblFechaEntreg.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblFechaEntreg.Name = "lblFechaEntreg";
+            this.lblFechaEntreg.Size = new System.Drawing.Size(143, 18);
+            this.lblFechaEntreg.TabIndex = 17;
+            this.lblFechaEntreg.Text = "Fecha y Hora Entrega: ";
+            this.lblFechaEntreg.Click += new System.EventHandler(this.lblFechaEntreg_Click);
             // 
             // lblFechaBaja
             // 
@@ -249,7 +263,7 @@
             this.txtComentarioSiniestro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtComentarioSiniestro.ForeColor = System.Drawing.Color.White;
             this.txtComentarioSiniestro.Location = new System.Drawing.Point(3, 388);
-            this.txtComentarioSiniestro.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtComentarioSiniestro.Margin = new System.Windows.Forms.Padding(4);
             this.txtComentarioSiniestro.MaxLength = 100;
             this.txtComentarioSiniestro.Multiline = true;
             this.txtComentarioSiniestro.Name = "txtComentarioSiniestro";
@@ -342,25 +356,12 @@
             this.label6.Text = "DATOS DEL PEDIDO";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblFechaEntreg
-            // 
-            this.lblFechaEntreg.AutoSize = true;
-            this.lblFechaEntreg.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFechaEntreg.ForeColor = System.Drawing.Color.White;
-            this.lblFechaEntreg.Location = new System.Drawing.Point(0, 149);
-            this.lblFechaEntreg.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblFechaEntreg.Name = "lblFechaEntreg";
-            this.lblFechaEntreg.Size = new System.Drawing.Size(179, 23);
-            this.lblFechaEntreg.TabIndex = 17;
-            this.lblFechaEntreg.Text = "Fecha y Hora Entrega: ";
-            this.lblFechaEntreg.Click += new System.EventHandler(this.lblFechaEntreg_Click);
-            // 
             // pbFactura
             // 
             this.pbFactura.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbFactura.Image = global::Jeic.Properties.Resources.file;
             this.pbFactura.Location = new System.Drawing.Point(369, 540);
-            this.pbFactura.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pbFactura.Margin = new System.Windows.Forms.Padding(4);
             this.pbFactura.Name = "pbFactura";
             this.pbFactura.Size = new System.Drawing.Size(44, 34);
             this.pbFactura.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -664,46 +665,46 @@
             this.dvgPedido.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dvgPedido.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dvgPedido.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(28)))), ((int)(((byte)(27)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(52)))), ((int)(((byte)(68)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dvgPedido.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(28)))), ((int)(((byte)(27)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(52)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dvgPedido.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dvgPedido.ColumnHeadersHeight = 22;
             this.dvgPedido.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dvgPedido.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dvgPedido.DefaultCellStyle = dataGridViewCellStyle6;
             this.dvgPedido.EnableHeadersVisualStyles = false;
             this.dvgPedido.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(51)))), ((int)(((byte)(65)))));
             this.dvgPedido.Location = new System.Drawing.Point(424, 185);
-            this.dvgPedido.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dvgPedido.Margin = new System.Windows.Forms.Padding(4);
             this.dvgPedido.Name = "dvgPedido";
             this.dvgPedido.ReadOnly = true;
             this.dvgPedido.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(37)))), ((int)(((byte)(50)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(125)))), ((int)(((byte)(184)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dvgPedido.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(37)))), ((int)(((byte)(50)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(125)))), ((int)(((byte)(184)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dvgPedido.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dvgPedido.RowHeadersWidth = 51;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(64)))), ((int)(((byte)(88)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-            this.dvgPedido.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(64)))), ((int)(((byte)(88)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
+            this.dvgPedido.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dvgPedido.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dvgPedido.Size = new System.Drawing.Size(1196, 591);
             this.dvgPedido.TabIndex = 7;
@@ -715,7 +716,7 @@
             this.Fecha_Fin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Fecha_Fin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.Fecha_Fin.Location = new System.Drawing.Point(307, 34);
-            this.Fecha_Fin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Fecha_Fin.Margin = new System.Windows.Forms.Padding(4);
             this.Fecha_Fin.Name = "Fecha_Fin";
             this.Fecha_Fin.Size = new System.Drawing.Size(148, 23);
             this.Fecha_Fin.TabIndex = 1;
@@ -741,7 +742,7 @@
             this.PanelFecha.Controls.Add(this.label4);
             this.PanelFecha.ForeColor = System.Drawing.Color.White;
             this.PanelFecha.Location = new System.Drawing.Point(831, 60);
-            this.PanelFecha.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PanelFecha.Margin = new System.Windows.Forms.Padding(4);
             this.PanelFecha.Name = "PanelFecha";
             this.PanelFecha.Size = new System.Drawing.Size(475, 80);
             this.PanelFecha.TabIndex = 11;
@@ -751,7 +752,7 @@
             this.dgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDatos.Enabled = false;
             this.dgvDatos.Location = new System.Drawing.Point(1355, 41);
-            this.dgvDatos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvDatos.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDatos.Name = "dgvDatos";
             this.dgvDatos.RowHeadersWidth = 51;
             this.dgvDatos.Size = new System.Drawing.Size(105, 65);
@@ -780,7 +781,7 @@
             this.txtCveVendedor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCveVendedor.ForeColor = System.Drawing.Color.White;
             this.txtCveVendedor.Location = new System.Drawing.Point(543, 101);
-            this.txtCveVendedor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCveVendedor.Margin = new System.Windows.Forms.Padding(4);
             this.txtCveVendedor.MaxLength = 30;
             this.txtCveVendedor.Name = "txtCveVendedor";
             this.txtCveVendedor.Size = new System.Drawing.Size(177, 22);
@@ -819,6 +820,7 @@
             this.otrasOpcionesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.generarReporteVentasToolStripMenuItem,
             this.generadorClavesToolStripMenuItem,
+            this.registroBajasToolStripMenuItem,
             this.cambioEstadoToolStripMenuItem,
             this.notificacionesToolStripMenuItem,
             this.buscarFacturasToolStripMenuItem,
@@ -937,7 +939,7 @@
             this.bunifuGradientPanel1.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.bunifuGradientPanel1.GradientTopRight = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.bunifuGradientPanel1.Location = new System.Drawing.Point(0, -20);
-            this.bunifuGradientPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bunifuGradientPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.bunifuGradientPanel1.Name = "bunifuGradientPanel1";
             this.bunifuGradientPanel1.Quality = 10;
             this.bunifuGradientPanel1.Size = new System.Drawing.Size(1685, 779);
@@ -960,6 +962,13 @@
             this.moverFormulario.TargetControl = this.bunifuGradientPanel1;
             this.moverFormulario.Vertical = true;
             // 
+            // registroBajasToolStripMenuItem
+            // 
+            this.registroBajasToolStripMenuItem.Name = "registroBajasToolStripMenuItem";
+            this.registroBajasToolStripMenuItem.Size = new System.Drawing.Size(238, 26);
+            this.registroBajasToolStripMenuItem.Text = "Registro Bajas";
+            this.registroBajasToolStripMenuItem.Click += new System.EventHandler(this.registroBajasToolStripMenuItem_Click);
+            // 
             // Busqueda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -969,7 +978,7 @@
             this.Controls.Add(this.dgvDatos);
             this.Controls.Add(this.bunifuGradientPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Busqueda";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consulta";
@@ -1059,5 +1068,6 @@
         public System.Windows.Forms.Label lblcvePe;
         private System.Windows.Forms.ToolStripMenuItem cambioEstadoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem generadorClavesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem registroBajasToolStripMenuItem;
     }
 }

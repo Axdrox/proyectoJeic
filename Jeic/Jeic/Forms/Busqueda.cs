@@ -339,5 +339,12 @@ namespace Refracciones.Forms
         {
 
         }
+
+        private void registroBajasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            bajasMultiples bajas = new bajasMultiples();
+            bajas.lblUsuario.Text = Usuario.Text;
+            bajas.ShowDialog();
+        }
     }
 }

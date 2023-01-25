@@ -6179,6 +6179,101 @@ namespace Refracciones
             }
             return resultado;
         }
+        //------------- LLENAR DGV REGISTRO BAJA POR PIEZA
+        public string[] llenarBajaCodigoBarras(string cvePedido)
+        {
+            string[] datos = new string[10];
+
+            try
+            {
+
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    bool existe = false;
+                    Comando = new SqlCommand(string.Format("SELECT fecha FROM ENTREGA WHERE cve_pedido = {0}", cvePedido), nuevaConexion);
+                    Lector = Comando.ExecuteReader();
+                    while (Lector.Read())
+                    {
+                        existe = true;
+                    }
+                    Lector.Close();
+
+                    if (!existe)
+                    {
+                        Comando = new SqlCommand(string.Format("SELECT ven.cve_pedido AS 'PEDIDO', ven.cve_siniestro AS 'SINIESTRO', pie.nombre AS 'PIEZA', val.cve_cliente AS 'CLIENTE',estSin.estado AS 'ESTATUS ACTUAL', ped.cve_pedido AS 'CVE PEDIDO', ped.cve_venta AS 'CVE VENTA', ped.cve_pieza AS 'CVE PIEZA', ped.cantidad AS 'CANTIDAD', ven.fecha_asignacion AS 'FECHA ASIG'  FROM PEDIDO ped JOIN PIEZA pie ON ped.cve_pieza = pie.cve_pieza JOIN VENTAS ven ON ped.cve_venta = ven.cve_venta JOIN VALUADOR val ON ven.cve_valuador = val.cve_valuador JOIN ESTADO_SINIESTRO estSin ON ped.estado = estSin.cve_estado WHERE ped.cve_pedido = {0}", cvePedido), nuevaConexion);
+                        Lector = Comando.ExecuteReader();
+                        while (Lector.Read())
+                        {
+
+                            datos[0] = Lector["PEDIDO"].ToString();
+                            datos[1] = Lector["SINIESTRO"].ToString();
+                            datos[2] = Lector["PIEZA"].ToString();
+                            datos[3] = Lector["CLIENTE"].ToString();
+                            datos[4] = Lector["ESTATUS ACTUAL"].ToString();
+                            datos[5] = Lector["CVE PEDIDO"].ToString();
+                            datos[6] = Lector["CVE VENTA"].ToString();
+                            datos[7] = Lector["CVE PIEZA"].ToString();
+                            datos[8] = Lector["CANTIDAD"].ToString();
+                            datos[9] = Lector["FECHA ASIG"].ToString();
+                        }
+                        Lector.Close();
+                    }
+                    nuevaConexion.Close();
+                }
+                return datos;
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error al generar la peticion: " + EX.Message);
+            }
+            return datos;
+        }
+
+        //------------- LLENAR DGV REGISTRO BAJA POR PEDIDO
+        public DataTable llenarBajaCodigoBarrasPedido(DataGridView dgv, string cvePedido)
+        {
+            dt = new DataTable();
+
+            try
+            {
+
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    bool existe = false;
+                    Comando = new SqlCommand(string.Format("SELECT fecha FROM ENTREGA WHERE cve_venta = {0}", cvePedido), nuevaConexion);
+                    Lector = Comando.ExecuteReader();
+                    while (Lector.Read())
+                    {
+                        existe = true;
+                    }
+                    Lector.Close();
+
+                    if (!existe)
+                    {
+
+                        Comando = new SqlCommand(string.Format("SELECT ven.cve_pedido AS 'PEDIDO', ven.cve_siniestro AS 'SINIESTRO', pie.nombre AS 'PIEZA', val.cve_cliente AS 'CLIENTE',estSin.estado AS 'ESTATUS ACTUAL', ped.cve_pedido AS 'CVE PEDIDO', ped.cve_venta AS 'CVE VENTA', ped.cve_pieza AS 'CVE PIEZA', ped.cantidad AS 'CANTIDAD', ven.fecha_asignacion AS 'FECHA ASIG'  FROM PEDIDO ped JOIN PIEZA pie ON ped.cve_pieza = pie.cve_pieza JOIN VENTAS ven ON ped.cve_venta = ven.cve_venta JOIN VALUADOR val ON ven.cve_valuador = val.cve_valuador JOIN ESTADO_SINIESTRO estSin ON ped.estado = estSin.cve_estado WHERE ped.cve_venta = {0}", cvePedido), nuevaConexion);
+                        da = new SqlDataAdapter(Comando);
+                        da.Fill(dt);
+
+                        foreach (DataRow dr in dt.Rows)
+                        {
+                                dgv.Rows.Add(dr.ItemArray);
+                        }
+
+                    }
+                    nuevaConexion.Close();
+                }
+                return dt;
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error al generar la peticion: " + EX.Message);
+            }
+            return dt;
+
+        }
 
         //------------- GENERAR 
         public string[] llenarCodigoBarras(string cvePedido)
@@ -6217,6 +6312,85 @@ namespace Refracciones
                 MessageBox.Show("Error al generar la peticion: " + EX.Message);
             }
             return datos;
+        }
+
+        //--------------------REGISTRO DE BAJA DE PIEZA POR CODIGO BARRAS--------------------
+        public void registrarBajaCodigoBarras(string cve_siniestro, string cve_pedido, int cve_pieza, int cantidad, DateTime fecha, int cve_venta, DateTime fecha_asigancion, string realizo, int cvePedidoIdentity)
+        {
+
+            
+            int dias_entrega = 0;
+            int cve_entrega;
+            using (SqlConnection nuevaConexion = Conexion.conexion())
+            {
+                nuevaConexion.Open();
+                Comando = new SqlCommand("INSERT INTO ENTREGA (fecha,cantidad,cve_pieza,cve_venta, realizo, cve_pedido) VALUES (@fecha,@cantidadE,@cve_pieza,@cve_venta,@realizo,@cve_pedido)", nuevaConexion);
+                Comando.Parameters.Add("@fecha", SqlDbType.Date);
+                Comando.Parameters.Add("@cantidadE", SqlDbType.Int);
+                Comando.Parameters.Add("@cve_pieza", SqlDbType.Int);
+                Comando.Parameters.Add("@cve_venta", SqlDbType.Int);
+                Comando.Parameters.Add("@realizo", SqlDbType.NVarChar, 50);
+                Comando.Parameters.Add("@cve_pedido", SqlDbType.Int);
+
+                Comando.Parameters["@fecha"].Value = fecha;
+                Comando.Parameters["@cantidadE"].Value = cantidad;
+                Comando.Parameters["@cve_pieza"].Value = cve_pieza;
+                Comando.Parameters["@cve_venta"].Value = cve_venta;
+                Comando.Parameters["@realizo"].Value = realizo;
+                Comando.Parameters["@cve_pedido"].Value = cvePedidoIdentity;
+                Comando.ExecuteNonQuery();
+                //VAMOS A OBTENER LA CLAVE DE ENTREGA DEL ULTIMO REGISTRO EN ENTREGA
+                Comando = new SqlCommand("SELECT TOP 1 cve_entrega FROM ENTREGA ORDER BY cve_entrega DESC", nuevaConexion);
+                cve_entrega = int.Parse(Comando.ExecuteScalar().ToString());
+                //VAMOS A OBTENER LA DIFERENCIA DE DIAS ENTRE FECHA_ENTREGA Y FECHA_ASIGNACIÓN
+                Comando = new SqlCommand("SELECT DATEDIFF(DAY,@fecha_asignacion, @fecha)", nuevaConexion);
+                Comando.Parameters.AddWithValue("@fecha_asignacion", fecha_asigancion);
+                Comando.Parameters.AddWithValue("@fecha", fecha);
+                dias_entrega = Int32.Parse(Comando.ExecuteScalar().ToString()) + 1;
+                //SE ACTUALIZAN LOS DATOS SIGUIENTES
+                SqlCommand cmd = new SqlCommand("UPDATE p SET p.cve_entrega = @cve_entrega, p.pzas_entregadas = @pzas_entregadas, p.fecha_entrega = @fecha_entrega, p.dias_entrega = @dias_entrega FROM PEDIDO p INNER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta WHERE ven.cve_siniestro = @cve_siniestro AND ven.cve_pedido = @cve_pedido AND p.cve_pieza = @cve_pieza AND p.cve_pedido = @cve_pedidoIdentity", nuevaConexion);
+                cmd.Parameters.Add("@cve_entrega", SqlDbType.Int);
+                cmd.Parameters.Add("@pzas_entregadas", SqlDbType.Int);
+                cmd.Parameters.Add("@fecha_entrega", SqlDbType.Date);
+                cmd.Parameters.Add("@cve_siniestro", SqlDbType.NVarChar, 50);
+                cmd.Parameters.Add("@cve_pedido", SqlDbType.NVarChar, 50);
+                cmd.Parameters.Add("@cve_pieza", SqlDbType.Int);
+                cmd.Parameters.Add("@dias_entrega", SqlDbType.Int);
+                cmd.Parameters.Add("@cve_pedidoIdentity", SqlDbType.Int);
+
+                cmd.Parameters["@cve_entrega"].Value = cve_entrega;
+                cmd.Parameters["@pzas_entregadas"].Value = cantidad;
+                cmd.Parameters["@fecha_entrega"].Value = fecha;
+                cmd.Parameters["@cve_siniestro"].Value = cve_siniestro;
+                cmd.Parameters["@cve_pedido"].Value = cve_pedido;
+                cmd.Parameters["@cve_pieza"].Value = cve_pieza;
+                cmd.Parameters["@dias_entrega"].Value = dias_entrega;
+                cmd.Parameters["@cve_pedidoIdentity"].Value = cvePedidoIdentity;
+                cmd.ExecuteNonQuery();
+                //SI SE CUMPLE SE SE REGISTRA ENTREGA EN TIEMPO
+                cmd = new SqlCommand("SELECT p.fecha_entrega,ven.fecha_promesa FROM PEDIDO p INNER JOIN ENTREGA ent ON p.cve_entrega = ent.cve_entrega INNER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta WHERE p.cve_venta = @cve_venta AND p.cve_pieza = @cve_pieza AND p.cve_pedido = @cve_pedido AND p.pzas_entregadas = p.cantidad AND p.fecha_entrega <= ven.fecha_promesa", nuevaConexion);
+                cmd.Parameters.Add("@cve_venta", SqlDbType.Int);
+                cmd.Parameters.Add("@cve_pieza", SqlDbType.Int);
+                cmd.Parameters.Add("@cve_pedido", SqlDbType.Int);
+                cmd.Parameters["@cve_venta"].Value = cve_venta;
+                cmd.Parameters["@cve_pieza"].Value = cve_pieza;
+                cmd.Parameters["@cve_pedido"].Value = cvePedidoIdentity;
+                if (cmd.ExecuteScalar() != null)
+                {
+                    cmd = new SqlCommand("UPDATE PEDIDO SET entrega_enTiempo = 1 WHERE cve_venta = @cve_venta  AND cve_pieza = @cve_pieza AND cve_pedido = @cve_pedido", nuevaConexion);
+                    cmd.Parameters.Add("@cve_venta", SqlDbType.Int);
+                    cmd.Parameters.Add("@cve_pieza", SqlDbType.Int);
+                    cmd.Parameters.Add("@cve_pedido", SqlDbType.Int);
+                    cmd.Parameters["@cve_venta"].Value = cve_venta;
+                    cmd.Parameters["@cve_pieza"].Value = cve_pieza;
+                    cmd.Parameters["@cve_pedido"].Value = cvePedidoIdentity;
+                    //MessageBOX.SHowDialog(3, "Entregado a Tiempo!");
+                }
+
+                cmd.ExecuteNonQuery();
+                nuevaConexion.Close();
+            }
+
         }
 
         //--------------------CAMBIO DE ESTADO (ESTATUS) DE PIEZA POR CODIGO BARRAS--------------------
