@@ -2256,7 +2256,7 @@ namespace Refracciones.Forms
 
         private void txtClavePedido_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Regex.IsMatch(e.KeyChar.ToString(), @"^(([a-zA-z0-9.\-_])+)$") && (e.KeyChar != (char)Keys.Back) && (22 != ((short)e.KeyChar) && (3 != ((short)e.KeyChar))))// cambio del día 21/ene/2023
+            if (!Regex.IsMatch(e.KeyChar.ToString(), @"^(([a-zA-z0-9.\-_\s])+)$") && (e.KeyChar != (char)Keys.Back) && (22 != ((short)e.KeyChar) && (3 != ((short)e.KeyChar))))// cambio del día 21/ene/2023
             {
                 MessageBOX.SHowDialog(2,"Carácter no permitido");
                 e.Handled = true;
@@ -2269,13 +2269,138 @@ namespace Refracciones.Forms
             // cambio del día 21/ene/2023
             if (txtClavePedido.Text != "")
             {
-                if (!Regex.IsMatch(txtClavePedido.Text, @"^(([a-zA-z0-9.\-_])+)$"))
+                if (!Regex.IsMatch(txtClavePedido.Text, @"^(([a-zA-z0-9.\-_\s])+)$"))
                 {
                     MessageBOX.SHowDialog(2, "Valor ingresado no válido");
                     txtClavePedido.Text = "";
                     return;
                 }
             }
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDestino_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtHorario_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblHorario_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTelefono_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblTelefono_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtContacto_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblContacto_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCiudad_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblCiudad_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDireccion_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblDireccion_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtValuador_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDiasEspera_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblDiasEspera_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtAseguradora_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblClientePedido_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtNumeroEmpleado_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblNumeroEmpleado_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtVendedor_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

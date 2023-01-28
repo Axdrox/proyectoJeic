@@ -3579,7 +3579,7 @@ namespace Refracciones
                 using (SqlConnection nuevaConexion = Conexion.conexion())
                 {
                     nuevaConexion.Open();
-                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT * FROM ESTADO_SINIESTRO", nuevaConexion);
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT * FROM ESTADO_SINIESTRO WHERE status = 1", nuevaConexion);
                     dataAdapter.Fill(dataSet, "ESTADO_SINIESTRO");
                     nuevaConexion.Close();
                 }
@@ -6201,7 +6201,7 @@ namespace Refracciones
 
                     if (!existe)
                     {
-                        Comando = new SqlCommand(string.Format("SELECT ven.cve_pedido AS 'PEDIDO', ven.cve_siniestro AS 'SINIESTRO', pie.nombre AS 'PIEZA', val.cve_cliente AS 'CLIENTE',estSin.estado AS 'ESTATUS ACTUAL', ped.cve_pedido AS 'CVE PEDIDO', ped.cve_venta AS 'CVE VENTA', ped.cve_pieza AS 'CVE PIEZA', ped.cantidad AS 'CANTIDAD', ven.fecha_asignacion AS 'FECHA ASIG'  FROM PEDIDO ped JOIN PIEZA pie ON ped.cve_pieza = pie.cve_pieza JOIN VENTAS ven ON ped.cve_venta = ven.cve_venta JOIN VALUADOR val ON ven.cve_valuador = val.cve_valuador JOIN ESTADO_SINIESTRO estSin ON ped.estado = estSin.cve_estado WHERE ped.cve_pedido = {0}", cvePedido), nuevaConexion);
+                        Comando = new SqlCommand(string.Format("SELECT ven.cve_pedido AS 'PEDIDO', ven.cve_siniestro AS 'SINIESTRO', pie.nombre AS 'PIEZA', val.cve_cliente AS 'CLIENTE',estSin.estado AS 'ESTATUS ACTUAL', ped.cve_pedido AS 'CVE PEDIDO', ped.cve_venta AS 'CVE VENTA', ped.cve_pieza AS 'CVE PIEZA', ped.cantidad AS 'CANTIDAD', ven.fecha_asignacion AS 'FECHA ASIG'  FROM PEDIDO ped JOIN PIEZA pie ON ped.cve_pieza = pie.cve_pieza JOIN VENTAS ven ON ped.cve_venta = ven.cve_venta JOIN VALUADOR val ON ven.cve_valuador = val.cve_valuador JOIN ESTADO_SINIESTRO estSin ON ped.estado = estSin.cve_estado WHERE ped.cve_pedido = {0} AND ped.estado != 10 AND ped.estado != 11 AND ped.estado != 12", cvePedido), nuevaConexion);
                         Lector = Comando.ExecuteReader();
                         while (Lector.Read())
                         {
@@ -6253,7 +6253,7 @@ namespace Refracciones
                     if (!existe)
                     {
 
-                        Comando = new SqlCommand(string.Format("SELECT ven.cve_pedido AS 'PEDIDO', ven.cve_siniestro AS 'SINIESTRO', pie.nombre AS 'PIEZA', val.cve_cliente AS 'CLIENTE',estSin.estado AS 'ESTATUS ACTUAL', ped.cve_pedido AS 'CVE PEDIDO', ped.cve_venta AS 'CVE VENTA', ped.cve_pieza AS 'CVE PIEZA', ped.cantidad AS 'CANTIDAD', ven.fecha_asignacion AS 'FECHA ASIG'  FROM PEDIDO ped JOIN PIEZA pie ON ped.cve_pieza = pie.cve_pieza JOIN VENTAS ven ON ped.cve_venta = ven.cve_venta JOIN VALUADOR val ON ven.cve_valuador = val.cve_valuador JOIN ESTADO_SINIESTRO estSin ON ped.estado = estSin.cve_estado WHERE ped.cve_venta = {0}", cvePedido), nuevaConexion);
+                        Comando = new SqlCommand(string.Format("SELECT ven.cve_pedido AS 'PEDIDO', ven.cve_siniestro AS 'SINIESTRO', pie.nombre AS 'PIEZA', val.cve_cliente AS 'CLIENTE',estSin.estado AS 'ESTATUS ACTUAL', ped.cve_pedido AS 'CVE PEDIDO', ped.cve_venta AS 'CVE VENTA', ped.cve_pieza AS 'CVE PIEZA', ped.cantidad AS 'CANTIDAD', ven.fecha_asignacion AS 'FECHA ASIG'  FROM PEDIDO ped JOIN PIEZA pie ON ped.cve_pieza = pie.cve_pieza JOIN VENTAS ven ON ped.cve_venta = ven.cve_venta JOIN VALUADOR val ON ven.cve_valuador = val.cve_valuador JOIN ESTADO_SINIESTRO estSin ON ped.estado = estSin.cve_estado WHERE ped.cve_venta = {0} AND ped.estado != 10 AND ped.estado != 11 AND ped.estado != 12", cvePedido), nuevaConexion);
                         da = new SqlDataAdapter(Comando);
                         da.Fill(dt);
 

@@ -41,18 +41,21 @@ namespace Refracciones.Forms
                 case 1:
                     btnAgregarPedido.Visible = false;
                     administrarToolStripMenuItem.Enabled = false;
+                    
                     break;
 
                 case 2:
                     btnAgregarPedido.Visible = false;
                     administrarToolStripMenuItem.Enabled = false;
                     buscarFacturasToolStripMenuItem.Enabled = false;
+                    
                     break;
 
                 case 3:
                     notificacionesToolStripMenuItem.Enabled = false;
                     administrarToolStripMenuItem.Enabled = false;
                     buscarFacturasToolStripMenuItem.Enabled = false;
+                    registroBajasToolStripMenuItem.Enabled = false;
                     break;
                 case 4:
                     btnAgregarPedido.Visible = false;
@@ -62,6 +65,7 @@ namespace Refracciones.Forms
                     notificacionesToolStripMenuItem.Enabled = false;
                     talleresToolStripMenuItem.Enabled = false;
                     cambioEstadoToolStripMenuItem.Enabled = false;
+                    registroBajasToolStripMenuItem.Enabled = true;
                     break;
                 default:
                     break;

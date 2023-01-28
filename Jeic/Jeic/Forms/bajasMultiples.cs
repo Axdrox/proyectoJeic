@@ -1,4 +1,5 @@
-﻿using Refracciones;
+﻿using Jeic.Properties;
+using Refracciones;
 using Refracciones.Forms;
 using System;
 using System.Collections.Generic;
@@ -27,12 +28,12 @@ namespace Jeic.Forms
         private string[] datos = new string[10];
         private void bajasMultiples_Load(object sender, EventArgs e)
         {
-            
+            this.Icon = Resources.iconJeic;
             dgvEstatus.Columns["ColumnCvePedido"].Visible = false;
             dgvEstatus.Columns["ColumnCveVenta"].Visible = false;
-            dgvEstatus.Columns["ColumnCvePieza"].Visible = true;
-            dgvEstatus.Columns["ColumnCantidad"].Visible = true;
-            dgvEstatus.Columns["ColumnFechaAsig"].Visible = true;
+            dgvEstatus.Columns["ColumnCvePieza"].Visible = false;
+            dgvEstatus.Columns["ColumnCantidad"].Visible = false;
+            dgvEstatus.Columns["ColumnFechaAsig"].Visible = false;
             DateTime maximaFechaInicio = DateTime.Now;
             Fecha_in.MinDate = new DateTime(maximaFechaInicio.Year, maximaFechaInicio.Month, maximaFechaInicio.Day - 5);
             Fecha_in.MaxDate = DateTime.Now;
@@ -69,9 +70,9 @@ namespace Jeic.Forms
                                 dgvEstatus.Rows.Add(datos[0], datos[1], datos[2], datos[3], datos[4], datos[5], datos[6], datos[7], datos[8], datos[9]);
                                 dgvEstatus.Columns["ColumnCvePedido"].Visible = false;
                                 dgvEstatus.Columns["ColumnCveVenta"].Visible = false;
-                                dgvEstatus.Columns["ColumnCvePieza"].Visible = true;
-                                dgvEstatus.Columns["ColumnCantidad"].Visible = true;
-                                dgvEstatus.Columns["ColumnFechaAsig"].Visible = true;
+                                dgvEstatus.Columns["ColumnCvePieza"].Visible = false;
+                                dgvEstatus.Columns["ColumnCantidad"].Visible = false;
+                                dgvEstatus.Columns["ColumnFechaAsig"].Visible = false;
                             }
                         }
                         existe = false;
