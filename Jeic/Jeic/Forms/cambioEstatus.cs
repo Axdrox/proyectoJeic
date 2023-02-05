@@ -32,8 +32,30 @@ namespace Jeic.Forms
             dgvEstatus.Columns["ColumnCvePedido"].Visible = false;
             dgvEstatus.Columns["ColumnCveVenta"].Visible = false;
             DateTime maximaFechaInicio = DateTime.Now;
-            Fecha_in.MinDate = new DateTime(maximaFechaInicio.Year, maximaFechaInicio.Month, maximaFechaInicio.Day - 5);
-            Fecha_in.MaxDate = DateTime.Now;
+            int anio = maximaFechaInicio.Year;
+            int mes = maximaFechaInicio.Month;
+            int dia = maximaFechaInicio.Day;
+            if (dia <= 5)
+            {
+                int diasMesAnt;
+                if (mes != 1)
+                {
+                    diasMesAnt = DateTime.DaysInMonth(anio, mes - 1);
+
+                }
+                else
+                {
+                    diasMesAnt = DateTime.DaysInMonth(anio, 12);
+                }
+
+                Fecha_in.MinDate = new DateTime(anio, mes - 1, diasMesAnt - 5);
+                Fecha_in.MaxDate = DateTime.Now;
+            }
+            else
+            {
+                Fecha_in.MinDate = new DateTime(anio, mes, dia - 5);
+                Fecha_in.MaxDate = maximaFechaInicio;
+            }
 
         }
 
