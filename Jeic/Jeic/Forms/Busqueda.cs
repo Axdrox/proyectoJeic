@@ -76,14 +76,21 @@ namespace Refracciones.Forms
         {
             OperBD llenardatos = new OperBD();
             llenardatos.Llenartablaa(dgvDatos,TxtClavePed.Text.Trim(),lblcvePe.Text);
+            
             if(dgvDatos.Rows[0].Cells[0].Value != null)
             {
+                string ubicacion = dgvDatos.Rows[0].Cells[30].Value.ToString();
+                if (ubicacion == "0")
+                    ubicacion = "Proveedor";
+                else if (ubicacion == "1")
+                    ubicacion = "Jeic";
+
                 lblcvePedido.Text = lblcvePedido.Text.Substring(0, 9) + " " + dgvDatos.Rows[0].Cells[0].Value.ToString();
                 lblcveSiniestro.Text = lblcveSiniestro.Text.Substring(0, 12) + " " + dgvDatos.Rows[0].Cells[1].Value.ToString();
                 lblPieza.Text = lblPieza.Text.Substring(0, 6) + " " + dgvDatos.Rows[0].Cells[2].Value.ToString();
                 lblCantidad.Text = lblCantidad.Text.Substring(0, 9) + " " + dgvDatos.Rows[0].Cells[3].Value.ToString();
                 lblVendedor.Text = lblVendedor.Text.Substring(0, 9) + " " + dgvDatos.Rows[0].Cells[4].Value.ToString();
-                lblClaveSeguimiento.Text = lblClaveSeguimiento.Text.Substring(0, 9) + " " + dgvDatos.Rows[0].Cells[5].Value.ToString();
+                txtCveGuia.Text = "Cve guía: " + dgvDatos.Rows[0].Cells[5].Value.ToString();
                 lblOrigen.Text = lblOrigen.Text.Substring(0, 7) + " " + dgvDatos.Rows[0].Cells[6].Value.ToString();
                 lblProveedor.Text = lblProveedor.Text.Substring(0, 10) + " " + dgvDatos.Rows[0].Cells[7].Value.ToString();
                 lblValuador.Text = lblValuador.Text.Substring(0, 9) + " " + dgvDatos.Rows[0].Cells[8].Value.ToString();
@@ -108,6 +115,7 @@ namespace Refracciones.Forms
                 lblVehiculo.Text = lblVehiculo.Text.Substring(0, 9) + "" + dgvDatos.Rows[0].Cells[26].Value.ToString() + "-" + dgvDatos.Rows[0].Cells[24].Value.ToString() + "-" + dgvDatos.Rows[0].Cells[25].Value.ToString();
                 txtComentarioSiniestro.Text = dgvDatos.Rows[0].Cells[27].Value.ToString();
                 lblFechaBaja.Text = lblFechaBaja.Text.Substring(0, 11) + " " + dgvDatos.Rows[0].Cells[28].Value.ToString();
+                lblUbicacion.Text = "Ubicación: " + ubicacion;
             }
             llenar.Llenartabla1(dvgPedido, TxtClaveSin.Text.ToString(), TxtClavePed.Text.ToString(), txtCveVendedor.Text.ToString(), lblcvePe.Text);
         }
@@ -271,15 +279,22 @@ namespace Refracciones.Forms
             if (fila == -1) { }
             else if (e.ColumnIndex == -1)
             {
+
                 string EstadoFact = "";
                 OperBD llenardatos = new OperBD();
                 llenardatos.Llenartablaa(dgvDatos, dvgPedido.Rows[fila].Cells[1].Value.ToString(), dvgPedido.Rows[fila].Cells[0].Value.ToString(), dvgPedido.Rows[fila].Cells[5].Value.ToString(), int.Parse(dvgPedido.Rows[fila].Cells[10].Value.ToString()));
+                string ubicacion = dgvDatos.Rows[0].Cells[30].Value.ToString();
+                if (ubicacion == "0")
+                    ubicacion = "Proveedor";
+                else if (ubicacion == "1")
+                    ubicacion = "Jeic";
+
                 lblcvePedido.Text = lblcvePedido.Text.Substring(0, 9) + " " + dgvDatos.Rows[0].Cells[0].Value.ToString();
                 lblcveSiniestro.Text = lblcveSiniestro.Text.Substring(0, 12) + " " + dgvDatos.Rows[0].Cells[1].Value.ToString();
                 lblPieza.Text = lblPieza.Text.Substring(0, 6) + " " + dgvDatos.Rows[0].Cells[2].Value.ToString();
                 lblCantidad.Text = lblCantidad.Text.Substring(0, 9) + " " + dgvDatos.Rows[0].Cells[3].Value.ToString();
                 lblVendedor.Text = lblVendedor.Text.Substring(0, 9) + " " + dgvDatos.Rows[0].Cells[4].Value.ToString();
-                lblClaveSeguimiento.Text = lblClaveSeguimiento.Text.Substring(0, 9) + " " + dgvDatos.Rows[0].Cells[5].Value.ToString();
+                txtCveGuia.Text = "Cve guía: " + dgvDatos.Rows[0].Cells[5].Value.ToString();
                 lblOrigen.Text = lblOrigen.Text.Substring(0, 7) + " " + dgvDatos.Rows[0].Cells[6].Value.ToString();
                 lblProveedor.Text = lblProveedor.Text.Substring(0, 10) + " " + dgvDatos.Rows[0].Cells[7].Value.ToString();
                 lblValuador.Text = lblValuador.Text.Substring(0, 9) + " " + dgvDatos.Rows[0].Cells[8].Value.ToString();
@@ -304,6 +319,7 @@ namespace Refracciones.Forms
                 lblVehiculo.Text = lblVehiculo.Text.Substring(0, 9) + "" + dgvDatos.Rows[0].Cells[26].Value.ToString() + "-" + dgvDatos.Rows[0].Cells[24].Value.ToString() + "-" + dgvDatos.Rows[0].Cells[25].Value.ToString();
                 txtComentarioSiniestro.Text = dgvDatos.Rows[0].Cells[27].Value.ToString();
                 lblFechaBaja.Text = lblFechaBaja.Text.Substring(0, 11) + " " + dgvDatos.Rows[0].Cells[28].Value.ToString();
+                lblUbicacion.Text = "Ubicación: " + ubicacion;
             }
             else
             {
@@ -349,6 +365,12 @@ namespace Refracciones.Forms
             bajasMultiples bajas = new bajasMultiples();
             bajas.lblUsuario.Text = Usuario.Text;
             bajas.ShowDialog();
+        }
+
+        private void cambioGuiasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            cambioGuias cmbGuias = new cambioGuias();
+            cmbGuias.ShowDialog();
         }
     }
 }

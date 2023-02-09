@@ -1333,7 +1333,7 @@ namespace Refracciones
                 using (SqlConnection nuevacon = Conexion.conexion())
                 {
                     //da = new SqlDataAdapter(string.Format("SELECT ven.cve_pedido AS PEDIDO, ven.cve_siniestro AS SINIESTRO, pi.nombre AS PIEZA,  p.cantidad AS CANTIDAD, vend.nombre AS VENDEDOR, p.cve_guia 'CLAVE GUIA', o.origen AS ORIGEN, pro.nombre AS PROVEEDOR, v.nombre AS VALUADOR, c.cve_nombre AS CLIENTE, po.nombre AS PORTAL, t.nombre AS TALLER, CONVERT(varchar, ven.fecha_asignacion, 6) AS 'FECHA DE ASIGNACIÓN', CONVERT(varchar, ven.fecha_promesa, 6) AS 'FECHA PROMESA',CONVERT(varchar,p.fecha_baja, 6)  AS 'FECHA DE ENTREGA', p.costo_neto AS 'COSTO COMPRA', cos.costo AS 'COSTO DE ENVÍO', p.precio_venta AS 'PRECIO DE VENTA', p.precio_reparacion AS 'PRECIO REPARACIÓN', p.cve_factura AS 'FACTURA', fa.fact_sinIVA AS 'FACTURA SIN IVA', fa.fact_neto AS 'FACTURA NETO', es.estado AS 'ESTADO FACTURA', ess.estado AS 'ESTADO SINIESTRO', vh.modelo AS 'VEHICULO', vh.anio AS 'VH AÑO',ma.marca AS 'VH MARCA', s.comentario AS 'SCOMMENT',CONVERT(varchar,ent.fecha, 6)  AS 'FECHA DE BAJA' FROM PEDIDO p LEFT OUTER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta LEFT OUTER JOIN ORIGEN_PIEZA o ON o.cve_origen = p.cve_origen LEFT OUTER JOIN PIEZA pi ON p.cve_pieza = pi.cve_pieza LEFT OUTER JOIN PROVEEDOR pro ON p.cve_proveedor = pro.cve_proveedor LEFT OUTER JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE c ON c.cve_nombre = v.cve_cliente LEFT OUTER JOIN PORTAL po ON po.cve_portal = p.cve_portal LEFT OUTER JOIN TALLER t ON t.cve_taller = ven.cve_taller  LEFT OUTER JOIN FACTURA fa ON fa.cve_factura = p.cve_factura LEFT OUTER JOIN ESTADO_FACTURA es ON es.cve_estado = fa.cve_estado LEFT OUTER JOIN ENTREGA ent ON ent.cve_entrega = p.cve_entrega LEFT OUTER JOIN COSTO_ENVIO cos ON cos.cve_costoEnvio = p.costo_envio LEFT OUTER JOIN SINIESTRO s ON s.cve_siniestro = ven.cve_siniestro LEFT OUTER JOIN Estado_Siniestro ess ON ess.cve_estado = p.estado LEFT OUTER JOIN VEHICULO vh ON s.cve_vehiculo = vh.cve_vehiculo LEFT OUTER JOIN MARCA ma ON vh.cve_marca = ma.cve_marca LEFT OUTER JOIN VENDEDOR vend ON vend.cve_vendedor = ven.cve_vendedor WHERE ven.cve_pedido = '{0}' AND ven.cve_siniestro = '{1}' AND pi.nombre = '{2}' AND p.cve_pedido = {3}", cve_Pedido, cve_Siniestro, nombre_pieza, pedido), nuevacon); //TESTING
-                    da = new SqlDataAdapter(string.Format("SELECT ven.cve_pedido AS PEDIDO, ven.cve_siniestro AS SINIESTRO, pi.nombre AS PIEZA,  p.cantidad AS CANTIDAD, vend.nombre AS VENDEDOR, p.cve_guia 'CLAVE GUIA', o.origen AS ORIGEN, pro.nombre AS PROVEEDOR, v.nombre AS VALUADOR, c.cve_nombre AS CLIENTE, po.nombre AS PORTAL, t.nombre AS TALLER, CONVERT(varchar, ven.fecha_asignacion, 6) AS 'FECHA DE ASIGNACIÓN', CONVERT(varchar, ven.fecha_promesa, 6) AS 'FECHA PROMESA',CONVERT(varchar,p.fecha_baja, 6)  AS 'FECHA DE ENTREGA', p.costo_neto AS 'COSTO COMPRA', p.costoEnvio AS 'COSTO DE ENVÍO', p.precio_venta AS 'PRECIO DE VENTA', p.precio_reparacion AS 'PRECIO REPARACIÓN', p.cve_factura AS 'FACTURA', fa.fact_sinIVA AS 'FACTURA SIN IVA', fa.fact_neto AS 'FACTURA NETO', es.estado AS 'ESTADO FACTURA', ess.estado AS 'ESTADO SINIESTRO', vh.modelo AS 'VEHICULO', vh.anio AS 'VH AÑO',ma.marca AS 'VH MARCA', s.comentario AS 'SCOMMENT',CONVERT(varchar,ent.fecha, 6)  AS 'FECHA DE BAJA', p.hora_baja AS 'HORA DE BAJA' FROM PEDIDO p LEFT OUTER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta LEFT OUTER JOIN ORIGEN_PIEZA o ON o.cve_origen = p.cve_origen LEFT OUTER JOIN PIEZA pi ON p.cve_pieza = pi.cve_pieza LEFT OUTER JOIN PROVEEDOR pro ON p.cve_proveedor = pro.cve_proveedor LEFT OUTER JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE c ON c.cve_nombre = v.cve_cliente LEFT OUTER JOIN PORTAL po ON po.cve_portal = p.cve_portal LEFT OUTER JOIN TALLER t ON t.cve_taller = ven.cve_taller  LEFT OUTER JOIN FACTURA fa ON fa.cve_factura = p.cve_factura LEFT OUTER JOIN ESTADO_FACTURA es ON es.cve_estado = fa.cve_estado LEFT OUTER JOIN ENTREGA ent ON ent.cve_entrega = p.cve_entrega LEFT OUTER JOIN SINIESTRO s ON s.cve_siniestro = ven.cve_siniestro LEFT OUTER JOIN Estado_Siniestro ess ON ess.cve_estado = p.estado LEFT OUTER JOIN VEHICULO vh ON s.cve_vehiculo = vh.cve_vehiculo LEFT OUTER JOIN MARCA ma ON vh.cve_marca = ma.cve_marca LEFT OUTER JOIN VENDEDOR vend ON vend.cve_vendedor = ven.cve_vendedor WHERE ven.cve_pedido = '{0}' AND ven.cve_siniestro = '{1}' AND pi.nombre = '{2}' AND p.cve_pedido = {3}", cve_Pedido, cve_Siniestro, nombre_pieza, pedido), nuevacon);
+                    da = new SqlDataAdapter(string.Format("SELECT ven.cve_pedido AS PEDIDO, ven.cve_siniestro AS SINIESTRO, pi.nombre AS PIEZA,  p.cantidad AS CANTIDAD, vend.nombre AS VENDEDOR, p.cve_guia 'CLAVE GUIA', o.origen AS ORIGEN, pro.nombre AS PROVEEDOR, v.nombre AS VALUADOR, c.cve_nombre AS CLIENTE, po.nombre AS PORTAL, t.nombre AS TALLER, CONVERT(varchar, ven.fecha_asignacion, 6) AS 'FECHA DE ASIGNACIÓN', CONVERT(varchar, ven.fecha_promesa, 6) AS 'FECHA PROMESA',CONVERT(varchar,p.fecha_baja, 6)  AS 'FECHA DE ENTREGA', p.costo_neto AS 'COSTO COMPRA', p.costoEnvio AS 'COSTO DE ENVÍO', p.precio_venta AS 'PRECIO DE VENTA', p.precio_reparacion AS 'PRECIO REPARACIÓN', p.cve_factura AS 'FACTURA', fa.fact_sinIVA AS 'FACTURA SIN IVA', fa.fact_neto AS 'FACTURA NETO', es.estado AS 'ESTADO FACTURA', ess.estado AS 'ESTADO SINIESTRO', vh.modelo AS 'VEHICULO', vh.anio AS 'VH AÑO',ma.marca AS 'VH MARCA', s.comentario AS 'SCOMMENT',CONVERT(varchar,ent.fecha, 6)  AS 'FECHA DE BAJA', p.hora_baja AS 'HORA DE BAJA', p.ubicacion AS 'UBICACION' FROM PEDIDO p LEFT OUTER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta LEFT OUTER JOIN ORIGEN_PIEZA o ON o.cve_origen = p.cve_origen LEFT OUTER JOIN PIEZA pi ON p.cve_pieza = pi.cve_pieza LEFT OUTER JOIN PROVEEDOR pro ON p.cve_proveedor = pro.cve_proveedor LEFT OUTER JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE c ON c.cve_nombre = v.cve_cliente LEFT OUTER JOIN PORTAL po ON po.cve_portal = p.cve_portal LEFT OUTER JOIN TALLER t ON t.cve_taller = ven.cve_taller  LEFT OUTER JOIN FACTURA fa ON fa.cve_factura = p.cve_factura LEFT OUTER JOIN ESTADO_FACTURA es ON es.cve_estado = fa.cve_estado LEFT OUTER JOIN ENTREGA ent ON ent.cve_entrega = p.cve_entrega LEFT OUTER JOIN SINIESTRO s ON s.cve_siniestro = ven.cve_siniestro LEFT OUTER JOIN Estado_Siniestro ess ON ess.cve_estado = p.estado LEFT OUTER JOIN VEHICULO vh ON s.cve_vehiculo = vh.cve_vehiculo LEFT OUTER JOIN MARCA ma ON vh.cve_marca = ma.cve_marca LEFT OUTER JOIN VENDEDOR vend ON vend.cve_vendedor = ven.cve_vendedor WHERE ven.cve_pedido = '{0}' AND ven.cve_siniestro = '{1}' AND pi.nombre = '{2}' AND p.cve_pedido = {3}", cve_Pedido, cve_Siniestro, nombre_pieza, pedido), nuevacon);
                     nuevacon.Open();
                     dt = new DataTable();
                     da.Fill(dt);
@@ -1355,7 +1355,7 @@ namespace Refracciones
                 using (SqlConnection nuevacon = Conexion.conexion())
                 {
                     //da = new SqlDataAdapter(string.Format("SELECT ven.cve_pedido AS PEDIDO, ven.cve_siniestro AS SINIESTRO, pi.nombre AS PIEZA,  p.cantidad AS CANTIDAD, vend.nombre AS VENDEDOR, p.cve_guia 'CLAVE GUIA', o.origen AS ORIGEN, pro.nombre AS PROVEEDOR, v.nombre AS VALUADOR, c.cve_nombre AS CLIENTE, po.nombre AS PORTAL, t.nombre AS TALLER, CONVERT(varchar, ven.fecha_asignacion, 6) AS 'FECHA DE ASIGNACIÓN', CONVERT(varchar, ven.fecha_promesa, 6) AS 'FECHA PROMESA',CONVERT(varchar,p.fecha_baja, 6)  AS 'FECHA DE ENTREGA', p.costo_neto AS 'COSTO COMPRA', cos.costo AS 'COSTO DE ENVÍO', p.precio_venta AS 'PRECIO DE VENTA', p.precio_reparacion AS 'PRECIO REPARACIÓN', p.cve_factura AS 'FACTURA', fa.fact_sinIVA AS 'FACTURA SIN IVA', fa.fact_neto AS 'FACTURA NETO', es.estado AS 'ESTADO FACTURA', ess.estado AS 'ESTADO SINIESTRO', vh.modelo AS 'VEHICULO', vh.anio AS 'VH AÑO',ma.marca AS 'VH MARCA', s.comentario AS 'SCOMMENT',CONVERT(varchar,ent.fecha, 6)  AS 'FECHA DE BAJA' FROM PEDIDO p LEFT OUTER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta LEFT OUTER JOIN ORIGEN_PIEZA o ON o.cve_origen = p.cve_origen LEFT OUTER JOIN PIEZA pi ON p.cve_pieza = pi.cve_pieza LEFT OUTER JOIN PROVEEDOR pro ON p.cve_proveedor = pro.cve_proveedor LEFT OUTER JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE c ON c.cve_nombre = v.cve_cliente LEFT OUTER JOIN PORTAL po ON po.cve_portal = p.cve_portal LEFT OUTER JOIN TALLER t ON t.cve_taller = ven.cve_taller  LEFT OUTER JOIN FACTURA fa ON fa.cve_factura = p.cve_factura LEFT OUTER JOIN ESTADO_FACTURA es ON es.cve_estado = fa.cve_estado LEFT OUTER JOIN ENTREGA ent ON ent.cve_entrega = p.cve_entrega LEFT OUTER JOIN COSTO_ENVIO cos ON cos.cve_costoEnvio = p.costo_envio LEFT OUTER JOIN SINIESTRO s ON s.cve_siniestro = ven.cve_siniestro LEFT OUTER JOIN Estado_Siniestro ess ON ess.cve_estado = p.estado LEFT OUTER JOIN VEHICULO vh ON s.cve_vehiculo = vh.cve_vehiculo LEFT OUTER JOIN MARCA ma ON vh.cve_marca = ma.cve_marca LEFT OUTER JOIN VENDEDOR vend ON vend.cve_vendedor = ven.cve_vendedor WHERE ven.cve_pedido = '{0}'", cve_Pedido), nuevacon);//TESTING
-                    da = new SqlDataAdapter(string.Format("SELECT ven.cve_pedido AS PEDIDO, ven.cve_siniestro AS SINIESTRO, pi.nombre AS PIEZA,  p.cantidad AS CANTIDAD, vend.nombre AS VENDEDOR, p.cve_guia 'CLAVE GUIA', o.origen AS ORIGEN, pro.nombre AS PROVEEDOR, v.nombre AS VALUADOR, c.cve_nombre AS CLIENTE, po.nombre AS PORTAL, t.nombre AS TALLER, CONVERT(varchar, ven.fecha_asignacion, 6) AS 'FECHA DE ASIGNACIÓN', CONVERT(varchar, ven.fecha_promesa, 6) AS 'FECHA PROMESA',CONVERT(varchar,p.fecha_baja, 6)  AS 'FECHA DE ENTREGA', p.costo_neto AS 'COSTO COMPRA', p.costoEnvio AS 'COSTO DE ENVÍO', p.precio_venta AS 'PRECIO DE VENTA', p.precio_reparacion AS 'PRECIO REPARACIÓN', p.cve_factura AS 'FACTURA', fa.fact_sinIVA AS 'FACTURA SIN IVA', fa.fact_neto AS 'FACTURA NETO', es.estado AS 'ESTADO FACTURA', ess.estado AS 'ESTADO SINIESTRO', vh.modelo AS 'VEHICULO', vh.anio AS 'VH AÑO',ma.marca AS 'VH MARCA', s.comentario AS 'SCOMMENT',CONVERT(varchar,ent.fecha, 6)  AS 'FECHA DE BAJA', p.hora_baja AS 'HORA DE BAJA' FROM PEDIDO p LEFT OUTER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta LEFT OUTER JOIN ORIGEN_PIEZA o ON o.cve_origen = p.cve_origen LEFT OUTER JOIN PIEZA pi ON p.cve_pieza = pi.cve_pieza LEFT OUTER JOIN PROVEEDOR pro ON p.cve_proveedor = pro.cve_proveedor LEFT OUTER JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE c ON c.cve_nombre = v.cve_cliente LEFT OUTER JOIN PORTAL po ON po.cve_portal = p.cve_portal LEFT OUTER JOIN TALLER t ON t.cve_taller = ven.cve_taller  LEFT OUTER JOIN FACTURA fa ON fa.cve_factura = p.cve_factura LEFT OUTER JOIN ESTADO_FACTURA es ON es.cve_estado = fa.cve_estado LEFT OUTER JOIN ENTREGA ent ON ent.cve_entrega = p.cve_entrega LEFT OUTER JOIN SINIESTRO s ON s.cve_siniestro = ven.cve_siniestro LEFT OUTER JOIN Estado_Siniestro ess ON ess.cve_estado = p.estado LEFT OUTER JOIN VEHICULO vh ON s.cve_vehiculo = vh.cve_vehiculo LEFT OUTER JOIN MARCA ma ON vh.cve_marca = ma.cve_marca LEFT OUTER JOIN VENDEDOR vend ON vend.cve_vendedor = ven.cve_vendedor WHERE ven.cve_pedido = '{0}'", cvePedido + cve_Pedido), nuevacon);
+                    da = new SqlDataAdapter(string.Format("SELECT ven.cve_pedido AS PEDIDO, ven.cve_siniestro AS SINIESTRO, pi.nombre AS PIEZA,  p.cantidad AS CANTIDAD, vend.nombre AS VENDEDOR, p.cve_guia 'CLAVE GUIA', o.origen AS ORIGEN, pro.nombre AS PROVEEDOR, v.nombre AS VALUADOR, c.cve_nombre AS CLIENTE, po.nombre AS PORTAL, t.nombre AS TALLER, CONVERT(varchar, ven.fecha_asignacion, 6) AS 'FECHA DE ASIGNACIÓN', CONVERT(varchar, ven.fecha_promesa, 6) AS 'FECHA PROMESA',CONVERT(varchar,p.fecha_baja, 6)  AS 'FECHA DE ENTREGA', p.costo_neto AS 'COSTO COMPRA', p.costoEnvio AS 'COSTO DE ENVÍO', p.precio_venta AS 'PRECIO DE VENTA', p.precio_reparacion AS 'PRECIO REPARACIÓN', p.cve_factura AS 'FACTURA', fa.fact_sinIVA AS 'FACTURA SIN IVA', fa.fact_neto AS 'FACTURA NETO', es.estado AS 'ESTADO FACTURA', ess.estado AS 'ESTADO SINIESTRO', vh.modelo AS 'VEHICULO', vh.anio AS 'VH AÑO',ma.marca AS 'VH MARCA', s.comentario AS 'SCOMMENT',CONVERT(varchar,ent.fecha, 6)  AS 'FECHA DE BAJA', p.hora_baja AS 'HORA DE BAJA', p.ubicacion AS 'UBICACION' FROM PEDIDO p LEFT OUTER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta LEFT OUTER JOIN ORIGEN_PIEZA o ON o.cve_origen = p.cve_origen LEFT OUTER JOIN PIEZA pi ON p.cve_pieza = pi.cve_pieza LEFT OUTER JOIN PROVEEDOR pro ON p.cve_proveedor = pro.cve_proveedor LEFT OUTER JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE c ON c.cve_nombre = v.cve_cliente LEFT OUTER JOIN PORTAL po ON po.cve_portal = p.cve_portal LEFT OUTER JOIN TALLER t ON t.cve_taller = ven.cve_taller  LEFT OUTER JOIN FACTURA fa ON fa.cve_factura = p.cve_factura LEFT OUTER JOIN ESTADO_FACTURA es ON es.cve_estado = fa.cve_estado LEFT OUTER JOIN ENTREGA ent ON ent.cve_entrega = p.cve_entrega LEFT OUTER JOIN SINIESTRO s ON s.cve_siniestro = ven.cve_siniestro LEFT OUTER JOIN Estado_Siniestro ess ON ess.cve_estado = p.estado LEFT OUTER JOIN VEHICULO vh ON s.cve_vehiculo = vh.cve_vehiculo LEFT OUTER JOIN MARCA ma ON vh.cve_marca = ma.cve_marca LEFT OUTER JOIN VENDEDOR vend ON vend.cve_vendedor = ven.cve_vendedor WHERE ven.cve_pedido = '{0}'", cvePedido + cve_Pedido), nuevacon);
                     nuevacon.Open();
                     dt = new DataTable();
                     da.Fill(dt);
@@ -2231,7 +2231,8 @@ namespace Refracciones
                     //COMANDO ANTES DE QUE SE AGREGARÁ QUE IMPRIMA EL ESTADO DE LA PIEZA "ESTADO"Comando = new SqlCommand("SELECT ven.cve_pedido AS 'PEDIDO', ven.cve_siniestro AS 'SINIESTRO', c.cve_nombre AS 'CLIENTE', val.nombre AS 'VALUADOR', t.nombre AS 'TALLER', vh.modelo AS 'VHEICULO MODELO',marca.marca AS 'MARCA', vh.anio 'AÑO', pro.nombre AS 'PROVEEDOR', pie.nombre AS 'PIEZA', ped.cve_producto AS 'CLAVE PRODUCTO', ped.cantidad AS 'TOTAL DE PIEZAS', ped.cve_guia AS 'GUÍA DE ENVIO', opie.origen AS 'ORIGEN PIEZA', por.nombre 'PORTAL', cosen.costo AS 'COSTO ENVÍO', ped.costo_neto AS 'COSTO', ped.precio_venta AS 'PRECIO VENTA', dest.destino AS 'DESTINO',vendedor.cve_vendedor AS 'NUMERO DE VENDEDOR', vendedor.nombre AS 'VENDEDOR', ven.fecha_asignacion  AS 'FECHA DE ASIGNACIÓN', ven.fecha_promesa  AS 'FECHA PROMESA', ent.fecha  AS 'FECHA DE ENTREGA', ped.pzas_entregadas AS 'PIEZAS ENTREGADAS', ped.entrega_enTiempo AS 'ENTREGA EN TIEMPO', ped.dias_entrega AS 'DÍAS DE ENTREGA', ped.fecha_baja  AS 'FECHA DE BAJA', dev.fecha  AS 'FECHA DEVOLUCIÓN', dev.motivo AS 'MOTIVO DE DEVOLUCIÓN', ped.pzas_devolucion AS 'CANTIDAD DE PIEZAS DEVUELTAS', dev.penalizacion AS 'PENALIZACIÓN POR DEVOLUCIÓN', ped.cve_factura AS 'FACTURA ACTUAL', fact.cve_refactura AS 'FACTURA ANTERIOR', fact.fecha_ingreso  AS 'FECHA INGRESO FACTURA', estfact.estado AS 'ESTADO DE LA FACTURA', fact.fecha_revision  AS 'FECHA DE REVISIÓN FACTURA', fact.fecha_pago  AS 'FECHA DE PAGO FACTURA', ped.precio_venta AS 'FACTURA SIN IVA', (ped.precio_venta * 1.16) AS 'FACTURA NETO', si.comentario AS 'COMENTARIOS SINIESTRO', fact.comentario AS 'COMENTARIOS FACTURA',(cosen.costo + ped.costo_neto) AS 'COSTO ADQUISICION', (@costoOperativo) AS 'COSTO OPERATIVO',ped.gasto AS 'GASTO',ven.cve_venta,pie.cve_pieza FROM VENTAS ven INNER JOIN VALUADOR val ON ven.cve_valuador = val.cve_valuador INNER JOIN CLIENTE c ON c.cve_nombre = val.cve_cliente INNER JOIN TALLER t ON ven.cve_taller = t.cve_taller INNER JOIN SINIESTRO si ON ven.cve_siniestro = si.cve_siniestro INNER JOIN VEHICULO vh ON si.cve_vehiculo = vh.cve_vehiculo INNER JOIN PEDIDO ped ON ven.cve_venta = ped.cve_venta INNER JOIN PROVEEDOR pro ON ped.cve_proveedor = pro.cve_proveedor INNER JOIN PIEZA pie ON ped.cve_pieza = pie.cve_pieza INNER JOIN ORIGEN_PIEZA opie ON ped.cve_origen = opie.cve_origen INNER JOIN PORTAL por ON ped.cve_portal = por.cve_portal INNER JOIN COSTO_ENVIO cosen ON ped.costo_envio = cosen.cve_costoEnvio INNER JOIN DESTINO dest ON ven.cve_destino = dest.cve_destino LEFT OUTER JOIN FACTURA fact ON ped.cve_factura = fact.cve_factura FULL JOIN ESTADO_FACTURA estfact ON fact.cve_estado = estfact.cve_estado INNER JOIN VENDEDOR vendedor ON ven.cve_vendedor = vendedor.cve_vendedor INNER JOIN MARCA marca ON vh.cve_marca = marca.cve_marca FULL JOIN ENTREGA ent ON ped.cve_entrega = ent.cve_entrega FULL JOIN DEVOLUCION dev ON ped.cve_devolucion = dev.cve_devolucion WHERE ven.fecha_asignacion BETWEEN  @fecha1 AND @fecha2 ORDER BY ven.fecha_asignacion", nuevaConexion);//PIEZA POR PIEZA
                     //Comando = new SqlCommand("SELECT ven.cve_pedido AS 'PEDIDO', ven.cve_siniestro AS 'SINIESTRO', c.cve_nombre AS 'CLIENTE', val.nombre AS 'VALUADOR', t.nombre AS 'TALLER', vh.modelo AS 'VHEICULO MODELO',marca.marca AS 'MARCA', vh.anio 'AÑO', pro.nombre AS 'PROVEEDOR', pie.nombre AS 'PIEZA', ped.cve_producto AS 'CLAVE PRODUCTO', ped.cantidad AS 'TOTAL DE PIEZAS', ped.cve_guia AS 'GUÍA DE ENVIO', opie.origen AS 'ORIGEN PIEZA', por.nombre 'PORTAL', cosen.costo AS 'COSTO ENVÍO', ped.costo_neto AS 'COSTO', ped.precio_venta AS 'PRECIO VENTA', dest.destino AS 'DESTINO',vendedor.cve_vendedor AS 'NUMERO DE VENDEDOR', vendedor.nombre AS 'VENDEDOR', ven.fecha_asignacion  AS 'FECHA DE ASIGNACIÓN', ven.fecha_promesa  AS 'FECHA PROMESA', ent.fecha  AS 'FECHA DE ENTREGA', ped.pzas_entregadas AS 'PIEZAS ENTREGADAS', ped.entrega_enTiempo AS 'ENTREGA EN TIEMPO', ped.dias_entrega AS 'DÍAS DE ENTREGA', ped.fecha_baja  AS 'FECHA DE BAJA', dev.fecha  AS 'FECHA DEVOLUCIÓN', dev.motivo AS 'MOTIVO DE DEVOLUCIÓN', ped.pzas_devolucion AS 'CANTIDAD DE PIEZAS DEVUELTAS', dev.penalizacion AS 'PENALIZACIÓN POR DEVOLUCIÓN', ped.cve_factura AS 'FACTURA ACTUAL', fact.cve_refactura AS 'FACTURA ANTERIOR', fact.fecha_ingreso  AS 'FECHA INGRESO FACTURA', estfact.estado AS 'ESTADO DE LA FACTURA', fact.fecha_revision  AS 'FECHA DE REVISIÓN FACTURA', fact.fecha_pago  AS 'FECHA DE PAGO FACTURA', ped.precio_venta AS 'FACTURA SIN IVA', (ped.precio_venta * 1.16) AS 'FACTURA NETO', si.comentario AS 'COMENTARIOS SINIESTRO', fact.comentario AS 'COMENTARIOS FACTURA',(cosen.costo + ped.costo_neto) AS 'COSTO ADQUISICION', (@costoOperativo) AS 'COSTO OPERATIVO',ped.gasto AS 'GASTO',ven.cve_venta,pie.cve_pieza, ess.estado AS 'ESTADO' FROM VENTAS ven INNER JOIN VALUADOR val ON ven.cve_valuador = val.cve_valuador INNER JOIN CLIENTE c ON c.cve_nombre = val.cve_cliente INNER JOIN TALLER t ON ven.cve_taller = t.cve_taller INNER JOIN SINIESTRO si ON ven.cve_siniestro = si.cve_siniestro INNER JOIN VEHICULO vh ON si.cve_vehiculo = vh.cve_vehiculo INNER JOIN PEDIDO ped ON ven.cve_venta = ped.cve_venta INNER JOIN PROVEEDOR pro ON ped.cve_proveedor = pro.cve_proveedor INNER JOIN PIEZA pie ON ped.cve_pieza = pie.cve_pieza INNER JOIN ORIGEN_PIEZA opie ON ped.cve_origen = opie.cve_origen INNER JOIN PORTAL por ON ped.cve_portal = por.cve_portal INNER JOIN COSTO_ENVIO cosen ON ped.costo_envio = cosen.cve_costoEnvio INNER JOIN DESTINO dest ON ven.cve_destino = dest.cve_destino LEFT OUTER JOIN FACTURA fact ON ped.cve_factura = fact.cve_factura FULL JOIN ESTADO_FACTURA estfact ON fact.cve_estado = estfact.cve_estado INNER JOIN VENDEDOR vendedor ON ven.cve_vendedor = vendedor.cve_vendedor INNER JOIN MARCA marca ON vh.cve_marca = marca.cve_marca FULL JOIN ENTREGA ent ON ped.cve_entrega = ent.cve_entrega FULL JOIN DEVOLUCION dev ON ped.cve_devolucion = dev.cve_devolucion INNER JOIN Estado_Siniestro ess ON ped.estado = ess.cve_estado WHERE ven.fecha_asignacion BETWEEN  @fecha1 AND @fecha2 ORDER BY ven.fecha_asignacion", nuevaConexion);//PIEZA POR PIEZA//24/10/2020
                     //Comando = new SqlCommand("SELECT ven.cve_pedido AS 'PEDIDO', ven.cve_siniestro AS 'SINIESTRO', c.cve_nombre AS 'CLIENTE', val.nombre AS 'VALUADOR', t.nombre AS 'TALLER', vh.modelo AS 'VHEICULO MODELO',marca.marca AS 'MARCA', vh.anio 'AÑO', pro.nombre AS 'PROVEEDOR', pie.nombre AS 'PIEZA', ped.cve_producto AS 'CLAVE PRODUCTO', ped.cantidad AS 'TOTAL DE PIEZAS', ped.cve_guia AS 'GUÍA DE ENVIO', opie.origen AS 'ORIGEN PIEZA', por.nombre 'PORTAL', ped.costoEnvio AS 'COSTO ENVÍO', ped.costo_neto AS 'COSTO', ped.precio_venta AS 'PRECIO VENTA', dest.destino AS 'DESTINO',vendedor.cve_vendedor AS 'NUMERO DE VENDEDOR', vendedor.nombre AS 'VENDEDOR', ven.fecha_asignacion  AS 'FECHA DE ASIGNACIÓN', ven.fecha_promesa  AS 'FECHA PROMESA', ent.fecha  AS 'FECHA DE ENTREGA', ped.pzas_entregadas AS 'PIEZAS ENTREGADAS', ped.entrega_enTiempo AS 'ENTREGA EN TIEMPO', ped.dias_entrega AS 'DÍAS DE ENTREGA', ped.fecha_baja  AS 'FECHA DE BAJA', dev.fecha  AS 'FECHA DEVOLUCIÓN', dev.motivo AS 'MOTIVO DE DEVOLUCIÓN', ped.pzas_devolucion AS 'CANTIDAD DE PIEZAS DEVUELTAS', dev.penalizacion AS 'PENALIZACIÓN POR DEVOLUCIÓN', ped.cve_factura AS 'FACTURA ACTUAL', fact.cve_refactura AS 'FACTURA ANTERIOR', fact.fecha_ingreso  AS 'FECHA INGRESO FACTURA', estfact.estado AS 'ESTADO DE LA FACTURA', fact.fecha_revision  AS 'FECHA DE REVISIÓN FACTURA', fact.fecha_pago  AS 'FECHA DE PAGO FACTURA', ped.precio_venta AS 'FACTURA SIN IVA', (ped.precio_venta * 1.16) AS 'FACTURA NETO', si.comentario AS 'COMENTARIOS SINIESTRO', fact.comentario AS 'COMENTARIOS FACTURA',(ped.costoEnvio + ped.costo_neto) AS 'COSTO ADQUISICION', (@costoOperativo) AS 'COSTO OPERATIVO',ped.gasto AS 'GASTO',ven.cve_venta,pie.cve_pieza, ess.estado AS 'ESTADO' FROM VENTAS ven INNER JOIN VALUADOR val ON ven.cve_valuador = val.cve_valuador INNER JOIN CLIENTE c ON c.cve_nombre = val.cve_cliente INNER JOIN TALLER t ON ven.cve_taller = t.cve_taller INNER JOIN SINIESTRO si ON ven.cve_siniestro = si.cve_siniestro INNER JOIN VEHICULO vh ON si.cve_vehiculo = vh.cve_vehiculo INNER JOIN PEDIDO ped ON ven.cve_venta = ped.cve_venta INNER JOIN PROVEEDOR pro ON ped.cve_proveedor = pro.cve_proveedor INNER JOIN PIEZA pie ON ped.cve_pieza = pie.cve_pieza INNER JOIN ORIGEN_PIEZA opie ON ped.cve_origen = opie.cve_origen INNER JOIN PORTAL por ON ped.cve_portal = por.cve_portal INNER JOIN DESTINO dest ON ven.cve_destino = dest.cve_destino LEFT OUTER JOIN FACTURA fact ON ped.cve_factura = fact.cve_factura FULL JOIN ESTADO_FACTURA estfact ON fact.cve_estado = estfact.cve_estado INNER JOIN VENDEDOR vendedor ON ven.cve_vendedor = vendedor.cve_vendedor INNER JOIN MARCA marca ON vh.cve_marca = marca.cve_marca FULL JOIN ENTREGA ent ON ped.cve_entrega = ent.cve_entrega FULL JOIN DEVOLUCION dev ON ped.cve_devolucion = dev.cve_devolucion INNER JOIN Estado_Siniestro ess ON ped.estado = ess.cve_estado WHERE ven.fecha_asignacion BETWEEN  @fecha1 AND @fecha2 ORDER BY ven.fecha_asignacion", nuevaConexion);//PIEZA POR PIEZA Working 09/11/2020
-                    Comando = new SqlCommand(string.Format("SELECT ven.cve_pedido AS 'PEDIDO', ven.cve_siniestro AS 'SINIESTRO', c.cve_nombre AS 'CLIENTE', val.nombre AS 'VALUADOR', t.nombre AS 'TALLER', vh.modelo AS 'VHEICULO MODELO',marca.marca AS 'MARCA', vh.anio 'AÑO', pro.nombre AS 'PROVEEDOR', pie.nombre AS 'PIEZA', ped.cve_producto AS 'CLAVE PRODUCTO', ped.cantidad AS 'TOTAL DE PIEZAS', ped.cve_guia AS 'GUÍA DE ENVIO', opie.origen AS 'ORIGEN PIEZA', por.nombre 'PORTAL', ped.costoEnvio AS 'COSTO ENVÍO', ped.costo_neto AS 'COSTO', ped.precio_venta AS 'PRECIO VENTA', dest.destino AS 'DESTINO',vendedor.cve_vendedor AS 'NUMERO DE VENDEDOR', vendedor.nombre AS 'VENDEDOR', ven.fecha_asignacion  AS 'FECHA DE ASIGNACIÓN', ven.fecha_promesa  AS 'FECHA PROMESA', ent.fecha  AS 'FECHA DE ENTREGA', ped.pzas_entregadas AS 'PIEZAS ENTREGADAS', ped.entrega_enTiempo AS 'ENTREGA EN TIEMPO', ped.dias_entrega AS 'DÍAS DE ENTREGA', ped.fecha_baja  AS 'FECHA DE BAJA', dev.fecha  AS 'FECHA DEVOLUCIÓN', dev.motivo AS 'MOTIVO DE DEVOLUCIÓN', ped.pzas_devolucion AS 'CANTIDAD DE PIEZAS DEVUELTAS', dev.penalizacion AS 'PENALIZACIÓN POR DEVOLUCIÓN', ped.cve_factura AS 'FACTURA ACTUAL', fact.cve_refactura AS 'FACTURA ANTERIOR', fact.fecha_ingreso  AS 'FECHA INGRESO FACTURA', estfact.estado AS 'ESTADO DE LA FACTURA', fact.fecha_revision  AS 'FECHA DE REVISIÓN FACTURA', fact.fecha_pago  AS 'FECHA DE PAGO FACTURA', ped.precio_venta AS 'FACTURA SIN IVA', (ped.precio_venta * 1.16) AS 'FACTURA NETO', si.comentario AS 'COMENTARIOS SINIESTRO', fact.comentario AS 'COMENTARIOS FACTURA',(ped.costoEnvio + ped.costo_neto) AS 'COSTO ADQUISICION', (@costoOperativo) AS 'COSTO OPERATIVO',(ped.gasto + ped.precio_reparacion) AS 'GASTO',ven.cve_venta,pie.cve_pieza, ess.estado AS 'ESTADO' FROM VENTAS ven INNER JOIN VALUADOR val ON ven.cve_valuador = val.cve_valuador INNER JOIN CLIENTE c ON c.cve_nombre = val.cve_cliente INNER JOIN TALLER t ON ven.cve_taller = t.cve_taller INNER JOIN SINIESTRO si ON ven.cve_siniestro = si.cve_siniestro INNER JOIN VEHICULO vh ON si.cve_vehiculo = vh.cve_vehiculo INNER JOIN PEDIDO ped ON ven.cve_venta = ped.cve_venta INNER JOIN PROVEEDOR pro ON ped.cve_proveedor = pro.cve_proveedor INNER JOIN PIEZA pie ON ped.cve_pieza = pie.cve_pieza INNER JOIN ORIGEN_PIEZA opie ON ped.cve_origen = opie.cve_origen INNER JOIN PORTAL por ON ped.cve_portal = por.cve_portal INNER JOIN DESTINO dest ON ven.cve_destino = dest.cve_destino LEFT OUTER JOIN FACTURA fact ON ped.cve_factura = fact.cve_factura FULL JOIN ESTADO_FACTURA estfact ON fact.cve_estado = estfact.cve_estado INNER JOIN VENDEDOR vendedor ON ven.cve_vendedor = vendedor.cve_vendedor INNER JOIN MARCA marca ON vh.cve_marca = marca.cve_marca FULL JOIN ENTREGA ent ON ped.cve_entrega = ent.cve_entrega FULL JOIN DEVOLUCION dev ON ped.cve_devolucion = dev.cve_devolucion INNER JOIN Estado_Siniestro ess ON ped.estado = ess.cve_estado WHERE ven.fecha_asignacion BETWEEN  @fecha1 AND @fecha2 AND ven.cve_pedido LIKE '{0}%' ORDER BY ven.fecha_asignacion", cvePed), nuevaConexion);
+                    //Comando = new SqlCommand(string.Format("SELECT ven.cve_pedido AS 'PEDIDO', ven.cve_siniestro AS 'SINIESTRO', c.cve_nombre AS 'CLIENTE', val.nombre AS 'VALUADOR', t.nombre AS 'TALLER', vh.modelo AS 'VHEICULO MODELO',marca.marca AS 'MARCA', vh.anio 'AÑO', pro.nombre AS 'PROVEEDOR', pie.nombre AS 'PIEZA', ped.cve_producto AS 'CLAVE PRODUCTO', ped.cantidad AS 'TOTAL DE PIEZAS', ped.cve_guia AS 'GUÍA DE ENVIO', opie.origen AS 'ORIGEN PIEZA', por.nombre 'PORTAL', ped.costoEnvio AS 'COSTO ENVÍO', ped.costo_neto AS 'COSTO', ped.precio_venta AS 'PRECIO VENTA', dest.destino AS 'DESTINO',vendedor.cve_vendedor AS 'NUMERO DE VENDEDOR', vendedor.nombre AS 'VENDEDOR', ven.fecha_asignacion  AS 'FECHA DE ASIGNACIÓN', ven.fecha_promesa  AS 'FECHA PROMESA', ent.fecha  AS 'FECHA DE ENTREGA', ped.pzas_entregadas AS 'PIEZAS ENTREGADAS', ped.entrega_enTiempo AS 'ENTREGA EN TIEMPO', ped.dias_entrega AS 'DÍAS DE ENTREGA', ped.fecha_baja  AS 'FECHA DE BAJA', dev.fecha  AS 'FECHA DEVOLUCIÓN', dev.motivo AS 'MOTIVO DE DEVOLUCIÓN', ped.pzas_devolucion AS 'CANTIDAD DE PIEZAS DEVUELTAS', dev.penalizacion AS 'PENALIZACIÓN POR DEVOLUCIÓN', ped.cve_factura AS 'FACTURA ACTUAL', fact.cve_refactura AS 'FACTURA ANTERIOR', fact.fecha_ingreso  AS 'FECHA INGRESO FACTURA', estfact.estado AS 'ESTADO DE LA FACTURA', fact.fecha_revision  AS 'FECHA DE REVISIÓN FACTURA', fact.fecha_pago  AS 'FECHA DE PAGO FACTURA', ped.precio_venta AS 'FACTURA SIN IVA', (ped.precio_venta * 1.16) AS 'FACTURA NETO', si.comentario AS 'COMENTARIOS SINIESTRO', fact.comentario AS 'COMENTARIOS FACTURA',(ped.costoEnvio + ped.costo_neto) AS 'COSTO ADQUISICION', (@costoOperativo) AS 'COSTO OPERATIVO',(ped.gasto + ped.precio_reparacion) AS 'GASTO',ven.cve_venta,pie.cve_pieza, ess.estado AS 'ESTADO' FROM VENTAS ven INNER JOIN VALUADOR val ON ven.cve_valuador = val.cve_valuador INNER JOIN CLIENTE c ON c.cve_nombre = val.cve_cliente INNER JOIN TALLER t ON ven.cve_taller = t.cve_taller INNER JOIN SINIESTRO si ON ven.cve_siniestro = si.cve_siniestro INNER JOIN VEHICULO vh ON si.cve_vehiculo = vh.cve_vehiculo INNER JOIN PEDIDO ped ON ven.cve_venta = ped.cve_venta INNER JOIN PROVEEDOR pro ON ped.cve_proveedor = pro.cve_proveedor INNER JOIN PIEZA pie ON ped.cve_pieza = pie.cve_pieza INNER JOIN ORIGEN_PIEZA opie ON ped.cve_origen = opie.cve_origen INNER JOIN PORTAL por ON ped.cve_portal = por.cve_portal INNER JOIN DESTINO dest ON ven.cve_destino = dest.cve_destino LEFT OUTER JOIN FACTURA fact ON ped.cve_factura = fact.cve_factura FULL JOIN ESTADO_FACTURA estfact ON fact.cve_estado = estfact.cve_estado INNER JOIN VENDEDOR vendedor ON ven.cve_vendedor = vendedor.cve_vendedor INNER JOIN MARCA marca ON vh.cve_marca = marca.cve_marca FULL JOIN ENTREGA ent ON ped.cve_entrega = ent.cve_entrega FULL JOIN DEVOLUCION dev ON ped.cve_devolucion = dev.cve_devolucion INNER JOIN Estado_Siniestro ess ON ped.estado = ess.cve_estado WHERE ven.fecha_asignacion BETWEEN  @fecha1 AND @fecha2 AND ven.cve_pedido LIKE '{0}%' ORDER BY ven.fecha_asignacion", cvePed), nuevaConexion);
+                    Comando = new SqlCommand(string.Format("SELECT ven.cve_pedido AS 'PEDIDO', ven.cve_siniestro AS 'SINIESTRO', c.cve_nombre AS 'CLIENTE', val.nombre AS 'VALUADOR', t.nombre AS 'TALLER', vh.modelo AS 'VHEICULO MODELO',marca.marca AS 'MARCA', vh.anio 'AÑO', pro.nombre AS 'PROVEEDOR', pie.nombre AS 'PIEZA', ped.cve_producto AS 'CLAVE PRODUCTO', ped.cantidad AS 'TOTAL DE PIEZAS', ped.cve_guia AS 'GUÍA DE ENVIO', opie.origen AS 'ORIGEN PIEZA', por.nombre 'PORTAL', ped.costoEnvio AS 'COSTO ENVÍO', ped.costo_neto AS 'COSTO', ped.precio_venta AS 'PRECIO VENTA', dest.destino AS 'DESTINO',vendedor.cve_vendedor AS 'NUMERO DE VENDEDOR', vendedor.nombre AS 'VENDEDOR', ven.fecha_asignacion  AS 'FECHA DE ASIGNACIÓN', ven.fecha_promesa  AS 'FECHA PROMESA', ent.fecha  AS 'FECHA DE ENTREGA', ped.pzas_entregadas AS 'PIEZAS ENTREGADAS', ped.entrega_enTiempo AS 'ENTREGA EN TIEMPO', ped.dias_entrega AS 'DÍAS DE ENTREGA', ped.fecha_baja  AS 'FECHA DE BAJA', dev.fecha  AS 'FECHA DEVOLUCIÓN', dev.motivo AS 'MOTIVO DE DEVOLUCIÓN', ped.pzas_devolucion AS 'CANTIDAD DE PIEZAS DEVUELTAS', dev.penalizacion AS 'PENALIZACIÓN POR DEVOLUCIÓN', ped.cve_factura AS 'FACTURA ACTUAL', fact.cve_refactura AS 'FACTURA ANTERIOR', fact.fecha_ingreso  AS 'FECHA INGRESO FACTURA', estfact.estado AS 'ESTADO DE LA FACTURA', fact.fecha_revision  AS 'FECHA DE REVISIÓN FACTURA', fact.fecha_pago  AS 'FECHA DE PAGO FACTURA', ped.precio_venta AS 'FACTURA SIN IVA', (ped.precio_venta * 1.16) AS 'FACTURA NETO', si.comentario AS 'COMENTARIOS SINIESTRO', fact.comentario AS 'COMENTARIOS FACTURA',(ped.costoEnvio + ped.costo_neto) AS 'COSTO ADQUISICION', (@costoOperativo) AS 'COSTO OPERATIVO',(ped.gasto + ped.precio_reparacion) AS 'GASTO',ven.cve_venta,pie.cve_pieza, ess.estado AS 'ESTADO', ped.ubicacion AS 'UBICACION' FROM VENTAS ven INNER JOIN VALUADOR val ON ven.cve_valuador = val.cve_valuador INNER JOIN CLIENTE c ON c.cve_nombre = val.cve_cliente INNER JOIN TALLER t ON ven.cve_taller = t.cve_taller INNER JOIN SINIESTRO si ON ven.cve_siniestro = si.cve_siniestro INNER JOIN VEHICULO vh ON si.cve_vehiculo = vh.cve_vehiculo INNER JOIN PEDIDO ped ON ven.cve_venta = ped.cve_venta INNER JOIN PROVEEDOR pro ON ped.cve_proveedor = pro.cve_proveedor INNER JOIN PIEZA pie ON ped.cve_pieza = pie.cve_pieza INNER JOIN ORIGEN_PIEZA opie ON ped.cve_origen = opie.cve_origen INNER JOIN PORTAL por ON ped.cve_portal = por.cve_portal INNER JOIN DESTINO dest ON ven.cve_destino = dest.cve_destino LEFT OUTER JOIN FACTURA fact ON ped.cve_factura = fact.cve_factura FULL JOIN ESTADO_FACTURA estfact ON fact.cve_estado = estfact.cve_estado INNER JOIN VENDEDOR vendedor ON ven.cve_vendedor = vendedor.cve_vendedor INNER JOIN MARCA marca ON vh.cve_marca = marca.cve_marca FULL JOIN ENTREGA ent ON ped.cve_entrega = ent.cve_entrega FULL JOIN DEVOLUCION dev ON ped.cve_devolucion = dev.cve_devolucion INNER JOIN Estado_Siniestro ess ON ped.estado = ess.cve_estado WHERE ven.fecha_asignacion BETWEEN  @fecha1 AND @fecha2 AND ven.cve_pedido LIKE '{0}%' ORDER BY ven.fecha_asignacion", cvePed), nuevaConexion);//02/Feb/2023
                     Comando.Parameters.AddWithValue("@fecha1", fecha1);
                     Comando.Parameters.AddWithValue("@fecha2", fecha2);
                     Comando.Parameters.AddWithValue("@costoOperativo", costoOperativo);
@@ -2466,185 +2467,200 @@ namespace Refracciones
                             sl.SetCellValue("AX" + celdaContenido, Double.Parse(Lector["GASTO"].ToString()));
                             gasto = Double.Parse(Lector["GASTO"].ToString());
                         }
-                        
 
-                        //NEW VERSION FASTER
-                        /*tempSAE = DescSAE(
-                        Lector["VHEICULO MODELO"].ToString(),
-                        Lector["PIEZA"].ToString(),
-                        Lector["MARCA"].ToString(),
-                        Lector["AÑO"].ToString()
-                        );
-
-                        sl.SetCellValue("A" + celdaContenido, Lector["PEDIDO"].ToString());
-
-                        sl.SetCellValue("B" + celdaContenido, Lector["SINIESTRO"].ToString());
-
-                        sl.SetCellValue("C" + celdaContenido, Lector["CLIENTE"].ToString());
-
-                        sl.SetCellValue("D" + celdaContenido, Lector["VALUADOR"].ToString());
-
-                        sl.SetCellValue("E" + celdaContenido, Lector["TALLER"].ToString());
-
-                        sl.SetCellValue("F" + celdaContenido, Lector["VHEICULO MODELO"].ToString());
-
-                        sl.SetCellValue("G" + celdaContenido, Lector["MARCA"].ToString());
-
-                        sl.SetCellValue("H" + celdaContenido, Lector["AÑO"].ToString());
-
-                        sl.SetCellValue("I" + celdaContenido, Lector["PROVEEDOR"].ToString());
-
-                        sl.SetCellValue("J" + celdaContenido, Lector["PIEZA"].ToString());
-
-                        sl.SetCellValue("K" + celdaContenido, Lector["CLAVE PRODUCTO"].ToString());
-
-                        sl.SetCellValue("L" + celdaContenido, tempSAE);
-
-                        sl.SetCellValue("M" + celdaContenido, Lector["TOTAL DE PIEZAS"].ToString());
-
-                        sl.SetCellValue("N" + celdaContenido, Lector["GUÍA DE ENVIO"].ToString());
-
-                        sl.SetCellValue("O" + celdaContenido, Lector["ORIGEN PIEZA"].ToString());
-
-                        sl.SetCellValue("P" + celdaContenido, Lector["PORTAL"].ToString());
-
-                        sl.SetCellValue("Q" + celdaContenido, Lector["COSTO ENVÍO"].ToString());
-
-                        sl.SetCellValue("R" + celdaContenido, Lector["COSTO"].ToString());
-
-                        if (Double.TryParse(Lector["PRECIO VENTA"].ToString(), out tempd))
+                        if (Lector["UBICACION"].ToString() == "")
                         {
-                            sl.SetCellValue("S" + celdaContenido, Double.Parse(Lector["PRECIO VENTA"].ToString()));
+                            sl.SetCellValue("AZ" + celdaContenido, "-");
+                            
                         }
-                        else
+                        else if (Lector["UBICACION"].ToString() == "0")
                         {
-                            sl.SetCellValue("S" + celdaContenido, 0);
+                            sl.SetCellValue("AZ" + celdaContenido, "Proveedor");
+
+                        }
+                        else if (Lector["UBICACION"].ToString() == "1")
+                        {
+                        sl.SetCellValue("AZ" + celdaContenido, "Jeic");
                         }
 
-                        sl.SetCellValue("T" + celdaContenido, Lector["DESTINO"].ToString());
 
-                        sl.SetCellValue("U" + celdaContenido, Lector["NUMERO DE VENDEDOR"].ToString());
+                    //NEW VERSION FASTER
+                    /*tempSAE = DescSAE(
+                    Lector["VHEICULO MODELO"].ToString(),
+                    Lector["PIEZA"].ToString(),
+                    Lector["MARCA"].ToString(),
+                    Lector["AÑO"].ToString()
+                    );
 
-                        sl.SetCellValue("V" + celdaContenido, Lector["VENDEDOR"].ToString());
+                    sl.SetCellValue("A" + celdaContenido, Lector["PEDIDO"].ToString());
 
-                        sl.SetCellValue("W" + celdaContenido, Lector["FECHA DE ASIGNACIÓN"].ToString());
+                    sl.SetCellValue("B" + celdaContenido, Lector["SINIESTRO"].ToString());
 
-                        sl.SetCellValue("X" + celdaContenido, Lector["FECHA PROMESA"].ToString());
+                    sl.SetCellValue("C" + celdaContenido, Lector["CLIENTE"].ToString());
 
-                        sl.SetCellValue("Y" + celdaContenido, Lector["FECHA DE ENTREGA"].ToString());
+                    sl.SetCellValue("D" + celdaContenido, Lector["VALUADOR"].ToString());
 
-                        sl.SetCellValue("Z" + celdaContenido, Lector["PIEZAS ENTREGADAS"].ToString());
+                    sl.SetCellValue("E" + celdaContenido, Lector["TALLER"].ToString());
 
-                        sl.SetCellValue("AA" + celdaContenido, Lector["ENTREGA EN TIEMPO"].ToString());
+                    sl.SetCellValue("F" + celdaContenido, Lector["VHEICULO MODELO"].ToString());
 
-                        sl.SetCellValue("AB" + celdaContenido, Lector["DÍAS DE ENTREGA"].ToString());
+                    sl.SetCellValue("G" + celdaContenido, Lector["MARCA"].ToString());
 
-                        sl.SetCellValue("AC" + celdaContenido, Lector["FECHA DE BAJA"].ToString());
+                    sl.SetCellValue("H" + celdaContenido, Lector["AÑO"].ToString());
 
-                        sl.SetCellValue("AD" + celdaContenido, Lector["FECHA DEVOLUCIÓN"].ToString());
+                    sl.SetCellValue("I" + celdaContenido, Lector["PROVEEDOR"].ToString());
 
-                        sl.SetCellValue("AE" + celdaContenido, Lector["MOTIVO DE DEVOLUCIÓN"].ToString());
+                    sl.SetCellValue("J" + celdaContenido, Lector["PIEZA"].ToString());
 
-                        sl.SetCellValue("AF" + celdaContenido, Lector["CANTIDAD DE PIEZAS DEVUELTAS"].ToString());
+                    sl.SetCellValue("K" + celdaContenido, Lector["CLAVE PRODUCTO"].ToString());
 
-                        sl.SetCellValue("AG" + celdaContenido, Lector["PENALIZACIÓN POR DEVOLUCIÓN"].ToString());
+                    sl.SetCellValue("L" + celdaContenido, tempSAE);
 
-                        sl.SetCellValue("AH" + celdaContenido, PiezasDevueltas(Convert.ToInt32(Lector["cve_venta"].ToString()), Convert.ToInt32(Lector["cve_pieza"].ToString())));
+                    sl.SetCellValue("M" + celdaContenido, Lector["TOTAL DE PIEZAS"].ToString());
 
-                        if (PiezasDevueltasPen(Convert.ToInt32(Lector["cve_venta"].ToString()),Convert.ToInt32(Lector["cve_pieza"].ToString())) == 0)
-                        {
-                            sl.SetCellValue("AI" + celdaContenido, string.Empty);
-                        }
-                        else
-                        {
-                            sl.SetCellValue(
-                                "AI" + celdaContenido,
-                                PiezasDevueltasPen(
-                                    Convert.ToInt32(Lector["cve_venta"].ToString()),
-                                    Convert.ToInt32(Lector["cve_pieza"].ToString())
-                                )
-                            );
-                        }
+                    sl.SetCellValue("N" + celdaContenido, Lector["GUÍA DE ENVIO"].ToString());
 
-                        sl.SetCellValue("AJ" + celdaContenido, Lector["FACTURA ACTUAL"].ToString());
+                    sl.SetCellValue("O" + celdaContenido, Lector["ORIGEN PIEZA"].ToString());
 
-                        sl.SetCellValue("AK" + celdaContenido, Lector["FACTURA ANTERIOR"].ToString());
+                    sl.SetCellValue("P" + celdaContenido, Lector["PORTAL"].ToString());
 
-                        sl.SetCellValue("AL" + celdaContenido, Lector["FECHA INGRESO FACTURA"].ToString());
+                    sl.SetCellValue("Q" + celdaContenido, Lector["COSTO ENVÍO"].ToString());
 
-                        sl.SetCellValue("AM" + celdaContenido, Lector["ESTADO DE LA FACTURA"].ToString());
+                    sl.SetCellValue("R" + celdaContenido, Lector["COSTO"].ToString());
 
-                        sl.SetCellValue("AN" + celdaContenido, Lector["FECHA DE REVISIÓN FACTURA"].ToString());
+                    if (Double.TryParse(Lector["PRECIO VENTA"].ToString(), out tempd))
+                    {
+                        sl.SetCellValue("S" + celdaContenido, Double.Parse(Lector["PRECIO VENTA"].ToString()));
+                    }
+                    else
+                    {
+                        sl.SetCellValue("S" + celdaContenido, 0);
+                    }
 
-                        sl.SetCellValue("AO" + celdaContenido, Lector["FECHA DE PAGO FACTURA"].ToString());
+                    sl.SetCellValue("T" + celdaContenido, Lector["DESTINO"].ToString());
 
-                        sl.SetCellValue("AP" + celdaContenido, Lector["FACTURA SIN IVA"].ToString());
+                    sl.SetCellValue("U" + celdaContenido, Lector["NUMERO DE VENDEDOR"].ToString());
 
-                        sl.SetCellValue("AQ" + celdaContenido, Lector["FACTURA NETO"].ToString());
+                    sl.SetCellValue("V" + celdaContenido, Lector["VENDEDOR"].ToString());
 
-                        sl.SetCellValue("AR" + celdaContenido, Lector["COMENTARIOS SINIESTRO"].ToString());
+                    sl.SetCellValue("W" + celdaContenido, Lector["FECHA DE ASIGNACIÓN"].ToString());
 
-                        sl.SetCellValue("AS" + celdaContenido, Lector["ESTADO"].ToString());
+                    sl.SetCellValue("X" + celdaContenido, Lector["FECHA PROMESA"].ToString());
 
-                        sl.SetCellValue("AT" + celdaContenido, Lector["COMENTARIOS FACTURA"].ToString());
+                    sl.SetCellValue("Y" + celdaContenido, Lector["FECHA DE ENTREGA"].ToString());
 
-                        if (Lector["PENALIZACIÓN POR DEVOLUCIÓN"].ToString() != "")
-                        {
-                            double costo = Double.Parse(Lector["COSTO ADQUISICION"].ToString());
-                            double penalizacion = Double.Parse(Lector["PENALIZACIÓN POR DEVOLUCIÓN"].ToString()) / 100; //Porcentaje de penalización
-                            costoAdq = (costo * penalizacion) + costo;
-                            sl.SetCellValue("AU" + celdaContenido, costoAdq);
-                        }
-                        else if (
+                    sl.SetCellValue("Z" + celdaContenido, Lector["PIEZAS ENTREGADAS"].ToString());
+
+                    sl.SetCellValue("AA" + celdaContenido, Lector["ENTREGA EN TIEMPO"].ToString());
+
+                    sl.SetCellValue("AB" + celdaContenido, Lector["DÍAS DE ENTREGA"].ToString());
+
+                    sl.SetCellValue("AC" + celdaContenido, Lector["FECHA DE BAJA"].ToString());
+
+                    sl.SetCellValue("AD" + celdaContenido, Lector["FECHA DEVOLUCIÓN"].ToString());
+
+                    sl.SetCellValue("AE" + celdaContenido, Lector["MOTIVO DE DEVOLUCIÓN"].ToString());
+
+                    sl.SetCellValue("AF" + celdaContenido, Lector["CANTIDAD DE PIEZAS DEVUELTAS"].ToString());
+
+                    sl.SetCellValue("AG" + celdaContenido, Lector["PENALIZACIÓN POR DEVOLUCIÓN"].ToString());
+
+                    sl.SetCellValue("AH" + celdaContenido, PiezasDevueltas(Convert.ToInt32(Lector["cve_venta"].ToString()), Convert.ToInt32(Lector["cve_pieza"].ToString())));
+
+                    if (PiezasDevueltasPen(Convert.ToInt32(Lector["cve_venta"].ToString()),Convert.ToInt32(Lector["cve_pieza"].ToString())) == 0)
+                    {
+                        sl.SetCellValue("AI" + celdaContenido, string.Empty);
+                    }
+                    else
+                    {
+                        sl.SetCellValue(
+                            "AI" + celdaContenido,
                             PiezasDevueltasPen(
                                 Convert.ToInt32(Lector["cve_venta"].ToString()),
                                 Convert.ToInt32(Lector["cve_pieza"].ToString())
-                            ) != 0
-                        )
-                        {
-                            double costo = Double.Parse(Lector["COSTO ADQUISICION"].ToString());
-                            double penalizacion = PiezasDevueltasPen(
-                                Convert.ToInt32(Lector["cve_venta"].ToString()),
-                                Convert.ToInt32(Lector["cve_pieza"].ToString())
-                            ); //Porcentaje de penalización
-                            costoAdq = (costo * penalizacion) + costo;
-                            sl.SetCellValue("AU" + celdaContenido, costoAdq);
-                        }
-                        else
-                        {
-                            sl.SetCellValue("AU" + celdaContenido, Double.Parse(Lector["COSTO ADQUISICION"].ToString()));
-                            costoAdq = Double.Parse(Lector["COSTO ADQUISICION"].ToString());
-                        }
-                        if (Double.TryParse(Lector["PRECIO VENTA"].ToString(), out tempd))
-                        {
-                            precioV = Double.Parse(Lector["PRECIO VENTA"].ToString());
-                        }
-                        else
-                        {
-                            precioV = 0;
-                        }
+                            )
+                        );
+                    }
 
-                        //precioV = Double.Parse(Lector["PRECIO VENTA"].ToString());
-                        utilidadAdq = precioV - costoAdq;
-                        sl.SetCellValue("AV" + celdaContenido, utilidadAdq);
-                        sl.SetCellValue("AW" + celdaContenido, Double.Parse(Lector["COSTO OPERATIVO"].ToString()));
-                        if (Lector["GASTO"].ToString() == "")
-                        {
-                            sl.SetCellValue("AX" + celdaContenido, 0);
-                            gasto = 0;
-                        }
-                        else
-                        {
-                            sl.SetCellValue("AX" + celdaContenido, Double.Parse(Lector["GASTO"].ToString()));
-                            gasto = Double.Parse(Lector["GASTO"].ToString());
-                        }
-                        */
+                    sl.SetCellValue("AJ" + celdaContenido, Lector["FACTURA ACTUAL"].ToString());
+
+                    sl.SetCellValue("AK" + celdaContenido, Lector["FACTURA ANTERIOR"].ToString());
+
+                    sl.SetCellValue("AL" + celdaContenido, Lector["FECHA INGRESO FACTURA"].ToString());
+
+                    sl.SetCellValue("AM" + celdaContenido, Lector["ESTADO DE LA FACTURA"].ToString());
+
+                    sl.SetCellValue("AN" + celdaContenido, Lector["FECHA DE REVISIÓN FACTURA"].ToString());
+
+                    sl.SetCellValue("AO" + celdaContenido, Lector["FECHA DE PAGO FACTURA"].ToString());
+
+                    sl.SetCellValue("AP" + celdaContenido, Lector["FACTURA SIN IVA"].ToString());
+
+                    sl.SetCellValue("AQ" + celdaContenido, Lector["FACTURA NETO"].ToString());
+
+                    sl.SetCellValue("AR" + celdaContenido, Lector["COMENTARIOS SINIESTRO"].ToString());
+
+                    sl.SetCellValue("AS" + celdaContenido, Lector["ESTADO"].ToString());
+
+                    sl.SetCellValue("AT" + celdaContenido, Lector["COMENTARIOS FACTURA"].ToString());
+
+                    if (Lector["PENALIZACIÓN POR DEVOLUCIÓN"].ToString() != "")
+                    {
+                        double costo = Double.Parse(Lector["COSTO ADQUISICION"].ToString());
+                        double penalizacion = Double.Parse(Lector["PENALIZACIÓN POR DEVOLUCIÓN"].ToString()) / 100; //Porcentaje de penalización
+                        costoAdq = (costo * penalizacion) + costo;
+                        sl.SetCellValue("AU" + celdaContenido, costoAdq);
+                    }
+                    else if (
+                        PiezasDevueltasPen(
+                            Convert.ToInt32(Lector["cve_venta"].ToString()),
+                            Convert.ToInt32(Lector["cve_pieza"].ToString())
+                        ) != 0
+                    )
+                    {
+                        double costo = Double.Parse(Lector["COSTO ADQUISICION"].ToString());
+                        double penalizacion = PiezasDevueltasPen(
+                            Convert.ToInt32(Lector["cve_venta"].ToString()),
+                            Convert.ToInt32(Lector["cve_pieza"].ToString())
+                        ); //Porcentaje de penalización
+                        costoAdq = (costo * penalizacion) + costo;
+                        sl.SetCellValue("AU" + celdaContenido, costoAdq);
+                    }
+                    else
+                    {
+                        sl.SetCellValue("AU" + celdaContenido, Double.Parse(Lector["COSTO ADQUISICION"].ToString()));
+                        costoAdq = Double.Parse(Lector["COSTO ADQUISICION"].ToString());
+                    }
+                    if (Double.TryParse(Lector["PRECIO VENTA"].ToString(), out tempd))
+                    {
+                        precioV = Double.Parse(Lector["PRECIO VENTA"].ToString());
+                    }
+                    else
+                    {
+                        precioV = 0;
+                    }
+
+                    //precioV = Double.Parse(Lector["PRECIO VENTA"].ToString());
+                    utilidadAdq = precioV - costoAdq;
+                    sl.SetCellValue("AV" + celdaContenido, utilidadAdq);
+                    sl.SetCellValue("AW" + celdaContenido, Double.Parse(Lector["COSTO OPERATIVO"].ToString()));
+                    if (Lector["GASTO"].ToString() == "")
+                    {
+                        sl.SetCellValue("AX" + celdaContenido, 0);
+                        gasto = 0;
+                    }
+                    else
+                    {
+                        sl.SetCellValue("AX" + celdaContenido, Double.Parse(Lector["GASTO"].ToString()));
+                        gasto = Double.Parse(Lector["GASTO"].ToString());
+                    }
+                    */
 
 
 
 
 
-                        utilidadFinal = precioV - (costoAdq + gasto + double.Parse(costoOperativo.ToString()));
+                    utilidadFinal = precioV - (costoAdq + gasto + double.Parse(costoOperativo.ToString()));
                         sl.SetCellValue("AY" + celdaContenido, utilidadFinal);
                         celdaContenido++;
                     }
@@ -6314,6 +6330,112 @@ namespace Refracciones
             return datos;
         }
 
+        //LLENAR CODIGO BARRAS CAMBIO GUIA
+        public string[] llenarCodigoBarrasGuia(string cvePedido)
+        {
+            string[] datos = new string[8];
+
+            try
+            {
+
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+
+
+                    Comando = new SqlCommand(string.Format("SELECT ven.cve_pedido AS 'PEDIDO', ven.cve_siniestro AS 'SINIESTRO', pie.nombre AS 'PIEZA', val.cve_cliente AS 'CLIENTE', ped.cve_guia AS 'GUIA',estSin.estado AS 'ESTATUS ACTUAL', ped.cve_pedido AS 'CVE PEDIDO', ped.cve_venta AS 'CVE VENTA'  FROM PEDIDO ped JOIN PIEZA pie ON ped.cve_pieza = pie.cve_pieza JOIN VENTAS ven ON ped.cve_venta = ven.cve_venta JOIN VALUADOR val ON ven.cve_valuador = val.cve_valuador JOIN ESTADO_SINIESTRO estSin ON ped.estado = estSin.cve_estado WHERE ped.cve_pedido = {0}", cvePedido), nuevaConexion);
+
+                    Lector = Comando.ExecuteReader();
+                    while (Lector.Read())
+                    {
+
+                        datos[0] = Lector["PEDIDO"].ToString();
+                        datos[1] = Lector["SINIESTRO"].ToString();
+                        datos[2] = Lector["PIEZA"].ToString();
+                        datos[3] = Lector["CLIENTE"].ToString();
+                        datos[4] = Lector["GUIA"].ToString();
+                        datos[5] = Lector["ESTATUS ACTUAL"].ToString();
+                        datos[6] = Lector["CVE PEDIDO"].ToString();
+                        datos[7] = Lector["CVE VENTA"].ToString();
+                    }
+                    Lector.Close();
+                    nuevaConexion.Close();
+                }
+                return datos;
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error al generar la peticion: " + EX.Message);
+            }
+            return datos;
+        }
+
+        
+        //------------- LLENAR DGV REGISTRO BAJA POR PEDIDO
+        public DataTable llenarCambioGuiaCodigoBarrasPedido(DataGridView dgv, string cvePedido)
+        {
+            dt = new DataTable();
+
+            try
+            {
+
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    
+
+                    
+
+                        Comando = new SqlCommand(string.Format("SELECT ven.cve_pedido AS 'PEDIDO', ven.cve_siniestro AS 'SINIESTRO', pie.nombre AS 'PIEZA', val.cve_cliente AS 'CLIENTE', ped.cve_guia AS 'GUIA',estSin.estado AS 'ESTATUS ACTUAL', ped.cve_pedido AS 'CVE PEDIDO', ped.cve_venta AS 'CVE VENTA'  FROM PEDIDO ped JOIN PIEZA pie ON ped.cve_pieza = pie.cve_pieza JOIN VENTAS ven ON ped.cve_venta = ven.cve_venta JOIN VALUADOR val ON ven.cve_valuador = val.cve_valuador JOIN ESTADO_SINIESTRO estSin ON ped.estado = estSin.cve_estado WHERE ped.cve_venta = {0}", cvePedido), nuevaConexion);
+                        da = new SqlDataAdapter(Comando);
+                        da.Fill(dt);
+
+                        foreach (DataRow dr in dt.Rows)
+                        {
+                            dgv.Rows.Add(dr.ItemArray);
+                        }
+
+                    
+                    nuevaConexion.Close();
+                }
+                return dt;
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error al generar la peticion: " + EX.Message);
+            }
+            return dt;
+
+        }
+
+        //CAMBIAR NUMERO DE GUIA
+        public void actualizarGuia(int cvePedido, string cveGuia)
+        {
+           
+
+            try
+            {
+
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand(string.Format(" ", cvePedido), nuevaConexion);
+                    Comando = new SqlCommand("UPDATE p SET p.cve_guia = @cveGuia FROM PEDIDO p  WHERE p.cve_pedido = @cve_pedidoIdentity", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@cve_pedidoIdentity", cvePedido);
+                    Comando.Parameters.AddWithValue("@cveGuia", cveGuia);
+                    Comando.ExecuteNonQuery();
+                    nuevaConexion.Close();
+                }
+                
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error al generar la peticion: " + EX.Message);
+            }
+          
+
+        }
+
         //--------------------REGISTRO DE BAJA DE PIEZA POR CODIGO BARRAS--------------------
         public void registrarBajaCodigoBarras(string cve_siniestro, string cve_pedido, int cve_pieza, int cantidad, DateTime fecha, int cve_venta, DateTime fecha_asigancion, string realizo, int cvePedidoIdentity)
         {
@@ -6419,6 +6541,16 @@ namespace Refracciones
                         cmd.Parameters.AddWithValue("@hora", hora);
                         cmd.ExecuteNonQuery();
                     }
+                    else if(cveEstado == 20)
+                    {
+                        cmd = new SqlCommand(string.Format("UPDATE p  SET  p.estado = {0}, p.ubicacion = 0 FROM PEDIDO p WHERE p.cve_pedido = {1}", cveEstado, cvePedido), nuevaConexion);
+                        cmd.ExecuteNonQuery();
+                    }
+                    else if(cveEstado == 21)
+                    {
+                        cmd = new SqlCommand(string.Format("UPDATE p  SET  p.estado = {0}, p.ubicacion = 1 FROM PEDIDO p WHERE p.cve_pedido = {1}", cveEstado, cvePedido), nuevaConexion);
+                        cmd.ExecuteNonQuery();
+                    }
                     else{
                         cmd = new SqlCommand(string.Format("UPDATE p  SET  p.estado = {0} FROM PEDIDO p WHERE p.cve_pedido = {1}", cveEstado, cvePedido), nuevaConexion);
                         cmd.ExecuteNonQuery();
@@ -6458,6 +6590,16 @@ namespace Refracciones
                         cmd = new SqlCommand(string.Format("UPDATE p  SET  p.estado = {0}, p.fecha_baja = @fecha, p.hora_baja = @hora FROM PEDIDO p WHERE cve_venta = {1}", cveEstado, cveVenta), nuevaConexion);
                         cmd.Parameters.AddWithValue("@fecha", fechaM);
                         cmd.Parameters.AddWithValue("@hora", hora);
+                        cmd.ExecuteNonQuery();
+                    }
+                    else if (cveEstado == 20)
+                    {
+                        cmd = new SqlCommand(string.Format("UPDATE p  SET  p.estado = {0}, p.ubicacion = 0 FROM PEDIDO p WHERE p.cve_venta = {1}", cveEstado, cveVenta), nuevaConexion);
+                        cmd.ExecuteNonQuery();
+                    }
+                    else if (cveEstado == 21)
+                    {
+                        cmd = new SqlCommand(string.Format("UPDATE p  SET  p.estado = {0}, p.ubicacion = 1 FROM PEDIDO p WHERE p.cve_venta = {1}", cveEstado, cveVenta), nuevaConexion);
                         cmd.ExecuteNonQuery();
                     }
                     else

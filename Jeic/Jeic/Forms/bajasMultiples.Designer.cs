@@ -36,14 +36,8 @@
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.lblFecha = new System.Windows.Forms.Label();
             this.Fecha_in = new System.Windows.Forms.DateTimePicker();
-            this.lblTitle = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.dgvEstatus = new System.Windows.Forms.DataGridView();
-            this.btnGuardar = new System.Windows.Forms.Button();
-            this.rbtnPorPedido = new System.Windows.Forms.RadioButton();
-            this.rbtnPorPieza = new System.Windows.Forms.RadioButton();
-            this.pbClose = new System.Windows.Forms.PictureBox();
-            this.lblUsuario = new System.Windows.Forms.Label();
             this.ColumnPed = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnPieza = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,6 +48,13 @@
             this.ColumnCvePieza = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnFechaAsig = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.rbtnPorPedido = new System.Windows.Forms.RadioButton();
+            this.rbtnPorPieza = new System.Windows.Forms.RadioButton();
+            this.lblTitle = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.pbClose = new System.Windows.Forms.PictureBox();
+            this.lblUsuario = new System.Windows.Forms.Label();
+            this.lblScan = new System.Windows.Forms.Label();
             this.bunifuGradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEstatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
@@ -64,9 +65,9 @@
             this.bunifuGradientPanel1.BackColor = System.Drawing.Color.Transparent;
             this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
             this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuGradientPanel1.Controls.Add(this.lblScan);
             this.bunifuGradientPanel1.Controls.Add(this.lblFecha);
             this.bunifuGradientPanel1.Controls.Add(this.Fecha_in);
-            this.bunifuGradientPanel1.Controls.Add(this.lblTitle);
             this.bunifuGradientPanel1.Controls.Add(this.txtCodigo);
             this.bunifuGradientPanel1.Controls.Add(this.dgvEstatus);
             this.bunifuGradientPanel1.Controls.Add(this.btnGuardar);
@@ -104,22 +105,11 @@
             this.Fecha_in.Size = new System.Drawing.Size(169, 23);
             this.Fecha_in.TabIndex = 19;
             // 
-            // lblTitle
-            // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.BackColor = System.Drawing.Color.Transparent;
-            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblTitle.Location = new System.Drawing.Point(284, 14);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(366, 20);
-            this.lblTitle.TabIndex = 18;
-            this.lblTitle.Text = "REGISTRAR BAJA POR PIEZA O PEDIDO";
-            // 
             // txtCodigo
             // 
-            this.txtCodigo.Location = new System.Drawing.Point(741, 126);
+            this.txtCodigo.Location = new System.Drawing.Point(741, 158);
             this.txtCodigo.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCodigo.MaxLength = 50;
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(245, 22);
             this.txtCodigo.TabIndex = 16;
@@ -191,78 +181,6 @@
             this.dgvEstatus.Size = new System.Drawing.Size(716, 288);
             this.dgvEstatus.TabIndex = 15;
             this.dgvEstatus.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEstatus_CellClick);
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(49)))), ((int)(((byte)(106)))));
-            this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnGuardar.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.ForeColor = System.Drawing.Color.White;
-            this.btnGuardar.Location = new System.Drawing.Point(799, 367);
-            this.btnGuardar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(148, 37);
-            this.btnGuardar.TabIndex = 14;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.UseVisualStyleBackColor = false;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
-            // rbtnPorPedido
-            // 
-            this.rbtnPorPedido.AutoSize = true;
-            this.rbtnPorPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
-            this.rbtnPorPedido.ForeColor = System.Drawing.SystemColors.Control;
-            this.rbtnPorPedido.Location = new System.Drawing.Point(221, 80);
-            this.rbtnPorPedido.Margin = new System.Windows.Forms.Padding(4);
-            this.rbtnPorPedido.Name = "rbtnPorPedido";
-            this.rbtnPorPedido.Size = new System.Drawing.Size(187, 24);
-            this.rbtnPorPedido.TabIndex = 1;
-            this.rbtnPorPedido.TabStop = true;
-            this.rbtnPorPedido.Text = "Cambio por pedido";
-            this.rbtnPorPedido.UseVisualStyleBackColor = true;
-            this.rbtnPorPedido.CheckedChanged += new System.EventHandler(this.rbtnPorPedido_CheckedChanged);
-            // 
-            // rbtnPorPieza
-            // 
-            this.rbtnPorPieza.AutoSize = true;
-            this.rbtnPorPieza.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
-            this.rbtnPorPieza.ForeColor = System.Drawing.SystemColors.Control;
-            this.rbtnPorPieza.Location = new System.Drawing.Point(17, 80);
-            this.rbtnPorPieza.Margin = new System.Windows.Forms.Padding(4);
-            this.rbtnPorPieza.Name = "rbtnPorPieza";
-            this.rbtnPorPieza.Size = new System.Drawing.Size(177, 24);
-            this.rbtnPorPieza.TabIndex = 0;
-            this.rbtnPorPieza.TabStop = true;
-            this.rbtnPorPieza.Text = "Cambio por pieza";
-            this.rbtnPorPieza.UseVisualStyleBackColor = true;
-            this.rbtnPorPieza.CheckedChanged += new System.EventHandler(this.rbtnPorPieza_CheckedChanged);
-            // 
-            // pbClose
-            // 
-            this.pbClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbClose.Image = global::Jeic.Properties.Resources.Close_Window__2_48px;
-            this.pbClose.Location = new System.Drawing.Point(968, 3);
-            this.pbClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pbClose.Name = "pbClose";
-            this.pbClose.Size = new System.Drawing.Size(23, 21);
-            this.pbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbClose.TabIndex = 20;
-            this.pbClose.TabStop = false;
-            this.pbClose.Click += new System.EventHandler(this.pbClose_Click);
-            // 
-            // lblUsuario
-            // 
-            this.lblUsuario.AutoSize = true;
-            this.lblUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(28)))), ((int)(((byte)(32)))));
-            this.lblUsuario.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsuario.ForeColor = System.Drawing.Color.White;
-            this.lblUsuario.Location = new System.Drawing.Point(14, 9);
-            this.lblUsuario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(54, 18);
-            this.lblUsuario.TabIndex = 21;
-            this.lblUsuario.Text = "usuario";
             // 
             // ColumnPed
             // 
@@ -344,6 +262,101 @@
             this.ColumnFechaAsig.ReadOnly = true;
             this.ColumnFechaAsig.Width = 168;
             // 
+            // btnGuardar
+            // 
+            this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(49)))), ((int)(((byte)(106)))));
+            this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnGuardar.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.ForeColor = System.Drawing.Color.White;
+            this.btnGuardar.Location = new System.Drawing.Point(799, 367);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(148, 37);
+            this.btnGuardar.TabIndex = 14;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
+            // rbtnPorPedido
+            // 
+            this.rbtnPorPedido.AutoSize = true;
+            this.rbtnPorPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.rbtnPorPedido.ForeColor = System.Drawing.SystemColors.Control;
+            this.rbtnPorPedido.Location = new System.Drawing.Point(221, 80);
+            this.rbtnPorPedido.Margin = new System.Windows.Forms.Padding(4);
+            this.rbtnPorPedido.Name = "rbtnPorPedido";
+            this.rbtnPorPedido.Size = new System.Drawing.Size(187, 24);
+            this.rbtnPorPedido.TabIndex = 1;
+            this.rbtnPorPedido.TabStop = true;
+            this.rbtnPorPedido.Text = "Cambio por pedido";
+            this.rbtnPorPedido.UseVisualStyleBackColor = true;
+            this.rbtnPorPedido.CheckedChanged += new System.EventHandler(this.rbtnPorPedido_CheckedChanged);
+            // 
+            // rbtnPorPieza
+            // 
+            this.rbtnPorPieza.AutoSize = true;
+            this.rbtnPorPieza.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.rbtnPorPieza.ForeColor = System.Drawing.SystemColors.Control;
+            this.rbtnPorPieza.Location = new System.Drawing.Point(17, 80);
+            this.rbtnPorPieza.Margin = new System.Windows.Forms.Padding(4);
+            this.rbtnPorPieza.Name = "rbtnPorPieza";
+            this.rbtnPorPieza.Size = new System.Drawing.Size(177, 24);
+            this.rbtnPorPieza.TabIndex = 0;
+            this.rbtnPorPieza.TabStop = true;
+            this.rbtnPorPieza.Text = "Cambio por pieza";
+            this.rbtnPorPieza.UseVisualStyleBackColor = true;
+            this.rbtnPorPieza.CheckedChanged += new System.EventHandler(this.rbtnPorPieza_CheckedChanged);
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.BackColor = System.Drawing.Color.Transparent;
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lblTitle.Location = new System.Drawing.Point(330, 7);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(366, 20);
+            this.lblTitle.TabIndex = 18;
+            this.lblTitle.Text = "REGISTRAR BAJA POR PIEZA O PEDIDO";
+            // 
+            // pbClose
+            // 
+            this.pbClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbClose.Image = global::Jeic.Properties.Resources.Close_Window__2_48px;
+            this.pbClose.Location = new System.Drawing.Point(968, 3);
+            this.pbClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pbClose.Name = "pbClose";
+            this.pbClose.Size = new System.Drawing.Size(23, 21);
+            this.pbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbClose.TabIndex = 20;
+            this.pbClose.TabStop = false;
+            this.pbClose.Click += new System.EventHandler(this.pbClose_Click);
+            // 
+            // lblUsuario
+            // 
+            this.lblUsuario.AutoSize = true;
+            this.lblUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(28)))), ((int)(((byte)(32)))));
+            this.lblUsuario.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsuario.ForeColor = System.Drawing.Color.White;
+            this.lblUsuario.Location = new System.Drawing.Point(14, 9);
+            this.lblUsuario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(54, 18);
+            this.lblUsuario.TabIndex = 21;
+            this.lblUsuario.Text = "usuario";
+            // 
+            // lblScan
+            // 
+            this.lblScan.AutoSize = true;
+            this.lblScan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblScan.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.lblScan.Location = new System.Drawing.Point(740, 136);
+            this.lblScan.Name = "lblScan";
+            this.lblScan.Size = new System.Drawing.Size(120, 18);
+            this.lblScan.TabIndex = 21;
+            this.lblScan.Text = "Código barras:";
+            // 
             // bajasMultiples
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -352,6 +365,7 @@
             this.ClientSize = new System.Drawing.Size(997, 450);
             this.Controls.Add(this.lblUsuario);
             this.Controls.Add(this.pbClose);
+            this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.bunifuGradientPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "bajasMultiples";
@@ -390,5 +404,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCvePieza;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnFechaAsig;
+        private System.Windows.Forms.Label lblScan;
     }
 }

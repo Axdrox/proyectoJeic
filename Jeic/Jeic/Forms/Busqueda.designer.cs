@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Busqueda));
             this.label1 = new System.Windows.Forms.Label();
             this.TxtClaveSin = new System.Windows.Forms.TextBox();
@@ -41,6 +41,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.Fecha_in = new System.Windows.Forms.DateTimePicker();
             this.Panelinfo = new System.Windows.Forms.Panel();
+            this.lblUbicacion = new System.Windows.Forms.Label();
             this.lblFechaEntreg = new System.Windows.Forms.Label();
             this.lblFechaBaja = new System.Windows.Forms.Label();
             this.txtComentarioSiniestro = new System.Windows.Forms.TextBox();
@@ -89,8 +90,9 @@
             this.otrasOpcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generarReporteVentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generadorClavesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.registroBajasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cambioGuiasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cambioEstadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.registroBajasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notificacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buscarFacturasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.talleresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -102,6 +104,7 @@
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.lblcvePe = new System.Windows.Forms.Label();
             this.moverFormulario = new Bunifu.Framework.UI.BunifuDragControl(this.components);
+            this.txtCveGuia = new System.Windows.Forms.TextBox();
             this.Panelinfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFactura)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dvgPedido)).BeginInit();
@@ -189,6 +192,8 @@
             // 
             this.Panelinfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(45)))), ((int)(((byte)(59)))));
             this.Panelinfo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Panelinfo.Controls.Add(this.txtCveGuia);
+            this.Panelinfo.Controls.Add(this.lblUbicacion);
             this.Panelinfo.Controls.Add(this.lblFechaEntreg);
             this.Panelinfo.Controls.Add(this.lblFechaBaja);
             this.Panelinfo.Controls.Add(this.txtComentarioSiniestro);
@@ -232,6 +237,18 @@
             this.Panelinfo.Size = new System.Drawing.Size(425, 589);
             this.Panelinfo.TabIndex = 6;
             // 
+            // lblUbicacion
+            // 
+            this.lblUbicacion.AutoSize = true;
+            this.lblUbicacion.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUbicacion.ForeColor = System.Drawing.Color.White;
+            this.lblUbicacion.Location = new System.Drawing.Point(0, 386);
+            this.lblUbicacion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblUbicacion.Name = "lblUbicacion";
+            this.lblUbicacion.Size = new System.Drawing.Size(72, 18);
+            this.lblUbicacion.TabIndex = 45;
+            this.lblUbicacion.Text = "Ubicación:";
+            // 
             // lblFechaEntreg
             // 
             this.lblFechaEntreg.AutoSize = true;
@@ -262,7 +279,7 @@
             this.txtComentarioSiniestro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(45)))), ((int)(((byte)(59)))));
             this.txtComentarioSiniestro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtComentarioSiniestro.ForeColor = System.Drawing.Color.White;
-            this.txtComentarioSiniestro.Location = new System.Drawing.Point(3, 388);
+            this.txtComentarioSiniestro.Location = new System.Drawing.Point(0, 407);
             this.txtComentarioSiniestro.Margin = new System.Windows.Forms.Padding(4);
             this.txtComentarioSiniestro.MaxLength = 100;
             this.txtComentarioSiniestro.Multiline = true;
@@ -288,7 +305,7 @@
             this.lblEstadoSiniestro.AutoSize = true;
             this.lblEstadoSiniestro.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEstadoSiniestro.ForeColor = System.Drawing.Color.White;
-            this.lblEstadoSiniestro.Location = new System.Drawing.Point(1, 367);
+            this.lblEstadoSiniestro.Location = new System.Drawing.Point(0, 367);
             this.lblEstadoSiniestro.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEstadoSiniestro.Name = "lblEstadoSiniestro";
             this.lblEstadoSiniestro.Size = new System.Drawing.Size(53, 18);
@@ -307,7 +324,7 @@
             // label10
             // 
             this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(109)))), ((int)(((byte)(119)))));
-            this.label10.Location = new System.Drawing.Point(0, 446);
+            this.label10.Location = new System.Drawing.Point(0, 456);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(427, 2);
@@ -386,7 +403,7 @@
             this.lblFacturaConIva.AutoSize = true;
             this.lblFacturaConIva.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFacturaConIva.ForeColor = System.Drawing.Color.White;
-            this.lblFacturaConIva.Location = new System.Drawing.Point(1, 564);
+            this.lblFacturaConIva.Location = new System.Drawing.Point(0, 564);
             this.lblFacturaConIva.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFacturaConIva.Name = "lblFacturaConIva";
             this.lblFacturaConIva.Size = new System.Drawing.Size(106, 18);
@@ -398,7 +415,7 @@
             this.lblFacturaSinIva.AutoSize = true;
             this.lblFacturaSinIva.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFacturaSinIva.ForeColor = System.Drawing.Color.White;
-            this.lblFacturaSinIva.Location = new System.Drawing.Point(1, 540);
+            this.lblFacturaSinIva.Location = new System.Drawing.Point(0, 540);
             this.lblFacturaSinIva.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFacturaSinIva.Name = "lblFacturaSinIva";
             this.lblFacturaSinIva.Size = new System.Drawing.Size(102, 18);
@@ -446,7 +463,7 @@
             this.lblPrecioReparacion.AutoSize = true;
             this.lblPrecioReparacion.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPrecioReparacion.ForeColor = System.Drawing.Color.White;
-            this.lblPrecioReparacion.Location = new System.Drawing.Point(183, 481);
+            this.lblPrecioReparacion.Location = new System.Drawing.Point(184, 489);
             this.lblPrecioReparacion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPrecioReparacion.Name = "lblPrecioReparacion";
             this.lblPrecioReparacion.Size = new System.Drawing.Size(139, 18);
@@ -458,7 +475,7 @@
             this.lblPrecioVenta.AutoSize = true;
             this.lblPrecioVenta.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPrecioVenta.ForeColor = System.Drawing.Color.White;
-            this.lblPrecioVenta.Location = new System.Drawing.Point(184, 455);
+            this.lblPrecioVenta.Location = new System.Drawing.Point(184, 463);
             this.lblPrecioVenta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPrecioVenta.Name = "lblPrecioVenta";
             this.lblPrecioVenta.Size = new System.Drawing.Size(108, 18);
@@ -470,12 +487,13 @@
             this.lblClaveSeguimiento.AutoSize = true;
             this.lblClaveSeguimiento.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblClaveSeguimiento.ForeColor = System.Drawing.Color.White;
-            this.lblClaveSeguimiento.Location = new System.Drawing.Point(4, 421);
+            this.lblClaveSeguimiento.Location = new System.Drawing.Point(317, 435);
             this.lblClaveSeguimiento.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblClaveSeguimiento.Name = "lblClaveSeguimiento";
             this.lblClaveSeguimiento.Size = new System.Drawing.Size(63, 18);
             this.lblClaveSeguimiento.TabIndex = 23;
             this.lblClaveSeguimiento.Text = "Cve guía:";
+            this.lblClaveSeguimiento.Visible = false;
             // 
             // lblCliente
             // 
@@ -506,7 +524,7 @@
             this.lblCostoNeto.AutoSize = true;
             this.lblCostoNeto.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCostoNeto.ForeColor = System.Drawing.Color.White;
-            this.lblCostoNeto.Location = new System.Drawing.Point(-1, 454);
+            this.lblCostoNeto.Location = new System.Drawing.Point(0, 462);
             this.lblCostoNeto.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCostoNeto.Name = "lblCostoNeto";
             this.lblCostoNeto.Size = new System.Drawing.Size(81, 18);
@@ -518,7 +536,7 @@
             this.lblCostoEnvio.AutoSize = true;
             this.lblCostoEnvio.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCostoEnvio.ForeColor = System.Drawing.Color.White;
-            this.lblCostoEnvio.Location = new System.Drawing.Point(-1, 481);
+            this.lblCostoEnvio.Location = new System.Drawing.Point(0, 489);
             this.lblCostoEnvio.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCostoEnvio.Name = "lblCostoEnvio";
             this.lblCostoEnvio.Size = new System.Drawing.Size(104, 18);
@@ -530,7 +548,7 @@
             this.lblCostoSinIva.AutoSize = true;
             this.lblCostoSinIva.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCostoSinIva.ForeColor = System.Drawing.Color.White;
-            this.lblCostoSinIva.Location = new System.Drawing.Point(-5, 455);
+            this.lblCostoSinIva.Location = new System.Drawing.Point(-5, 463);
             this.lblCostoSinIva.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCostoSinIva.Name = "lblCostoSinIva";
             this.lblCostoSinIva.Size = new System.Drawing.Size(92, 18);
@@ -567,7 +585,7 @@
             this.lblOrigen.AutoSize = true;
             this.lblOrigen.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblOrigen.ForeColor = System.Drawing.Color.White;
-            this.lblOrigen.Location = new System.Drawing.Point(-1, 319);
+            this.lblOrigen.Location = new System.Drawing.Point(0, 319);
             this.lblOrigen.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblOrigen.Name = "lblOrigen";
             this.lblOrigen.Size = new System.Drawing.Size(54, 18);
@@ -627,7 +645,7 @@
             this.lblcveSiniestro.AutoSize = true;
             this.lblcveSiniestro.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblcveSiniestro.ForeColor = System.Drawing.Color.White;
-            this.lblcveSiniestro.Location = new System.Drawing.Point(1, 53);
+            this.lblcveSiniestro.Location = new System.Drawing.Point(0, 53);
             this.lblcveSiniestro.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblcveSiniestro.Name = "lblcveSiniestro";
             this.lblcveSiniestro.Size = new System.Drawing.Size(89, 21);
@@ -648,7 +666,7 @@
             this.lblcvePedido.AutoSize = true;
             this.lblcvePedido.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblcvePedido.ForeColor = System.Drawing.Color.White;
-            this.lblcvePedido.Location = new System.Drawing.Point(1, 33);
+            this.lblcvePedido.Location = new System.Drawing.Point(0, 33);
             this.lblcvePedido.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblcvePedido.Name = "lblcvePedido";
             this.lblcvePedido.Size = new System.Drawing.Size(76, 21);
@@ -665,24 +683,24 @@
             this.dvgPedido.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dvgPedido.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dvgPedido.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(28)))), ((int)(((byte)(27)))));
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(52)))), ((int)(((byte)(68)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dvgPedido.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(28)))), ((int)(((byte)(27)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(52)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dvgPedido.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dvgPedido.ColumnHeadersHeight = 22;
             this.dvgPedido.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dvgPedido.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dvgPedido.DefaultCellStyle = dataGridViewCellStyle2;
             this.dvgPedido.EnableHeadersVisualStyles = false;
             this.dvgPedido.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(51)))), ((int)(((byte)(65)))));
             this.dvgPedido.Location = new System.Drawing.Point(424, 185);
@@ -690,21 +708,21 @@
             this.dvgPedido.Name = "dvgPedido";
             this.dvgPedido.ReadOnly = true;
             this.dvgPedido.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(37)))), ((int)(((byte)(50)))));
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(125)))), ((int)(((byte)(184)))));
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dvgPedido.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(37)))), ((int)(((byte)(50)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(125)))), ((int)(((byte)(184)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dvgPedido.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dvgPedido.RowHeadersWidth = 51;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(64)))), ((int)(((byte)(88)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.White;
-            this.dvgPedido.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(64)))), ((int)(((byte)(88)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            this.dvgPedido.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dvgPedido.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dvgPedido.Size = new System.Drawing.Size(1041, 591);
             this.dvgPedido.TabIndex = 7;
@@ -820,8 +838,9 @@
             this.otrasOpcionesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.generarReporteVentasToolStripMenuItem,
             this.generadorClavesToolStripMenuItem,
-            this.registroBajasToolStripMenuItem,
+            this.cambioGuiasToolStripMenuItem,
             this.cambioEstadoToolStripMenuItem,
+            this.registroBajasToolStripMenuItem,
             this.notificacionesToolStripMenuItem,
             this.buscarFacturasToolStripMenuItem,
             this.talleresToolStripMenuItem,
@@ -848,12 +867,12 @@
             this.generadorClavesToolStripMenuItem.Text = "Generador Claves";
             this.generadorClavesToolStripMenuItem.Click += new System.EventHandler(this.generadorClavesToolStripMenuItem_Click);
             // 
-            // registroBajasToolStripMenuItem
+            // cambioGuiasToolStripMenuItem
             // 
-            this.registroBajasToolStripMenuItem.Name = "registroBajasToolStripMenuItem";
-            this.registroBajasToolStripMenuItem.Size = new System.Drawing.Size(238, 26);
-            this.registroBajasToolStripMenuItem.Text = "Registro Bajas";
-            this.registroBajasToolStripMenuItem.Click += new System.EventHandler(this.registroBajasToolStripMenuItem_Click);
+            this.cambioGuiasToolStripMenuItem.Name = "cambioGuiasToolStripMenuItem";
+            this.cambioGuiasToolStripMenuItem.Size = new System.Drawing.Size(238, 26);
+            this.cambioGuiasToolStripMenuItem.Text = "Cambio Guias ";
+            this.cambioGuiasToolStripMenuItem.Click += new System.EventHandler(this.cambioGuiasToolStripMenuItem_Click);
             // 
             // cambioEstadoToolStripMenuItem
             // 
@@ -861,6 +880,13 @@
             this.cambioEstadoToolStripMenuItem.Size = new System.Drawing.Size(238, 26);
             this.cambioEstadoToolStripMenuItem.Text = "Cambio Estado";
             this.cambioEstadoToolStripMenuItem.Click += new System.EventHandler(this.cambioEstadoToolStripMenuItem_Click);
+            // 
+            // registroBajasToolStripMenuItem
+            // 
+            this.registroBajasToolStripMenuItem.Name = "registroBajasToolStripMenuItem";
+            this.registroBajasToolStripMenuItem.Size = new System.Drawing.Size(238, 26);
+            this.registroBajasToolStripMenuItem.Text = "Registro Bajas";
+            this.registroBajasToolStripMenuItem.Click += new System.EventHandler(this.registroBajasToolStripMenuItem_Click);
             // 
             // notificacionesToolStripMenuItem
             // 
@@ -969,6 +995,20 @@
             this.moverFormulario.TargetControl = this.bunifuGradientPanel1;
             this.moverFormulario.Vertical = true;
             // 
+            // txtCveGuia
+            // 
+            this.txtCveGuia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(45)))), ((int)(((byte)(59)))));
+            this.txtCveGuia.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtCveGuia.ForeColor = System.Drawing.Color.White;
+            this.txtCveGuia.Location = new System.Drawing.Point(0, 434);
+            this.txtCveGuia.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCveGuia.MaxLength = 40;
+            this.txtCveGuia.Name = "txtCveGuia";
+            this.txtCveGuia.ReadOnly = true;
+            this.txtCveGuia.Size = new System.Drawing.Size(298, 15);
+            this.txtCveGuia.TabIndex = 18;
+            this.txtCveGuia.Text = "Cve guía:";
+            // 
             // Busqueda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1069,5 +1109,8 @@
         private System.Windows.Forms.ToolStripMenuItem cambioEstadoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem generadorClavesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem registroBajasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cambioGuiasToolStripMenuItem;
+        private System.Windows.Forms.Label lblUbicacion;
+        private System.Windows.Forms.TextBox txtCveGuia;
     }
 }
