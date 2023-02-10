@@ -35,6 +35,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pbClose = new System.Windows.Forms.PictureBox();
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.lblScan = new System.Windows.Forms.Label();
             this.txtCveGuia = new System.Windows.Forms.TextBox();
             this.lblCveGuia = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.dgvEstatus = new System.Windows.Forms.DataGridView();
@@ -51,7 +52,6 @@
             this.rbtnPorPedido = new System.Windows.Forms.RadioButton();
             this.rbtnPorPieza = new System.Windows.Forms.RadioButton();
             this.lblTitle = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.lblScan = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
             this.bunifuGradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEstatus)).BeginInit();
@@ -93,6 +93,17 @@
             this.bunifuGradientPanel1.Quality = 10;
             this.bunifuGradientPanel1.Size = new System.Drawing.Size(997, 422);
             this.bunifuGradientPanel1.TabIndex = 22;
+            // 
+            // lblScan
+            // 
+            this.lblScan.AutoSize = true;
+            this.lblScan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblScan.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.lblScan.Location = new System.Drawing.Point(738, 136);
+            this.lblScan.Name = "lblScan";
+            this.lblScan.Size = new System.Drawing.Size(120, 18);
+            this.lblScan.TabIndex = 22;
+            this.lblScan.Text = "Código barras:";
             // 
             // txtCveGuia
             // 
@@ -312,17 +323,6 @@
             this.lblTitle.TabIndex = 18;
             this.lblTitle.Text = "CAMBIAR NUMERO DE GUÍA POR PIEZA O PEDIDO";
             // 
-            // lblScan
-            // 
-            this.lblScan.AutoSize = true;
-            this.lblScan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblScan.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.lblScan.Location = new System.Drawing.Point(738, 136);
-            this.lblScan.Name = "lblScan";
-            this.lblScan.Size = new System.Drawing.Size(120, 18);
-            this.lblScan.TabIndex = 22;
-            this.lblScan.Text = "Código barras:";
-            // 
             // cambioGuias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -334,6 +334,7 @@
             this.Controls.Add(this.pbClose);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "cambioGuias";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "cambioGuias";
             this.Load += new System.EventHandler(this.cambioGuias_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).EndInit();
