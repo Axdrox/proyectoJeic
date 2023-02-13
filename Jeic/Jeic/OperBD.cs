@@ -2468,7 +2468,7 @@ namespace Refracciones
                             gasto = Double.Parse(Lector["GASTO"].ToString());
                         }
 
-                        if (Lector["UBICACION"].ToString() == "")
+                        if (Lector["UBICACION"].ToString() == "" || Lector["UBICACION"].ToString() == "-1")
                         {
                             sl.SetCellValue("AZ" + celdaContenido, "-");
                             
@@ -5886,6 +5886,20 @@ namespace Refracciones
             int cve_portal = clavePortal(portal);
             //int cve_costoEnvio = claveCostoEnvio(costoEnvio);TESTING
             int cve_venta = claveVenta(clavePedido, claveSiniestro);
+            int ubicacion;
+
+            if (cveEstado == 20)
+            {
+                ubicacion = 0;
+            }
+            else if (cveEstado == 21)
+            {
+                ubicacion = 1;
+            }
+            else
+            {
+                ubicacion = -1;
+            }
 
             //Añadir el gasto en caso de que la pieza sea usada
             if (origen == "USADA")
@@ -5907,8 +5921,8 @@ namespace Refracciones
                     /*Comando = new SqlCommand("INSERT INTO PEDIDO " + "(cve_venta, cve_pieza, cantidad, cve_origen, cve_proveedor, cve_portal, cve_guia, cve_producto, fecha_costo, costo_envio, costo_neto, precio_venta, precio_reparacion, gasto, realizo, ordenCaptura, estado) " +
                         "VALUES (@cve_venta, @cve_pieza, @cantidad, @cve_origen, @cve_proveedor, @cve_portal, @cve_guia, @cve_producto, @fecha_costo, @costo_envio, @costo_neto, @precio_venta, @precio_reparacion, @gasto, @realizo, @ordenCaptura, @estado) ", nuevaConexion);//, costo_comprasinIVA    , @costo_comprasinIVA*///TESTING
                                                                                                                                                                                                                                                                                                                                  //Añadiendo los parámetros al query
-                    Comando = new SqlCommand("INSERT INTO PEDIDO " + "(cve_venta, cve_pieza, cantidad, cve_origen, cve_proveedor, cve_portal, cve_guia, cve_producto, fecha_costo, costoEnvio, costo_neto, precio_venta, precio_reparacion, gasto, realizo, ordenCaptura, estado) " +
-                        "VALUES (@cve_venta, @cve_pieza, @cantidad, @cve_origen, @cve_proveedor, @cve_portal, @cve_guia, @cve_producto, @fecha_costo, @costo_envio, @costo_neto, @precio_venta, @precio_reparacion, @gasto, @realizo, @ordenCaptura, @estado) ", nuevaConexion);
+                    Comando = new SqlCommand("INSERT INTO PEDIDO " + "(cve_venta, cve_pieza, cantidad, cve_origen, cve_proveedor, cve_portal, cve_guia, cve_producto, fecha_costo, costoEnvio, costo_neto, precio_venta, precio_reparacion, gasto, realizo, ordenCaptura, estado, ubicacion) " +
+                        "VALUES (@cve_venta, @cve_pieza, @cantidad, @cve_origen, @cve_proveedor, @cve_portal, @cve_guia, @cve_producto, @fecha_costo, @costo_envio, @costo_neto, @precio_venta, @precio_reparacion, @gasto, @realizo, @ordenCaptura, @estado, @ubicacion) ", nuevaConexion);
                     Comando.Parameters.AddWithValue("@cve_venta", cve_venta);
                     Comando.Parameters.AddWithValue("@cve_pieza", cve_pieza);
                     Comando.Parameters.AddWithValue("@cantidad", cantidad);
@@ -5928,7 +5942,7 @@ namespace Refracciones
                     Comando.Parameters.AddWithValue("@realizo", realizo);
                     Comando.Parameters.AddWithValue("@ordenCaptura", ordenCaptura);
                     Comando.Parameters.AddWithValue("@estado", cveEstado);
-
+                    Comando.Parameters.AddWithValue("@ubicacion", ubicacion);
                     //Para saber si la inserción se hizo correctamente
                     i = Comando.ExecuteNonQuery();
                     nuevaConexion.Close();
@@ -6008,7 +6022,20 @@ namespace Refracciones
             //int cve_costoEnvio = claveCostoEnvio(costoEnvio);
             int cve_venta = claveVenta(clavePedido, claveSiniestro);
             int cve_pedidoNum = clavePedidoNum(cve_venta, cve_piezaPasada, ordenCaptura);
+            int ubicacion;
 
+            if (estado == 20)
+            {
+                ubicacion = 0;
+            }
+            else if (estado == 21)
+            {
+                ubicacion = 1;
+            }
+            else
+            {
+                ubicacion = -1;
+            }
             //Añadir el gasto en caso de que la pieza sea usada
             if (origen == "USADA")
                 gasto = 500;
@@ -6028,7 +6055,7 @@ namespace Refracciones
                     /*Comando = new SqlCommand("UPDATE PEDIDO SET " + "cve_pieza = @cve_piezaActual, cantidad = @cantidad, cve_origen = @cve_origen, cve_proveedor = @cve_proveedor, cve_portal = @cve_portal, cve_guia = @cve_guia, cve_producto = @cve_producto, fecha_costo = @fecha_costo, costo_envio = @costo_envio, costo_neto = @costo_neto, precio_venta = @precio_venta, precio_reparacion = @precio_reparacion, gasto = @gasto, realizo = @realizo, ordenCaptura = @ordenCaptura, estado = @estado " +
                         "WHERE cve_venta = @cve_venta AND cve_pieza = @cve_piezaPasada AND cve_pedido = @cvePedido", nuevaConexion);*///, costo_comprasinIVA    , @costo_comprasinIVA //TESTING
                                                                                                                                     //Añadiendo los parámetros al query
-                    Comando = new SqlCommand("UPDATE PEDIDO SET " + "cve_pieza = @cve_piezaActual, cantidad = @cantidad, cve_origen = @cve_origen, cve_proveedor = @cve_proveedor, cve_portal = @cve_portal, cve_guia = @cve_guia, cve_producto = @cve_producto, fecha_costo = @fecha_costo, costoEnvio = @costo_envio, costo_neto = @costo_neto, precio_venta = @precio_venta, precio_reparacion = @precio_reparacion, gasto = @gasto, realizo = @realizo, ordenCaptura = @ordenCaptura, estado = @estado " +
+                    Comando = new SqlCommand("UPDATE PEDIDO SET " + "cve_pieza = @cve_piezaActual, cantidad = @cantidad, cve_origen = @cve_origen, cve_proveedor = @cve_proveedor, cve_portal = @cve_portal, cve_guia = @cve_guia, cve_producto = @cve_producto, fecha_costo = @fecha_costo, costoEnvio = @costo_envio, costo_neto = @costo_neto, precio_venta = @precio_venta, precio_reparacion = @precio_reparacion, gasto = @gasto, realizo = @realizo, ordenCaptura = @ordenCaptura, estado = @estado, ubicacion = @ubicacion " +
                         "WHERE cve_venta = @cve_venta AND cve_pieza = @cve_piezaPasada AND cve_pedido = @cvePedido", nuevaConexion);
                     Comando.Parameters.AddWithValue("@cve_venta", cve_venta);
                     Comando.Parameters.AddWithValue("@cve_piezaPasada", cve_piezaPasada);
@@ -6051,6 +6078,7 @@ namespace Refracciones
                     Comando.Parameters.AddWithValue("@ordenCaptura", ordenCaptura);
                     Comando.Parameters.AddWithValue("@cvePedido", cve_pedidoNum);
                     Comando.Parameters.AddWithValue("@estado", estado);
+                    Comando.Parameters.AddWithValue("@ubicacion", ubicacion);
 
                     //Para saber si la inserción se hizo correctamente
                     i = Comando.ExecuteNonQuery();
@@ -6536,7 +6564,7 @@ namespace Refracciones
                     SqlCommand cmd;
                     if (cveEstado == 6)
                     {
-                        cmd = new SqlCommand(string.Format("UPDATE p  SET  p.estado = {0}, p.fecha_baja = @fecha, p.hora_baja = @hora FROM PEDIDO p WHERE p.cve_pedido = {1}", cveEstado, cvePedido), nuevaConexion);
+                        cmd = new SqlCommand(string.Format("UPDATE p  SET  p.estado = {0}, p.fecha_baja = @fecha, p.hora_baja = @hora, p.ubicacion = -1 FROM PEDIDO p WHERE p.cve_pedido = {1}", cveEstado, cvePedido), nuevaConexion);
                         cmd.Parameters.AddWithValue("@fecha", fechaM);
                         cmd.Parameters.AddWithValue("@hora", hora);
                         cmd.ExecuteNonQuery();
@@ -6552,7 +6580,7 @@ namespace Refracciones
                         cmd.ExecuteNonQuery();
                     }
                     else{
-                        cmd = new SqlCommand(string.Format("UPDATE p  SET  p.estado = {0} FROM PEDIDO p WHERE p.cve_pedido = {1}", cveEstado, cvePedido), nuevaConexion);
+                        cmd = new SqlCommand(string.Format("UPDATE p  SET  p.estado = {0}, p.ubicacion = -1 FROM PEDIDO p WHERE p.cve_pedido = {1}", cveEstado, cvePedido), nuevaConexion);
                         cmd.ExecuteNonQuery();
                     }
                     /*cmd = new SqlCommand(string.Format("UPDATE p  SET  p.estado = {0}, p.fecha_baja = @fecha FROM PEDIDO p WHERE p.cve_pedido = {1}", cveEstado, cvePedido), nuevaConexion);
@@ -6587,7 +6615,7 @@ namespace Refracciones
                     SqlCommand cmd;
                     if (cveEstado == 6)
                     {
-                        cmd = new SqlCommand(string.Format("UPDATE p  SET  p.estado = {0}, p.fecha_baja = @fecha, p.hora_baja = @hora FROM PEDIDO p WHERE cve_venta = {1}", cveEstado, cveVenta), nuevaConexion);
+                        cmd = new SqlCommand(string.Format("UPDATE p  SET  p.estado = {0}, p.fecha_baja = @fecha, p.hora_baja = @hora, p.ubicacion = -1 FROM PEDIDO p WHERE cve_venta = {1}", cveEstado, cveVenta), nuevaConexion);
                         cmd.Parameters.AddWithValue("@fecha", fechaM);
                         cmd.Parameters.AddWithValue("@hora", hora);
                         cmd.ExecuteNonQuery();
@@ -6604,7 +6632,7 @@ namespace Refracciones
                     }
                     else
                     {
-                        cmd = new SqlCommand(string.Format("UPDATE p  SET  p.estado = {0} FROM PEDIDO p WHERE cve_venta = {1}", cveEstado, cveVenta), nuevaConexion);
+                        cmd = new SqlCommand(string.Format("UPDATE p  SET  p.estado = {0}, p.ubicacion = -1 FROM PEDIDO p WHERE cve_venta = {1}", cveEstado, cveVenta), nuevaConexion);
                         cmd.ExecuteNonQuery();
                     }
 

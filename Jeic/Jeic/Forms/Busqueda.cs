@@ -84,6 +84,8 @@ namespace Refracciones.Forms
                     ubicacion = "Proveedor";
                 else if (ubicacion == "1")
                     ubicacion = "Jeic";
+                else if (ubicacion == "-1")
+                    ubicacion = "-";
 
                 lblcvePedido.Text = lblcvePedido.Text.Substring(0, 9) + " " + dgvDatos.Rows[0].Cells[0].Value.ToString();
                 lblcveSiniestro.Text = lblcveSiniestro.Text.Substring(0, 12) + " " + dgvDatos.Rows[0].Cells[1].Value.ToString();
@@ -288,6 +290,8 @@ namespace Refracciones.Forms
                     ubicacion = "Proveedor";
                 else if (ubicacion == "1")
                     ubicacion = "Jeic";
+                else if (ubicacion == "-1")
+                    ubicacion = "-";
 
                 lblcvePedido.Text = lblcvePedido.Text.Substring(0, 9) + " " + dgvDatos.Rows[0].Cells[0].Value.ToString();
                 lblcveSiniestro.Text = lblcveSiniestro.Text.Substring(0, 12) + " " + dgvDatos.Rows[0].Cells[1].Value.ToString();
