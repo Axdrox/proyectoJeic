@@ -2480,7 +2480,7 @@ namespace Refracciones
                         }
                         else if (Lector["UBICACION"].ToString() == "1")
                         {
-                        sl.SetCellValue("AZ" + celdaContenido, "Jeic");
+                        sl.SetCellValue("AZ" + celdaContenido, "Jeic Almacén");
                         }
 
 

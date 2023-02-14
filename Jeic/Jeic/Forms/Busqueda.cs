@@ -41,14 +41,12 @@ namespace Refracciones.Forms
                 case 1:
                     btnAgregarPedido.Visible = false;
                     administrarToolStripMenuItem.Enabled = false;
-                    
                     break;
 
                 case 2:
                     btnAgregarPedido.Visible = false;
                     administrarToolStripMenuItem.Enabled = false;
                     buscarFacturasToolStripMenuItem.Enabled = false;
-                    
                     break;
 
                 case 3:
@@ -56,6 +54,7 @@ namespace Refracciones.Forms
                     administrarToolStripMenuItem.Enabled = false;
                     buscarFacturasToolStripMenuItem.Enabled = false;
                     registroBajasToolStripMenuItem.Enabled = false;
+                    cambioGuiasToolStripMenuItem.Enabled = false;
                     break;
                 case 4:
                     btnAgregarPedido.Visible = false;
@@ -66,6 +65,7 @@ namespace Refracciones.Forms
                     talleresToolStripMenuItem.Enabled = false;
                     cambioEstadoToolStripMenuItem.Enabled = false;
                     registroBajasToolStripMenuItem.Enabled = true;
+                    cambioGuiasToolStripMenuItem.Enabled = false;
                     break;
                 default:
                     break;
@@ -83,7 +83,7 @@ namespace Refracciones.Forms
                 if (ubicacion == "0")
                     ubicacion = "Proveedor";
                 else if (ubicacion == "1")
-                    ubicacion = "Jeic";
+                    ubicacion = "Jeic Almacén";
                 else if (ubicacion == "-1")
                     ubicacion = "-";
 
@@ -289,7 +289,7 @@ namespace Refracciones.Forms
                 if (ubicacion == "0")
                     ubicacion = "Proveedor";
                 else if (ubicacion == "1")
-                    ubicacion = "Jeic";
+                    ubicacion = "Jeic Almacén";
                 else if (ubicacion == "-1")
                     ubicacion = "-";
 
