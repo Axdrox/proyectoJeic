@@ -6436,6 +6436,83 @@ namespace Refracciones
 
         }
 
+        //LLENAR CODIGO BARRAS CAMBIO COSTO ENVÍO
+        public string[] llenarCodigoBarrasCostoEnvio(string cvePedido)
+        {
+            string[] datos = new string[8];
+
+            try
+            {
+
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+
+
+                    Comando = new SqlCommand(string.Format("SELECT ven.cve_pedido AS 'PEDIDO', ven.cve_siniestro AS 'SINIESTRO', pie.nombre AS 'PIEZA', val.cve_cliente AS 'CLIENTE', ped.cve_guia AS 'GUIA', ped.costoEnvio AS 'COSTO ENVÍO', ped.cve_pedido AS 'CVE PEDIDO', ped.cve_venta AS 'CVE VENTA'  FROM PEDIDO ped JOIN PIEZA pie ON ped.cve_pieza = pie.cve_pieza JOIN VENTAS ven ON ped.cve_venta = ven.cve_venta JOIN VALUADOR val ON ven.cve_valuador = val.cve_valuador JOIN ESTADO_SINIESTRO estSin ON ped.estado = estSin.cve_estado WHERE ped.cve_pedido = {0}", cvePedido), nuevaConexion);
+
+                    Lector = Comando.ExecuteReader();
+                    while (Lector.Read())
+                    {
+
+                        datos[0] = Lector["PEDIDO"].ToString();
+                        datos[1] = Lector["SINIESTRO"].ToString();
+                        datos[2] = Lector["PIEZA"].ToString();
+                        datos[3] = Lector["CLIENTE"].ToString();
+                        datos[4] = Lector["GUIA"].ToString();
+                        datos[5] = Lector["COSTO ENVÍO"].ToString();
+                        datos[6] = Lector["CVE PEDIDO"].ToString();
+                        datos[7] = Lector["CVE VENTA"].ToString();
+                    }
+                    Lector.Close();
+                    nuevaConexion.Close();
+                }
+                return datos;
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error al generar la peticion: " + EX.Message);
+            }
+            return datos;
+        }
+
+        //------------- LLENAR DGV CAMBIO COSTOS ENVÍO
+        public DataTable llenarCostoEnvioCodigoBarrasPedido(DataGridView dgv, string cvePedido)
+        {
+            dt = new DataTable();
+
+            try
+            {
+
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+
+
+
+
+                    Comando = new SqlCommand(string.Format("SELECT ven.cve_pedido AS 'PEDIDO', ven.cve_siniestro AS 'SINIESTRO', pie.nombre AS 'PIEZA', val.cve_cliente AS 'CLIENTE', ped.cve_guia AS 'GUIA', ped.costoEnvio AS 'COSTO ENVÍO', ped.cve_pedido AS 'CVE PEDIDO', ped.cve_venta AS 'CVE VENTA'  FROM PEDIDO ped JOIN PIEZA pie ON ped.cve_pieza = pie.cve_pieza JOIN VENTAS ven ON ped.cve_venta = ven.cve_venta JOIN VALUADOR val ON ven.cve_valuador = val.cve_valuador JOIN ESTADO_SINIESTRO estSin ON ped.estado = estSin.cve_estado WHERE ped.cve_venta = {0}", cvePedido), nuevaConexion);
+                    da = new SqlDataAdapter(Comando);
+                    da.Fill(dt);
+
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        dgv.Rows.Add(dr.ItemArray);
+                    }
+
+
+                    nuevaConexion.Close();
+                }
+                return dt;
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error al generar la peticion: " + EX.Message);
+            }
+            return dt;
+
+        }
+
         //CAMBIAR NUMERO DE GUIA
         public void actualizarGuia(int cvePedido, string cveGuia)
         {
@@ -6461,6 +6538,34 @@ namespace Refracciones
                 MessageBox.Show("Error al generar la peticion: " + EX.Message);
             }
           
+
+        }
+
+        //CAMBIAR COSTO DE ENVÍO POR MEDIO DEL CÓDIGO DE BARRAS
+        public void actualizarCostoEnvio(int cvePedido, string costoEnvio)
+        {
+
+
+            try
+            {
+
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand(string.Format(" ", cvePedido), nuevaConexion);
+                    Comando = new SqlCommand("UPDATE p SET p.costoEnvio = @costoEnvio FROM PEDIDO p  WHERE p.cve_pedido = @cve_pedidoIdentity", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@cve_pedidoIdentity", cvePedido);
+                    Comando.Parameters.AddWithValue("@costoEnvio", costoEnvio);
+                    Comando.ExecuteNonQuery();
+                    nuevaConexion.Close();
+                }
+
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error al generar la peticion: " + EX.Message);
+            }
+
 
         }
 

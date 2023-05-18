@@ -47,6 +47,7 @@ namespace Refracciones.Forms
                     btnAgregarPedido.Visible = false;
                     administrarToolStripMenuItem.Enabled = false;
                     buscarFacturasToolStripMenuItem.Enabled = false;
+                    cambioCostosEnvíoToolStripMenuItem.Enabled = false;
                     break;
 
                 case 3:
@@ -55,6 +56,7 @@ namespace Refracciones.Forms
                     buscarFacturasToolStripMenuItem.Enabled = false;
                     registroBajasToolStripMenuItem.Enabled = false;
                     cambioGuiasToolStripMenuItem.Enabled = false;
+                    cambioCostosEnvíoToolStripMenuItem.Enabled = false;
                     break;
                 case 4:
                     btnAgregarPedido.Visible = false;
@@ -66,6 +68,7 @@ namespace Refracciones.Forms
                     cambioEstadoToolStripMenuItem.Enabled = false;
                     registroBajasToolStripMenuItem.Enabled = true;
                     cambioGuiasToolStripMenuItem.Enabled = false;
+                    cambioCostosEnvíoToolStripMenuItem.Enabled = false;
                     break;
                 default:
                     break;
@@ -375,6 +378,12 @@ namespace Refracciones.Forms
         {
             cambioGuias cmbGuias = new cambioGuias();
             cmbGuias.ShowDialog();
+        }
+
+        private void cambioCostosEnvíoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            cambioCostoEnvio cmbCostoEnvio = new cambioCostoEnvio();
+            cmbCostoEnvio.ShowDialog();
         }
     }
 }
