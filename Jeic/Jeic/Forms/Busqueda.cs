@@ -17,6 +17,8 @@ namespace Refracciones.Forms
     public partial class Busqueda : Form
     {
         private string cve_factura = "";
+        public static List<string> permisos = new List<string>();
+       
 
         public Busqueda()
         {
@@ -29,14 +31,17 @@ namespace Refracciones.Forms
 
         private void Busqueda_Devolver_Load(object sender, EventArgs e)
         {
+            
             this.ActiveControl = TxtClavePed;
             this.Icon = Resources.iconJeic;
             llenarDefaultDGV.defaultDGV(dvgPedido,lblcvePe.Text);
             dvgPedido.Columns["VENTA"].Visible = false;// VENTA INDEX 9
             dvgPedido.Columns["CVE"].Visible = false;// CVE INDEX 10
             menuStrip1.ForeColor = Color.White;
-            int rol = ObtenerRol.Rol(Usuario.Text.Substring(9, Usuario.Text.Length - 9));
-            switch (rol)
+            string userName = Usuario.Text.Substring(9, Usuario.Text.Length - 9);
+            //int rol = ObtenerRol.Rol(Usuario.Text.Substring(9, Usuario.Text.Length - 9));
+            llenar.permisosUsuario(userName);
+            /*switch (rol)
             {
                 case 1:
                     btnAgregarPedido.Visible = false;
@@ -72,7 +77,32 @@ namespace Refracciones.Forms
                     break;
                 default:
                     break;
-            }
+            }Se quito el dia 15 jun 2023 por un cambio solicitado por JEIC Jesus*/
+
+            if (permisos.Contains("agregarPed"))
+                btnAgregarPedido.Enabled = true;
+
+            if (permisos.Contains("genRepven"))
+                generarReporteVentasToolStripMenuItem.Enabled = true;
+
+            if (permisos.Contains("genClaves"))
+                generadorClavesToolStripMenuItem.Enabled = true;
+            
+            if (permisos.Contains("cambioCostEnv"))
+                cambioCostosEnvíoToolStripMenuItem.Enabled = true;
+
+            if (permisos.Contains("cambioEst"))
+                cambioEstadoToolStripMenuItem.Enabled = true;
+
+            if (permisos.Contains("cambioGuias"))
+                cambioGuiasToolStripMenuItem.Enabled = true;
+
+            if (permisos.Contains("regBajas"))
+                registroBajasToolStripMenuItem.Enabled = true;
+
+            if (permisos.Contains("buscarFact"))
+                buscarFacturasToolStripMenuItem.Enabled = true;
+
         }
 
         private void BusquedaPedido(object sender, KeyEventArgs e)
@@ -385,5 +415,9 @@ namespace Refracciones.Forms
             cambioCostoEnvio cmbCostoEnvio = new cambioCostoEnvio();
             cmbCostoEnvio.ShowDialog();
         }
+
+        
+        
+       
     }
 }

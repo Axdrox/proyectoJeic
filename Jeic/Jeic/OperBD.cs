@@ -6880,6 +6880,85 @@ namespace Refracciones
             }
         }
 
+        //------------- OBTENER LOS PERMISOS DEL USUARIO 
+        public void permisosUsuario(string userName)
+        {
+            List<string> permisos = new List<string>();
+
+          
+            try
+            {
+                using (SqlConnection nuevacon = Conexion.conexion())
+                {
+                    this.Comando = new SqlCommand(string.Format("SELECT agregarPed,modDatPed,modPrecioPed,modProvPed,elabFact,refacturar,regBajDev,revPedEntDev,genPdf,genRepven,genClaves,cambioCostEnv,cambioEst,cambioGuias,regBajas,buscarFact  FROM PERMISOS per INNER JOIN USUARIOS us ON per.cveAdmin = us.cve_Administrador WHERE us.usuario = '{0}';", userName), nuevacon);
+                    nuevacon.Open();
+                    Lector = Comando.ExecuteReader();
+                    while (Lector.Read()) {
+
+                        if(Boolean.Parse(Lector["agregarPed"].ToString()))
+                            permisos.Add("agregarPed");
+
+                        if (Boolean.Parse(Lector["modDatPed"].ToString()))
+                            permisos.Add("modDatPed");
+
+                        if (Boolean.Parse(Lector["modPrecioPed"].ToString()))
+                            permisos.Add("modPrecioPed");
+
+                        if (Boolean.Parse(Lector["modProvPed"].ToString()))
+                            permisos.Add("modProvPed");
+
+                        if (Boolean.Parse(Lector["elabFact"].ToString()))
+                            permisos.Add("elabFact");
+
+                        if (Boolean.Parse(Lector["refacturar"].ToString()))
+                            permisos.Add("refacturar");
+
+                        if (Boolean.Parse(Lector["regBajDev"].ToString()))
+                            permisos.Add("regBajDev");
+
+                        if (Boolean.Parse(Lector["revPedEntDev"].ToString()))
+                            permisos.Add("revPedEntDev");
+
+                        if (Boolean.Parse(Lector["genPdf"].ToString()))
+                            permisos.Add("genPdf");
+
+                        if (Boolean.Parse(Lector["genRepven"].ToString()))
+                            permisos.Add("genRepven");
+
+                        if (Boolean.Parse(Lector["genClaves"].ToString()))
+                            permisos.Add("genClaves");
+
+                        if (Boolean.Parse(Lector["cambioCostEnv"].ToString()))
+                            permisos.Add("cambioCostEnv");
+
+                        if (Boolean.Parse(Lector["cambioEst"].ToString()))
+                            permisos.Add("cambioEst");
+
+                        if (Boolean.Parse(Lector["cambioGuias"].ToString()))
+                            permisos.Add("cambioGuias");
+
+                        if (Boolean.Parse(Lector["regBajas"].ToString()))
+                            permisos.Add("regBajas");
+
+                        if (Boolean.Parse(Lector["buscarFact"].ToString()))
+                            permisos.Add("buscarFact");
+
+
+                    }
+                    Busqueda.permisos = permisos;
+                    Lector.Close();
+                    nuevacon.Close();
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                
+            }
+
+        }
+
         /*
         //SE QUITARÁ
         //CALCULAR CANTIDADES PARA AGREGAR A VENTAS

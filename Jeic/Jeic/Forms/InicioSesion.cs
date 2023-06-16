@@ -19,6 +19,7 @@ namespace Refracciones
         //CONSTRUCTOR DEL FORM
         OperBD Operacion = new OperBD();
         OperBD ObtenerRol = new OperBD();
+
         public InicioSesion()
         {
             InitializeComponent();

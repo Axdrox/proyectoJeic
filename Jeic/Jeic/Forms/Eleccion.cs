@@ -140,6 +140,21 @@ namespace Refracciones
 
         private void Eleccion_Load(object sender, EventArgs e)
         {
+            //Permisos
+            if (Busqueda.permisos.Contains("modDatPed"))
+                btnModificarDatosPedido.Enabled = true;
+            if (Busqueda.permisos.Contains("elabFact"))
+                btnFactura.Enabled = true;
+            if (Busqueda.permisos.Contains("refacturar"))
+                btnRefactura.Enabled = true;
+            if (Busqueda.permisos.Contains("regBajDev"))
+                btnDevolucionEntrega.Enabled = true;
+            if (Busqueda.permisos.Contains("revPedEntDev"))
+                btnChecarPedDev.Enabled = true;
+            if (Busqueda.permisos.Contains("genPdf"))
+                btnPDF.Enabled = true;
+            //End Permisos
+
             //Colocar ICONO
             this.Icon = Resources.iconJeic;
             cve_factura = oper.Clave_Fact(dato_1.Text, dato_2.Text,lblPieza.Text, int.Parse(lblcvePedidoidentity.Text));
@@ -158,7 +173,7 @@ namespace Refracciones
             }
 
             //PERMISOS
-            int rol = oper.Rol(lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9));
+            /*int rol = oper.Rol(lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9));
 
             switch (rol)
             {
@@ -189,7 +204,7 @@ namespace Refracciones
 
                 default:
                     break;
-            }
+            }*/
         }
 
         public string clavePedido

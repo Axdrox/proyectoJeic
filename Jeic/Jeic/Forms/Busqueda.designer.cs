@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Busqueda));
             this.label1 = new System.Windows.Forms.Label();
             this.TxtClaveSin = new System.Windows.Forms.TextBox();
@@ -91,8 +91,9 @@
             this.otrasOpcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generarReporteVentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generadorClavesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cambioGuiasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cambioCostosEnvíoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cambioEstadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cambioGuiasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registroBajasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notificacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buscarFacturasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -105,7 +106,6 @@
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.lblcvePe = new System.Windows.Forms.Label();
             this.moverFormulario = new Bunifu.Framework.UI.BunifuDragControl(this.components);
-            this.cambioCostosEnvíoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Panelinfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFactura)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dvgPedido)).BeginInit();
@@ -698,24 +698,24 @@
             this.dvgPedido.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dvgPedido.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dvgPedido.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(28)))), ((int)(((byte)(27)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(52)))), ((int)(((byte)(68)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dvgPedido.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(28)))), ((int)(((byte)(27)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(52)))), ((int)(((byte)(68)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dvgPedido.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dvgPedido.ColumnHeadersHeight = 22;
             this.dvgPedido.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dvgPedido.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dvgPedido.DefaultCellStyle = dataGridViewCellStyle2;
             this.dvgPedido.EnableHeadersVisualStyles = false;
             this.dvgPedido.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(51)))), ((int)(((byte)(65)))));
             this.dvgPedido.Location = new System.Drawing.Point(424, 185);
@@ -723,21 +723,21 @@
             this.dvgPedido.Name = "dvgPedido";
             this.dvgPedido.ReadOnly = true;
             this.dvgPedido.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(37)))), ((int)(((byte)(50)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(125)))), ((int)(((byte)(184)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dvgPedido.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(37)))), ((int)(((byte)(50)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(125)))), ((int)(((byte)(184)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dvgPedido.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dvgPedido.RowHeadersWidth = 51;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(64)))), ((int)(((byte)(88)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
-            this.dvgPedido.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(64)))), ((int)(((byte)(88)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            this.dvgPedido.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dvgPedido.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dvgPedido.Size = new System.Drawing.Size(1041, 591);
             this.dvgPedido.TabIndex = 7;
@@ -796,6 +796,7 @@
             // 
             this.btnAgregarPedido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(49)))), ((int)(((byte)(106)))));
             this.btnAgregarPedido.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAgregarPedido.Enabled = false;
             this.btnAgregarPedido.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAgregarPedido.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregarPedido.ForeColor = System.Drawing.Color.White;
@@ -871,6 +872,7 @@
             // 
             // generarReporteVentasToolStripMenuItem
             // 
+            this.generarReporteVentasToolStripMenuItem.Enabled = false;
             this.generarReporteVentasToolStripMenuItem.Name = "generarReporteVentasToolStripMenuItem";
             this.generarReporteVentasToolStripMenuItem.Size = new System.Drawing.Size(238, 26);
             this.generarReporteVentasToolStripMenuItem.Text = "Generar Reporte Ventas";
@@ -878,27 +880,39 @@
             // 
             // generadorClavesToolStripMenuItem
             // 
+            this.generadorClavesToolStripMenuItem.Enabled = false;
             this.generadorClavesToolStripMenuItem.Name = "generadorClavesToolStripMenuItem";
             this.generadorClavesToolStripMenuItem.Size = new System.Drawing.Size(238, 26);
             this.generadorClavesToolStripMenuItem.Text = "Generador Claves";
             this.generadorClavesToolStripMenuItem.Click += new System.EventHandler(this.generadorClavesToolStripMenuItem_Click);
             // 
-            // cambioGuiasToolStripMenuItem
+            // cambioCostosEnvíoToolStripMenuItem
             // 
-            this.cambioGuiasToolStripMenuItem.Name = "cambioGuiasToolStripMenuItem";
-            this.cambioGuiasToolStripMenuItem.Size = new System.Drawing.Size(238, 26);
-            this.cambioGuiasToolStripMenuItem.Text = "Cambio Guias ";
-            this.cambioGuiasToolStripMenuItem.Click += new System.EventHandler(this.cambioGuiasToolStripMenuItem_Click);
+            this.cambioCostosEnvíoToolStripMenuItem.Enabled = false;
+            this.cambioCostosEnvíoToolStripMenuItem.Name = "cambioCostosEnvíoToolStripMenuItem";
+            this.cambioCostosEnvíoToolStripMenuItem.Size = new System.Drawing.Size(238, 26);
+            this.cambioCostosEnvíoToolStripMenuItem.Text = "Cambio Costos Envío";
+            this.cambioCostosEnvíoToolStripMenuItem.Click += new System.EventHandler(this.cambioCostosEnvíoToolStripMenuItem_Click);
             // 
             // cambioEstadoToolStripMenuItem
             // 
+            this.cambioEstadoToolStripMenuItem.Enabled = false;
             this.cambioEstadoToolStripMenuItem.Name = "cambioEstadoToolStripMenuItem";
             this.cambioEstadoToolStripMenuItem.Size = new System.Drawing.Size(238, 26);
             this.cambioEstadoToolStripMenuItem.Text = "Cambio Estado";
             this.cambioEstadoToolStripMenuItem.Click += new System.EventHandler(this.cambioEstadoToolStripMenuItem_Click);
             // 
+            // cambioGuiasToolStripMenuItem
+            // 
+            this.cambioGuiasToolStripMenuItem.Enabled = false;
+            this.cambioGuiasToolStripMenuItem.Name = "cambioGuiasToolStripMenuItem";
+            this.cambioGuiasToolStripMenuItem.Size = new System.Drawing.Size(238, 26);
+            this.cambioGuiasToolStripMenuItem.Text = "Cambio Guias ";
+            this.cambioGuiasToolStripMenuItem.Click += new System.EventHandler(this.cambioGuiasToolStripMenuItem_Click);
+            // 
             // registroBajasToolStripMenuItem
             // 
+            this.registroBajasToolStripMenuItem.Enabled = false;
             this.registroBajasToolStripMenuItem.Name = "registroBajasToolStripMenuItem";
             this.registroBajasToolStripMenuItem.Size = new System.Drawing.Size(238, 26);
             this.registroBajasToolStripMenuItem.Text = "Registro Bajas";
@@ -906,6 +920,7 @@
             // 
             // notificacionesToolStripMenuItem
             // 
+            this.notificacionesToolStripMenuItem.Enabled = false;
             this.notificacionesToolStripMenuItem.Name = "notificacionesToolStripMenuItem";
             this.notificacionesToolStripMenuItem.Size = new System.Drawing.Size(238, 26);
             this.notificacionesToolStripMenuItem.Text = "Notificaciones";
@@ -913,6 +928,7 @@
             // 
             // buscarFacturasToolStripMenuItem
             // 
+            this.buscarFacturasToolStripMenuItem.Enabled = false;
             this.buscarFacturasToolStripMenuItem.Name = "buscarFacturasToolStripMenuItem";
             this.buscarFacturasToolStripMenuItem.Size = new System.Drawing.Size(238, 26);
             this.buscarFacturasToolStripMenuItem.Text = "Buscar Facturas";
@@ -920,6 +936,7 @@
             // 
             // talleresToolStripMenuItem
             // 
+            this.talleresToolStripMenuItem.Enabled = false;
             this.talleresToolStripMenuItem.Name = "talleresToolStripMenuItem";
             this.talleresToolStripMenuItem.Size = new System.Drawing.Size(238, 26);
             this.talleresToolStripMenuItem.Text = "Talleres";
@@ -1010,13 +1027,6 @@
             this.moverFormulario.Horizontal = true;
             this.moverFormulario.TargetControl = this.bunifuGradientPanel1;
             this.moverFormulario.Vertical = true;
-            // 
-            // cambioCostosEnvíoToolStripMenuItem
-            // 
-            this.cambioCostosEnvíoToolStripMenuItem.Name = "cambioCostosEnvíoToolStripMenuItem";
-            this.cambioCostosEnvíoToolStripMenuItem.Size = new System.Drawing.Size(238, 26);
-            this.cambioCostosEnvíoToolStripMenuItem.Text = "Cambio Costos Envío";
-            this.cambioCostosEnvíoToolStripMenuItem.Click += new System.EventHandler(this.cambioCostosEnvíoToolStripMenuItem_Click);
             // 
             // Busqueda
             // 

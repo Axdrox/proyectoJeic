@@ -28,6 +28,18 @@
 
         private void Pieza_Load(object sender, EventArgs e)
         {
+            //Permisos
+            if (Busqueda.permisos.Contains("modPrecioPed"))
+                txtPrecioVenta.Enabled = true;
+            if (Busqueda.permisos.Contains("modProvPed"))
+            {
+                chbOtroProveedor.Enabled = true;
+                txtProveedor.Enabled = true;
+                cbProveedores.Enabled = true;
+            }
+            //End Permisos
+
+
             OperBD operacion = new OperBD();
             //Colocar ICONO
             this.Icon = Resources.iconJeic;
