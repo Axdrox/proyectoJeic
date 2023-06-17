@@ -28,18 +28,7 @@
 
         private void Pieza_Load(object sender, EventArgs e)
         {
-            //Permisos
-            if (Busqueda.permisos.Contains("modPrecioPed"))
-                txtPrecioVenta.Enabled = true;
-            if (Busqueda.permisos.Contains("modProvPed"))
-            {
-                chbOtroProveedor.Enabled = true;
-                txtProveedor.Enabled = true;
-                cbProveedores.Enabled = true;
-            }
-            //End Permisos
-
-
+            
             OperBD operacion = new OperBD();
             //Colocar ICONO
             this.Icon = Resources.iconJeic;
@@ -181,6 +170,29 @@
                 txtPrecioReparacion.Text = datos[10];
                 txtPrecioVenta.Text = datos[11];
             }
+
+            //Permisos
+
+            if (txtPrecioVenta.Text.Trim().Equals(String.Empty))
+            {
+                txtPrecioVenta.Enabled = true;
+                chbOtroProveedor.Enabled = true;
+                txtProveedor.Enabled = true;
+                cbProveedores.Enabled = true;
+            }
+            else
+            {
+                if (Busqueda.permisos.Contains("modPrecioPed"))
+                    txtPrecioVenta.Enabled = true;
+                if (Busqueda.permisos.Contains("modProvPed"))
+                {
+                    chbOtroProveedor.Enabled = true;
+                    txtProveedor.Enabled = true;
+                    cbProveedores.Enabled = true;
+                }
+            }
+
+            //End Permisos
         }
 
         public int indicador = 0;
