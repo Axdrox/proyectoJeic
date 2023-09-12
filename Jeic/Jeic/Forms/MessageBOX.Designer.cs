@@ -55,9 +55,10 @@
             // GifHecho
             // 
             this.GifHecho.InitialImage = null;
-            this.GifHecho.Location = new System.Drawing.Point(45, 12);
+            this.GifHecho.Location = new System.Drawing.Point(60, 15);
+            this.GifHecho.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.GifHecho.Name = "GifHecho";
-            this.GifHecho.Size = new System.Drawing.Size(140, 95);
+            this.GifHecho.Size = new System.Drawing.Size(187, 117);
             this.GifHecho.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.GifHecho.TabIndex = 0;
             this.GifHecho.TabStop = false;
@@ -91,13 +92,14 @@
             this.btnOK.IconVisible = true;
             this.btnOK.IconZoom = 90D;
             this.btnOK.IsTab = false;
-            this.btnOK.Location = new System.Drawing.Point(57, 150);
+            this.btnOK.Location = new System.Drawing.Point(76, 185);
+            this.btnOK.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.btnOK.Name = "btnOK";
             this.btnOK.Normalcolor = System.Drawing.Color.Transparent;
             this.btnOK.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(120)))), ((int)(((byte)(42)))));
             this.btnOK.OnHoverTextColor = System.Drawing.Color.Transparent;
             this.btnOK.selected = false;
-            this.btnOK.Size = new System.Drawing.Size(116, 28);
+            this.btnOK.Size = new System.Drawing.Size(155, 34);
             this.btnOK.TabIndex = 1;
             this.btnOK.Text = "Aceptar";
             this.btnOK.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -110,9 +112,10 @@
             // 
             this.lblTexto.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTexto.ForeColor = System.Drawing.Color.Gray;
-            this.lblTexto.Location = new System.Drawing.Point(0, 110);
+            this.lblTexto.Location = new System.Drawing.Point(0, 135);
+            this.lblTexto.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTexto.Name = "lblTexto";
-            this.lblTexto.Size = new System.Drawing.Size(231, 37);
+            this.lblTexto.Size = new System.Drawing.Size(308, 46);
             this.lblTexto.TabIndex = 2;
             this.lblTexto.Text = "Bienvenido";
             this.lblTexto.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -140,13 +143,14 @@
             this.btnNO.IconVisible = true;
             this.btnNO.IconZoom = 90D;
             this.btnNO.IsTab = false;
-            this.btnNO.Location = new System.Drawing.Point(201, 79);
+            this.btnNO.Location = new System.Drawing.Point(256, 97);
+            this.btnNO.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.btnNO.Name = "btnNO";
             this.btnNO.Normalcolor = System.Drawing.Color.Transparent;
             this.btnNO.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(135)))), ((int)(((byte)(135)))));
             this.btnNO.OnHoverTextColor = System.Drawing.Color.Transparent;
             this.btnNO.selected = false;
-            this.btnNO.Size = new System.Drawing.Size(87, 27);
+            this.btnNO.Size = new System.Drawing.Size(116, 33);
             this.btnNO.TabIndex = 3;
             this.btnNO.Text = "NO";
             this.btnNO.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -162,15 +166,16 @@
             // 
             // MessageBOX
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(231, 193);
+            this.ClientSize = new System.Drawing.Size(308, 238);
             this.Controls.Add(this.btnNO);
             this.Controls.Add(this.lblTexto);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.GifHecho);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MessageBOX";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dialog";
