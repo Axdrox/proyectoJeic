@@ -135,7 +135,7 @@
             // pbMinimize
             // 
             this.pbMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbMinimize.Image = global::Jeic.Properties.Resources.Minimize_Window_2_48px;
+            this.pbMinimize.Image = ((System.Drawing.Image)(resources.GetObject("pbMinimize.Image")));
             this.pbMinimize.Location = new System.Drawing.Point(293, 2);
             this.pbMinimize.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pbMinimize.Name = "pbMinimize";
@@ -148,7 +148,7 @@
             // pbClose
             // 
             this.pbClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbClose.Image = global::Jeic.Properties.Resources.Close_Window__2_48px;
+            this.pbClose.Image = ((System.Drawing.Image)(resources.GetObject("pbClose.Image")));
             this.pbClose.Location = new System.Drawing.Point(324, 2);
             this.pbClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pbClose.Name = "pbClose";
@@ -275,7 +275,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(96, 16);
             this.label1.TabIndex = 18;
-            this.label1.Text = "Versión: 2.1.6.0";
+            this.label1.Text = "Versión: 2.1.7.0";
             // 
             // InicioSesion
             // 

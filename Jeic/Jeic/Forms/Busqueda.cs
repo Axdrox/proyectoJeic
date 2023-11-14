@@ -357,6 +357,12 @@ namespace Refracciones.Forms
                 txtComentarioSiniestro.Text = dgvDatos.Rows[0].Cells[27].Value.ToString();
                 lblFechaBaja.Text = lblFechaBaja.Text.Substring(0, 11) + " " + dgvDatos.Rows[0].Cells[28].Value.ToString();
                 lblUbicacion.Text = "Ubicación: " + ubicacion;
+
+                
+                if(dgvDatos.Rows[0].Cells[31].Value.Equals(true))
+                    lblvaleLiberado.Text = "Vale: Liberado";
+                else
+                    lblvaleLiberado.Text = "Vale: No liberado";
             }
             else
             {

@@ -34,7 +34,8 @@ namespace Refracciones.Forms
             string ruta = Application.StartupPath + "\\Plantilla.xlsx";
             if (ruta != "")
             {
-                excel.generarExcel(ruta, Fecha_inicio, Fecha_Final,decimal.Parse(txtcostoOperativo.Text, new CultureInfo("en-US")), lblcvePe.Text);
+                bool valesLiberados = chkvalesLiberados.Checked;
+                excel.generarExcel(ruta, Fecha_inicio, Fecha_Final,decimal.Parse(txtcostoOperativo.Text, new CultureInfo("en-US")), lblcvePe.Text, valesLiberados);
                 this.Close();
             }
             

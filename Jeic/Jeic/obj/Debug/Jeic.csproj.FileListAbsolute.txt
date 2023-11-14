@@ -484,6 +484,8 @@ C:\Users\bunny\source\repos\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.CoreCom
 C:\Users\bunny\source\repos\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.CopyComplete
 C:\Users\bunny\source\repos\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.exe
 C:\Users\bunny\source\repos\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.pdb
+C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\itext.kernel.xml
+C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.Properties.Resources.resources
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\Jeic.exe.config
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\Jeic.exe
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\Jeic.pdb
@@ -524,7 +526,6 @@ C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\Common.Loggi
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\itext.barcodes.xml
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\itext.forms.xml
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\itext.io.xml
-C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\itext.kernel.xml
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\itext.layout.xml
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\itext.pdfa.xml
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\itext.sign.xml
@@ -569,7 +570,6 @@ C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.registroFactura.resources
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Siniestro.resources
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.Forms.Talleres.resources
-C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.Properties.Resources.resources
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.GenerateResource.cache
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.CoreCompileInputs.cache
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.CopyComplete

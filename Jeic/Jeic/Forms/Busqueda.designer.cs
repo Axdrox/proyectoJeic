@@ -106,6 +106,7 @@
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.lblcvePe = new System.Windows.Forms.Label();
             this.moverFormulario = new Bunifu.Framework.UI.BunifuDragControl(this.components);
+            this.lblvaleLiberado = new System.Windows.Forms.Label();
             this.Panelinfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFactura)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dvgPedido)).BeginInit();
@@ -193,6 +194,7 @@
             // 
             this.Panelinfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(45)))), ((int)(((byte)(59)))));
             this.Panelinfo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Panelinfo.Controls.Add(this.lblvaleLiberado);
             this.Panelinfo.Controls.Add(this.txtCveGuia);
             this.Panelinfo.Controls.Add(this.lblUbicacion);
             this.Panelinfo.Controls.Add(this.lblFechaEntreg);
@@ -1028,6 +1030,18 @@
             this.moverFormulario.TargetControl = this.bunifuGradientPanel1;
             this.moverFormulario.Vertical = true;
             // 
+            // lblvaleLiberado
+            // 
+            this.lblvaleLiberado.AutoSize = true;
+            this.lblvaleLiberado.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblvaleLiberado.ForeColor = System.Drawing.Color.White;
+            this.lblvaleLiberado.Location = new System.Drawing.Point(268, 386);
+            this.lblvaleLiberado.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblvaleLiberado.Name = "lblvaleLiberado";
+            this.lblvaleLiberado.Size = new System.Drawing.Size(39, 18);
+            this.lblvaleLiberado.TabIndex = 46;
+            this.lblvaleLiberado.Text = "Vale:";
+            // 
             // Busqueda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1132,5 +1146,6 @@
         private System.Windows.Forms.Label lblUbicacion;
         private System.Windows.Forms.TextBox txtCveGuia;
         private System.Windows.Forms.ToolStripMenuItem cambioCostosEnvíoToolStripMenuItem;
+        private System.Windows.Forms.Label lblvaleLiberado;
     }
 }
