@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DocumentFormat.OpenXml.Drawing.Charts;
+using DocumentFormat.OpenXml.Spreadsheet;
 using Refracciones;
 using Refracciones.Forms;
 
@@ -160,16 +161,30 @@ namespace Jeic.Forms
                 foreach (DataGridViewRow row in dgvEstatus.Rows)
                 {
                     operacion.registrarEstadoCodigoBarras(row.Cells["ColumnCvePedido"].Value.ToString(),cmbEstado.Text.Trim(), Fecha_in.Value);
+
+                    //ENVIAR CORREO SI TODO ESTA ENTREGADO
+                    if (operacion.revisarPiezasEnviarCorreo(row.Cells["ColumnPed"].Value.ToString()))
+                    //if (true)//TESTING
+                        operacion.enviaCorreo(row.Cells["ColumnCliente"].Value.ToString(),row.Cells["ColumnPed"].Value.ToString(), row.Cells["ColumnSin"].Value.ToString());
+
                 }
                 dgvEstatus.DataSource = null;
                 dgvEstatus.Rows.Clear();
                 MessageBOX.SHowDialog(3, "Datos actualizados correctamente!");
+
+                
+
             }
             else if(rbtnPorPedido.Checked)
             {
                 foreach (DataGridViewRow row in dgvEstatus.Rows)
                 {
                     operacion.registrarEstadoCodigoBarras(int.Parse(row.Cells["ColumnCveVenta"].Value.ToString()), cmbEstado.Text.Trim(), Fecha_in.Value);
+
+                    //ENVIAR CORREO SI TODO ESTA ENTREGADO
+                    if (operacion.revisarPiezasEnviarCorreo(row.Cells["ColumnPed"].Value.ToString()))
+                    //if (true)
+                        operacion.enviaCorreo(row.Cells["ColumnCliente"].Value.ToString(), row.Cells["ColumnPed"].Value.ToString(), row.Cells["ColumnSin"].Value.ToString());
                 }
                 dgvEstatus.DataSource = null;
                 dgvEstatus.Rows.Clear();

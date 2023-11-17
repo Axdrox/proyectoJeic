@@ -23,6 +23,14 @@ using iText.Kernel.Pdf;
 using iText.Kernel.Pdf.Canvas;
 using iText.Kernel.Colors;
 using Jeic.Forms;
+using DocumentFormat.OpenXml.Vml;
+
+//librerias para envio correo
+using MailKit.Net.Smtp;
+using MailKit;
+using MimeKit;
+using DocumentFormat.OpenXml.Wordprocessing;
+using System.Runtime.ConstrainedExecution;
 
 namespace Refracciones
 {
@@ -847,6 +855,45 @@ namespace Refracciones
         }*/
 
         //----------------------------------------------------------------------------------------------------------------------------------
+
+        //OBTENER EL ESTADO DE LA PIEZA ANTES DE HACER CUALQUIER ENTREGA, SI EL ESTATUS ES CANCELADO J, CANCELADO S NO HACER NINGUNA ENTREGA
+        //OBTENER EL ESTADO DE LA PIEZA
+        public bool revisarEstadoPiezaEntrega(int cvePedidoIdentity)
+        {
+            bool respuesta = true;
+
+            try
+            {
+                using (SqlConnection nuevacon = Conexion.conexion())
+                {
+                    this.Comando = new SqlCommand(string.Format("SELECT p.estado AS 'ESTADO PIEZA' FROM PEDIDO p LEFT OUTER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta LEFT OUTER JOIN ORIGEN_PIEZA o ON o.cve_origen = p.cve_origen LEFT OUTER JOIN PIEZA pi ON p.cve_pieza = pi.cve_pieza LEFT OUTER JOIN PROVEEDOR pro ON p.cve_proveedor = pro.cve_proveedor LEFT OUTER JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE c ON c.cve_nombre = v.cve_cliente LEFT OUTER JOIN PORTAL po ON po.cve_portal = p.cve_portal LEFT OUTER JOIN TALLER t ON t.cve_taller = ven.cve_taller  LEFT OUTER JOIN FACTURA fa ON fa.cve_factura = p.cve_factura LEFT OUTER JOIN ESTADO_FACTURA es ON es.cve_estado = fa.cve_estado LEFT OUTER JOIN ENTREGA ent ON ent.cve_entrega = p.cve_entrega LEFT OUTER JOIN SINIESTRO s ON s.cve_siniestro = ven.cve_siniestro LEFT OUTER JOIN Estado_Siniestro ess ON ess.cve_estado = p.estado LEFT OUTER JOIN VEHICULO vh ON s.cve_vehiculo = vh.cve_vehiculo LEFT OUTER JOIN MARCA ma ON vh.cve_marca = ma.cve_marca LEFT OUTER JOIN VENDEDOR vend ON vend.cve_vendedor = ven.cve_vendedor LEFT OUTER JOIN CORREOS cor ON t.cve_taller = cor.cve_taller WHERE p.cve_pedido = {0}", cvePedidoIdentity), nuevacon);
+                    nuevacon.Open();
+                    Lector = Comando.ExecuteReader();
+                    while (Lector.Read())
+                    {
+
+                        string temp = Lector["ESTADO PIEZA"].ToString();
+                        if ( temp == "11" || temp == "12")
+                        { respuesta = false; break; }
+
+
+                    }
+
+                    Lector.Close();
+                    nuevacon.Close();
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+
+            return respuesta;
+        }
+
         //--------------------REGISTRAR ENTREGA ACTUALIZAR COLUMNA CANTIDAD Y ASIGNAR CVE DE ENTREGA CON FECHA PIEZA POR PIEZA--------------------
         public string Registrar_Entrega(string cve_siniestro, string cve_pedido, int cve_pieza,/* int cve_entrega,*/ int cantidad, DateTime fecha, int cantidadE, int cve_venta, DateTime fecha_asigancion, string realizo, int cvePedidoIdentity)
         {
@@ -856,72 +903,78 @@ namespace Refracciones
             using (SqlConnection nuevaConexion = Conexion.conexion())
             {
                 nuevaConexion.Open();
-                Comando = new SqlCommand("INSERT INTO ENTREGA (fecha,cantidad,cve_pieza,cve_venta, realizo, cve_pedido) VALUES (@fecha,@cantidadE,@cve_pieza,@cve_venta,@realizo,@cve_pedido)", nuevaConexion);
-                Comando.Parameters.Add("@fecha", SqlDbType.Date);
-                Comando.Parameters.Add("@cantidadE", SqlDbType.Int);
-                Comando.Parameters.Add("@cve_pieza", SqlDbType.Int);
-                Comando.Parameters.Add("@cve_venta", SqlDbType.Int);
-                Comando.Parameters.Add("@realizo", SqlDbType.NVarChar, 50);
-                Comando.Parameters.Add("@cve_pedido", SqlDbType.Int);
 
-                Comando.Parameters["@fecha"].Value = fecha;
-                Comando.Parameters["@cantidadE"].Value = cantidadE;
-                Comando.Parameters["@cve_pieza"].Value = cve_pieza;
-                Comando.Parameters["@cve_venta"].Value = cve_venta;
-                Comando.Parameters["@realizo"].Value = realizo;
-                Comando.Parameters["@cve_pedido"].Value = cvePedidoIdentity;
-                Comando.ExecuteNonQuery();
-                //VAMOS A OBTENER LA CLAVE DE ENTREGA DEL ULTIMO REGISTRO EN ENTREGA
-                Comando = new SqlCommand("SELECT TOP 1 cve_entrega FROM ENTREGA ORDER BY cve_entrega DESC", nuevaConexion);
-                cve_entrega =  int.Parse(Comando.ExecuteScalar().ToString());
-                //VAMOS A OBTENER LA DIFERENCIA DE DIAS ENTRE FECHA_ENTREGA Y FECHA_ASIGNACIÓN
-                Comando = new SqlCommand("SELECT DATEDIFF(DAY,@fecha_asignacion, @fecha)", nuevaConexion);
-                Comando.Parameters.AddWithValue("@fecha_asignacion", fecha_asigancion);
-                Comando.Parameters.AddWithValue("@fecha", fecha);
-                dias_entrega = Int32.Parse(Comando.ExecuteScalar().ToString()) + 1;
-                //SE ACTUALIZAN LOS DATOS SIGUIENTES
-                SqlCommand cmd = new SqlCommand("UPDATE p SET p.cve_entrega = @cve_entrega, p.pzas_entregadas = @pzas_entregadas, p.fecha_entrega = @fecha_entrega, p.dias_entrega = @dias_entrega FROM PEDIDO p INNER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta WHERE ven.cve_siniestro = @cve_siniestro AND ven.cve_pedido = @cve_pedido AND p.cve_pieza = @cve_pieza AND p.cve_pedido = @cve_pedidoIdentity", nuevaConexion);
-                cmd.Parameters.Add("@cve_entrega", SqlDbType.Int);
-                cmd.Parameters.Add("@pzas_entregadas", SqlDbType.Int);
-                cmd.Parameters.Add("@fecha_entrega", SqlDbType.Date);
-                cmd.Parameters.Add("@cve_siniestro", SqlDbType.NVarChar, 50);
-                cmd.Parameters.Add("@cve_pedido", SqlDbType.NVarChar, 50);
-                cmd.Parameters.Add("@cve_pieza", SqlDbType.Int);
-                cmd.Parameters.Add("@dias_entrega", SqlDbType.Int);
-                cmd.Parameters.Add("@cve_pedidoIdentity", SqlDbType.Int);
-
-                cmd.Parameters["@cve_entrega"].Value = cve_entrega;
-                cmd.Parameters["@pzas_entregadas"].Value = cantidad;
-                cmd.Parameters["@fecha_entrega"].Value = fecha;
-                cmd.Parameters["@cve_siniestro"].Value = cve_siniestro;
-                cmd.Parameters["@cve_pedido"].Value = cve_pedido;
-                cmd.Parameters["@cve_pieza"].Value = cve_pieza;
-                cmd.Parameters["@dias_entrega"].Value = dias_entrega;
-                cmd.Parameters["@cve_pedidoIdentity"].Value = cvePedidoIdentity;
-                cmd.ExecuteNonQuery();
-                //SI SE CUMPLE SE SE REGISTRA ENTREGA EN TIEMPO
-                cmd = new SqlCommand("SELECT p.fecha_entrega,ven.fecha_promesa FROM PEDIDO p INNER JOIN ENTREGA ent ON p.cve_entrega = ent.cve_entrega INNER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta WHERE p.cve_venta = @cve_venta AND p.cve_pieza = @cve_pieza AND p.cve_pedido = @cve_pedido AND p.pzas_entregadas = p.cantidad AND p.fecha_entrega <= ven.fecha_promesa", nuevaConexion);
-                cmd.Parameters.Add("@cve_venta", SqlDbType.Int);
-                cmd.Parameters.Add("@cve_pieza", SqlDbType.Int);
-                cmd.Parameters.Add("@cve_pedido", SqlDbType.Int);
-                cmd.Parameters["@cve_venta"].Value = cve_venta;
-                cmd.Parameters["@cve_pieza"].Value = cve_pieza;
-                cmd.Parameters["@cve_pedido"].Value = cvePedidoIdentity;
-                if (cmd.ExecuteScalar() != null)
+                
+                if(revisarEstadoPiezaEntrega(cvePedidoIdentity))
                 {
-                    cmd = new SqlCommand("UPDATE PEDIDO SET entrega_enTiempo = 1 WHERE cve_venta = @cve_venta  AND cve_pieza = @cve_pieza AND cve_pedido = @cve_pedido", nuevaConexion);
+                    Comando = new SqlCommand("INSERT INTO ENTREGA (fecha,cantidad,cve_pieza,cve_venta, realizo, cve_pedido) VALUES (@fecha,@cantidadE,@cve_pieza,@cve_venta,@realizo,@cve_pedido)", nuevaConexion);
+                    Comando.Parameters.Add("@fecha", SqlDbType.Date);
+                    Comando.Parameters.Add("@cantidadE", SqlDbType.Int);
+                    Comando.Parameters.Add("@cve_pieza", SqlDbType.Int);
+                    Comando.Parameters.Add("@cve_venta", SqlDbType.Int);
+                    Comando.Parameters.Add("@realizo", SqlDbType.NVarChar, 50);
+                    Comando.Parameters.Add("@cve_pedido", SqlDbType.Int);
+
+                    Comando.Parameters["@fecha"].Value = fecha;
+                    Comando.Parameters["@cantidadE"].Value = cantidadE;
+                    Comando.Parameters["@cve_pieza"].Value = cve_pieza;
+                    Comando.Parameters["@cve_venta"].Value = cve_venta;
+                    Comando.Parameters["@realizo"].Value = realizo;
+                    Comando.Parameters["@cve_pedido"].Value = cvePedidoIdentity;
+                    Comando.ExecuteNonQuery();
+                    //VAMOS A OBTENER LA CLAVE DE ENTREGA DEL ULTIMO REGISTRO EN ENTREGA
+                    Comando = new SqlCommand("SELECT TOP 1 cve_entrega FROM ENTREGA ORDER BY cve_entrega DESC", nuevaConexion);
+                    cve_entrega = int.Parse(Comando.ExecuteScalar().ToString());
+                    //VAMOS A OBTENER LA DIFERENCIA DE DIAS ENTRE FECHA_ENTREGA Y FECHA_ASIGNACIÓN
+                    Comando = new SqlCommand("SELECT DATEDIFF(DAY,@fecha_asignacion, @fecha)", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@fecha_asignacion", fecha_asigancion);
+                    Comando.Parameters.AddWithValue("@fecha", fecha);
+                    dias_entrega = Int32.Parse(Comando.ExecuteScalar().ToString()) + 1;
+                    //SE ACTUALIZAN LOS DATOS SIGUIENTES
+                    SqlCommand cmd = new SqlCommand("UPDATE p SET p.cve_entrega = @cve_entrega, p.pzas_entregadas = @pzas_entregadas, p.fecha_entrega = @fecha_entrega, p.dias_entrega = @dias_entrega FROM PEDIDO p INNER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta WHERE ven.cve_siniestro = @cve_siniestro AND ven.cve_pedido = @cve_pedido AND p.cve_pieza = @cve_pieza AND p.cve_pedido = @cve_pedidoIdentity", nuevaConexion);
+                    cmd.Parameters.Add("@cve_entrega", SqlDbType.Int);
+                    cmd.Parameters.Add("@pzas_entregadas", SqlDbType.Int);
+                    cmd.Parameters.Add("@fecha_entrega", SqlDbType.Date);
+                    cmd.Parameters.Add("@cve_siniestro", SqlDbType.NVarChar, 50);
+                    cmd.Parameters.Add("@cve_pedido", SqlDbType.NVarChar, 50);
+                    cmd.Parameters.Add("@cve_pieza", SqlDbType.Int);
+                    cmd.Parameters.Add("@dias_entrega", SqlDbType.Int);
+                    cmd.Parameters.Add("@cve_pedidoIdentity", SqlDbType.Int);
+
+                    cmd.Parameters["@cve_entrega"].Value = cve_entrega;
+                    cmd.Parameters["@pzas_entregadas"].Value = cantidad;
+                    cmd.Parameters["@fecha_entrega"].Value = fecha;
+                    cmd.Parameters["@cve_siniestro"].Value = cve_siniestro;
+                    cmd.Parameters["@cve_pedido"].Value = cve_pedido;
+                    cmd.Parameters["@cve_pieza"].Value = cve_pieza;
+                    cmd.Parameters["@dias_entrega"].Value = dias_entrega;
+                    cmd.Parameters["@cve_pedidoIdentity"].Value = cvePedidoIdentity;
+                    cmd.ExecuteNonQuery();
+                    //SI SE CUMPLE SE SE REGISTRA ENTREGA EN TIEMPO
+                    cmd = new SqlCommand("SELECT p.fecha_entrega,ven.fecha_promesa FROM PEDIDO p INNER JOIN ENTREGA ent ON p.cve_entrega = ent.cve_entrega INNER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta WHERE p.cve_venta = @cve_venta AND p.cve_pieza = @cve_pieza AND p.cve_pedido = @cve_pedido AND p.pzas_entregadas = p.cantidad AND p.fecha_entrega <= ven.fecha_promesa", nuevaConexion);
                     cmd.Parameters.Add("@cve_venta", SqlDbType.Int);
                     cmd.Parameters.Add("@cve_pieza", SqlDbType.Int);
                     cmd.Parameters.Add("@cve_pedido", SqlDbType.Int);
                     cmd.Parameters["@cve_venta"].Value = cve_venta;
                     cmd.Parameters["@cve_pieza"].Value = cve_pieza;
                     cmd.Parameters["@cve_pedido"].Value = cvePedidoIdentity;
-                    //MessageBOX.SHowDialog(3, "Entregado a Tiempo!");
-                }
+                    if (cmd.ExecuteScalar() != null)
+                    {
+                        cmd = new SqlCommand("UPDATE PEDIDO SET entrega_enTiempo = 1 WHERE cve_venta = @cve_venta  AND cve_pieza = @cve_pieza AND cve_pedido = @cve_pedido", nuevaConexion);
+                        cmd.Parameters.Add("@cve_venta", SqlDbType.Int);
+                        cmd.Parameters.Add("@cve_pieza", SqlDbType.Int);
+                        cmd.Parameters.Add("@cve_pedido", SqlDbType.Int);
+                        cmd.Parameters["@cve_venta"].Value = cve_venta;
+                        cmd.Parameters["@cve_pieza"].Value = cve_pieza;
+                        cmd.Parameters["@cve_pedido"].Value = cvePedidoIdentity;
+                        //MessageBOX.SHowDialog(3, "Entregado a Tiempo!");
+                    }
 
-                cmd.ExecuteNonQuery();
-                nuevaConexion.Close();
-                mensaje = "ENTREGA EXITOSA";
+                    cmd.ExecuteNonQuery();
+                    nuevaConexion.Close();
+                    mensaje = "ENTREGA EXITOSA";
+                }
+                
             }
 
             return mensaje;
@@ -1404,7 +1457,7 @@ namespace Refracciones
                             etiqueta.IncludeLabel = false;
                             etiqueta.AlternateLabel = cveVenta + "," + cvePedido;
                             etiqueta.LabelPosition = LabelPositions.BOTTOMCENTER;
-                            etiqueta.LabelFont = new System.Drawing.Font(FontFamily.GenericMonospace, 15, FontStyle.Regular);
+                            etiqueta.LabelFont = new System.Drawing.Font(System.Drawing.FontFamily.GenericMonospace, 15, FontStyle.Regular);
                             var etiquetaImagen = etiqueta.Encode(((BarcodeLib.TYPE)valor), cveVenta + "," + cvePedido, System.Drawing.Color.Black, System.Drawing.Color.White, 150, 17);
 
 
@@ -6606,73 +6659,77 @@ namespace Refracciones
             int cve_entrega;
             using (SqlConnection nuevaConexion = Conexion.conexion())
             {
-                nuevaConexion.Open();
-                Comando = new SqlCommand("INSERT INTO ENTREGA (fecha,cantidad,cve_pieza,cve_venta, realizo, cve_pedido) VALUES (@fecha,@cantidadE,@cve_pieza,@cve_venta,@realizo,@cve_pedido)", nuevaConexion);
-                Comando.Parameters.Add("@fecha", SqlDbType.Date);
-                Comando.Parameters.Add("@cantidadE", SqlDbType.Int);
-                Comando.Parameters.Add("@cve_pieza", SqlDbType.Int);
-                Comando.Parameters.Add("@cve_venta", SqlDbType.Int);
-                Comando.Parameters.Add("@realizo", SqlDbType.NVarChar, 50);
-                Comando.Parameters.Add("@cve_pedido", SqlDbType.Int);
-
-                Comando.Parameters["@fecha"].Value = fecha;
-                Comando.Parameters["@cantidadE"].Value = cantidad;
-                Comando.Parameters["@cve_pieza"].Value = cve_pieza;
-                Comando.Parameters["@cve_venta"].Value = cve_venta;
-                Comando.Parameters["@realizo"].Value = realizo;
-                Comando.Parameters["@cve_pedido"].Value = cvePedidoIdentity;
-                Comando.ExecuteNonQuery();
-                //VAMOS A OBTENER LA CLAVE DE ENTREGA DEL ULTIMO REGISTRO EN ENTREGA
-                Comando = new SqlCommand("SELECT TOP 1 cve_entrega FROM ENTREGA ORDER BY cve_entrega DESC", nuevaConexion);
-                cve_entrega = int.Parse(Comando.ExecuteScalar().ToString());
-                //VAMOS A OBTENER LA DIFERENCIA DE DIAS ENTRE FECHA_ENTREGA Y FECHA_ASIGNACIÓN
-                Comando = new SqlCommand("SELECT DATEDIFF(DAY,@fecha_asignacion, @fecha)", nuevaConexion);
-                Comando.Parameters.AddWithValue("@fecha_asignacion", fecha_asigancion);
-                Comando.Parameters.AddWithValue("@fecha", fecha);
-                dias_entrega = Int32.Parse(Comando.ExecuteScalar().ToString()) + 1;
-                //SE ACTUALIZAN LOS DATOS SIGUIENTES
-                //SqlCommand cmd = new SqlCommand("UPDATE p SET p.cve_entrega = @cve_entrega, p.pzas_entregadas = @pzas_entregadas, p.fecha_entrega = @fecha_entrega, p.dias_entrega = @dias_entrega FROM PEDIDO p INNER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta WHERE ven.cve_siniestro = @cve_siniestro AND ven.cve_pedido = @cve_pedido AND p.cve_pieza = @cve_pieza AND p.cve_pedido = @cve_pedidoIdentity", nuevaConexion);
-                SqlCommand cmd = new SqlCommand("UPDATE p SET p.cve_entrega = @cve_entrega, p.pzas_entregadas = @pzas_entregadas, p.fecha_entrega = @fecha_entrega, p.dias_entrega = @dias_entrega, p.vale_liberado = 1 FROM PEDIDO p INNER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta WHERE ven.cve_siniestro = @cve_siniestro AND ven.cve_pedido = @cve_pedido AND p.cve_pieza = @cve_pieza AND p.cve_pedido = @cve_pedidoIdentity", nuevaConexion);//Vale liberado
-                cmd.Parameters.Add("@cve_entrega", SqlDbType.Int);
-                cmd.Parameters.Add("@pzas_entregadas", SqlDbType.Int);
-                cmd.Parameters.Add("@fecha_entrega", SqlDbType.Date);
-                cmd.Parameters.Add("@cve_siniestro", SqlDbType.NVarChar, 50);
-                cmd.Parameters.Add("@cve_pedido", SqlDbType.NVarChar, 50);
-                cmd.Parameters.Add("@cve_pieza", SqlDbType.Int);
-                cmd.Parameters.Add("@dias_entrega", SqlDbType.Int);
-                cmd.Parameters.Add("@cve_pedidoIdentity", SqlDbType.Int);
-
-                cmd.Parameters["@cve_entrega"].Value = cve_entrega;
-                cmd.Parameters["@pzas_entregadas"].Value = cantidad;
-                cmd.Parameters["@fecha_entrega"].Value = fecha;
-                cmd.Parameters["@cve_siniestro"].Value = cve_siniestro;
-                cmd.Parameters["@cve_pedido"].Value = cve_pedido;
-                cmd.Parameters["@cve_pieza"].Value = cve_pieza;
-                cmd.Parameters["@dias_entrega"].Value = dias_entrega;
-                cmd.Parameters["@cve_pedidoIdentity"].Value = cvePedidoIdentity;
-                cmd.ExecuteNonQuery();
-                //SI SE CUMPLE SE SE REGISTRA ENTREGA EN TIEMPO
-                cmd = new SqlCommand("SELECT p.fecha_entrega,ven.fecha_promesa FROM PEDIDO p INNER JOIN ENTREGA ent ON p.cve_entrega = ent.cve_entrega INNER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta WHERE p.cve_venta = @cve_venta AND p.cve_pieza = @cve_pieza AND p.cve_pedido = @cve_pedido AND p.pzas_entregadas = p.cantidad AND p.fecha_entrega <= ven.fecha_promesa", nuevaConexion);
-                cmd.Parameters.Add("@cve_venta", SqlDbType.Int);
-                cmd.Parameters.Add("@cve_pieza", SqlDbType.Int);
-                cmd.Parameters.Add("@cve_pedido", SqlDbType.Int);
-                cmd.Parameters["@cve_venta"].Value = cve_venta;
-                cmd.Parameters["@cve_pieza"].Value = cve_pieza;
-                cmd.Parameters["@cve_pedido"].Value = cvePedidoIdentity;
-                if (cmd.ExecuteScalar() != null)
+                if(revisarEstadoPiezaEntrega(cvePedidoIdentity))
                 {
-                    cmd = new SqlCommand("UPDATE PEDIDO SET entrega_enTiempo = 1 WHERE cve_venta = @cve_venta  AND cve_pieza = @cve_pieza AND cve_pedido = @cve_pedido", nuevaConexion);
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("INSERT INTO ENTREGA (fecha,cantidad,cve_pieza,cve_venta, realizo, cve_pedido) VALUES (@fecha,@cantidadE,@cve_pieza,@cve_venta,@realizo,@cve_pedido)", nuevaConexion);
+                    Comando.Parameters.Add("@fecha", SqlDbType.Date);
+                    Comando.Parameters.Add("@cantidadE", SqlDbType.Int);
+                    Comando.Parameters.Add("@cve_pieza", SqlDbType.Int);
+                    Comando.Parameters.Add("@cve_venta", SqlDbType.Int);
+                    Comando.Parameters.Add("@realizo", SqlDbType.NVarChar, 50);
+                    Comando.Parameters.Add("@cve_pedido", SqlDbType.Int);
+
+                    Comando.Parameters["@fecha"].Value = fecha;
+                    Comando.Parameters["@cantidadE"].Value = cantidad;
+                    Comando.Parameters["@cve_pieza"].Value = cve_pieza;
+                    Comando.Parameters["@cve_venta"].Value = cve_venta;
+                    Comando.Parameters["@realizo"].Value = realizo;
+                    Comando.Parameters["@cve_pedido"].Value = cvePedidoIdentity;
+                    Comando.ExecuteNonQuery();
+                    //VAMOS A OBTENER LA CLAVE DE ENTREGA DEL ULTIMO REGISTRO EN ENTREGA
+                    Comando = new SqlCommand("SELECT TOP 1 cve_entrega FROM ENTREGA ORDER BY cve_entrega DESC", nuevaConexion);
+                    cve_entrega = int.Parse(Comando.ExecuteScalar().ToString());
+                    //VAMOS A OBTENER LA DIFERENCIA DE DIAS ENTRE FECHA_ENTREGA Y FECHA_ASIGNACIÓN
+                    Comando = new SqlCommand("SELECT DATEDIFF(DAY,@fecha_asignacion, @fecha)", nuevaConexion);
+                    Comando.Parameters.AddWithValue("@fecha_asignacion", fecha_asigancion);
+                    Comando.Parameters.AddWithValue("@fecha", fecha);
+                    dias_entrega = Int32.Parse(Comando.ExecuteScalar().ToString()) + 1;
+                    //SE ACTUALIZAN LOS DATOS SIGUIENTES
+                    //SqlCommand cmd = new SqlCommand("UPDATE p SET p.cve_entrega = @cve_entrega, p.pzas_entregadas = @pzas_entregadas, p.fecha_entrega = @fecha_entrega, p.dias_entrega = @dias_entrega FROM PEDIDO p INNER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta WHERE ven.cve_siniestro = @cve_siniestro AND ven.cve_pedido = @cve_pedido AND p.cve_pieza = @cve_pieza AND p.cve_pedido = @cve_pedidoIdentity", nuevaConexion);
+                    SqlCommand cmd = new SqlCommand("UPDATE p SET p.cve_entrega = @cve_entrega, p.pzas_entregadas = @pzas_entregadas, p.fecha_entrega = @fecha_entrega, p.dias_entrega = @dias_entrega, p.vale_liberado = 1 FROM PEDIDO p INNER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta WHERE ven.cve_siniestro = @cve_siniestro AND ven.cve_pedido = @cve_pedido AND p.cve_pieza = @cve_pieza AND p.cve_pedido = @cve_pedidoIdentity", nuevaConexion);//Vale liberado
+                    cmd.Parameters.Add("@cve_entrega", SqlDbType.Int);
+                    cmd.Parameters.Add("@pzas_entregadas", SqlDbType.Int);
+                    cmd.Parameters.Add("@fecha_entrega", SqlDbType.Date);
+                    cmd.Parameters.Add("@cve_siniestro", SqlDbType.NVarChar, 50);
+                    cmd.Parameters.Add("@cve_pedido", SqlDbType.NVarChar, 50);
+                    cmd.Parameters.Add("@cve_pieza", SqlDbType.Int);
+                    cmd.Parameters.Add("@dias_entrega", SqlDbType.Int);
+                    cmd.Parameters.Add("@cve_pedidoIdentity", SqlDbType.Int);
+
+                    cmd.Parameters["@cve_entrega"].Value = cve_entrega;
+                    cmd.Parameters["@pzas_entregadas"].Value = cantidad;
+                    cmd.Parameters["@fecha_entrega"].Value = fecha;
+                    cmd.Parameters["@cve_siniestro"].Value = cve_siniestro;
+                    cmd.Parameters["@cve_pedido"].Value = cve_pedido;
+                    cmd.Parameters["@cve_pieza"].Value = cve_pieza;
+                    cmd.Parameters["@dias_entrega"].Value = dias_entrega;
+                    cmd.Parameters["@cve_pedidoIdentity"].Value = cvePedidoIdentity;
+                    cmd.ExecuteNonQuery();
+                    //SI SE CUMPLE SE SE REGISTRA ENTREGA EN TIEMPO
+                    cmd = new SqlCommand("SELECT p.fecha_entrega,ven.fecha_promesa FROM PEDIDO p INNER JOIN ENTREGA ent ON p.cve_entrega = ent.cve_entrega INNER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta WHERE p.cve_venta = @cve_venta AND p.cve_pieza = @cve_pieza AND p.cve_pedido = @cve_pedido AND p.pzas_entregadas = p.cantidad AND p.fecha_entrega <= ven.fecha_promesa", nuevaConexion);
                     cmd.Parameters.Add("@cve_venta", SqlDbType.Int);
                     cmd.Parameters.Add("@cve_pieza", SqlDbType.Int);
                     cmd.Parameters.Add("@cve_pedido", SqlDbType.Int);
                     cmd.Parameters["@cve_venta"].Value = cve_venta;
                     cmd.Parameters["@cve_pieza"].Value = cve_pieza;
                     cmd.Parameters["@cve_pedido"].Value = cvePedidoIdentity;
-                    //MessageBOX.SHowDialog(3, "Entregado a Tiempo!");
-                }
+                    if (cmd.ExecuteScalar() != null)
+                    {
+                        cmd = new SqlCommand("UPDATE PEDIDO SET entrega_enTiempo = 1 WHERE cve_venta = @cve_venta  AND cve_pieza = @cve_pieza AND cve_pedido = @cve_pedido", nuevaConexion);
+                        cmd.Parameters.Add("@cve_venta", SqlDbType.Int);
+                        cmd.Parameters.Add("@cve_pieza", SqlDbType.Int);
+                        cmd.Parameters.Add("@cve_pedido", SqlDbType.Int);
+                        cmd.Parameters["@cve_venta"].Value = cve_venta;
+                        cmd.Parameters["@cve_pieza"].Value = cve_pieza;
+                        cmd.Parameters["@cve_pedido"].Value = cvePedidoIdentity;
+                        //MessageBOX.SHowDialog(3, "Entregado a Tiempo!");
+                    }
 
-                cmd.ExecuteNonQuery();
-                nuevaConexion.Close();
+                    cmd.ExecuteNonQuery();
+                    nuevaConexion.Close();
+                }
+                
             }
 
         }
@@ -6989,6 +7046,382 @@ namespace Refracciones
             }
 
         }
+
+
+
+
+        //ENVIAR CORREO BEGIN
+
+        //REVISAR SI TODAS LAS PIEZAS DEL PEDIDO ESTAN ENTREGADAS
+        public bool revisarPiezasEnviarCorreo(string cvePedido)
+        {
+            bool respuesta = false;
+
+            try
+            {
+                using (SqlConnection nuevacon = Conexion.conexion())
+                {
+                    this.Comando = new SqlCommand(string.Format("SELECT ven.cve_venta,ven.cve_pedido AS 'CVE PEDIDO', ven.cve_siniestro AS 'CVE SINIESTRO',t.nombre AS 'TALLER NOMBRE', c.cve_nombre AS 'CLIENTE NOMBRE', cor.correo AS 'CORREO', pi.nombre AS 'PIEZA', p.estado AS 'ESTADO PIEZA' FROM PEDIDO p LEFT OUTER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta LEFT OUTER JOIN ORIGEN_PIEZA o ON o.cve_origen = p.cve_origen LEFT OUTER JOIN PIEZA pi ON p.cve_pieza = pi.cve_pieza LEFT OUTER JOIN PROVEEDOR pro ON p.cve_proveedor = pro.cve_proveedor LEFT OUTER JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE c ON c.cve_nombre = v.cve_cliente LEFT OUTER JOIN PORTAL po ON po.cve_portal = p.cve_portal LEFT OUTER JOIN TALLER t ON t.cve_taller = ven.cve_taller  LEFT OUTER JOIN FACTURA fa ON fa.cve_factura = p.cve_factura LEFT OUTER JOIN ESTADO_FACTURA es ON es.cve_estado = fa.cve_estado LEFT OUTER JOIN ENTREGA ent ON ent.cve_entrega = p.cve_entrega LEFT OUTER JOIN SINIESTRO s ON s.cve_siniestro = ven.cve_siniestro LEFT OUTER JOIN Estado_Siniestro ess ON ess.cve_estado = p.estado LEFT OUTER JOIN VEHICULO vh ON s.cve_vehiculo = vh.cve_vehiculo LEFT OUTER JOIN MARCA ma ON vh.cve_marca = ma.cve_marca LEFT OUTER JOIN VENDEDOR vend ON vend.cve_vendedor = ven.cve_vendedor LEFT OUTER JOIN CORREOS cor ON t.cve_taller = cor.cve_taller WHERE ven.cve_pedido = '{0}'", cvePedido), nuevacon);
+                    nuevacon.Open();
+                    Lector = Comando.ExecuteReader();
+                    while (Lector.Read())
+                    {
+                        string temp = Lector["ESTADO PIEZA"].ToString();
+                        if (temp == "6")
+                        { respuesta = true; }
+                        else if (temp == "11") {  respuesta = true; }
+                        else if (temp == "12") { respuesta = true; }
+                        else { respuesta = false; break; }
+
+
+
+                    }
+                   
+                    Lector.Close();
+                    nuevacon.Close();
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+
+            return respuesta;
+        }
+
+
+        //------------- OBTENER LAS PIEZAS QUE SE ENVIARAN AL CORREO
+
+        public static List<T> removeDuplicates<T>(List<T> list)//Elimianr datos duplicados en una lista
+        {
+            return new HashSet<T>(list).ToList();
+        }
+
+        public List<string> piezasCorreo(string cvePedido)
+        {
+            List<string> piezas = new List<string>();
+            List<string> piezasDistinct = new List<string>();
+
+            try
+            {
+                using (SqlConnection nuevacon = Conexion.conexion())
+                {
+                    this.Comando = new SqlCommand(string.Format("SELECT ven.cve_venta,ven.cve_pedido AS 'CVE PEDIDO', ven.cve_siniestro AS 'CVE SINIESTRO',t.nombre AS 'TALLER NOMBRE', c.cve_nombre AS 'CLIENTE NOMBRE', cor.correo AS 'CORREO', pi.nombre AS 'PIEZA' FROM PEDIDO p LEFT OUTER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta LEFT OUTER JOIN ORIGEN_PIEZA o ON o.cve_origen = p.cve_origen LEFT OUTER JOIN PIEZA pi ON p.cve_pieza = pi.cve_pieza LEFT OUTER JOIN PROVEEDOR pro ON p.cve_proveedor = pro.cve_proveedor LEFT OUTER JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE c ON c.cve_nombre = v.cve_cliente LEFT OUTER JOIN PORTAL po ON po.cve_portal = p.cve_portal LEFT OUTER JOIN TALLER t ON t.cve_taller = ven.cve_taller  LEFT OUTER JOIN FACTURA fa ON fa.cve_factura = p.cve_factura LEFT OUTER JOIN ESTADO_FACTURA es ON es.cve_estado = fa.cve_estado LEFT OUTER JOIN ENTREGA ent ON ent.cve_entrega = p.cve_entrega LEFT OUTER JOIN SINIESTRO s ON s.cve_siniestro = ven.cve_siniestro LEFT OUTER JOIN Estado_Siniestro ess ON ess.cve_estado = p.estado LEFT OUTER JOIN VEHICULO vh ON s.cve_vehiculo = vh.cve_vehiculo LEFT OUTER JOIN MARCA ma ON vh.cve_marca = ma.cve_marca LEFT OUTER JOIN VENDEDOR vend ON vend.cve_vendedor = ven.cve_vendedor LEFT OUTER JOIN CORREOS cor ON t.cve_taller = cor.cve_taller WHERE ven.cve_pedido = '{0}' AND p.estado != 11 AND p.estado != 12", cvePedido), nuevacon);
+                    nuevacon.Open();
+                    Lector = Comando.ExecuteReader();
+                    while (Lector.Read())
+                    {
+
+
+                        piezas.Add(Lector["PIEZA"].ToString());
+
+
+                    }
+                    piezasDistinct =  removeDuplicates(piezas);
+                    Lector.Close();
+                    nuevacon.Close();
+                }
+                
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+
+            return piezasDistinct;
+        }
+
+        //OBTENER LOS CORREOS QUE SE ENVIARAN AL CORREO
+        public List<string> Correos(string cvePedido)
+        {
+            List<string> correos = new List<string>();
+            List<string> correosDistinct = new List<string>();
+
+            try
+            {
+                using (SqlConnection nuevacon = Conexion.conexion())
+                {
+                    this.Comando = new SqlCommand(string.Format("SELECT ven.cve_venta,ven.cve_pedido AS 'CVE PEDIDO', ven.cve_siniestro AS 'CVE SINIESTRO',t.nombre AS 'TALLER NOMBRE', c.cve_nombre AS 'CLIENTE NOMBRE', cor.correo AS 'CORREO', pi.nombre AS 'PIEZA' FROM PEDIDO p LEFT OUTER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta LEFT OUTER JOIN ORIGEN_PIEZA o ON o.cve_origen = p.cve_origen LEFT OUTER JOIN PIEZA pi ON p.cve_pieza = pi.cve_pieza LEFT OUTER JOIN PROVEEDOR pro ON p.cve_proveedor = pro.cve_proveedor LEFT OUTER JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE c ON c.cve_nombre = v.cve_cliente LEFT OUTER JOIN PORTAL po ON po.cve_portal = p.cve_portal LEFT OUTER JOIN TALLER t ON t.cve_taller = ven.cve_taller  LEFT OUTER JOIN FACTURA fa ON fa.cve_factura = p.cve_factura LEFT OUTER JOIN ESTADO_FACTURA es ON es.cve_estado = fa.cve_estado LEFT OUTER JOIN ENTREGA ent ON ent.cve_entrega = p.cve_entrega LEFT OUTER JOIN SINIESTRO s ON s.cve_siniestro = ven.cve_siniestro LEFT OUTER JOIN Estado_Siniestro ess ON ess.cve_estado = p.estado LEFT OUTER JOIN VEHICULO vh ON s.cve_vehiculo = vh.cve_vehiculo LEFT OUTER JOIN MARCA ma ON vh.cve_marca = ma.cve_marca LEFT OUTER JOIN VENDEDOR vend ON vend.cve_vendedor = ven.cve_vendedor LEFT OUTER JOIN CORREOS cor ON t.cve_taller = cor.cve_taller WHERE ven.cve_pedido = '{0}' AND cor.estado = 1", cvePedido), nuevacon);
+                    nuevacon.Open();
+                    Lector = Comando.ExecuteReader();
+                    while (Lector.Read())
+                    {
+
+                        correos.Add(Lector["CORREO"].ToString());
+
+
+                    }
+                    correosDistinct = removeDuplicates(correos);
+                    Lector.Close();
+                    nuevacon.Close();
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+
+            return correosDistinct;
+        }
+
+        //
+        //OBTENER EL CORREO DEL COTIZADOR / VENDEDOR
+        public string CorreosVendedor(string cvePedido)
+        {
+            string correoVendedor = "";
+
+            try
+            {
+                using (SqlConnection nuevacon = Conexion.conexion())
+                {
+                    this.Comando = new SqlCommand(string.Format("SELECT vend.correo AS 'CORREO VENDEDOR', vend.cve_vendedor FROM PEDIDO p LEFT OUTER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta LEFT OUTER JOIN ORIGEN_PIEZA o ON o.cve_origen = p.cve_origen LEFT OUTER JOIN PIEZA pi ON p.cve_pieza = pi.cve_pieza LEFT OUTER JOIN PROVEEDOR pro ON p.cve_proveedor = pro.cve_proveedor LEFT OUTER JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE c ON c.cve_nombre = v.cve_cliente LEFT OUTER JOIN PORTAL po ON po.cve_portal = p.cve_portal LEFT OUTER JOIN TALLER t ON t.cve_taller = ven.cve_taller  LEFT OUTER JOIN FACTURA fa ON fa.cve_factura = p.cve_factura LEFT OUTER JOIN ESTADO_FACTURA es ON es.cve_estado = fa.cve_estado LEFT OUTER JOIN ENTREGA ent ON ent.cve_entrega = p.cve_entrega LEFT OUTER JOIN SINIESTRO s ON s.cve_siniestro = ven.cve_siniestro LEFT OUTER JOIN Estado_Siniestro ess ON ess.cve_estado = p.estado LEFT OUTER JOIN VEHICULO vh ON s.cve_vehiculo = vh.cve_vehiculo LEFT OUTER JOIN MARCA ma ON vh.cve_marca = ma.cve_marca LEFT OUTER JOIN VENDEDOR vend ON vend.cve_vendedor = ven.cve_vendedor LEFT OUTER JOIN CORREOS cor ON t.cve_taller = cor.cve_taller WHERE ven.cve_pedido = '{0}' AND vend.estado = 1", cvePedido), nuevacon);
+                    nuevacon.Open();
+                    Lector = Comando.ExecuteReader();
+                    while (Lector.Read())
+                    {
+
+                        correoVendedor =  Lector["CORREO VENDEDOR"].ToString();
+
+
+                    }
+                    
+                    Lector.Close();
+                    nuevacon.Close();
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+
+            return correoVendedor;
+        }
+
+        //OBTENER EL NOMBRE DEL TALLER
+        public string nombreTallerCorreo(string cvePedido)
+        {
+            string nombreTaller = "";
+
+            try
+            {
+                using (SqlConnection nuevacon = Conexion.conexion())
+                {
+                    this.Comando = new SqlCommand(string.Format("SELECT ven.cve_venta,ven.cve_pedido AS 'CVE PEDIDO', ven.cve_siniestro AS 'CVE SINIESTRO',t.nombre AS 'TALLER NOMBRE', c.cve_nombre AS 'CLIENTE NOMBRE', cor.correo AS 'CORREO', pi.nombre AS 'PIEZA' FROM PEDIDO p LEFT OUTER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta LEFT OUTER JOIN ORIGEN_PIEZA o ON o.cve_origen = p.cve_origen LEFT OUTER JOIN PIEZA pi ON p.cve_pieza = pi.cve_pieza LEFT OUTER JOIN PROVEEDOR pro ON p.cve_proveedor = pro.cve_proveedor LEFT OUTER JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE c ON c.cve_nombre = v.cve_cliente LEFT OUTER JOIN PORTAL po ON po.cve_portal = p.cve_portal LEFT OUTER JOIN TALLER t ON t.cve_taller = ven.cve_taller  LEFT OUTER JOIN FACTURA fa ON fa.cve_factura = p.cve_factura LEFT OUTER JOIN ESTADO_FACTURA es ON es.cve_estado = fa.cve_estado LEFT OUTER JOIN ENTREGA ent ON ent.cve_entrega = p.cve_entrega LEFT OUTER JOIN SINIESTRO s ON s.cve_siniestro = ven.cve_siniestro LEFT OUTER JOIN Estado_Siniestro ess ON ess.cve_estado = p.estado LEFT OUTER JOIN VEHICULO vh ON s.cve_vehiculo = vh.cve_vehiculo LEFT OUTER JOIN MARCA ma ON vh.cve_marca = ma.cve_marca LEFT OUTER JOIN VENDEDOR vend ON vend.cve_vendedor = ven.cve_vendedor LEFT OUTER JOIN CORREOS cor ON t.cve_taller = cor.cve_taller WHERE ven.cve_pedido = '{0}'", cvePedido), nuevacon);
+                    nuevacon.Open();
+                    Lector = Comando.ExecuteReader();
+                    while (Lector.Read())
+                    {
+
+
+                        nombreTaller = Lector["TALLER NOMBRE"].ToString();
+
+
+                    }
+                    
+                    Lector.Close();
+                    nuevacon.Close();
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+
+            return nombreTaller;
+        }
+
+        public void enviaCorreo(string clienteNombre, string cvepedido, string siniestro)
+        {
+
+            List<string> correosCliente = Correos(cvepedido);
+            string taller;
+
+            //Primero revisamos que existan correos a los cuales enviar
+            if (correosCliente.Count != 0)
+            {
+                List<string> piezas = piezasCorreo(cvepedido);
+                taller = nombreTallerCorreo(cvepedido);
+                string correoVendedor = CorreosVendedor(cvepedido);
+
+                string senderNombre = "JEIC Distribuidora";
+                string senderCorreo = "info@jeic.com.mx";
+                string senderAppPass = "xldsjobozxjsrmpk";
+                string responsableCorreoCopia = "";
+
+                if (clienteNombre == "GNP")
+                    responsableCorreoCopia = "colisionjeic.admon1@hotmail.com";
+                else if (clienteNombre == "HDI SEGUROS")
+                    responsableCorreoCopia = "jeic.ja@hotmail.com";
+
+                string IsraCorreoCopia = "jeiccotizaciones@hotmail.com";
+
+                try
+                {
+
+                    var message = new MimeMessage();
+                    string piezasEntregadas = "";
+                    message.From.Add(new MailboxAddress(senderNombre, senderCorreo));
+
+                    foreach (string cor in correosCliente)
+                    {
+                        message.To.Add(new MailboxAddress(clienteNombre, cor));// TO
+                    }
+                    message.Cc.Add(new MailboxAddress(clienteNombre, responsableCorreoCopia));//COPIA RESPONSABLE
+                    message.Cc.Add(new MailboxAddress("", IsraCorreoCopia));//COPIA ISRAEL
+                    message.Cc.Add(new MailboxAddress("", correoVendedor));//COPIA VENDEDOR// ESTO ES LO CORRECTO
+
+                    //TESTING
+                    //message.To.Add(new MailboxAddress("", "dorapascoe200@gmail.com"));
+                    //message.Cc.Add(new MailboxAddress("", "bryan.rmz.dev@gmail.com"));
+
+
+
+
+
+                    char[] delimiterChars = { '.' };
+
+                    string pedido = "";
+                    string[] temp = cvepedido.Split(delimiterChars);
+                    if (temp[0].StartsWith("M"))
+                        pedido = temp[0].Substring(1);
+                    else
+                        pedido = temp[0];
+                    message.Subject = "Pedido: " + pedido + "//Siniestro: " + siniestro + "//" + taller + " ";
+
+                    foreach (string pie in piezas)
+                    {
+                        piezasEntregadas += "\r\n" + pie;
+                    }
+                    message.Body = new TextPart("plain")
+                    {
+                        Text = "Estimado(a) \r\nAcabamos de entregar todas las piezas asignadas de este pedido, ayúdame liberándolas en el portal, por favor." +
+                            piezasEntregadas +
+                            "\r\n\r\nGracias" +
+                            "\r\n\r\nSaludos" +
+                            "\r\n\r\nIMPORTANTE:" +
+                            "\r\nEste correo es informativo, favor no responder a esta dirección de correo, ya que no se encuentra habilitada para recibir mensajes.\r\n"
+                    };
+
+                    using (var client = new SmtpClient())
+                    {
+                        client.Connect("smtp.gmail.com", 587, false);
+
+                        // Note: only needed if the SMTP server requires authentication
+                        client.Authenticate(senderCorreo, senderAppPass);
+
+                        client.Send(message);
+                        client.Disconnect(true);
+
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+
+                }
+            }
+            else
+            {
+                List<string> piezas = piezasCorreo(cvepedido);
+                taller = nombreTallerCorreo(cvepedido);
+                string correoVendedor = CorreosVendedor(cvepedido);
+
+                string senderNombre = "JEIC Distribuidora";
+                string senderCorreo = "info@jeic.com.mx";
+                string senderAppPass = "xldsjobozxjsrmpk";
+                string responsableCorreoCopia = "";
+
+                if (clienteNombre == "GNP")
+                    responsableCorreoCopia = "colisionjeic.admon1@hotmail.com";
+                else if (clienteNombre == "HDI SEGUROS")
+                    responsableCorreoCopia = "jeic.ja@hotmail.com";
+
+                string IsraCorreoCopia = "jeiccotizaciones@hotmail.com";
+
+                try
+                {
+
+                    var message = new MimeMessage();
+                    string piezasEntregadas = "";
+                    message.From.Add(new MailboxAddress(senderNombre, senderCorreo));
+
+
+                    message.To.Add(new MailboxAddress("", IsraCorreoCopia));//COPIA ISRAEL
+                    message.Cc.Add(new MailboxAddress(clienteNombre, responsableCorreoCopia));//COPIA 
+                    message.Cc.Add(new MailboxAddress("", correoVendedor));//COPIA VENDEDOR// ESTO ES LO CORRECTO
+
+                    //TESTING
+                    //message.To.Add(new MailboxAddress("", "dorapascoe200@gmail.com"));
+                    //message.Cc.Add(new MailboxAddress("", "bryan.rmz.dev@gmail.com"));
+
+
+
+
+
+                    char[] delimiterChars = { '.' };
+
+                    string pedido = "";
+                    string[] temp = cvepedido.Split(delimiterChars);
+                    if (temp[0].StartsWith("M"))
+                        pedido = temp[0].Substring(1);
+                    else
+                        pedido = temp[0]
+                            ;
+                    message.Subject = "Pedido: " + pedido + "//Siniestro: " + siniestro + "//" + taller + " ";
+
+                    foreach (string pie in piezas)
+                    {
+                        piezasEntregadas += "\r\n" + pie;
+                    }
+                    message.Body = new TextPart("plain")
+                    {
+                        Text = "Estimado(a) \r\nAcabamos de entregar todas las piezas asignadas de este pedido, ayúdame liberándolas en el portal, por favor." +
+                            piezasEntregadas +
+                            "\r\n\r\nGracias" +
+                            "\r\n\r\nSaludos" +
+                            "\r\n\r\nIMPORTANTE:" +
+                            "\r\nEste correo es informativo, favor no responder a esta dirección de correo, ya que no se encuentra habilitada para recibir mensajes.\r\n"
+                    };
+
+                    using (var client = new SmtpClient())
+                    {
+                        client.Connect("smtp.gmail.com", 587, false);
+
+                        // Note: only needed if the SMTP server requires authentication
+                        client.Authenticate(senderCorreo, senderAppPass);
+
+                        client.Send(message);
+                        client.Disconnect(true);
+
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+
+                }
+            }
+            
+
+        }
+
+        //ENVIAR CORREO END
 
         /*
         //SE QUITARÁ

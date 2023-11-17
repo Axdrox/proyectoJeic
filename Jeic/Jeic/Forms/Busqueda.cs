@@ -31,7 +31,26 @@ namespace Refracciones.Forms
 
         private void Busqueda_Devolver_Load(object sender, EventArgs e)
         {
+            //--------------------
+            /*List<string> piezas = new List<string>();
+            List<string> clienteCorreos = new List<string>();
+
+            piezas.Add("RADIADOR");
+            piezas.Add("PARRILLA");
+            piezas.Add("FARO DELANTERO IZQUIERDO");
+            piezas.Add("TOLVA SUP DE MARCO RADIADOR");
+            piezas.Add("HORQUILLA INFERIOR DELANTERA IZQUIERDA");
+
+            clienteCorreos.Add("bryan.ramirez.delacruzipn@gmail.com");
+            clienteCorreos.Add("bryan.rmz.dev@gmail.com");
+            clienteCorreos.Add("dorapascoe200@gmail.com");
+
             
+            llenar.enviaCorreo("", clienteCorreos,"M1112978.2","241652/2023", "ANDREA JUACHE - AUTOSERVICIO CALIFORNIA", piezas);
+           */
+
+            //-------------------------------------
+
             this.ActiveControl = TxtClavePed;
             this.Icon = Resources.iconJeic;
             llenarDefaultDGV.defaultDGV(dvgPedido,lblcvePe.Text);
