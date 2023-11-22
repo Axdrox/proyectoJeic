@@ -27,9 +27,10 @@
     <InstallUrl>https://raw.githubusercontent.com/Axdrox/proyectoJeic/development/published/</InstallUrl>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>2</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -60,8 +61,7 @@
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>Jeic.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>32C4D4DB903B48602893E458EE681A9D9DD3ED48</ManifestCertificateThumbprint>
@@ -526,6 +526,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="iconJeic.ico" />
+    <Content Include="Jeic.ico" />
     <None Include="Resources\OjoCerrado.png" />
     <None Include="Resources\ojo.png" />
     <None Include="Resources\Loading1.gif" />
