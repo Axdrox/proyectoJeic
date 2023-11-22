@@ -445,6 +445,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Resources\VALE JEIC.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Jeic_TemporaryKey.pfx" />
@@ -452,6 +455,9 @@
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Resources\generadorClave.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Resources\notify.png" />
   </ItemGroup>
@@ -489,6 +495,9 @@
     <None Include="Resources\iconJeic.ico" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Plantilla.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\user.png" />
   </ItemGroup>
   <ItemGroup>
