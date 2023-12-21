@@ -2277,6 +2277,10 @@ namespace Refracciones
                 double gasto = 0;
                 string tempSAE;
                 DateTime datevalue;
+
+
+                
+                File.WriteAllBytes(ruta, Jeic.Properties.Resources.Plantilla);
                 SLDocument sl = new SLDocument(ruta);
                 DateTime hoy = DateTime.Today;
                 sl.SetCellValue("M2", hoy.ToString("dd-MM-yyyy"));//Se agrega la fecha al excel
@@ -6863,7 +6867,10 @@ namespace Refracciones
             {
                 int totalRegistrosExportar = 0;
                 int temp = 0;
-               
+
+                
+                File.WriteAllBytes(ruta, Jeic.Properties.Resources.generadorClave);
+
                 SLDocument sl = new SLDocument(ruta);
                 //DateTime hoy = DateTime.Today;
                 //sl.SetCellValue("M2", hoy.ToString("dd-MM-yyyy"));//Se agrega la fecha al excel
