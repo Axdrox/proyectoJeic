@@ -4,8 +4,6 @@ VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jeic", "Jeic\Jeic.csproj", "{B67C3104-50DA-4D29-A490-80181AED493C}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Instalador(JEIC)", "Instalador(JEIC)\Instalador(JEIC).vdproj", "{586EF03C-2ADC-4F03-9897-54E9B5F01025}"
-EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Jeic Installer 2022", "Jeic Installer 2022\Jeic Installer 2022.vdproj", "{B637F2D1-BABA-47A5-9BEC-A5B7C8B2C591}"
 EndProject
 Global
@@ -18,8 +16,6 @@ Global
 		{B67C3104-50DA-4D29-A490-80181AED493C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B67C3104-50DA-4D29-A490-80181AED493C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B67C3104-50DA-4D29-A490-80181AED493C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{586EF03C-2ADC-4F03-9897-54E9B5F01025}.Debug|Any CPU.ActiveCfg = Debug
-		{586EF03C-2ADC-4F03-9897-54E9B5F01025}.Release|Any CPU.ActiveCfg = Release
 		{B637F2D1-BABA-47A5-9BEC-A5B7C8B2C591}.Debug|Any CPU.ActiveCfg = Debug
 		{B637F2D1-BABA-47A5-9BEC-A5B7C8B2C591}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection

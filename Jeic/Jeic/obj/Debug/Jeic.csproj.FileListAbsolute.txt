@@ -591,6 +591,3 @@ C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.applica
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.CopyComplete
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.exe
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.pdb
-C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\Resources\VALE JEIC.pdf
-C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\Resources\generadorClave.xlsx
-C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\Resources\Plantilla.xlsx

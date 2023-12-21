@@ -27,7 +27,7 @@
     <InstallUrl>https://raw.githubusercontent.com/Axdrox/proyectoJeic/development/published/</InstallUrl>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>4</ApplicationRevision>
+    <ApplicationRevision>5</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -42,7 +42,7 @@
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>2</WarningLevel>
+    <WarningLevel>3</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -445,9 +445,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Resources\VALE JEIC.pdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <None Include="Resources\VALE JEIC.pdf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Jeic_TemporaryKey.pfx" />
@@ -456,9 +454,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Resources\generadorClave.xlsx">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <None Include="Resources\generadorClave.xlsx" />
     <None Include="Resources\notify.png" />
   </ItemGroup>
   <ItemGroup>
@@ -495,9 +491,7 @@
     <None Include="Resources\iconJeic.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Plantilla.xlsx">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <None Include="Resources\Plantilla.xlsx" />
     <None Include="Resources\user.png" />
   </ItemGroup>
   <ItemGroup>

@@ -1507,8 +1507,17 @@ namespace Refracciones
                     if (File.Exists(fileRoute.FileName))
                     {
                         iText.Kernel.Pdf.PdfWriter pdfWriter = new iText.Kernel.Pdf.PdfWriter(fileRoute.FileName);
-                        iText.Kernel.Pdf.PdfReader pdfReader = new iText.Kernel.Pdf.PdfReader(Application.StartupPath + "\\VALE JEIC.pdf");
+                        //iText.Kernel.Pdf.PdfReader pdfReader = new iText.Kernel.Pdf.PdfReader(Application.StartupPath + "\\VALE JEIC.pdf");
 
+                        string ruta = Application.StartupPath + "\\VALE JEIC.pdf";
+                        File.WriteAllBytes(ruta, Jeic.Properties.Resources.VALE_JEIC);
+
+
+                        iText.Kernel.Pdf.PdfReader pdfReader = new iText.Kernel.Pdf.PdfReader(Application.StartupPath + "\\VALE JEIC.pdf");
+                        
+                        
+                        
+                        
                         iText.Kernel.Pdf.PdfDocument pdfdoc = new iText.Kernel.Pdf.PdfDocument(pdfReader, pdfWriter);
 
                         OperBD pdfnuevo = new OperBD();
@@ -1625,12 +1634,17 @@ namespace Refracciones
                         }
                         pdfdoc.Close();
 
-                        MessageBOX.SHowDialog(3, "PDF creado exitosamente");
+                        MessageBOX.SHowDialog(3, "PDF creado exitosamente 1");
                         
                     }
                     else
                     {
                         iText.Kernel.Pdf.PdfWriter pdfWriter = new iText.Kernel.Pdf.PdfWriter(fileRoute.FileName);
+
+                        //iText.Kernel.Pdf.PdfReader pdfReader = new iText.Kernel.Pdf.PdfReader(Application.StartupPath + "\\VALE JEIC.pdf");
+                        
+                        string ruta = Application.StartupPath + "\\VALE JEIC.pdf";
+                        File.WriteAllBytes(ruta, Jeic.Properties.Resources.VALE_JEIC);
                         iText.Kernel.Pdf.PdfReader pdfReader = new iText.Kernel.Pdf.PdfReader(Application.StartupPath + "\\VALE JEIC.pdf");
 
                         iText.Kernel.Pdf.PdfDocument pdfdoc = new iText.Kernel.Pdf.PdfDocument(pdfReader, pdfWriter);
@@ -1749,7 +1763,7 @@ namespace Refracciones
                         }
                         pdfdoc.Close();
 
-                        MessageBOX.SHowDialog(3, "PDF creado exitosamente");
+                        MessageBOX.SHowDialog(3, "PDF creado exitosamente 2");
 
                     }
                 }

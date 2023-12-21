@@ -151,6 +151,16 @@ namespace Jeic.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] generadorClave {
+            get {
+                object obj = ResourceManager.GetObject("generadorClave", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap GiftHECHO {
@@ -241,6 +251,16 @@ namespace Jeic.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Plantilla {
+            get {
+                object obj = ResourceManager.GetObject("Plantilla", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Portal {
@@ -297,6 +317,16 @@ namespace Jeic.Properties {
             get {
                 object obj = ResourceManager.GetObject("user", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] VALE_JEIC {
+            get {
+                object obj = ResourceManager.GetObject("VALE_JEIC", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         
