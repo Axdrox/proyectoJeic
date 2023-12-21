@@ -169,7 +169,13 @@
 
                 txtPrecioReparacion.Text = datos[10];
                 txtPrecioVenta.Text = datos[11];
+
+                
+
             }
+
+            
+
 
             //Permisos
 
@@ -191,6 +197,12 @@
                     cbProveedores.Enabled = true;
                 }
             }
+
+            if (int.Parse(datos[12]) >= 2)
+            {
+                txtPrecioVenta.Enabled = false;
+            }
+
 
             //End Permisos
         }
@@ -520,7 +532,7 @@
         /// <summary>
         /// Defines the datosPieza.
         /// </summary>
-        internal string[] datosPieza = new string[12];
+        internal string[] datosPieza = new string[13];
 
         /// <summary>
         /// The btnAniadirPieza_Click.
@@ -545,7 +557,20 @@
                 else
                     datosPieza[9] = "0";
 
+                //-----CAMBIO INTENTOS ---
+
                 datosPieza[10] = txtPrecioVenta.Text.Trim();
+
+                if (datos[11].ToString().Trim() != txtPrecioVenta.Text.Trim())
+                { 
+                    datosPieza[12] = (int.Parse(datos[12]) + 1).ToString(); 
+                }
+                else
+                {
+                    datosPieza[12] = datos[12];
+                }
+
+                //-----END CAMBIO INTENTOS ---
 
                 if (string.IsNullOrEmpty(txtPrecioReparacion.Text.Trim()))
                 {
@@ -611,6 +636,9 @@
                 }
                 else if (chbOtroProveedor.Checked == false && chbOtroProveedor.Text != "Modificar")
                     datosPieza[6] = cbProveedores.Text.Trim().ToUpper();
+
+                
+
 
                // MessageBOX mes = new MessageBOX(4, "¿Los datos son correctos?");
                 //if (mes.ShowDialog() == DialogResult.OK)

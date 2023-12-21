@@ -137,6 +137,7 @@ namespace Refracciones.Forms
             dt.Columns.Add("Costo de envío\n($)");
             dt.Columns.Add("Precio de venta\n($)");
             dt.Columns.Add("Precio de reparación\n($)");
+            dt.Columns.Add("Intentos");
             dgvPedido.DataSource = dt;
 
             //Impedir que se ordenen de otra forma (podría alterar) comprobar si se necesita
@@ -807,7 +808,7 @@ namespace Refracciones.Forms
                             dtFechaCosto/*, Convert.ToString(row.Cells["Costo sin IVA"].Value)*/, Convert.ToString(row.Cells["Costo neto\n($)"].Value),
                             Convert.ToString(row.Cells["Costo de envío\n($)"].Value), Convert.ToString(row.Cells["Precio de venta\n($)"].Value),
                             Convert.ToString(row.Cells["Precio de reparación\n($)"].Value), Convert.ToString(row.Cells["Clave de producto"].Value),
-                            Convert.ToString(row.Cells["Número de guía"].Value), Convert.ToInt32(row.Cells["Cantidad"].Value), nombresPiezas[i], lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9), x, Convert.ToInt32(row.Cells["dataGridViewStatusCombobox"].Value));
+                            Convert.ToString(row.Cells["Número de guía"].Value), Convert.ToInt32(row.Cells["Cantidad"].Value), nombresPiezas[i], lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9), x, Convert.ToInt32(row.Cells["dataGridViewStatusCombobox"].Value), Convert.ToInt32(row.Cells["Intentos"].Value));
                         x += 1;
                         i++;
                         contadorOrdenActualizar++;
@@ -1014,7 +1015,7 @@ namespace Refracciones.Forms
             cbValuador.ValueMember = "nombre";
         }
 
-        private string[] datosPieza = new string[12];
+        private string[] datosPieza = new string[13];
 
         public string[] datosMandar
         {
@@ -1238,6 +1239,7 @@ namespace Refracciones.Forms
                         datosPieza[9] = Convert.ToString(row.Cells["Costo de envío\n($)"].Value);
                         datosPieza[10] = Convert.ToString(row.Cells["Precio de reparación\n($)"].Value);
                         datosPieza[11] = Convert.ToString(row.Cells["Precio de venta\n($)"].Value);
+                        datosPieza[12] = Convert.ToString(row.Cells["Intentos"].Value);//Intentos
                     }
                     pieza.datosEditar = datosPieza;
                     pieza.editarPieza = 1;
