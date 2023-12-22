@@ -170,24 +170,7 @@
                 txtPrecioReparacion.Text = datos[10];
                 txtPrecioVenta.Text = datos[11];
 
-                
 
-            }
-
-            
-
-
-            //Permisos
-
-            if (txtPrecioVenta.Text.Trim().Equals(String.Empty))
-            {
-                txtPrecioVenta.Enabled = true;
-                chbOtroProveedor.Enabled = true;
-                txtProveedor.Enabled = true;
-                cbProveedores.Enabled = true;
-            }
-            else
-            {
                 if (Busqueda.permisos.Contains("modPrecioPed"))
                     txtPrecioVenta.Enabled = true;
                 if (Busqueda.permisos.Contains("modProvPed"))
@@ -196,16 +179,54 @@
                     txtProveedor.Enabled = true;
                     cbProveedores.Enabled = true;
                 }
-            }
 
-            if (int.Parse(datos[12]) >= 2)
+
+                if (int.Parse(datos[12]) >= 2 && txtPrecioVenta.Text.Trim() != string.Empty)
+                {
+                    txtPrecioVenta.Enabled = false;
+                }
+                else
+                {
+                    if (txtPrecioVenta.Text.Trim().Equals(String.Empty))
+                        txtPrecioVenta.Enabled = true;
+                    else if (Busqueda.permisos.Contains("modPrecioPed"))
+                    {
+                        txtPrecioVenta.Enabled = true;
+                    }
+                    
+                }
+
+            }
+            else
             {
-                txtPrecioVenta.Enabled = false;
+                //Permisos
+
+                if (txtPrecioVenta.Text.Trim().Equals(String.Empty))
+                {
+                    txtPrecioVenta.Enabled = true;
+                    chbOtroProveedor.Enabled = true;
+                    txtProveedor.Enabled = true;
+                    cbProveedores.Enabled = true;
+                }
+                else
+                {
+                    if (Busqueda.permisos.Contains("modPrecioPed"))
+                        txtPrecioVenta.Enabled = true;
+                    if (Busqueda.permisos.Contains("modProvPed"))
+                    {
+                        chbOtroProveedor.Enabled = true;
+                        txtProveedor.Enabled = true;
+                        cbProveedores.Enabled = true;
+                    }
+
+                    //End Permisos
+                }
+
+
             }
 
 
-            //End Permisos
-        }
+            }
 
         public int indicador = 0;
         public string marca;
@@ -561,13 +582,17 @@
 
                 datosPieza[10] = txtPrecioVenta.Text.Trim();
 
-                if (datos[11].ToString().Trim() != txtPrecioVenta.Text.Trim())
+                if (datos != null && datos[11].ToString().Trim() != txtPrecioVenta.Text.Trim())
                 { 
                     datosPieza[12] = (int.Parse(datos[12]) + 1).ToString(); 
                 }
-                else
+                else if(datos != null)
                 {
                     datosPieza[12] = datos[12];
+                }
+                else
+                {
+                    datosPieza[12] = "0";
                 }
 
                 //-----END CAMBIO INTENTOS ---

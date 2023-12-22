@@ -773,7 +773,7 @@ namespace Refracciones.Forms
                             row.Cells["Fecha costo"].Value.ToString()/*, Convert.ToString(row.Cells["Costo sin IVA"].Value)*/, Convert.ToString(row.Cells["Costo neto\n($)"].Value),
                             Convert.ToString(row.Cells["Costo de envío\n($)"].Value), Convert.ToString(row.Cells["Precio de venta\n($)"].Value),
                             Convert.ToString(row.Cells["Precio de reparación\n($)"].Value), Convert.ToString(row.Cells["Clave de producto"].Value),                                 /*Se captura correctamente el valor del combobox ya que toma el valor del ValueMember*/
-                            Convert.ToString(row.Cells["Número de guía"].Value), Convert.ToInt32(row.Cells["Cantidad"].Value), lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9), x, Convert.ToInt32(row.Cells["dataGridViewStatusCombobox"].Value));
+                            Convert.ToString(row.Cells["Número de guía"].Value), Convert.ToInt32(row.Cells["Cantidad"].Value), lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9), x, Convert.ToInt32(row.Cells["dataGridViewStatusCombobox"].Value), Convert.ToInt32(row.Cells["Intentos"].Value));
 
                         x++;
                     }

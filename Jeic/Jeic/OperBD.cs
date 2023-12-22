@@ -5972,7 +5972,7 @@ namespace Refracciones
 
         //-------------INSERTAR DATOS DE PEDIDO
         //public int registrarPedido(string clavePedido, string claveSiniestro, string nombrePieza, string portal, string origen, string proveedor, string fechaCosto/*, string costoSinIVA*/, string costoNeto, string costoEnvio, string precioVenta, string precioReparacion, string claveProducto, string numeroGuia, int cantidad, string realizo, int ordenCaptura, int cveEstado)TESTING
-        public int registrarPedido(string clavePedido, string claveSiniestro, string nombrePieza, string portal, string origen, string proveedor, string fechaCosto/*, string costoSinIVA*/, string costoNeto, string costoEnvio, string precioVenta, string precioReparacion, string claveProducto, string numeroGuia, int cantidad, string realizo, int ordenCaptura, int cveEstado)
+        public int registrarPedido(string clavePedido, string claveSiniestro, string nombrePieza, string portal, string origen, string proveedor, string fechaCosto/*, string costoSinIVA*/, string costoNeto, string costoEnvio, string precioVenta, string precioReparacion, string claveProducto, string numeroGuia, int cantidad, string realizo, int ordenCaptura, int cveEstado, int intentos)
         {
             string destino;
             //Variables
@@ -6020,8 +6020,8 @@ namespace Refracciones
                     /*Comando = new SqlCommand("INSERT INTO PEDIDO " + "(cve_venta, cve_pieza, cantidad, cve_origen, cve_proveedor, cve_portal, cve_guia, cve_producto, fecha_costo, costo_envio, costo_neto, precio_venta, precio_reparacion, gasto, realizo, ordenCaptura, estado) " +
                         "VALUES (@cve_venta, @cve_pieza, @cantidad, @cve_origen, @cve_proveedor, @cve_portal, @cve_guia, @cve_producto, @fecha_costo, @costo_envio, @costo_neto, @precio_venta, @precio_reparacion, @gasto, @realizo, @ordenCaptura, @estado) ", nuevaConexion);//, costo_comprasinIVA    , @costo_comprasinIVA*///TESTING
                                                                                                                                                                                                                                                                                                                                  //Añadiendo los parámetros al query
-                    Comando = new SqlCommand("INSERT INTO PEDIDO " + "(cve_venta, cve_pieza, cantidad, cve_origen, cve_proveedor, cve_portal, cve_guia, cve_producto, fecha_costo, costoEnvio, costo_neto, precio_venta, precio_reparacion, gasto, realizo, ordenCaptura, estado, ubicacion) " +
-                        "VALUES (@cve_venta, @cve_pieza, @cantidad, @cve_origen, @cve_proveedor, @cve_portal, @cve_guia, @cve_producto, @fecha_costo, @costo_envio, @costo_neto, @precio_venta, @precio_reparacion, @gasto, @realizo, @ordenCaptura, @estado, @ubicacion) ", nuevaConexion);
+                    Comando = new SqlCommand("INSERT INTO PEDIDO " + "(cve_venta, cve_pieza, cantidad, cve_origen, cve_proveedor, cve_portal, cve_guia, cve_producto, fecha_costo, costoEnvio, costo_neto, precio_venta, precio_reparacion, gasto, realizo, ordenCaptura, estado, ubicacion, cambios_precio) " +
+                        "VALUES (@cve_venta, @cve_pieza, @cantidad, @cve_origen, @cve_proveedor, @cve_portal, @cve_guia, @cve_producto, @fecha_costo, @costo_envio, @costo_neto, @precio_venta, @precio_reparacion, @gasto, @realizo, @ordenCaptura, @estado, @ubicacion, @intentos) ", nuevaConexion);
                     Comando.Parameters.AddWithValue("@cve_venta", cve_venta);
                     Comando.Parameters.AddWithValue("@cve_pieza", cve_pieza);
                     Comando.Parameters.AddWithValue("@cantidad", cantidad);
@@ -6042,6 +6042,7 @@ namespace Refracciones
                     Comando.Parameters.AddWithValue("@ordenCaptura", ordenCaptura);
                     Comando.Parameters.AddWithValue("@estado", cveEstado);
                     Comando.Parameters.AddWithValue("@ubicacion", ubicacion);
+                    Comando.Parameters.AddWithValue("@intentos", intentos);
                     //Para saber si la inserción se hizo correctamente
                     i = Comando.ExecuteNonQuery();
                     nuevaConexion.Close();
