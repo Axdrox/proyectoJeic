@@ -303,6 +303,7 @@ namespace Refracciones.Forms
                 cbValuador.DataSource = operacion.ValuadoresRegistrados(cbAseguradora.Text.Trim()).Tables[0].DefaultView;
                 cbValuador.ValueMember = "nombre";
             }
+           
         }
 
         //Parámetros que sirven al momento de actualizar formulario
@@ -899,6 +900,11 @@ namespace Refracciones.Forms
                             this.DialogResult = DialogResult.OK;
                         }
                     }
+                    //ENVIAR CORREO SI TODO ESTA ENTREGADO
+                    if (operacion.revisarPiezasEnviarCorreo(txtClavePedido.Text.Trim()))
+                        //if (true)//TESTING
+                        operacion.enviaCorreo(txtAseguradora.Text.Trim(), txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
+
                 }
                 else
                     MessageBOX.SHowDialog(2, "Favor de agregar al menos una pieza");
@@ -1201,6 +1207,7 @@ namespace Refracciones.Forms
                                     fechaBaja.cvePedido = txtClavePedido.Text;
                                     fechaBaja.cveSiniestro = lblClaveSiniestro.Text;
                                     fechaBaja.nombrePieza = piezaNombre;
+                                    fechaBaja.clienteNombre = txtAseguradora.Text.Trim();
                                     fechaBaja.index = index;
                                     fechaBaja.dt1 = dtpFechaAsignacion.Value;
                                     if (fechaBaja.ShowDialog() == DialogResult.OK)

@@ -1,4 +1,5 @@
-﻿using Refracciones;
+﻿using DocumentFormat.OpenXml.Spreadsheet;
+using Refracciones;
 using Refracciones.Forms;
 using System;
 using System.Collections.Generic;
@@ -42,6 +43,10 @@ namespace Jeic.Forms
                         operacion.registrarFechaBaja(cvePedido, cveSiniestro, nombrePieza, index, dtpFechaBaja.Value);
                         this.DialogResult = DialogResult.OK;
                     }
+                    //ENVIAR CORREO SI TODO ESTA ENTREGADO
+                    if (operacion.revisarPiezasEnviarCorreo(cvePedido))
+                        //if (true)//TESTING
+                        operacion.enviaCorreo(clienteNombre, cvePedido, cveSiniestro);
                 }
                 else
                 {
@@ -58,6 +63,7 @@ namespace Jeic.Forms
         public string cvePedido = "";
         public string cveSiniestro = "";
         public string nombrePieza = "";
+        public string clienteNombre = "";
         public int index = 0;
         public DateTime dt1;
 

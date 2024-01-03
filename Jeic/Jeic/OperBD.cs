@@ -7378,8 +7378,8 @@ namespace Refracciones
                 string correoVendedor = CorreosVendedor(cvepedido);
 
                 string senderNombre = "JEIC Distribuidora";
-                string senderCorreo = "info@jeic.com.mx";
-                string senderAppPass = "xldsjobozxjsrmpk";
+                string senderCorreo = "correos-jeic@jeic.com.mx";
+                string senderAppPass = "rdvwqnbybxxomypq";//xldsjobozxjsrmpk
                 string responsableCorreoCopia = "";
 
                 if (clienteNombre == "GNP")
