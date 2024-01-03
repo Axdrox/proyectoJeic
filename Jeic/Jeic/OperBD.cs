@@ -6155,7 +6155,19 @@ namespace Refracciones
                     //Insertando los datos en la tabla PEDIDO
                     /*Comando = new SqlCommand("UPDATE PEDIDO SET " + "cve_pieza = @cve_piezaActual, cantidad = @cantidad, cve_origen = @cve_origen, cve_proveedor = @cve_proveedor, cve_portal = @cve_portal, cve_guia = @cve_guia, cve_producto = @cve_producto, fecha_costo = @fecha_costo, costo_envio = @costo_envio, costo_neto = @costo_neto, precio_venta = @precio_venta, precio_reparacion = @precio_reparacion, gasto = @gasto, realizo = @realizo, ordenCaptura = @ordenCaptura, estado = @estado " +
                         "WHERE cve_venta = @cve_venta AND cve_pieza = @cve_piezaPasada AND cve_pedido = @cvePedido", nuevaConexion);*///, costo_comprasinIVA    , @costo_comprasinIVA //TESTING
-                                                                                                                                    //Añadiendo los parámetros al query
+                                                                                                                                      //Añadiendo los parámetros al query
+                    string guiaPasada = "";
+                    Comando = new SqlCommand(string.Format("SELECT cve_guia FROM PEDIDO WHERE  cve_venta = {0} AND cve_pieza = {1} AND cve_pedido = {2};", cve_venta, cve_piezaPasada, cve_pedidoNum), nuevaConexion);
+                    Lector = Comando.ExecuteReader();
+                    while (Lector.Read()) { guiaPasada = Lector["cve_guia"].ToString(); }
+                    Lector.Close();
+
+                    if (guiaPasada == numeroGuia || guiaPasada == "0" || guiaPasada == "-" || guiaPasada == string.Empty || guiaPasada.Length < 5)
+                    { }
+                    else
+                        numeroGuia = guiaPasada + ", " + numeroGuia; 
+
+
                     Comando = new SqlCommand("UPDATE PEDIDO SET " + "cve_pieza = @cve_piezaActual, cantidad = @cantidad, cve_origen = @cve_origen, cve_proveedor = @cve_proveedor, cve_portal = @cve_portal, cve_guia = @cve_guia, cve_producto = @cve_producto, fecha_costo = @fecha_costo, costoEnvio = @costo_envio, costo_neto = @costo_neto, precio_venta = @precio_venta, precio_reparacion = @precio_reparacion, gasto = @gasto, realizo = @realizo, ordenCaptura = @ordenCaptura, estado = @estado, ubicacion = @ubicacion, cambios_precio = @intentos " +
                         "WHERE cve_venta = @cve_venta AND cve_pieza = @cve_piezaPasada AND cve_pedido = @cvePedido", nuevaConexion);
                     Comando.Parameters.AddWithValue("@cve_venta", cve_venta);
@@ -7282,8 +7294,8 @@ namespace Refracciones
                 string correoVendedor = CorreosVendedor(cvepedido);
 
                 string senderNombre = "JEIC Distribuidora";
-                string senderCorreo = "info@jeic.com.mx";
-                string senderAppPass = "xldsjobozxjsrmpk";
+                string senderCorreo = "correos-jeic@jeic.com.mx";
+                string senderAppPass = "rdvwqnbybxxomypq";
                 string responsableCorreoCopia = "";
 
                 if (clienteNombre == "GNP")

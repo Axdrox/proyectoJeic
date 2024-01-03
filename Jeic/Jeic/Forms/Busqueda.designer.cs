@@ -41,6 +41,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.Fecha_in = new System.Windows.Forms.DateTimePicker();
             this.Panelinfo = new System.Windows.Forms.Panel();
+            this.lblvaleLiberado = new System.Windows.Forms.Label();
             this.txtCveGuia = new System.Windows.Forms.TextBox();
             this.lblUbicacion = new System.Windows.Forms.Label();
             this.lblFechaEntreg = new System.Windows.Forms.Label();
@@ -106,7 +107,6 @@
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.lblcvePe = new System.Windows.Forms.Label();
             this.moverFormulario = new Bunifu.Framework.UI.BunifuDragControl(this.components);
-            this.lblvaleLiberado = new System.Windows.Forms.Label();
             this.Panelinfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFactura)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dvgPedido)).BeginInit();
@@ -240,6 +240,18 @@
             this.Panelinfo.Size = new System.Drawing.Size(425, 589);
             this.Panelinfo.TabIndex = 6;
             // 
+            // lblvaleLiberado
+            // 
+            this.lblvaleLiberado.AutoSize = true;
+            this.lblvaleLiberado.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblvaleLiberado.ForeColor = System.Drawing.Color.White;
+            this.lblvaleLiberado.Location = new System.Drawing.Point(268, 386);
+            this.lblvaleLiberado.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblvaleLiberado.Name = "lblvaleLiberado";
+            this.lblvaleLiberado.Size = new System.Drawing.Size(39, 18);
+            this.lblvaleLiberado.TabIndex = 46;
+            this.lblvaleLiberado.Text = "Vale:";
+            // 
             // txtCveGuia
             // 
             this.txtCveGuia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(45)))), ((int)(((byte)(59)))));
@@ -248,9 +260,10 @@
             this.txtCveGuia.Location = new System.Drawing.Point(0, 434);
             this.txtCveGuia.Margin = new System.Windows.Forms.Padding(4);
             this.txtCveGuia.MaxLength = 40;
+            this.txtCveGuia.Multiline = true;
             this.txtCveGuia.Name = "txtCveGuia";
             this.txtCveGuia.ReadOnly = true;
-            this.txtCveGuia.Size = new System.Drawing.Size(298, 15);
+            this.txtCveGuia.Size = new System.Drawing.Size(402, 31);
             this.txtCveGuia.TabIndex = 18;
             this.txtCveGuia.Text = "Cve guía:";
             // 
@@ -341,7 +354,7 @@
             // label10
             // 
             this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(109)))), ((int)(((byte)(119)))));
-            this.label10.Location = new System.Drawing.Point(0, 456);
+            this.label10.Location = new System.Drawing.Point(0, 466);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(427, 2);
@@ -480,7 +493,7 @@
             this.lblPrecioReparacion.AutoSize = true;
             this.lblPrecioReparacion.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPrecioReparacion.ForeColor = System.Drawing.Color.White;
-            this.lblPrecioReparacion.Location = new System.Drawing.Point(184, 489);
+            this.lblPrecioReparacion.Location = new System.Drawing.Point(184, 491);
             this.lblPrecioReparacion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPrecioReparacion.Name = "lblPrecioReparacion";
             this.lblPrecioReparacion.Size = new System.Drawing.Size(139, 18);
@@ -492,7 +505,7 @@
             this.lblPrecioVenta.AutoSize = true;
             this.lblPrecioVenta.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPrecioVenta.ForeColor = System.Drawing.Color.White;
-            this.lblPrecioVenta.Location = new System.Drawing.Point(184, 463);
+            this.lblPrecioVenta.Location = new System.Drawing.Point(184, 472);
             this.lblPrecioVenta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPrecioVenta.Name = "lblPrecioVenta";
             this.lblPrecioVenta.Size = new System.Drawing.Size(108, 18);
@@ -541,7 +554,7 @@
             this.lblCostoNeto.AutoSize = true;
             this.lblCostoNeto.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCostoNeto.ForeColor = System.Drawing.Color.White;
-            this.lblCostoNeto.Location = new System.Drawing.Point(0, 462);
+            this.lblCostoNeto.Location = new System.Drawing.Point(0, 469);
             this.lblCostoNeto.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCostoNeto.Name = "lblCostoNeto";
             this.lblCostoNeto.Size = new System.Drawing.Size(81, 18);
@@ -565,7 +578,7 @@
             this.lblCostoSinIva.AutoSize = true;
             this.lblCostoSinIva.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCostoSinIva.ForeColor = System.Drawing.Color.White;
-            this.lblCostoSinIva.Location = new System.Drawing.Point(-5, 463);
+            this.lblCostoSinIva.Location = new System.Drawing.Point(-5, 468);
             this.lblCostoSinIva.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCostoSinIva.Name = "lblCostoSinIva";
             this.lblCostoSinIva.Size = new System.Drawing.Size(92, 18);
@@ -1029,18 +1042,6 @@
             this.moverFormulario.Horizontal = true;
             this.moverFormulario.TargetControl = this.bunifuGradientPanel1;
             this.moverFormulario.Vertical = true;
-            // 
-            // lblvaleLiberado
-            // 
-            this.lblvaleLiberado.AutoSize = true;
-            this.lblvaleLiberado.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblvaleLiberado.ForeColor = System.Drawing.Color.White;
-            this.lblvaleLiberado.Location = new System.Drawing.Point(268, 386);
-            this.lblvaleLiberado.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblvaleLiberado.Name = "lblvaleLiberado";
-            this.lblvaleLiberado.Size = new System.Drawing.Size(39, 18);
-            this.lblvaleLiberado.TabIndex = 46;
-            this.lblvaleLiberado.Text = "Vale:";
             // 
             // Busqueda
             // 
