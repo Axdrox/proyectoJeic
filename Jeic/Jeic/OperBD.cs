@@ -2758,7 +2758,7 @@ namespace Refracciones
 
 
                     utilidadFinal = precioV - (costoAdq + gasto + double.Parse(costoOperativo.ToString()));
-                        sl.SetCellValue("AZ" + celdaContenido, utilidadFinal);
+                        sl.SetCellValue("AY" + celdaContenido, utilidadFinal);
                         celdaContenido++;
                     }
 
