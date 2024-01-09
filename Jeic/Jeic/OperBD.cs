@@ -7089,10 +7089,11 @@ namespace Refracciones
         //ENVIAR CORREO BEGIN
 
         //REVISAR SI TODAS LAS PIEZAS DEL PEDIDO ESTAN ENTREGADAS
-        public bool revisarPiezasEnviarCorreo(string cvePedido)
+        public bool revisarPiezasEnviarCorreo(string cvePedido)//BUG DETECTADO SI SOLO HAY UNA PIEZA
         {
             bool respuesta = false;
-
+            int contador = 0;
+            string temp = null;
             try
             {
                 using (SqlConnection nuevacon = Conexion.conexion())
@@ -7102,13 +7103,13 @@ namespace Refracciones
                     Lector = Comando.ExecuteReader();
                     while (Lector.Read())
                     {
-                        string temp = Lector["ESTADO PIEZA"].ToString();
+                        temp = Lector["ESTADO PIEZA"].ToString();
                         if (temp == "6")
                         { respuesta = true; }
-                        else if (temp == "11") {  respuesta = true; }
-                        else if (temp == "12") { respuesta = true; }
+                        else if (temp == "11") {  respuesta = true; }//**
+                        else if (temp == "12") { respuesta = true; }//**
                         else { respuesta = false; break; }
-
+                        //contador++;
 
 
                     }
@@ -7124,7 +7125,12 @@ namespace Refracciones
                 MessageBox.Show(ex.Message);
 
             }
-
+            /*if (contador == 1 && temp == "11")
+                return false;
+            else if (contador == 1 && temp == "12")
+                return false;
+            else*/
+           
             return respuesta;
         }
 
@@ -7290,7 +7296,10 @@ namespace Refracciones
             if (correosCliente.Count != 0)
             {
                 List<string> piezas = piezasCorreo(cvepedido);
+                if (piezas.Count == 0)
+                    return;
                 taller = nombreTallerCorreo(cvepedido);
+                
                 string correoVendedor = CorreosVendedor(cvepedido);
 
                 string senderNombre = "JEIC Distribuidora";
@@ -7367,13 +7376,15 @@ namespace Refracciones
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    //MessageBox.Show(ex.Message);
 
                 }
             }
             else
             {
                 List<string> piezas = piezasCorreo(cvepedido);
+                if (piezas.Count == 0)
+                    return;
                 taller = nombreTallerCorreo(cvepedido);
                 string correoVendedor = CorreosVendedor(cvepedido);
 
@@ -7449,8 +7460,8 @@ namespace Refracciones
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
-
+                    //MessageBox.Show(ex.Message);
+                
                 }
             }
             
