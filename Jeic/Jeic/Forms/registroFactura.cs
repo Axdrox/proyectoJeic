@@ -130,14 +130,30 @@ namespace Refracciones.Forms
                 {
                     //Antes de hacer factura con el dgv para seleccionarMessageBOX.SHowDialog(1, oper.Registrar_factura(cve_siniestro, cve_pedido, cve_factura, cve_estado, fact_sinIVA, descuento, fact_neto, fecha_ingreso, fecha_revision, fecha_pago, nombre_factura, file, nombre_xml, xml_file, comentario,lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9),lblPieza.Text.Substring(7,lblPieza.Text.Length - 7),int.Parse(lblcvePedidoidentity.Text)));
                     oper.Registrar_factura(cve_factura, cve_estado, fact_sinIVA, descuento, fact_neto, fecha_ingreso, fecha_revision, fecha_pago, nombre_factura, file, nombre_xml, xml_file, comentario, lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9), dat);
+                    string usuario = lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9);
+                    string idPedido = cve_pedido;
+                    string descripcionLog = "El usuario: " + usuario + " generó la factura para el pedido: " + idPedido + " el día: " + DateTime.Now.ToString();
+                    oper.Log(usuario, idPedido, descripcionLog, "9");
                     this.DialogResult = DialogResult.OK;
                 }
                 else if (btnGuardar.Text == "Actualizar")
                 {
                     oper.Actualizar_Factura(cve_factura, cve_estado, fact_sinIVA, descuento, fact_neto, fecha_ingreso, fecha_revision, fecha_pago, nombre_factura, file, nombre_xml, xml_file, comentario, lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9));
+                    string usuario = lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9);
+                    string idPedido = cve_pedido;
+                    string descripcionLog = "El usuario: " + usuario + " actualizó la factura para el pedido: " + idPedido + " el día: " + DateTime.Now.ToString();
+                    oper.Log(usuario, idPedido, descripcionLog, "9");
                     this.DialogResult = DialogResult.OK;
                 }
+
+                //string usuario = lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9);
+                //string idPedido = cve_pedido;
+                //string descripcionLog = "El usuario: " + usuario + " generó la factura para el pedido: " + idPedido + " el día: " + DateTime.Now.ToString();
+                //oper.Log(usuario, idPedido, descripcionLog, "9");
+
             }
+
+
             lblPieza.Text = "PIEZA:";//PARA EVITAR ERROR EN BUSCAR FACTURA
             dato1.Text = "SINIESTRO:";
             dato2.Text = "PEDIDO:";
@@ -204,7 +220,7 @@ namespace Refracciones.Forms
                 }
                 else
                 { }
-            
+
         }
 
         private void btnBuscarXml_Click(object sender, EventArgs e)

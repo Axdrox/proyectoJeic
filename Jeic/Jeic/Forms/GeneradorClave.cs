@@ -27,6 +27,11 @@ namespace Jeic.Forms
             if (ruta != "")
             {
                 generador.generarExcelClaves(ruta, Fecha_inicio, Fecha_Final, lblcvePe.Text);
+
+                string usuario = lblUsuario.Text;
+                string idPedido = "";
+                string descripcionLog = "El usuario: " + usuario + " generó el reporte de claves de la fecha: " + Fecha_inicio + " hasta: " + Fecha_Final + " el día: " + DateTime.Now.ToString();
+                generador.Log(usuario, idPedido, descripcionLog, "15");
                 this.Close();
             }
         }

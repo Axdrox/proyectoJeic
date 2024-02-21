@@ -58,7 +58,7 @@ namespace Refracciones.Forms
             dvgPedido.Columns["CVE"].Visible = false;// CVE INDEX 10
             menuStrip1.ForeColor = Color.White;
             string userName = Usuario.Text.Substring(9, Usuario.Text.Length - 9);
-            //int rol = ObtenerRol.Rol(Usuario.Text.Substring(9, Usuario.Text.Length - 9));
+            int rol = ObtenerRol.Rol(Usuario.Text.Substring(9, Usuario.Text.Length - 9));
             llenar.permisosUsuario(userName);
             /*switch (rol)
             {
@@ -97,6 +97,11 @@ namespace Refracciones.Forms
                 default:
                     break;
             }Se quito el dia 15 jun 2023 por un cambio solicitado por JEIC Jesus*/
+
+            if(rol == 0)
+            {
+                logcontrolDeCambiosToolStripMenuItem.Enabled = true;
+            }
 
             if (permisos.Contains("agregarPed"))
                 btnAgregarPedido.Enabled = true;
@@ -285,6 +290,7 @@ namespace Refracciones.Forms
         {
             exportarExcel reporte = new exportarExcel();
             reporte.lblcvePe.Text = lblcvePe.Text;
+            reporte.lblUsuario.Text = Usuario.Text.Substring(9, Usuario.Text.Length - 9);
             reporte.Show();
         }
 
@@ -407,6 +413,7 @@ namespace Refracciones.Forms
         private void cambioEstadoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             cambioEstatus cmbe = new cambioEstatus();
+            cmbe.lblUsuario.Text = Usuario.Text.Substring(9, Usuario.Text.Length - 9);
             cmbe.ShowDialog();
         }
 
@@ -414,6 +421,7 @@ namespace Refracciones.Forms
         {
             GeneradorClave gen = new GeneradorClave();
             gen.lblcvePe.Text = lblcvePe.Text;
+            gen.lblUsuario.Text = Usuario.Text.Substring(9, Usuario.Text.Length - 9);
             gen.ShowDialog();
         }
 
@@ -432,17 +440,21 @@ namespace Refracciones.Forms
         private void cambioGuiasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             cambioGuias cmbGuias = new cambioGuias();
+            cmbGuias.lblUsuario.Text = Usuario.Text.Substring(9, Usuario.Text.Length - 9);
             cmbGuias.ShowDialog();
         }
 
         private void cambioCostosEnvíoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             cambioCostoEnvio cmbCostoEnvio = new cambioCostoEnvio();
+            cmbCostoEnvio.lblUsuario.Text = Usuario.Text.Substring(9, Usuario.Text.Length - 9);
             cmbCostoEnvio.ShowDialog();
         }
 
-        
-        
-       
+        private void logcontrolDeCambiosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Log log = new Log();
+            log.ShowDialog();
+        }
     }
 }

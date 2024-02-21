@@ -152,11 +152,19 @@ namespace Refracciones.Forms
                 if (btnGuardar.Text == "Guardar")
                 {
                     factura.Registrar_Refactura(cve_factura, cve_estado, cve_refactura, fact_sinIVA, descuento, fact_neto, costo_refactura, fecha_refactura, fecha_ingreso, fecha_revision, fecha_pago, nombre_factura, file, nombre_xml, xml_file, comentario, lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9), dat);
+                    string usuario = lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9);
+                    string idPedido = cve_pedido;
+                    string descripcionLog = "El usuario: " + usuario + " generó la factura para el pedido: " + idPedido + " el día: " + DateTime.Now.ToString();
+                    factura.Log(usuario, idPedido, descripcionLog, "10");
                     this.DialogResult = DialogResult.OK;
                 }
                 else if (btnGuardar.Text == "Actualizar")
                 {
                     factura.Actualizar_Refactura(cve_factura, cve_estado, cve_refactura, fact_sinIVA, descuento, fact_neto, costo_refactura, fecha_refactura, fecha_ingreso, fecha_revision, fecha_pago, nombre_factura, file, nombre_xml, xml_file, comentario, lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9));
+                    string usuario = lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9);
+                    string idPedido = cve_pedido;
+                    string descripcionLog = "El usuario: " + usuario + " actualizó la factura para el pedido: " + idPedido + " el día: " + DateTime.Now.ToString();
+                    factura.Log(usuario, idPedido, descripcionLog, "10");
                     this.DialogResult = DialogResult.OK;
                 }
             }

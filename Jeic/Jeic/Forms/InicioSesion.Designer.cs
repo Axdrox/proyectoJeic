@@ -275,7 +275,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(96, 16);
             this.label1.TabIndex = 18;
-            this.label1.Text = "Versión: 2.2.6.0";
+            this.label1.Text = "Versión: 2.2.7.0";
             // 
             // InicioSesion
             // 

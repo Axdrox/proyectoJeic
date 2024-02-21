@@ -38,6 +38,8 @@
             this.btnGenerar = new System.Windows.Forms.Button();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.rbtnOpcion2 = new System.Windows.Forms.RadioButton();
+            this.rbtnOpcion1 = new System.Windows.Forms.RadioButton();
             this.chkvalesLiberados = new System.Windows.Forms.CheckBox();
             this.lblcvePe = new System.Windows.Forms.Label();
             this.txtcostoOperativo = new System.Windows.Forms.TextBox();
@@ -46,6 +48,7 @@
             this.pbClose = new System.Windows.Forms.PictureBox();
             this.errorP = new System.Windows.Forms.ErrorProvider(this.components);
             this.moverFormulario = new Bunifu.Framework.UI.BunifuDragControl(this.components);
+            this.lblUsuario = new System.Windows.Forms.Label();
             this.bunifuGradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
@@ -58,7 +61,7 @@
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
             this.label1.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(29, 66);
+            this.label1.Location = new System.Drawing.Point(29, 87);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(54, 18);
@@ -71,7 +74,7 @@
             this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(49)))), ((int)(((byte)(76)))));
             this.label2.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(29, 105);
+            this.label2.Location = new System.Drawing.Point(29, 126);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 18);
@@ -93,7 +96,7 @@
             // 
             // Fecha_in
             // 
-            this.Fecha_in.Location = new System.Drawing.Point(96, 64);
+            this.Fecha_in.Location = new System.Drawing.Point(96, 85);
             this.Fecha_in.Margin = new System.Windows.Forms.Padding(4);
             this.Fecha_in.Name = "Fecha_in";
             this.Fecha_in.Size = new System.Drawing.Size(265, 22);
@@ -101,7 +104,7 @@
             // 
             // Fecha_Fin
             // 
-            this.Fecha_Fin.Location = new System.Drawing.Point(96, 102);
+            this.Fecha_Fin.Location = new System.Drawing.Point(96, 123);
             this.Fecha_Fin.Margin = new System.Windows.Forms.Padding(4);
             this.Fecha_Fin.Name = "Fecha_Fin";
             this.Fecha_Fin.Size = new System.Drawing.Size(265, 22);
@@ -116,7 +119,7 @@
             this.btnGenerar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnGenerar.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGenerar.ForeColor = System.Drawing.Color.White;
-            this.btnGenerar.Location = new System.Drawing.Point(145, 192);
+            this.btnGenerar.Location = new System.Drawing.Point(145, 213);
             this.btnGenerar.Margin = new System.Windows.Forms.Padding(4);
             this.btnGenerar.Name = "btnGenerar";
             this.btnGenerar.Size = new System.Drawing.Size(100, 28);
@@ -135,6 +138,9 @@
             this.bunifuGradientPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
             this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuGradientPanel1.Controls.Add(this.lblUsuario);
+            this.bunifuGradientPanel1.Controls.Add(this.rbtnOpcion2);
+            this.bunifuGradientPanel1.Controls.Add(this.rbtnOpcion1);
             this.bunifuGradientPanel1.Controls.Add(this.chkvalesLiberados);
             this.bunifuGradientPanel1.Controls.Add(this.lblcvePe);
             this.bunifuGradientPanel1.Controls.Add(this.btnGenerar);
@@ -153,13 +159,41 @@
             this.bunifuGradientPanel1.Size = new System.Drawing.Size(387, 251);
             this.bunifuGradientPanel1.TabIndex = 6;
             // 
+            // rbtnOpcion2
+            // 
+            this.rbtnOpcion2.AutoSize = true;
+            this.rbtnOpcion2.BackColor = System.Drawing.Color.Transparent;
+            this.rbtnOpcion2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold);
+            this.rbtnOpcion2.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.rbtnOpcion2.Location = new System.Drawing.Point(145, 60);
+            this.rbtnOpcion2.Name = "rbtnOpcion2";
+            this.rbtnOpcion2.Size = new System.Drawing.Size(89, 20);
+            this.rbtnOpcion2.TabIndex = 85;
+            this.rbtnOpcion2.Text = "Opción 2";
+            this.rbtnOpcion2.UseVisualStyleBackColor = false;
+            // 
+            // rbtnOpcion1
+            // 
+            this.rbtnOpcion1.AutoSize = true;
+            this.rbtnOpcion1.BackColor = System.Drawing.Color.Transparent;
+            this.rbtnOpcion1.Checked = true;
+            this.rbtnOpcion1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold);
+            this.rbtnOpcion1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.rbtnOpcion1.Location = new System.Drawing.Point(33, 60);
+            this.rbtnOpcion1.Name = "rbtnOpcion1";
+            this.rbtnOpcion1.Size = new System.Drawing.Size(89, 20);
+            this.rbtnOpcion1.TabIndex = 84;
+            this.rbtnOpcion1.TabStop = true;
+            this.rbtnOpcion1.Text = "Opción 1";
+            this.rbtnOpcion1.UseVisualStyleBackColor = false;
+            // 
             // chkvalesLiberados
             // 
             this.chkvalesLiberados.AutoSize = true;
             this.chkvalesLiberados.BackColor = System.Drawing.Color.Transparent;
             this.chkvalesLiberados.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkvalesLiberados.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.chkvalesLiberados.Location = new System.Drawing.Point(269, 149);
+            this.chkvalesLiberados.Location = new System.Drawing.Point(269, 170);
             this.chkvalesLiberados.Name = "chkvalesLiberados";
             this.chkvalesLiberados.Size = new System.Drawing.Size(107, 36);
             this.chkvalesLiberados.TabIndex = 83;
@@ -182,7 +216,7 @@
             this.txtcostoOperativo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.txtcostoOperativo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtcostoOperativo.ForeColor = System.Drawing.Color.White;
-            this.txtcostoOperativo.Location = new System.Drawing.Point(129, 156);
+            this.txtcostoOperativo.Location = new System.Drawing.Point(129, 177);
             this.txtcostoOperativo.Margin = new System.Windows.Forms.Padding(4);
             this.txtcostoOperativo.Name = "txtcostoOperativo";
             this.txtcostoOperativo.Size = new System.Drawing.Size(133, 22);
@@ -196,7 +230,7 @@
             this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(57)))), ((int)(((byte)(94)))));
             this.label4.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(31, 146);
+            this.label4.Location = new System.Drawing.Point(31, 167);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(83, 36);
@@ -239,6 +273,15 @@
             this.moverFormulario.Horizontal = true;
             this.moverFormulario.TargetControl = this.bunifuGradientPanel1;
             this.moverFormulario.Vertical = true;
+            // 
+            // lblUsuario
+            // 
+            this.lblUsuario.AutoSize = true;
+            this.lblUsuario.Location = new System.Drawing.Point(3, 11);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(0, 16);
+            this.lblUsuario.TabIndex = 86;
+            this.lblUsuario.Visible = false;
             // 
             // exportarExcel
             // 
@@ -287,5 +330,8 @@
         private Bunifu.Framework.UI.BunifuDragControl moverFormulario;
         public System.Windows.Forms.Label lblcvePe;
         private System.Windows.Forms.CheckBox chkvalesLiberados;
+        private System.Windows.Forms.RadioButton rbtnOpcion2;
+        private System.Windows.Forms.RadioButton rbtnOpcion1;
+        public System.Windows.Forms.Label lblUsuario;
     }
 }

@@ -162,6 +162,12 @@ namespace Jeic.Forms
                 {
                     operacion.registrarEstadoCodigoBarras(row.Cells["ColumnCvePedido"].Value.ToString(),cmbEstado.Text.Trim(), Fecha_in.Value);
 
+                    string usuario = lblUsuario.Text;
+                    string idPedido = row.Cells["ColumnPed"].Value.ToString();
+                    string nombrePieza = row.Cells["ColumnPieza"].Value.ToString();
+                    string descripcionLog = "El usuario: " + usuario + " hizo cambios al estado del pedido: " + idPedido + " de la pieza: " + nombrePieza + " el día: " + DateTime.Now.ToString();
+                    operacion.Log(usuario, idPedido, descripcionLog, "17");
+
                     //ENVIAR CORREO SI TODO ESTA ENTREGADO
                     if (operacion.revisarPiezasEnviarCorreo(row.Cells["ColumnPed"].Value.ToString()))
                     //if (true)//TESTING
@@ -180,6 +186,12 @@ namespace Jeic.Forms
                 foreach (DataGridViewRow row in dgvEstatus.Rows)
                 {
                     operacion.registrarEstadoCodigoBarras(int.Parse(row.Cells["ColumnCveVenta"].Value.ToString()), cmbEstado.Text.Trim(), Fecha_in.Value);
+
+                    string usuario = lblUsuario.Text;
+                    string idPedido = row.Cells["ColumnPed"].Value.ToString();
+                    string nombrePieza = row.Cells["ColumnPieza"].Value.ToString();
+                    string descripcionLog = "El usuario: " + usuario + " hizo cambios al estado del pedido: " + idPedido + " de la pieza: " + nombrePieza + " el día: " + DateTime.Now.ToString();
+                    operacion.Log(usuario, idPedido, descripcionLog, "17");
 
                     //ENVIAR CORREO SI TODO ESTA ENTREGADO
                     if (operacion.revisarPiezasEnviarCorreo(row.Cells["ColumnPed"].Value.ToString()))

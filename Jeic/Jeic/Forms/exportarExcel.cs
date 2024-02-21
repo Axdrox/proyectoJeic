@@ -1,4 +1,6 @@
-﻿using Jeic.Properties;
+﻿using Jeic;
+using Jeic.Forms;
+using Jeic.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,7 +17,9 @@ namespace Refracciones.Forms
 {
     public partial class exportarExcel : Form
     {
-        OperBD excel = new OperBD();
+        OperBD Consulta = new OperBD();
+        ReporteVentas reporteVentas = new ReporteVentas();
+
         public exportarExcel()
         {
             InitializeComponent();
@@ -35,7 +39,17 @@ namespace Refracciones.Forms
             if (ruta != "")
             {
                 bool valesLiberados = chkvalesLiberados.Checked;
-                excel.generarExcel(ruta, Fecha_inicio, Fecha_Final,decimal.Parse(txtcostoOperativo.Text, new CultureInfo("en-US")), lblcvePe.Text, valesLiberados);
+
+                if (rbtnOpcion1.Checked)
+                    Consulta.generarExcel(ruta, Fecha_inicio, Fecha_Final, decimal.Parse(txtcostoOperativo.Text, new CultureInfo("en-US")), lblcvePe.Text, valesLiberados);
+                else if (rbtnOpcion2.Checked)
+                    reporteVentas.generarExcelTest(ruta, Fecha_inicio, Fecha_Final, decimal.Parse(txtcostoOperativo.Text, new CultureInfo("en-US")), lblcvePe.Text, valesLiberados);
+                else { }
+
+                string usuario = lblUsuario.Text;
+                string idPedido = "";
+                string descripcionLog = "El usuario: " + usuario + " generó el reporte de ventas de la fecha: " + Fecha_inicio +  " hasta: "+ Fecha_Final +" el día: " + DateTime.Now.ToString();
+                Consulta.Log(usuario, idPedido, descripcionLog, "14");
                 this.Close();
             }
             
@@ -92,5 +106,7 @@ namespace Refracciones.Forms
         {
             
         }
+
+        
     }
 }

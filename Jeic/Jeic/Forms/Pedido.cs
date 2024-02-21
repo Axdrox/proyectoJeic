@@ -779,6 +779,7 @@ namespace Refracciones.Forms
                         x++;
                     }
                 }
+                
                 //MessageBOX.SHowDialog(1, "Se registró pedido correctamente");
             }
             catch (Exception Ex)
@@ -874,6 +875,12 @@ namespace Refracciones.Forms
 
                             //REGISTRANDO PEDIDO
                             registrarPedido();
+
+                            string usuario = lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9);
+                            string idPedido = txtClavePedido.Text.Trim();
+                            string descripcionLog = "El usuario: " + usuario + " creo el pedido: " + idPedido + " el día: " + DateTime.Now.ToString();
+
+                            operacion.Log(usuario, idPedido, descripcionLog, "3");
                             this.DialogResult = DialogResult.OK;
                         }
                         else // ACTUALIZAR PEDIDO
@@ -897,6 +904,11 @@ namespace Refracciones.Forms
                             operacion.actualizarVenta(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(), taller, vendedor, valuador, destino, totalCosto, subtotalPrecio, totalPrecio, dtFechaAsignacion, dtFechaPromesa, utilidad, cliente);//, utilidad
 
                             actualizarPedido();
+                            string usuario = lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9);
+                            string idPedido = txtClavePedido.Text.Trim();
+                            string descripcionLog = "El usuario: " + usuario + " realizó cambios al pedido: " + idPedido + " el día: " + DateTime.Now.ToString();
+
+                            operacion.Log(usuario, idPedido, descripcionLog, "8");
                             this.DialogResult = DialogResult.OK;
                         }
                     }
@@ -1000,6 +1012,12 @@ namespace Refracciones.Forms
 
                         lblCantidadTotal.Text = cantidad.ToString();
                         lblPrecioTotal.Text = "$" + totalPrecio.ToString();
+
+                        string usuario = lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9);
+                        string idPedido = txtClavePedido.Text.Trim();
+                        string descripcionLog = "El usuario: " + usuario + " añadió la pieza: " + pieza.datosMandar[0] + " al pedido: " + idPedido + " el día: " + DateTime.Now.ToString();
+
+                        operacion.Log(usuario, idPedido, descripcionLog, "20");
                     }
                 }
                 else
@@ -1062,6 +1080,13 @@ namespace Refracciones.Forms
                                     MessageBOX mes = new MessageBOX(4, "¿Esta seguro de eliminar esta pieza?");
                                     if (mes.ShowDialog() == DialogResult.OK)
                                     {
+                                        string usuario = lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9);
+                                        string idPedido = txtClavePedido.Text.Trim();
+                                        string descripcionLog = "El usuario: " + usuario + " eliminó la pieza : " + pieza +" del pedido: "+ idPedido + " el día: " + DateTime.Now.ToString();
+
+                                        operacion.Log(usuario, idPedido, descripcionLog, "7");
+
+
                                         operacion.eliminarPiezaRegistradaPedido(txtClavePedido.Text, lblClaveSiniestro.Text, pieza, dgvPedido.CurrentRow.Index);
                                         filasIniciales -= 1;
                                         //Remueve la pieza de la fila seleccionada de la lista creada al cargar el formulario
@@ -1093,6 +1118,9 @@ namespace Refracciones.Forms
                                                 j++;
                                             }
                                         }
+
+                                        
+
                                     }
                                 }
                                 else
@@ -1148,6 +1176,12 @@ namespace Refracciones.Forms
                                 //Para que se actualice la cantidad que se penalizó
                                 if (respuesta == DialogResult.OK)
                                 {
+                                    string usuario = lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9);
+                                    string idPedido = txtClavePedido.Text.Trim();
+                                    string descripcionLog = "El usuario: " + usuario + " penalizó la pieza : " + piezaNombre + " del pedido: " + idPedido + " el día: " + DateTime.Now.ToString();
+
+                                    operacion.Log(usuario, idPedido, descripcionLog, "6");
+
                                     dt = operacion.piezasPedidoActualizar(txtClavePedido.Text.Trim(), lblClaveSiniestro.Text.Trim());
                                     dgvPedido.DataSource = dt;
                                     cantidadPenalizada = penalizaciones.cantidadPenalizada;
@@ -1197,7 +1231,11 @@ namespace Refracciones.Forms
                                         fechaBaja.dt1 = dtpFechaAsignacion.Value;
                                         if (fechaBaja.ShowDialog() == DialogResult.OK)
                                         {
-                                            //Add logic if needed
+                                            string usuario = lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9);
+                                            string idPedido = txtClavePedido.Text.Trim();
+                                            string descripcionLog = "El usuario: " + usuario + " realizó/registró cambios en la entrega a la pieza: " + piezaNombre + " del pedido: " + idPedido + " el día: " + DateTime.Now.ToString() + "opción 1";
+
+                                            operacion.Log(usuario, idPedido, descripcionLog, "11");
                                         }
                                     }
                                 }
@@ -1212,6 +1250,11 @@ namespace Refracciones.Forms
                                     fechaBaja.dt1 = dtpFechaAsignacion.Value;
                                     if (fechaBaja.ShowDialog() == DialogResult.OK)
                                     {
+                                        string usuario = lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9);
+                                        string idPedido = txtClavePedido.Text.Trim();
+                                        string descripcionLog = "El usuario: " + usuario + " realizó/registró cambios en la entrega a la pieza: " + piezaNombre + " del pedido: " + idPedido + " el día: " + DateTime.Now.ToString() + "opción 1";
+
+                                        operacion.Log(usuario, idPedido, descripcionLog, "11");
                                         //De esta forma se desabilita el botón cuando ya se ha registrado la fecha de baja
                                         //SetDGVButtonColumnEnable(false);
 
@@ -1277,6 +1320,12 @@ namespace Refracciones.Forms
                     DialogResult respuesta = pieza.ShowDialog();
                     if (respuesta == DialogResult.OK)
                     {
+                        string usuario = lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9);
+                        string idPedido = txtClavePedido.Text.Trim();
+                        string descripcionLog = "El usuario: " + usuario + " realizó cambios a la pieza: " + datosPieza[0] + " del pedido: " + idPedido + " el día: " + DateTime.Now.ToString();
+
+                        operacion.Log(usuario, idPedido, descripcionLog, "19");
+
                         int k = 0;
                         if (actualizar == 1)
                         {
@@ -1787,6 +1836,12 @@ namespace Refracciones.Forms
                         DateTime hoy = DateTime.Today;
                         if (respuesta == DialogResult.OK)
                         {
+                            string usuario = lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9);
+                            string idPedido = txtClavePedido.Text.Trim();
+                            string descripcionLog = "El usuario: " + usuario + " penalizó todo el pedido : " + idPedido + " el día: " + DateTime.Now.ToString();
+
+                            operacion.Log(usuario, idPedido, descripcionLog, "6");
+
                             foreach (DataGridViewRow row in dgvPedido.Rows)
                             {
                                 clavePedidoPedido = operacion.clavePedidoPedido(operacion.claveVenta(txtClavePedido.Text, lblClaveSiniestro.Text), operacion.clavePieza(Convert.ToString(row.Cells["Pieza"].Value)), i);
@@ -2167,6 +2222,11 @@ namespace Refracciones.Forms
 
                             //REGISTRANDO PEDIDO
                             registrarPedido();
+                            string usuario = lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9);
+                            string idPedido = txtClavePedido.Text.Trim();
+                            string descripcionLog = "El usuario: " + usuario + " creo el pedido: " + idPedido + " el día: " + DateTime.Now.ToString();
+
+                            operacion.Log(usuario, idPedido, descripcionLog, "3");
                             g = 1;
                             this.DialogResult = DialogResult.OK;
                         }
@@ -2190,6 +2250,11 @@ namespace Refracciones.Forms
                             //AGREGANDO DATOS A VENTA
                             operacion.actualizarVenta(txtClavePedido.Text.Trim().ToUpper(), lblClaveSiniestro.Text.Trim(), taller, vendedor, valuador, destino, totalCosto, subtotalPrecio, totalPrecio, dtFechaAsignacion, dtFechaPromesa, utilidad, cliente);//, utilidad
                             actualizarPedido();
+                            string usuario = lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9);
+                            string idPedido = txtClavePedido.Text.Trim();
+                            string descripcionLog = "El usuario: " + usuario + " realizó cambios al pedido: " + idPedido + " el día: " + DateTime.Now.ToString();
+
+                            operacion.Log(usuario, idPedido, descripcionLog, "3");
                             g = 1;
                             this.DialogResult = DialogResult.OK;
                         }
@@ -2408,6 +2473,11 @@ namespace Refracciones.Forms
         }
 
         private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Pedido_Click(object sender, EventArgs e)
         {
 
         }

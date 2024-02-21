@@ -40,10 +40,6 @@
             this.txtCveCosto = new System.Windows.Forms.TextBox();
             this.lblCveGuia = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.dgvEstatus = new System.Windows.Forms.DataGridView();
-            this.txtCodigo = new System.Windows.Forms.TextBox();
-            this.btnGuardar = new System.Windows.Forms.Button();
-            this.rbtnPorPedido = new System.Windows.Forms.RadioButton();
-            this.rbtnPorPieza = new System.Windows.Forms.RadioButton();
             this.ColumnPed = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnPieza = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,6 +48,11 @@
             this.ColumnEstatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCvePedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCveVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtCodigo = new System.Windows.Forms.TextBox();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.rbtnPorPedido = new System.Windows.Forms.RadioButton();
+            this.rbtnPorPieza = new System.Windows.Forms.RadioButton();
+            this.lblUsuario = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
             this.bunifuGradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEstatus)).BeginInit();
@@ -87,6 +88,7 @@
             this.bunifuGradientPanel1.BackColor = System.Drawing.Color.Transparent;
             this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
             this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuGradientPanel1.Controls.Add(this.lblUsuario);
             this.bunifuGradientPanel1.Controls.Add(this.lblScan);
             this.bunifuGradientPanel1.Controls.Add(this.txtCveCosto);
             this.bunifuGradientPanel1.Controls.Add(this.lblCveGuia);
@@ -203,63 +205,6 @@
             this.dgvEstatus.TabIndex = 17;
             this.dgvEstatus.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEstatus_CellClick);
             // 
-            // txtCodigo
-            // 
-            this.txtCodigo.Location = new System.Drawing.Point(741, 158);
-            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4);
-            this.txtCodigo.MaxLength = 50;
-            this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(245, 22);
-            this.txtCodigo.TabIndex = 16;
-            this.txtCodigo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCodigo_KeyDown);
-            this.txtCodigo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigo_KeyPress);
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(49)))), ((int)(((byte)(106)))));
-            this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnGuardar.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.ForeColor = System.Drawing.Color.White;
-            this.btnGuardar.Location = new System.Drawing.Point(799, 367);
-            this.btnGuardar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(148, 37);
-            this.btnGuardar.TabIndex = 14;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.UseVisualStyleBackColor = false;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
-            // rbtnPorPedido
-            // 
-            this.rbtnPorPedido.AutoSize = true;
-            this.rbtnPorPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
-            this.rbtnPorPedido.ForeColor = System.Drawing.SystemColors.Control;
-            this.rbtnPorPedido.Location = new System.Drawing.Point(221, 80);
-            this.rbtnPorPedido.Margin = new System.Windows.Forms.Padding(4);
-            this.rbtnPorPedido.Name = "rbtnPorPedido";
-            this.rbtnPorPedido.Size = new System.Drawing.Size(187, 24);
-            this.rbtnPorPedido.TabIndex = 1;
-            this.rbtnPorPedido.TabStop = true;
-            this.rbtnPorPedido.Text = "Cambio por pedido";
-            this.rbtnPorPedido.UseVisualStyleBackColor = true;
-            this.rbtnPorPedido.CheckedChanged += new System.EventHandler(this.rbtnPorPedido_CheckedChanged);
-            // 
-            // rbtnPorPieza
-            // 
-            this.rbtnPorPieza.AutoSize = true;
-            this.rbtnPorPieza.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
-            this.rbtnPorPieza.ForeColor = System.Drawing.SystemColors.Control;
-            this.rbtnPorPieza.Location = new System.Drawing.Point(17, 80);
-            this.rbtnPorPieza.Margin = new System.Windows.Forms.Padding(4);
-            this.rbtnPorPieza.Name = "rbtnPorPieza";
-            this.rbtnPorPieza.Size = new System.Drawing.Size(177, 24);
-            this.rbtnPorPieza.TabIndex = 0;
-            this.rbtnPorPieza.TabStop = true;
-            this.rbtnPorPieza.Text = "Cambio por pieza";
-            this.rbtnPorPieza.UseVisualStyleBackColor = true;
-            this.rbtnPorPieza.CheckedChanged += new System.EventHandler(this.rbtnPorPieza_CheckedChanged);
-            // 
             // ColumnPed
             // 
             this.ColumnPed.HeaderText = "PEDIDO";
@@ -324,6 +269,72 @@
             this.ColumnCveVenta.ReadOnly = true;
             this.ColumnCveVenta.Width = 112;
             // 
+            // txtCodigo
+            // 
+            this.txtCodigo.Location = new System.Drawing.Point(741, 158);
+            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCodigo.MaxLength = 50;
+            this.txtCodigo.Name = "txtCodigo";
+            this.txtCodigo.Size = new System.Drawing.Size(245, 22);
+            this.txtCodigo.TabIndex = 16;
+            this.txtCodigo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCodigo_KeyDown);
+            this.txtCodigo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigo_KeyPress);
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(49)))), ((int)(((byte)(106)))));
+            this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnGuardar.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.ForeColor = System.Drawing.Color.White;
+            this.btnGuardar.Location = new System.Drawing.Point(799, 367);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(148, 37);
+            this.btnGuardar.TabIndex = 14;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
+            // rbtnPorPedido
+            // 
+            this.rbtnPorPedido.AutoSize = true;
+            this.rbtnPorPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.rbtnPorPedido.ForeColor = System.Drawing.SystemColors.Control;
+            this.rbtnPorPedido.Location = new System.Drawing.Point(221, 80);
+            this.rbtnPorPedido.Margin = new System.Windows.Forms.Padding(4);
+            this.rbtnPorPedido.Name = "rbtnPorPedido";
+            this.rbtnPorPedido.Size = new System.Drawing.Size(187, 24);
+            this.rbtnPorPedido.TabIndex = 1;
+            this.rbtnPorPedido.TabStop = true;
+            this.rbtnPorPedido.Text = "Cambio por pedido";
+            this.rbtnPorPedido.UseVisualStyleBackColor = true;
+            this.rbtnPorPedido.CheckedChanged += new System.EventHandler(this.rbtnPorPedido_CheckedChanged);
+            // 
+            // rbtnPorPieza
+            // 
+            this.rbtnPorPieza.AutoSize = true;
+            this.rbtnPorPieza.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.rbtnPorPieza.ForeColor = System.Drawing.SystemColors.Control;
+            this.rbtnPorPieza.Location = new System.Drawing.Point(17, 80);
+            this.rbtnPorPieza.Margin = new System.Windows.Forms.Padding(4);
+            this.rbtnPorPieza.Name = "rbtnPorPieza";
+            this.rbtnPorPieza.Size = new System.Drawing.Size(177, 24);
+            this.rbtnPorPieza.TabIndex = 0;
+            this.rbtnPorPieza.TabStop = true;
+            this.rbtnPorPieza.Text = "Cambio por pieza";
+            this.rbtnPorPieza.UseVisualStyleBackColor = true;
+            this.rbtnPorPieza.CheckedChanged += new System.EventHandler(this.rbtnPorPieza_CheckedChanged);
+            // 
+            // lblUsuario
+            // 
+            this.lblUsuario.AutoSize = true;
+            this.lblUsuario.Location = new System.Drawing.Point(3, 12);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(0, 16);
+            this.lblUsuario.TabIndex = 23;
+            this.lblUsuario.Visible = false;
+            // 
             // cambioCostoEnvio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -368,5 +379,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnEstatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCvePedido;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCveVenta;
+        public System.Windows.Forms.Label lblUsuario;
     }
 }

@@ -52,6 +52,7 @@
             this.rbtnPorPedido = new System.Windows.Forms.RadioButton();
             this.rbtnPorPieza = new System.Windows.Forms.RadioButton();
             this.lblTitle = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lblUsuario = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
             this.bunifuGradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEstatus)).BeginInit();
@@ -75,6 +76,7 @@
             this.bunifuGradientPanel1.BackColor = System.Drawing.Color.Transparent;
             this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
             this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuGradientPanel1.Controls.Add(this.lblUsuario);
             this.bunifuGradientPanel1.Controls.Add(this.lblScan);
             this.bunifuGradientPanel1.Controls.Add(this.txtCveGuia);
             this.bunifuGradientPanel1.Controls.Add(this.lblCveGuia);
@@ -323,6 +325,15 @@
             this.lblTitle.TabIndex = 18;
             this.lblTitle.Text = "CAMBIAR NUMERO DE GUÍA POR PIEZA O PEDIDO";
             // 
+            // lblUsuario
+            // 
+            this.lblUsuario.AutoSize = true;
+            this.lblUsuario.Location = new System.Drawing.Point(4, 4);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(0, 16);
+            this.lblUsuario.TabIndex = 23;
+            this.lblUsuario.Visible = false;
+            // 
             // cambioGuias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -367,5 +378,6 @@
         private System.Windows.Forms.TextBox txtCveGuia;
         private Bunifu.Framework.UI.BunifuCustomLabel lblCveGuia;
         private System.Windows.Forms.Label lblScan;
+        public System.Windows.Forms.Label lblUsuario;
     }
 }

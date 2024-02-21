@@ -2226,7 +2226,7 @@ namespace Refracciones
             return PiezasDevueltas;
         }
 
-        private string DescSAE(string modelo, string descripcion, string marca, string anio)
+        public string DescSAE(string modelo, string descripcion, string marca, string anio)
         {
             string clave;
             if (anio == "")
@@ -7466,6 +7466,114 @@ namespace Refracciones
             }
             
 
+        }
+
+        //----------------------------------REGISTAR CAMBIO LOG ----------------------------------------------
+        public void Log(string usuario, string idPedido, string descripcion, string cveCambio)
+        {
+            int x = 0;
+            DateTime hoy = DateTime.Today;
+            hoy.Date.Year.ToString();
+            string fecha =hoy.Date.Year.ToString() + "-" + hoy.Date.Month.ToString() + "-" + hoy.Date.Date.Day.ToString();
+            //hoy.ToString("dd-MM-yyyy");
+            try
+            {
+                using (SqlConnection nuevacon = Conexion.conexion())
+                {
+                    nuevacon.Open();
+                    
+                    this.Comando = new SqlCommand(string.Format("SELECT * FROM USUARIOS WHERE usuario = '{0}';", usuario), nuevacon);
+                    Lector = this.Comando.ExecuteReader();
+                    while (Lector.Read()) { x = Int32.Parse(Lector["cve_Administrador"].ToString()); }
+                    Lector.Close();
+
+                    
+                    this.Comando = new SqlCommand("INSERT INTO LOG (descripcion, cve_pedido, cve_Administrador, cveCambio, fecha) VALUES (@descripcion, @cve_pedido, @cve_Administrador, @cveCambio, @fecha);", nuevacon);
+
+                    this.Comando.Parameters.AddWithValue("@descripcion", descripcion);
+                    this.Comando.Parameters.AddWithValue("@cve_pedido", idPedido);
+                    this.Comando.Parameters.AddWithValue("@cve_Administrador", x);
+                    this.Comando.Parameters.AddWithValue("@cveCambio", Convert.ToInt32(cveCambio));
+                    this.Comando.Parameters.AddWithValue("@fecha", fecha);
+                    this.Comando.ExecuteNonQuery();
+                    //MessageBOX.SHowDialog(3, "Se registro Log");
+                    nuevacon.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        //----------------LLENAR TABLA LOG LOAD----------------------------------
+        public void LogLoad(DataGridView dtgv)
+        {
+            try
+            {
+                using (SqlConnection nuevacon = Conexion.conexion())
+                {
+                    da = new SqlDataAdapter("SELECT TOP 200 l.cveLog AS 'ID DE CAMBIO',l.descripcion AS 'DESCRIPCIÓN',l.cve_pedido AS 'PEDIDO', us.usuario AS 'USUARIO', clog.tipo AS 'TIPO DE MOVIMIENTO',l.fecha AS 'FECHA'  FROM LOG l LEFT OUTER JOIN USUARIOS us ON us.cve_Administrador = l.cve_Administrador LEFT OUTER JOIN CAMBIOSLOG clog ON clog.cveCambio = l.cveCambio ORDER BY fecha desc;", nuevacon);
+
+                    nuevacon.Open();
+                    dt = new DataTable();
+                    da.Fill(dt);
+                    dtgv.DataSource = dt;
+                    nuevacon.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        //----------------LLENAR TABLA LOG BUSCAR----------------------------------
+        public void LogBuscar(DataGridView dtgv, string cvePedido, string usuario, string tipo, string fechaInicial, string fechaFinal)
+        {
+            try
+            {
+                using (SqlConnection nuevacon = Conexion.conexion())
+                {
+                    da = new SqlDataAdapter(string.Format("SELECT l.cveLog AS 'ID DE CAMBIO',l.descripcion AS 'DESCRIPCIÓN',l.cve_pedido AS 'PEDIDO', us.usuario AS 'USUARIO', clog.tipo AS 'TIPO DE MOVIMIENTO',l.fecha AS 'FECHA' FROM LOG l LEFT OUTER JOIN USUARIOS us ON us.cve_Administrador = l.cve_Administrador LEFT OUTER JOIN CAMBIOSLOG clog ON clog.cveCambio = l.cveCambio WHERE l.cve_pedido LIKE '%{0}%' AND us.usuario LIKE '%{1}%' AND clog.tipo = '{2}' AND fecha BETWEEN '{3}' AND '{4}';", cvePedido, usuario, tipo, fechaInicial, fechaFinal), nuevacon);
+
+                    nuevacon.Open();
+                    dt = new DataTable();
+                    da.Fill(dt);
+                    dtgv.DataSource = dt;
+                    nuevacon.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+       
+
+        //---------------- NOMBRES DE LOS CAMBIOS LOG (TIPO)
+        public DataSet cLogTipo()
+        {
+            DataSet dataSet = new DataSet();
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                   
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT * FROM CAMBIOSLOG;", nuevaConexion);
+                    dataAdapter.Fill(dataSet, "CLOG");
+                    
+
+                    nuevaConexion.Close();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return dataSet;
         }
 
         //ENVIAR CORREO END

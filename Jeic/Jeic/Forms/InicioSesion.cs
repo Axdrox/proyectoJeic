@@ -98,7 +98,7 @@ namespace Refracciones
                 //MessageBOX.SHowDialog(1,"Bienvenido "+ txtUsuario.Text);
                 Forms.Busqueda bus = new Forms.Busqueda();
                 bus.lblcvePe.Text = Operacion.obtenerCvePedido(txtUsuario.Text.Trim());
-                bus.Usuario.Text= "Usuario: " + txtUsuario.Text;
+                bus.Usuario.Text = "Usuario: " + txtUsuario.Text;
                 bus.Show();
 
                 /*int rol = ObtenerRol.Rol(txtUsuario.Text);
@@ -108,8 +108,11 @@ namespace Refracciones
                     alerta.Show();
                 }*/
 
+                string descripcionLog = "El usuario " + txtUsuario.Text + " Inicio sesión al sistema el día: " + DateTime.Now.ToString();
+                Operacion.Log(txtUsuario.Text, "", descripcionLog, "1");
                 txtUsuario.Text = "";
                 txtContrasenia.Text = "";
+                
                 this.Hide();
                 
             }

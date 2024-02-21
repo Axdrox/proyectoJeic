@@ -34,6 +34,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.lblScan = new System.Windows.Forms.Label();
             this.lblFecha = new System.Windows.Forms.Label();
             this.Fecha_in = new System.Windows.Forms.DateTimePicker();
             this.txtCodigo = new System.Windows.Forms.TextBox();
@@ -51,7 +52,7 @@
             this.rbtnPorPieza = new System.Windows.Forms.RadioButton();
             this.lblTitle = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.pbClose = new System.Windows.Forms.PictureBox();
-            this.lblScan = new System.Windows.Forms.Label();
+            this.lblUsuario = new System.Windows.Forms.Label();
             this.bunifuGradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEstatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
@@ -62,6 +63,7 @@
             this.bunifuGradientPanel1.BackColor = System.Drawing.Color.Transparent;
             this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
             this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuGradientPanel1.Controls.Add(this.lblUsuario);
             this.bunifuGradientPanel1.Controls.Add(this.lblScan);
             this.bunifuGradientPanel1.Controls.Add(this.lblFecha);
             this.bunifuGradientPanel1.Controls.Add(this.Fecha_in);
@@ -82,6 +84,17 @@
             this.bunifuGradientPanel1.Size = new System.Drawing.Size(1001, 422);
             this.bunifuGradientPanel1.TabIndex = 18;
             this.bunifuGradientPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.bunifuGradientPanel1_Paint);
+            // 
+            // lblScan
+            // 
+            this.lblScan.AutoSize = true;
+            this.lblScan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblScan.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.lblScan.Location = new System.Drawing.Point(740, 134);
+            this.lblScan.Name = "lblScan";
+            this.lblScan.Size = new System.Drawing.Size(120, 18);
+            this.lblScan.TabIndex = 22;
+            this.lblScan.Text = "Código barras:";
             // 
             // lblFecha
             // 
@@ -318,16 +331,14 @@
             this.pbClose.TabStop = false;
             this.pbClose.Click += new System.EventHandler(this.pbClose_Click);
             // 
-            // lblScan
+            // lblUsuario
             // 
-            this.lblScan.AutoSize = true;
-            this.lblScan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblScan.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.lblScan.Location = new System.Drawing.Point(740, 134);
-            this.lblScan.Name = "lblScan";
-            this.lblScan.Size = new System.Drawing.Size(120, 18);
-            this.lblScan.TabIndex = 22;
-            this.lblScan.Text = "Código barras:";
+            this.lblUsuario.AutoSize = true;
+            this.lblUsuario.Location = new System.Drawing.Point(13, 11);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(0, 16);
+            this.lblUsuario.TabIndex = 23;
+            this.lblUsuario.Visible = false;
             // 
             // cambioEstatus
             // 
@@ -375,5 +386,6 @@
         private System.Windows.Forms.Label lblFecha;
         private System.Windows.Forms.DateTimePicker Fecha_in;
         private System.Windows.Forms.Label lblScan;
+        public System.Windows.Forms.Label lblUsuario;
     }
 }

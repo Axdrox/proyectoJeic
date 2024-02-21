@@ -148,6 +148,11 @@ namespace Jeic.Forms
                 int cvePedidoIdentity = int.Parse(row.Cells["ColumnCvePedido"].Value.ToString());//ID de la tabla Pedido
                 operacion.actualizarCostoEnvio(cvePedidoIdentity, txtCveCosto.Text);
 
+                string usuario = lblUsuario.Text;
+                string idPedido = row.Cells["ColumnPed"].Value.ToString();
+                string nombrePieza = row.Cells["ColumnPieza"].Value.ToString();
+                string descripcionLog = "El usuario: " + usuario + " hizo cambios al costo de envío del pedido: " + idPedido + " de la pieza: " + nombrePieza + " el día: " + DateTime.Now.ToString();
+                operacion.Log(usuario, idPedido, descripcionLog, "16");
             }
             dgvEstatus.DataSource = null;
             dgvEstatus.Rows.Clear();

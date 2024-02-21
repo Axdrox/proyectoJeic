@@ -1,4 +1,5 @@
-﻿using Jeic.Properties;
+﻿using DocumentFormat.OpenXml.Spreadsheet;
+using Jeic.Properties;
 using Refracciones;
 using Refracciones.Forms;
 using System;
@@ -28,6 +29,7 @@ namespace Jeic.Forms
         private string[] datos = new string[10];
         private void bajasMultiples_Load(object sender, EventArgs e)
         {
+
             this.Icon = Resources.iconJeic;
             dgvEstatus.Columns["ColumnCvePedido"].Visible = false;
             dgvEstatus.Columns["ColumnCveVenta"].Visible = false;
@@ -59,6 +61,7 @@ namespace Jeic.Forms
                 Fecha_in.MinDate = new DateTime(anio, mes, dia-5);
                 Fecha_in.MaxDate = maximaFechaInicio;
             }
+
             
         }
 
@@ -96,6 +99,7 @@ namespace Jeic.Forms
                                 dgvEstatus.Columns["ColumnCvePieza"].Visible = false;
                                 dgvEstatus.Columns["ColumnCantidad"].Visible = false;
                                 dgvEstatus.Columns["ColumnFechaAsig"].Visible = false;
+
                             }
                         }
                         existe = false;
@@ -177,7 +181,13 @@ namespace Jeic.Forms
                     DateTime fecha_asigancion = DateTime.Parse(row.Cells["ColumnFechaAsig"].Value.ToString()); //fecha de asignacion de la tabla ventas
                     
                     operacion.registrarBajaCodigoBarras(cveSiniestro,cvePedido,cvePieza,cantidad,fecha,cveVenta,fecha_asigancion,realizo,cvePedidoIdentity);
-                }
+
+                    string usuario = lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9);
+                    string idPedido = row.Cells["ColumnPed"].Value.ToString();
+                    string nombrePieza = row.Cells["ColumnPieza"].Value.ToString();
+                    string descripcionLog = "El usuario: " + usuario + " registro una baja del pedido: " + idPedido + " de la pieza: " + nombrePieza + " el día: " + DateTime.Now.ToString();
+                    operacion.Log(usuario, idPedido, descripcionLog, "12");
+            }
                 dgvEstatus.DataSource = null;
                 dgvEstatus.Rows.Clear();
                 MessageBOX.SHowDialog(3, "Datos registrados correctamente!");

@@ -134,6 +134,11 @@ namespace Jeic.Forms
 
                 int cvePedidoIdentity = int.Parse(row.Cells["ColumnCvePedido"].Value.ToString());//ID de la tabla Pedido
                 operacion.actualizarGuia(cvePedidoIdentity, txtCveGuia.Text);
+                string usuario = lblUsuario.Text;
+                string idPedido = row.Cells["ColumnPed"].Value.ToString();
+                string nombrePieza = row.Cells["ColumnPieza"].Value.ToString();
+                string descripcionLog = "El usuario: " + usuario + " hizo cambios al número de guía del pedido: " + idPedido + " de la pieza: " + nombrePieza + " el día: " + DateTime.Now.ToString();
+                operacion.Log(usuario, idPedido, descripcionLog, "18");
 
             }
             dgvEstatus.DataSource = null;

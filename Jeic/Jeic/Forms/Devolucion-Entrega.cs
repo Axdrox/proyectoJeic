@@ -1,4 +1,5 @@
-﻿using Jeic.Properties;
+﻿using DocumentFormat.OpenXml.Spreadsheet;
+using Jeic.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,6 +22,7 @@ namespace Refracciones.Forms
         string cve_pedido;
         int cvePedidoIdentity;
         string motivo;
+        string nombrePieza;
         //int cve_factura;
         int cve_venta;
         int cantidad = 0;
@@ -52,7 +54,7 @@ namespace Refracciones.Forms
             dgvDevolucion.DataSource = oper.Devolucion(cve_siniestro, cve_pedido);
             dgvDevolucion.Columns["CLAVE VENTA"].Visible = false;// VENTA INDEX 11
             dgvDevolucion.Columns["CVE"].Visible = false;// CVE INDEX 12
-            menu.ForeColor = Color.White;
+            menu.ForeColor = System.Drawing.Color.White;
             /*count = oper.Total_Registros() +1 ;
             count2 = oper.Total_Registros2() + 1;*/
             
@@ -77,7 +79,7 @@ namespace Refracciones.Forms
                 cve_venta = Int32.Parse(dgvDevolucion.Rows[fila].Cells[11].Value.ToString());
                 cvePedidoIdentity = Int32.Parse(dgvDevolucion.Rows[fila].Cells[12].Value.ToString());
                 fecha_asignacion = DateTime.Parse(dgvDevolucion.Rows[fila].Cells[7].Value.ToString());//7
-
+                nombrePieza = dgvDevolucion.Rows[fila].Cells[0].Value.ToString();
                 //MessageBOX.SHowDialog(3, "Pieza seleccionada: " + dgvDevolucion.Rows[fila].Cells[0].Value.ToString());
                 rbtnEntrega.Enabled = true;
                 rbtnDevolucion.Enabled = true;
@@ -226,6 +228,12 @@ namespace Refracciones.Forms
                                 penalizacion = decimal.Parse(txtPenalizacion.Text.Trim());
                                 //count = oper.Total_Registros() + 1;//Se calcula el total de registros en la tabla Devolución
                                 oper.Registrar_Devolucion(cve_siniestro, cve_pedido, cve_pieza, cantidad, fecha, cantidadD, cve_venta, motivo, penalizacion, lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9), cvePedidoIdentity);
+
+                                string usuario = lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9);
+                                string idPedido = cve_pedido;
+                                string descripcionLog = "El usuario: " + usuario + " registro una devolución del pedido: " + idPedido + " de la pieza: " + nombrePieza + " el día: " + DateTime.Now.ToString();
+                                oper.Log(usuario, idPedido, descripcionLog, "13");
+                                
                                 cmbCantidad.Items.Clear();
                                 txtMotivo.Text = "";
                                 txtPenalizacion.Text = "";
@@ -254,6 +262,10 @@ namespace Refracciones.Forms
                                 dgvDevolucion.Enabled = true;
                                 //count2 = oper.Total_Registros2() + 1;//Se calcula el total de registros en la tabla Entrega
                                 oper.Registrar_Entrega(cve_siniestro, cve_pedido, cve_pieza, cantidad, fecha, cantidadD, cve_venta, fecha_asignacion, lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9), cvePedidoIdentity);
+                                string usuario = lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9);
+                                string idPedido = cve_pedido;
+                                string descripcionLog = "El usuario: " + usuario + " registro una entrega del pedido: " + idPedido + " de la pieza: " + nombrePieza + " el día: " + DateTime.Now.ToString();
+                                oper.Log(usuario, idPedido, descripcionLog, "5");
                                 cmbCantidad.Items.Clear();
                             //}
                             //else
@@ -372,6 +384,10 @@ namespace Refracciones.Forms
                     if (pzas_entregadas != cantidad)
                     {
                         oper.Registrar_Entrega(cve_siniestro, cve_pedido, cve_pieza, cantidad, fecha, (cantidad - pzas_entregadas), cve_venta, fecha_asignacion, lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9), cvePedidoIdentity);
+                        string usuario = lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9);
+                        string idPedido = cve_pedido;
+                        string descripcionLog = "El usuario: " + usuario + " registro una entrega del pedido: " + idPedido + " de la pieza: " + nombrePieza + " el día: " + DateTime.Now.ToString();
+                        oper.Log(usuario, idPedido, descripcionLog, "5");
                         x = 1;
                     }
                     else
@@ -420,6 +436,10 @@ namespace Refracciones.Forms
                     if (pzas_devolucion != pzas_entregadas)
                     {
                         oper.Registrar_Devolucion(cve_siniestro, cve_pedido, cve_pieza, pzas_entregadas, fecha, (pzas_entregadas - pzas_devolucion), cve_venta, motivo, penalizacion,lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9), cvePedidoIdentity);
+                        string usuario = lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9);
+                        string idPedido = cve_pedido;
+                        string descripcionLog = "El usuario: " + usuario + " registro una devolución del pedido: " + idPedido + " de la pieza: " + nombrePieza + " el día: " + DateTime.Now.ToString();
+                        oper.Log(usuario, idPedido, descripcionLog, "13");
                         x = 1;
                     }
                     else

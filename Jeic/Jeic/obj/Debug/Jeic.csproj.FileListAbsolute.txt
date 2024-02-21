@@ -588,6 +588,14 @@ C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.CoreCompileInputs.cache
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.exe.manifest
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.application
-C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.CopyComplete
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.exe
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.pdb
+C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.Up2Date
+C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\ExcelDataReader.DataSet.dll
+C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\ExcelDataReader.dll
+C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\ExcelDataReader.pdb
+C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\ExcelDataReader.xml
+C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\ExcelDataReader.DataSet.pdb
+C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\ExcelDataReader.DataSet.xml
+C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.ResolveComReference.cache
+C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.Forms.Log.resources

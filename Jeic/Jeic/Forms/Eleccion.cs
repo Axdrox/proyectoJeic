@@ -52,7 +52,7 @@ namespace Refracciones
                 //LBLUSUARIO
                 fact.lblUsuario.Text = lblUsuario.Text;
                 DialogResult = fact.ShowDialog();
-                
+
                 /*registroFactura factura = new registroFactura();
                 factura.dato1.Text = factura.dato1.Text + " " + dato_1.Text;//SINIESTRO
                 factura.dato2.Text = factura.dato2.Text + " " + dato_2.Text;//PEDIDO
@@ -241,7 +241,13 @@ namespace Refracciones
 
         private void btnPDF_Click(object sender, EventArgs e)
         {
+            
             oper.generarVale(saveFileDialog1,dgvDatosPDF,dato_2.Text);
+
+            string usuario = lblUsuario.Text.Substring(9, lblUsuario.Text.Length - 9);
+            string idPedido = dato_2.Text;
+            string descripcionLog = "El usuario: " + usuario + " generó el vale del pedido: " + idPedido + " el día: " + DateTime.Now.ToString();
+            oper.Log(usuario, idPedido, descripcionLog, "4");
             this.Close();
         }
 
