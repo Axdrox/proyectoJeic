@@ -495,6 +495,8 @@ C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\BouncyCastle
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\Common.Logging.Core.dll
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\Common.Logging.dll
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\ExcelDataReader.DataSet.dll
+C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\ExcelDataReader.dll
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\itext.barcodes.dll
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\itext.forms.dll
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\itext.io.dll
@@ -528,6 +530,10 @@ C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\Common.Loggi
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\Common.Logging.xml
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\Common.Logging.Core.pdb
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\Common.Logging.Core.xml
+C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\ExcelDataReader.pdb
+C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\ExcelDataReader.xml
+C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\ExcelDataReader.DataSet.pdb
+C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\ExcelDataReader.DataSet.xml
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\itext.barcodes.xml
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\itext.forms.xml
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\itext.io.xml
@@ -559,6 +565,7 @@ C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\System.Text.
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\System.ValueTuple.xml
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.AssemblyReference.cache
+C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.ResolveComReference.cache
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Administrar.resources
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Alertas.resources
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.Forms.bajasMultiples.resources
@@ -575,6 +582,7 @@ C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.Forms.F
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.Forms.FechaBaja.resources
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.Forms.GeneradorClave.resources
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.InicioSesion.resources
+C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.Forms.Log.resources
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.MessageBOX.resources
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Pedido.resources
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Refracciones.Forms.Penalizaciones.resources
@@ -588,14 +596,6 @@ C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.CoreCompileInputs.cache
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.exe.manifest
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.application
+C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.Up2Date
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.exe
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.pdb
-C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.Up2Date
-C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\ExcelDataReader.DataSet.dll
-C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\ExcelDataReader.dll
-C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\ExcelDataReader.pdb
-C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\ExcelDataReader.xml
-C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\ExcelDataReader.DataSet.pdb
-C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Debug\ExcelDataReader.DataSet.xml
-C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.csproj.ResolveComReference.cache
-C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Debug\Jeic.Forms.Log.resources

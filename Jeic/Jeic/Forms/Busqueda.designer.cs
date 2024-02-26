@@ -90,6 +90,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.otrasOpcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.logcontrolDeCambiosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generarReporteVentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generadorClavesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cambioCostosEnvíoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -107,7 +108,8 @@
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.lblcvePe = new System.Windows.Forms.Label();
             this.moverFormulario = new Bunifu.Framework.UI.BunifuDragControl(this.components);
-            this.logcontrolDeCambiosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnEliminarFechaEntrega = new System.Windows.Forms.Button();
+            this.btnEliminarFechaBaja = new System.Windows.Forms.Button();
             this.Panelinfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFactura)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dvgPedido)).BeginInit();
@@ -195,6 +197,8 @@
             // 
             this.Panelinfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(45)))), ((int)(((byte)(59)))));
             this.Panelinfo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Panelinfo.Controls.Add(this.btnEliminarFechaBaja);
+            this.Panelinfo.Controls.Add(this.btnEliminarFechaEntrega);
             this.Panelinfo.Controls.Add(this.lblvaleLiberado);
             this.Panelinfo.Controls.Add(this.txtCveGuia);
             this.Panelinfo.Controls.Add(this.lblUbicacion);
@@ -887,6 +891,14 @@
             this.otrasOpcionesToolStripMenuItem.Size = new System.Drawing.Size(116, 27);
             this.otrasOpcionesToolStripMenuItem.Text = "Otras Opciones";
             // 
+            // logcontrolDeCambiosToolStripMenuItem
+            // 
+            this.logcontrolDeCambiosToolStripMenuItem.Enabled = false;
+            this.logcontrolDeCambiosToolStripMenuItem.Name = "logcontrolDeCambiosToolStripMenuItem";
+            this.logcontrolDeCambiosToolStripMenuItem.Size = new System.Drawing.Size(241, 26);
+            this.logcontrolDeCambiosToolStripMenuItem.Text = "Log(control de cambios) ";
+            this.logcontrolDeCambiosToolStripMenuItem.Click += new System.EventHandler(this.logcontrolDeCambiosToolStripMenuItem_Click);
+            // 
             // generarReporteVentasToolStripMenuItem
             // 
             this.generarReporteVentasToolStripMenuItem.Enabled = false;
@@ -1045,13 +1057,41 @@
             this.moverFormulario.TargetControl = this.bunifuGradientPanel1;
             this.moverFormulario.Vertical = true;
             // 
-            // logcontrolDeCambiosToolStripMenuItem
+            // btnEliminarFechaEntrega
             // 
-            this.logcontrolDeCambiosToolStripMenuItem.Enabled = false;
-            this.logcontrolDeCambiosToolStripMenuItem.Name = "logcontrolDeCambiosToolStripMenuItem";
-            this.logcontrolDeCambiosToolStripMenuItem.Size = new System.Drawing.Size(241, 26);
-            this.logcontrolDeCambiosToolStripMenuItem.Text = "Log(control de cambios) ";
-            this.logcontrolDeCambiosToolStripMenuItem.Click += new System.EventHandler(this.logcontrolDeCambiosToolStripMenuItem_Click);
+            this.btnEliminarFechaEntrega.BackColor = System.Drawing.Color.Yellow;
+            this.btnEliminarFechaEntrega.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEliminarFechaEntrega.Enabled = false;
+            this.btnEliminarFechaEntrega.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnEliminarFechaEntrega.Font = new System.Drawing.Font("Calibri", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminarFechaEntrega.ForeColor = System.Drawing.Color.Black;
+            this.btnEliminarFechaEntrega.Location = new System.Drawing.Point(352, 147);
+            this.btnEliminarFechaEntrega.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnEliminarFechaEntrega.Name = "btnEliminarFechaEntrega";
+            this.btnEliminarFechaEntrega.Size = new System.Drawing.Size(63, 23);
+            this.btnEliminarFechaEntrega.TabIndex = 18;
+            this.btnEliminarFechaEntrega.Text = "Eliminar";
+            this.btnEliminarFechaEntrega.UseVisualStyleBackColor = false;
+            this.btnEliminarFechaEntrega.Visible = false;
+            this.btnEliminarFechaEntrega.Click += new System.EventHandler(this.btnEliminarFechaEntrega_Click);
+            // 
+            // btnEliminarFechaBaja
+            // 
+            this.btnEliminarFechaBaja.BackColor = System.Drawing.Color.Yellow;
+            this.btnEliminarFechaBaja.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEliminarFechaBaja.Enabled = false;
+            this.btnEliminarFechaBaja.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnEliminarFechaBaja.Font = new System.Drawing.Font("Calibri", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminarFechaBaja.ForeColor = System.Drawing.Color.Black;
+            this.btnEliminarFechaBaja.Location = new System.Drawing.Point(352, 174);
+            this.btnEliminarFechaBaja.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnEliminarFechaBaja.Name = "btnEliminarFechaBaja";
+            this.btnEliminarFechaBaja.Size = new System.Drawing.Size(63, 23);
+            this.btnEliminarFechaBaja.TabIndex = 47;
+            this.btnEliminarFechaBaja.Text = "Eliminar";
+            this.btnEliminarFechaBaja.UseVisualStyleBackColor = false;
+            this.btnEliminarFechaBaja.Visible = false;
+            this.btnEliminarFechaBaja.Click += new System.EventHandler(this.btnEliminarFechaBaja_Click);
             // 
             // Busqueda
             // 
@@ -1159,5 +1199,7 @@
         private System.Windows.Forms.ToolStripMenuItem cambioCostosEnvíoToolStripMenuItem;
         private System.Windows.Forms.Label lblvaleLiberado;
         private System.Windows.Forms.ToolStripMenuItem logcontrolDeCambiosToolStripMenuItem;
+        private System.Windows.Forms.Button btnEliminarFechaEntrega;
+        private System.Windows.Forms.Button btnEliminarFechaBaja;
     }
 }

@@ -796,7 +796,6 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cbPiezaNombre;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
@@ -843,5 +842,6 @@
         private Bunifu.Framework.UI.BunifuDragControl moverFormulario;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txtCostoEnvio;
+        public System.Windows.Forms.ComboBox cbPiezaNombre;
     }
 }

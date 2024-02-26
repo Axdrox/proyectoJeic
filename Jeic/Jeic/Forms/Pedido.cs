@@ -33,7 +33,7 @@ namespace Refracciones.Forms
     {
         private OperBD operacion = new OperBD();
         private DataTable dt;
-
+        private DataSet dsPiezas;
         private int actualizar = 0;
 
         public Pedido(int i)
@@ -75,6 +75,8 @@ namespace Refracciones.Forms
 
         private void Pedido_Load(object sender, EventArgs e)
         {
+
+            dsPiezas = operacion.NombrePiezasRegistrados(1);
             //Agregar columna estado combobox a DGV
             columnaCombobox();
 
@@ -977,6 +979,10 @@ namespace Refracciones.Forms
                     int cantidad = 0;
                     //double subtotalPrecio = 0;
                     double totalPrecio = 0;
+
+                    pieza.cbPiezaNombre.DataSource = dsPiezas.Tables[0].DefaultView;//TEST 26/02/2024
+                    pieza.cbPiezaNombre.ValueMember = "nombre";
+
                     DialogResult respuesta = pieza.ShowDialog();
                     //MessageBox.Show(respuesta.ToString());
                     if (respuesta == DialogResult.OK)
@@ -1317,6 +1323,10 @@ namespace Refracciones.Forms
                             }
                         }
                     }
+
+                    pieza.cbPiezaNombre.DataSource = dsPiezas.Tables[0].DefaultView;//TEST 26/02/2024
+                    pieza.cbPiezaNombre.ValueMember = "nombre";
+
                     DialogResult respuesta = pieza.ShowDialog();
                     if (respuesta == DialogResult.OK)
                     {

@@ -83,6 +83,7 @@
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.IsSplitterFixed = true;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -111,8 +112,9 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.dgvDevolucion);
             this.splitContainer1.Panel2.Controls.Add(this.bunifuGradientPanel2);
-            this.splitContainer1.Size = new System.Drawing.Size(1370, 450);
-            this.splitContainer1.SplitterDistance = 353;
+            this.splitContainer1.Size = new System.Drawing.Size(1827, 554);
+            this.splitContainer1.SplitterDistance = 470;
+            this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 0;
             // 
             // lblPenalizacion
@@ -121,9 +123,10 @@
             this.lblPenalizacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(58)))), ((int)(((byte)(97)))));
             this.lblPenalizacion.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPenalizacion.ForeColor = System.Drawing.Color.White;
-            this.lblPenalizacion.Location = new System.Drawing.Point(18, 282);
+            this.lblPenalizacion.Location = new System.Drawing.Point(24, 347);
+            this.lblPenalizacion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPenalizacion.Name = "lblPenalizacion";
-            this.lblPenalizacion.Size = new System.Drawing.Size(154, 14);
+            this.lblPenalizacion.Size = new System.Drawing.Size(175, 18);
             this.lblPenalizacion.TabIndex = 16;
             this.lblPenalizacion.Text = "Porcentaje de Penalización";
             this.lblPenalizacion.Visible = false;
@@ -134,9 +137,10 @@
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(54)))), ((int)(((byte)(88)))));
             this.label1.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(164, 246);
+            this.label1.Location = new System.Drawing.Point(219, 303);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(30, 14);
+            this.label1.Size = new System.Drawing.Size(36, 18);
             this.label1.TabIndex = 14;
             this.label1.Text = "Otro";
             this.label1.Visible = false;
@@ -149,7 +153,8 @@
             this.chkMotivo.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(205)))), ((int)(((byte)(117)))));
             this.chkMotivo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.chkMotivo.ForeColor = System.Drawing.Color.White;
-            this.chkMotivo.Location = new System.Drawing.Point(145, 243);
+            this.chkMotivo.Location = new System.Drawing.Point(193, 299);
+            this.chkMotivo.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.chkMotivo.Name = "chkMotivo";
             this.chkMotivo.Size = new System.Drawing.Size(20, 20);
             this.chkMotivo.TabIndex = 13;
@@ -162,9 +167,10 @@
             this.txtMotivo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMotivo.Enabled = false;
             this.txtMotivo.ForeColor = System.Drawing.Color.White;
-            this.txtMotivo.Location = new System.Drawing.Point(18, 242);
+            this.txtMotivo.Location = new System.Drawing.Point(24, 298);
+            this.txtMotivo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtMotivo.Name = "txtMotivo";
-            this.txtMotivo.Size = new System.Drawing.Size(121, 20);
+            this.txtMotivo.Size = new System.Drawing.Size(161, 22);
             this.txtMotivo.TabIndex = 12;
             this.txtMotivo.Visible = false;
             // 
@@ -181,9 +187,10 @@
             "Cambio Origen",
             "Perdida Total",
             "Pieza Incorrecta"});
-            this.cmbMotivoDev.Location = new System.Drawing.Point(18, 242);
+            this.cmbMotivoDev.Location = new System.Drawing.Point(24, 298);
+            this.cmbMotivoDev.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmbMotivoDev.Name = "cmbMotivoDev";
-            this.cmbMotivoDev.Size = new System.Drawing.Size(121, 21);
+            this.cmbMotivoDev.Size = new System.Drawing.Size(160, 24);
             this.cmbMotivoDev.TabIndex = 11;
             this.cmbMotivoDev.Visible = false;
             // 
@@ -193,9 +200,10 @@
             this.lblMotivoDev.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(50)))), ((int)(((byte)(80)))));
             this.lblMotivoDev.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMotivoDev.ForeColor = System.Drawing.Color.White;
-            this.lblMotivoDev.Location = new System.Drawing.Point(15, 215);
+            this.lblMotivoDev.Location = new System.Drawing.Point(20, 265);
+            this.lblMotivoDev.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMotivoDev.Name = "lblMotivoDev";
-            this.lblMotivoDev.Size = new System.Drawing.Size(110, 14);
+            this.lblMotivoDev.Size = new System.Drawing.Size(128, 18);
             this.lblMotivoDev.TabIndex = 10;
             this.lblMotivoDev.Text = "Motivo Devolución:";
             this.lblMotivoDev.Visible = false;
@@ -208,9 +216,10 @@
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCancelar.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
-            this.btnCancelar.Location = new System.Drawing.Point(15, 415);
+            this.btnCancelar.Location = new System.Drawing.Point(20, 511);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelar.Size = new System.Drawing.Size(100, 28);
             this.btnCancelar.TabIndex = 9;
             this.btnCancelar.Text = "CANCELAR";
             this.btnCancelar.UseVisualStyleBackColor = false;
@@ -224,9 +233,10 @@
             this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAceptar.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAceptar.ForeColor = System.Drawing.Color.White;
-            this.btnAceptar.Location = new System.Drawing.Point(91, 370);
+            this.btnAceptar.Location = new System.Drawing.Point(121, 455);
+            this.btnAceptar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(124, 23);
+            this.btnAceptar.Size = new System.Drawing.Size(165, 28);
             this.btnAceptar.TabIndex = 8;
             this.btnAceptar.Text = "ENTREGA";
             this.btnAceptar.UseVisualStyleBackColor = false;
@@ -240,9 +250,10 @@
             this.rbtnDevolucion.Enabled = false;
             this.rbtnDevolucion.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbtnDevolucion.ForeColor = System.Drawing.Color.White;
-            this.rbtnDevolucion.Location = new System.Drawing.Point(136, 55);
+            this.rbtnDevolucion.Location = new System.Drawing.Point(181, 68);
+            this.rbtnDevolucion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rbtnDevolucion.Name = "rbtnDevolucion";
-            this.rbtnDevolucion.Size = new System.Drawing.Size(86, 18);
+            this.rbtnDevolucion.Size = new System.Drawing.Size(99, 22);
             this.rbtnDevolucion.TabIndex = 7;
             this.rbtnDevolucion.Text = "Devolución";
             this.rbtnDevolucion.UseVisualStyleBackColor = false;
@@ -257,12 +268,13 @@
             this.rbtnEntrega.Enabled = false;
             this.rbtnEntrega.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbtnEntrega.ForeColor = System.Drawing.Color.White;
-            this.rbtnEntrega.Location = new System.Drawing.Point(21, 55);
+            this.rbtnEntrega.Location = new System.Drawing.Point(28, 68);
+            this.rbtnEntrega.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rbtnEntrega.Name = "rbtnEntrega";
-            this.rbtnEntrega.Size = new System.Drawing.Size(66, 18);
+            this.rbtnEntrega.Size = new System.Drawing.Size(55, 22);
             this.rbtnEntrega.TabIndex = 6;
             this.rbtnEntrega.TabStop = true;
-            this.rbtnEntrega.Text = "Entrega";
+            this.rbtnEntrega.Text = "Baja";
             this.rbtnEntrega.UseVisualStyleBackColor = false;
             this.rbtnEntrega.CheckedChanged += new System.EventHandler(this.rbtnEntrega_CheckedChanged);
             // 
@@ -272,9 +284,10 @@
             this.cmbCantidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCantidad.Enabled = false;
             this.cmbCantidad.FormattingEnabled = true;
-            this.cmbCantidad.Location = new System.Drawing.Point(15, 179);
+            this.cmbCantidad.Location = new System.Drawing.Point(20, 220);
+            this.cmbCantidad.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmbCantidad.Name = "cmbCantidad";
-            this.cmbCantidad.Size = new System.Drawing.Size(121, 21);
+            this.cmbCantidad.Size = new System.Drawing.Size(160, 24);
             this.cmbCantidad.TabIndex = 5;
             // 
             // lbl2
@@ -283,9 +296,10 @@
             this.lbl2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(44)))), ((int)(((byte)(66)))));
             this.lbl2.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl2.ForeColor = System.Drawing.Color.White;
-            this.lbl2.Location = new System.Drawing.Point(12, 159);
+            this.lbl2.Location = new System.Drawing.Point(16, 196);
+            this.lbl2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl2.Name = "lbl2";
-            this.lbl2.Size = new System.Drawing.Size(91, 14);
+            this.lbl2.Size = new System.Drawing.Size(100, 18);
             this.lbl2.TabIndex = 4;
             this.lbl2.Text = "Cantidad Bajas ";
             // 
@@ -293,9 +307,10 @@
             // 
             this.dtpFecha.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dtpFecha.Enabled = false;
-            this.dtpFecha.Location = new System.Drawing.Point(15, 115);
+            this.dtpFecha.Location = new System.Drawing.Point(20, 142);
+            this.dtpFecha.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtpFecha.Name = "dtpFecha";
-            this.dtpFecha.Size = new System.Drawing.Size(200, 20);
+            this.dtpFecha.Size = new System.Drawing.Size(265, 22);
             this.dtpFecha.TabIndex = 3;
             // 
             // lbl1
@@ -304,9 +319,10 @@
             this.lbl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(35)))), ((int)(((byte)(48)))));
             this.lbl1.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl1.ForeColor = System.Drawing.Color.White;
-            this.lbl1.Location = new System.Drawing.Point(12, 87);
+            this.lbl1.Location = new System.Drawing.Point(16, 107);
+            this.lbl1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl1.Name = "lbl1";
-            this.lbl1.Size = new System.Drawing.Size(66, 14);
+            this.lbl1.Size = new System.Drawing.Size(73, 18);
             this.lbl1.TabIndex = 2;
             this.lbl1.Text = "Fecha Baja";
             // 
@@ -316,9 +332,10 @@
             this.dato2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(29)))), ((int)(((byte)(34)))));
             this.dato2.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dato2.ForeColor = System.Drawing.Color.White;
-            this.dato2.Location = new System.Drawing.Point(155, 28);
+            this.dato2.Location = new System.Drawing.Point(207, 34);
+            this.dato2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.dato2.Name = "dato2";
-            this.dato2.Size = new System.Drawing.Size(50, 14);
+            this.dato2.Size = new System.Drawing.Size(59, 18);
             this.dato2.TabIndex = 1;
             this.dato2.Text = "PEDIDO:";
             // 
@@ -328,21 +345,23 @@
             this.dato1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(29)))), ((int)(((byte)(34)))));
             this.dato1.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dato1.ForeColor = System.Drawing.Color.White;
-            this.dato1.Location = new System.Drawing.Point(12, 28);
+            this.dato1.Location = new System.Drawing.Point(16, 34);
+            this.dato1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.dato1.Name = "dato1";
-            this.dato1.Size = new System.Drawing.Size(65, 14);
+            this.dato1.Size = new System.Drawing.Size(76, 18);
             this.dato1.TabIndex = 0;
             this.dato1.Text = "SINIESTRO:";
             // 
             // menu
             // 
             this.menu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(28)))), ((int)(((byte)(32)))));
+            this.menu.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.opcionesToolStripMenuItem});
             this.menu.Location = new System.Drawing.Point(0, 0);
             this.menu.Name = "menu";
             this.menu.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.menu.Size = new System.Drawing.Size(353, 24);
+            this.menu.Size = new System.Drawing.Size(470, 26);
             this.menu.TabIndex = 17;
             this.menu.Text = "menuStrip1";
             // 
@@ -353,20 +372,20 @@
             this.registrarDevoluciónDeTodoElPedidoToolStripMenuItem});
             this.opcionesToolStripMenuItem.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.opcionesToolStripMenuItem.Name = "opcionesToolStripMenuItem";
-            this.opcionesToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
+            this.opcionesToolStripMenuItem.Size = new System.Drawing.Size(80, 34);
             this.opcionesToolStripMenuItem.Text = "Opciones";
             // 
             // registrarEntregaDeTodoElPedidoToolStripMenuItem
             // 
             this.registrarEntregaDeTodoElPedidoToolStripMenuItem.Name = "registrarEntregaDeTodoElPedidoToolStripMenuItem";
-            this.registrarEntregaDeTodoElPedidoToolStripMenuItem.Size = new System.Drawing.Size(370, 22);
+            this.registrarEntregaDeTodoElPedidoToolStripMenuItem.Size = new System.Drawing.Size(420, 26);
             this.registrarEntregaDeTodoElPedidoToolStripMenuItem.Text = "Registrar baja de piezas faltantes de todo el pedido";
             this.registrarEntregaDeTodoElPedidoToolStripMenuItem.Click += new System.EventHandler(this.registrarEntregaDeTodoElPedidoToolStripMenuItem_Click);
             // 
             // registrarDevoluciónDeTodoElPedidoToolStripMenuItem
             // 
             this.registrarDevoluciónDeTodoElPedidoToolStripMenuItem.Name = "registrarDevoluciónDeTodoElPedidoToolStripMenuItem";
-            this.registrarDevoluciónDeTodoElPedidoToolStripMenuItem.Size = new System.Drawing.Size(378, 22);
+            this.registrarDevoluciónDeTodoElPedidoToolStripMenuItem.Size = new System.Drawing.Size(420, 26);
             this.registrarDevoluciónDeTodoElPedidoToolStripMenuItem.Text = "Registrar devolución de piezas entregadas del pedido";
             this.registrarDevoluciónDeTodoElPedidoToolStripMenuItem.Click += new System.EventHandler(this.registrarDevoluciónDeTodoElPedidoToolStripMenuItem_Click);
             // 
@@ -383,9 +402,10 @@
             this.bunifuGradientPanel1.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.bunifuGradientPanel1.GradientTopRight = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.bunifuGradientPanel1.Location = new System.Drawing.Point(0, 0);
+            this.bunifuGradientPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bunifuGradientPanel1.Name = "bunifuGradientPanel1";
             this.bunifuGradientPanel1.Quality = 10;
-            this.bunifuGradientPanel1.Size = new System.Drawing.Size(1370, 450);
+            this.bunifuGradientPanel1.Size = new System.Drawing.Size(1827, 554);
             this.bunifuGradientPanel1.TabIndex = 18;
             // 
             // lblUsuario
@@ -393,9 +413,10 @@
             this.lblUsuario.AutoSize = true;
             this.lblUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(72)))), ((int)(((byte)(126)))));
             this.lblUsuario.ForeColor = System.Drawing.Color.White;
-            this.lblUsuario.Location = new System.Drawing.Point(217, 428);
+            this.lblUsuario.Location = new System.Drawing.Point(289, 527);
+            this.lblUsuario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(46, 13);
+            this.lblUsuario.Size = new System.Drawing.Size(57, 16);
             this.lblUsuario.TabIndex = 73;
             this.lblUsuario.Text = "Usuario:";
             // 
@@ -404,9 +425,10 @@
             this.lblporcentaje.AutoSize = true;
             this.lblporcentaje.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.lblporcentaje.ForeColor = System.Drawing.Color.White;
-            this.lblporcentaje.Location = new System.Drawing.Point(21, 305);
+            this.lblporcentaje.Location = new System.Drawing.Point(28, 375);
+            this.lblporcentaje.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblporcentaje.Name = "lblporcentaje";
-            this.lblporcentaje.Size = new System.Drawing.Size(15, 13);
+            this.lblporcentaje.Size = new System.Drawing.Size(19, 16);
             this.lblporcentaje.TabIndex = 35;
             this.lblporcentaje.Text = "%";
             this.lblporcentaje.Visible = false;
@@ -416,10 +438,11 @@
             this.txtPenalizacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.txtPenalizacion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPenalizacion.ForeColor = System.Drawing.Color.White;
-            this.txtPenalizacion.Location = new System.Drawing.Point(18, 301);
+            this.txtPenalizacion.Location = new System.Drawing.Point(24, 370);
+            this.txtPenalizacion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPenalizacion.Name = "txtPenalizacion";
             this.txtPenalizacion.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtPenalizacion.Size = new System.Drawing.Size(121, 20);
+            this.txtPenalizacion.Size = new System.Drawing.Size(161, 22);
             this.txtPenalizacion.TabIndex = 19;
             this.txtPenalizacion.Text = "0";
             this.txtPenalizacion.Visible = false;
@@ -446,7 +469,8 @@
             this.dgvDevolucion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDevolucion.EnableHeadersVisualStyles = false;
             this.dgvDevolucion.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(51)))), ((int)(((byte)(65)))));
-            this.dgvDevolucion.Location = new System.Drawing.Point(3, 28);
+            this.dgvDevolucion.Location = new System.Drawing.Point(4, 34);
+            this.dgvDevolucion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvDevolucion.Name = "dgvDevolucion";
             this.dgvDevolucion.ReadOnly = true;
             this.dgvDevolucion.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -459,6 +483,7 @@
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvDevolucion.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvDevolucion.RowHeadersVisible = false;
+            this.dgvDevolucion.RowHeadersWidth = 51;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
@@ -466,7 +491,7 @@
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
             this.dgvDevolucion.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvDevolucion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDevolucion.Size = new System.Drawing.Size(1007, 422);
+            this.dgvDevolucion.Size = new System.Drawing.Size(1343, 519);
             this.dgvDevolucion.TabIndex = 0;
             this.dgvDevolucion.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDevolucion_CellContentClick);
             // 
@@ -481,20 +506,21 @@
             this.bunifuGradientPanel2.GradientBottomRight = System.Drawing.Color.RoyalBlue;
             this.bunifuGradientPanel2.GradientTopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.bunifuGradientPanel2.GradientTopRight = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.bunifuGradientPanel2.Location = new System.Drawing.Point(3, 0);
+            this.bunifuGradientPanel2.Location = new System.Drawing.Point(4, 0);
+            this.bunifuGradientPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bunifuGradientPanel2.Name = "bunifuGradientPanel2";
             this.bunifuGradientPanel2.Quality = 10;
-            this.bunifuGradientPanel2.Size = new System.Drawing.Size(1188, 450);
+            this.bunifuGradientPanel2.Size = new System.Drawing.Size(1584, 554);
             this.bunifuGradientPanel2.TabIndex = 19;
             // 
             // pbMinimize
             // 
             this.pbMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbMinimize.Image = global::Jeic.Properties.Resources.Minimize_Window_2_48px;
-            this.pbMinimize.Location = new System.Drawing.Point(970, 2);
-            this.pbMinimize.Margin = new System.Windows.Forms.Padding(2);
+            this.pbMinimize.Location = new System.Drawing.Point(1293, 2);
+            this.pbMinimize.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pbMinimize.Name = "pbMinimize";
-            this.pbMinimize.Size = new System.Drawing.Size(17, 17);
+            this.pbMinimize.Size = new System.Drawing.Size(23, 21);
             this.pbMinimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbMinimize.TabIndex = 73;
             this.pbMinimize.TabStop = false;
@@ -504,10 +530,10 @@
             // 
             this.pbClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbClose.Image = global::Jeic.Properties.Resources.Close_Window__2_48px;
-            this.pbClose.Location = new System.Drawing.Point(990, 2);
-            this.pbClose.Margin = new System.Windows.Forms.Padding(2);
+            this.pbClose.Location = new System.Drawing.Point(1320, 2);
+            this.pbClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pbClose.Name = "pbClose";
-            this.pbClose.Size = new System.Drawing.Size(17, 17);
+            this.pbClose.Size = new System.Drawing.Size(23, 21);
             this.pbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbClose.TabIndex = 72;
             this.pbClose.TabStop = false;
@@ -531,12 +557,13 @@
             // 
             // Devolucion
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1370, 450);
+            this.ClientSize = new System.Drawing.Size(1827, 554);
             this.Controls.Add(this.splitContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MainMenuStrip = this.menu;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Devolucion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registrar Devolución y Entrega";

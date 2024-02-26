@@ -36,8 +36,8 @@
             this.ActiveControl = label1;
 
             //Carga los datos de los nombres de las piezas registrados
-            cbPiezaNombre.DataSource = operacion.NombrePiezasRegistrados(1).Tables[0].DefaultView;
-            cbPiezaNombre.ValueMember = "nombre";
+            //cbPiezaNombre.DataSource = operacion.NombrePiezasRegistrados(1).Tables[0].DefaultView;//TEST 26/02/2024
+            //cbPiezaNombre.ValueMember = "nombre";
 
             if(indicador != 1)
             {
@@ -239,6 +239,7 @@
         string origenDefault = "";
         string proveedorDefault = "";
         string costoEnvioDefault = "";
+       
 
         public string destino
         {

@@ -4,7 +4,7 @@
   <description asmv2:iconFile="Jeic.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="Jeic" version="2.2.7.0" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="Jeic" version="2.2.8.0" language="neutral" processorArchitecture="msil" />
     <commandLine file="Jeic.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -283,14 +283,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Jeic.exe" size="3772848">
-      <assemblyIdentity name="Jeic" version="2.2.7.0" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Jeic.exe" size="3776432">
+      <assemblyIdentity name="Jeic" version="2.2.8.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>PeNVi6FaFkmsi5aTdmJfGpDHoyO8NZGgHrmYEAcpu9E=</dsig:DigestValue>
+        <dsig:DigestValue>FQt8SWfpvdP/uUIy/kOa1DKSsQZmKWkYSgHJdF2RRQg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

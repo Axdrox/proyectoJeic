@@ -28,9 +28,11 @@ namespace Refracciones.Forms
         private OperBD llenar = new OperBD();
         private OperBD ObtenerRol = new OperBD();
         private OperBD llenarDefaultDGV = new OperBD();
-
+        string cvePedido;
         private void Busqueda_Devolver_Load(object sender, EventArgs e)
         {
+
+           
             //--------------------
             /*List<string> piezas = new List<string>();
             List<string> clienteCorreos = new List<string>();
@@ -98,10 +100,10 @@ namespace Refracciones.Forms
                     break;
             }Se quito el dia 15 jun 2023 por un cambio solicitado por JEIC Jesus*/
 
-            if(rol == 0)
-            {
-                logcontrolDeCambiosToolStripMenuItem.Enabled = true;
-            }
+            //if(rol == 0)
+            //{
+            //    logcontrolDeCambiosToolStripMenuItem.Enabled = true;
+            //}
 
             if (permisos.Contains("agregarPed"))
                 btnAgregarPedido.Enabled = true;
@@ -126,6 +128,15 @@ namespace Refracciones.Forms
 
             if (permisos.Contains("buscarFact"))
                 buscarFacturasToolStripMenuItem.Enabled = true;
+
+            if (permisos.Contains("eliminarFechaBaja"))
+                btnEliminarFechaBaja.Visible = true;
+
+            if (permisos.Contains("eliminarFechaEntrega"))
+                btnEliminarFechaEntrega.Visible = true;
+
+            if (permisos.Contains("cambiosLog"))
+                logcontrolDeCambiosToolStripMenuItem.Enabled = true;
 
         }
 
@@ -340,9 +351,13 @@ namespace Refracciones.Forms
             else if (e.ColumnIndex == -1)
             {
 
+                btnEliminarFechaBaja.Enabled = true;
+                btnEliminarFechaEntrega.Enabled = true;
                 string EstadoFact = "";
                 OperBD llenardatos = new OperBD();
-                llenardatos.Llenartablaa(dgvDatos, dvgPedido.Rows[fila].Cells[1].Value.ToString(), dvgPedido.Rows[fila].Cells[0].Value.ToString(), dvgPedido.Rows[fila].Cells[5].Value.ToString(), int.Parse(dvgPedido.Rows[fila].Cells[10].Value.ToString()));
+                cvePedido = dvgPedido.Rows[fila].Cells[10].Value.ToString();
+                //MessageBox.Show(dvgPedido.Rows[fila].Cells[10].Value.ToString());
+                llenardatos.Llenartablaa(dgvDatos, dvgPedido.Rows[fila].Cells[1].Value.ToString(), dvgPedido.Rows[fila].Cells[0].Value.ToString(), dvgPedido.Rows[fila].Cells[5].Value.ToString(), int.Parse(cvePedido));
                 string ubicacion = dgvDatos.Rows[0].Cells[30].Value.ToString();
                 if (ubicacion == "0")
                     ubicacion = "Proveedor";
@@ -455,6 +470,24 @@ namespace Refracciones.Forms
         {
             Log log = new Log();
             log.ShowDialog();
+        }
+
+        private void btnEliminarFechaEntrega_Click(object sender, EventArgs e)
+        {
+            MessageBOX mes = new MessageBOX(4, "¿Esta seguro de eliminar la fecha de entrega?");
+            if (mes.ShowDialog() == DialogResult.OK)
+            {
+                llenar.eliminarFechaBaja(cvePedido);
+            }
+        }
+
+        private void btnEliminarFechaBaja_Click(object sender, EventArgs e)
+        {
+            MessageBOX mes = new MessageBOX(4, "¿Esta seguro de eliminar la fecha de baja?");
+            if (mes.ShowDialog() == DialogResult.OK)
+            {
+                llenar.eliminarFechaEntrega(cvePedido);
+            }
         }
     }
 }

@@ -3743,11 +3743,12 @@ namespace Refracciones
                     int cveVenta = claveVenta(clavePedido, claveSiniestro);
                     int cvePieza = clavePieza(nombrePieza);
                     nuevaConexion.Open();
-                    Comando = new SqlCommand("UPDATE PEDIDO SET fecha_baja = @fechaBaja WHERE cve_venta = @cve_venta AND cve_pieza = @cve_pieza AND ordenCaptura = @ordenCaptura", nuevaConexion);
+                    Comando = new SqlCommand("UPDATE PEDIDO SET fecha_baja = @fechaBaja, hora_baja = @hora_baja WHERE cve_venta = @cve_venta AND cve_pieza = @cve_pieza AND ordenCaptura = @ordenCaptura", nuevaConexion);
                     Comando.Parameters.AddWithValue("@fechaBaja", fechaBaja);
                     Comando.Parameters.AddWithValue("@cve_venta", cveVenta);
                     Comando.Parameters.AddWithValue("@cve_pieza", cvePieza);
                     Comando.Parameters.AddWithValue("@ordenCaptura", ordenCaptrura);
+                    Comando.Parameters.AddWithValue("@hora_baja", DateTime.Now.ToString("h:mm:ss"));
                     Comando.ExecuteNonQuery();
                     nuevaConexion.Close();
                 }
@@ -7014,7 +7015,7 @@ namespace Refracciones
             {
                 using (SqlConnection nuevacon = Conexion.conexion())
                 {
-                    this.Comando = new SqlCommand(string.Format("SELECT agregarPed,modDatPed,modPrecioPed,modProvPed,elabFact,refacturar,regBajDev,revPedEntDev,genPdf,genRepven,genClaves,cambioCostEnv,cambioEst,cambioGuias,regBajas,buscarFact  FROM PERMISOS per INNER JOIN USUARIOS us ON per.cveAdmin = us.cve_Administrador WHERE us.usuario = '{0}';", userName), nuevacon);
+                    this.Comando = new SqlCommand(string.Format("SELECT agregarPed,modDatPed,modPrecioPed,modProvPed,elabFact,refacturar,regBajDev,revPedEntDev,genPdf,genRepven,genClaves,cambioCostEnv,cambioEst,cambioGuias,regBajas,buscarFact,eliminarFechaBaja,eliminarFechaEntrega,cambiosLog  FROM PERMISOS per INNER JOIN USUARIOS us ON per.cveAdmin = us.cve_Administrador WHERE us.usuario = '{0}';", userName), nuevacon);
                     nuevacon.Open();
                     Lector = Comando.ExecuteReader();
                     while (Lector.Read()) {
@@ -7067,6 +7068,14 @@ namespace Refracciones
                         if (Boolean.Parse(Lector["buscarFact"].ToString()))
                             permisos.Add("buscarFact");
 
+                        if (Boolean.Parse(Lector["eliminarFechaBaja"].ToString()))
+                            permisos.Add("eliminarFechaBaja");
+
+                        if (Boolean.Parse(Lector["eliminarFechaEntrega"].ToString()))
+                            permisos.Add("eliminarFechaEntrega");
+
+                        if (Boolean.Parse(Lector["cambiosLog"].ToString()))
+                            permisos.Add("cambiosLog");
 
                     }
                     Busqueda.permisos = permisos;
@@ -7575,6 +7584,54 @@ namespace Refracciones
             }
             return dataSet;
         }
+
+        //ELIMIANR LA FECHA DE ENTREGA EN PEDIDO
+        public void eliminarFechaBaja(string clavePedido)
+        {
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+                    Comando = new SqlCommand("UPDATE PEDIDO SET fecha_baja = null, hora_baja = null WHERE cve_pedido = @cve_pedido;", nuevaConexion);
+                    
+                    Comando.Parameters.AddWithValue("@cve_pedido", clavePedido);
+                    Comando.ExecuteNonQuery();
+                    nuevaConexion.Close();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error al eliminar fecha baja: " + EX.Message);
+            }
+        }
+
+
+        //ELIMIANR LA FECHA DE BAJA Y ACTUALIZAR LO CORRESPONDIENTE EN PEDIDO
+        public void eliminarFechaEntrega(string clavePedido)
+        {
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+
+                    //SE ACTUALIZAN LOS DATOS SIGUIENTES
+                    SqlCommand cmd = new SqlCommand("UPDATE p SET p.cve_entrega = null, p.pzas_entregadas = 0, p.fecha_entrega = null, p.dias_entrega = null, entrega_enTiempo = 0, p.vale_liberado = 0 FROM PEDIDO p INNER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta WHERE p.cve_pedido = @cve_pedidoIdentity;", nuevaConexion);
+                    cmd.Parameters.Add("@cve_pedidoIdentity", SqlDbType.Int);
+                    cmd.Parameters["@cve_pedidoIdentity"].Value = clavePedido;
+                    cmd.ExecuteNonQuery();
+
+
+                    nuevaConexion.Close();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error al eliminar fecha entrega: " + EX.Message);
+            }
+        }
+
 
         //ENVIAR CORREO END
 
