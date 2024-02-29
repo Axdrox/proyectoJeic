@@ -46,6 +46,7 @@
             this.moverFormulario = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.ToolTrip = new System.Windows.Forms.ToolTip(this.components);
+            this.lblVersion = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbMinimize)).BeginInit();
@@ -273,9 +274,20 @@
             this.label1.Location = new System.Drawing.Point(12, 7);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(96, 16);
+            this.label1.Size = new System.Drawing.Size(56, 16);
             this.label1.TabIndex = 18;
-            this.label1.Text = "Versión: 2.2.8.0";
+            this.label1.Text = "Versión:";
+            // 
+            // lblVersion
+            // 
+            this.lblVersion.AutoSize = true;
+            this.lblVersion.ForeColor = System.Drawing.Color.White;
+            this.lblVersion.Location = new System.Drawing.Point(72, 7);
+            this.lblVersion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblVersion.Name = "lblVersion";
+            this.lblVersion.Size = new System.Drawing.Size(44, 16);
+            this.lblVersion.TabIndex = 19;
+            this.lblVersion.Text = "2.3.1.0";
             // 
             // InicioSesion
             // 
@@ -283,6 +295,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(125)))), ((int)(((byte)(188)))));
             this.ClientSize = new System.Drawing.Size(356, 362);
+            this.Controls.Add(this.lblVersion);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pbMinimize);
             this.Controls.Add(this.pbClose);
@@ -325,6 +338,7 @@
         private System.Windows.Forms.PictureBox PicOJO;
         private Bunifu.Framework.UI.BunifuMaterialTextbox txtContrasenia;
         private System.Windows.Forms.ToolTip ToolTrip;
+        private System.Windows.Forms.Label lblVersion;
     }
 }
 

@@ -43,6 +43,30 @@ namespace Refracciones
         private DataTable dt;
         private SqlDataAdapter da;
 
+        //VERSION DEL SISTEMA ESTA EN EL USUARIO 40
+        public int version(string version)
+        {
+            int contador = 0;
+            try
+            {
+                using (SqlConnection nuevacon = Conexion.conexion())
+                {
+                    this.Comando = new SqlCommand(string.Format("SELECT * FROM USUARIOS WHERE usuario = '{0}' AND estado=1;", version), nuevacon);
+                    nuevacon.Open();
+                    Lector = Comando.ExecuteReader();
+                    while (Lector.Read()) { contador++; }
+                    Lector.Close();
+                    nuevacon.Close();
+                }
+                return contador;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return contador;
+            }
+        }
+
         //METODOS
 
         public int logeo(string us, string pass)
@@ -894,18 +918,104 @@ namespace Refracciones
             return respuesta;
         }
 
+        //VALIDAR SI YA SE CUENTA CON ENTREGA Y BAJA 
+        public bool validarEntregaBaja(int cvePedidoIdentity)
+        {
+            bool respuesta = false;
+            string fechaBaja = string.Empty;
+            string fechaEntrega = string.Empty;
+            string estado = string.Empty;
+
+            try
+            {
+                using (SqlConnection nuevacon = Conexion.conexion())
+                {
+                    this.Comando = new SqlCommand(string.Format("SELECT fecha_baja, fecha_entrega, estado FROM PEDIDO WHERE cve_pedido = '{0}';", cvePedidoIdentity), nuevacon);
+                    nuevacon.Open();
+                    Lector = Comando.ExecuteReader();
+                    while (Lector.Read())
+                    {
+
+                        fechaBaja = Lector["fecha_baja"].ToString();
+                        fechaEntrega = Lector["fecha_entrega"].ToString();
+                        estado = Lector["estado"].ToString();
+
+                        if (fechaBaja != "" && fechaEntrega != "" && estado == "6")
+                        { respuesta = true; break; }
+
+                    }
+
+                    Lector.Close();
+                    nuevacon.Close();
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+
+            return respuesta;
+        }
+
+        //VALIDAR SI YA SE CUENTA CON ENTREGA Y BAJA OPCION 2
+        public bool validarEntregaBaja2(int cveVenta, int cvePieza, int ordenCaptura)
+        {
+            bool respuesta = false;
+            string fechaBaja = string.Empty;
+            string fechaEntrega = string.Empty;
+            string estado = string.Empty;
+
+            try
+            {
+                using (SqlConnection nuevacon = Conexion.conexion())
+                {
+                    this.Comando = new SqlCommand(string.Format("SELECT fecha_baja, fecha_entrega, estado FROM PEDIDO WHERE cve_venta = '{0}' AND cve_pieza = '{1}' AND ordenCaptura = '{2}';", cveVenta, cvePieza, ordenCaptura), nuevacon);
+                    nuevacon.Open();
+                    Lector = Comando.ExecuteReader();
+                    while (Lector.Read())
+                    {
+
+                        fechaBaja = Lector["fecha_baja"].ToString();
+                        fechaEntrega = Lector["fecha_entrega"].ToString();
+                        estado = Lector["estado"].ToString();
+
+                        if (fechaBaja != "" && fechaEntrega != "" && estado == "6")
+                        { respuesta = true; break; }
+
+                    }
+
+                    Lector.Close();
+                    nuevacon.Close();
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+
+            return respuesta;
+        }
+
         //--------------------REGISTRAR ENTREGA ACTUALIZAR COLUMNA CANTIDAD Y ASIGNAR CVE DE ENTREGA CON FECHA PIEZA POR PIEZA--------------------
         public string Registrar_Entrega(string cve_siniestro, string cve_pedido, int cve_pieza,/* int cve_entrega,*/ int cantidad, DateTime fecha, int cantidadE, int cve_venta, DateTime fecha_asigancion, string realizo, int cvePedidoIdentity)
         {
             string mensaje = "ERROR AL HACER LA ENTREGA";
             int dias_entrega = 0;
             int cve_entrega;
+            bool valeLiberado;
             using (SqlConnection nuevaConexion = Conexion.conexion())
             {
                 nuevaConexion.Open();
 
-                
-                if(revisarEstadoPiezaEntrega(cvePedidoIdentity))
+                 
+
+                if (revisarEstadoPiezaEntrega(cvePedidoIdentity))
                 {
                     Comando = new SqlCommand("INSERT INTO ENTREGA (fecha,cantidad,cve_pieza,cve_venta, realizo, cve_pedido) VALUES (@fecha,@cantidadE,@cve_pieza,@cve_venta,@realizo,@cve_pedido)", nuevaConexion);
                     Comando.Parameters.Add("@fecha", SqlDbType.Date);
@@ -931,7 +1041,11 @@ namespace Refracciones
                     Comando.Parameters.AddWithValue("@fecha", fecha);
                     dias_entrega = Int32.Parse(Comando.ExecuteScalar().ToString()) + 1;
                     //SE ACTUALIZAN LOS DATOS SIGUIENTES
-                    SqlCommand cmd = new SqlCommand("UPDATE p SET p.cve_entrega = @cve_entrega, p.pzas_entregadas = @pzas_entregadas, p.fecha_entrega = @fecha_entrega, p.dias_entrega = @dias_entrega, p.vale_liberado = 1 FROM PEDIDO p INNER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta WHERE ven.cve_siniestro = @cve_siniestro AND ven.cve_pedido = @cve_pedido AND p.cve_pieza = @cve_pieza AND p.cve_pedido = @cve_pedidoIdentity", nuevaConexion);
+                    SqlCommand cmd;
+                    
+                    
+                    cmd = new SqlCommand("UPDATE p SET p.cve_entrega = @cve_entrega, p.pzas_entregadas = @pzas_entregadas, p.fecha_entrega = @fecha_entrega, p.dias_entrega = @dias_entrega FROM PEDIDO p INNER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta WHERE ven.cve_siniestro = @cve_siniestro AND ven.cve_pedido = @cve_pedido AND p.cve_pieza = @cve_pieza AND p.cve_pedido = @cve_pedidoIdentity", nuevaConexion);
+                   
                     cmd.Parameters.Add("@cve_entrega", SqlDbType.Int);
                     cmd.Parameters.Add("@pzas_entregadas", SqlDbType.Int);
                     cmd.Parameters.Add("@fecha_entrega", SqlDbType.Date);
@@ -950,6 +1064,25 @@ namespace Refracciones
                     cmd.Parameters["@dias_entrega"].Value = dias_entrega;
                     cmd.Parameters["@cve_pedidoIdentity"].Value = cvePedidoIdentity;
                     cmd.ExecuteNonQuery();
+
+                    //ACTUALIZAR VALE LIBERADO SI SE CUMPLE LA CONDICION 
+                    valeLiberado = validarEntregaBaja(cvePedidoIdentity);
+                    if (valeLiberado)
+                        cmd = new SqlCommand("UPDATE p SET p.vale_liberado = 1 FROM PEDIDO p INNER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta WHERE ven.cve_siniestro = @cve_siniestro AND ven.cve_pedido = @cve_pedido AND p.cve_pieza = @cve_pieza AND p.cve_pedido = @cve_pedidoIdentity", nuevaConexion);
+                    else
+                        cmd = new SqlCommand("UPDATE p SET p.vale_liberado = 0 FROM PEDIDO p INNER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta WHERE ven.cve_siniestro = @cve_siniestro AND ven.cve_pedido = @cve_pedido AND p.cve_pieza = @cve_pieza AND p.cve_pedido = @cve_pedidoIdentity", nuevaConexion);
+     
+                    cmd.Parameters.Add("@cve_siniestro", SqlDbType.NVarChar, 50);
+                    cmd.Parameters.Add("@cve_pedido", SqlDbType.NVarChar, 50);
+                    cmd.Parameters.Add("@cve_pieza", SqlDbType.Int);                    
+                    cmd.Parameters.Add("@cve_pedidoIdentity", SqlDbType.Int);
+
+                    cmd.Parameters["@cve_siniestro"].Value = cve_siniestro;
+                    cmd.Parameters["@cve_pedido"].Value = cve_pedido;
+                    cmd.Parameters["@cve_pieza"].Value = cve_pieza;
+                    cmd.Parameters["@cve_pedidoIdentity"].Value = cvePedidoIdentity;
+                    cmd.ExecuteNonQuery();
+
                     //SI SE CUMPLE SE SE REGISTRA ENTREGA EN TIEMPO
                     cmd = new SqlCommand("SELECT p.fecha_entrega,ven.fecha_promesa FROM PEDIDO p INNER JOIN ENTREGA ent ON p.cve_entrega = ent.cve_entrega INNER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta WHERE p.cve_venta = @cve_venta AND p.cve_pieza = @cve_pieza AND p.cve_pedido = @cve_pedido AND p.pzas_entregadas = p.cantidad AND p.fecha_entrega <= ven.fecha_promesa", nuevaConexion);
                     cmd.Parameters.Add("@cve_venta", SqlDbType.Int);
@@ -3742,14 +3875,30 @@ namespace Refracciones
                 {
                     int cveVenta = claveVenta(clavePedido, claveSiniestro);
                     int cvePieza = clavePieza(nombrePieza);
+                    
                     nuevaConexion.Open();
+
                     Comando = new SqlCommand("UPDATE PEDIDO SET fecha_baja = @fechaBaja, hora_baja = @hora_baja WHERE cve_venta = @cve_venta AND cve_pieza = @cve_pieza AND ordenCaptura = @ordenCaptura", nuevaConexion);
+                    
                     Comando.Parameters.AddWithValue("@fechaBaja", fechaBaja);
                     Comando.Parameters.AddWithValue("@cve_venta", cveVenta);
                     Comando.Parameters.AddWithValue("@cve_pieza", cvePieza);
                     Comando.Parameters.AddWithValue("@ordenCaptura", ordenCaptrura);
                     Comando.Parameters.AddWithValue("@hora_baja", DateTime.Now.ToString("h:mm:ss"));
                     Comando.ExecuteNonQuery();
+
+                    //ACTUALIZAR VALE LIBERADO SI SE CUMPLE LA CONDICION
+                    bool valeLiberado = validarEntregaBaja2(cveVenta, cvePieza, ordenCaptrura);
+                    if (valeLiberado)
+                        Comando = new SqlCommand("UPDATE PEDIDO SET vale_liberado = 1 WHERE cve_venta = @cve_venta AND cve_pieza = @cve_pieza AND ordenCaptura = @ordenCaptura", nuevaConexion);
+                    else
+                        Comando = new SqlCommand("UPDATE PEDIDO SET vale_liberado = 0 WHERE cve_venta = @cve_venta AND cve_pieza = @cve_pieza AND ordenCaptura = @ordenCaptura", nuevaConexion);
+                    
+                    Comando.Parameters.AddWithValue("@cve_venta", cveVenta);
+                    Comando.Parameters.AddWithValue("@cve_pieza", cvePieza);
+                    Comando.Parameters.AddWithValue("@ordenCaptura", ordenCaptrura);
+                    Comando.ExecuteNonQuery();
+
                     nuevaConexion.Close();
                 }
             }
@@ -6691,8 +6840,10 @@ namespace Refracciones
             
             int dias_entrega = 0;
             int cve_entrega;
+            bool valeLiberado = false;
             using (SqlConnection nuevaConexion = Conexion.conexion())
             {
+                
                 if(revisarEstadoPiezaEntrega(cvePedidoIdentity))
                 {
                     nuevaConexion.Open();
@@ -6721,7 +6872,12 @@ namespace Refracciones
                     dias_entrega = Int32.Parse(Comando.ExecuteScalar().ToString()) + 1;
                     //SE ACTUALIZAN LOS DATOS SIGUIENTES
                     //SqlCommand cmd = new SqlCommand("UPDATE p SET p.cve_entrega = @cve_entrega, p.pzas_entregadas = @pzas_entregadas, p.fecha_entrega = @fecha_entrega, p.dias_entrega = @dias_entrega FROM PEDIDO p INNER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta WHERE ven.cve_siniestro = @cve_siniestro AND ven.cve_pedido = @cve_pedido AND p.cve_pieza = @cve_pieza AND p.cve_pedido = @cve_pedidoIdentity", nuevaConexion);
-                    SqlCommand cmd = new SqlCommand("UPDATE p SET p.cve_entrega = @cve_entrega, p.pzas_entregadas = @pzas_entregadas, p.fecha_entrega = @fecha_entrega, p.dias_entrega = @dias_entrega, p.vale_liberado = 1 FROM PEDIDO p INNER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta WHERE ven.cve_siniestro = @cve_siniestro AND ven.cve_pedido = @cve_pedido AND p.cve_pieza = @cve_pieza AND p.cve_pedido = @cve_pedidoIdentity", nuevaConexion);//Vale liberado
+
+                    SqlCommand cmd;
+                   
+                    cmd = new SqlCommand("UPDATE p SET p.cve_entrega = @cve_entrega, p.pzas_entregadas = @pzas_entregadas, p.fecha_entrega = @fecha_entrega, p.dias_entrega = @dias_entrega FROM PEDIDO p INNER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta WHERE ven.cve_siniestro = @cve_siniestro AND ven.cve_pedido = @cve_pedido AND p.cve_pieza = @cve_pieza AND p.cve_pedido = @cve_pedidoIdentity", nuevaConexion);//Vale liberado
+                    
+
                     cmd.Parameters.Add("@cve_entrega", SqlDbType.Int);
                     cmd.Parameters.Add("@pzas_entregadas", SqlDbType.Int);
                     cmd.Parameters.Add("@fecha_entrega", SqlDbType.Date);
@@ -6740,6 +6896,26 @@ namespace Refracciones
                     cmd.Parameters["@dias_entrega"].Value = dias_entrega;
                     cmd.Parameters["@cve_pedidoIdentity"].Value = cvePedidoIdentity;
                     cmd.ExecuteNonQuery();
+
+                    //SE ACTUALIZA VALE LIBERADO SI SE CUMPLE LA CONDICION
+                    valeLiberado = validarEntregaBaja(cvePedidoIdentity);
+                    if (valeLiberado)
+                        cmd = new SqlCommand("UPDATE p SET p.vale_liberado = 1 FROM PEDIDO p INNER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta WHERE ven.cve_siniestro = @cve_siniestro AND ven.cve_pedido = @cve_pedido AND p.cve_pieza = @cve_pieza AND p.cve_pedido = @cve_pedidoIdentity", nuevaConexion);//Vale liberado
+                    else
+                        cmd = new SqlCommand("UPDATE p SET p.vale_liberado = 0 FROM PEDIDO p INNER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta WHERE ven.cve_siniestro = @cve_siniestro AND ven.cve_pedido = @cve_pedido AND p.cve_pieza = @cve_pieza AND p.cve_pedido = @cve_pedidoIdentity", nuevaConexion);//Vale no liberado
+
+                    
+                    cmd.Parameters.Add("@cve_siniestro", SqlDbType.NVarChar, 50);
+                    cmd.Parameters.Add("@cve_pedido", SqlDbType.NVarChar, 50);
+                    cmd.Parameters.Add("@cve_pieza", SqlDbType.Int);
+                    cmd.Parameters.Add("@cve_pedidoIdentity", SqlDbType.Int);
+
+                    cmd.Parameters["@cve_siniestro"].Value = cve_siniestro;
+                    cmd.Parameters["@cve_pedido"].Value = cve_pedido;
+                    cmd.Parameters["@cve_pieza"].Value = cve_pieza;
+                    cmd.Parameters["@cve_pedidoIdentity"].Value = cvePedidoIdentity;
+                    cmd.ExecuteNonQuery();
+
                     //SI SE CUMPLE SE SE REGISTRA ENTREGA EN TIEMPO
                     cmd = new SqlCommand("SELECT p.fecha_entrega,ven.fecha_promesa FROM PEDIDO p INNER JOIN ENTREGA ent ON p.cve_entrega = ent.cve_entrega INNER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta WHERE p.cve_venta = @cve_venta AND p.cve_pieza = @cve_pieza AND p.cve_pedido = @cve_pedido AND p.pzas_entregadas = p.cantidad AND p.fecha_entrega <= ven.fecha_promesa", nuevaConexion);
                     cmd.Parameters.Add("@cve_venta", SqlDbType.Int);

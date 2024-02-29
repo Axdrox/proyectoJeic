@@ -31,6 +31,12 @@ namespace Refracciones
             this.Icon = Resources.iconJeic;
             btnEntrar.BackColor = Color.Transparent;
             this.ActiveControl = pictureBox1;
+
+            if(Operacion.version(lblVersion.Text) != 1)
+            {
+                MessageBOX.SHowDialog(2,"No cuentas con la última versión por favor actualiza");
+                Application.Exit();
+            }
         }
 
         private void txtUsuario_Enter(object sender, EventArgs e)
