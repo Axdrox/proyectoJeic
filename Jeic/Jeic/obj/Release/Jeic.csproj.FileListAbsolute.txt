@@ -216,6 +216,8 @@ C:\Users\bunny\source\repos\proyectoJeic\Jeic\Jeic\bin\Release\System.ValueTuple
 C:\Users\bunny\source\repos\proyectoJeic\Jeic\Jeic\obj\Release\Jeic.Forms.cambioEstatus.resources
 C:\Users\bunny\source\repos\proyectoJeic\Jeic\Jeic\obj\Release\Jeic.Forms.GeneradorClave.resources
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Release\Jeic.exe.config
+C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Release\Jeic.exe.manifest
+C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Release\Jeic.application
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Release\Jeic.exe
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Release\Jeic.pdb
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Release\BarcodeStandard.dll
@@ -225,6 +227,8 @@ C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Release\Bunifu_UI_
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Release\Common.Logging.Core.dll
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Release\Common.Logging.dll
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Release\DocumentFormat.OpenXml.dll
+C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Release\ExcelDataReader.DataSet.dll
+C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Release\ExcelDataReader.dll
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Release\itext.barcodes.dll
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Release\itext.forms.dll
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Release\itext.io.dll
@@ -258,6 +262,10 @@ C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Release\Common.Log
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Release\Common.Logging.xml
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Release\Common.Logging.Core.pdb
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Release\Common.Logging.Core.xml
+C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Release\ExcelDataReader.pdb
+C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Release\ExcelDataReader.xml
+C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Release\ExcelDataReader.DataSet.pdb
+C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Release\ExcelDataReader.DataSet.xml
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Release\itext.barcodes.xml
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Release\itext.forms.xml
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Release\itext.io.xml
@@ -289,6 +297,7 @@ C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Release\System.Tex
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Release\System.Threading.Tasks.Extensions.xml
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Release\System.ValueTuple.xml
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Release\Jeic.csproj.AssemblyReference.cache
+C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Release\Jeic.csproj.ResolveComReference.cache
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Release\Refracciones.Forms.Administrar.resources
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Release\Refracciones.Forms.Alertas.resources
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Release\Jeic.Forms.bajasMultiples.resources
@@ -305,6 +314,7 @@ C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Release\Jeic.Forms
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Release\Jeic.Forms.FechaBaja.resources
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Release\Jeic.Forms.GeneradorClave.resources
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Release\Refracciones.InicioSesion.resources
+C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Release\Jeic.Forms.Log.resources
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Release\Refracciones.Forms.MessageBOX.resources
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Release\Refracciones.Forms.Pedido.resources
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Release\Refracciones.Forms.Penalizaciones.resources
@@ -316,18 +326,8 @@ C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Release\Jeic.Forms
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Release\Jeic.Properties.Resources.resources
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Release\Jeic.csproj.GenerateResource.cache
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Release\Jeic.csproj.CoreCompileInputs.cache
-C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Release\Jeic.exe
-C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Release\Jeic.pdb
-C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Release\Jeic.exe.manifest
-C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Release\Jeic.application
-C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Release\ExcelDataReader.DataSet.dll
-C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Release\ExcelDataReader.dll
-C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Release\ExcelDataReader.pdb
-C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Release\ExcelDataReader.xml
-C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Release\ExcelDataReader.DataSet.pdb
-C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\bin\Release\ExcelDataReader.DataSet.xml
-C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Release\Jeic.csproj.ResolveComReference.cache
-C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Release\Jeic.Forms.Log.resources
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Release\Jeic.exe.manifest
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Release\Jeic.application
 C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Release\Jeic.csproj.Up2Date
+C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Release\Jeic.exe
+C:\Users\boxbu\source\repos\Axdrox\proyectoJeic\Jeic\Jeic\obj\Release\Jeic.pdb
