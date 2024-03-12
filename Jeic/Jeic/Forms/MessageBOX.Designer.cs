@@ -56,7 +56,7 @@
             // 
             this.GifHecho.InitialImage = null;
             this.GifHecho.Location = new System.Drawing.Point(60, 15);
-            this.GifHecho.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GifHecho.Margin = new System.Windows.Forms.Padding(4);
             this.GifHecho.Name = "GifHecho";
             this.GifHecho.Size = new System.Drawing.Size(187, 117);
             this.GifHecho.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -93,7 +93,7 @@
             this.btnOK.IconZoom = 90D;
             this.btnOK.IsTab = false;
             this.btnOK.Location = new System.Drawing.Point(76, 185);
-            this.btnOK.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnOK.Margin = new System.Windows.Forms.Padding(5);
             this.btnOK.Name = "btnOK";
             this.btnOK.Normalcolor = System.Drawing.Color.Transparent;
             this.btnOK.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(120)))), ((int)(((byte)(42)))));
@@ -144,7 +144,7 @@
             this.btnNO.IconZoom = 90D;
             this.btnNO.IsTab = false;
             this.btnNO.Location = new System.Drawing.Point(256, 97);
-            this.btnNO.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnNO.Margin = new System.Windows.Forms.Padding(5);
             this.btnNO.Name = "btnNO";
             this.btnNO.Normalcolor = System.Drawing.Color.Transparent;
             this.btnNO.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(135)))), ((int)(((byte)(135)))));
@@ -175,7 +175,7 @@
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.GifHecho);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MessageBOX";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dialog";
