@@ -196,10 +196,10 @@
   <data name="generadorClave" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\generadorClave.xlsx;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="Plantilla" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Plantilla.xlsx;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="VALE_JEIC" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\VALE JEIC.pdf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Plantilla" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Plantilla.xlsx;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

@@ -1,12 +1,183 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\bryan\\source\\repos\\proyectoJeic\\Jeic\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B67C3104-50DA-4D29-A490-80181AED493C}|Jeic\\Jeic.csproj|C:\\Users\\bryan\\source\\repos\\proyectoJeic\\Jeic\\jeic\\forms\\iniciosesion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B67C3104-50DA-4D29-A490-80181AED493C}|Jeic\\Jeic.csproj|solutionrelative:jeic\\forms\\iniciosesion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B67C3104-50DA-4D29-A490-80181AED493C}|Jeic\\Jeic.csproj|c:\\users\\bryan\\source\\repos\\proyectojeic\\jeic\\jeic\\forms\\exportarexcel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B67C3104-50DA-4D29-A490-80181AED493C}|Jeic\\Jeic.csproj|solutionrelative:jeic\\forms\\exportarexcel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B67C3104-50DA-4D29-A490-80181AED493C}|Jeic\\Jeic.csproj|c:\\users\\bryan\\source\\repos\\proyectojeic\\jeic\\jeic\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{B67C3104-50DA-4D29-A490-80181AED493C}|Jeic\\Jeic.csproj|solutionrelative:jeic\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B67C3104-50DA-4D29-A490-80181AED493C}|Jeic\\Jeic.csproj|C:\\Users\\bryan\\source\\repos\\proyectoJeic\\Jeic\\jeic\\forms\\factura.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B67C3104-50DA-4D29-A490-80181AED493C}|Jeic\\Jeic.csproj|solutionrelative:jeic\\forms\\factura.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B67C3104-50DA-4D29-A490-80181AED493C}|Jeic\\Jeic.csproj|c:\\users\\bryan\\source\\repos\\proyectojeic\\jeic\\jeic\\forms\\registrofactura.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B67C3104-50DA-4D29-A490-80181AED493C}|Jeic\\Jeic.csproj|solutionrelative:jeic\\forms\\registrofactura.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B67C3104-50DA-4D29-A490-80181AED493C}|Jeic\\Jeic.csproj|c:\\users\\bryan\\source\\repos\\proyectojeic\\jeic\\jeic\\forms\\busqueda.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B67C3104-50DA-4D29-A490-80181AED493C}|Jeic\\Jeic.csproj|solutionrelative:jeic\\forms\\busqueda.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B67C3104-50DA-4D29-A490-80181AED493C}|Jeic\\Jeic.csproj|c:\\users\\bryan\\source\\repos\\proyectojeic\\jeic\\jeic\\forms\\busqueda.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B67C3104-50DA-4D29-A490-80181AED493C}|Jeic\\Jeic.csproj|solutionrelative:jeic\\forms\\busqueda.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B67C3104-50DA-4D29-A490-80181AED493C}|Jeic\\Jeic.csproj|c:\\users\\bryan\\source\\repos\\proyectojeic\\jeic\\jeic\\operbd.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B67C3104-50DA-4D29-A490-80181AED493C}|Jeic\\Jeic.csproj|solutionrelative:jeic\\operbd.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B67C3104-50DA-4D29-A490-80181AED493C}|Jeic\\Jeic.csproj|c:\\users\\bryan\\source\\repos\\proyectojeic\\jeic\\jeic\\forms\\exportarexcel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B67C3104-50DA-4D29-A490-80181AED493C}|Jeic\\Jeic.csproj|solutionrelative:jeic\\forms\\exportarexcel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B67C3104-50DA-4D29-A490-80181AED493C}|Jeic\\Jeic.csproj|C:\\Users\\bryan\\source\\repos\\proyectoJeic\\Jeic\\jeic\\forms\\pedido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B67C3104-50DA-4D29-A490-80181AED493C}|Jeic\\Jeic.csproj|solutionrelative:jeic\\forms\\pedido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "exportarExcel.cs",
+              "DocumentMoniker": "C:\\Users\\bryan\\source\\repos\\proyectoJeic\\Jeic\\Jeic\\Forms\\exportarExcel.cs",
+              "RelativeDocumentMoniker": "Jeic\\Forms\\exportarExcel.cs",
+              "ToolTip": "C:\\Users\\bryan\\source\\repos\\proyectoJeic\\Jeic\\Jeic\\Forms\\exportarExcel.cs",
+              "RelativeToolTip": "Jeic\\Forms\\exportarExcel.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAxwC8AAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-02T18:47:20.424Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "OperBD.cs",
+              "DocumentMoniker": "C:\\Users\\bryan\\source\\repos\\proyectoJeic\\Jeic\\Jeic\\OperBD.cs",
+              "RelativeDocumentMoniker": "Jeic\\OperBD.cs",
+              "ToolTip": "C:\\Users\\bryan\\source\\repos\\proyectoJeic\\Jeic\\Jeic\\OperBD.cs",
+              "RelativeToolTip": "Jeic\\OperBD.cs",
+              "ViewState": "AgIAAM0MAAAAAAAAAAAqwNwMAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-02T18:32:32.371Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Busqueda.cs",
+              "DocumentMoniker": "C:\\Users\\bryan\\source\\repos\\proyectoJeic\\Jeic\\Jeic\\Forms\\Busqueda.cs",
+              "RelativeDocumentMoniker": "Jeic\\Forms\\Busqueda.cs",
+              "ToolTip": "C:\\Users\\bryan\\source\\repos\\proyectoJeic\\Jeic\\Jeic\\Forms\\Busqueda.cs",
+              "RelativeToolTip": "Jeic\\Forms\\Busqueda.cs",
+              "ViewState": "AgIAALwAAAAAAAAAAAD4v9IAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-02T18:31:33.4Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Busqueda.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\bryan\\source\\repos\\proyectoJeic\\Jeic\\Jeic\\Forms\\Busqueda.cs",
+              "RelativeDocumentMoniker": "Jeic\\Forms\\Busqueda.cs",
+              "ToolTip": "C:\\Users\\bryan\\source\\repos\\proyectoJeic\\Jeic\\Jeic\\Forms\\Busqueda.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Jeic\\Forms\\Busqueda.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-02T18:29:01.269Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "registroFactura.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\bryan\\source\\repos\\proyectoJeic\\Jeic\\Jeic\\Forms\\registroFactura.cs",
+              "RelativeDocumentMoniker": "Jeic\\Forms\\registroFactura.cs",
+              "ToolTip": "C:\\Users\\bryan\\source\\repos\\proyectoJeic\\Jeic\\Jeic\\Forms\\registroFactura.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Jeic\\Forms\\registroFactura.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-27T03:11:47.638Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Factura.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\bryan\\source\\repos\\proyectoJeic\\Jeic\\Jeic\\Forms\\Factura.cs",
+              "RelativeDocumentMoniker": "Jeic\\Forms\\Factura.cs",
+              "ToolTip": "C:\\Users\\bryan\\source\\repos\\proyectoJeic\\Jeic\\Jeic\\Forms\\Factura.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Jeic\\Forms\\Factura.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-27T03:11:19.79Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "InicioSesion.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\bryan\\source\\repos\\proyectoJeic\\Jeic\\Jeic\\Forms\\InicioSesion.cs",
+              "RelativeDocumentMoniker": "Jeic\\Forms\\InicioSesion.cs",
+              "ToolTip": "C:\\Users\\bryan\\source\\repos\\proyectoJeic\\Jeic\\Jeic\\Forms\\InicioSesion.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Jeic\\Forms\\InicioSesion.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-27T02:48:16.937Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "App.config",
+              "DocumentMoniker": "C:\\Users\\bryan\\source\\repos\\proyectoJeic\\Jeic\\Jeic\\App.config",
+              "RelativeDocumentMoniker": "Jeic\\App.config",
+              "ToolTip": "C:\\Users\\bryan\\source\\repos\\proyectoJeic\\Jeic\\Jeic\\App.config",
+              "RelativeToolTip": "Jeic\\App.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAACIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2026-08-02T19:09:16.319Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "exportarExcel.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\bryan\\source\\repos\\proyectoJeic\\Jeic\\Jeic\\Forms\\exportarExcel.cs",
+              "RelativeDocumentMoniker": "Jeic\\Forms\\exportarExcel.cs",
+              "ToolTip": "C:\\Users\\bryan\\source\\repos\\proyectoJeic\\Jeic\\Jeic\\Forms\\exportarExcel.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Jeic\\Forms\\exportarExcel.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-02T18:46:18.056Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Pedido.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\bryan\\source\\repos\\proyectoJeic\\Jeic\\Jeic\\Forms\\Pedido.cs",
+              "RelativeDocumentMoniker": "Jeic\\Forms\\Pedido.cs",
+              "ToolTip": "C:\\Users\\bryan\\source\\repos\\proyectoJeic\\Jeic\\Jeic\\Forms\\Pedido.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Jeic\\Forms\\Pedido.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-27T03:10:22.595Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

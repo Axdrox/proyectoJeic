@@ -114,6 +114,8 @@
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
             this.lblcvePe = new System.Windows.Forms.Label();
             this.moverFormulario = new Bunifu.Framework.UI.BunifuDragControl(this.components);
+            this.lblCveFact = new System.Windows.Forms.Label();
+            this.txtCveFactura = new System.Windows.Forms.TextBox();
             this.Panelinfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFactura)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dvgPedido)).BeginInit();
@@ -129,7 +131,7 @@
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(30)))), ((int)(((byte)(35)))));
             this.label1.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(324, 75);
+            this.label1.Location = new System.Drawing.Point(301, 75);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(99, 18);
@@ -141,7 +143,7 @@
             this.TxtClaveSin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.TxtClaveSin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtClaveSin.ForeColor = System.Drawing.Color.White;
-            this.TxtClaveSin.Location = new System.Drawing.Point(299, 101);
+            this.TxtClaveSin.Location = new System.Drawing.Point(276, 101);
             this.TxtClaveSin.Margin = new System.Windows.Forms.Padding(4);
             this.TxtClaveSin.MaxLength = 30;
             this.TxtClaveSin.Name = "TxtClaveSin";
@@ -888,7 +890,7 @@
             this.PanelFecha.Controls.Add(this.Fecha_Fin);
             this.PanelFecha.Controls.Add(this.label4);
             this.PanelFecha.ForeColor = System.Drawing.Color.White;
-            this.PanelFecha.Location = new System.Drawing.Point(831, 60);
+            this.PanelFecha.Location = new System.Drawing.Point(958, 60);
             this.PanelFecha.Margin = new System.Windows.Forms.Padding(4);
             this.PanelFecha.Name = "PanelFecha";
             this.PanelFecha.Size = new System.Drawing.Size(475, 80);
@@ -898,11 +900,11 @@
             // 
             this.dgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDatos.Enabled = false;
-            this.dgvDatos.Location = new System.Drawing.Point(1355, 41);
+            this.dgvDatos.Location = new System.Drawing.Point(1377, 157);
             this.dgvDatos.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDatos.Name = "dgvDatos";
             this.dgvDatos.RowHeadersWidth = 51;
-            this.dgvDatos.Size = new System.Drawing.Size(105, 65);
+            this.dgvDatos.Size = new System.Drawing.Size(21, 12);
             this.dgvDatos.TabIndex = 12;
             this.dgvDatos.Visible = false;
             // 
@@ -928,7 +930,7 @@
             this.txtCveVendedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.txtCveVendedor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCveVendedor.ForeColor = System.Drawing.Color.White;
-            this.txtCveVendedor.Location = new System.Drawing.Point(543, 101);
+            this.txtCveVendedor.Location = new System.Drawing.Point(510, 101);
             this.txtCveVendedor.Margin = new System.Windows.Forms.Padding(4);
             this.txtCveVendedor.MaxLength = 30;
             this.txtCveVendedor.Name = "txtCveVendedor";
@@ -942,7 +944,7 @@
             this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(30)))), ((int)(((byte)(35)))));
             this.label5.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(559, 75);
+            this.label5.Location = new System.Drawing.Point(526, 75);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(105, 18);
@@ -1121,7 +1123,10 @@
             this.bunifuGradientPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
             this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuGradientPanel1.Controls.Add(this.lblCveFact);
+            this.bunifuGradientPanel1.Controls.Add(this.txtCveFactura);
             this.bunifuGradientPanel1.Controls.Add(this.lblcvePe);
+            this.bunifuGradientPanel1.Controls.Add(this.dgvDatos);
             this.bunifuGradientPanel1.Controls.Add(this.label5);
             this.bunifuGradientPanel1.Controls.Add(this.dvgPedido);
             this.bunifuGradientPanel1.Controls.Add(this.txtCveVendedor);
@@ -1160,13 +1165,38 @@
             this.moverFormulario.TargetControl = this.bunifuGradientPanel1;
             this.moverFormulario.Vertical = true;
             // 
+            // lblCveFact
+            // 
+            this.lblCveFact.AutoSize = true;
+            this.lblCveFact.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(30)))), ((int)(((byte)(35)))));
+            this.lblCveFact.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCveFact.ForeColor = System.Drawing.Color.White;
+            this.lblCveFact.Location = new System.Drawing.Point(752, 75);
+            this.lblCveFact.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCveFact.Name = "lblCveFact";
+            this.lblCveFact.Size = new System.Drawing.Size(124, 18);
+            this.lblCveFact.TabIndex = 19;
+            this.lblCveFact.Text = "Número de factura";
+            // 
+            // txtCveFactura
+            // 
+            this.txtCveFactura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.txtCveFactura.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCveFactura.ForeColor = System.Drawing.Color.White;
+            this.txtCveFactura.Location = new System.Drawing.Point(736, 101);
+            this.txtCveFactura.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCveFactura.MaxLength = 30;
+            this.txtCveFactura.Name = "txtCveFactura";
+            this.txtCveFactura.Size = new System.Drawing.Size(177, 22);
+            this.txtCveFactura.TabIndex = 18;
+            this.txtCveFactura.KeyUp += new System.Windows.Forms.KeyEventHandler(this.BusquedaPedido);
+            // 
             // Busqueda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1465, 757);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.dgvDatos);
             this.Controls.Add(this.bunifuGradientPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -1272,5 +1302,7 @@
         private System.Windows.Forms.TextBox txtCvePedido;
         private System.Windows.Forms.ToolStripMenuItem registroBajas2ToolStripMenuItem;
         private System.Windows.Forms.Button btnEliminarCveGuia;
+        private System.Windows.Forms.Label lblCveFact;
+        private System.Windows.Forms.TextBox txtCveFactura;
     }
 }

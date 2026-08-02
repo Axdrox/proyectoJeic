@@ -14,14 +14,14 @@
     <framework targetVersion="4.8" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="Jeic.exe.manifest" size="29719">
+    <dependentAssembly dependencyType="install" codebase="Jeic.exe.manifest" size="29791">
       <assemblyIdentity name="Jeic.exe" version="1.0.0.48" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>+CYS+KTSAyYcoR48JPxqU/9/4dcwFi0i6dfcjdKBwdM=</dsig:DigestValue>
+        <dsig:DigestValue>s26Ikg+5d0DujPFd0OJrxKrwBsl1wfxJfhiQyp4aBcs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -472,6 +472,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="Jeic_1_TemporaryKey.pfx" />
+    <None Include="Resources\Plantilla.xlsx" />
     <None Include="Resources\VALE JEIC.pdf" />
   </ItemGroup>
   <ItemGroup>
@@ -518,7 +519,6 @@
     <None Include="Resources\iconJeic.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Plantilla.xlsx" />
     <None Include="Resources\user.png" />
   </ItemGroup>
   <ItemGroup>

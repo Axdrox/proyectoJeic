@@ -1435,13 +1435,13 @@ namespace Refracciones
 
         //------------------------------------------------------------------------------------------------------
         //----------------LLENAR TABLA TXBOX PIEZA POR PIEZA----------------------------------
-        public void Llenartabla1(DataGridView dtgv, string cve_Siniestro, string cve_Pedido, string cve_vendedor, string cvePed)
+        public void Llenartabla1(DataGridView dtgv, string cve_Siniestro, string cve_Pedido, string cve_vendedor, string cvePed, string cveFactura)
         {
             try
             {
                 using (SqlConnection nuevacon = Conexion.conexion())
                 {
-                    da = new SqlDataAdapter(string.Format("SELECT TOP 50 ven.cve_pedido AS PEDIDO, ven.cve_siniestro AS SINIESTRO, vend.nombre AS 'VENDEDOR', ven.cve_vendedor AS 'CLAVE VENDEDOR', c.cve_nombre AS CLIENTE, k.nombre AS PIEZA, p.cantidad AS CANTIDAD, ven.fecha_asignacion AS 'FECHA DE ASIGNACIÓN', ven.fecha_promesa AS 'FECHA PROMESA', ven.cve_venta AS 'VENTA',p.cve_pedido AS 'CVE', p.realizo AS 'REALIZADA POR', p.conductorMod AS 'CHOFER' FROM VENTAS ven LEFT OUTER JOIN PEDIDO p ON ven.cve_venta = p.cve_venta LEFT OUTER JOIN PIEZA k ON p.cve_pieza = k.cve_pieza LEFT OUTER JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE c ON c.cve_nombre = v.cve_cliente LEFT OUTER JOIN VENDEDOR vend ON ven.cve_vendedor = vend.cve_vendedor WHERE k.nombre != '' AND ven.cve_siniestro like '%{0}%' and CAST(ven.cve_pedido AS nvarchar) like '{1}%' and ven.cve_vendedor like '%{2}%'", cve_Siniestro, cvePed+cve_Pedido, cve_vendedor), nuevacon);
+                    da = new SqlDataAdapter(string.Format("SELECT TOP (50) ven.cve_pedido AS PEDIDO, ven.cve_siniestro AS SINIESTRO, vend.nombre AS VENDEDOR, ven.cve_vendedor AS [CLAVE VENDEDOR], c.cve_nombre AS CLIENTE, k.nombre AS PIEZA, p.cantidad AS CANTIDAD, ven.fecha_asignacion AS [FECHA DE ASIGNACIÓN], ven.fecha_promesa AS [FECHA PROMESA], ven.cve_venta AS VENTA, p.cve_pedido AS CVE, p.realizo AS [REALIZADA POR], p.conductorMod AS CHOFER, f.cve_factura AS FACTURA FROM VENTAS ven LEFT JOIN PEDIDO p ON ven.cve_venta = p.cve_venta LEFT JOIN PIEZA k ON p.cve_pieza = k.cve_pieza LEFT JOIN VALUADOR v ON v.cve_valuador = ven.cve_valuador LEFT JOIN CLIENTE c ON c.cve_nombre = v.cve_cliente LEFT JOIN VENDEDOR vend ON ven.cve_vendedor = vend.cve_vendedor LEFT JOIN FACTURA f ON p.cve_factura = f.cve_factura WHERE ISNULL(k.nombre, '') <> '' AND ISNULL(ven.cve_siniestro, '') LIKE '%' + '{0}' + '%' AND ISNULL(ven.cve_pedido, '') LIKE '%' + '{1}' + '%' AND CAST(ven.cve_vendedor AS VARCHAR(10)) LIKE '%' + '{2}' + '%' AND ISNULL(f.cve_factura, '') LIKE '%' + '{3}' + '%' ORDER BY ven.cve_venta DESC;", cve_Siniestro, cvePed + cve_Pedido, cve_vendedor, cveFactura), nuevacon);
 
                     nuevacon.Open();
                     dt = new DataTable();
@@ -3288,6 +3288,16 @@ WHERE ven.fecha_asignacion BETWEEN @fecha1 AND @fecha2
                                 valeLib = Convert.ToBoolean(valeObj);
 
                             sl.SetCellValue("BB" + celdaContenido, valeLib ? "LIBERADO" : "NO LIBERADO");
+
+                            // BC MES TOMANDO COMO BASE LA FECHA DE ASIGANCIÓN
+                            DateTime? Fa = DT(lector, "FECHA DE ASIGNACIÓN");
+
+                            sl.SetCellValue(
+                                "BC" + celdaContenido,
+                                Fa.HasValue
+                                    ? Fa.Value.ToString("MMMM", new CultureInfo("es-MX")).ToUpper()
+                                    : ""
+                            );
 
                             celdaContenido++;
                         }

@@ -208,7 +208,7 @@ namespace Refracciones.Forms
                 lblFechaBaja.Text = lblFechaBaja.Text.Substring(0, 11) + " " + dgvDatos.Rows[0].Cells[28].Value.ToString();
                 lblUbicacion.Text = "Ubicación: " + ubicacion;
             }
-            llenar.Llenartabla1(dvgPedido, TxtClaveSin.Text.ToString(), TxtClavePed.Text.ToString(), txtCveVendedor.Text.ToString(), lblcvePe.Text);
+            llenar.Llenartabla1(dvgPedido, TxtClaveSin.Text.ToString(), TxtClavePed.Text.ToString(), txtCveVendedor.Text.ToString(), lblcvePe.Text, txtCveFactura.Text.Trim().ToString());
         }
 
         private void dvgPedido_CellContentClick(object sender, DataGridViewCellEventArgs e)
