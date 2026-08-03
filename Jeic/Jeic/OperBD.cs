@@ -3299,6 +3299,32 @@ WHERE ven.fecha_asignacion BETWEEN @fecha1 AND @fecha2
                                     : ""
                             );
 
+                            //SOLICITADO POR ISRAEL 31 JUL 2026
+                            // BD - ESTATUS DE LA FACTURA (VIGENTE / VENCIDA)
+
+                            string facturaActual = S(lector, "FACTURA ACTUAL");
+                            string estadoFactura = S(lector, "ESTADO DE LA FACTURA");
+                            DateTime? fechaRevision = DT(lector, "FECHA DE REVISIÓN FACTURA");
+
+                            string estatusFactura = "";
+
+                            // Solo evaluar si existe una factura registrada
+                            if (!string.IsNullOrWhiteSpace(facturaActual))
+                            {
+                                if (estadoFactura.Equals("PENDIENTE", StringComparison.OrdinalIgnoreCase)
+                                    && fechaRevision.HasValue
+                                    && fechaRevision.Value.Date < DateTime.Today)
+                                {
+                                    estatusFactura = "VENCIDA";
+                                }
+                                else
+                                {
+                                    estatusFactura = "VIGENTE";
+                                }
+                            }
+
+                            sl.SetCellValue("BD" + celdaContenido, estatusFactura);
+
                             celdaContenido++;
                         }
 

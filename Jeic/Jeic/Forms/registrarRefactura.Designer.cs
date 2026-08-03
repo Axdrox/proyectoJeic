@@ -70,6 +70,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.errorP = new System.Windows.Forms.ErrorProvider(this.components);
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.lblSF = new System.Windows.Forms.Label();
+            this.chkSF = new System.Windows.Forms.CheckBox();
             this.chkFP = new System.Windows.Forms.CheckBox();
             this.lblcvePedidoidentity = new System.Windows.Forms.Label();
             this.lblPieza = new System.Windows.Forms.Label();
@@ -81,8 +83,6 @@
             this.lblDescuento = new System.Windows.Forms.Label();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.moverFormulario = new Bunifu.Framework.UI.BunifuDragControl(this.components);
-            this.lblSF = new System.Windows.Forms.Label();
-            this.chkSF = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorP)).BeginInit();
             this.bunifuGradientPanel1.SuspendLayout();
@@ -228,6 +228,7 @@
             // dtpFechaRevision
             // 
             this.dtpFechaRevision.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dtpFechaRevision.Enabled = false;
             this.dtpFechaRevision.Location = new System.Drawing.Point(473, 155);
             this.dtpFechaRevision.Margin = new System.Windows.Forms.Padding(4);
             this.dtpFechaRevision.Name = "dtpFechaRevision";
@@ -593,6 +594,29 @@
             this.bunifuGradientPanel1.Size = new System.Drawing.Size(789, 489);
             this.bunifuGradientPanel1.TabIndex = 38;
             // 
+            // lblSF
+            // 
+            this.lblSF.AutoSize = true;
+            this.lblSF.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(46)))), ((int)(((byte)(69)))));
+            this.lblSF.ForeColor = System.Drawing.Color.White;
+            this.lblSF.Location = new System.Drawing.Point(32, 90);
+            this.lblSF.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSF.Name = "lblSF";
+            this.lblSF.Size = new System.Drawing.Size(27, 16);
+            this.lblSF.TabIndex = 89;
+            this.lblSF.Text = "S F";
+            // 
+            // chkSF
+            // 
+            this.chkSF.AutoSize = true;
+            this.chkSF.Location = new System.Drawing.Point(67, 91);
+            this.chkSF.Margin = new System.Windows.Forms.Padding(4);
+            this.chkSF.Name = "chkSF";
+            this.chkSF.Size = new System.Drawing.Size(18, 17);
+            this.chkSF.TabIndex = 88;
+            this.chkSF.UseVisualStyleBackColor = true;
+            this.chkSF.CheckedChanged += new System.EventHandler(this.chkSF_CheckedChanged);
+            // 
             // chkFP
             // 
             this.chkFP.AutoSize = true;
@@ -718,29 +742,6 @@
             this.moverFormulario.Horizontal = true;
             this.moverFormulario.TargetControl = this.bunifuGradientPanel1;
             this.moverFormulario.Vertical = true;
-            // 
-            // lblSF
-            // 
-            this.lblSF.AutoSize = true;
-            this.lblSF.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(46)))), ((int)(((byte)(69)))));
-            this.lblSF.ForeColor = System.Drawing.Color.White;
-            this.lblSF.Location = new System.Drawing.Point(32, 90);
-            this.lblSF.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblSF.Name = "lblSF";
-            this.lblSF.Size = new System.Drawing.Size(27, 16);
-            this.lblSF.TabIndex = 89;
-            this.lblSF.Text = "S F";
-            // 
-            // chkSF
-            // 
-            this.chkSF.AutoSize = true;
-            this.chkSF.Location = new System.Drawing.Point(67, 91);
-            this.chkSF.Margin = new System.Windows.Forms.Padding(4);
-            this.chkSF.Name = "chkSF";
-            this.chkSF.Size = new System.Drawing.Size(18, 17);
-            this.chkSF.TabIndex = 88;
-            this.chkSF.UseVisualStyleBackColor = true;
-            this.chkSF.CheckedChanged += new System.EventHandler(this.chkSF_CheckedChanged);
             // 
             // registrarRefactura
             // 

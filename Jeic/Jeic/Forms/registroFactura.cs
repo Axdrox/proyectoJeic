@@ -202,7 +202,10 @@ namespace Refracciones.Forms
                 cve_siniestro = dato1.Text.Substring(11, dato1.Text.Length - 11);
                 //txtFacturasinIVA.Text = oper.venta_total(dat).ToString();
                 cmbEstadoFactura.SelectedIndex = 0;
-                dtpFechaPago.Value = dtpFechaIngreso.Value.AddDays(oper.Dias_Espera(cve_siniestro, cve_pedido));
+
+            //SOLICITADO POR ISRAEL, DEPENDIENDO DE SUS DIAS DE CREDITO SE ACTUALIZA EL DATE PICKER DE FECHA DE REVISION, SI SE AH PASADO LA FECHA SE TIENE QUE AVISAR EN EL REPORTE Y EN EL WINDOWS FORM 31 JUL 2026
+            //dtpFechaPago.Value = dtpFechaIngreso.Value.AddDays(oper.Dias_Espera(cve_siniestro, cve_pedido));
+            dtpFechaRevision.Value = dtpFechaIngreso.Value.AddDays(oper.Dias_Espera(cve_siniestro, cve_pedido));
             if (dato3.Text == "0")// significa que se va a modificar una factura existente
             {
                 dataGridView1.DataSource = oper.Actualizar_Factura(oper.Clave_Fact(cve_siniestro, cve_pedido, lblPieza.Text.Substring(7, (lblPieza.Text.Length - 7)), int.Parse(lblcvePedidoidentity.Text)));
@@ -280,7 +283,9 @@ namespace Refracciones.Forms
 
         private void dtpFechaIngreso_ValueChanged(object sender, EventArgs e)
         {
-            dtpFechaPago.Value = dtpFechaIngreso.Value.AddDays(oper.Dias_Espera(cve_siniestro, cve_pedido));
+            //dtpFechaPago.Value = dtpFechaIngreso.Value.AddDays(oper.Dias_Espera(cve_siniestro, cve_pedido));
+            //SOLICITADO POR ISRAEL, DEPENDIENDO DE SUS DIAS DE CREDITO SE ACTUALIZA EL DATE PICKER DE FECHA DE REVISION, SI SE AH PASADO LA FECHA SE TIENE QUE AVISAR EN EL REPORTE Y EN EL WINDOWS FORM 31 JUL 2026
+            dtpFechaRevision.Value = dtpFechaIngreso.Value.AddDays(oper.Dias_Espera(cve_siniestro, cve_pedido));
         }
 
         private void txtFacturasinIVA_TextChanged(object sender, EventArgs e)
