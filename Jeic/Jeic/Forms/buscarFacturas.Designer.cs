@@ -35,6 +35,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.bunifuGradientPanel1 = new Bunifu.Framework.UI.BunifuGradientPanel();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.dtpfechaPago = new System.Windows.Forms.DateTimePicker();
+            this.lblfechaPago = new System.Windows.Forms.Label();
+            this.cbAseguradora = new System.Windows.Forms.ComboBox();
+            this.lblSeguro = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbEstadoFactura = new System.Windows.Forms.ComboBox();
             this.txtFactura = new System.Windows.Forms.TextBox();
@@ -50,6 +55,9 @@
             this.dgvFacturas = new System.Windows.Forms.DataGridView();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.moverFormulario = new Bunifu.Framework.UI.BunifuDragControl(this.components);
+            this.cmbfiltroEstadoFactura = new System.Windows.Forms.ComboBox();
+            this.lblFiltroEstadoFactura = new System.Windows.Forms.Label();
+            this.lblTitulo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -76,8 +84,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.dgvFacturas);
-            this.splitContainer1.Size = new System.Drawing.Size(661, 482);
-            this.splitContainer1.SplitterDistance = 156;
+            this.splitContainer1.Size = new System.Drawing.Size(1139, 665);
+            this.splitContainer1.SplitterDistance = 215;
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -86,6 +94,14 @@
             this.bunifuGradientPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.bunifuGradientPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuGradientPanel1.BackgroundImage")));
             this.bunifuGradientPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuGradientPanel1.Controls.Add(this.lblTitulo);
+            this.bunifuGradientPanel1.Controls.Add(this.cmbfiltroEstadoFactura);
+            this.bunifuGradientPanel1.Controls.Add(this.lblFiltroEstadoFactura);
+            this.bunifuGradientPanel1.Controls.Add(this.btnGuardar);
+            this.bunifuGradientPanel1.Controls.Add(this.dtpfechaPago);
+            this.bunifuGradientPanel1.Controls.Add(this.lblfechaPago);
+            this.bunifuGradientPanel1.Controls.Add(this.cbAseguradora);
+            this.bunifuGradientPanel1.Controls.Add(this.lblSeguro);
             this.bunifuGradientPanel1.Controls.Add(this.label1);
             this.bunifuGradientPanel1.Controls.Add(this.cmbEstadoFactura);
             this.bunifuGradientPanel1.Controls.Add(this.txtFactura);
@@ -102,8 +118,76 @@
             this.bunifuGradientPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.bunifuGradientPanel1.Name = "bunifuGradientPanel1";
             this.bunifuGradientPanel1.Quality = 10;
-            this.bunifuGradientPanel1.Size = new System.Drawing.Size(661, 479);
+            this.bunifuGradientPanel1.Size = new System.Drawing.Size(1139, 675);
             this.bunifuGradientPanel1.TabIndex = 1;
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnGuardar.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnGuardar.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.ForeColor = System.Drawing.Color.White;
+            this.btnGuardar.Location = new System.Drawing.Point(1017, 180);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(100, 28);
+            this.btnGuardar.TabIndex = 86;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
+            // dtpfechaPago
+            // 
+            this.dtpfechaPago.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpfechaPago.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpfechaPago.Location = new System.Drawing.Point(957, 121);
+            this.dtpfechaPago.Margin = new System.Windows.Forms.Padding(4);
+            this.dtpfechaPago.Name = "dtpfechaPago";
+            this.dtpfechaPago.Size = new System.Drawing.Size(160, 23);
+            this.dtpfechaPago.TabIndex = 85;
+            // 
+            // lblfechaPago
+            // 
+            this.lblfechaPago.AutoSize = true;
+            this.lblfechaPago.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(45)))));
+            this.lblfechaPago.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblfechaPago.ForeColor = System.Drawing.Color.White;
+            this.lblfechaPago.Location = new System.Drawing.Point(788, 121);
+            this.lblfechaPago.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblfechaPago.Name = "lblfechaPago";
+            this.lblfechaPago.Size = new System.Drawing.Size(100, 18);
+            this.lblfechaPago.TabIndex = 84;
+            this.lblfechaPago.Text = "Fecha de Pago:";
+            // 
+            // cbAseguradora
+            // 
+            this.cbAseguradora.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbAseguradora.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbAseguradora.BackColor = System.Drawing.Color.White;
+            this.cbAseguradora.Cursor = System.Windows.Forms.Cursors.Default;
+            this.cbAseguradora.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.cbAseguradora.ForeColor = System.Drawing.Color.Black;
+            this.cbAseguradora.FormattingEnabled = true;
+            this.cbAseguradora.Location = new System.Drawing.Point(163, 78);
+            this.cbAseguradora.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbAseguradora.Name = "cbAseguradora";
+            this.cbAseguradora.Size = new System.Drawing.Size(392, 24);
+            this.cbAseguradora.TabIndex = 83;
+            this.cbAseguradora.SelectedIndexChanged += new System.EventHandler(this.cbAseguradora_SelectedIndexChanged);
+            // 
+            // lblSeguro
+            // 
+            this.lblSeguro.AutoSize = true;
+            this.lblSeguro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(45)))));
+            this.lblSeguro.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSeguro.ForeColor = System.Drawing.Color.White;
+            this.lblSeguro.Location = new System.Drawing.Point(4, 86);
+            this.lblSeguro.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSeguro.Name = "lblSeguro";
+            this.lblSeguro.Size = new System.Drawing.Size(90, 18);
+            this.lblSeguro.TabIndex = 82;
+            this.lblSeguro.Text = "Aseguradora:";
             // 
             // label1
             // 
@@ -130,8 +214,10 @@
             this.cmbEstadoFactura.Items.AddRange(new object[] {
             "PENDIENTE",
             "PAGADA",
-            "CANCELADA"});
-            this.cmbEstadoFactura.Location = new System.Drawing.Point(472, 31);
+            "CANCELADA",
+            "SIN FACTURAR",
+            "REMBOLSO"});
+            this.cmbEstadoFactura.Location = new System.Drawing.Point(957, 70);
             this.cmbEstadoFactura.Margin = new System.Windows.Forms.Padding(4);
             this.cmbEstadoFactura.Name = "cmbEstadoFactura";
             this.cmbEstadoFactura.Size = new System.Drawing.Size(160, 24);
@@ -158,7 +244,7 @@
             this.lblEstadoFact.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(45)))));
             this.lblEstadoFact.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEstadoFact.ForeColor = System.Drawing.Color.White;
-            this.lblEstadoFact.Location = new System.Drawing.Point(303, 37);
+            this.lblEstadoFact.Location = new System.Drawing.Point(788, 76);
             this.lblEstadoFact.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEstadoFact.Name = "lblEstadoFact";
             this.lblEstadoFact.Size = new System.Drawing.Size(134, 18);
@@ -185,17 +271,17 @@
             this.PanelFecha.Controls.Add(this.Fecha_Fin);
             this.PanelFecha.Controls.Add(this.label4);
             this.PanelFecha.ForeColor = System.Drawing.Color.White;
-            this.PanelFecha.Location = new System.Drawing.Point(93, 68);
+            this.PanelFecha.Location = new System.Drawing.Point(305, 9);
             this.PanelFecha.Margin = new System.Windows.Forms.Padding(4);
             this.PanelFecha.Name = "PanelFecha";
-            this.PanelFecha.Size = new System.Drawing.Size(475, 80);
+            this.PanelFecha.Size = new System.Drawing.Size(475, 59);
             this.PanelFecha.TabIndex = 78;
             // 
             // Fecha_in
             // 
             this.Fecha_in.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Fecha_in.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.Fecha_in.Location = new System.Drawing.Point(32, 34);
+            this.Fecha_in.Location = new System.Drawing.Point(32, 27);
             this.Fecha_in.Margin = new System.Windows.Forms.Padding(4);
             this.Fecha_in.Name = "Fecha_in";
             this.Fecha_in.Size = new System.Drawing.Size(169, 23);
@@ -206,7 +292,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(40, 10);
+            this.label3.Location = new System.Drawing.Point(40, 3);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(86, 18);
@@ -217,7 +303,7 @@
             // 
             this.Fecha_Fin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Fecha_Fin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.Fecha_Fin.Location = new System.Drawing.Point(307, 34);
+            this.Fecha_Fin.Location = new System.Drawing.Point(307, 27);
             this.Fecha_Fin.Margin = new System.Windows.Forms.Padding(4);
             this.Fecha_Fin.Name = "Fecha_Fin";
             this.Fecha_Fin.Size = new System.Drawing.Size(148, 23);
@@ -228,7 +314,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(236, 37);
+            this.label4.Location = new System.Drawing.Point(236, 30);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(25, 18);
@@ -238,7 +324,7 @@
             // pbMinimize
             // 
             this.pbMinimize.Image = global::Jeic.Properties.Resources.Minimize_Window_2_48px;
-            this.pbMinimize.Location = new System.Drawing.Point(611, 2);
+            this.pbMinimize.Location = new System.Drawing.Point(1082, 2);
             this.pbMinimize.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pbMinimize.Name = "pbMinimize";
             this.pbMinimize.Size = new System.Drawing.Size(20, 20);
@@ -250,7 +336,7 @@
             // pbClose
             // 
             this.pbClose.Image = global::Jeic.Properties.Resources.Close_Window__2_48px;
-            this.pbClose.Location = new System.Drawing.Point(636, 2);
+            this.pbClose.Location = new System.Drawing.Point(1107, 2);
             this.pbClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pbClose.Name = "pbClose";
             this.pbClose.Size = new System.Drawing.Size(20, 20);
@@ -283,7 +369,6 @@
             this.dgvFacturas.Location = new System.Drawing.Point(0, 0);
             this.dgvFacturas.Margin = new System.Windows.Forms.Padding(4);
             this.dgvFacturas.Name = "dgvFacturas";
-            this.dgvFacturas.ReadOnly = true;
             this.dgvFacturas.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
@@ -302,7 +387,7 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
             this.dgvFacturas.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvFacturas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvFacturas.Size = new System.Drawing.Size(661, 321);
+            this.dgvFacturas.Size = new System.Drawing.Size(1139, 445);
             this.dgvFacturas.TabIndex = 0;
             this.dgvFacturas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFacturas_CellClick);
             this.dgvFacturas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFacturas_CellDoubleClick);
@@ -319,11 +404,58 @@
             this.moverFormulario.TargetControl = this.bunifuGradientPanel1;
             this.moverFormulario.Vertical = true;
             // 
+            // cmbfiltroEstadoFactura
+            // 
+            this.cmbfiltroEstadoFactura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.cmbfiltroEstadoFactura.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cmbfiltroEstadoFactura.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbfiltroEstadoFactura.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cmbfiltroEstadoFactura.ForeColor = System.Drawing.Color.White;
+            this.cmbfiltroEstadoFactura.FormattingEnabled = true;
+            this.cmbfiltroEstadoFactura.Items.AddRange(new object[] {
+            "PENDIENTE",
+            "PAGADA",
+            "CANCELADA",
+            "SIN FACTURAR",
+            "REMBOLSO"});
+            this.cmbfiltroEstadoFactura.Location = new System.Drawing.Point(163, 121);
+            this.cmbfiltroEstadoFactura.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbfiltroEstadoFactura.Name = "cmbfiltroEstadoFactura";
+            this.cmbfiltroEstadoFactura.Size = new System.Drawing.Size(160, 24);
+            this.cmbfiltroEstadoFactura.TabIndex = 88;
+            this.cmbfiltroEstadoFactura.SelectedIndexChanged += new System.EventHandler(this.cmbfiltroEstadoFactura_SelectedIndexChanged);
+            // 
+            // lblFiltroEstadoFactura
+            // 
+            this.lblFiltroEstadoFactura.AutoSize = true;
+            this.lblFiltroEstadoFactura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(45)))));
+            this.lblFiltroEstadoFactura.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFiltroEstadoFactura.ForeColor = System.Drawing.Color.White;
+            this.lblFiltroEstadoFactura.Location = new System.Drawing.Point(4, 127);
+            this.lblFiltroEstadoFactura.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblFiltroEstadoFactura.Name = "lblFiltroEstadoFactura";
+            this.lblFiltroEstadoFactura.Size = new System.Drawing.Size(134, 18);
+            this.lblFiltroEstadoFactura.TabIndex = 87;
+            this.lblFiltroEstadoFactura.Text = "Estado de la Factura:";
+            // 
+            // lblTitulo
+            // 
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(45)))));
+            this.lblTitulo.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.ForeColor = System.Drawing.Color.White;
+            this.lblTitulo.Location = new System.Drawing.Point(881, 36);
+            this.lblTitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(140, 18);
+            this.lblTitulo.TabIndex = 89;
+            this.lblTitulo.Text = "DATOS A ACTUALIZAR";
+            // 
             // buscarFacturas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(661, 482);
+            this.ClientSize = new System.Drawing.Size(1139, 665);
             this.Controls.Add(this.splitContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -366,5 +498,13 @@
         public System.Windows.Forms.Label lblUsuario;
         private System.Windows.Forms.Label lblEstadoFact;
         private System.Windows.Forms.ComboBox cmbEstadoFactura;
+        private System.Windows.Forms.Label lblSeguro;
+        private System.Windows.Forms.ComboBox cbAseguradora;
+        private System.Windows.Forms.DateTimePicker dtpfechaPago;
+        private System.Windows.Forms.Label lblfechaPago;
+        private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.ComboBox cmbfiltroEstadoFactura;
+        private System.Windows.Forms.Label lblFiltroEstadoFactura;
+        private System.Windows.Forms.Label lblTitulo;
     }
 }

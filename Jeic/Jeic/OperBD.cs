@@ -1319,6 +1319,32 @@ namespace Refracciones
             return mensaje;
         }
 
+
+        //--------------------ACTUALIZAR FACTURA (UPDATE) BUSCAR FACTURAS FORM SOLO SE ACTUALIZA FECHA PAGO Y ESTADO--------------------
+        public string Actualizar_Factura(string cve_factura, int cve_estado,  DateTime fecha_pago)
+        {
+            string mensaje = "Se Actualizo Correctamente";
+            using (SqlConnection nuevaConexion = Conexion.conexion())
+            {
+                nuevaConexion.Open();
+               
+                    Comando = new SqlCommand("UPDATE FACTURA SET cve_estado = @cve_estado, fecha_pago = @fecha_pago WHERE cve_factura = @cve_factura", nuevaConexion);
+                    Comando.Parameters.Add("@cve_factura", SqlDbType.NVarChar, 50);
+                    Comando.Parameters.Add("@cve_estado", SqlDbType.Int);
+                    Comando.Parameters.Add("@fecha_pago", SqlDbType.Date);
+                   
+                    Comando.Parameters["@cve_factura"].Value = cve_factura;
+                    Comando.Parameters["@cve_estado"].Value = cve_estado;    
+                    Comando.Parameters["@fecha_pago"].Value = fecha_pago;
+
+                    Comando.ExecuteNonQuery();
+                
+               
+                nuevaConexion.Close();
+            }
+            return mensaje;
+        }
+
         //----------------------------------------------------------------------------------------------------------
 
         //--------------------ACTUALIZAR REFACTURA (UPDATE)--------------------
@@ -3466,6 +3492,32 @@ WHERE ven.fecha_asignacion BETWEEN @fecha1 AND @fecha2
             return dt;
         }
 
+        //--------------------LLENAR DATAGRID BUSCAR FACTURAS CON TEXBOX, COMBOBOX, FECHAS Y CLIENTE PIEZA POR PIEZA--------------------
+        public DataTable buscarFacturass(string cve_factura, int cve_estado, string cve_cliente, string Fecha_inicio, string fecha_fin)
+        {
+            dt = new DataTable();
+            using (SqlConnection nuevaConexion = Conexion.conexion())
+            {
+                nuevaConexion.Open();
+                if(cve_cliente == "Todos")
+                {
+                    Comando = new SqlCommand(string.Format("SELECT TOP 50 fact.cve_factura AS 'FACTURA',ven.cve_siniestro AS 'SINIESTRO', ven.cve_pedido AS 'PEDIDO',pie.nombre AS 'PIEZA',  p.cantidad AS 'CANTIDAD', fact.fact_sinIVA AS 'FACTURA SIN IVA',fact.descuento AS 'DESCUENTO',fact.fact_neto AS 'FACTURA NETO',  fact.costo_refactura AS 'COSTO DE REFACTURA', fact.fecha_refactura AS 'FECHA DE REFACTURA',fact.fecha_ingreso AS 'FECHA DE INGRESO',  fact.fecha_revision AS 'FECHA DE REVISIÓN',fact.fecha_pago AS 'FECHA DE PAGO', fact.comentario AS 'COMENTARIO', estfact.estado AS 'ESTADO DE LA FACTURA', fact.cve_refactura AS 'FACTURA ASOCIADA', fact.realizo AS 'REALIZADA POR',  p.cve_pedido AS 'CVE' FROM FACTURA fact LEFT OUTER JOIN PEDIDO p ON p.cve_factura = fact.cve_factura  LEFT OUTER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta LEFT OUTER JOIN PIEZA pie ON pie.cve_pieza = p.cve_pieza  LEFT OUTER JOIN ESTADO_FACTURA estfact ON estfact.cve_estado = fact.cve_estado LEFT OUTER JOIN VALUADOR val ON val.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE cli ON cli.cve_nombre = val.cve_cliente WHERE fact.cve_factura like '%{0}%' AND fact.cve_estado = {1} AND fact.fecha_ingreso BETWEEN '{2}' AND '{3}' ORDER BY fact.fecha_ingreso DESC", cve_factura, cve_estado, Fecha_inicio, fecha_fin), nuevaConexion);
+                    da = new SqlDataAdapter(Comando);
+                }
+                else
+                {
+                    Comando = new SqlCommand(string.Format("SELECT TOP 50 fact.cve_factura AS 'FACTURA',ven.cve_siniestro AS 'SINIESTRO', ven.cve_pedido AS 'PEDIDO',pie.nombre AS 'PIEZA',  p.cantidad AS 'CANTIDAD', fact.fact_sinIVA AS 'FACTURA SIN IVA',fact.descuento AS 'DESCUENTO',fact.fact_neto AS 'FACTURA NETO',  fact.costo_refactura AS 'COSTO DE REFACTURA', fact.fecha_refactura AS 'FECHA DE REFACTURA',fact.fecha_ingreso AS 'FECHA DE INGRESO',  fact.fecha_revision AS 'FECHA DE REVISIÓN',fact.fecha_pago AS 'FECHA DE PAGO', fact.comentario AS 'COMENTARIO', estfact.estado AS 'ESTADO DE LA FACTURA', fact.cve_refactura AS 'FACTURA ASOCIADA', fact.realizo AS 'REALIZADA POR',  p.cve_pedido AS 'CVE' FROM FACTURA fact LEFT OUTER JOIN PEDIDO p ON p.cve_factura = fact.cve_factura  LEFT OUTER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta LEFT OUTER JOIN PIEZA pie ON pie.cve_pieza = p.cve_pieza  LEFT OUTER JOIN ESTADO_FACTURA estfact ON estfact.cve_estado = fact.cve_estado LEFT OUTER JOIN VALUADOR val ON val.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE cli ON cli.cve_nombre = val.cve_cliente WHERE fact.cve_factura like '%{0}%' AND fact.cve_estado = {1} AND cli.cve_nombre like '%{2}%' AND fact.fecha_ingreso BETWEEN '{3}' AND '{4}' ORDER BY fact.fecha_ingreso DESC", cve_factura, cve_estado, cve_cliente, Fecha_inicio, fecha_fin), nuevaConexion);
+                    da = new SqlDataAdapter(Comando);
+                }
+                    
+
+                da.Fill(dt);
+
+                nuevaConexion.Close();
+            }
+            return dt;
+        }
+
         //--------------------LLENAR DATAGRID BUSCAR FACTURAS CON FECHAS--------------------
         public DataTable buscarFacturas(string Fecha_inicio, string fecha_fin)
         {
@@ -4708,6 +4760,53 @@ WHERE ven.fecha_asignacion BETWEEN @fecha1 AND @fecha2
                     }
 
                     nuevaConexion.Close();
+                }
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error: " + EX.Message);
+            }
+            return dataSet;
+        }
+
+        //CLIENTES ASEGURADORAS PARA BUSCAR FACTURA
+        public DataSet ClientesRegistrados(int x, string nuevoNombre)
+        {
+            DataSet dataSet = new DataSet();
+            try
+            {
+                using (SqlConnection nuevaConexion = Conexion.conexion())
+                {
+                    nuevaConexion.Open();
+
+                    if (x == 0)
+                    {
+                        SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT cve_nombre FROM CLIENTE", nuevaConexion);
+                        dataAdapter.Fill(dataSet, "CLIENTE");
+                    }
+                    else if (x == 1)
+                    {
+                        SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT cve_nombre FROM CLIENTE WHERE estado = 1", nuevaConexion);
+                        dataAdapter.Fill(dataSet, "CLIENTE");
+                    }
+
+                    nuevaConexion.Close();
+                }
+
+                // --- AGREGAR ELEMENTO EN MEMORIA ---
+                // Verificamos que la tabla exista y se haya llenado
+                if (dataSet.Tables.Contains("CLIENTE"))
+                {
+                    DataTable tablaCliente = dataSet.Tables["CLIENTE"];
+
+                    // Creamos la fila con la estructura de la consulta
+                    DataRow nuevaFila = tablaCliente.NewRow();
+
+                    // Asignamos el nombre al nuevo renglón
+                    nuevaFila["cve_nombre"] = nuevoNombre;
+
+                    // Agregamos la fila a la tabla (solo vive en la memoria de la app)
+                    tablaCliente.Rows.Add(nuevaFila);
                 }
             }
             catch (Exception EX)

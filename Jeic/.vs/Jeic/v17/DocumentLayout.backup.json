@@ -3,20 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\bryan\\source\\repos\\proyectoJeic\\Jeic\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B67C3104-50DA-4D29-A490-80181AED493C}|Jeic\\Jeic.csproj|c:\\users\\bryan\\source\\repos\\proyectojeic\\jeic\\jeic\\forms\\registrofactura.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B67C3104-50DA-4D29-A490-80181AED493C}|Jeic\\Jeic.csproj|solutionrelative:jeic\\forms\\registrofactura.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B67C3104-50DA-4D29-A490-80181AED493C}|Jeic\\Jeic.csproj|C:\\Users\\bryan\\source\\repos\\proyectoJeic\\Jeic\\jeic\\forms\\buscarfacturas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B67C3104-50DA-4D29-A490-80181AED493C}|Jeic\\Jeic.csproj|solutionrelative:jeic\\forms\\buscarfacturas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B67C3104-50DA-4D29-A490-80181AED493C}|Jeic\\Jeic.csproj|c:\\users\\bryan\\source\\repos\\proyectojeic\\jeic\\jeic\\operbd.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B67C3104-50DA-4D29-A490-80181AED493C}|Jeic\\Jeic.csproj|solutionrelative:jeic\\operbd.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B67C3104-50DA-4D29-A490-80181AED493C}|Jeic\\Jeic.csproj|c:\\users\\bryan\\source\\repos\\proyectojeic\\jeic\\jeic\\forms\\exportarexcel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B67C3104-50DA-4D29-A490-80181AED493C}|Jeic\\Jeic.csproj|solutionrelative:jeic\\forms\\exportarexcel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B67C3104-50DA-4D29-A490-80181AED493C}|Jeic\\Jeic.csproj|c:\\users\\bryan\\source\\repos\\proyectojeic\\jeic\\jeic\\forms\\exportarexcel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{B67C3104-50DA-4D29-A490-80181AED493C}|Jeic\\Jeic.csproj|solutionrelative:jeic\\forms\\exportarexcel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{B67C3104-50DA-4D29-A490-80181AED493C}|Jeic\\Jeic.csproj|C:\\Users\\bryan\\source\\repos\\proyectoJeic\\Jeic\\jeic\\forms\\buscarfacturas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B67C3104-50DA-4D29-A490-80181AED493C}|Jeic\\Jeic.csproj|solutionrelative:jeic\\forms\\buscarfacturas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,57 +18,33 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "exportarExcel.cs",
-              "DocumentMoniker": "C:\\Users\\bryan\\source\\repos\\proyectoJeic\\Jeic\\Jeic\\Forms\\exportarExcel.cs",
-              "RelativeDocumentMoniker": "Jeic\\Forms\\exportarExcel.cs",
-              "ToolTip": "C:\\Users\\bryan\\source\\repos\\proyectoJeic\\Jeic\\Jeic\\Forms\\exportarExcel.cs",
-              "RelativeToolTip": "Jeic\\Forms\\exportarExcel.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAtwC8AAAAsAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "buscarFacturas.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\bryan\\source\\repos\\proyectoJeic\\Jeic\\Jeic\\Forms\\buscarFacturas.cs",
+              "RelativeDocumentMoniker": "Jeic\\Forms\\buscarFacturas.cs",
+              "ToolTip": "C:\\Users\\bryan\\source\\repos\\proyectoJeic\\Jeic\\Jeic\\Forms\\buscarFacturas.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Jeic\\Forms\\buscarFacturas.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-03T03:09:54.895Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "exportarExcel.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\bryan\\source\\repos\\proyectoJeic\\Jeic\\Jeic\\Forms\\exportarExcel.cs",
-              "RelativeDocumentMoniker": "Jeic\\Forms\\exportarExcel.cs",
-              "ToolTip": "C:\\Users\\bryan\\source\\repos\\proyectoJeic\\Jeic\\Jeic\\Forms\\exportarExcel.cs [Dise\u00F1o]",
-              "RelativeToolTip": "Jeic\\Forms\\exportarExcel.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-03T03:09:50.845Z",
+              "WhenOpened": "2026-08-11T01:56:18.258Z",
+              "IsPinned": true,
               "EditorCaption": " [Dise\u00F1o]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "OperBD.cs",
-              "DocumentMoniker": "C:\\Users\\bryan\\source\\repos\\proyectoJeic\\Jeic\\Jeic\\OperBD.cs",
-              "RelativeDocumentMoniker": "Jeic\\OperBD.cs",
-              "ToolTip": "C:\\Users\\bryan\\source\\repos\\proyectoJeic\\Jeic\\Jeic\\OperBD.cs",
-              "RelativeToolTip": "Jeic\\OperBD.cs",
-              "ViewState": "AgIAANkMAAAAAAAAAAApwP0MAABTAAAAAAAAAA==",
+              "Title": "buscarFacturas.cs",
+              "DocumentMoniker": "C:\\Users\\bryan\\source\\repos\\proyectoJeic\\Jeic\\Jeic\\Forms\\buscarFacturas.cs",
+              "RelativeDocumentMoniker": "Jeic\\Forms\\buscarFacturas.cs",
+              "ToolTip": "C:\\Users\\bryan\\source\\repos\\proyectoJeic\\Jeic\\Jeic\\Forms\\buscarFacturas.cs",
+              "RelativeToolTip": "Jeic\\Forms\\buscarFacturas.cs",
+              "ViewState": "AgIAAAsBAAAAAAAAAAAhwCEBAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-03T03:09:30.804Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "registroFactura.cs",
-              "DocumentMoniker": "C:\\Users\\bryan\\source\\repos\\proyectoJeic\\Jeic\\Jeic\\Forms\\registroFactura.cs",
-              "RelativeDocumentMoniker": "Jeic\\Forms\\registroFactura.cs",
-              "ToolTip": "C:\\Users\\bryan\\source\\repos\\proyectoJeic\\Jeic\\Jeic\\Forms\\registroFactura.cs",
-              "RelativeToolTip": "Jeic\\Forms\\registroFactura.cs",
-              "ViewState": "AgIAAN4AAAAAAAAAAAAowB8BAABwAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-03T03:07:53.12Z",
+              "WhenOpened": "2026-08-11T02:38:56.165Z",
+              "IsPinned": true,
               "EditorCaption": ""
             }
           ]
