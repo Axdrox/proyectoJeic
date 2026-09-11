@@ -130,7 +130,7 @@ namespace Refracciones.Forms
             //CAMBIOS SOLICITADOS POR ISRAEL AGOSTO 2026
             string Fecha_inicio = Fecha_in.Value.Year.ToString() + "-" + Fecha_in.Value.Month.ToString() + "-" + Fecha_in.Value.Day.ToString();
             string Fecha_Final = Fecha_Fin.Value.Year.ToString() + "-" + Fecha_Fin.Value.Month.ToString() + "-" + Fecha_Fin.Value.Day.ToString();
-            dgvFacturas.DataSource = factura.buscarFacturass(txtFactura.Text, cmbfiltroEstadoFactura.SelectedIndex + 1, cbAseguradora.SelectedValue.ToString().Trim(), Fecha_inicio, Fecha_Final);
+            dgvFacturas.DataSource = factura.buscarFacturass(txtFactura.Text, cmbfiltroEstadoFactura.SelectedIndex + 1, cbAseguradora.SelectedValue.ToString().Trim(), Fecha_in.Value, Fecha_Fin.Value);
         }
 
         private void txtFactura_KeyPress(object sender, KeyPressEventArgs e)
@@ -171,7 +171,7 @@ namespace Refracciones.Forms
             //CAMBIOS SOLICITADOS POR ISRAEL AGOSTO 2026
             string Fecha_inicio = Fecha_in.Value.Year.ToString() + "-" + Fecha_in.Value.Month.ToString() + "-" + Fecha_in.Value.Day.ToString();
             string Fecha_Final = Fecha_Fin.Value.Year.ToString() + "-" + Fecha_Fin.Value.Month.ToString() + "-" + Fecha_Fin.Value.Day.ToString();
-            dgvFacturas.DataSource = factura.buscarFacturass(txtFactura.Text, cmbfiltroEstadoFactura.SelectedIndex + 1, cbAseguradora.SelectedValue.ToString().Trim(), Fecha_inicio, Fecha_Final);
+            dgvFacturas.DataSource = factura.buscarFacturass(txtFactura.Text, cmbfiltroEstadoFactura.SelectedIndex + 1, cbAseguradora.SelectedValue.ToString().Trim(), Fecha_in.Value, Fecha_Fin.Value);
 
         }
 
@@ -272,7 +272,7 @@ namespace Refracciones.Forms
             //CAMBIOS SOLICITADOS POR ISRAEL AGOSTO 2026
             string Fecha_inicio = Fecha_in.Value.Year.ToString() + "-" + Fecha_in.Value.Month.ToString() + "-" + Fecha_in.Value.Day.ToString();
             string Fecha_Final = Fecha_Fin.Value.Year.ToString() + "-" + Fecha_Fin.Value.Month.ToString() + "-" + Fecha_Fin.Value.Day.ToString();
-            dgvFacturas.DataSource = factura.buscarFacturass(txtFactura.Text, cmbfiltroEstadoFactura.SelectedIndex + 1, cbAseguradora.SelectedValue.ToString().Trim(), Fecha_inicio, Fecha_Final);
+            dgvFacturas.DataSource = factura.buscarFacturass(txtFactura.Text, cmbfiltroEstadoFactura.SelectedIndex + 1, cbAseguradora.SelectedValue.ToString().Trim(), Fecha_in.Value, Fecha_Fin.Value);
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -301,7 +301,7 @@ namespace Refracciones.Forms
             //REFRESH
             string Fecha_inicio = Fecha_in.Value.Year.ToString() + "-" + Fecha_in.Value.Month.ToString() + "-" + Fecha_in.Value.Day.ToString();
             string Fecha_Final = Fecha_Fin.Value.Year.ToString() + "-" + Fecha_Fin.Value.Month.ToString() + "-" + Fecha_Fin.Value.Day.ToString();
-            dgvFacturas.DataSource = factura.buscarFacturass(txtFactura.Text, cmbfiltroEstadoFactura.SelectedIndex + 1, cbAseguradora.SelectedValue.ToString().Trim(), Fecha_inicio, Fecha_Final);
+            dgvFacturas.DataSource = factura.buscarFacturass(txtFactura.Text, cmbfiltroEstadoFactura.SelectedIndex + 1, cbAseguradora.SelectedValue.ToString().Trim(), Fecha_in.Value, Fecha_Fin.Value);
             MessageBOX.SHowDialog(3, "Datos actualizados correctamente!");
         }
 
@@ -310,7 +310,7 @@ namespace Refracciones.Forms
             //CAMBIOS SOLICITADOS POR ISRAEL AGOSTO 2026
             string Fecha_inicio = Fecha_in.Value.Year.ToString() + "-" + Fecha_in.Value.Month.ToString() + "-" + Fecha_in.Value.Day.ToString();
             string Fecha_Final = Fecha_Fin.Value.Year.ToString() + "-" + Fecha_Fin.Value.Month.ToString() + "-" + Fecha_Fin.Value.Day.ToString();
-            dgvFacturas.DataSource = factura.buscarFacturass(txtFactura.Text, cmbfiltroEstadoFactura.SelectedIndex + 1, cbAseguradora.SelectedValue.ToString().Trim(), Fecha_inicio, Fecha_Final);
+            dgvFacturas.DataSource = factura.buscarFacturass(txtFactura.Text, cmbfiltroEstadoFactura.SelectedIndex + 1, cbAseguradora.SelectedValue.ToString().Trim(), Fecha_in.Value, Fecha_Fin.Value);
         }
     }
 }

@@ -287,7 +287,7 @@
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(44, 16);
             this.lblVersion.TabIndex = 19;
-            this.lblVersion.Text = "2.6.0.1";
+            this.lblVersion.Text = "2.6.0.2";
             // 
             // InicioSesion
             // 

@@ -3442,19 +3442,79 @@ WHERE ven.fecha_asignacion BETWEEN @fecha1 AND @fecha2
         }
 
         //--------------------LLENAR DATAGRID BUSCAR FACTURAS PIEZA POR PIEZA--------------------
+        //public DataTable buscarFacturass()
+        //{
+        //    dt = new DataTable();
+        //    using (SqlConnection nuevaConexion = Conexion.conexion())
+        //    {
+        //        nuevaConexion.Open();
+        //        Comando = new SqlCommand("SELECT TOP 50 fact.cve_factura AS 'FACTURA',ven.cve_siniestro AS 'SINIESTRO', ven.cve_pedido AS 'PEDIDO',pie.nombre AS 'PIEZA', p.cantidad AS 'CANTIDAD', fact.fact_sinIVA AS 'FACTURA SIN IVA',fact.descuento AS 'DESCUENTO',fact.fact_neto AS 'FACTURA NETO', fact.costo_refactura AS 'COSTO DE REFACTURA', fact.fecha_refactura AS 'FECHA DE REFACTURA',fact.fecha_ingreso AS 'FECHA DE INGRESO', fact.fecha_revision AS 'FECHA DE REVISIÓN',fact.fecha_pago AS 'FECHA DE PAGO', fact.comentario AS 'COMENTARIO',estfact.estado AS 'ESTADO DE LA FACTURA', fact.cve_refactura AS 'FACTURA ASOCIADA', fact.realizo AS 'REALIZADA POR', p.cve_pedido AS 'CVE' FROM FACTURA fact LEFT OUTER JOIN PEDIDO p ON p.cve_factura = fact.cve_factura LEFT OUTER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta LEFT OUTER JOIN PIEZA pie ON pie.cve_pieza = p.cve_pieza LEFT OUTER JOIN ESTADO_FACTURA estfact ON estfact.cve_estado = fact.cve_estado", nuevaConexion);
+        //        da = new SqlDataAdapter(Comando);
+
+        //        da.Fill(dt);
+
+        //        nuevaConexion.Close();
+        //    }
+        //    return dt;
+        //}
+
         public DataTable buscarFacturass()
         {
-            dt = new DataTable();
+            DataTable dt = new DataTable();
+
             using (SqlConnection nuevaConexion = Conexion.conexion())
             {
                 nuevaConexion.Open();
-                Comando = new SqlCommand("SELECT TOP 50 fact.cve_factura AS 'FACTURA',ven.cve_siniestro AS 'SINIESTRO', ven.cve_pedido AS 'PEDIDO',pie.nombre AS 'PIEZA', p.cantidad AS 'CANTIDAD', fact.fact_sinIVA AS 'FACTURA SIN IVA',fact.descuento AS 'DESCUENTO',fact.fact_neto AS 'FACTURA NETO', fact.costo_refactura AS 'COSTO DE REFACTURA', fact.fecha_refactura AS 'FECHA DE REFACTURA',fact.fecha_ingreso AS 'FECHA DE INGRESO', fact.fecha_revision AS 'FECHA DE REVISIÓN',fact.fecha_pago AS 'FECHA DE PAGO', fact.comentario AS 'COMENTARIO',estfact.estado AS 'ESTADO DE LA FACTURA', fact.cve_refactura AS 'FACTURA ASOCIADA', fact.realizo AS 'REALIZADA POR', p.cve_pedido AS 'CVE' FROM FACTURA fact LEFT OUTER JOIN PEDIDO p ON p.cve_factura = fact.cve_factura LEFT OUTER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta LEFT OUTER JOIN PIEZA pie ON pie.cve_pieza = p.cve_pieza LEFT OUTER JOIN ESTADO_FACTURA estfact ON estfact.cve_estado = fact.cve_estado", nuevaConexion);
-                da = new SqlDataAdapter(Comando);
 
-                da.Fill(dt);
+                string consulta = @"
+            SELECT TOP 50
+                fact.cve_factura AS 'FACTURA',
+                ven.cve_siniestro AS 'SINIESTRO',
+                ven.cve_pedido AS 'PEDIDO',
+                pie.nombre AS 'PIEZA',
+                p.cantidad AS 'CANTIDAD',
+                fact.fact_sinIVA AS 'FACTURA SIN IVA',
+                fact.descuento AS 'DESCUENTO',
+                fact.fact_neto AS 'FACTURA NETO',
+                fact.costo_refactura AS 'COSTO DE REFACTURA',
+                fact.fecha_refactura AS 'FECHA DE REFACTURA',
+                fact.fecha_ingreso AS 'FECHA DE INGRESO',
+                fact.fecha_revision AS 'FECHA DE REVISIÓN',
+                fact.fecha_pago AS 'FECHA DE PAGO',
+                fact.comentario AS 'COMENTARIO',
+                estfact.estado AS 'ESTADO DE LA FACTURA',
+                fact.cve_refactura AS 'FACTURA ASOCIADA',
+                fact.realizo AS 'REALIZADA POR',
+                p.cve_pedido AS 'CVE'
 
-                nuevaConexion.Close();
+            FROM FACTURA fact
+
+            LEFT JOIN PEDIDO p
+                ON p.cve_factura = fact.cve_factura
+
+            LEFT JOIN VENTAS ven
+                ON ven.cve_venta = p.cve_venta
+
+            LEFT JOIN PIEZA pie
+                ON pie.cve_pieza = p.cve_pieza
+
+            LEFT JOIN ESTADO_FACTURA estfact
+                ON estfact.cve_estado = fact.cve_estado
+
+            ORDER BY fact.fecha_ingreso DESC;
+        ";
+
+                using (SqlCommand comando = new SqlCommand(consulta, nuevaConexion))
+                {
+                    comando.CommandTimeout = 120;
+
+                    using (SqlDataAdapter da = new SqlDataAdapter(comando))
+                    {
+                        da.Fill(dt);
+                    }
+                }
             }
+
             return dt;
         }
 
@@ -3493,29 +3553,153 @@ WHERE ven.fecha_asignacion BETWEEN @fecha1 AND @fecha2
         }
 
         //--------------------LLENAR DATAGRID BUSCAR FACTURAS CON TEXBOX, COMBOBOX, FECHAS Y CLIENTE PIEZA POR PIEZA--------------------
-        public DataTable buscarFacturass(string cve_factura, int cve_estado, string cve_cliente, string Fecha_inicio, string fecha_fin)
-        {
-            dt = new DataTable();
-            using (SqlConnection nuevaConexion = Conexion.conexion())
-            {
-                nuevaConexion.Open();
-                if(cve_cliente == "Todos")
-                {
-                    Comando = new SqlCommand(string.Format("SELECT TOP 50 fact.cve_factura AS 'FACTURA',ven.cve_siniestro AS 'SINIESTRO', ven.cve_pedido AS 'PEDIDO',pie.nombre AS 'PIEZA',  p.cantidad AS 'CANTIDAD', fact.fact_sinIVA AS 'FACTURA SIN IVA',fact.descuento AS 'DESCUENTO',fact.fact_neto AS 'FACTURA NETO',  fact.costo_refactura AS 'COSTO DE REFACTURA', fact.fecha_refactura AS 'FECHA DE REFACTURA',fact.fecha_ingreso AS 'FECHA DE INGRESO',  fact.fecha_revision AS 'FECHA DE REVISIÓN',fact.fecha_pago AS 'FECHA DE PAGO', fact.comentario AS 'COMENTARIO', estfact.estado AS 'ESTADO DE LA FACTURA', fact.cve_refactura AS 'FACTURA ASOCIADA', fact.realizo AS 'REALIZADA POR',  p.cve_pedido AS 'CVE' FROM FACTURA fact LEFT OUTER JOIN PEDIDO p ON p.cve_factura = fact.cve_factura  LEFT OUTER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta LEFT OUTER JOIN PIEZA pie ON pie.cve_pieza = p.cve_pieza  LEFT OUTER JOIN ESTADO_FACTURA estfact ON estfact.cve_estado = fact.cve_estado LEFT OUTER JOIN VALUADOR val ON val.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE cli ON cli.cve_nombre = val.cve_cliente WHERE fact.cve_factura like '%{0}%' AND fact.cve_estado = {1} AND fact.fecha_ingreso BETWEEN '{2}' AND '{3}' ORDER BY fact.fecha_ingreso DESC", cve_factura, cve_estado, Fecha_inicio, fecha_fin), nuevaConexion);
-                    da = new SqlDataAdapter(Comando);
-                }
-                else
-                {
-                    Comando = new SqlCommand(string.Format("SELECT TOP 50 fact.cve_factura AS 'FACTURA',ven.cve_siniestro AS 'SINIESTRO', ven.cve_pedido AS 'PEDIDO',pie.nombre AS 'PIEZA',  p.cantidad AS 'CANTIDAD', fact.fact_sinIVA AS 'FACTURA SIN IVA',fact.descuento AS 'DESCUENTO',fact.fact_neto AS 'FACTURA NETO',  fact.costo_refactura AS 'COSTO DE REFACTURA', fact.fecha_refactura AS 'FECHA DE REFACTURA',fact.fecha_ingreso AS 'FECHA DE INGRESO',  fact.fecha_revision AS 'FECHA DE REVISIÓN',fact.fecha_pago AS 'FECHA DE PAGO', fact.comentario AS 'COMENTARIO', estfact.estado AS 'ESTADO DE LA FACTURA', fact.cve_refactura AS 'FACTURA ASOCIADA', fact.realizo AS 'REALIZADA POR',  p.cve_pedido AS 'CVE' FROM FACTURA fact LEFT OUTER JOIN PEDIDO p ON p.cve_factura = fact.cve_factura  LEFT OUTER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta LEFT OUTER JOIN PIEZA pie ON pie.cve_pieza = p.cve_pieza  LEFT OUTER JOIN ESTADO_FACTURA estfact ON estfact.cve_estado = fact.cve_estado LEFT OUTER JOIN VALUADOR val ON val.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE cli ON cli.cve_nombre = val.cve_cliente WHERE fact.cve_factura like '%{0}%' AND fact.cve_estado = {1} AND cli.cve_nombre like '%{2}%' AND fact.fecha_ingreso BETWEEN '{3}' AND '{4}' ORDER BY fact.fecha_ingreso DESC", cve_factura, cve_estado, cve_cliente, Fecha_inicio, fecha_fin), nuevaConexion);
-                    da = new SqlDataAdapter(Comando);
-                }
-                    
+        //public DataTable buscarFacturass(string cve_factura, int cve_estado, string cve_cliente, string Fecha_inicio, string fecha_fin)
+        //{
+        //    dt = new DataTable();
+        //    using (SqlConnection nuevaConexion = Conexion.conexion())
+        //    {
+        //        nuevaConexion.Open();
+        //        if(cve_cliente == "Todos")
+        //        {
+        //            Comando = new SqlCommand(string.Format("SELECT TOP 50 fact.cve_factura AS 'FACTURA',ven.cve_siniestro AS 'SINIESTRO', ven.cve_pedido AS 'PEDIDO',pie.nombre AS 'PIEZA',  p.cantidad AS 'CANTIDAD', fact.fact_sinIVA AS 'FACTURA SIN IVA',fact.descuento AS 'DESCUENTO',fact.fact_neto AS 'FACTURA NETO',  fact.costo_refactura AS 'COSTO DE REFACTURA', fact.fecha_refactura AS 'FECHA DE REFACTURA',fact.fecha_ingreso AS 'FECHA DE INGRESO',  fact.fecha_revision AS 'FECHA DE REVISIÓN',fact.fecha_pago AS 'FECHA DE PAGO', fact.comentario AS 'COMENTARIO', estfact.estado AS 'ESTADO DE LA FACTURA', fact.cve_refactura AS 'FACTURA ASOCIADA', fact.realizo AS 'REALIZADA POR',  p.cve_pedido AS 'CVE' FROM FACTURA fact LEFT OUTER JOIN PEDIDO p ON p.cve_factura = fact.cve_factura  LEFT OUTER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta LEFT OUTER JOIN PIEZA pie ON pie.cve_pieza = p.cve_pieza  LEFT OUTER JOIN ESTADO_FACTURA estfact ON estfact.cve_estado = fact.cve_estado LEFT OUTER JOIN VALUADOR val ON val.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE cli ON cli.cve_nombre = val.cve_cliente WHERE fact.cve_factura like '%{0}%' AND fact.cve_estado = {1} AND fact.fecha_ingreso BETWEEN '{2}' AND '{3}' ORDER BY fact.fecha_ingreso DESC", cve_factura, cve_estado, Fecha_inicio, fecha_fin), nuevaConexion);
+        //            da = new SqlDataAdapter(Comando);
+        //        }
+        //        else
+        //        {
+        //            Comando = new SqlCommand(string.Format("SELECT TOP 50 fact.cve_factura AS 'FACTURA',ven.cve_siniestro AS 'SINIESTRO', ven.cve_pedido AS 'PEDIDO',pie.nombre AS 'PIEZA',  p.cantidad AS 'CANTIDAD', fact.fact_sinIVA AS 'FACTURA SIN IVA',fact.descuento AS 'DESCUENTO',fact.fact_neto AS 'FACTURA NETO',  fact.costo_refactura AS 'COSTO DE REFACTURA', fact.fecha_refactura AS 'FECHA DE REFACTURA',fact.fecha_ingreso AS 'FECHA DE INGRESO',  fact.fecha_revision AS 'FECHA DE REVISIÓN',fact.fecha_pago AS 'FECHA DE PAGO', fact.comentario AS 'COMENTARIO', estfact.estado AS 'ESTADO DE LA FACTURA', fact.cve_refactura AS 'FACTURA ASOCIADA', fact.realizo AS 'REALIZADA POR',  p.cve_pedido AS 'CVE' FROM FACTURA fact LEFT OUTER JOIN PEDIDO p ON p.cve_factura = fact.cve_factura  LEFT OUTER JOIN VENTAS ven ON ven.cve_venta = p.cve_venta LEFT OUTER JOIN PIEZA pie ON pie.cve_pieza = p.cve_pieza  LEFT OUTER JOIN ESTADO_FACTURA estfact ON estfact.cve_estado = fact.cve_estado LEFT OUTER JOIN VALUADOR val ON val.cve_valuador = ven.cve_valuador LEFT OUTER JOIN CLIENTE cli ON cli.cve_nombre = val.cve_cliente WHERE fact.cve_factura like '%{0}%' AND fact.cve_estado = {1} AND cli.cve_nombre like '%{2}%' AND fact.fecha_ingreso BETWEEN '{3}' AND '{4}' ORDER BY fact.fecha_ingreso DESC", cve_factura, cve_estado, cve_cliente, Fecha_inicio, fecha_fin), nuevaConexion);
+        //            da = new SqlDataAdapter(Comando);
+        //        }
 
-                da.Fill(dt);
 
-                nuevaConexion.Close();
-            }
-            return dt;
+        //        da.Fill(dt);
+
+        //        nuevaConexion.Close();
+        //    }
+        //    return dt;
+        //}
+        public DataTable buscarFacturass(
+            string cve_factura,
+            int cve_estado,
+            string cve_cliente,
+            DateTime fecha_inicio,
+            DateTime fecha_fin)
+                {
+                    DataTable dt = new DataTable();
+
+                    using (SqlConnection nuevaConexion = Conexion.conexion())
+                    {
+                        nuevaConexion.Open();
+
+                        string consulta = @"
+                    SELECT TOP 50
+                        fact.cve_factura AS 'FACTURA',
+                        ven.cve_siniestro AS 'SINIESTRO',
+                        ven.cve_pedido AS 'PEDIDO',
+                        pie.nombre AS 'PIEZA',
+                        p.cantidad AS 'CANTIDAD',
+                        fact.fact_sinIVA AS 'FACTURA SIN IVA',
+                        fact.descuento AS 'DESCUENTO',
+                        fact.fact_neto AS 'FACTURA NETO',
+                        fact.costo_refactura AS 'COSTO DE REFACTURA',
+                        fact.fecha_refactura AS 'FECHA DE REFACTURA',
+                        fact.fecha_ingreso AS 'FECHA DE INGRESO',
+                        fact.fecha_revision AS 'FECHA DE REVISIÓN',
+                        fact.fecha_pago AS 'FECHA DE PAGO',
+                        fact.comentario AS 'COMENTARIO',
+                        estfact.estado AS 'ESTADO DE LA FACTURA',
+                        fact.cve_refactura AS 'FACTURA ASOCIADA',
+                        fact.realizo AS 'REALIZADA POR',
+                        p.cve_pedido AS 'CVE'
+
+                    FROM FACTURA fact
+
+                    LEFT JOIN PEDIDO p
+                        ON p.cve_factura = fact.cve_factura
+
+                    LEFT JOIN VENTAS ven
+                        ON ven.cve_venta = p.cve_venta
+
+                    LEFT JOIN PIEZA pie
+                        ON pie.cve_pieza = p.cve_pieza
+
+                    LEFT JOIN ESTADO_FACTURA estfact
+                        ON estfact.cve_estado = fact.cve_estado
+                ";
+
+                        // Solo necesitamos VALUADOR y CLIENTE
+                        // cuando se selecciona una aseguradora específica
+                        if (cve_cliente != "Todos")
+                        {
+                            consulta += @"
+                        LEFT JOIN VALUADOR val
+                            ON val.cve_valuador = ven.cve_valuador
+
+                        LEFT JOIN CLIENTE cli
+                            ON cli.cve_nombre = val.cve_cliente
+                    ";
+                        }
+
+                        consulta += @"
+                    WHERE fact.cve_estado = @Estado
+
+                    AND fact.fecha_ingreso >= @FechaInicio
+                    AND fact.fecha_ingreso < DATEADD(DAY, 1, @FechaFin)
+                ";
+
+                        // Solo agrega búsqueda por factura si se escribió algo
+                        if (!string.IsNullOrWhiteSpace(cve_factura))
+                        {
+                            consulta += @"
+                        AND fact.cve_factura LIKE @Factura
+                    ";
+                        }
+
+                        // Solo agrega filtro de cliente si no se eligió Todos
+                        if (cve_cliente != "Todos")
+                        {
+                            consulta += @"
+                        AND cli.cve_nombre = @Cliente
+                    ";
+                        }
+
+                        consulta += @"
+                    ORDER BY fact.fecha_ingreso DESC;
+                ";
+
+                        using (SqlCommand comando = new SqlCommand(consulta, nuevaConexion))
+                        {
+                            comando.Parameters.Add("@Estado", SqlDbType.Int).Value =
+                                cve_estado;
+
+                            comando.Parameters.Add("@FechaInicio", SqlDbType.DateTime).Value =
+                                fecha_inicio.Date;
+
+                            comando.Parameters.Add("@FechaFin", SqlDbType.DateTime).Value =
+                                fecha_fin.Date;
+
+                            if (!string.IsNullOrWhiteSpace(cve_factura))
+                            {
+                                comando.Parameters.Add("@Factura", SqlDbType.VarChar).Value =
+                                    "%" + cve_factura.Trim() + "%";
+                            }
+
+                            if (cve_cliente != "Todos")
+                            {
+                                comando.Parameters.Add("@Cliente", SqlDbType.VarChar).Value =
+                                    cve_cliente;
+                            }
+
+                            // Aumentamos temporalmente el tiempo de espera
+                            comando.CommandTimeout = 120;
+
+                            using (SqlDataAdapter da = new SqlDataAdapter(comando))
+                            {
+                                da.Fill(dt);
+                            }
+                        }
+                    }
+
+                    return dt;
         }
 
         //--------------------LLENAR DATAGRID BUSCAR FACTURAS CON FECHAS--------------------
