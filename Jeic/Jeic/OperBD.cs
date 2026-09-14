@@ -4307,7 +4307,7 @@ WHERE ven.fecha_asignacion BETWEEN @fecha1 AND @fecha2
                 using (SqlConnection nuevacon = Conexion.conexion())
                 {
                     //da = new SqlDataAdapter(string.Format("SELECT pie.nombre AS 'PIEZA', p.cve_venta AS 'CVE VENTA', p.cve_pedido AS 'CVE PEDIDO'  FROM PEDIDO p LEFT OUTER JOIN PIEZA pie ON p.cve_pieza = pie.cve_pieza INNER JOIN VENTAS ven ON p.cve_venta = ven.cve_venta WHERE ven.cve_siniestro = '{0}' AND p.cve_factura IS NULL", cve_siniestro), nuevacon);
-                    da = new SqlDataAdapter(string.Format("SELECT pie.nombre AS 'PIEZA', p.cve_venta AS 'CVE VENTA', p.cve_pedido AS 'CVE PEDIDO'  FROM PEDIDO p LEFT OUTER JOIN PIEZA pie ON p.cve_pieza = pie.cve_pieza INNER JOIN VENTAS ven ON p.cve_venta = ven.cve_venta WHERE p.estado = 6 AND ven.cve_siniestro = '{0}' AND p.cve_factura IS NULL", cve_siniestro), nuevacon);//SOLO PERMITE FACTURAR SI EL ESTADO DE LA PIEZA ES ENTREGADO 13/NOV/2023
+                    da = new SqlDataAdapter(string.Format("SELECT pie.nombre AS 'PIEZA', p.cve_venta AS 'CVE VENTA', p.cve_pedido AS 'CVE PEDIDO', ven.cve_pedido AS 'PEDIDO'  FROM PEDIDO p LEFT OUTER JOIN PIEZA pie ON p.cve_pieza = pie.cve_pieza INNER JOIN VENTAS ven ON p.cve_venta = ven.cve_venta WHERE p.estado = 6 AND ven.cve_siniestro = '{0}' AND p.cve_factura IS NULL", cve_siniestro), nuevacon);//SOLO PERMITE FACTURAR SI EL ESTADO DE LA PIEZA ES ENTREGADO 13/NOV/2023
                     nuevacon.Open();
                     dt = new DataTable();
                     da.Fill(dt);

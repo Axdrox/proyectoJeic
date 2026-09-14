@@ -3,8 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\bryan\\source\\repos\\proyectoJeic\\Jeic\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{B67C3104-50DA-4D29-A490-80181AED493C}|Jeic\\Jeic.csproj|c:\\users\\bryan\\source\\repos\\proyectojeic\\jeic\\jeic\\forms\\factura.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B67C3104-50DA-4D29-A490-80181AED493C}|Jeic\\Jeic.csproj|solutionrelative:jeic\\forms\\factura.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B67C3104-50DA-4D29-A490-80181AED493C}|Jeic\\Jeic.csproj|c:\\users\\bryan\\source\\repos\\proyectojeic\\jeic\\jeic\\forms\\factura.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B67C3104-50DA-4D29-A490-80181AED493C}|Jeic\\Jeic.csproj|solutionrelative:jeic\\forms\\factura.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{B67C3104-50DA-4D29-A490-80181AED493C}|Jeic\\Jeic.csproj|c:\\users\\bryan\\source\\repos\\proyectojeic\\jeic\\jeic\\forms\\iniciosesion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{B67C3104-50DA-4D29-A490-80181AED493C}|Jeic\\Jeic.csproj|solutionrelative:jeic\\forms\\iniciosesion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B67C3104-50DA-4D29-A490-80181AED493C}|Jeic\\Jeic.csproj|c:\\users\\bryan\\source\\repos\\proyectojeic\\jeic\\jeic\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{B67C3104-50DA-4D29-A490-80181AED493C}|Jeic\\Jeic.csproj|solutionrelative:jeic\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B67C3104-50DA-4D29-A490-80181AED493C}|Jeic\\Jeic.csproj|c:\\users\\bryan\\source\\repos\\proyectojeic\\jeic\\jeic\\operbd.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B67C3104-50DA-4D29-A490-80181AED493C}|Jeic\\Jeic.csproj|solutionrelative:jeic\\operbd.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,19 +30,70 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "InicioSesion.cs [Design]",
               "DocumentMoniker": "C:\\Users\\bryan\\source\\repos\\proyectoJeic\\Jeic\\Jeic\\Forms\\InicioSesion.cs",
               "RelativeDocumentMoniker": "Jeic\\Forms\\InicioSesion.cs",
               "ToolTip": "C:\\Users\\bryan\\source\\repos\\proyectoJeic\\Jeic\\Jeic\\Forms\\InicioSesion.cs [Design]",
               "RelativeToolTip": "Jeic\\Forms\\InicioSesion.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-11T02:19:52.817Z",
+              "WhenOpened": "2026-09-14T03:58:28.753Z",
               "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "OperBD.cs",
+              "DocumentMoniker": "C:\\Users\\bryan\\source\\repos\\proyectoJeic\\Jeic\\Jeic\\OperBD.cs",
+              "RelativeDocumentMoniker": "Jeic\\OperBD.cs",
+              "ToolTip": "C:\\Users\\bryan\\source\\repos\\proyectoJeic\\Jeic\\Jeic\\OperBD.cs",
+              "RelativeToolTip": "Jeic\\OperBD.cs",
+              "ViewState": "AgIAAMcQAAAAAAAAAAAvwNUQAACtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-13T19:51:53.015Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Factura.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\bryan\\source\\repos\\proyectoJeic\\Jeic\\Jeic\\Forms\\Factura.cs",
+              "RelativeDocumentMoniker": "Jeic\\Forms\\Factura.cs",
+              "ToolTip": "C:\\Users\\bryan\\source\\repos\\proyectoJeic\\Jeic\\Jeic\\Forms\\Factura.cs [Design]",
+              "RelativeToolTip": "Jeic\\Forms\\Factura.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-13T19:51:37.043Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Factura.cs",
+              "DocumentMoniker": "C:\\Users\\bryan\\source\\repos\\proyectoJeic\\Jeic\\Jeic\\Forms\\Factura.cs",
+              "RelativeDocumentMoniker": "Jeic\\Forms\\Factura.cs",
+              "ToolTip": "C:\\Users\\bryan\\source\\repos\\proyectoJeic\\Jeic\\Jeic\\Forms\\Factura.cs",
+              "RelativeToolTip": "Jeic\\Forms\\Factura.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAgwBsAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-13T19:51:42.281Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "App.config",
+              "DocumentMoniker": "C:\\Users\\bryan\\source\\repos\\proyectoJeic\\Jeic\\Jeic\\App.config",
+              "RelativeDocumentMoniker": "Jeic\\App.config",
+              "ToolTip": "C:\\Users\\bryan\\source\\repos\\proyectoJeic\\Jeic\\Jeic\\App.config",
+              "RelativeToolTip": "Jeic\\App.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAACIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2026-09-11T02:24:39.655Z",
+              "EditorCaption": ""
             }
           ]
         }

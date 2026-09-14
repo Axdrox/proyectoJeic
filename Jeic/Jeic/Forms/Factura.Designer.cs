@@ -83,7 +83,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvFactura.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvFactura.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(51)))), ((int)(((byte)(65)))));
-            this.dgvFactura.Location = new System.Drawing.Point(240, 43);
+            this.dgvFactura.Location = new System.Drawing.Point(287, 43);
             this.dgvFactura.Margin = new System.Windows.Forms.Padding(4);
             this.dgvFactura.Name = "dgvFactura";
             this.dgvFactura.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -104,7 +104,7 @@
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
             this.dgvFactura.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvFactura.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvFactura.Size = new System.Drawing.Size(629, 267);
+            this.dgvFactura.Size = new System.Drawing.Size(727, 375);
             this.dgvFactura.TabIndex = 0;
             // 
             // btnAceptar
@@ -112,7 +112,7 @@
             this.btnAceptar.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAceptar.ForeColor = System.Drawing.Color.White;
-            this.btnAceptar.Location = new System.Drawing.Point(769, 323);
+            this.btnAceptar.Location = new System.Drawing.Point(992, 426);
             this.btnAceptar.Margin = new System.Windows.Forms.Padding(4);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(100, 28);
@@ -138,7 +138,7 @@
             this.lblTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(28)))), ((int)(((byte)(32)))));
             this.lblTitulo.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo.ForeColor = System.Drawing.Color.White;
-            this.lblTitulo.Location = new System.Drawing.Point(403, 9);
+            this.lblTitulo.Location = new System.Drawing.Point(459, 9);
             this.lblTitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(269, 24);
@@ -168,6 +168,7 @@
             this.dato2.Size = new System.Drawing.Size(67, 21);
             this.dato2.TabIndex = 16;
             this.dato2.Text = "PEDIDO:";
+            this.dato2.Visible = false;
             // 
             // dato1
             // 
@@ -255,14 +256,14 @@
             this.bunifuGradientPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.bunifuGradientPanel1.Name = "bunifuGradientPanel1";
             this.bunifuGradientPanel1.Quality = 10;
-            this.bunifuGradientPanel1.Size = new System.Drawing.Size(882, 365);
+            this.bunifuGradientPanel1.Size = new System.Drawing.Size(1104, 469);
             this.bunifuGradientPanel1.TabIndex = 88;
             // 
             // pbClose
             // 
             this.pbClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbClose.Image = global::Jeic.Properties.Resources.Close_Window__2_48px;
-            this.pbClose.Location = new System.Drawing.Point(856, 0);
+            this.pbClose.Location = new System.Drawing.Point(1071, 0);
             this.pbClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pbClose.Name = "pbClose";
             this.pbClose.Size = new System.Drawing.Size(23, 21);
@@ -275,7 +276,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(878, 364);
+            this.ClientSize = new System.Drawing.Size(1101, 467);
             this.Controls.Add(this.lblFoRF);
             this.Controls.Add(this.lblcvePedidoidentity);
             this.Controls.Add(this.lblPieza);
